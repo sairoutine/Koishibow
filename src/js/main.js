@@ -7,9 +7,7 @@ window.onload = function() {
 	// Canvas
 	var mainCanvas = document.getElementById('mainCanvas');
 	// Game オブジェクト
-	game = new Game(mainCanvas, {
-		webgl: true,
-	});
+	game = new Game(mainCanvas);
 
 	// イベントハンドラの設定
 	game.setupEvents();
