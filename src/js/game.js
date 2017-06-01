@@ -3,6 +3,7 @@ var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 
 var SceneStage = require('./scene/stage');
+var SceneLoading = require('./scene/loading');
 
 var Game = function(canvas) {
 	core.apply(this, arguments);
@@ -13,7 +14,8 @@ Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
 
 	this.addScene("stage", new SceneStage(this));
+	this.addScene("loading", new SceneLoading(this));
 
-	this.changeScene("stage");
+	this.changeScene("loading");
 };
 module.exports = Game;

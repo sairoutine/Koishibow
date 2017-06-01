@@ -27,10 +27,10 @@ SceneStage.prototype.init = function(){
 
 	var sp1 = new SsSprite(animation);
 
-	sp1.x = 400;
-	sp1.y = 400;
-	sp1.rootScaleX = 0.5;
-	sp1.rootScaleY = 0.5;
+	sp1.x = 180;
+	sp1.y = 360;
+	sp1.rootScaleX = 0.4;
+	sp1.rootScaleY = 0.4;
 
 	this.sprite = sp1;
 };
@@ -49,10 +49,22 @@ SceneStage.prototype.draw = function(){
 	this.core.clearCanvas();
 	var ctx = this.core.ctx;
 
-	var t = new Date().getTime();
+
+	var title_bg = this.core.image_loader.getImage('bg');
+	ctx.save();
+	ctx.drawImage(title_bg,
+					0,
+					0,
+					title_bg.width,
+					title_bg.height,
+					0,
+					0,
+					this.core.width,
+					this.core.height);
+	ctx.restore();
 
 	ctx.save();
-
+	var t = new Date().getTime();
 	this.sprite.draw(ctx, t);
 	ctx.restore();
 };
