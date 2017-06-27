@@ -236,16 +236,17 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
 			//      console.log(sx, sy, sw, sh);
 
 			ctx.drawImage(img, sx, sy, sw, sh, -vdw/2, -vdh/2, vdw, vdh);
-			ctx2.drawImage(canvas, dx-ox*rootScaleX, dy-oy*rootScaleY);
+			//ctx2.drawImage(canvas, dx-ox*rootScaleX, dy-oy*rootScaleY);
+			//ctx2.drawImage(canvas, 
+			var ddx = dx-ox*rootScaleX;
+			var ddy = dy-oy*rootScaleY;
 
-			/*
 			var p = [
-				new Point(dx,dy),
-				new Point(vdw + dx, dy),
-				new Point(dx, vdh + dy),
-				new Point(vdw + dx, vdh + dy)
+				new Point(ddx,ddy),
+				new Point(vdw + ddx, ddy),
+				new Point(ddx, vdh + ddy),
+				new Point(vdw + ddx, vdh + ddy)
 			];
-			*/
 			/*
 			var p = [
 				new Point(0 + partData[17],0 + partData[18]),
@@ -255,7 +256,7 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
 			];
 			*/
 
-			//drawTriangle(ctx2, canvas, p);
+			drawTriangle(ctx2, canvas, p);
 		}
 
 		var state = partStates[partNo];
