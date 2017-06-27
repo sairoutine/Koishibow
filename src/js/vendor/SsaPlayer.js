@@ -211,7 +211,7 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
 			ctx.globalCompositeOperation = blendOperations[blend];
 			ctx.globalAlpha = alpha;
 			//ctx.setTransform(1, 0, 0, 1, dx, dy); 		// 最終的な表示位置へ. To display the final position.
-			ctx.setTransform(1 * rootScaleX, 0, 0, 1 * rootScaleY, 0, 0); 	// 最終的な表示位置へ. To display the final position.
+			//ctx.setTransform(1 * rootScaleX, 0, 0, 1 * rootScaleY, 0, 0); 	// 最終的な表示位置へ. To display the final position.
 			ctx.rotate(-dang);
 			ctx.scale(scaleX, scaleY);
 			ctx.translate(vdw / 2,vdh / 2); 	// パーツの原点へ. To the origin of the parts.
@@ -255,9 +255,9 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
                     (partDataLen > iVertDRY) ? partData[iVertDRY] : 0 ];
 			var p = [
 				new Point(ddx + t[0],ddy + t[1]),
-				new Point(vdw + ddx + t[2], ddy + t[3]),
-				new Point(ddx + t[4], vdh + ddy + t[5]),
-				new Point(vdw + ddx + t[6], vdh + ddy + t[7])
+				new Point(vdw*rootScaleX + ddx + t[2], ddy + t[3]),
+				new Point(ddx + t[4], vdh*rootScaleY + ddy + t[5]),
+				new Point(vdw*rootScaleX + ddx + t[6], vdh*rootScaleY + ddy + t[7])
 			];
 			/*
 			var p = [
@@ -489,7 +489,6 @@ SsSprite.prototype.draw = function (ctx, currentTime) {
 	function drawTriangle (ctx, img, p) {
 		var w = img.width;
 		var h = img.height;
-
 		//セグメント1
 		ctx.save();
 		//四角形のパスを描く
@@ -497,13 +496,13 @@ SsSprite.prototype.draw = function (ctx, currentTime) {
 		ctx.strokeStyle = "yellow";
 		ctx.moveTo(p[0].x, p[0].y);
 		ctx.lineTo(p[1].x, p[1].y);
-		//ctx.lineTo(p[3].x, p[3].y);
+		ctx.lineTo(p[3].x, p[3].y);
 		ctx.lineTo(p[2].x, p[2].y);
 		ctx.closePath();
 		//四角形のパス終了
 		
 		ctx.clip(); //以下に描画される画像を、これまで描いた四角形でマスクする
-	ctx.stroke();	
+	//ctx.stroke();	
 		/*描画空間を変形（変換マトリックスを計算）*/
 		var t1=(p[1].x-p[0].x)/w;
 		var t2=(p[1].y-p[0].y)/w;
@@ -532,7 +531,7 @@ SsSprite.prototype.draw = function (ctx, currentTime) {
 		// 右下の三角形のパス終了
 		
 		ctx.clip(); //以下に描画される画像を、これまで描いた三角形でマスクする
-	ctx.stroke();	
+	//ctx.stroke();	
 		
 		/*描画空間を変形（変換マトリックスを計算）*/
 		t1=(p[3].x-p[2].x)/w;
