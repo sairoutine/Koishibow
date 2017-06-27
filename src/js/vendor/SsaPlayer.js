@@ -173,6 +173,11 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
 		var dx = partData[iDstX] * rootScaleX;
 		var dy = partData[iDstY] * rootScaleY;
 
+		var odx = partData[iDstX];
+		var ody = partData[iDstY];
+
+
+
 		if (partNo != 7) {
 			//continue;
 		}
@@ -206,17 +211,17 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
 
 
 			var canvas = document.createElement('canvas');
-			canvas.width  = 1000;
-			canvas.height = 1000;
+			canvas.width  = vdw;
+			canvas.height = vdh;
 			var ctx = canvas.getContext('2d');
 
 			ctx.globalCompositeOperation = blendOperations[blend];
 			ctx.globalAlpha = alpha;
 			//ctx.setTransform(1, 0, 0, 1, dx, dy); 		// 最終的な表示位置へ. To display the final position.
-			ctx.setTransform(1 * rootScaleX, 0, 0, 1 * rootScaleY, dx, dy); 	// 最終的な表示位置へ. To display the final position.
+			ctx.setTransform(1 * rootScaleX, 0, 0, 1 * rootScaleY, 0, 0); 	// 最終的な表示位置へ. To display the final position.
 			ctx.rotate(-dang);
 			ctx.scale(scaleX, scaleY);
-			ctx.translate(-ox + vdw / 2, -oy + vdh / 2); 	// パーツの原点へ. To the origin of the parts.
+			ctx.translate(vdw / 2,vdh / 2); 	// パーツの原点へ. To the origin of the parts.
 			ctx.scale(fh, fv); 						    	// パーツの中心点でフリップ. Flip at the center point of the parts.
 
 			// check
@@ -230,15 +235,15 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
 			//      sy = (sy < 0) ? 0 : sy;
 			//      console.log(sx, sy, sw, sh);
 
-			ctx.drawImage(img, sx, sy, sw, sh, -vdw / 2, -vdh / 2, vdw, vdh);
-			ctx2.drawImage(canvas, 0, 0);
+			ctx.drawImage(img, sx, sy, sw, sh, -vdw/2, -vdh/2, vdw, vdh);
+			ctx2.drawImage(canvas, dx-ox*rootScaleX, dy-oy*rootScaleY);
 
 			/*
 			var p = [
-				new Point(0,0),
-				new Point(1000, 0),
-				new Point(0, 1000),
-				new Point(1000, 1000)
+				new Point(dx,dy),
+				new Point(vdw + dx, dy),
+				new Point(dx, vdh + dy),
+				new Point(vdw + dx, vdh + dy)
 			];
 			*/
 			/*
