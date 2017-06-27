@@ -182,13 +182,6 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
 			//continue;
 		}
 
-			console.log(
-				partNo,
-				partData[17], partData[18], partData[19], partData[20],
-				partData[21], partData[22], partData[23], partData[24]
-			);
-
-
 
 
 		var vdw = sw;
@@ -241,11 +234,30 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
 			var ddx = dx-ox*rootScaleX;
 			var ddy = dy-oy*rootScaleY;
 
+			var iVertULX = 17;
+			var iVertULY = 18;
+			var iVertURX = 19;
+			var iVertURY = 20;
+			var iVertDLX = 21;
+			var iVertDLY = 22;
+			var iVertDRX = 23;
+			var iVertDRY = 24;
+
+			// 頂点変形座標
+			var t = [
+                    (partDataLen > iVertULX) ? partData[iVertULX] : 0,
+                    (partDataLen > iVertULY) ? partData[iVertULY] : 0,
+                    (partDataLen > iVertURX) ? partData[iVertURX] : 0,
+                    (partDataLen > iVertURY) ? partData[iVertURY] : 0,
+                    (partDataLen > iVertDLX) ? partData[iVertDLX] : 0,
+                    (partDataLen > iVertDLY) ? partData[iVertDLY] : 0,
+                    (partDataLen > iVertDRX) ? partData[iVertDRX] : 0,
+                    (partDataLen > iVertDRY) ? partData[iVertDRY] : 0 ];
 			var p = [
-				new Point(ddx,ddy),
-				new Point(vdw + ddx, ddy),
-				new Point(ddx, vdh + ddy),
-				new Point(vdw + ddx, vdh + ddy)
+				new Point(ddx + t[0],ddy + t[1]),
+				new Point(vdw + ddx + t[2], ddy + t[3]),
+				new Point(ddx + t[4], vdh + ddy + t[5]),
+				new Point(vdw + ddx + t[6], vdh + ddy + t[7])
 			];
 			/*
 			var p = [
@@ -485,13 +497,13 @@ SsSprite.prototype.draw = function (ctx, currentTime) {
 		ctx.strokeStyle = "yellow";
 		ctx.moveTo(p[0].x, p[0].y);
 		ctx.lineTo(p[1].x, p[1].y);
-		ctx.lineTo(p[3].x, p[3].y);
+		//ctx.lineTo(p[3].x, p[3].y);
 		ctx.lineTo(p[2].x, p[2].y);
 		ctx.closePath();
 		//四角形のパス終了
 		
 		ctx.clip(); //以下に描画される画像を、これまで描いた四角形でマスクする
-		
+	ctx.stroke();	
 		/*描画空間を変形（変換マトリックスを計算）*/
 		var t1=(p[1].x-p[0].x)/w;
 		var t2=(p[1].y-p[0].y)/w;
@@ -520,6 +532,7 @@ SsSprite.prototype.draw = function (ctx, currentTime) {
 		// 右下の三角形のパス終了
 		
 		ctx.clip(); //以下に描画される画像を、これまで描いた三角形でマスクする
+	ctx.stroke();	
 		
 		/*描画空間を変形（変換マトリックスを計算）*/
 		t1=(p[3].x-p[2].x)/w;
