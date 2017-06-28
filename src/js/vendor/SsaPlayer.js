@@ -204,8 +204,9 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
 
 
 			var canvas = document.createElement('canvas');
-			canvas.width  = vdw;
-			canvas.height = vdh;
+			var canvas_size = vdw > vdh ? vdw : vdh;
+			canvas.width  = canvas_size;
+			canvas.height = canvas_size;
 			var ctx = canvas.getContext('2d');
 
 			ctx.globalCompositeOperation = blendOperations[blend];
@@ -255,9 +256,9 @@ SsAnimation.prototype.drawFunc = function (ctx2, frameNo, x, y, flipH, flipV, pa
                     (partDataLen > iVertDRY) ? partData[iVertDRY] : 0 ];
 			var p = [
 				new Point(ddx + t[0],ddy + t[1]),
-				new Point(vdw*rootScaleX + ddx + t[2], ddy + t[3]),
-				new Point(ddx + t[4], vdh*rootScaleY + ddy + t[5]),
-				new Point(vdw*rootScaleX + ddx + t[6], vdh*rootScaleY + ddy + t[7])
+				new Point(canvas_size*rootScaleX + ddx + t[2], ddy + t[3]),
+				new Point(ddx + t[4], canvas_size*rootScaleY + ddy + t[5]),
+				new Point(canvas_size*rootScaleX + ddx + t[6], canvas_size*rootScaleY + ddy + t[7])
 			];
 			/*
 			var p = [
