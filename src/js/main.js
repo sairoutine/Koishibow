@@ -8,12 +8,17 @@ window.onload = function() {
 	var mainCanvas = document.getElementById('mainCanvas');
 	// Game オブジェクト
 	game = new Game(mainCanvas);
-
-	// イベントハンドラの設定
-	game.setupEvents();
-
 	// 初期化
 	game.init();
+	// イベントハンドラの設定
+	game.setupEvents();
+	/*
+	// デバッグ設定
+	if (CONSTANT.DEBUG.ON) {
+		var debugDOM = document.getElementById('debug');
+		game.setupDebug(debugDOM);
+	}
+	*/
 
 	// ゲーム起動
 	game.startRun();
@@ -28,14 +33,13 @@ window.onerror = function (msg, file, line, column, err) {
 	*/ 
 	//window.alert(msg + "\n" + line + ":" + column);
 };
-/*
-window.runGame = function () {
-	game.startRun();
-};
-window.stopGame = function () {
-	game.stopRun();
-};
-*/
 window.changeFullScreen = function () {
 	game.fullscreen();
 };
+
+// Electron のレンダラプロセスならば
+if(window.require) {
+	window.require('electron').webFrame.setVisualZoomLevelLimits(1,1); //zoomさせない
+}
+
+

@@ -1,420 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
-},{}],2:[function(require,module,exports){
-(function (process){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// resolves . and .. elements in a path array with directory names there
-// must be no slashes, empty elements, or device names (c:\) in the array
-// (so also no leading and trailing slashes - it does not distinguish
-// relative and absolute paths)
-function normalizeArray(parts, allowAboveRoot) {
-  // if the path tries to go above the root, `up` ends up > 0
-  var up = 0;
-  for (var i = parts.length - 1; i >= 0; i--) {
-    var last = parts[i];
-    if (last === '.') {
-      parts.splice(i, 1);
-    } else if (last === '..') {
-      parts.splice(i, 1);
-      up++;
-    } else if (up) {
-      parts.splice(i, 1);
-      up--;
-    }
-  }
-
-  // if the path is allowed to go above the root, restore leading ..s
-  if (allowAboveRoot) {
-    for (; up--; up) {
-      parts.unshift('..');
-    }
-  }
-
-  return parts;
-}
-
-// Split a filename into [root, dir, basename, ext], unix version
-// 'root' is just a slash, or nothing.
-var splitPathRe =
-    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
-var splitPath = function(filename) {
-  return splitPathRe.exec(filename).slice(1);
-};
-
-// path.resolve([from ...], to)
-// posix version
-exports.resolve = function() {
-  var resolvedPath = '',
-      resolvedAbsolute = false;
-
-  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
-    var path = (i >= 0) ? arguments[i] : process.cwd();
-
-    // Skip empty and invalid entries
-    if (typeof path !== 'string') {
-      throw new TypeError('Arguments to path.resolve must be strings');
-    } else if (!path) {
-      continue;
-    }
-
-    resolvedPath = path + '/' + resolvedPath;
-    resolvedAbsolute = path.charAt(0) === '/';
-  }
-
-  // At this point the path should be resolved to a full absolute path, but
-  // handle relative paths to be safe (might happen when process.cwd() fails)
-
-  // Normalize the path
-  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
-    return !!p;
-  }), !resolvedAbsolute).join('/');
-
-  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
-};
-
-// path.normalize(path)
-// posix version
-exports.normalize = function(path) {
-  var isAbsolute = exports.isAbsolute(path),
-      trailingSlash = substr(path, -1) === '/';
-
-  // Normalize the path
-  path = normalizeArray(filter(path.split('/'), function(p) {
-    return !!p;
-  }), !isAbsolute).join('/');
-
-  if (!path && !isAbsolute) {
-    path = '.';
-  }
-  if (path && trailingSlash) {
-    path += '/';
-  }
-
-  return (isAbsolute ? '/' : '') + path;
-};
-
-// posix version
-exports.isAbsolute = function(path) {
-  return path.charAt(0) === '/';
-};
-
-// posix version
-exports.join = function() {
-  var paths = Array.prototype.slice.call(arguments, 0);
-  return exports.normalize(filter(paths, function(p, index) {
-    if (typeof p !== 'string') {
-      throw new TypeError('Arguments to path.join must be strings');
-    }
-    return p;
-  }).join('/'));
-};
-
-
-// path.relative(from, to)
-// posix version
-exports.relative = function(from, to) {
-  from = exports.resolve(from).substr(1);
-  to = exports.resolve(to).substr(1);
-
-  function trim(arr) {
-    var start = 0;
-    for (; start < arr.length; start++) {
-      if (arr[start] !== '') break;
-    }
-
-    var end = arr.length - 1;
-    for (; end >= 0; end--) {
-      if (arr[end] !== '') break;
-    }
-
-    if (start > end) return [];
-    return arr.slice(start, end - start + 1);
-  }
-
-  var fromParts = trim(from.split('/'));
-  var toParts = trim(to.split('/'));
-
-  var length = Math.min(fromParts.length, toParts.length);
-  var samePartsLength = length;
-  for (var i = 0; i < length; i++) {
-    if (fromParts[i] !== toParts[i]) {
-      samePartsLength = i;
-      break;
-    }
-  }
-
-  var outputParts = [];
-  for (var i = samePartsLength; i < fromParts.length; i++) {
-    outputParts.push('..');
-  }
-
-  outputParts = outputParts.concat(toParts.slice(samePartsLength));
-
-  return outputParts.join('/');
-};
-
-exports.sep = '/';
-exports.delimiter = ':';
-
-exports.dirname = function(path) {
-  var result = splitPath(path),
-      root = result[0],
-      dir = result[1];
-
-  if (!root && !dir) {
-    // No dirname whatsoever
-    return '.';
-  }
-
-  if (dir) {
-    // It has a dirname, strip trailing slash
-    dir = dir.substr(0, dir.length - 1);
-  }
-
-  return root + dir;
-};
-
-
-exports.basename = function(path, ext) {
-  var f = splitPath(path)[2];
-  // TODO: make this comparison case-insensitive on windows?
-  if (ext && f.substr(-1 * ext.length) === ext) {
-    f = f.substr(0, f.length - ext.length);
-  }
-  return f;
-};
-
-
-exports.extname = function(path) {
-  return splitPath(path)[3];
-};
-
-function filter (xs, f) {
-    if (xs.filter) return xs.filter(f);
-    var res = [];
-    for (var i = 0; i < xs.length; i++) {
-        if (f(xs[i], i, xs)) res.push(xs[i]);
-    }
-    return res;
-}
-
-// String.prototype.substr - negative index don't work in IE8
-var substr = 'ab'.substr(-1) === 'b'
-    ? function (str, start, len) { return str.substr(start, len) }
-    : function (str, start, len) {
-        if (start < 0) start = str.length + start;
-        return str.substr(start, len);
-    }
-;
-
-}).call(this,require('_process'))
-},{"_process":3}],3:[function(require,module,exports){
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-},{}],4:[function(require,module,exports){
 module.exports=[
 {
 "images":["k.png"],
@@ -1803,7 +1387,7 @@ module.exports=[
 }
 ]
 
-},{}],5:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 'use strict';
 
 var AssetsConfig = {};
@@ -1820,7 +1404,7 @@ AssetsConfig.bgms = {
 
 module.exports = AssetsConfig;
 
-},{}],6:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 var core = require('./hakurei').core;
 var util = require('./hakurei').util;
@@ -1843,12 +1427,12 @@ Game.prototype.init = function () {
 };
 module.exports = Game;
 
-},{"./hakurei":7,"./scene/loading":41,"./scene/stage":42}],7:[function(require,module,exports){
+},{"./hakurei":4,"./scene/loading":40,"./scene/stage":41}],4:[function(require,module,exports){
 'use strict';
 
 module.exports = require("./hakureijs/index");
 
-},{"./hakureijs/index":14}],8:[function(require,module,exports){
+},{"./hakureijs/index":12}],5:[function(require,module,exports){
 'use strict';
 
 var AudioLoader = function() {
@@ -1871,10 +1455,11 @@ var AudioLoader = function() {
 		this.audio_context.createGain = this.audio_context.createGain || this.audio_context.createGainNode;
 	}
 
+	// playing bgm name
+	this._playing_bgm_name = null;
+
 	// playing AudioBufferSourceNode instance
 	this.audio_source = null;
-
-
 };
 AudioLoader.prototype.init = function() {
 	// TODO: cancel already loading bgms and sounds
@@ -1888,6 +1473,10 @@ AudioLoader.prototype.init = function() {
 	this.id = 0;
 
 	this.soundflag = 0x00;
+
+	this._playing_bgm_name = null;
+
+	this.audio_source = null;
 };
 
 AudioLoader.prototype.loadSound = function(name, path, volume) {
@@ -1981,19 +1570,32 @@ AudioLoader.prototype.playBGM = function(name) {
 	// stop playing bgm
 	self.stopBGM();
 
+	self._playing_bgm_name = name;
 	self.audio_source = self._createSourceNode(name);
 	self.audio_source.start(0);
+};
+
+// play if the bgm is not playing now
+AudioLoader.prototype.changeBGM = function(name) {
+	if (this._playing_bgm_name !== name) {
+		this.playBGM(name);
+	}
 };
 AudioLoader.prototype.stopBGM = function() {
 	var self = this;
 	if(self.isPlayingBGM()) {
 		self.audio_source.stop(0);
 		self.audio_source = null;
+		self._playing_bgm_name = null;
 	}
 };
 AudioLoader.prototype.isPlayingBGM = function() {
 	return this.audio_source ? true : false;
 };
+AudioLoader.prototype.currentPlayingBGM = function() {
+	return this._playing_bgm_name;
+};
+
 
 // create AudioBufferSourceNode instance
 AudioLoader.prototype._createSourceNode = function(name) {
@@ -2026,7 +1628,7 @@ AudioLoader.prototype.progress = function() {
 
 module.exports = AudioLoader;
 
-},{}],9:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var FontLoader = function() {
@@ -2052,7 +1654,7 @@ FontLoader.prototype.progress = function() {
 
 module.exports = FontLoader;
 
-},{}],10:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 var ImageLoader = function() {
@@ -2106,9 +1708,10 @@ ImageLoader.prototype.progress = function() {
 
 module.exports = ImageLoader;
 
-},{}],11:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
+// only keyboard (because core class uses key board map)
 var Constant = {
 	BUTTON_LEFT:  0x01,
 	BUTTON_UP:    0x02,
@@ -2122,7 +1725,7 @@ var Constant = {
 
 module.exports = Constant;
 
-},{}],12:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 var CONSTANT = {
@@ -2154,13 +1757,15 @@ CONSTANT.SPRITE3D.A_SIZE =
 
 module.exports = CONSTANT;
 
-},{}],13:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 /* TODO: create input_manager class */
 
 var WebGLDebugUtils = require("webgl-debug");
 var CONSTANT = require("./constant");
+var DebugManager = require("./debug_manager");
+var InputManager = require("./input_manager");
 var ImageLoader = require("./asset_loader/image");
 var AudioLoader = require("./asset_loader/audio");
 var FontLoader = require("./asset_loader/font");
@@ -2169,6 +1774,7 @@ var SceneLoading = require('./scene/loading');
 var ShaderProgram = require('./shader_program');
 var VS = require("./shader/main.vs");
 var FS = require("./shader/main.fs");
+
 
 var Core = function(canvas, options) {
 	if(!options) {
@@ -2179,8 +1785,8 @@ var Core = function(canvas, options) {
 	this.ctx = null; // 2D context
 	this.gl  = null; // 3D context
 
+	// WebGL 3D mode
 	if(options.webgl) {
-		// WebGL 3D mode
 		this.gl = this.createWebGLContext(this.canvas_dom);
 
 		// shader program
@@ -2201,13 +1807,15 @@ var Core = function(canvas, options) {
 				"uSampler", // texture data
 			]
 		);
-
-
 	}
+	// Canvas 2D mode
 	else {
-		// Canvas 2D mode
 		this.ctx = this.canvas_dom.getContext('2d');
 	}
+
+	this.debug_manager = new DebugManager(this);
+
+	this.input_manager = new InputManager();
 
 	this.width = Number(canvas.getAttribute('width'));
 	this.height = Number(canvas.getAttribute('height'));
@@ -2219,21 +1827,6 @@ var Core = function(canvas, options) {
 	this.frame_count = 0;
 
 	this.request_id = null;
-
-	this.current_keyflag = 0x0;
-	this.before_keyflag = 0x0;
-
-	this.is_left_clicked  = false;
-	this.is_right_clicked = false;
-	this.before_is_left_clicked  = false;
-	this.before_is_right_clicked = false;
-	this.mouse_change_x = 0;
-	this.mouse_change_y = 0;
-	this.mouse_x = 0;
-	this.mouse_y = 0;
-	this.mouse_scroll = 0;
-
-	this.is_connect_gamepad = false;
 
 	this.image_loader = new ImageLoader();
 	this.audio_loader = new AudioLoader();
@@ -2247,18 +1840,9 @@ Core.prototype.init = function () {
 
 	this.request_id = null;
 
-	this.current_keyflag = 0x0;
-	this.before_keyflag = 0x0;
-
-	this.is_left_clicked  = false;
-	this.is_right_clicked = false;
-	this.before_is_left_clicked  = false;
-	this.before_is_right_clicked = false;
-	this.mouse_change_x = 0;
-	this.mouse_change_y = 0;
-	this.mouse_x = 0;
-	this.mouse_y = 0;
-	this.mouse_scroll = 0;
+	// TODO:
+	//this.debug_manager.init();
+	this.input_manager.init();
 
 	this.image_loader.init();
 	this.audio_loader.init();
@@ -2266,10 +1850,6 @@ Core.prototype.init = function () {
 
 	this.addScene("loading", new SceneLoading(this));
 };
-Core.prototype.enableGamePad = function () {
-	this.is_connect_gamepad = true;
-};
-
 Core.prototype.isRunning = function () {
 	return this.request_id ? true : false;
 };
@@ -2278,9 +1858,17 @@ Core.prototype.startRun = function () {
 
 	this.run();
 };
+Core.prototype.stopRun = function () {
+	if(!this.isRunning()) return;
+
+	cancelAnimationFrame(this.request_id);
+
+	this.request_id = null;
+};
 Core.prototype.run = function(){
 	// get gamepad input
-	this.handleGamePad();
+	// get pressed key time
+	this.input_manager.beforeRun();
 
 	// go to next scene if next scene is set
 	this.changeNextSceneIfReserved();
@@ -2309,18 +1897,9 @@ Core.prototype.run = function(){
 	this.runPlaySound();
 	*/
 
-	// save key current pressed keys
-	this.before_keyflag = this.current_keyflag;
-	this.before_is_left_clicked = this.is_left_clicked;
-	this.before_is_right_clicked = this.is_right_clicked;
-
-	// reset mouse wheel and mouse move
-	this.mouse_scroll = 0;
-	this.mouse_change_x = 0;
-	this.mouse_change_y = 0;
-
-
 	this.frame_count++;
+
+	this.input_manager.afterRun();
 
 	// tick
 	this.request_id = requestAnimationFrame(this.run.bind(this));
@@ -2342,12 +1921,20 @@ Core.prototype.changeScene = function() {
 };
 Core.prototype.changeNextSceneIfReserved = function() {
 	if(this._reserved_next_scene) {
-		this.current_scene = this._reserved_next_scene.shift();
+		if (this.currentScene() && this.currentScene().isSetFadeOut() && !this.currentScene().isInFadeOut()) {
+			this.currentScene().startFadeOut();
+		}
+		else if (this.currentScene() && this.currentScene().isSetFadeOut() && this.currentScene().isInFadeOut()) {
+			// waiting for quiting fade out
+		}
+		else {
+			// change next scene
+			this.current_scene = this._reserved_next_scene.shift();
+			var current_scene = this.currentScene();
+			current_scene.init.apply(current_scene, this._reserved_next_scene);
 
-		var current_scene = this.currentScene();
-		current_scene.init.apply(current_scene, this._reserved_next_scene);
-
-		this._reserved_next_scene = null;
+			this._reserved_next_scene = null;
+		}
 	}
 };
 Core.prototype.changeSceneWithLoading = function(scene, assets) {
@@ -2373,138 +1960,54 @@ Core.prototype.is2D = function() {
 Core.prototype.is3D = function() {
 	return this.gl ? true : false;
 };
-Core.prototype.handleKeyDown = function(e) {
-	this.current_keyflag |= this._keyCodeToBitCode(e.keyCode);
-	e.preventDefault();
-};
-Core.prototype.handleKeyUp = function(e) {
-	this.current_keyflag &= ~this._keyCodeToBitCode(e.keyCode);
-	e.preventDefault();
-};
+// this method is depricated.
 Core.prototype.isKeyDown = function(flag) {
-	return((this.current_keyflag & flag) ? true : false);
+	return this.input_manager.isKeyDown(flag);
 };
+// this method is depricated.
 Core.prototype.isKeyPush = function(flag) {
-	// not true if key is pressed in previous frame
-	return !(this.before_keyflag & flag) && this.current_keyflag & flag;
+	return this.input_manager.isKeyPush(flag);
 };
-Core.prototype.handleMouseDown = function(event) {
-	if ("which" in event) { // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
-		this.is_left_clicked  = event.which === 1;
-		this.is_right_clicked = event.which === 3;
-	}
-	else if ("button" in event) {  // IE, Opera
-		this.is_left_clicked  = event.button === 1;
-		this.is_right_clicked = event.button === 2;
-	}
-	event.preventDefault();
+// this method is depricated.
+Core.prototype.getKeyDownTime = function(bit_code) {
+	return this.input_manager.getKeyDownTime(bit_code);
 };
-Core.prototype.handleMouseUp = function(event) {
-	if ("which" in event) { // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
-		this.is_left_clicked  = event.which === 1 ? false : this.is_left_clicked;
-		this.is_right_clicked = event.which === 3 ? false : this.is_right_clicked;
-	}
-	else if ("button" in event) {  // IE, Opera
-		this.is_left_clicked  = event.button === 1 ? false : this.is_left_clicked;
-		this.is_right_clicked = event.button === 2 ? false : this.is_right_clicked;
-	}
-	event.preventDefault();
-};
+// this method is depricated.
 Core.prototype.isLeftClickDown = function() {
-	return this.is_left_clicked;
+	return this.input_manager.isLeftClickDown();
 };
+// this method is depricated.
 Core.prototype.isLeftClickPush = function() {
-	// not true if is pressed in previous frame
-	return this.is_left_clicked && !this.before_is_left_clicked;
+	return this.input_manager.isLeftClickPush();
 };
+// this method is depricated.
 Core.prototype.isRightClickDown = function() {
-	return this.is_right_clicked;
+	return this.input_manager.isRightClickDown();
 };
+// this method is depricated.
 Core.prototype.isRightClickPush = function() {
-	// not true if is pressed in previous frame
-	return this.is_right_clicked && !this.before_is_right_clicked;
+	return this.input_manager.isRightClickPush();
 };
 
-
-Core.prototype.handleMouseMove = function (d) {
-	d = d ? d : window.event;
-	d.preventDefault();
-	this.mouse_change_x = this.mouse_x - d.clientX;
-	this.mouse_change_y = this.mouse_y - d.clientY;
-	this.mouse_x = d.clientX;
-	this.mouse_y = d.clientY;
-};
+// this method is depricated.
 Core.prototype.mousePositionX = function () {
-	return this.mouse_x;
+	return this.input_manager.mousePositionX();
 };
+// this method is depricated.
 Core.prototype.mousePositionY = function () {
-	return this.mouse_y;
+	return this.input_manager.mousePositionX();
 };
+// this method is depricated.
 Core.prototype.mouseMoveX = function () {
-	return this.mouse_change_x;
+	return this.input_manager.mouseMoveX();
 };
+// this method is depricated.
 Core.prototype.mouseMoveY = function () {
-	return this.mouse_change_y;
+	return this.input_manager.mouseMoveY();
 };
-Core.prototype.handleMouseWheel = function (event) {
-	this.mouse_scroll = event.detail ? event.detail : -event.wheelDelta/120;
-};
+// this method is depricated.
 Core.prototype.mouseScroll = function () {
-	return this.mouse_scroll;
-};
-
-Core.prototype._keyCodeToBitCode = function(keyCode) {
-	var flag;
-	switch(keyCode) {
-		case 16: // shift
-			flag = CONSTANT.BUTTON_SHIFT;
-			break;
-		case 32: // space
-			flag = CONSTANT.BUTTON_SPACE;
-			break;
-		case 37: // left
-			flag = CONSTANT.BUTTON_LEFT;
-			break;
-		case 38: // up
-			flag = CONSTANT.BUTTON_UP;
-			break;
-		case 39: // right
-			flag = CONSTANT.BUTTON_RIGHT;
-			break;
-		case 40: // down
-			flag = CONSTANT.BUTTON_DOWN;
-			break;
-		case 88: // x
-			flag = CONSTANT.BUTTON_X;
-			break;
-		case 90: // z
-			flag = CONSTANT.BUTTON_Z;
-			break;
-	}
-	return flag;
-};
-Core.prototype.handleGamePad = function() {
-	if(!this.is_connect_gamepad) return;
-	var pads = navigator.getGamepads();
-	var pad = pads[0]; // 1Pコン
-
-	if(!pad) return;
-
-	this.current_keyflag = 0x00;
-	this.current_keyflag |= pad.buttons[1].pressed ? CONSTANT.BUTTON_Z:      0x00;// A
-	this.current_keyflag |= pad.buttons[0].pressed ? CONSTANT.BUTTON_X:      0x00;// B
-	this.current_keyflag |= pad.buttons[2].pressed ? CONSTANT.BUTTON_SELECT: 0x00;// SELECT
-	this.current_keyflag |= pad.buttons[3].pressed ? CONSTANT.BUTTON_START:  0x00;// START
-	this.current_keyflag |= pad.buttons[4].pressed ? CONSTANT.BUTTON_SHIFT:  0x00;// SHIFT
-	this.current_keyflag |= pad.buttons[5].pressed ? CONSTANT.BUTTON_SHIFT:  0x00;// SHIFT
-	this.current_keyflag |= pad.buttons[6].pressed ? CONSTANT.BUTTON_SPACE:  0x00;// SPACE
-	//this.current_keyflag |= pad.buttons[8].pressed ? 0x04 : 0x00;// SELECT
-	//this.current_keyflag |= pad.buttons[9].pressed ? 0x08 : 0x00;// START
-
-	this.current_keyflag |= pad.axes[1] < -0.5 ? CONSTANT.BUTTON_UP:         0x00;// UP
-	this.current_keyflag |= pad.axes[1] >  0.5 ? CONSTANT.BUTTON_DOWN:       0x00;// DOWN
-	this.current_keyflag |= pad.axes[0] < -0.5 ? CONSTANT.BUTTON_LEFT:       0x00;// LEFT
-	this.current_keyflag |= pad.axes[0] >  0.5 ? CONSTANT.BUTTON_RIGHT:      0x00;// RIGHT
+	return this.input_manager.mouseScroll();
 };
 
 Core.prototype.fullscreen = function() {
@@ -2548,40 +2051,15 @@ Core.prototype.setupEvents = function() {
 
 
 	// If the browser has `document.fonts`, wait font loading.
-	if(window.document && window.document.fonts) {
+	// Note: safari 10.0 has document.fonts but not occur loadingdone event
+	if(window.document && window.document.fonts && !navigator.userAgent.toLowerCase().indexOf("safari")) {
 		window.document.fonts.addEventListener('loadingdone', function() { self.fontLoadingDone(); });
 	}
 	else {
 		self.fontLoadingDone();
 	}
 
-	// bind keyboard
-	window.onkeydown = function(e) { self.handleKeyDown(e); };
-	window.onkeyup   = function(e) { self.handleKeyUp(e); };
-
-	// bind mouse click
-	this.canvas_dom.onmousedown = function(e) { self.handleMouseDown(e); };
-	this.canvas_dom.onmouseup   = function(e) { self.handleMouseUp(e); };
-
-	// bind mouse move
-	this.canvas_dom.onmousemove = function(d) { self.handleMouseMove(d); };
-
-	// bind mouse wheel
-	var mousewheelevent=(window.navi && /Firefox/i.test(window.navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
-	if (this.canvas_dom.addEventListener) { //WC3 browsers
-		this.canvas_dom.addEventListener(mousewheelevent, function(e) {
-			var event = window.event || e;
-			self.handleMouseWheel(event);
-		}, false);
-	}
-
-	// unable to use right click menu.
-	this.canvas_dom.oncontextmenu = function() { return false; };
-
-	// bind gamepad
-	if(window.Gamepad && window.navigator && window.navigator.getGamepads) {
-		self.enableGamePad();
-	}
+	this.input_manager.setupEvents(this.canvas_dom);
 };
 
 Core.prototype.createWebGLContext = function(canvas) {
@@ -2604,7 +2082,60 @@ Core.prototype.createWebGLContext = function(canvas) {
 
 module.exports = Core;
 
-},{"./asset_loader/audio":8,"./asset_loader/font":9,"./asset_loader/image":10,"./constant":11,"./scene/loading":32,"./shader/main.fs":34,"./shader/main.vs":35,"./shader_program":36,"webgl-debug":25}],14:[function(require,module,exports){
+},{"./asset_loader/audio":5,"./asset_loader/font":6,"./asset_loader/image":7,"./constant":8,"./debug_manager":11,"./input_manager":13,"./scene/loading":31,"./shader/main.fs":33,"./shader/main.vs":34,"./shader_program":35,"webgl-debug":24}],11:[function(require,module,exports){
+'use strict';
+
+var DebugManager = function (core) {
+	this.core = core;
+	this.dom = null; // debug menu area
+
+	this.is_debug_mode = false; // default: false
+};
+
+DebugManager.prototype.setOn = function (dom) {
+	this.is_debug_mode = true;
+	this.dom = dom;
+};
+DebugManager.prototype.setOff = function () {
+	this.is_debug_mode = false;
+	this.dom = null;
+};
+
+// add text menu
+DebugManager.prototype.addMenuText = function (text) {
+	if(!this.is_debug_mode) return;
+
+	// create element
+	var dom = window.document.createElement('pre');
+	dom.textContent = text;
+
+	// add element
+	this.dom.appendChild(dom);
+};
+
+// add button menu
+DebugManager.prototype.addMenuButton = function (button_value, func) {
+	if(!this.is_debug_mode) return;
+
+	var core = this.core;
+
+	// create element
+	var input = window.document.createElement('input');
+
+	// set attributes
+	input.setAttribute('type', 'button');
+	input.setAttribute('value', button_value);
+	input.onclick = function () {
+		func(core);
+	};
+
+	// add element
+	this.dom.appendChild(input);
+};
+
+module.exports = DebugManager;
+
+},{}],12:[function(require,module,exports){
 'use strict';
 module.exports = {
 	util: require("./util"),
@@ -2635,7 +2166,404 @@ module.exports = {
 
 };
 
-},{"./asset_loader/audio":8,"./asset_loader/font":9,"./asset_loader/image":10,"./constant":11,"./core":13,"./object/base":26,"./object/pool_manager":27,"./object/pool_manager3d":28,"./object/sprite":29,"./object/sprite3d":30,"./scene/base":31,"./scene/loading":32,"./serif_manager":33,"./shader_program":36,"./storage/base":37,"./storage/save":38,"./util":39}],15:[function(require,module,exports){
+},{"./asset_loader/audio":5,"./asset_loader/font":6,"./asset_loader/image":7,"./constant":8,"./core":10,"./object/base":25,"./object/pool_manager":26,"./object/pool_manager3d":27,"./object/sprite":28,"./object/sprite3d":29,"./scene/base":30,"./scene/loading":31,"./serif_manager":32,"./shader_program":35,"./storage/base":36,"./storage/save":37,"./util":38}],13:[function(require,module,exports){
+'use strict';
+
+var CONSTANT = require("./constant");
+var Util = require("./util");
+
+// const
+var DEFAULT_BUTTON_ID_TO_BIT_CODE = {
+	0: CONSTANT.BUTTON_Z,
+	1: CONSTANT.BUTTON_X,
+	2: CONSTANT.BUTTON_SPACE,
+	3: CONSTANT.BUTTON_SHIFT,
+};
+
+var InputManager = function () {
+	this.current_keyflag = 0x0;
+	this.before_keyflag = 0x0;
+	this._key_bit_code_to_down_time = {};
+
+	// gamepad button_id to bit code of key input
+	this._button_id_to_key_bit_code = Util.shallowCopyHash(DEFAULT_BUTTON_ID_TO_BIT_CODE);
+
+	this.is_left_clicked  = false;
+	this.is_right_clicked = false;
+	this.before_is_left_clicked  = false;
+	this.before_is_right_clicked = false;
+	this.mouse_change_x = 0;
+	this.mouse_change_y = 0;
+	this.mouse_x = 0;
+	this.mouse_y = 0;
+	this.mouse_scroll = 0;
+
+	this.is_connect_gamepad = false;
+};
+
+InputManager.prototype.init = function () {
+	this.current_keyflag = 0x0;
+	this.before_keyflag = 0x0;
+	this.initPressedKeyTime();
+
+	// gamepad button_id to bit code of key input
+	this._button_id_to_key_bit_code = Util.shallowCopyHash(DEFAULT_BUTTON_ID_TO_BIT_CODE);
+
+	this.is_left_clicked  = false;
+	this.is_right_clicked = false;
+	this.before_is_left_clicked  = false;
+	this.before_is_right_clicked = false;
+	this.mouse_change_x = 0;
+	this.mouse_change_y = 0;
+	this.mouse_x = 0;
+	this.mouse_y = 0;
+	this.mouse_scroll = 0;
+
+	this.is_connect_gamepad = false;
+};
+InputManager.prototype.enableGamePad = function () {
+	this.is_connect_gamepad = true;
+};
+InputManager.prototype.beforeRun = function(){
+	// get gamepad input
+	this.handleGamePad();
+
+	// get pressed key time
+	this.handlePressedKeyTime();
+};
+
+InputManager.prototype.afterRun = function(){
+	// save key current pressed keys
+	this.before_keyflag = this.current_keyflag;
+	this.before_is_left_clicked = this.is_left_clicked;
+	this.before_is_right_clicked = this.is_right_clicked;
+
+	// reset mouse wheel and mouse move
+	this.mouse_scroll = 0;
+	this.mouse_change_x = 0;
+	this.mouse_change_y = 0;
+};
+
+
+InputManager.prototype.handleKeyDown = function(e) {
+	this.current_keyflag |= this._keyCodeToBitCode(e.keyCode);
+	e.preventDefault();
+};
+InputManager.prototype.handleKeyUp = function(e) {
+	this.current_keyflag &= ~this._keyCodeToBitCode(e.keyCode);
+	e.preventDefault();
+};
+InputManager.prototype.isKeyDown = function(flag) {
+	return((this.current_keyflag & flag) ? true : false);
+};
+InputManager.prototype.isKeyPush = function(flag) {
+	return !(this.before_keyflag & flag) && this.current_keyflag & flag;
+};
+
+
+InputManager.prototype.getKeyDownTime = function(bit_code) {
+	return this._key_bit_code_to_down_time[bit_code];
+};
+
+InputManager.prototype.handleMouseDown = function(event) {
+	if ("which" in event) { // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
+		this.is_left_clicked  = event.which === 1;
+		this.is_right_clicked = event.which === 3;
+	}
+	else if ("button" in event) {  // IE, Opera
+		this.is_left_clicked  = event.button === 1;
+		this.is_right_clicked = event.button === 2;
+	}
+	event.preventDefault();
+};
+InputManager.prototype.handleMouseUp = function(event) {
+	if ("which" in event) { // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
+		this.is_left_clicked  = event.which === 1 ? false : this.is_left_clicked;
+		this.is_right_clicked = event.which === 3 ? false : this.is_right_clicked;
+	}
+	else if ("button" in event) {  // IE, Opera
+		this.is_left_clicked  = event.button === 1 ? false : this.is_left_clicked;
+		this.is_right_clicked = event.button === 2 ? false : this.is_right_clicked;
+	}
+	event.preventDefault();
+};
+InputManager.prototype.isLeftClickDown = function() {
+	return this.is_left_clicked;
+};
+InputManager.prototype.isLeftClickPush = function() {
+	// not true if is pressed in previous frame
+	return this.is_left_clicked && !this.before_is_left_clicked;
+};
+InputManager.prototype.isRightClickDown = function() {
+	return this.is_right_clicked;
+};
+InputManager.prototype.isRightClickPush = function() {
+	// not true if is pressed in previous frame
+	return this.is_right_clicked && !this.before_is_right_clicked;
+};
+InputManager.prototype.handleMouseMove = function (d) {
+	d = d ? d : window.event;
+	d.preventDefault();
+	this.mouse_change_x = this.mouse_x - d.clientX;
+	this.mouse_change_y = this.mouse_y - d.clientY;
+	this.mouse_x = d.clientX;
+	this.mouse_y = d.clientY;
+};
+InputManager.prototype.mousePositionX = function () {
+	return this.mouse_x;
+};
+InputManager.prototype.mousePositionY = function () {
+	return this.mouse_y;
+};
+InputManager.prototype.mouseMoveX = function () {
+	return this.mouse_change_x;
+};
+InputManager.prototype.mouseMoveY = function () {
+	return this.mouse_change_y;
+};
+InputManager.prototype.handleMouseWheel = function (event) {
+	this.mouse_scroll = event.detail ? event.detail : -event.wheelDelta/120;
+};
+InputManager.prototype.mouseScroll = function () {
+	return this.mouse_scroll;
+};
+InputManager.prototype._keyCodeToBitCode = function(keyCode) {
+	var flag;
+	switch(keyCode) {
+		case 16: // shift
+			flag = CONSTANT.BUTTON_SHIFT;
+			break;
+		case 32: // space
+			flag = CONSTANT.BUTTON_SPACE;
+			break;
+		case 37: // left
+			flag = CONSTANT.BUTTON_LEFT;
+			break;
+		case 38: // up
+			flag = CONSTANT.BUTTON_UP;
+			break;
+		case 39: // right
+			flag = CONSTANT.BUTTON_RIGHT;
+			break;
+		case 40: // down
+			flag = CONSTANT.BUTTON_DOWN;
+			break;
+		case 88: // x
+			flag = CONSTANT.BUTTON_X;
+			break;
+		case 90: // z
+			flag = CONSTANT.BUTTON_Z;
+			break;
+	}
+	return flag;
+};
+InputManager.prototype.handleGamePad = function() {
+	if(!this.is_connect_gamepad) return;
+	var pads = window.navigator.getGamepads();
+	var pad = pads[0]; // 1Pコン
+
+	if(!pad) return;
+
+	// button
+	for (var i = 0, len = pad.buttons.length; i < len; i++) {
+		if(!(i in this._button_id_to_key_bit_code)) continue; // ignore if I don't know its button
+		if(pad.buttons[i].pressed) { // pressed
+			this.current_keyflag |= this.getKeyByButtonId(i);
+		}
+		else { // not pressed
+			this.current_keyflag &= ~this.getKeyByButtonId(i);
+		}
+	}
+
+	// arrow keys
+	if (pad.axes[1] < -0.5) {
+			this.current_keyflag |= CONSTANT.BUTTON_UP;
+	}
+	else {
+			this.current_keyflag &= ~CONSTANT.BUTTON_UP;
+	}
+	if (pad.axes[1] > 0.5) {
+			this.current_keyflag |= CONSTANT.BUTTON_DOWN;
+	}
+	else {
+			this.current_keyflag &= ~CONSTANT.BUTTON_DOWN;
+	}
+	if (pad.axes[0] < -0.5) {
+			this.current_keyflag |= CONSTANT.BUTTON_LEFT;
+	}
+	else {
+			this.current_keyflag &= ~CONSTANT.BUTTON_LEFT;
+	}
+	if (pad.axes[0] > 0.5) {
+			this.current_keyflag |= CONSTANT.BUTTON_RIGHT;
+	}
+	else {
+			this.current_keyflag &= ~CONSTANT.BUTTON_RIGHT;
+	}
+};
+InputManager.prototype.initPressedKeyTime = function() {
+	this._key_bit_code_to_down_time = {};
+
+	for (var button_id in CONSTANT) {
+		var bit_code = CONSTANT[button_id];
+		this._key_bit_code_to_down_time[bit_code] = 0;
+	}
+};
+
+InputManager.prototype.handlePressedKeyTime = function() {
+	for (var button_id in CONSTANT) {
+		var bit_code = CONSTANT[button_id];
+		if (this.isKeyDown(bit_code)) {
+			this._key_bit_code_to_down_time[bit_code]++;
+		}
+		else {
+			this._key_bit_code_to_down_time[bit_code] = 0;
+		}
+	}
+};
+InputManager.prototype.setupEvents = function(canvas_dom) {
+	var self = this;
+
+	// bind keyboard
+	window.onkeydown = function(e) { self.handleKeyDown(e); };
+	window.onkeyup   = function(e) { self.handleKeyUp(e); };
+
+	// bind mouse click
+	canvas_dom.onmousedown = function(e) { self.handleMouseDown(e); };
+	canvas_dom.onmouseup   = function(e) { self.handleMouseUp(e); };
+
+	// bind mouse move
+	canvas_dom.onmousemove = function(d) { self.handleMouseMove(d); };
+
+	// bind mouse wheel
+	var mousewheelevent = (window.navi && /Firefox/i.test(window.navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+	if (canvas_dom.addEventListener) { //WC3 browsers
+		canvas_dom.addEventListener(mousewheelevent, function(e) {
+			var event = window.event || e;
+			self.handleMouseWheel(event);
+		}, false);
+	}
+
+	// unable to use right click menu.
+	// NOTE: not used
+	// this.canvas_dom.oncontextmenu = function() { return false; };
+
+	// bind gamepad
+	if(window.Gamepad && window.navigator && window.navigator.getGamepads) {
+		self.enableGamePad();
+	}
+};
+
+InputManager.prototype.getKeyByButtonId = function(button_id) {
+	var keys = this._button_id_to_key_bit_code[button_id];
+	if(!keys) keys = 0x00;
+
+	return keys;
+};
+
+// get one of the pressed button id
+InputManager.prototype.getAnyButtonId = function(){
+	if(!this.is_connect_gamepad) return;
+
+	var pads = window.navigator.getGamepads();
+	var pad = pads[0]; // 1Pコン
+
+	if(!pad) return;
+
+	for (var i = 0; i < pad.buttons.length; i++) {
+		if(pad.buttons[i].pressed) {
+			return i;
+		}
+	}
+};
+/*
+InputManager.prototype.setButtonIdMapping = function(button_id, key) {
+	var defined_key = this._button_id_to_key_bit_code[button_id];
+
+	for (var target_button_id in this._button_id_to_key_bit_code) {
+		var target_key = this._button_id_to_key_bit_code[target_button_id];
+		// If there are already set keys in other keys, replace it.
+		if (target_key === key) {
+			if (defined_key) {
+				// replace other key's button_id mapping to current button_id's key.
+				this._button_id_to_key_bit_code[target_button_id] = defined_key;
+			}
+			else {
+				// the player presses target_button_id, no event has occured.
+				delete this._button_id_to_key_bit_code[target_button_id];
+			}
+		}
+	}
+
+	// set
+	this._button_id_to_key_bit_code[button_id] = key;
+};
+
+InputManager.prototype.setAllButtonIdMapping = function(map) {
+	this._button_id_to_key_bit_code = Util.shallowCopyHash(map);
+};
+
+InputManager.prototype.getButtonIdToKeyMap = function() {
+	return Util.shallowCopyHash(this._button_id_to_key_bit_code);
+};
+// convert { value => key } hash
+InputManager.prototype.getKeyToButtonIdMap = function() {
+	var map = {};
+	for (var button_id in this._button_id_to_key_bit_code) {
+		var key = this._button_id_to_key_bit_code[button_id];
+		map[key] = button_id; // NOTE: cannot duplicate, if it, overwrite it
+	}
+
+	return map;
+};
+
+
+InputManager.prototype.dumpGamePadKey = function() {
+	var dump = {};
+
+	for (var button_id in this._button_id_to_key_bit_code) {
+		var key = this._button_id_to_key_bit_code[ button_id ];
+		switch(key) {
+			case CONSTANT.BUTTON_LEFT:
+				dump[button_id] = "LEFT";
+				break;
+			case CONSTANT.BUTTON_UP:
+				dump[button_id] = "UP";
+				break;
+			case CONSTANT.BUTTON_RIGHT:
+				dump[button_id] = "RIGHT";
+				break;
+			case CONSTANT.BUTTON_DOWN:
+				dump[button_id] = "DOWN";
+				break;
+			case CONSTANT.BUTTON_Z:
+				dump[button_id] = "Z";
+				break;
+			case CONSTANT.BUTTON_X:
+				dump[button_id] = "X";
+				break;
+			case CONSTANT.BUTTON_SHIFT:
+				dump[button_id] = "SHIFT";
+				break;
+			case CONSTANT.BUTTON_SPACE:
+				dump[button_id] = "SPACE";
+				break;
+			default:
+				dump[button_id] = "UNKNOWN";
+		}
+	}
+
+	console.log(dump);
+};
+*/
+
+
+
+
+
+module.exports = InputManager;
+
+},{"./constant":8,"./util":38}],14:[function(require,module,exports){
 /**
  * @fileoverview gl-matrix - High performance matrix and vector operations
  * @author Brandon Jones
@@ -2673,7 +2601,7 @@ exports.quat = require("./gl-matrix/quat.js");
 exports.vec2 = require("./gl-matrix/vec2.js");
 exports.vec3 = require("./gl-matrix/vec3.js");
 exports.vec4 = require("./gl-matrix/vec4.js");
-},{"./gl-matrix/common.js":16,"./gl-matrix/mat2.js":17,"./gl-matrix/mat2d.js":18,"./gl-matrix/mat3.js":19,"./gl-matrix/mat4.js":20,"./gl-matrix/quat.js":21,"./gl-matrix/vec2.js":22,"./gl-matrix/vec3.js":23,"./gl-matrix/vec4.js":24}],16:[function(require,module,exports){
+},{"./gl-matrix/common.js":15,"./gl-matrix/mat2.js":16,"./gl-matrix/mat2d.js":17,"./gl-matrix/mat3.js":18,"./gl-matrix/mat4.js":19,"./gl-matrix/quat.js":20,"./gl-matrix/vec2.js":21,"./gl-matrix/vec3.js":22,"./gl-matrix/vec4.js":23}],15:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -2745,7 +2673,7 @@ glMatrix.equals = function(a, b) {
 
 module.exports = glMatrix;
 
-},{}],17:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -3183,7 +3111,7 @@ mat2.multiplyScalarAndAdd = function(out, a, b, scale) {
 
 module.exports = mat2;
 
-},{"./common.js":16}],18:[function(require,module,exports){
+},{"./common.js":15}],17:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -3654,7 +3582,7 @@ mat2d.equals = function (a, b) {
 
 module.exports = mat2d;
 
-},{"./common.js":16}],19:[function(require,module,exports){
+},{"./common.js":15}],18:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -4402,7 +4330,7 @@ mat3.equals = function (a, b) {
 
 module.exports = mat3;
 
-},{"./common.js":16}],20:[function(require,module,exports){
+},{"./common.js":15}],19:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -6540,7 +6468,7 @@ mat4.equals = function (a, b) {
 
 module.exports = mat4;
 
-},{"./common.js":16}],21:[function(require,module,exports){
+},{"./common.js":15}],20:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -7142,7 +7070,7 @@ quat.equals = vec4.equals;
 
 module.exports = quat;
 
-},{"./common.js":16,"./mat3.js":19,"./vec3.js":23,"./vec4.js":24}],22:[function(require,module,exports){
+},{"./common.js":15,"./mat3.js":18,"./vec3.js":22,"./vec4.js":23}],21:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -7731,7 +7659,7 @@ vec2.equals = function (a, b) {
 
 module.exports = vec2;
 
-},{"./common.js":16}],23:[function(require,module,exports){
+},{"./common.js":15}],22:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -8510,7 +8438,7 @@ vec3.equals = function (a, b) {
 
 module.exports = vec3;
 
-},{"./common.js":16}],24:[function(require,module,exports){
+},{"./common.js":15}],23:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -9121,7 +9049,7 @@ vec4.equals = function (a, b) {
 
 module.exports = vec4;
 
-},{"./common.js":16}],25:[function(require,module,exports){
+},{"./common.js":15}],24:[function(require,module,exports){
 (function (global){
 /*
 ** Copyright (c) 2012 The Khronos Group Inc.
@@ -10079,7 +10007,7 @@ return {
 module.exports = WebGLDebugUtils;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],26:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 var util = require('../util');
@@ -10172,7 +10100,9 @@ ObjectBase.prototype.removeSubObject = function(object){
 	}
 };
 
-
+ObjectBase.prototype.removeAllSubObject = function() {
+	this.objects = [];
+};
 
 ObjectBase.prototype.move = function() {
 	var x = util.calcMoveXByVelocity(this.velocity);
@@ -10181,7 +10111,7 @@ ObjectBase.prototype.move = function() {
 	this._x += x;
 	this._y += y;
 };
-ObjectBase.prototype.onCollision = function(){
+ObjectBase.prototype.onCollision = function(obj){
 };
 
 ObjectBase.prototype.width = function() {
@@ -10209,11 +10139,14 @@ ObjectBase.prototype.globalDownY = function() {
 	return this.scene.x() + this.y() + this.height()/2;
 };
 
-ObjectBase.prototype.collisionWidth = function() {
+ObjectBase.prototype.collisionWidth = function(obj) {
 	return 0;
 };
-ObjectBase.prototype.collisionHeight = function() {
+ObjectBase.prototype.collisionHeight = function(obj) {
 	return 0;
+};
+ObjectBase.prototype.isCollision = function(obj) {
+	return true;
 };
 
 ObjectBase.prototype.checkCollisionWithObject = function(obj1) {
@@ -10237,25 +10170,27 @@ ObjectBase.prototype.checkCollisionWithObjects = function(objs) {
 
 
 ObjectBase.prototype.checkCollision = function(obj) {
-	if(Math.abs(this.x() - obj.x()) < this.collisionWidth()/2 + obj.collisionWidth()/2 &&
-		Math.abs(this.y() - obj.y()) < this.collisionHeight()/2 + obj.collisionHeight()/2) {
+	if (!this.isCollision(obj) || !obj.isCollision(this)) return false;
+
+	if(Math.abs(this.x() - obj.x()) < this.collisionWidth(obj)/2 + obj.collisionWidth(this)/2 &&
+		Math.abs(this.y() - obj.y()) < this.collisionHeight(obj)/2 + obj.collisionHeight(this)/2) {
 		return true;
 	}
 
 	return false;
 };
 
-ObjectBase.prototype.getCollisionLeftX = function() {
-	return this.x() - this.collisionWidth() / 2;
+ObjectBase.prototype.getCollisionLeftX = function(obj) {
+	return this.x() - this.collisionWidth(obj) / 2;
 };
-ObjectBase.prototype.getCollisionRightX = function() {
-	return this.x() + this.collisionWidth() / 2;
+ObjectBase.prototype.getCollisionRightX = function(obj) {
+	return this.x() + this.collisionWidth(obj) / 2;
 };
-ObjectBase.prototype.getCollisionUpY = function() {
-	return this.y() - this.collisionHeight() / 2;
+ObjectBase.prototype.getCollisionUpY = function(obj) {
+	return this.y() - this.collisionHeight(obj) / 2;
 };
-ObjectBase.prototype.getCollisionDownY = function() {
-	return this.y() + this.collisionHeight() / 2;
+ObjectBase.prototype.getCollisionDownY = function(obj) {
+	return this.y() + this.collisionHeight(obj) / 2;
 };
 
 
@@ -10321,7 +10256,7 @@ ObjectBase.prototype.isOutOfStage = function( ) {
 module.exports = ObjectBase;
 
 
-},{"../util":39}],27:[function(require,module,exports){
+},{"../util":38}],26:[function(require,module,exports){
 'use strict';
 
 // TODO: add pooling logic
@@ -10419,7 +10354,7 @@ PoolManager.prototype.removeOutOfStageObjects = function() {
 
 module.exports = PoolManager;
 
-},{"../util":39,"./base":26}],28:[function(require,module,exports){
+},{"../util":38,"./base":25}],27:[function(require,module,exports){
 'use strict';
 
 // TODO: add pooling logic
@@ -10660,7 +10595,7 @@ PoolManager3D.prototype.shader = function(){
 
 module.exports = PoolManager3D;
 
-},{"../constant_3d":12,"../util":39,"./base":26,"gl-matrix":15}],29:[function(require,module,exports){
+},{"../constant_3d":9,"../util":38,"./base":25,"gl-matrix":14}],28:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var util = require('../util');
@@ -10720,6 +10655,7 @@ Sprite.prototype.draw = function(){
 			ctx.transform(-1, 0, 0, 1, 0, 0);
 		}
 
+		ctx.globalAlpha = this.alpha();
 		ctx.drawImage(image,
 			// sprite position
 			sprite_width * this.spriteIndexX(), sprite_height * this.spriteIndexY(),
@@ -10792,13 +10728,17 @@ Sprite.prototype.scaleHeight = function(){
 Sprite.prototype.isReflect = function(){
 	return false;
 };
+Sprite.prototype.alpha = function() {
+	return 1.0;
+};
+
 
 
 
 
 module.exports = Sprite;
 
-},{"../util":39,"./base":26}],30:[function(require,module,exports){
+},{"../util":38,"./base":25}],29:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var util = require('../util');
@@ -11143,7 +11083,7 @@ Sprite3d.prototype.isReflect = function(){
 
 module.exports = Sprite3d;
 
-},{"../constant_3d":12,"../util":39,"./base":26,"gl-matrix":15}],31:[function(require,module,exports){
+},{"../constant_3d":9,"../util":38,"./base":25,"gl-matrix":14}],30:[function(require,module,exports){
 'use strict';
 
 var SceneBase = function(core, scene) {
@@ -11163,6 +11103,16 @@ var SceneBase = function(core, scene) {
 	this.current_scene = null;
 	this._reserved_next_scene = null; // next scene which changes next frame run
 	this.scenes = {};
+
+	// property for fade in
+	this._fade_in_duration = null;
+	this._fade_in_color = null;
+	this._fade_in_start_frame_count = null;
+
+	// property for fade out
+	this._fade_out_duration = null;
+	this._fade_out_color = null;
+	this._fade_out_start_frame_count = null;
 };
 
 SceneBase.prototype.init = function(){
@@ -11174,6 +11124,16 @@ SceneBase.prototype.init = function(){
 	this._y = 0;
 
 	this.frame_count = 0;
+
+	// property for fade in
+	this._fade_in_duration = null;
+	this._fade_in_color = null;
+	this._fade_in_start_frame_count = null;
+
+	// property for fade out
+	this._fade_out_duration = null;
+	this._fade_out_color = null;
+	this._fade_out_start_frame_count = null;
 
 	for(var i = 0, len = this.objects.length; i < len; i++) {
 		this.objects[i].init();
@@ -11201,6 +11161,59 @@ SceneBase.prototype.draw = function(){
 };
 
 SceneBase.prototype.afterDraw = function(){
+	var ctx = this.core.ctx;
+
+	var alpha;
+	// fade in
+	if (this.isInFadeIn()) {
+		ctx.save();
+
+		// tranparent settings
+		if(this.frame_count - this._fade_in_start_frame_count < this._fade_in_duration) {
+			alpha = 1.0 - (this.frame_count - this._fade_in_start_frame_count) / this._fade_in_duration;
+		}
+		else {
+			alpha = 0.0;
+		}
+
+		ctx.globalAlpha = alpha;
+
+		// transition color
+		ctx.fillStyle = this._fade_in_color;
+		ctx.fillRect(0, 0, this.width, this.height);
+
+		ctx.restore();
+
+		// alpha === 0.0 by transparent settings so quit fade in
+		// why there? because alpha === 0, _fade_in_color === null by quitFadeIn method
+		if(alpha === 1) this._quitFadeIn();
+
+	}
+	// fade out
+	else if (this.isInFadeOut()) {
+		ctx.save();
+
+		// tranparent settings
+		if(this.frame_count - this._fade_out_start_frame_count < this._fade_out_duration) {
+			alpha = (this.frame_count - this._fade_out_start_frame_count) / this._fade_out_duration;
+		}
+		else {
+			alpha = 1.0;
+		}
+
+		ctx.globalAlpha = alpha;
+
+		// transition color
+		ctx.fillStyle = this._fade_out_color;
+		ctx.fillRect(0, 0, this.width, this.height);
+
+		ctx.restore();
+
+		// alpha === 1.0 by transparent settings so quit fade out
+		// why there? because alpha === 1, _fade_out_color === null by quitFadeOut method
+		if(alpha === 1) this._quitFadeOut();
+	}
+
 	for(var i = 0, len = this.objects.length; i < len; i++) {
 		this.objects[i].afterDraw();
 	}
@@ -11211,6 +11224,17 @@ SceneBase.prototype.afterDraw = function(){
 SceneBase.prototype.addObject = function(object){
 	this.objects.push(object);
 };
+SceneBase.prototype.addObjects = function(object_list){
+	this.objects = this.objects.concat(object_list);
+};
+SceneBase.prototype.removeAllObject = function() {
+	this.objects = [];
+};
+
+
+
+
+
 SceneBase.prototype.currentSubScene = function() {
 	if(this.current_scene === null) {
 		return;
@@ -11218,6 +11242,10 @@ SceneBase.prototype.currentSubScene = function() {
 
 	return this.scenes[this.current_scene];
 };
+SceneBase.prototype.getSubScene = function(name) {
+	return this.scenes[name];
+};
+
 SceneBase.prototype.addSubScene = function(name, scene) {
 	this.scenes[name] = scene;
 };
@@ -11238,6 +11266,51 @@ SceneBase.prototype.changeNextSubSceneIfReserved = function() {
 
 };
 
+SceneBase.prototype.setFadeIn = function(duration, color) {
+	this._fade_in_duration = duration || 30;
+	this._fade_in_color = color || 'white';
+
+	// start fade in immediately
+	this._startFadeIn();
+};
+SceneBase.prototype._startFadeIn = function() {
+	this._quitFadeOut();
+	this._fade_in_start_frame_count = this.frame_count;
+};
+
+SceneBase.prototype._quitFadeIn = function() {
+	this._fade_in_duration = null;
+	this._fade_in_color = null;
+	this._fade_in_start_frame_count = null;
+};
+SceneBase.prototype.isInFadeIn = function() {
+	return this._fade_in_start_frame_count !== null ? true : false;
+};
+
+
+SceneBase.prototype.setFadeOut = function(duration, color) {
+	this._fade_out_duration = duration || 30;
+	this._fade_out_color = color || 'black';
+};
+SceneBase.prototype.startFadeOut = function() {
+	if(!this.isSetFadeOut()) return;
+
+	this._quitFadeIn();
+	this._fade_out_start_frame_count = this.frame_count;
+};
+
+SceneBase.prototype._quitFadeOut = function() {
+	this._fade_out_duration = null;
+	this._fade_out_color = null;
+	this._fade_out_start_frame_count = null;
+};
+SceneBase.prototype.isInFadeOut = function() {
+	return this._fade_out_start_frame_count !== null ? true : false;
+};
+SceneBase.prototype.isSetFadeOut = function() {
+	return this._fade_out_duration && this._fade_out_color ? true : false;
+};
+
 SceneBase.prototype.x = function(val) {
 	if (typeof val !== 'undefined') { this._x = val; }
 	return this._x;
@@ -11250,7 +11323,7 @@ SceneBase.prototype.y = function(val) {
 module.exports = SceneBase;
 
 
-},{}],32:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 // loading scene
@@ -11319,7 +11392,7 @@ SceneLoading.prototype.notifyAllLoaded = function(){
 
 module.exports = SceneLoading;
 
-},{"../util":39,"./base":31}],33:[function(require,module,exports){
+},{"../util":38,"./base":30}],32:[function(require,module,exports){
 'use strict';
 
 var SerifManager = function () {
@@ -11341,6 +11414,8 @@ var SerifManager = function () {
 
 	this._is_background_changed = false;
 	this.background = null;
+
+	this._font_color = null;
 
 	this.char_list = "";
 	this.char_idx = 0;
@@ -11369,6 +11444,8 @@ SerifManager.prototype.init = function (script) {
 	this._is_background_changed = false;
 	this.background = null;
 
+	this._font_color = null;
+
 	this.char_list = "";
 	this.char_idx = 0;
 
@@ -11395,6 +11472,8 @@ SerifManager.prototype.next = function () {
 	this._showChara(script);
 
 	this._showBackground(script);
+
+	this._setFont(script);
 
 	if(script.serif) {
 		this._printMessage(script.serif);
@@ -11429,6 +11508,10 @@ SerifManager.prototype._showChara = function(script) {
 			this.right_exp = script.exp;
 		}
 	}
+};
+
+SerifManager.prototype._setFont = function(script) {
+	this._font_color  = script.font_color;
 };
 
 SerifManager.prototype._printMessage = function (message) {
@@ -11517,6 +11600,9 @@ SerifManager.prototype.is_right_talking = function () {
 SerifManager.prototype.background_image = function () {
 	return this.background;
 };
+SerifManager.prototype.font_color = function () {
+	return this._font_color;
+};
 SerifManager.prototype.is_background_changed = function () {
 	return this._is_background_changed;
 };
@@ -11531,13 +11617,13 @@ SerifManager.prototype.lines = function () {
 
 module.exports = SerifManager;
 
-},{}],34:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 module.exports = "precision mediump float;\nuniform sampler2D uSampler;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tvec4 textureColor = texture2D(uSampler, vTextureCoordinates);\n\tgl_FragColor = textureColor * vColor;\n}\n\n";
 
-},{}],35:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 module.exports = "attribute vec3 aVertexPosition;\nattribute vec2 aTextureCoordinates;\nattribute vec4 aColor;\n\nuniform mat4 uMVMatrix;\nuniform mat4 uPMatrix;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tgl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);\n\tvTextureCoordinates = aTextureCoordinates;\n\tvColor = aColor;\n}\n\n";
 
-},{}],36:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 var glmat = require("gl-matrix");
 
@@ -11608,8 +11694,7 @@ ShaderProgram.prototype.createShaderProgram = function(gl, vertex_shader, fragme
 
 module.exports = ShaderProgram;
 
-},{"gl-matrix":15}],37:[function(require,module,exports){
-(function (process){
+},{"gl-matrix":14}],36:[function(require,module,exports){
 'use strict';
 
 /*
@@ -11618,9 +11703,9 @@ module.exports = ShaderProgram;
  * TODO: implement: defineColumnProperty method
  */
 
+var Util = require("../util");
 
-
-var DEFAULT_KEY = "hakurei_engine_game:default";
+var DEFAULT_KEY = "hakurei_engine:default";
 
 var StorageBase = function (data) {
 	if(!data) data = {};
@@ -11633,10 +11718,32 @@ StorageBase.KEY = function() {
 	return DEFAULT_KEY;
 };
 
+StorageBase.prototype.set = function(key, value) {
+	this._data[key] = value;
+};
+StorageBase.prototype.get = function(key) {
+	return this._data[key];
+};
+StorageBase.prototype.remove = function(key) {
+	return delete this._data[key];
+};
+StorageBase.prototype.isEmpty = function(key) {
+	return Object.keys(this._data).length === 0;
+};
+StorageBase.prototype.toHash = function() {
+	return Util.shallowCopyHash(this._data);
+};
+
 
 // is Electron or NW.js ?
 StorageBase.isLocalMode = function() {
-	return typeof require === 'function' && typeof process === 'object' && process.title !== 'browser';
+	// this is Electron
+	if (Util.isElectron()) {
+		return true;
+	}
+
+	// TODO: NW.js
+	return false;
 };
 
 StorageBase.prototype.save = function() {
@@ -11652,7 +11759,7 @@ StorageBase.prototype.save = function() {
 
 StorageBase.prototype._saveToLocalFile = function() {
 	var Klass = this.constructor;
-	var fs = require('fs');
+	var fs = window.require('fs');
 
 	var data = JSON.stringify(this._data);
 
@@ -11668,10 +11775,11 @@ StorageBase.prototype._saveToLocalFile = function() {
 
 // save file directory
 StorageBase._localFileDirectoryPath = function() {
-	var path = require('path');
-
-	var base = path.dirname(process.mainModule.filename);
-	return path.join(base, 'save/');
+	var path = window.require('path');
+	var app  = window.require('electron').remote.app;
+	var base = app.getPath("appData");
+	var app_name = app.getName();
+	return path.join(base, app_name, 'save/');
 };
 
 StorageBase._localFileName = function(key) {
@@ -11695,25 +11803,37 @@ StorageBase.prototype._saveToWebStorage = function() {
 };
 
 StorageBase.load = function() {
+	var data;
 	if (this.isLocalMode()) {
-		return this._loadFromLocalFile();
+		data = this._loadFromLocalFile();
 	}
 	else {
-		return this._loadFromWebStorage();
+		data = this._loadFromWebStorage();
 	}
+
+	var Klass = this;
+	if (data) {
+		// there is a storage data
+		return new Klass(data);
+	}
+	else {
+		// there is NOT a storage data
+		return new Klass();
+	}
+
 };
 
 StorageBase._loadFromLocalFile = function() {
-	var fs = require('fs');
+	var fs = window.require('fs');
 
-	var file_path = this.localFilePath(this.KEY());
-	if (!fs.existsSync()) return null;
+	var file_path = this._localFilePath(this.KEY());
+	if (!fs.existsSync(file_path)) return null;
 
 	var data = fs.readFileSync(file_path, { encoding: 'utf8' });
 
 	var Klass = this;
 	if (data) {
-		return new Klass(JSON.parse(data));
+		return JSON.parse(data);
 	}
 	else {
 		return null;
@@ -11731,7 +11851,7 @@ StorageBase._loadFromWebStorage = function() {
 
 	var Klass = this;
 	if (data) {
-		return new Klass(JSON.parse(data));
+		return JSON.parse(data);
 	}
 	else {
 		return null;
@@ -11747,12 +11867,15 @@ StorageBase.prototype.del = function() {
 	else {
 		this._removeWebStorage();
 	}
+
+	// reset this object properties
+	this._data = {};
 };
 
 StorageBase.prototype._removeLocalFile = function() {
 	var Klass = this.constructor;
-	var fs = require('fs');
-	var file_path = this.localFilePath(Klass.KEY());
+	var fs = window.require('fs');
+	var file_path = this._localFilePath(Klass.KEY());
 
 	if (fs.existsSync(file_path)) {
 		fs.unlinkSync(file_path);
@@ -11771,8 +11894,7 @@ StorageBase.prototype._removeWebStorage = function() {
 
 module.exports = StorageBase;
 
-}).call(this,require('_process'))
-},{"_process":3,"fs":1,"path":2}],38:[function(require,module,exports){
+},{"../util":38}],37:[function(require,module,exports){
 'use strict';
 var base_class = require('./base');
 var util = require('../util');
@@ -11783,18 +11905,18 @@ var StorageSave = function(scene) {
 util.inherit(StorageSave, base_class);
 
 StorageSave.KEY = function(){
-	var key = "hakurei_engine_game:save";
-	if (window && window.location) {
+	var key = "hakurei_engine:save";
+	if (!this.isLocalMode() && window && window.location) {
 		return(key + ":" + window.location.pathname);
 	}
 	else {
-		return key;
+		return "save";
 	}
 };
 
 module.exports = StorageSave;
 
-},{"../util":39,"./base":37}],39:[function(require,module,exports){
+},{"../util":38,"./base":36}],38:[function(require,module,exports){
 'use strict';
 var Util = {
 	inherit: function( child, parent ) {
@@ -11837,11 +11959,32 @@ var Util = {
 	clamp: function(num, min, max) {
 		return (num < min ? min : (num > max ? max : num));
 	},
+	isElectron: function() {
+		if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
+			return true;
+		}
+		return false;
+	},
+	canPlayOgg: function () {
+		var audio = document.createElement('audio');
+		if (audio.canPlayType) {
+			return audio.canPlayType('audio/ogg');
+		}
+
+		return false;
+	},
+	shallowCopyHash: function (src_hash) {
+		var dst_hash = {};
+		for(var k in src_hash){
+			dst_hash[k] = src_hash[k];
+		}
+		return dst_hash;
+	}
 };
 
 module.exports = Util;
 
-},{}],40:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 var Game = require('./game');
 
@@ -11884,7 +12027,7 @@ window.changeFullScreen = function () {
 	game.fullscreen();
 };
 
-},{"./game":6}],41:[function(require,module,exports){
+},{"./game":3}],40:[function(require,module,exports){
 'use strict';
 
 // ローディングシーン
@@ -11980,7 +12123,7 @@ SceneLoading.prototype.progress = function(){
 
 module.exports = SceneLoading;
 
-},{"../assets_config":5,"../hakurei":7}],42:[function(require,module,exports){
+},{"../assets_config":2,"../hakurei":4}],41:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -12099,7 +12242,7 @@ SceneStage.prototype.draw = function(){
 
 module.exports = SceneStage;
 
-},{"../animetest":4,"../hakurei":7,"../vendor/SsaPlayer":43}],43:[function(require,module,exports){
+},{"../animetest":1,"../hakurei":4,"../vendor/SsaPlayer":42}],42:[function(require,module,exports){
 //-----------------------------------------------------------
 // Ss5ConverterToSSAJSON v1.0.3
 //
@@ -12674,4 +12817,4 @@ module.exports = {
 	SsSprite:    SsSprite,
 };
 
-},{}]},{},[40]);
+},{}]},{},[39]);
