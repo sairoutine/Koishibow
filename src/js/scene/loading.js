@@ -5,6 +5,7 @@
 var base_scene = require('../hakurei').scene.base;
 var util = require('../hakurei').util;
 var AssetsConfig = require('../assets_config');
+var CONSTANT = require('../constant');
 
 var SceneLoading = function(core) {
 	base_scene.apply(this, arguments);
@@ -37,6 +38,7 @@ SceneLoading.prototype.beforeDraw = function() {
 
 	//if (this.core.image_loader.isAllLoaded() && this.core.audio_loader.isAllLoaded() && this.core.font_loader.isAllLoaded()) {
 	if (this.core.image_loader.isAllLoaded()) {
+		// TODO: タイトル画面へ
 		this.core.changeScene("stage");
 	}
 };
