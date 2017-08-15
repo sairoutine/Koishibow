@@ -42,6 +42,11 @@ SceneStage.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 
+	// 左クリックしたところを取得
+	// TODO: 移動
+	if(this.core.input_manager.isLeftClickPush()) {
+		console.log(this.core.input_manager.mousePositionX(), this.core.input_manager.mousePositionY());
+	}
 };
 
 // 画面更新
@@ -68,50 +73,5 @@ SceneStage.prototype.draw = function(){
 	this.sprite.draw(ctx, t);
 	ctx.restore();
 };
-
-/*
-		var screen_width = 0;
-		var screen_height = 0;
-
-		var spr_x = 0;
-		var spr_y = 0;
-		var sprite = null;
-		var data = null;
-		var data_index = 0;
-
-		function  OnButtonClick1()
-		{
-			data_index = data_index - 1;
-			if ( data_index < 0 ) data_index = 0;
-
-			var imageList = new SsImageList(data[data_index].images, "./datas/", true);
-			var animation = new SsAnimation(data[data_index].animation, imageList);		
-			sprite = new SsSprite(animation);
-			sprite.x = spr_x + screen_width/2;
-			sprite.y = spr_y + screen_height/2;
-		}
-		
-		function  OnButtonClick2()
-		{
-			data_index = data_index + 1;
-			
-			if ( data_index > data.length ) data_index = data.length;
-			
-			var imageList = new SsImageList(data[data_index].images, "./datas/", true);
-			var animation = new SsAnimation(data[data_index].animation, imageList);		
-			sprite = new SsSprite(animation);
-			sprite.x = spr_x + screen_width/2;
-			sprite.y = spr_y + screen_height/2;
-		}
-		
-		function  OnButtonClick3()
-		{
-			spr_x = Number(document.js.txtx.value);
-			spr_y = Number(document.js.txty.value);
-
-			sprite.x = spr_x + 400;
-			sprite.y = spr_y + 300;
-		}
-*/
 
 module.exports = SceneStage;
