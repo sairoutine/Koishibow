@@ -15,10 +15,13 @@ util.inherit(SceneStage, base_scene);
 
 SceneStage.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
-	// 左クリックしたところを取得
-	// TODO: 移動
+
 	if(this.core.input_manager.isLeftClickPush()) {
-		console.log(this.core.input_manager.mousePositionX(), this.core.input_manager.mousePositionY());
+		// 左クリックしたところを取得
+		var x = this.core.input_manager.mousePositionX();
+		var y = this.core.input_manager.mousePositionY();
+
+		this.koishi.setMoveTarget(x, y);
 	}
 
 	this.koishi.beforeDraw();
