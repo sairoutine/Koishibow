@@ -21,6 +21,8 @@ SpriteStudio.prototype.init = function(x, y, jsonData, data_index, opt){
 	data_index = data_index || 0;
 
 	this.scale_size = opt && opt.scale ? opt.scale : 1.0;
+	this.width = opt && opt.width ? opt.width : 0;
+	this.height = opt && opt.height ? opt.height : 0;
 
 	// TODO: preload
 	var imageList = new SsImageList(jsonData[data_index].images, "./image/", true);
@@ -38,20 +40,34 @@ SpriteStudio.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
 
 	// update ss state
-	this.sprite.x = this.x();
-	this.sprite.y = this.y();
 	this.sprite.rootScaleX = this.scaleWidth();
 	this.sprite.rootScaleY = this.scaleHeight();
+	this.sprite.x = this.width/2;
+	this.sprite.y = this.height/2;
 };
 
 // 画面更新
 SpriteStudio.prototype.draw = function(){
 	if (!this.isShow()) return;
-
 	var ctx = this.core.ctx;
-	ctx.save();
+
+	// create canvas
+	var canvas = document.createElement('canvas');
+	canvas.width  = this.width;
+	canvas.height = this.height;
+	var ctx2 = canvas.getContext('2d');
 	var t = new Date().getTime();
-	this.sprite.draw(ctx, t);
+	this.sprite.draw(ctx2, t);
+
+
+	// draw
+	ctx.save();
+	ctx.translate(this.x(), this.y());
+	if (this.isReflect()) {
+		ctx.transform(-1, 0, 0, 1, 0, 0);
+	}
+	ctx.drawImage(canvas, -this.width/2, -this.height/2);
+
 	ctx.restore();
 };
 
