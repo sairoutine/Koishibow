@@ -70,6 +70,13 @@ Koishi.prototype.setMoveTarget = function(x, y) {
 
 	this._target_x = x;
 	this._target_y = y;
+
+	if (this._target_x > this.x()) {
+		this.sprite.setReflect(false);
+	}
+	else {
+		this.sprite.setReflect(true);
+	}
 };
 
 module.exports = Koishi;

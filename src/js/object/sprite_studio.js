@@ -24,6 +24,8 @@ SpriteStudio.prototype.init = function(x, y, jsonData, data_index, opt){
 	this.width = jsonData[data_index].animation.CanvasWidth;
 	this.height = jsonData[data_index].animation.CanvasHeight;
 
+	this.is_reflect = false;
+
 	// TODO: preload
 	var imageList = new SsImageList(jsonData[data_index].images, "./image/", true);
 	var animation = new SsAnimation(jsonData[data_index].animation, imageList);
@@ -80,10 +82,14 @@ SpriteStudio.prototype.scaleWidth = function(){
 SpriteStudio.prototype.scaleHeight = function(){
 	return this.scale_size;
 };
-// TODO:
 SpriteStudio.prototype.isReflect = function(){
-	return false;
+	return this.is_reflect;
 };
+
+SpriteStudio.prototype.setReflect = function(flag){
+	this.is_reflect = flag;
+};
+
 // TODO:
 SpriteStudio.prototype.alpha = function() {
 	return 1.0;
