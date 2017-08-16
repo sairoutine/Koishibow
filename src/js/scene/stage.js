@@ -3,24 +3,15 @@
 var base_scene = require('../hakurei').scene.base;
 var util = require('../hakurei').util;
 var CONSTANT = require('../hakurei').constant;
-
-var jsonData = require('../animetest');
-var SS = require('../object/sprite_studio');
+var Koishi = require('../object/koishi');
 
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
-	this.sprite = new SS(this);
-	this.sprite.init(180, 360, jsonData, 0, {scale: 0.4});
+	this.koishi = new Koishi(this);
+	this.koishi.init(180, 360);
 };
 util.inherit(SceneStage, base_scene);
-
-SceneStage.prototype.init = function(){
-	base_scene.prototype.init.apply(this, arguments);
-};
-
-
-
 
 SceneStage.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
@@ -30,7 +21,7 @@ SceneStage.prototype.beforeDraw = function(){
 		console.log(this.core.input_manager.mousePositionX(), this.core.input_manager.mousePositionY());
 	}
 
-	this.sprite.beforeDraw();
+	this.koishi.beforeDraw();
 };
 
 // 画面更新
@@ -51,7 +42,7 @@ SceneStage.prototype.draw = function(){
 					this.core.width,
 					this.core.height);
 	ctx.restore();
-	this.sprite.draw();
+	this.koishi.draw();
 };
 
 module.exports = SceneStage;
