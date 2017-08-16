@@ -6,7 +6,7 @@ var SPEED = 2;
 var base_object = require('../hakurei').object.base;
 var util = require('../hakurei').util;
 var CONSTANT = require('../constant');
-var jsonData = require('../animetest');
+var jsonData = require('../anime/koishi_wait');
 var SS = require('../object/sprite_studio');
 
 
