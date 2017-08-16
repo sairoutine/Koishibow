@@ -11,7 +11,7 @@ var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
 	this.sprite = new SS(this);
-	this.sprite.init(180, 360, jsonData, 0, {scale: 0.4, width: 200, height: 500});
+	this.sprite.init(180, 360, jsonData, 0, {scale: 0.4});
 };
 util.inherit(SceneStage, base_scene);
 

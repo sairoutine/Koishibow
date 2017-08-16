@@ -21,8 +21,8 @@ SpriteStudio.prototype.init = function(x, y, jsonData, data_index, opt){
 	data_index = data_index || 0;
 
 	this.scale_size = opt && opt.scale ? opt.scale : 1.0;
-	this.width = opt && opt.width ? opt.width : 0;
-	this.height = opt && opt.height ? opt.height : 0;
+	this.width = jsonData[data_index].animation.CanvasWidth;
+	this.height = jsonData[data_index].animation.CanvasHeight;
 
 	// TODO: preload
 	var imageList = new SsImageList(jsonData[data_index].images, "./image/", true);
