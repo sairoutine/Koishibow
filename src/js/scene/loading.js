@@ -75,7 +75,7 @@ SceneLoading.prototype.draw = function(){
 	ctx.save();
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
 	ctx.textAlign = 'left';
-	ctx.font = "30px 'Migu'";
+	ctx.font = "30px 'OradanoGSRR'";
 	ctx.fillText('Now Loading' + dot, this.core.width - 250, this.core.height - 50);
 	ctx.restore();
 
