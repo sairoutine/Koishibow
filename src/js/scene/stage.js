@@ -53,7 +53,6 @@ SceneStage.prototype.init = function(is_left){
 	}
 
 	// TODO: talk sub scene へ
-	this.serif = null;
 	this.is_talking = false;
 
 	this.changeSubScene("play");
@@ -81,19 +80,19 @@ SceneStage.prototype.beforeDraw = function(){
 				// セリフ開始
 				var serif = new SerifManager();
 				serif.init(serif_script);
-				this.serif = serif;
+				this.getSubScene("talk").serif = serif;
 				this.is_talking = true;
 			}
 			else {
 				// セリフ中ならセリフ送り
-				if(this.serif.is_end()) {
+				if(this.getSubScene("talk").serif.is_end()) {
 					// セリフ終わり
-					this.serif = null;
+					this.getSubScene("talk").serif = null;
 					this.is_talking = false;
 				}
 				else {
 					// セリフを送る
-					this.serif.next();
+					this.getSubScene("talk").serif.next();
 				}
 			}
 		}
@@ -146,7 +145,7 @@ SceneStage.prototype.draw = function(){
 		this.getSubScene("talk")._showMessageWindow();
 
 		// メッセージ表示
-		this._showMessage();
+		this.getSubScene("talk")._showMessage();
 		ctx.restore();
 	}
 
@@ -154,47 +153,6 @@ SceneStage.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 };
 
-
-// セリフ表示
-SceneStage.prototype._showMessage = function() {
-	var ctx = this.core.ctx;
-	ctx.save();
-
-	/*
-	// セリフの色
-	var font_color = this.serif.font_color();
-	if(font_color) {
-		font_color = util.hexToRGBString(font_color);
-	}
-	else {
-		font_color = 'rgb(255, 255, 255)';
-	}
-	*/
-
-	ctx.font = "18px 'OradanoGSRR'";
-	ctx.textAlign = 'left';
-	ctx.textBaseAlign = 'middle';
-
-	var x = this.koishi().x() + 20;
-	var y = this.koishi().y() - 300;
-
-	x = x + 60;
-	// セリフ表示
-	var lines = this.serif.lines();
-	if (lines.length) {
-		// セリフテキストの y 座標初期位置
-		y = y + 40;
-
-		for(var i = 0, len = lines.length; i < len; i++) {
-			ctx.fillStyle = "black";
-			ctx.fillText(lines[i], x, y); // 1行表示
-
-			y+= 30;
-		}
-	}
-
-	ctx.restore();
-};
 
 SceneStage.prototype.koishi = function(){
 	return this._koishi;
