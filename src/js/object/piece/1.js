@@ -18,6 +18,7 @@ ObjectPiece.prototype.setPosition = function(x, y){
 };
 
 ObjectPiece.prototype.draw = function(){
+	/*
 	// 仮で四角形を描画
 	var ctx = this.core.ctx;
 	ctx.save();
@@ -25,6 +26,7 @@ ObjectPiece.prototype.draw = function(){
 	ctx.globalAlpha = 0.4;
 	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
 	ctx.restore();
+	*/
 };
 
 

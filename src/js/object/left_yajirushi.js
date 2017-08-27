@@ -25,12 +25,14 @@ ObjectLeftYajirushi.prototype.setPosition = function(){
 };
 
 ObjectLeftYajirushi.prototype.draw = function(){
+	/*
 	// 仮で四角形を描画
 	var ctx = this.core.ctx;
 	ctx.save();
 	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
 	ctx.globalAlpha = 0.4;
 	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
+	*/
 
 	// フィールド遷移矢印 表示
 	ctx.font = "48px 'Migu'";
