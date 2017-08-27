@@ -25,10 +25,10 @@ ObjectRightYajirushi.prototype.setPosition = function(x, y){
 };
 
 ObjectRightYajirushi.prototype.draw = function(){
-	/*
-	// 仮で四角形を描画
 	var ctx = this.core.ctx;
 	ctx.save();
+	/*
+	// 仮で四角形を描画
 	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
 	ctx.globalAlpha = 0.4;
 	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
