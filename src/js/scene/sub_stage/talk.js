@@ -1,6 +1,6 @@
 'use strict';
 var base_scene = require('./base');
-var Util = require('../hakurei').util;
+var Util = require('../../hakurei').util;
 var SceneSubStageTalk = function(core) {
 	base_scene.apply(this, arguments);
 };
