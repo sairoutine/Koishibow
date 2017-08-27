@@ -13,6 +13,10 @@ var Koishi = require('../object/koishi');
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
+	// 自機
+	this._koishi = new Koishi(this);
+	this.addObject(this._koishi);
+
 	/* sub scene 一覧
 	メニュー
 	調べてるオブジェクト(机の上、窓の外) →そこからさらにアイテム調べられるので、サブシーンのサブシーンができるように、各サブシーンを作っておかねば。
@@ -24,12 +28,6 @@ var SceneStage = function(core) {
 	this.addSubScene("play", new SceneSubStagePlay(core, this));
 	// 会話中
 	this.addSubScene("talk", new SceneSubStageTalk(core, this));
-
-
-
-	// 自機
-	this._koishi = new Koishi(this);
-	this.addObject(this._koishi);
 };
 util.inherit(SceneStage, base_scene);
 

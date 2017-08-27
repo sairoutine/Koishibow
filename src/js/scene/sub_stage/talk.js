@@ -7,23 +7,21 @@ var serif_script = require("../../serif/objects/1");
 
 var SceneSubStageTalk = function(core, stage) {
 	base_scene.apply(this, arguments);
+
+	this.serif = new SerifManager();
 };
 Util.inherit(SceneSubStageTalk, base_scene);
 
 SceneSubStageTalk.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
-	// セリフ開始
-	var serif = new SerifManager();
-	serif.init(serif_script); // TODO: 他のセリフにも対応
-	this.serif = serif;
+	this.serif.init(serif_script); // TODO: 他のセリフにも対応
 };
 
 SceneSubStageTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if(this.core.input_manager.isLeftClickPush()) {
-		// セリフ中ならセリフ送り
 		if(this.serif.is_end()) {
 			// セリフ終わり
 			this.mainStage().changeSubScene("play");
@@ -41,11 +39,13 @@ SceneSubStageTalk.prototype.draw = function(){
 	var ctx = this.core.ctx;
 
 	ctx.save();
+
 	// メッセージウィンドウ表示
 	this._showMessageWindow();
 
 	// メッセージ表示
 	this._showMessage();
+
 	ctx.restore();
 };
 

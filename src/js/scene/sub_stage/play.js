@@ -11,7 +11,7 @@ SceneSubStagePlay.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 
-	// フィールド遷移矢印
+	// フィールド遷移矢印 表示
 	ctx.font = "48px 'Migu'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
@@ -28,15 +28,11 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 		var x = this.core.input_manager.mousePositionX();
 		var y = this.core.input_manager.mousePositionY();
 
-		// TODO: サブシーンにまとめたい...
-
 		var collision_size = 1000;
 
 		// 会話するオブジェクト
-		// TODO: オブジェクトをクリックし続けないと画面遷移しないのを、画面全体クリックして遷移するようにしないと
 		var talk_width  = 100;
 		var talk_height = 100;
-		// play sub scene へ移植 TODO:
 		if (talk_width - 24 - collision_size/2 < x && x < talk_width - 24 + collision_size/2 &&
 				talk_height/2 - collision_size/2 < y && y < talk_height/2 + collision_size) {
 			this.mainStage().changeSubScene("talk");

@@ -12,7 +12,7 @@ SceneSubStageBase.prototype.koishi = function(){
 };
 
 SceneSubStageBase.prototype.mainStage = function(){
-	return this.parent;
+	return this.parent.mainStage();
 };
 
 
