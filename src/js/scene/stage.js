@@ -1,6 +1,6 @@
 'use strict';
 
-var base_scene = require('../hakurei').scene.base;
+var base_scene = require('./stage_base');
 var util = require('../hakurei').util;
 var CONSTANT = require('../hakurei').constant;
 var Koishi = require('../object/koishi');
