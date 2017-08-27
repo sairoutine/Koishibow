@@ -22,6 +22,7 @@ Koishi.prototype.init = function() {
 
 	this._target_x = 0;
 	this._target_y = 0;
+	this.setVelocity({magnitude:0, theta:0});
 };
 
 Koishi.prototype.setPosition = function(x, y) {
