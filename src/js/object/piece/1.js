@@ -8,6 +8,7 @@ var ObjectPiece = function(core) {
 Util.inherit(ObjectPiece, base_scene);
 
 ObjectPiece.prototype.onCollision = function(obj){
+	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.mainStage().changeSubScene("talk");
 };
 
@@ -17,6 +18,7 @@ ObjectPiece.prototype.setPosition = function(x, y){
 };
 
 ObjectPiece.prototype.draw = function(){
+	// 仮で四角形を描画
 	var ctx = this.core.ctx;
 	ctx.save();
 	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;

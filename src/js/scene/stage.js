@@ -12,11 +12,22 @@ var Koishi = require('../object/koishi');
 
 var Piece = require('../object/piece/1');
 
+var LeftYajirushi = require('../object/left_yajirushi');
+var RightYajirushi = require('../object/right_yajirushi');
+
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
+	// TODO: この addobject なくせないかな...
 	// 自機
 	this._koishi = new Koishi(this);
+	this.addObject(this._koishi);
+
+	this._left_yajirushi  = new LeftYajirushi(this);
+	this._right_yajirushi = new RightYajirushi(this);
+	this.addObject(this._left_yajirushi);
+	this.addObject(this._right_yajirushi);
+
 
 	/* sub scene 一覧
 	メニュー
@@ -53,6 +64,9 @@ SceneStage.prototype.init = function(is_left){
 	}
 
 	this.setupPiece();
+
+	this.addObject(this._left_yajirushi);
+	this.addObject(this._right_yajirushi);
 
 	this.changeSubScene("play");
 };
@@ -93,6 +107,7 @@ SceneStage.prototype.mainStage = function(){
 };
 
 SceneStage.prototype.setupPiece = function(){
+	// TODO:
 	var piece = new Piece(this);
 	piece.init();
 	piece.setPosition(540, 220);
