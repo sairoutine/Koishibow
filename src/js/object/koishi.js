@@ -32,7 +32,7 @@ Koishi.prototype.setPosition = function(x, y) {
 };
 
 Koishi.prototype.setReflect = function(flag) {
-	this.koishi.sprite.setReflect(flag);
+	this.sprite.setReflect(flag);
 };
 
 
