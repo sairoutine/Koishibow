@@ -28,18 +28,18 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 		var x = this.core.input_manager.mousePositionX();
 		var y = this.core.input_manager.mousePositionY();
 
-		var collision_size = 1000;
+		// 会話するオブジェクトとの当たり判定
+		var is_talk = false;
+		this.mainStage().pieces.forEach(function(piece) {
+			var is_collision = piece.checkCollisionWithPosition(x, y);
 
-		// 会話するオブジェクト
-		var talk_width  = 100;
-		var talk_height = 100;
-		if (talk_width - 24 - collision_size/2 < x && x < talk_width - 24 + collision_size/2 &&
-				talk_height/2 - collision_size/2 < y && y < talk_height/2 + collision_size) {
-			this.mainStage().changeSubScene("talk");
-		}
-		// それ以外
-		else {
-			collision_size = 30;
+			if (is_collision) is_talk = true;
+		});
+
+
+		// 会話するオブジェクトとの当たり判定にならなかったら
+		if (!is_talk) {
+			var collision_size = 30;
 			// TODO: ちゃんと書く
 			if (0+24 - collision_size/2 < x && x < 0+24 + collision_size/2 &&
 				this.mainStage().height/2 - collision_size/2 < y && y < this.mainStage().height/2 + collision_size) {

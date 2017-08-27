@@ -3,7 +3,7 @@ var base_scene = require('./base');
 var Util = require('../../hakurei').util;
 
 var SerifManager = require('../../hakurei').serif_manager;
-var serif_script = require("../../serif/objects/1");
+var serif_script = require("../../serif/objects/1"); // rename objects -> pieces
 
 var SceneSubStageTalk = function(core, stage) {
 	base_scene.apply(this, arguments);

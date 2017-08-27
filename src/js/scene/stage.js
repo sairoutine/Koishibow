@@ -10,12 +10,13 @@ var SceneSubStageTalk = require('./sub_stage/talk');
 
 var Koishi = require('../object/koishi');
 
+var Piece = require('../object/piece/1');
+
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
 	// 自機
 	this._koishi = new Koishi(this);
-	this.addObject(this._koishi);
 
 	/* sub scene 一覧
 	メニュー
@@ -34,6 +35,9 @@ util.inherit(SceneStage, base_scene);
 SceneStage.prototype.init = function(is_left){
 	base_scene.prototype.init.apply(this, arguments);
 
+	this.removeAllObject();
+	this.addObject(this._koishi);
+
 	// フィールド移動時にフェードインする
 	this.setFadeIn(30, "black");
 
@@ -47,6 +51,8 @@ SceneStage.prototype.init = function(is_left){
 	else {
 		this.koishi().setPosition(180, 360);
 	}
+
+	this.setupPiece();
 
 	this.changeSubScene("play");
 };
@@ -85,6 +91,16 @@ SceneStage.prototype.koishi = function(){
 SceneStage.prototype.mainStage = function(){
 	return this;
 };
+
+SceneStage.prototype.setupPiece = function(){
+	var piece = new Piece(this);
+	piece.init();
+	piece.setPosition(540, 220);
+	this.addObject(piece);
+
+	this.pieces = [piece];
+};
+
 
 
 module.exports = SceneStage;
