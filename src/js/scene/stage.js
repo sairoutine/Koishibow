@@ -1,10 +1,13 @@
 'use strict';
 
 var base_scene = require('./stage_base');
-var SceneSubStagePlay = require('./sub_stage/play');
-var SceneSubStageTalk = require('./sub_stage/talk');
+
 var util = require('../hakurei').util;
 var CONSTANT = require('../hakurei').constant;
+
+var SceneSubStagePlay = require('./sub_stage/play');
+var SceneSubStageTalk = require('./sub_stage/talk');
+
 var Koishi = require('../object/koishi');
 var SerifManager = require('../hakurei').serif_manager;
 var serif_script = require("../serif/objects/1");
