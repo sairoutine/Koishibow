@@ -11,6 +11,11 @@ SceneSubStageBase.prototype.koishi = function(){
 	return this.parent.koishi();
 };
 
+SceneSubStageBase.prototype.mainStage = function(){
+	return this.parent;
+};
+
+
 
 
 module.exports = SceneSubStageBase;

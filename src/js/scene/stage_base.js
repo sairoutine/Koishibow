@@ -12,4 +12,11 @@ SceneStageBase.prototype.koishi = function(){
 	throw new Error("koishi method must be implemented");
 };
 
+SceneStageBase.prototype.mainStage = function(){
+	throw new Error("mainStage method must be implemented");
+};
+
+
+
+
 module.exports = SceneStageBase;

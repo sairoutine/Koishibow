@@ -9,8 +9,6 @@ var SceneSubStagePlay = require('./sub_stage/play');
 var SceneSubStageTalk = require('./sub_stage/talk');
 
 var Koishi = require('../object/koishi');
-var SerifManager = require('../hakurei').serif_manager;
-var serif_script = require("../serif/objects/1");
 
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
@@ -52,9 +50,6 @@ SceneStage.prototype.init = function(is_left){
 		this.koishi().setPosition(180, 360);
 	}
 
-	// TODO: talk sub scene へ
-	this.is_talking = false;
-
 	this.changeSubScene("play");
 };
 
@@ -74,26 +69,11 @@ SceneStage.prototype.beforeDraw = function(){
 		// TODO: オブジェクトをクリックし続けないと画面遷移しないのを、画面全体クリックして遷移するようにしないと
 		var talk_width  = 100;
 		var talk_height = 100;
+		// play sub scene へ移植 TODO:
 		if (talk_width - 24 - collision_size/2 < x && x < talk_width - 24 + collision_size/2 &&
 				talk_height/2 - collision_size/2 < y && y < talk_height/2 + collision_size) {
-			if (!this.is_talking) {
-				// セリフ開始
-				var serif = new SerifManager();
-				serif.init(serif_script);
-				this.getSubScene("talk").serif = serif;
-				this.is_talking = true;
-			}
-			else {
-				// セリフ中ならセリフ送り
-				if(this.getSubScene("talk").serif.is_end()) {
-					// セリフ終わり
-					this.getSubScene("talk").serif = null;
-					this.is_talking = false;
-				}
-				else {
-					// セリフを送る
-					this.getSubScene("talk").serif.next();
-				}
+			if (!(this.currentSubScene() instanceof SceneSubStageTalk)) {
+				this.changeSubScene("talk");
 			}
 		}
 		// それ以外
@@ -138,18 +118,7 @@ SceneStage.prototype.draw = function(){
 					this.core.height);
 	ctx.restore();
 
-	// TODO: talk sub scene へ
-	if (this.is_talking) {
-		ctx.save();
-		// メッセージウィンドウ表示
-		this.getSubScene("talk")._showMessageWindow();
-
-		// メッセージ表示
-		this.getSubScene("talk")._showMessage();
-		ctx.restore();
-	}
-
-	// こいし表示
+	// こいし／サブシーン描画
 	base_scene.prototype.draw.apply(this, arguments);
 };
 
@@ -158,7 +127,9 @@ SceneStage.prototype.koishi = function(){
 	return this._koishi;
 };
 
-
+SceneStage.prototype.mainStage = function(){
+	return this;
+};
 
 
 module.exports = SceneStage;
