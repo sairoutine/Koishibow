@@ -7,6 +7,12 @@ var Koishi = require('../object/koishi');
 var SerifManager = require('../hakurei').serif_manager;
 var serif_script = require("../serif/objects/1");
 
+/* TODO:
+stage scene interface
+stage scene (inherit stage scene interface)
+stage sub scene base (inherit stage scene interface)
+stage sub scene (inherit stage scene interface)
+*/
 
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
