@@ -30,8 +30,8 @@ var SceneStage = function(core) {
 
 
 	// 自機
-	this.koishi = new Koishi(this);
-	this.addObject(this.koishi);
+	this._koishi = new Koishi(this);
+	this.addObject(this._koishi);
 };
 util.inherit(SceneStage, base_scene);
 
@@ -45,11 +45,11 @@ SceneStage.prototype.init = function(is_left){
 	// 右から来たか、左から来たかでこいしの初期位置が変わる
 	// TODO: マップデータに持たせた方が良さそうね
 	if (is_left) {
-		this.koishi.setPosition(this.width - 180, 360);
-		this.koishi.setReflect(true);
+		this.koishi().setPosition(this.width - 180, 360);
+		this.koishi().setReflect(true);
 	}
 	else {
-		this.koishi.setPosition(180, 360);
+		this.koishi().setPosition(180, 360);
 	}
 
 	// TODO: talk sub scene へ
@@ -115,7 +115,7 @@ SceneStage.prototype.beforeDraw = function(){
 			}
 			else {
 				// こいしを移動
-				this.koishi.setMoveTarget(x, y);
+				this.koishi().setMoveTarget(x, y);
 			}
 		}
 	}
@@ -139,10 +139,11 @@ SceneStage.prototype.draw = function(){
 					this.core.height);
 	ctx.restore();
 
+	// TODO: talk sub scene へ
 	if (this.is_talking) {
 		ctx.save();
 		// メッセージウィンドウ表示
-		this._showMessageWindow();
+		this.getSubScene("talk")._showMessageWindow();
 
 		// メッセージ表示
 		this._showMessage();
@@ -153,28 +154,6 @@ SceneStage.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 };
 
-
-// セリフウィンドウ表示
-SceneStage.prototype._showMessageWindow = function(){
-	var ctx = this.core.ctx;
-	ctx.save();
-
-	var x = this.koishi.x() - 0;
-	var y = this.koishi.y() - 330;
-
-	var fukidashi = this.core.image_loader.getImage('fukidashi');
-	if(false) {
-		x = -x; // 反転
-		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
-	}
-	ctx.drawImage(fukidashi,
-					x,
-					y,
-					fukidashi.width * 0.4,
-					fukidashi.height * 0.4
-	);
-	ctx.restore();
-};
 
 // セリフ表示
 SceneStage.prototype._showMessage = function() {
@@ -196,8 +175,8 @@ SceneStage.prototype._showMessage = function() {
 	ctx.textAlign = 'left';
 	ctx.textBaseAlign = 'middle';
 
-	var x = this.koishi.x() + 20;
-	var y = this.koishi.y() - 300;
+	var x = this.koishi().x() + 20;
+	var y = this.koishi().y() - 300;
 
 	x = x + 60;
 	// セリフ表示
@@ -216,5 +195,12 @@ SceneStage.prototype._showMessage = function() {
 
 	ctx.restore();
 };
+
+SceneStage.prototype.koishi = function(){
+	return this._koishi;
+};
+
+
+
 
 module.exports = SceneStage;

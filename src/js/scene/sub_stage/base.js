@@ -7,4 +7,10 @@ var SceneSubStageBase = function(core, stage) { // stage „ÅØ stage_base class „Ç
 };
 Util.inherit(SceneSubStageBase, base_scene);
 
+SceneSubStageBase.prototype.koishi = function(){
+	return this.parent.koishi();
+};
+
+
+
 module.exports = SceneSubStageBase;

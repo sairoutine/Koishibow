@@ -7,4 +7,9 @@ var SceneStageBase = function(core) {
 };
 Util.inherit(SceneStageBase, base_scene);
 
+
+SceneStageBase.prototype.koishi = function(){
+	throw new Error("koishi method must be implemented");
+};
+
 module.exports = SceneStageBase;
