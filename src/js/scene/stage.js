@@ -1,18 +1,13 @@
 'use strict';
 
 var base_scene = require('./stage_base');
+var SceneSubStagePlay = require('./sub_stage/play');
+var SceneSubStageTalk = require('./sub_stage/talk');
 var util = require('../hakurei').util;
 var CONSTANT = require('../hakurei').constant;
 var Koishi = require('../object/koishi');
 var SerifManager = require('../hakurei').serif_manager;
 var serif_script = require("../serif/objects/1");
-
-/* TODO:
-stage scene interface
-stage scene (inherit stage scene interface)
-stage sub scene base (inherit stage scene interface)
-stage sub scene (inherit stage scene interface)
-*/
 
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
@@ -26,12 +21,8 @@ var SceneStage = function(core) {
 	アニメーションサブシーン(オブジェクトが反応する、その間こいしは動けない)
 	*/
 
-	/*
-	this.addSubScene("play", new SceneStagePlay(core, this));
-	this.addSubScene("talk", new SceneStagePlay(core, this));
-	*/
-
-
+	this.addSubScene("play", new SceneSubStagePlay(core, this));
+	this.addSubScene("talk", new SceneSubStageTalk(core, this));
 };
 util.inherit(SceneStage, base_scene);
 
@@ -51,6 +42,8 @@ SceneStage.prototype.init = function(is_left){
 
 	this.serif = null;
 	this.is_talking = false;
+
+	this.changeSubScene("play");
 };
 
 SceneStage.prototype.beforeDraw = function(){
