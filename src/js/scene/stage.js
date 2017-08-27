@@ -139,14 +139,6 @@ SceneStage.prototype.draw = function(){
 					this.core.height);
 	ctx.restore();
 
-	// フィールド遷移矢印
-	ctx.font = "48px 'Migu'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-	ctx.fillText("◀", 0 + 24, this.height/2);
-	ctx.fillText("▶", this.width - 24, this.height/2);
-
 	if (this.is_talking) {
 		ctx.save();
 		// メッセージウィンドウ表示
