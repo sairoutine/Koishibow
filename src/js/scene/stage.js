@@ -16,31 +16,39 @@ var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
 	/* sub scene 一覧
-	通常(移動)
-	会話
 	メニュー
 	調べてるオブジェクト(机の上、窓の外) →そこからさらにアイテム調べられるので、サブシーンのサブシーンができるように、各サブシーンを作っておかねば。
 	アイテムを読んでいるサブシーン(ページ送り等)
 	アニメーションサブシーン(オブジェクトが反応する、その間こいしは動けない)
 	*/
 
+	// 通常
 	this.addSubScene("play", new SceneSubStagePlay(core, this));
+	// 会話中
 	this.addSubScene("talk", new SceneSubStageTalk(core, this));
+
+
+
+	// 自機
+	this.koishi = new Koishi(this);
 };
 util.inherit(SceneStage, base_scene);
 
 SceneStage.prototype.init = function(is_left){
 	base_scene.prototype.init.apply(this, arguments);
 
+	// フィールド移動時にフェードインする
 	this.setFadeIn(30, "black");
 
-	this.koishi = new Koishi(this);
+	// フィールド開始時の初期位置の決定
+	// 右から来たか、左から来たかでこいしの初期位置が変わる
+	// TODO: マップデータに持たせた方が良さそうね
 	if (is_left) {
-		this.koishi.init(this.width - 180, 360);
-		this.koishi.sprite.setReflect(true);
+		this.koishi.setPosition(this.width - 180, 360);
+		this.koishi.setReflect(true);
 	}
 	else {
-		this.koishi.init(180, 360);
+		this.koishi.setPosition(180, 360);
 	}
 
 	this.serif = null;

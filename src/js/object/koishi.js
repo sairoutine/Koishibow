@@ -12,20 +12,30 @@ var SS = require('../object/sprite_studio');
 
 var Koishi = function (scene, parent) {
 	base_object.apply(this, arguments);
+
+	this.sprite = new SS(this.scene);
 };
 util.inherit(Koishi, base_object);
 
-Koishi.prototype.init = function(x, y) {
+Koishi.prototype.init = function() {
 	base_object.prototype.init.apply(this, arguments);
-	this.x(x);
-	this.y(y);
-
-	this.sprite = new SS(this.scene);
-	this.sprite.init(x, y, jsonData, 0, {scale: 0.4});
 
 	this._target_x = 0;
 	this._target_y = 0;
 };
+
+Koishi.prototype.setPosition = function(x, y) {
+	this.x(x);
+	this.y(y);
+	this.sprite.init(x, y, jsonData, 0, {scale: 0.4});
+};
+
+Koishi.prototype.setReflect = function(flag) {
+	this.koishi.sprite.setReflect(flag);
+};
+
+
+
 
 Koishi.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
