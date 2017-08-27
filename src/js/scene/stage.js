@@ -31,6 +31,7 @@ var SceneStage = function(core) {
 
 	// 自機
 	this.koishi = new Koishi(this);
+	this.addObject(this.koishi);
 };
 util.inherit(SceneStage, base_scene);
 
@@ -51,6 +52,7 @@ SceneStage.prototype.init = function(is_left){
 		this.koishi.setPosition(180, 360);
 	}
 
+	// TODO: talk sub scene へ
 	this.serif = null;
 	this.is_talking = false;
 
@@ -117,13 +119,10 @@ SceneStage.prototype.beforeDraw = function(){
 			}
 		}
 	}
-
-	this.koishi.beforeDraw();
 };
 
 // 画面更新
 SceneStage.prototype.draw = function(){
-	this.core.clearCanvas();
 	var ctx = this.core.ctx;
 
 	// 背景描画
@@ -148,9 +147,6 @@ SceneStage.prototype.draw = function(){
 	ctx.fillText("◀", 0 + 24, this.height/2);
 	ctx.fillText("▶", this.width - 24, this.height/2);
 
-	// こいし表示
-	this.koishi.draw();
-
 	if (this.is_talking) {
 		ctx.save();
 		// メッセージウィンドウ表示
@@ -161,6 +157,8 @@ SceneStage.prototype.draw = function(){
 		ctx.restore();
 	}
 
+	// こいし表示
+	base_scene.prototype.draw.apply(this, arguments);
 };
 
 
