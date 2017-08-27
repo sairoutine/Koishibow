@@ -4,14 +4,27 @@ var base_scene = require('../hakurei').scene.base;
 var util = require('../hakurei').util;
 var CONSTANT = require('../hakurei').constant;
 var Koishi = require('../object/koishi');
-
-
 var SerifManager = require('../hakurei').serif_manager;
 var serif_script = require("../serif/objects/1");
 
 
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
+
+	/* sub scene 一覧
+	通常(移動)
+	会話
+	メニュー
+	調べてるオブジェクト(机の上、窓の外) →そこからさらにアイテム調べられるので、サブシーンのサブシーンができるように、各サブシーンを作っておかねば。
+	アイテムを読んでいるサブシーン(ページ送り等)
+	アニメーションサブシーン(オブジェクトが反応する、その間こいしは動けない)
+	*/
+
+	/*
+	this.addSubScene("play", new SceneStagePlay(core, this));
+	this.addSubScene("talk", new SceneStagePlay(core, this));
+	*/
+
 
 };
 util.inherit(SceneStage, base_scene);
