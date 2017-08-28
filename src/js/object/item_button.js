@@ -14,8 +14,15 @@ ObjectItemButton.prototype.init = function(){
 
 
 ObjectItemButton.prototype.onCollision = function(obj){
-	console.log("ok");
-	// TODO:
+	var scene_name = this.scene.mainStage().current_scene;
+	if (scene_name === "play") {
+		// メニューを開く
+		this.scene.mainStage().changeSubScene("menu");
+	}
+	else if (scene_name === "menu") {
+		// メニューを閉じる
+		this.scene.mainStage().changeSubScene("play");
+	}
 };
 
 ObjectItemButton.prototype.setPosition = function(){
