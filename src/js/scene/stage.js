@@ -7,6 +7,7 @@ var CONSTANT = require('../hakurei').constant;
 
 var SceneSubStagePlay = require('./sub_stage/play');
 var SceneSubStageTalk = require('./sub_stage/talk');
+var SceneSubStageMenu = require('./sub_stage/menu');
 
 var Koishi = require('../object/koishi');
 
@@ -33,7 +34,6 @@ var SceneStage = function(core) {
 	this.addObject(this.item_button);
 
 	/* sub scene 一覧
-	メニュー
 	調べてるオブジェクト(机の上、窓の外) →そこからさらにアイテム調べられるので、サブシーンのサブシーンができるように、各サブシーンを作っておかねば。
 	アイテムを読んでいるサブシーン(ページ送り等)
 	アニメーションサブシーン(オブジェクトが反応する、その間こいしは動けない)
@@ -43,6 +43,8 @@ var SceneStage = function(core) {
 	this.addSubScene("play", new SceneSubStagePlay(core, this));
 	// 会話中
 	this.addSubScene("talk", new SceneSubStageTalk(core, this));
+	// メニュー
+	this.addSubScene("menu", new SceneSubStageMenu(core, this));
 };
 util.inherit(SceneStage, base_scene);
 
