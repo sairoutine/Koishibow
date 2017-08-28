@@ -36,14 +36,18 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 			// TODO: refactor
 
 			// シーン遷移
-			if(this.mainStage()._left_yajirushi.checkCollisionWithPosition(x, y)) {
+			if(this.mainStage().left_yajirushi.checkCollisionWithPosition(x, y)) {
 
 			}
-			else if (this.mainStage()._right_yajirushi.checkCollisionWithPosition(x, y)) {
+			// シーン遷移
+			else if (this.mainStage().right_yajirushi.checkCollisionWithPosition(x, y)) {
 
 			}
+			else if (this.mainStage().item_button.checkCollisionWithPosition(x, y)) {
+
+			}
+			// こいしを移動
 			else {
-				// こいしを移動
 				this.koishi().setMoveTarget(x, y);
 			}
 		}

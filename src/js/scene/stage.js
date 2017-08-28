@@ -14,6 +14,7 @@ var Piece = require('../object/piece/1');
 
 var LeftYajirushi = require('../object/left_yajirushi');
 var RightYajirushi = require('../object/right_yajirushi');
+var ItemButton = require('../object/item_button');
 
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
@@ -23,11 +24,13 @@ var SceneStage = function(core) {
 	this._koishi = new Koishi(this);
 	this.addObject(this._koishi);
 
-	this._left_yajirushi  = new LeftYajirushi(this);
-	this._right_yajirushi = new RightYajirushi(this);
-	this.addObject(this._left_yajirushi);
-	this.addObject(this._right_yajirushi);
+	this.left_yajirushi  = new LeftYajirushi(this);
+	this.right_yajirushi = new RightYajirushi(this);
+	this.addObject(this.left_yajirushi);
+	this.addObject(this.right_yajirushi);
 
+	this.item_button = new ItemButton(this);
+	this.addObject(this.item_button);
 
 	/* sub scene 一覧
 	メニュー
@@ -65,8 +68,10 @@ SceneStage.prototype.init = function(is_left){
 
 	this.setupPiece();
 
-	this.addObject(this._left_yajirushi);
-	this.addObject(this._right_yajirushi);
+	this.addObject(this.left_yajirushi);
+	this.addObject(this.right_yajirushi);
+
+	this.addObject(this.item_button);
 
 	this.changeSubScene("play");
 };
