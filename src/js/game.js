@@ -3,6 +3,7 @@ var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
 
+var SceneTitle = require('./scene/title');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
 
@@ -14,8 +15,9 @@ util.inherit(Game, core);
 Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
 
-	this.addScene("stage", new SceneStage(this));
 	this.addScene("loading", new SceneLoading(this));
+	this.addScene("title", new SceneTitle(this));
+	this.addScene("stage", new SceneStage(this));
 
 	this.changeScene("loading");
 };

@@ -38,8 +38,7 @@ SceneLoading.prototype.beforeDraw = function() {
 
 	//if (this.core.image_loader.isAllLoaded() && this.core.audio_loader.isAllLoaded() && this.core.font_loader.isAllLoaded()) {
 	if (this.core.image_loader.isAllLoaded()) {
-		// TODO: タイトル画面へ
-		this.core.changeScene("stage");
+		this.core.changeScene("title");
 	}
 };
 SceneLoading.prototype.draw = function(){
