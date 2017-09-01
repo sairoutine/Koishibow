@@ -1,17 +1,11 @@
 'use strict';
 
-/* TODO:
- * UIParts Object 生成
- * var ui = new UIParts(x, y, width, height, function draw (core) {});
- * ui.setShowRect();
- * オンカーソルでメニューの文字が少し大きくなる
- * クリックするとゲーム画面へ
- */
-
 var base_scene = require('../hakurei').scene.base;
 var util = require('../hakurei').util;
 var H_CONSTANT = require('../hakurei').constant;
 var CONSTANT = require('../constant');
+
+var UIParts = require('../hakurei').object.ui_parts;
 
 var SHOW_TRANSITION_COUNT = 100;
 
@@ -29,6 +23,34 @@ var MENU = [
 
 var SceneTitle = function(core) {
 	base_scene.apply(this, arguments);
+
+	var self = this;
+
+	self.menu_ui = [];
+
+	// メニュー一覧表示
+	for(var i = 0, len = MENU.length; i < len; i++) {
+		var menu = MENU[i];
+
+		(function (menu) {
+			self.menu_ui.push(new UIParts(self, 520, 200 + i*50, 160, 40, function draw () {
+				var ctx = this.core.ctx;
+				ctx.textAlign = 'center';
+				ctx.textBaseline = 'middle';
+				ctx.fillStyle = 'rgb( 255, 255, 255 )';
+
+				if (this.is_big) {
+					ctx.font = "38px 'OradanoGSRR'";
+				}
+				else {
+					ctx.font = "36px 'OradanoGSRR'";
+				}
+
+				ctx.fillText(menu[0], this.x(), this.y());
+			}));
+		})(menu);
+	}
+	self.addObjects(self.menu_ui);
 };
 util.inherit(SceneTitle, base_scene);
 
@@ -39,6 +61,7 @@ SceneTitle.prototype.init = function(){
 
 	// フェードインする
 	this.setFadeIn(SHOW_TRANSITION_COUNT);
+	this.setFadeOut(30, "black");
 };
 
 
@@ -49,6 +72,30 @@ SceneTitle.prototype.beforeDraw = function(){
 		//TODO: this.core.playBGM();
 	}
 
+	// マウスの位置を取得
+	var x = this.core.input_manager.mousePositionX();
+	var y = this.core.input_manager.mousePositionY();
+
+	var self = this;
+	if(this.core.input_manager.isLeftClickPush()) {
+		this.menu_ui.forEach(function(menu, i) {
+			// クリックしたら
+			if(menu.checkCollisionWithPosition(x, y)) {
+				MENU[i][2](self.core);
+			}
+		});
+	}
+	else {
+		this.menu_ui.forEach(function(menu, i) {
+			// マウスカーソルが当たったら
+			if(menu.checkCollisionWithPosition(x, y)) {
+				menu.setVariable("is_big", true);
+			}
+			else {
+				menu.setVariable("is_big", false);
+			}
+		});
+	}
 };
 
 // 画面更新
@@ -78,17 +125,9 @@ SceneTitle.prototype.draw = function(){
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("Koishibow", this.core.width/2, 80);
 
-	// メニュー一覧表示
-	for(var i = 0, len = MENU.length; i < len; i++) {
-		var menu = MENU[i];
-
-		ctx.font = "36px 'OradanoGSRR'";
-		ctx.fillText(menu[0], 520, 200 + i*50);
-	}
-
 	ctx.restore();
 
-
+	base_scene.prototype.draw.apply(this, arguments);
 };
 
 module.exports = SceneTitle;
