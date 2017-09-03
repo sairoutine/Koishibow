@@ -16,7 +16,7 @@ ObjectRightYajirushi.prototype.init = function(){
 ObjectRightYajirushi.prototype.onCollision = function(obj){
 	// フィールド遷移
 	this.scene.mainStage().setFadeOut(30, "black");
-	this.core.changeScene("stage");
+	this.core.changeScene("stage", this.scene.mainStage().field().right_field, false);
 };
 
 ObjectRightYajirushi.prototype.setPosition = function(x, y){

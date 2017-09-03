@@ -36,11 +36,11 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 			// TODO: refactor
 
 			// シーン遷移
-			if(this.mainStage().left_yajirushi.checkCollisionWithPosition(x, y)) {
+			if(this.mainStage().field().left_field && this.mainStage().left_yajirushi.checkCollisionWithPosition(x, y)) {
 
 			}
 			// シーン遷移
-			else if (this.mainStage().right_yajirushi.checkCollisionWithPosition(x, y)) {
+			else if(this.mainStage().field().right_field && this.mainStage().right_yajirushi.checkCollisionWithPosition(x, y)) {
 
 			}
 			else if (this.mainStage().item_button.checkCollisionWithPosition(x, y)) {

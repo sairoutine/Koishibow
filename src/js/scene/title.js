@@ -11,13 +11,13 @@ var SHOW_TRANSITION_COUNT = 100;
 
 var MENU = [
 	["New Game", function (core) { return true; }, function (core) {
-		core.changeScene("stage");
+		core.changeScene("stage", "chapter0_myroom");
 	}],
 	["Continue", function (core) { return true; }, function (core) {
-		core.changeScene("stage");
+		core.changeScene("stage", "chapter0_myroom");
 	}],
 	["Options", function (core) { return true; }, function (core) {
-		core.changeScene("stage");
+		core.changeScene("stage", "chapter0_myroom");
 	}],
 ];
 

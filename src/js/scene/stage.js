@@ -17,8 +17,15 @@ var LeftYajirushi = require('../object/left_yajirushi');
 var RightYajirushi = require('../object/right_yajirushi');
 var ItemButton = require('../object/item_button');
 
+var FieldMap = require('../field');
+
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
+
+	// 現在のフィールド
+	this._current_field_name = null;
+	// フィールド一覧
+	this._field_map = FieldMap;
 
 	// TODO: この addobject なくせないかな...
 	// 自機
@@ -48,8 +55,11 @@ var SceneStage = function(core) {
 };
 util.inherit(SceneStage, base_scene);
 
-SceneStage.prototype.init = function(is_left){
+SceneStage.prototype.init = function(field_name, is_right){
 	base_scene.prototype.init.apply(this, arguments);
+
+	// 現在のフィールド
+	this._current_field_name = field_name;
 
 	this.removeAllObject();
 	this.addObject(this._koishi);
@@ -59,19 +69,26 @@ SceneStage.prototype.init = function(is_left){
 
 	// フィールド開始時の初期位置の決定
 	// 右から来たか、左から来たかでこいしの初期位置が変わる
-	// TODO: マップデータに持たせた方が良さそうね
-	if (is_left) {
-		this.koishi().setPosition(this.width - 180, 360);
+	var pos;
+	if (is_right) {
+		pos = this.field().right_start_position;
+		this.koishi().setPosition(pos.x, pos.y);
 		this.koishi().setReflect(true);
 	}
 	else {
-		this.koishi().setPosition(180, 360);
+		pos = this.field().left_start_position;
+		this.koishi().setPosition(pos.x, pos.y);
 	}
 
 	this.setupPiece();
 
-	this.addObject(this.left_yajirushi);
-	this.addObject(this.right_yajirushi);
+	if (this.field().left_field) {
+		this.addObject(this.left_yajirushi);
+	}
+
+	if (this.field().right_field) {
+		this.addObject(this.right_yajirushi);
+	}
 
 	this.addObject(this.item_button);
 
@@ -87,7 +104,7 @@ SceneStage.prototype.draw = function(){
 	var ctx = this.core.ctx;
 
 	// 背景描画
-	var title_bg = this.core.image_loader.getImage('bg');
+	var title_bg = this.core.image_loader.getImage(this.field().background);
 	ctx.save();
 	ctx.drawImage(title_bg,
 					0,
@@ -98,6 +115,17 @@ SceneStage.prototype.draw = function(){
 					0,
 					this.core.width,
 					this.core.height);
+	ctx.restore();
+
+	ctx.save();
+	// フィールド名 表示
+	// TODO: 削除
+	ctx.font = "30px 'OradanoGSRR'";
+	ctx.textAlign = 'center';
+	ctx.textBaseAlign = 'middle';
+	ctx.fillStyle = 'rgb( 0, 0, 0 )';
+	ctx.fillText(this.field().name, this.width - 100, this.height - 10);
+
 	ctx.restore();
 
 	// こいし／サブシーン描画
@@ -113,14 +141,25 @@ SceneStage.prototype.mainStage = function(){
 	return this;
 };
 
-SceneStage.prototype.setupPiece = function(){
-	// TODO:
-	var piece = new Piece(this);
-	piece.init();
-	piece.setPosition(540, 220);
-	this.addObject(piece);
+SceneStage.prototype.field = function(){
+	return this._field_map[this._current_field_name];
+};
 
-	this.pieces = [piece];
+
+
+SceneStage.prototype.setupPiece = function() {
+	this.pieces = [];
+	var objects = this.field().objects;
+
+	for (var i = 0, len = objects.length; i < len; i++) {
+		var object = objects[i];
+		var piece = new Piece(this);
+		piece.init();
+		piece.setPosition(object.x, object.y);
+		this.addObject(piece);
+
+		this.pieces.push(piece);
+	}
 };
 
 
