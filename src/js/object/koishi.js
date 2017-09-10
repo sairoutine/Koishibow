@@ -26,8 +26,7 @@ Koishi.prototype.init = function() {
 };
 
 Koishi.prototype.setPosition = function(x, y) {
-	this.x(x);
-	this.y(y);
+	base_object.prototype.setPosition.apply(this, arguments);
 	this.sprite.init(x, y, jsonData, 0, {scale: 0.4});
 };
 

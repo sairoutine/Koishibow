@@ -12,11 +12,6 @@ ObjectPiece.prototype.onCollision = function(obj){
 	this.scene.mainStage().changeSubScene("talk");
 };
 
-ObjectPiece.prototype.setPosition = function(x, y){
-	this.x(x);
-	this.y(y);
-};
-
 ObjectPiece.prototype.draw = function(){
 	/*
 	// 仮で四角形を描画

@@ -19,7 +19,7 @@ ObjectRightYajirushi.prototype.onCollision = function(obj){
 	this.core.changeScene("stage", this.scene.mainStage().field().right_field, false);
 };
 
-ObjectRightYajirushi.prototype.setPosition = function(x, y){
+ObjectRightYajirushi.prototype.setPosition = function(){
 	this.x(this.scene.mainStage().width - 24);
 	this.y(this.scene.mainStage().height/2);
 };
