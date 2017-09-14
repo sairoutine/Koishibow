@@ -118,12 +118,12 @@ SceneTitle.prototype.draw = function(){
 					this.core.width,
 					this.core.height);
 
-	// メニュー文字 表示
-	ctx.font = "60px 'OradanoGSRR'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-	ctx.fillText("Koishibow", this.core.width/2, 80);
+	var logo = this.core.image_loader.getImage('logo_wht');
+	// ロゴ画像表示
+		ctx.drawImage(logo,
+		120,
+		-120,
+		logo.width*0.2, logo.height*0.2);
 
 	ctx.restore();
 
