@@ -1395,6 +1395,7 @@ AssetsConfig.images = {
 	bg:  "./image/bg.jpg",
 	fukidashi:  "./image/fukidashi.png",
 	title:  "./image/title.png",
+	logo_wht:  "./image/logo_wht.png",
 };
 
 AssetsConfig.sounds = {
@@ -1459,8 +1460,8 @@ module.exports = field_map;
 module.exports = {
 	key: "chapter0_hospital_corridor1",
 	name: "病院の廊下1",
-	right_start_position: {x: 460, y: 360},
-	left_start_position:  {x: 180, y: 360},
+	right_start_position: {x: 690, y: 540},
+	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_hospital_corridor2",
 	left_field: "chapter0_myroom",
 	background: "bg",
@@ -1473,8 +1474,8 @@ module.exports = {
 module.exports = {
 	key: "chapter0_hospital_corridor2",
 	name: "病院の廊下2",
-	right_start_position: {x: 460, y: 360},
-	left_start_position:  {x: 180, y: 360},
+	right_start_position: {x: 690, y: 540},
+	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_mansion_corridor1",
 	left_field: "chapter0_hospital_corridor1",
 	background: "bg",
@@ -1490,8 +1491,8 @@ module.exports = {
 module.exports = {
 	key: "chapter0_mansion_corridor1",
 	name: "屋敷の廊下1",
-	right_start_position: {x: 460, y: 360},
-	left_start_position:  {x: 180, y: 360},
+	right_start_position: {x: 690, y: 540},
+	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_mansion_corridor2",
 	left_field: "chapter0_hospital_corridor2",
 	background: "bg",
@@ -1505,8 +1506,8 @@ module.exports = {
 module.exports = {
 	key: "chapter0_mansion_corridor2",
 	name: "屋敷の廊下2",
-	right_start_position: {x: 460, y: 360},
-	left_start_position:  {x: 180, y: 360},
+	right_start_position: {x: 690, y: 540},
+	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_mansion_corridor3",
 	left_field: "chapter0_mansion_corridor1",
 	background: "bg",
@@ -1521,8 +1522,8 @@ module.exports = {
 module.exports = {
 	key: "chapter0_mansion_corridor3",
 	name: "屋敷の廊下3",
-	right_start_position: {x: 460, y: 360},
-	left_start_position:  {x: 180, y: 360},
+	right_start_position: {x: 690, y: 540},
+	left_start_position:  {x: 180, y: 540},
 	right_field: null,
 	left_field: "chapter0_mansion_corridor2",
 	background: "bg",
@@ -1537,8 +1538,8 @@ module.exports = {
 module.exports = {
 	key: "chapter0_mansion_gallery1",
 	name: "屋敷の廊下3",
-	right_start_position: {x: 460, y: 360},
-	left_start_position:  {x: 180, y: 360},
+	right_start_position: {x: 690, y: 540},
+	left_start_position:  {x: 180, y: 540},
 	right_field: null,
 	left_field: "chapter0_mansion_corridor2",
 	background: "bg",
@@ -1553,13 +1554,13 @@ module.exports = {
 module.exports = {
 	key: "chapter0_myroom",
 	name: "こいしの部屋",
-	right_start_position: {x: 460, y: 360},
-	left_start_position:  {x: 180, y: 360},
+	right_start_position: {x: 690, y: 540},
+	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_hospital_corridor1",
 	left_field: null,
 	background: "bg",
 	objects: [
-		{key: "vase", name: "花瓶", x: 540, y: 220}
+		{key: "vase", name: "花瓶", x: 540+270, y: 220+110}
 	],
 };
 
@@ -2273,6 +2274,9 @@ var DebugManager = function (core) {
 	this.dom = null; // debug menu area
 
 	this.is_debug_mode = false; // default: false
+
+
+	this._is_showing_collision_area = false; // default: false
 };
 
 DebugManager.prototype.setOn = function (dom) {
@@ -2314,6 +2318,17 @@ DebugManager.prototype.addMenuButton = function (button_value, func) {
 
 	// add element
 	this.dom.appendChild(input);
+};
+
+// show collision area of object instance
+DebugManager.prototype.setShowingCollisionAreaOn = function () {
+	this._is_showing_collision_area = true;
+};
+DebugManager.prototype.setShowingCollisionAreaOff = function () {
+	this._is_showing_collision_area = false;
+};
+DebugManager.prototype.isShowingCollisionArea = function () {
+	return this._is_showing_collision_area;
 };
 
 module.exports = DebugManager;
@@ -10196,10 +10211,10 @@ module.exports = WebGLDebugUtils;
 
 var util = require('../util');
 
-var id = 0;
+// used by isOutOfStage method
+var EXTRA_OUT_OF_SIZE = 100;
 
-// is draw collision size
-var IS_SHOW_COLLISION = false;
+var id = 0;
 
 var ObjectBase = function(scene, object) {
 	this.scene = scene;
@@ -10213,9 +10228,10 @@ var ObjectBase = function(scene, object) {
 	this._y = 0; // local center y
 
 	// manage flags that disappears in frame elapsed
-	this.auto_disable_times_map = {};
+	this._auto_disable_times_map = {};
 
-	this.velocity = {magnitude:0, theta:0};
+	this._velocity = null;
+	this.resetVelocity();
 
 	// sub object
 	this.objects = [];
@@ -10229,7 +10245,9 @@ ObjectBase.prototype.init = function(){
 	//this._x = 0;
 	//this._y = 0;
 
-	this.auto_disable_times_map = {};
+	this._auto_disable_times_map = {};
+
+	this.resetVelocity();
 
 	for(var i = 0, len = this.objects.length; i < len; i++) {
 		this.objects[i].init();
@@ -10239,24 +10257,23 @@ ObjectBase.prototype.init = function(){
 ObjectBase.prototype.beforeDraw = function(){
 	this.frame_count++;
 
-	this.checkAutoDisableFlags();
+	// check flags that disappears in frame elapsed
+	this._checkAutoDisableFlags();
 
 	for(var i = 0, len = this.objects.length; i < len; i++) {
 		this.objects[i].beforeDraw();
 	}
 
-	this.move();
+	// move if this object is set velocity
+	this._move();
 };
 
 ObjectBase.prototype.draw = function() {
 	var ctx = this.core.ctx;
-	// TODO: DEBUG
-	if(IS_SHOW_COLLISION) {
-		ctx.save();
-		ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
-		ctx.globalAlpha = 0.4;
-		ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
-		ctx.restore();
+
+	// If is in DEBUG mode, show collision area
+	if(this.core.debug_manager.isShowingCollisionArea()) {
+		this._drawCollisionArea();
 	}
 
 
@@ -10271,10 +10288,69 @@ ObjectBase.prototype.afterDraw = function() {
 	}
 };
 
+ObjectBase.prototype.width = function() {
+	return 0;
+};
+ObjectBase.prototype.height = function() {
+	return 0;
+};
+
+ObjectBase.prototype.x = function(val) {
+	if (typeof val !== 'undefined') { this._x = val; }
+	return this._x;
+};
+ObjectBase.prototype.y = function(val) {
+	if (typeof val !== 'undefined') { this._y = val; }
+	return this._y;
+};
+
+ObjectBase.prototype.setPosition = function(x, y) {
+	this._x = x;
+	this._y = y;
+};
+
+/*
+*******************************
+* position methods
+*******************************
+*/
+
+ObjectBase.prototype.globalCenterX = function() {
+	return this.scene.x() + this.x();
+};
+
+ObjectBase.prototype.globalCenterY = function() {
+	return this.scene.y() + this.y();
+};
+
+
+ObjectBase.prototype.globalLeftX = function() {
+	return this.scene.x() + this.x() - this.width()/2;
+};
+
+ObjectBase.prototype.globalRightX = function() {
+	return this.scene.x() + this.x() + this.width()/2;
+};
+
+ObjectBase.prototype.globalUpY = function() {
+	return this.scene.x() + this.y() - this.height()/2;
+};
+
+ObjectBase.prototype.globalDownY = function() {
+	return this.scene.x() + this.y() + this.height()/2;
+};
+
+/*
+*******************************
+* sub object methods
+*******************************
+*/
+
 // add sub object
 ObjectBase.prototype.addSubObject = function(object){
 	this.objects.push(object);
 };
+
 ObjectBase.prototype.removeSubObject = function(object){
 	// TODO: O(n) -> O(1)
 	for(var i = 0, len = this.objects.length; i < len; i++) {
@@ -10289,70 +10365,49 @@ ObjectBase.prototype.removeAllSubObject = function() {
 	this.objects = [];
 };
 
-ObjectBase.prototype.move = function() {
-	var x = util.calcMoveXByVelocity(this.velocity);
-	var y = util.calcMoveYByVelocity(this.velocity);
+/*
+*******************************
+* collision methods
+*******************************
+*/
 
-	this._x += x;
-	this._y += y;
-};
-ObjectBase.prototype.onCollision = function(obj){
-};
-
-ObjectBase.prototype.width = function() {
-	return 0;
-};
-ObjectBase.prototype.height = function() {
-	return 0;
-};
-ObjectBase.prototype.globalCenterX = function() {
-	return this.scene.x() + this.x();
-};
-ObjectBase.prototype.globalCenterY = function() {
-	return this.scene.y() + this.y();
-};
-ObjectBase.prototype.globalLeftX = function() {
-	return this.scene.x() + this.x() - this.width()/2;
-};
-ObjectBase.prototype.globalRightX = function() {
-	return this.scene.x() + this.x() + this.width()/2;
-};
-ObjectBase.prototype.globalUpY = function() {
-	return this.scene.x() + this.y() - this.height()/2;
-};
-ObjectBase.prototype.globalDownY = function() {
-	return this.scene.x() + this.y() + this.height()/2;
-};
-
+// collision width
+// NOTE: the obj of arguments is collision target object
 ObjectBase.prototype.collisionWidth = function(obj) {
 	return 0;
 };
+
+// collision height
+// NOTE: the obj of arguments is collision target object
 ObjectBase.prototype.collisionHeight = function(obj) {
 	return 0;
 };
+
+// callback if the object is collision with
+// NOTE: the obj of arguments is collision target object
+ObjectBase.prototype.onCollision = function(obj){
+};
+
+// flag if the object is check collision with
+// NOTE: the obj of arguments is collision target object
 ObjectBase.prototype.isCollision = function(obj) {
 	return true;
 };
 
-
-ObjectBase.prototype.checkCollisionWithPosition = function(x, y) {
-	if(this.checkCollisionByPosition(x, y)) {
-		this.onCollision();
-		return true;
-	}
-
-	return false;
-};
-
+// check Collision Detect with object and execute onCollision method if detect
 ObjectBase.prototype.checkCollisionWithObject = function(obj1) {
 	var obj2 = this;
-	if(obj1.checkCollisionByObject(obj2)) {
+	var is_collision = obj1.intersect(obj2);
+
+	if(is_collision) {
 		obj1.onCollision(obj2);
 		obj2.onCollision(obj1);
-		return true;
 	}
-	return false;
+
+	return is_collision;
 };
+
+// check Collision Detect with object array and execute onCollision method if detect
 ObjectBase.prototype.checkCollisionWithObjects = function(objs) {
 	var obj1 = this;
 	var return_flag = false;
@@ -10368,13 +10423,17 @@ ObjectBase.prototype.checkCollisionWithObjects = function(objs) {
 	return return_flag;
 };
 
+// check Collision Detect with (x, y) and execute onCollision method if detect
+ObjectBase.prototype.checkCollisionWithPosition = function(x, y) {
+	var point = new ObjectPoint(this.scene);
+	point.init();
+	point.setPosition(x, y);
 
-// NOTE: deprecated
-ObjectBase.prototype.checkCollision = function(obj) {
-	return this.checkCollisionByObject(obj);
+	return this.checkCollisionWithObject(point);
 };
 
-ObjectBase.prototype.checkCollisionByObject = function(obj) {
+// is the object collides with obj of argument ?
+ObjectBase.prototype.intersect = function(obj) {
 	if (!this.isCollision(obj) || !obj.isCollision(this)) return false;
 
 	if(Math.abs(this.x() - obj.x()) < this.collisionWidth(obj)/2 + obj.collisionWidth(this)/2 &&
@@ -10385,77 +10444,117 @@ ObjectBase.prototype.checkCollisionByObject = function(obj) {
 	return false;
 };
 
-ObjectBase.prototype.checkCollisionByPosition = function(x, y) {
-	if (!this.isCollision()) return false; // TODO: pass arguments of point object to isCollision method
-
-	if (this.x() - this.collisionWidth()/2 < x && x < this.x() + this.collisionWidth()/2 &&
-		this.y() - this.collisionHeight()/2 < y && y < this.y() + this.collisionHeight()/2) {
-		return true;
-	}
-
-	return false;
-};
-
-
-
-
 ObjectBase.prototype.getCollisionLeftX = function(obj) {
 	return this.x() - this.collisionWidth(obj) / 2;
 };
+
 ObjectBase.prototype.getCollisionRightX = function(obj) {
 	return this.x() + this.collisionWidth(obj) / 2;
 };
+
 ObjectBase.prototype.getCollisionUpY = function(obj) {
 	return this.y() - this.collisionHeight(obj) / 2;
 };
+
 ObjectBase.prototype.getCollisionDownY = function(obj) {
 	return this.y() + this.collisionHeight(obj) / 2;
 };
 
+ObjectBase.prototype._drawCollisionArea = function() {
+	// make dummy object to decide collision width and height
+	var dummy_object = new ObjectBase(this.scene);
+
+	var ctx = this.core.ctx;
+	ctx.save();
+	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
+	ctx.globalAlpha = 0.4;
+	ctx.fillRect(
+		this.getCollisionLeftX(dummy_object),
+		this.getCollisionUpY(dummy_object),
+		this.collisionWidth(dummy_object),
+		this.collisionHeight(dummy_object)
+	);
+	ctx.restore();
+};
 
 
+// NOTE: deprecated
+ObjectBase.prototype.checkCollision = function(obj) {
+	return this.checkCollisionByObject(obj);
+};
 
-
-
-
-
+// NOTE: deprecated
+ObjectBase.prototype.checkCollisionByObject = function(obj) {
+	return this.intersect(obj);
+};
+/*
+*******************************
+* disable flag methods
+*******************************
+*/
 
 // set flags that disappears in frame elapsed
 // TODO: enable to set flag which becomes false -> true
+// TODO: reset flag if the object calls init method
 ObjectBase.prototype.setAutoDisableFlag = function(flag_name, count) {
 	var self = this;
 
 	self[flag_name] = true;
 
-	self.auto_disable_times_map[flag_name] = self.frame_count + count;
+	self._auto_disable_times_map[flag_name] = self.frame_count + count;
 
 };
 
 // check flags that disappears in frame elapsed
-ObjectBase.prototype.checkAutoDisableFlags = function() {
+ObjectBase.prototype._checkAutoDisableFlags = function() {
 	var self = this;
-	for (var flag_name in self.auto_disable_times_map) {
-		if(this.auto_disable_times_map[flag_name] < self.frame_count) {
+	for (var flag_name in self._auto_disable_times_map) {
+		if(this._auto_disable_times_map[flag_name] < self.frame_count) {
 			self[flag_name] = false;
-			delete self.auto_disable_times_map[flag_name];
+			delete self._auto_disable_times_map[flag_name];
 		}
 	}
 };
 
-ObjectBase.prototype.x = function(val) {
-	if (typeof val !== 'undefined') { this._x = val; }
-	return this._x;
-};
-ObjectBase.prototype.y = function(val) {
-	if (typeof val !== 'undefined') { this._y = val; }
-	return this._y;
-};
+/*
+*******************************
+* velocity methods
+*******************************
+*/
 
 ObjectBase.prototype.setVelocity = function(velocity) {
-	this.velocity = velocity;
+	this._velocity = velocity;
 };
 
-var EXTRA_OUT_OF_SIZE = 100;
+ObjectBase.prototype.resetVelocity = function() {
+	this._velocity = {magnitude:0, theta:0};
+};
+
+ObjectBase.prototype.setVelocityMagnitude = function(magnitude) {
+	this._velocity.magnitude = magnitude;
+};
+
+ObjectBase.prototype.setVelocityTheta = function(theta) {
+	this._velocity.theta = theta;
+};
+
+// move if this object is set velocity
+// TODO: doesn't move if the object's velocity magnitude is 0
+ObjectBase.prototype._move = function() {
+	var x = util.calcMoveXByVelocity(this._velocity);
+	var y = util.calcMoveYByVelocity(this._velocity);
+
+	this._x += x;
+	this._y += y;
+};
+
+/*
+*******************************
+* other methods
+*******************************
+*/
+
+// TODO: this.core -> this.scene
 ObjectBase.prototype.isOutOfStage = function( ) {
 	if(this.x() + EXTRA_OUT_OF_SIZE < 0 ||
 	   this.y() + EXTRA_OUT_OF_SIZE < 0 ||
@@ -10468,12 +10567,32 @@ ObjectBase.prototype.isOutOfStage = function( ) {
 	return false;
 };
 
+/*
+*******************************
+* point object class
+*******************************
+*/
 
+var ObjectPoint = function(scene) {
+	ObjectBase.apply(this, arguments);
 
+};
+util.inherit(ObjectPoint, ObjectBase);
 
+ObjectPoint.prototype.collisionWidth = function(){
+	return 1;
+};
+ObjectPoint.prototype.collisionHeight = function(){
+	return 1;
+};
+ObjectPoint.prototype.width = function() {
+	return 1;
+};
+ObjectPoint.prototype.height = function() {
+	return 1;
+};
 
 module.exports = ObjectBase;
-
 
 },{"../util":49}],36:[function(require,module,exports){
 'use strict';
@@ -12358,8 +12477,8 @@ ObjectItemButton.prototype.onCollision = function(obj){
 };
 
 ObjectItemButton.prototype.setPosition = function(){
-	this.x(48);
-	this.y(this.scene.mainStage().height - 50);
+	this.x(48 + 24);
+	this.y(this.scene.mainStage().height - 75);
 };
 
 ObjectItemButton.prototype.draw = function(){
@@ -12372,11 +12491,11 @@ ObjectItemButton.prototype.draw = function(){
 	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
 
 	// メニュー文字 表示
-	ctx.font = "12px 'Migu'";
+	ctx.font = "24px 'Migu'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText("メニュー", this.x(), this.y() + 5);
+	ctx.fillText("メニュー", this.x() + 5, this.y() + 5);
 
 	ctx.restore();
 };
@@ -12384,11 +12503,11 @@ ObjectItemButton.prototype.draw = function(){
 
 
 ObjectItemButton.prototype.collisionWidth = function(){
-	return 64;
+	return 128;
 };
 
 ObjectItemButton.prototype.collisionHeight = function(){
-	return 64;
+	return 128;
 };
 
 module.exports = ObjectItemButton;
@@ -12422,8 +12541,7 @@ Koishi.prototype.init = function() {
 };
 
 Koishi.prototype.setPosition = function(x, y) {
-	this.x(x);
-	this.y(y);
+	base_object.prototype.setPosition.apply(this, arguments);
 	this.sprite.init(x, y, jsonData, 0, {scale: 0.4});
 };
 
@@ -12511,7 +12629,7 @@ ObjectLeftYajirushi.prototype.onCollision = function(obj){
 };
 
 ObjectLeftYajirushi.prototype.setPosition = function(){
-	this.x(24);
+	this.x(48);
 	this.y(this.scene.mainStage().height/2);
 };
 
@@ -12524,9 +12642,8 @@ ObjectLeftYajirushi.prototype.draw = function(){
 	ctx.globalAlpha = 0.4;
 	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
 	*/
-
 	// フィールド遷移矢印 表示
-	ctx.font = "48px 'Migu'";
+	ctx.font = "96px 'Migu'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
@@ -12538,11 +12655,11 @@ ObjectLeftYajirushi.prototype.draw = function(){
 
 
 ObjectLeftYajirushi.prototype.collisionWidth = function(){
-	return 64;
+	return 128;
 };
 
 ObjectLeftYajirushi.prototype.collisionHeight = function(){
-	return 64;
+	return 128;
 };
 
 module.exports = ObjectLeftYajirushi;
@@ -12560,11 +12677,6 @@ Util.inherit(ObjectPiece, base_scene);
 ObjectPiece.prototype.onCollision = function(obj){
 	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.mainStage().changeSubScene("talk");
-};
-
-ObjectPiece.prototype.setPosition = function(x, y){
-	this.x(x);
-	this.y(y);
 };
 
 ObjectPiece.prototype.draw = function(){
@@ -12613,8 +12725,8 @@ ObjectRightYajirushi.prototype.onCollision = function(obj){
 	this.core.changeScene("stage", this.scene.mainStage().field().right_field, false);
 };
 
-ObjectRightYajirushi.prototype.setPosition = function(x, y){
-	this.x(this.scene.mainStage().width - 24);
+ObjectRightYajirushi.prototype.setPosition = function(){
+	this.x(this.scene.mainStage().width - 48);
 	this.y(this.scene.mainStage().height/2);
 };
 
@@ -12629,7 +12741,7 @@ ObjectRightYajirushi.prototype.draw = function(){
 	*/
 
 	// フィールド遷移矢印 表示
-	ctx.font = "48px 'Migu'";
+	ctx.font = "96px 'Migu'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
@@ -12641,11 +12753,11 @@ ObjectRightYajirushi.prototype.draw = function(){
 
 
 ObjectRightYajirushi.prototype.collisionWidth = function(){
-	return 64;
+	return 128;
 };
 
 ObjectRightYajirushi.prototype.collisionHeight = function(){
-	return 64;
+	return 128;
 };
 
 module.exports = ObjectRightYajirushi;
@@ -12970,11 +13082,11 @@ SceneStage.prototype.draw = function(){
 	ctx.save();
 	// フィールド名 表示
 	// TODO: 削除
-	ctx.font = "30px 'OradanoGSRR'";
+	ctx.font = "60px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText(this.field().name, this.width - 100, this.height - 10);
+	ctx.fillText(this.field().name, this.width - 180, this.height - 20);
 
 	ctx.restore();
 
@@ -13123,7 +13235,7 @@ SceneSubStageTalk.prototype.draw = function(){
 	// ボタン表示
 	this._showButtons();
 
-	// メッセージ表示
+	// メッセージウィンドウ表示
 	this._showMessageWindow();
 
 	// メッセージ表示
@@ -13154,14 +13266,14 @@ SceneSubStageTalk.prototype._showItems = function(){
 	// 仮で四角形を描画
 	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
 	//ctx.globalAlpha = 0.4;
-	ctx.fillRect(20, 20, 48, 48);
+	ctx.fillRect(20, 20, 96, 96);
 
 	// メニュー文字 表示
-	ctx.font = "12px 'Migu'";
+	ctx.font = "24px 'Migu'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText("ITEM1", 20*2 + 5, 20*2 + 5);
+	ctx.fillText("ITEM1", 30*2 + 5, 30*2 + 5);
 
 	ctx.restore();
 };
@@ -13177,7 +13289,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.globalAlpha = 0.8;
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
 	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150,
 		this.mainStage().height - 150,
 		160,
 		60
@@ -13189,7 +13301,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("使用",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 60,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60,
 		this.mainStage().height - 150 + 40
 	);
 
@@ -13200,7 +13312,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.globalAlpha = 0.8;
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
 	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
 		this.mainStage().height - 150,
 		160,
 		60
@@ -13212,7 +13324,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("合成",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
 		this.mainStage().height - 150 + 40
 	);
 
@@ -13222,7 +13334,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.globalAlpha = 0.8;
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
 	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
 		this.mainStage().height - 150,
 		160,
 		60
@@ -13234,7 +13346,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("調べる",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
 		this.mainStage().height - 150 + 40
 	);
 
@@ -13252,9 +13364,9 @@ SceneSubStageTalk.prototype._showMessageWindow = function(){
 	ctx.globalAlpha = 0.8;
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
 	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150,
 		this.mainStage().height - 80,
-		this.mainStage().width  - 120 - MESSAGE_WINDOW_OUTLINE_MARGIN * 2,
+		this.mainStage().width  - 180 - MESSAGE_WINDOW_OUTLINE_MARGIN * 2,
 		70
 	);
 
@@ -13264,13 +13376,13 @@ SceneSubStageTalk.prototype._showMessage = function(){
 	var ctx = this.core.ctx;
 
 	// メニュー文字 表示
-	ctx.font = "18px 'Migu'";
+	ctx.font = "27px 'Migu'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("ITEM1 だ",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 70,
-		this.mainStage().height - 80 + 20
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + 70,
+		this.mainStage().height - 60 + 20
 	);
 
 };
@@ -13504,17 +13616,17 @@ var SceneTitle = function(core) {
 		var menu = MENU[i];
 
 		(function (menu) {
-			self.menu_ui.push(new UIParts(self, 520, 200 + i*50, 160, 40, function draw () {
+			self.menu_ui.push(new UIParts(self, 780, 300 + i*75, 240, 60, function draw () {
 				var ctx = this.core.ctx;
 				ctx.textAlign = 'center';
 				ctx.textBaseline = 'middle';
 				ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
 				if (this.is_big) {
-					ctx.font = "38px 'OradanoGSRR'";
+					ctx.font = "70px 'OradanoGSRR'";
 				}
 				else {
-					ctx.font = "36px 'OradanoGSRR'";
+					ctx.font = "64px 'OradanoGSRR'";
 				}
 
 				ctx.fillText(menu[0], this.x(), this.y());
@@ -13589,12 +13701,12 @@ SceneTitle.prototype.draw = function(){
 					this.core.width,
 					this.core.height);
 
-	// メニュー文字 表示
-	ctx.font = "60px 'OradanoGSRR'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-	ctx.fillText("Koishibow", this.core.width/2, 80);
+	var logo = this.core.image_loader.getImage('logo_wht');
+	// ロゴ画像表示
+		ctx.drawImage(logo,
+		180,
+		-180,
+		logo.width*0.3, logo.height*0.3);
 
 	ctx.restore();
 
