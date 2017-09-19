@@ -20,7 +20,7 @@ ObjectRightYajirushi.prototype.onCollision = function(obj){
 };
 
 ObjectRightYajirushi.prototype.setPosition = function(){
-	this.x(this.scene.mainStage().width - 24);
+	this.x(this.scene.mainStage().width - 48);
 	this.y(this.scene.mainStage().height/2);
 };
 
@@ -35,7 +35,7 @@ ObjectRightYajirushi.prototype.draw = function(){
 	*/
 
 	// フィールド遷移矢印 表示
-	ctx.font = "48px 'Migu'";
+	ctx.font = "96px 'Migu'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
@@ -47,11 +47,11 @@ ObjectRightYajirushi.prototype.draw = function(){
 
 
 ObjectRightYajirushi.prototype.collisionWidth = function(){
-	return 64;
+	return 128;
 };
 
 ObjectRightYajirushi.prototype.collisionHeight = function(){
-	return 64;
+	return 128;
 };
 
 module.exports = ObjectRightYajirushi;

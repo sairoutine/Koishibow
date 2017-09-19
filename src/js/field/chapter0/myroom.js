@@ -2,13 +2,13 @@
 module.exports = {
 	key: "chapter0_myroom",
 	name: "こいしの部屋",
-	right_start_position: {x: 460, y: 360},
-	left_start_position:  {x: 180, y: 360},
+	right_start_position: {x: 690, y: 540},
+	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_hospital_corridor1",
 	left_field: null,
 	background: "bg",
 	objects: [
-		{key: "vase", name: "花瓶", x: 540, y: 220}
+		{key: "vase", name: "花瓶", x: 540+270, y: 220+110}
 	],
 };
 

@@ -120,11 +120,11 @@ SceneStage.prototype.draw = function(){
 	ctx.save();
 	// フィールド名 表示
 	// TODO: 削除
-	ctx.font = "30px 'OradanoGSRR'";
+	ctx.font = "60px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText(this.field().name, this.width - 100, this.height - 10);
+	ctx.fillText(this.field().name, this.width - 180, this.height - 20);
 
 	ctx.restore();
 

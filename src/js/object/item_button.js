@@ -26,8 +26,8 @@ ObjectItemButton.prototype.onCollision = function(obj){
 };
 
 ObjectItemButton.prototype.setPosition = function(){
-	this.x(48);
-	this.y(this.scene.mainStage().height - 50);
+	this.x(48 + 24);
+	this.y(this.scene.mainStage().height - 75);
 };
 
 ObjectItemButton.prototype.draw = function(){
@@ -40,11 +40,11 @@ ObjectItemButton.prototype.draw = function(){
 	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
 
 	// メニュー文字 表示
-	ctx.font = "12px 'Migu'";
+	ctx.font = "24px 'Migu'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText("メニュー", this.x(), this.y() + 5);
+	ctx.fillText("メニュー", this.x() + 5, this.y() + 5);
 
 	ctx.restore();
 };
@@ -52,11 +52,11 @@ ObjectItemButton.prototype.draw = function(){
 
 
 ObjectItemButton.prototype.collisionWidth = function(){
-	return 64;
+	return 128;
 };
 
 ObjectItemButton.prototype.collisionHeight = function(){
-	return 64;
+	return 128;
 };
 
 module.exports = ObjectItemButton;

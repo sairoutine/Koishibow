@@ -57,7 +57,7 @@ SceneSubStageTalk.prototype.draw = function(){
 	// ボタン表示
 	this._showButtons();
 
-	// メッセージ表示
+	// メッセージウィンドウ表示
 	this._showMessageWindow();
 
 	// メッセージ表示
@@ -88,14 +88,14 @@ SceneSubStageTalk.prototype._showItems = function(){
 	// 仮で四角形を描画
 	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
 	//ctx.globalAlpha = 0.4;
-	ctx.fillRect(20, 20, 48, 48);
+	ctx.fillRect(20, 20, 96, 96);
 
 	// メニュー文字 表示
-	ctx.font = "12px 'Migu'";
+	ctx.font = "24px 'Migu'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText("ITEM1", 20*2 + 5, 20*2 + 5);
+	ctx.fillText("ITEM1", 30*2 + 5, 30*2 + 5);
 
 	ctx.restore();
 };
@@ -111,7 +111,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.globalAlpha = 0.8;
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
 	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150,
 		this.mainStage().height - 150,
 		160,
 		60
@@ -123,7 +123,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("使用",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 60,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60,
 		this.mainStage().height - 150 + 40
 	);
 
@@ -134,7 +134,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.globalAlpha = 0.8;
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
 	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
 		this.mainStage().height - 150,
 		160,
 		60
@@ -146,7 +146,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("合成",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
 		this.mainStage().height - 150 + 40
 	);
 
@@ -156,7 +156,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.globalAlpha = 0.8;
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
 	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
 		this.mainStage().height - 150,
 		160,
 		60
@@ -168,7 +168,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("調べる",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
 		this.mainStage().height - 150 + 40
 	);
 
@@ -186,9 +186,9 @@ SceneSubStageTalk.prototype._showMessageWindow = function(){
 	ctx.globalAlpha = 0.8;
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
 	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100,
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 150,
 		this.mainStage().height - 80,
-		this.mainStage().width  - 120 - MESSAGE_WINDOW_OUTLINE_MARGIN * 2,
+		this.mainStage().width  - 180 - MESSAGE_WINDOW_OUTLINE_MARGIN * 2,
 		70
 	);
 
@@ -198,13 +198,13 @@ SceneSubStageTalk.prototype._showMessage = function(){
 	var ctx = this.core.ctx;
 
 	// メニュー文字 表示
-	ctx.font = "18px 'Migu'";
+	ctx.font = "27px 'Migu'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("ITEM1 だ",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 100 + 70,
-		this.mainStage().height - 80 + 20
+		MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + 70,
+		this.mainStage().height - 60 + 20
 	);
 
 };

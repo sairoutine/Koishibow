@@ -33,17 +33,17 @@ var SceneTitle = function(core) {
 		var menu = MENU[i];
 
 		(function (menu) {
-			self.menu_ui.push(new UIParts(self, 520, 200 + i*50, 160, 40, function draw () {
+			self.menu_ui.push(new UIParts(self, 780, 300 + i*75, 240, 60, function draw () {
 				var ctx = this.core.ctx;
 				ctx.textAlign = 'center';
 				ctx.textBaseline = 'middle';
 				ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
 				if (this.is_big) {
-					ctx.font = "38px 'OradanoGSRR'";
+					ctx.font = "70px 'OradanoGSRR'";
 				}
 				else {
-					ctx.font = "36px 'OradanoGSRR'";
+					ctx.font = "64px 'OradanoGSRR'";
 				}
 
 				ctx.fillText(menu[0], this.x(), this.y());
@@ -121,9 +121,9 @@ SceneTitle.prototype.draw = function(){
 	var logo = this.core.image_loader.getImage('logo_wht');
 	// ロゴ画像表示
 		ctx.drawImage(logo,
-		120,
-		-120,
-		logo.width*0.2, logo.height*0.2);
+		180,
+		-180,
+		logo.width*0.3, logo.height*0.3);
 
 	ctx.restore();
 
