@@ -27,13 +27,25 @@ SpriteStudio.prototype.init = function(x, y, jsonData, data_index, opt){
 	this.is_reflect = false;
 
 	// TODO: preload
-	var imageList = new SsImageList(jsonData[data_index].images, "./image/", true);
-	var animation = new SsAnimation(jsonData[data_index].animation, imageList);
+	this.imageList = new SsImageList(jsonData[data_index].images, "./image/", true);
+	this.animation = new SsAnimation(jsonData[data_index].animation, this.imageList);
 
-	var ss = new SsSprite(animation);
+	var ss = new SsSprite(this.animation);
 
 	this.sprite = ss;
 };
+
+SpriteStudio.prototype.changeAnimation = function(jsonData){
+	var data_index = 0;
+	this.width = jsonData[data_index].animation.CanvasWidth;
+	this.height = jsonData[data_index].animation.CanvasHeight;
+
+	this.animation = new SsAnimation(jsonData[data_index].animation, this.imageList);
+
+	this.sprite.setAnimation(this.animation);
+
+};
+
 
 
 

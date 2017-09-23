@@ -6,7 +6,8 @@ var SPEED = 2;
 var base_object = require('../hakurei').object.base;
 var util = require('../hakurei').util;
 var CONSTANT = require('../constant');
-var jsonData = require('../anime/koishi_wait');
+var jsonDataOfWait = require('../anime/koishi/wait_anime_1');
+var jsonDataOfWalk = require('../anime/koishi/walk_anime_1');
 var SS = require('../object/sprite_studio');
 
 
@@ -22,13 +23,24 @@ Koishi.prototype.init = function() {
 
 	this._target_x = 0;
 	this._target_y = 0;
+
 	this.setVelocity({magnitude:0, theta:0});
 };
 
 Koishi.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
-	this.sprite.init(x, y, jsonData, 0, {scale: 0.4});
+	this.sprite.init(x, y, jsonDataOfWait, 0, {scale: 0.6});
 };
+
+Koishi.prototype.setWait = function() {
+	this.sprite.changeAnimation(jsonDataOfWait);
+};
+Koishi.prototype.setWalk = function() {
+	this.sprite.changeAnimation(jsonDataOfWalk);
+};
+
+
+
 
 Koishi.prototype.setReflect = function(flag) {
 	this.sprite.setReflect(flag);
@@ -48,14 +60,20 @@ Koishi.prototype.beforeDraw = function(){
 	// move
 	if (this._target_x) {
 		if (this.x() + SPEED >= this._target_x && this._target_x > this.x() - SPEED) {
+			// end move
 			this._target_x = 0;
 			this.setVelocity({magnitude:0, theta:0});
+
+			this.setWait();
 		}
 	}
 	if (this._target_y) {
 		if (this.y() + SPEED >= this._target_y && this._target_y > this.y() - SPEED) {
+			// end move
 			this._target_y = 0;
 			this.setVelocity({magnitude:0, theta:0});
+
+			this.setWait();
 		}
 	}
 
@@ -81,6 +99,7 @@ Koishi.prototype.setMoveTarget = function(x, y) {
 	this._target_x = x;
 	this._target_y = y;
 
+	this.setWalk();
 	if (this._target_x > this.x()) {
 		this.sprite.setReflect(false);
 	}
