@@ -40,10 +40,10 @@ var SceneTitle = function(core) {
 				ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
 				if (this.is_big) {
-					ctx.font = "70px 'OradanoGSRR'";
+					ctx.font = "64px 'OradanoGSRR'";
 				}
 				else {
-					ctx.font = "64px 'OradanoGSRR'";
+					ctx.font = "56px 'OradanoGSRR'";
 				}
 
 				ctx.fillText(menu[0], this.x(), this.y());
