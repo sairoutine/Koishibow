@@ -1,6 +1,4 @@
 [submodule "src/js/hakureijs"]
 	path = src/js/hakureijs
 	url = https://github.com/sairoutine/hakureijs.git
-[submodule "src/js/vendor/SsaPlayer"]
-	path = src/js/vendor/SsaPlayer
-	url = git@github.com:sairoutine/SsaPlayer.git
+
