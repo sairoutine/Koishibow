@@ -3,6 +3,8 @@ var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
 
+var SaveManager = require('./save_manager');
+
 var SceneTitle = require('./scene/title');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
@@ -14,6 +16,10 @@ util.inherit(Game, core);
 
 Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
+
+	// セーブデータ
+	this.save_manager = SaveManager.load();
+
 
 	this.addScene("loading", new SceneLoading(this));
 	this.addScene("title", new SceneTitle(this));

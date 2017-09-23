@@ -1,16 +1,48 @@
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
+var UIParts = require('../../hakurei').object.ui_parts;
 
 var MESSAGE_WINDOW_OUTLINE_MARGIN = 10;
 
 var SceneSubStageTalk = function(core, stage) {
 	base_scene.apply(this, arguments);
+
+	// テスト用アイテム
+	// TODO: 削除
+	this.core.save_manager.addItem(1);
+	this.core.save_manager.addItem(2);
 };
 Util.inherit(SceneSubStageTalk, base_scene);
 
 SceneSubStageTalk.prototype.init = function(){
+	var self = this;
 	base_scene.prototype.init.apply(this, arguments);
+
+	var item_list = this.core.save_manager.getItemList();
+
+	self.removeAllObject();
+	for (var i = 0, len = item_list.length; i<len; i++) {
+		self.addObject(new UIParts(self, 20 + i*100, 20, 96, 96, function() {
+			var ctx = this.core.ctx;
+
+			ctx.save();
+
+			// 仮で四角形を描画
+			ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
+			//ctx.globalAlpha = 0.4;
+			ctx.fillRect(this.x(), this.y(), 96, 96);
+
+			// メニュー文字 表示
+			ctx.font = "24px 'Migu'";
+			ctx.textAlign = 'center';
+			ctx.textBaseAlign = 'middle';
+			ctx.fillStyle = 'rgb( 0, 0, 0 )';
+			ctx.fillText("ITEM1", this.x() + 45, this.y() + 45);
+
+			ctx.restore();
+		}));
+	}
 };
 
 SceneSubStageTalk.prototype.beforeDraw = function(){
@@ -43,7 +75,6 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 };
 
 SceneSubStageTalk.prototype.draw = function(){
-	base_scene.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 
 	ctx.save();
@@ -52,7 +83,7 @@ SceneSubStageTalk.prototype.draw = function(){
 	this._showWindow();
 
 	// アイテム表示
-	this._showItems();
+	base_scene.prototype.draw.apply(this, arguments);
 
 	// ボタン表示
 	this._showButtons();
@@ -78,26 +109,6 @@ SceneSubStageTalk.prototype._showWindow = function(){
 		this.mainStage().height - 150 - MESSAGE_WINDOW_OUTLINE_MARGIN * 2
 	);
 
-};
-
-SceneSubStageTalk.prototype._showItems = function(){
-	var ctx = this.core.ctx;
-
-	ctx.save();
-
-	// 仮で四角形を描画
-	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
-	//ctx.globalAlpha = 0.4;
-	ctx.fillRect(20, 20, 96, 96);
-
-	// メニュー文字 表示
-	ctx.font = "24px 'Migu'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText("ITEM1", 30*2 + 5, 30*2 + 5);
-
-	ctx.restore();
 };
 
 SceneSubStageTalk.prototype._showButtons = function(){
