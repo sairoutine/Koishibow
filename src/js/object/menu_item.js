@@ -1,0 +1,60 @@
+'use strict';
+
+/* メニューのアイテム */
+
+var base_object = require('../hakurei').object.base;
+var Util = require('../hakurei').util;
+
+var ObjectMenuItem = function(scene, item_id) {
+	base_object.apply(this, arguments);
+
+	this.item_id = item_id;
+};
+Util.inherit(ObjectMenuItem, base_object);
+
+ObjectMenuItem.prototype.init = function(){
+	base_object.prototype.init.apply(this, arguments);
+};
+
+
+ObjectMenuItem.prototype.onCollision = function(obj){
+	this.scene.focus_item_id = this.item_id;
+};
+
+ObjectMenuItem.prototype.draw = function(){
+	var ctx = this.core.ctx;
+	ctx.save();
+
+	// 仮で四角形を描画
+	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
+	//ctx.globalAlpha = 0.4;
+	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
+
+	// 選択しているアイテムなら
+	if (this.scene.focus_item_id === this.item_id) {
+		ctx.strokeStyle = "rgb(200, 0, 0)";
+		ctx.lineWidth = 10;
+		ctx.strokeRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
+	}
+
+	// メニュー文字 表示
+	ctx.font = "24px 'Migu'";
+	ctx.textAlign = 'center';
+	ctx.textBaseAlign = 'middle';
+	ctx.fillStyle = 'rgb( 0, 0, 0 )';
+	ctx.fillText("ITEM1", this.x() + 5, this.y() + 5);
+
+	ctx.restore();
+};
+
+
+
+ObjectMenuItem.prototype.collisionWidth = function(){
+	return 96;
+};
+
+ObjectMenuItem.prototype.collisionHeight = function(){
+	return 96;
+};
+
+module.exports = ObjectMenuItem;

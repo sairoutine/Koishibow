@@ -1,7 +1,7 @@
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
-var UIParts = require('../../hakurei').object.ui_parts;
+var MenuItem = require('../../object/menu_item');
 
 var MESSAGE_WINDOW_OUTLINE_MARGIN = 10;
 
@@ -16,32 +16,20 @@ var SceneSubStageTalk = function(core, stage) {
 Util.inherit(SceneSubStageTalk, base_scene);
 
 SceneSubStageTalk.prototype.init = function(){
-	var self = this;
 	base_scene.prototype.init.apply(this, arguments);
+	var self = this;
+
+	this.focus_item_id = null;
 
 	var item_list = this.core.save_manager.getItemList();
 
 	self.removeAllObject();
 	for (var i = 0, len = item_list.length; i<len; i++) {
-		self.addObject(new UIParts(self, 20 + i*100, 20, 96, 96, function() {
-			var ctx = this.core.ctx;
-
-			ctx.save();
-
-			// 仮で四角形を描画
-			ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
-			//ctx.globalAlpha = 0.4;
-			ctx.fillRect(this.x(), this.y(), 96, 96);
-
-			// メニュー文字 表示
-			ctx.font = "24px 'Migu'";
-			ctx.textAlign = 'center';
-			ctx.textBaseAlign = 'middle';
-			ctx.fillStyle = 'rgb( 0, 0, 0 )';
-			ctx.fillText("ITEM1", this.x() + 45, this.y() + 45);
-
-			ctx.restore();
-		}));
+		var item_id = item_list[i];
+		var item = new MenuItem(this, item_id);
+		item.init();
+		item.setPosition(68 + i*100, 68);
+		self.addObject(item);
 	}
 };
 
@@ -54,9 +42,14 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 		var y = this.core.input_manager.mousePositionY();
 
 		// メニュー閉じる
-		if (this.mainStage().item_button.checkCollisionWithPosition(x, y)) {
+		this.mainStage().item_button.checkCollisionWithPosition(x, y);
 
+		// アイテム選択
+		for (var i = 0, len = this.objects.length; i < len; i++) {
+			var object = this.objects[i];
+			object.checkCollisionWithPosition(x, y);
 		}
+
 	}
 
 
