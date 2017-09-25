@@ -57,4 +57,17 @@ ObjectMenuItem.prototype.collisionHeight = function(){
 	return 96;
 };
 
+
+// アイテムが使用されたとき
+ObjectMenuItem.prototype.use = function(){
+	this.core.save_manager.increase3rdeyeGauge(100); // TODO:
+};
+
+
+
+
+
+
+
+
 module.exports = ObjectMenuItem;

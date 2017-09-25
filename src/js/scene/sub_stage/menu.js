@@ -80,6 +80,11 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 			object.checkCollisionWithPosition(x, y);
 		}
 
+		// 使用ボタン
+		if(this.use_button.checkCollisionWithPosition(x, y)) {
+			this._useItem();
+		}
+
 	}
 
 
@@ -219,6 +224,22 @@ SceneSubStageTalk.prototype._showMessage = function(){
 		this.mainStage().height - 60 + 20
 	);
 
+};
+
+SceneSubStageTalk.prototype._useItem = function(){
+	// アイテムを選択してなければ何もしない
+	if(!this.focus_item_id) return;
+
+	for(var i = 0, len = this.objects.length; i < len; i++) {
+		var obj = this.objects[i];
+		if(obj.item_id === this.focus_item_id) {
+			this.removeObject(obj);
+			obj.use();
+			break;
+		}
+	}
+
+	this.focus_item_id = null;
 };
 
 

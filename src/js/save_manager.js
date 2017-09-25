@@ -34,4 +34,27 @@ SaveManager.prototype.addItem = function(item_id){
 	return list.length - 1;
 };
 
+
+SaveManager.prototype.get3rdeyeGauge = function(){
+	var gauge = this.get("3rdeye_gauge") || 0;
+
+	return gauge;
+};
+SaveManager.prototype.increase3rdeyeGauge = function(num){
+	var gauge = this.get3rdeyeGauge();
+
+	gauge += num;
+
+	// TODO: 定数化
+	if (gauge > 1000) gauge = 1000;
+
+	this.set("3rdeye_gauge", gauge);
+};
+
+
+
+
+
+
+
 module.exports = SaveManager;
