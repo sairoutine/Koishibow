@@ -2,6 +2,7 @@
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
 var MenuItem = require('../../object/menu_item');
+var UIParts = require('../../hakurei').object.ui_parts;
 
 var MESSAGE_WINDOW_OUTLINE_MARGIN = 10;
 
@@ -31,6 +32,35 @@ SceneSubStageTalk.prototype.init = function(){
 		item.setPosition(68 + i*100, 68);
 		self.addObject(item);
 	}
+
+	// 使用ボタン
+	this.use_button = new UIParts(self, 150, self.mainStage().height - 150, 160, 60, function draw () {
+		var ctx = this.core.ctx;
+
+		ctx.save();
+		// 四角形
+		ctx.globalAlpha = 0.8;
+		ctx.fillStyle = 'rgb( 0, 0, 0 )';
+		ctx.fillRect(
+			MESSAGE_WINDOW_OUTLINE_MARGIN + 150,
+			this.scene.mainStage().height - 150,
+			160,
+			60
+		);
+
+		// メニュー文字 表示
+		ctx.font = "32px 'Migu'";
+		ctx.textAlign = 'center';
+		ctx.textBaseAlign = 'middle';
+		ctx.fillStyle = 'rgb( 255, 255, 255 )';
+		ctx.fillText("使用",
+			MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60,
+			this.scene.mainStage().height - 150 + 40
+		);
+		ctx.restore();
+	});
+	self.addObject(this.use_button);
+
 };
 
 SceneSubStageTalk.prototype.beforeDraw = function(){
@@ -108,28 +138,6 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	var ctx = this.core.ctx;
 
 	ctx.save();
-
-	/* use */
-
-	// 四角形
-	ctx.globalAlpha = 0.8;
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150,
-		this.mainStage().height - 150,
-		160,
-		60
-	);
-
-	// メニュー文字 表示
-	ctx.font = "32px 'Migu'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-	ctx.fillText("使用",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60,
-		this.mainStage().height - 150 + 40
-	);
 
 
 	/* combine */
