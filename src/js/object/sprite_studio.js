@@ -4,7 +4,7 @@ var base_object = require('../hakurei').object.base;
 var util = require('../hakurei').util;
 var CONSTANT = require('../hakurei').constant;
 
-var SsaPlayer = require('../vendor/SsaPlayer/SsaPlayer');
+var SsaPlayer = require('../vendor/SsaPlayer/src/SsaPlayer');
 var SsImageList = SsaPlayer.SsImageList;
 var SsAnimation = SsaPlayer.SsAnimation;
 var SsSprite = SsaPlayer.SsSprite;
