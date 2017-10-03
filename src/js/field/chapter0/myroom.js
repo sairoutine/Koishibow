@@ -6,7 +6,7 @@ module.exports = {
 	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_hospital_corridor1",
 	left_field: null,
-	background: "bg",
+	background: "chapter0-myroom-bg-001",
 	objects: [
 		{key: "vase", name: "花瓶", x: 540+270, y: 220+110}
 	],
