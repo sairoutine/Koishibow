@@ -62,10 +62,12 @@ SceneStage.prototype.init = function(field_name, is_right){
 	this._current_field_name = field_name;
 
 	this.removeAllObject();
+	this.setupPiece();
 	this.addObject(this._koishi);
 
 	// フィールド移動時にフェードインする
 	this.setFadeIn(30, "black");
+
 
 	// フィールド開始時の初期位置の決定
 	// 右から来たか、左から来たかでこいしの初期位置が変わる
@@ -80,7 +82,6 @@ SceneStage.prototype.init = function(field_name, is_right){
 		this.koishi().setPosition(pos.x, pos.y);
 	}
 
-	this.setupPiece();
 
 	if (this.field().left_field) {
 		this.addObject(this.left_yajirushi);
@@ -156,6 +157,7 @@ SceneStage.prototype.setupPiece = function() {
 		var piece = new Piece(this);
 		piece.init();
 		piece.setPosition(object.x, object.y);
+		piece.addImage(object.image);
 		this.addObject(piece);
 
 		this.pieces.push(piece);
