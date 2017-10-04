@@ -1,4 +1,5 @@
 // 病院の廊下2(こころ)
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_hospital_corridor2",
 	name: "病院の廊下2",

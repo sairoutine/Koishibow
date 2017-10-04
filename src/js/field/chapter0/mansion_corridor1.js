@@ -1,4 +1,5 @@
 // 屋敷の廊下1
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_mansion_corridor1",
 	name: "屋敷の廊下1",

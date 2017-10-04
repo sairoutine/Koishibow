@@ -1,4 +1,5 @@
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_hospital_corridor1",
 	name: "病院の廊下1",
@@ -8,9 +9,9 @@ module.exports = {
 	left_field: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
 	objects: [
-		{image: "chapter0-hospital_corridor1-obj-01-01", name: "手術台", x: 555, y: 470, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-02-01", name: "金庫",   x: 205, y: 300, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-03-01", name: "バケツ", x: 230, y: 240, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-04-01", name: "メス",   x: 830, y: 530, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "手術台", x: 555, y: 470, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "金庫",   x: 205, y: 300, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "バケツ", x: 230, y: 240, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-04-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "メス",   x: 830, y: 530, scale: 0.7},
 	],
 };

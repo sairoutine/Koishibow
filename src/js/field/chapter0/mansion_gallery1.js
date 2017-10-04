@@ -1,4 +1,5 @@
 // 画廊(屋敷の廊下2から遷移)
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_mansion_gallery1",
 	name: "屋敷の廊下3",
