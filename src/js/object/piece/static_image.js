@@ -6,6 +6,7 @@ var ObjectPiece = function(core) {
 	base_scene.apply(this, arguments);
 
 	this.image = null;
+	this.scale = 1;
 };
 Util.inherit(ObjectPiece, base_scene);
 
@@ -13,6 +14,7 @@ ObjectPiece.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
 	this.image = null;
+	this.scale = 1;
 };
 
 ObjectPiece.prototype.onCollision = function(obj){
