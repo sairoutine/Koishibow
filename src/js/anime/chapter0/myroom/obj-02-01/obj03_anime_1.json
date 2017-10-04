@@ -1,0 +1,22 @@
+[
+{
+"images":["chapter0-myroom-obj-02-01.png"],
+"name": "obj03_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 500,
+"CanvasHeight": 500,
+"MarginWidth": 258,
+"MarginHeight": 258,
+"parts": ["root","Obj","03"],
+"ssa": [
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+]
+]
+}
+}
+]
