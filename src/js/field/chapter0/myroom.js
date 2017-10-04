@@ -8,8 +8,8 @@ module.exports = {
 	left_field: null,
 	background: "chapter0-myroom-bg-001",
 	objects: [
-		{image: "chapter0-myroom-obj-01-01", name: "ベッド", x: 80, y: 270},
-		{image: "chapter0-myroom-obj-05-01", name: "机", x: 0, y: 425}
+		{image: "chapter0-myroom-obj-01-01", name: "ベッド", x: 80, y: 270, scale: 0.3},
+		{image: "chapter0-myroom-obj-05-01", name: "机", x: 0, y: 425, scale: 0.3}
 	],
 };
 
