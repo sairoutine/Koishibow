@@ -4,6 +4,7 @@ var base_scene = require('./stage_base');
 
 var util = require('../hakurei').util;
 var CONSTANT = require('../hakurei').constant;
+var CONSTANT2 = require('../constant');
 
 var SceneSubStagePlay = require('./sub_stage/play');
 var SceneSubStageTalk = require('./sub_stage/talk');
@@ -11,7 +12,8 @@ var SceneSubStageMenu = require('./sub_stage/menu');
 
 var Koishi = require('../object/koishi');
 
-var Piece = require('../object/piece/1');
+var PieceStaticImage = require('../object/piece/static_image');
+var PieceAnimeImage = require('../object/piece/anime_image');
 
 var LeftYajirushi = require('../object/left_yajirushi');
 var RightYajirushi = require('../object/right_yajirushi');
@@ -154,13 +156,26 @@ SceneStage.prototype.setupPiece = function() {
 
 	for (var i = 0, len = objects.length; i < len; i++) {
 		var object = objects[i];
-		var piece = new Piece(this);
-		piece.init();
-		piece.setPosition(object.x, object.y);
-		piece.addImage(object.image, object.scale);
-		this.addObject(piece);
+		var piece;
+		if (object.type === CONSTANT2.STATIC_IMAGE_TYPE) {
+			piece = new PieceStaticImage(this);
+			piece.init();
+			piece.setPosition(object.x, object.y);
+			piece.addImage(object.image, object.scale);
+			this.addObject(piece);
 
-		this.pieces.push(piece);
+			this.pieces.push(piece);
+		}
+		else if (object.type === CONSTANT2.ANIME_IMAGE_TYPE) {
+			piece = new PieceAnimeImage(this);
+			piece.init();
+			piece.setPosition(object.x, object.y);
+			piece.addImage(object.image, object.scale);
+			this.addObject(piece);
+
+			this.pieces.push(piece);
+		}
+
 	}
 };
 
