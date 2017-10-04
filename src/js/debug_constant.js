@@ -1,8 +1,9 @@
 'use strict';
 var DEBUG = {
-	ON: false,
+	ON: true,
 	SOUND_OFF: false,
-	//START_SCENE: "title",
+	// 第一引数: scene name, 第二引数以降: 引数
+	START_SCENE: ["stage", "chapter0_hospital_corridor1"],
 };
 
 module.exports = DEBUG;
