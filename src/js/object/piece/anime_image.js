@@ -2,25 +2,27 @@
 var base_scene = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
 
-var ObjectPiece = function(core) {
+var ObjectPieceAnimeImage = function(core) {
 	base_scene.apply(this, arguments);
 
 	this.image = null;
+	this.scale = 1;
 };
-Util.inherit(ObjectPiece, base_scene);
+Util.inherit(ObjectPieceAnimeImage, base_scene);
 
-ObjectPiece.prototype.init = function(){
+ObjectPieceAnimeImage.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
 	this.image = null;
+	this.scale = 1;
 };
 
-ObjectPiece.prototype.onCollision = function(obj){
+ObjectPieceAnimeImage.prototype.onCollision = function(obj){
 	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("talk");
+	//this.scene.mainStage().changeSubScene("talk");
 };
 
-ObjectPiece.prototype.draw = function(){
+ObjectPieceAnimeImage.prototype.draw = function(){
 	if (!this.image) return;
 	var ctx = this.core.ctx;
 	var SCALE = 0.3;
@@ -49,17 +51,17 @@ ObjectPiece.prototype.draw = function(){
 
 
 
-ObjectPiece.prototype.collisionWidth = function(){
+ObjectPieceAnimeImage.prototype.collisionWidth = function(){
 	return 100;
 };
 
-ObjectPiece.prototype.collisionHeight = function(){
+ObjectPieceAnimeImage.prototype.collisionHeight = function(){
 	return 100;
 };
 
-ObjectPiece.prototype.addImage = function(image_name, scale){
+ObjectPieceAnimeImage.prototype.addImage = function(image_name, scale){
 	this.image = image_name;
 	this.scale = scale || 1;
 };
 
-module.exports = ObjectPiece;
+module.exports = ObjectPieceAnimeImage;
