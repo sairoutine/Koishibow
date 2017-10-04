@@ -30,8 +30,8 @@ ObjectPiece.prototype.draw = function(){
 	ctx.drawImage(image,
 					this.x(),
 					this.y(),
-					image.width * SCALE,
-					image.height * SCALE);
+					image.width * this.scale,
+					image.height * this.scale);
 	ctx.restore();
 
 
@@ -57,8 +57,9 @@ ObjectPiece.prototype.collisionHeight = function(){
 	return 100;
 };
 
-ObjectPiece.prototype.addImage = function(image_name){
+ObjectPiece.prototype.addImage = function(image_name, scale){
 	this.image = image_name;
+	this.scale = scale || 1;
 };
 
 module.exports = ObjectPiece;

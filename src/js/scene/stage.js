@@ -157,7 +157,7 @@ SceneStage.prototype.setupPiece = function() {
 		var piece = new Piece(this);
 		piece.init();
 		piece.setPosition(object.x, object.y);
-		piece.addImage(object.image);
+		piece.addImage(object.image, object.scale);
 		this.addObject(piece);
 
 		this.pieces.push(piece);
