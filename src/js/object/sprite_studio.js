@@ -46,6 +46,21 @@ SpriteStudio.prototype.changeAnimation = function(jsonData){
 
 };
 
+SpriteStudio.prototype.playAnimationOnce = function(jsonData, _callback){
+	var self = this;
+	var sprite = self.sprite;
+	var max_loop = sprite.getLoop();
+
+	var callback = function () {
+		sprite.setEndCallBack(null);
+		sprite.setLoop(max_loop);
+		_callback();
+	};
+
+	sprite.setEndCallBack(callback);
+	sprite.setLoop(1);
+	self.changeAnimation(jsonData);
+};
 
 
 
