@@ -1,4 +1,197 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var anime_list = [
+	require('./anime/chapter0/myroom/obj-02-01/obj01_anime_1'),
+	require('./anime/chapter0/myroom/obj-02-01/obj02_anime_1'),
+	require('./anime/chapter0/myroom/obj-02-01/obj03_anime_1'),
+];
+
+var anime_map = {};
+
+for (var i = 0, len = anime_list.length; i < len; i++) {
+	var anime = anime_list[i];
+	// index = 0 のみ有効
+	anime_map[anime[0].name] = anime;
+
+	// TODO: key 名が被ってたらデバッグではエラー
+}
+module.exports = anime_map;
+
+
+},{"./anime/chapter0/myroom/obj-02-01/obj01_anime_1":2,"./anime/chapter0/myroom/obj-02-01/obj02_anime_1":3,"./anime/chapter0/myroom/obj-02-01/obj03_anime_1":4}],2:[function(require,module,exports){
+module.exports=[
+{
+"images":["chapter0-myroom-obj-02-01.png"],
+"name": "obj01_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 500,
+"CanvasHeight": 500,
+"MarginWidth": 258,
+"MarginHeight": 258,
+"parts": ["root","Obj","01"],
+"ssa": [
+[
+[1,0,0,268,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,268,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+]
+]
+}
+}
+]
+
+},{}],3:[function(require,module,exports){
+module.exports=[
+{
+"images":["chapter0-myroom-obj-02-01.png"],
+"name": "obj02_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 500,
+"CanvasHeight": 500,
+"MarginWidth": 258,
+"MarginHeight": 258,
+"parts": ["root","Obj","03","02","01"],
+"ssa": [
+[
+[3,0,0,268,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[2,0,350,268,348,244,0.0,0.0,0.0,1.005000,1.005000,174,122,0,0,0.400000],
+[3,0,0,268,348,244,0.0,0.0,0.0,1.005000,1.005000,174,122,0,0,0.900000]
+],
+[
+[2,0,350,268,348,244,0.0,0.0,0.0,1.010000,1.010000,174,122,0,0,0.466667],
+[3,0,0,268,348,244,0.0,0.0,0.0,1.010000,1.010000,174,122,0,0,0.800000]
+],
+[
+[2,0,350,268,348,244,0.0,0.0,0.0,1.015000,1.015000,174,122,0,0,0.533333],
+[3,0,0,268,348,244,0.0,0.0,0.0,1.015000,1.015000,174,122,0,0,0.700000]
+],
+[
+[2,0,350,268,348,244,0.0,0.0,0.0,1.020000,1.020000,174,122,0,0,0.600000],
+[3,0,0,268,348,244,0.0,0.0,0.0,1.020000,1.020000,174,122,0,0,0.600000]
+],
+[
+[2,0,350,268,348,244,0.0,0.0,0.0,1.025000,1.025000,174,122,0,0,0.666667],
+[3,0,0,268,348,244,0.0,0.0,0.0,1.025000,1.025000,174,122,0,0,0.500000]
+],
+[
+[2,0,350,268,348,244,0.0,0.0,0.0,1.030000,1.030000,174,122,0,0,0.733333],
+[3,0,0,268,348,244,0.0,0.0,0.0,1.030000,1.030000,174,122,0,0,0.400000]
+],
+[
+[2,0,350,268,348,244,0.0,0.0,0.0,1.035000,1.035000,174,122,0,0,0.800000],
+[3,0,0,268,348,244,0.0,0.0,0.0,1.035000,1.035000,174,122,0,0,0.300000]
+],
+[
+[2,0,350,268,348,244,0.0,0.0,0.0,1.040000,1.040000,174,122,0,0,0.866667],
+[3,0,0,268,348,244,0.0,0.0,0.0,1.040000,1.040000,174,122,0,0,0.200000]
+],
+[
+[2,0,350,268,348,244,0.0,0.0,0.0,1.045000,1.045000,174,122,0,0,0.933333],
+[3,0,0,268,348,244,0.0,0.0,0.0,1.045000,1.045000,174,122,0,0,0.100000]
+],
+[
+[2,0,350,268,348,244,0.0,0.0,0.0,1.050000,1.050000,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.045000,1.045000,174,122,0,0,0.400000],
+[2,0,350,268,348,244,0.0,0.0,0.0,1.045000,1.045000,174,122,0,0,0.900000]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.040000,1.040000,174,122,0,0,0.466667],
+[2,0,350,268,348,244,0.0,0.0,0.0,1.040000,1.040000,174,122,0,0,0.800000]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.035000,1.035000,174,122,0,0,0.533333],
+[2,0,350,268,348,244,0.0,0.0,0.0,1.035000,1.035000,174,122,0,0,0.700000]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.030000,1.030000,174,122,0,0,0.600000],
+[2,0,350,268,348,244,0.0,0.0,0.0,1.030000,1.030000,174,122,0,0,0.600000]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.025000,1.025000,174,122,0,0,0.666667],
+[2,0,350,268,348,244,0.0,0.0,0.0,1.025000,1.025000,174,122,0,0,0.500000]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.020000,1.020000,174,122,0,0,0.733333],
+[2,0,350,268,348,244,0.0,0.0,0.0,1.020000,1.020000,174,122,0,0,0.400000]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.015000,1.015000,174,122,0,0,0.800000],
+[2,0,350,268,348,244,0.0,0.0,0.0,1.015000,1.015000,174,122,0,0,0.300000]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.010000,1.010000,174,122,0,0,0.866667],
+[2,0,350,268,348,244,0.0,0.0,0.0,1.010000,1.010000,174,122,0,0,0.200000]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.005000,1.005000,174,122,0,0,0.933333],
+[2,0,350,268,348,244,0.0,0.0,0.0,1.005000,1.005000,174,122,0,0,0.100000]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+]
+]
+}
+}
+]
+
+},{}],4:[function(require,module,exports){
+module.exports=[
+{
+"images":["chapter0-myroom-obj-02-01.png"],
+"name": "obj03_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 500,
+"CanvasHeight": 500,
+"MarginWidth": 258,
+"MarginHeight": 258,
+"parts": ["root","Obj","03"],
+"ssa": [
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+],
+[
+[1,0,0,22,348,244,0.0,0.0,0.0,1.0,1.0,174,122]
+]
+]
+}
+}
+]
+
+},{}],5:[function(require,module,exports){
 module.exports=[
 {
 "images":["koishi.png"],
@@ -1378,7 +1571,7 @@ module.exports=[
 }
 ]
 
-},{}],2:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports=[
 {
 "images":["koishi.png"],
@@ -2296,13 +2489,14 @@ module.exports=[
 }
 ]
 
-},{}],3:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 var AssetsConfig = {};
 AssetsConfig.images = {
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
+	"chapter0-myroom-obj-02-01": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",
 	"chapter0-myroom-obj-05-01": "./image/chapter0/myroom/chapter0-myroom-obj-05-01.png",
 
 	"chapter0-hospital_corridor1-bg-001":    "./image/chapter0/hospital_corridor1/chapter0-hospital-bg-001.jpg",
@@ -2328,12 +2522,17 @@ AssetsConfig.bgms = {
 
 module.exports = AssetsConfig;
 
-},{}],4:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 var DEBUG = require("./debug_constant");
 
 var CONSTANT = {
 	DEBUG: {},
+
+	// オブジェクトの種類
+	STATIC_IMAGE_TYPE: 1,
+	ANIME_IMAGE_TYPE:  2,
+
 };
 
 if (DEBUG.ON) {
@@ -2341,18 +2540,19 @@ if (DEBUG.ON) {
 }
 module.exports = CONSTANT;
 
-},{"./debug_constant":5}],5:[function(require,module,exports){
+},{"./debug_constant":9}],9:[function(require,module,exports){
 'use strict';
 var DEBUG = {
 	ON: true,
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
-	START_SCENE: ["stage", "chapter0_hospital_corridor1"],
+	//START_SCENE: ["stage", "chapter0_hospital_corridor1"],
+	START_SCENE: ["stage", "chapter0_myroom"],
 };
 
 module.exports = DEBUG;
 
-},{}],6:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 var field_list = [
 	require("./field/chapter0/myroom"),
 	require("./field/chapter0/hospital_corridor1"),
@@ -2377,8 +2577,9 @@ for (var i = 0, len = field_list.length; i < len; i++) {
 module.exports = field_map;
 
 
-},{"./field/chapter0/hospital_corridor1":7,"./field/chapter0/hospital_corridor2":8,"./field/chapter0/mansion_corridor1":9,"./field/chapter0/mansion_corridor2":10,"./field/chapter0/mansion_corridor3":11,"./field/chapter0/mansion_gallery1":12,"./field/chapter0/myroom":13}],7:[function(require,module,exports){
+},{"./field/chapter0/hospital_corridor1":11,"./field/chapter0/hospital_corridor2":12,"./field/chapter0/mansion_corridor1":13,"./field/chapter0/mansion_corridor2":14,"./field/chapter0/mansion_corridor3":15,"./field/chapter0/mansion_gallery1":16,"./field/chapter0/myroom":17}],11:[function(require,module,exports){
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_hospital_corridor1",
 	name: "病院の廊下1",
@@ -2388,15 +2589,16 @@ module.exports = {
 	left_field: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
 	objects: [
-		{image: "chapter0-hospital_corridor1-obj-01-01", name: "手術台", x: 555, y: 470, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-02-01", name: "金庫",   x: 205, y: 300, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-03-01", name: "バケツ", x: 230, y: 240, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-04-01", name: "メス",   x: 830, y: 530, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "手術台", x: 555, y: 470, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "金庫",   x: 205, y: 300, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "バケツ", x: 230, y: 240, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-04-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "メス",   x: 830, y: 530, scale: 0.7},
 	],
 };
 
-},{}],8:[function(require,module,exports){
+},{"../../constant":8}],12:[function(require,module,exports){
 // 病院の廊下2(こころ)
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_hospital_corridor2",
 	name: "病院の廊下2",
@@ -2412,8 +2614,9 @@ module.exports = {
 
 
 
-},{}],9:[function(require,module,exports){
+},{"../../constant":8}],13:[function(require,module,exports){
 // 屋敷の廊下1
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_mansion_corridor1",
 	name: "屋敷の廊下1",
@@ -2427,8 +2630,9 @@ module.exports = {
 
 };
 
-},{}],10:[function(require,module,exports){
+},{"../../constant":8}],14:[function(require,module,exports){
 // 屋敷の廊下2(ドアがある) 最初のフラッシュバックが入る
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_mansion_corridor2",
 	name: "屋敷の廊下2",
@@ -2443,8 +2647,9 @@ module.exports = {
 };
 
 
-},{}],11:[function(require,module,exports){
+},{"../../constant":8}],15:[function(require,module,exports){
 // 屋敷の廊下3(家具) 行き止まり (サードアイを使用すると、家具が豹変／床に扉が出現)
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_mansion_corridor3",
 	name: "屋敷の廊下3",
@@ -2459,8 +2664,9 @@ module.exports = {
 };
 
 
-},{}],12:[function(require,module,exports){
+},{"../../constant":8}],16:[function(require,module,exports){
 // 画廊(屋敷の廊下2から遷移)
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_mansion_gallery1",
 	name: "屋敷の廊下3",
@@ -2475,8 +2681,9 @@ module.exports = {
 };
 
 
-},{}],13:[function(require,module,exports){
+},{"../../constant":8}],17:[function(require,module,exports){
 // こいしの自室(ベッド／帽子／ドア) 帽子はベッドのふちにかけてある
+var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_myroom",
 	name: "こいしの部屋",
@@ -2486,14 +2693,16 @@ module.exports = {
 	left_field: null,
 	background: "chapter0-myroom-bg-001",
 	objects: [
-		{image: "chapter0-myroom-obj-01-01", name: "ベッド", x: 80, y: 270, scale: 0.3},
-		{image: "chapter0-myroom-obj-05-01", name: "机", x: 0, y: 425, scale: 0.3}
+		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", x: 80, y: 270, scale: 0.3},
+		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "机", x: 0, y: 425, scale: 0.3},
+		{image: "chapter0-myroom-obj-02-01", type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", x: 340, y: 530, scale: 0.3, anime1: "obj01_anime_1", anime2: "obj02_anime_1", anime3: "obj03_anime_1",
+		}
 	],
 };
 
 
 
-},{}],14:[function(require,module,exports){
+},{"../../constant":8}],18:[function(require,module,exports){
 'use strict';
 var core = require('./hakurei').core;
 var util = require('./hakurei').util;
@@ -2544,12 +2753,12 @@ Game.prototype.stopBGM = function () {
 
 module.exports = Game;
 
-},{"./constant":4,"./hakurei":15,"./save_manager":59,"./scene/loading":60,"./scene/stage":61,"./scene/title":67}],15:[function(require,module,exports){
+},{"./constant":8,"./hakurei":19,"./save_manager":64,"./scene/loading":65,"./scene/stage":66,"./scene/title":72}],19:[function(require,module,exports){
 'use strict';
 
 module.exports = require("./hakureijs/index");
 
-},{"./hakureijs/index":23}],16:[function(require,module,exports){
+},{"./hakureijs/index":27}],20:[function(require,module,exports){
 'use strict';
 
 var AudioLoader = function() {
@@ -2745,7 +2954,7 @@ AudioLoader.prototype.progress = function() {
 
 module.exports = AudioLoader;
 
-},{}],17:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 var FontLoader = function() {
@@ -2771,7 +2980,7 @@ FontLoader.prototype.progress = function() {
 
 module.exports = FontLoader;
 
-},{}],18:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 var ImageLoader = function() {
@@ -2825,7 +3034,7 @@ ImageLoader.prototype.progress = function() {
 
 module.exports = ImageLoader;
 
-},{}],19:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 // only keyboard (because core class uses key board map)
@@ -2842,7 +3051,7 @@ var Constant = {
 
 module.exports = Constant;
 
-},{}],20:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 var CONSTANT = {
@@ -2874,7 +3083,7 @@ CONSTANT.SPRITE3D.A_SIZE =
 
 module.exports = CONSTANT;
 
-},{}],21:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 /* TODO: create input_manager class */
@@ -3199,7 +3408,7 @@ Core.prototype.createWebGLContext = function(canvas) {
 
 module.exports = Core;
 
-},{"./asset_loader/audio":16,"./asset_loader/font":17,"./asset_loader/image":18,"./constant":19,"./debug_manager":22,"./input_manager":24,"./scene/loading":43,"./shader/main.fs":45,"./shader/main.vs":46,"./shader_program":47,"webgl-debug":35}],22:[function(require,module,exports){
+},{"./asset_loader/audio":20,"./asset_loader/font":21,"./asset_loader/image":22,"./constant":23,"./debug_manager":26,"./input_manager":28,"./scene/loading":47,"./shader/main.fs":49,"./shader/main.vs":50,"./shader_program":51,"webgl-debug":39}],26:[function(require,module,exports){
 'use strict';
 
 var DebugManager = function (core) {
@@ -3266,7 +3475,7 @@ DebugManager.prototype.isShowingCollisionArea = function () {
 
 module.exports = DebugManager;
 
-},{}],23:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 module.exports = {
 	util: require("./util"),
@@ -3298,7 +3507,7 @@ module.exports = {
 
 };
 
-},{"./asset_loader/audio":16,"./asset_loader/font":17,"./asset_loader/image":18,"./constant":19,"./core":21,"./object/base":36,"./object/pool_manager":37,"./object/pool_manager3d":38,"./object/sprite":39,"./object/sprite3d":40,"./object/ui_parts":41,"./scene/base":42,"./scene/loading":43,"./serif_manager":44,"./shader_program":47,"./storage/base":48,"./storage/save":49,"./util":50}],24:[function(require,module,exports){
+},{"./asset_loader/audio":20,"./asset_loader/font":21,"./asset_loader/image":22,"./constant":23,"./core":25,"./object/base":40,"./object/pool_manager":41,"./object/pool_manager3d":42,"./object/sprite":43,"./object/sprite3d":44,"./object/ui_parts":45,"./scene/base":46,"./scene/loading":47,"./serif_manager":48,"./shader_program":51,"./storage/base":52,"./storage/save":53,"./util":54}],28:[function(require,module,exports){
 'use strict';
 
 var CONSTANT = require("./constant");
@@ -3695,7 +3904,7 @@ InputManager.prototype.dumpGamePadKey = function() {
 
 module.exports = InputManager;
 
-},{"./constant":19,"./util":50}],25:[function(require,module,exports){
+},{"./constant":23,"./util":54}],29:[function(require,module,exports){
 /**
  * @fileoverview gl-matrix - High performance matrix and vector operations
  * @author Brandon Jones
@@ -3733,7 +3942,7 @@ exports.quat = require("./gl-matrix/quat.js");
 exports.vec2 = require("./gl-matrix/vec2.js");
 exports.vec3 = require("./gl-matrix/vec3.js");
 exports.vec4 = require("./gl-matrix/vec4.js");
-},{"./gl-matrix/common.js":26,"./gl-matrix/mat2.js":27,"./gl-matrix/mat2d.js":28,"./gl-matrix/mat3.js":29,"./gl-matrix/mat4.js":30,"./gl-matrix/quat.js":31,"./gl-matrix/vec2.js":32,"./gl-matrix/vec3.js":33,"./gl-matrix/vec4.js":34}],26:[function(require,module,exports){
+},{"./gl-matrix/common.js":30,"./gl-matrix/mat2.js":31,"./gl-matrix/mat2d.js":32,"./gl-matrix/mat3.js":33,"./gl-matrix/mat4.js":34,"./gl-matrix/quat.js":35,"./gl-matrix/vec2.js":36,"./gl-matrix/vec3.js":37,"./gl-matrix/vec4.js":38}],30:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -3805,7 +4014,7 @@ glMatrix.equals = function(a, b) {
 
 module.exports = glMatrix;
 
-},{}],27:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -4243,7 +4452,7 @@ mat2.multiplyScalarAndAdd = function(out, a, b, scale) {
 
 module.exports = mat2;
 
-},{"./common.js":26}],28:[function(require,module,exports){
+},{"./common.js":30}],32:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -4714,7 +4923,7 @@ mat2d.equals = function (a, b) {
 
 module.exports = mat2d;
 
-},{"./common.js":26}],29:[function(require,module,exports){
+},{"./common.js":30}],33:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -5462,7 +5671,7 @@ mat3.equals = function (a, b) {
 
 module.exports = mat3;
 
-},{"./common.js":26}],30:[function(require,module,exports){
+},{"./common.js":30}],34:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -7600,7 +7809,7 @@ mat4.equals = function (a, b) {
 
 module.exports = mat4;
 
-},{"./common.js":26}],31:[function(require,module,exports){
+},{"./common.js":30}],35:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -8202,7 +8411,7 @@ quat.equals = vec4.equals;
 
 module.exports = quat;
 
-},{"./common.js":26,"./mat3.js":29,"./vec3.js":33,"./vec4.js":34}],32:[function(require,module,exports){
+},{"./common.js":30,"./mat3.js":33,"./vec3.js":37,"./vec4.js":38}],36:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -8791,7 +9000,7 @@ vec2.equals = function (a, b) {
 
 module.exports = vec2;
 
-},{"./common.js":26}],33:[function(require,module,exports){
+},{"./common.js":30}],37:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -9570,7 +9779,7 @@ vec3.equals = function (a, b) {
 
 module.exports = vec3;
 
-},{"./common.js":26}],34:[function(require,module,exports){
+},{"./common.js":30}],38:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -10181,7 +10390,7 @@ vec4.equals = function (a, b) {
 
 module.exports = vec4;
 
-},{"./common.js":26}],35:[function(require,module,exports){
+},{"./common.js":30}],39:[function(require,module,exports){
 (function (global){
 /*
 ** Copyright (c) 2012 The Khronos Group Inc.
@@ -11139,7 +11348,7 @@ return {
 module.exports = WebGLDebugUtils;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],36:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 'use strict';
 
 var util = require('../util');
@@ -11527,7 +11736,7 @@ ObjectPoint.prototype.height = function() {
 
 module.exports = ObjectBase;
 
-},{"../util":50}],37:[function(require,module,exports){
+},{"../util":54}],41:[function(require,module,exports){
 'use strict';
 
 // TODO: add pooling logic
@@ -11625,7 +11834,7 @@ PoolManager.prototype.removeOutOfStageObjects = function() {
 
 module.exports = PoolManager;
 
-},{"../util":50,"./base":36}],38:[function(require,module,exports){
+},{"../util":54,"./base":40}],42:[function(require,module,exports){
 'use strict';
 
 // TODO: add pooling logic
@@ -11866,7 +12075,7 @@ PoolManager3D.prototype.shader = function(){
 
 module.exports = PoolManager3D;
 
-},{"../constant_3d":20,"../util":50,"./base":36,"gl-matrix":25}],39:[function(require,module,exports){
+},{"../constant_3d":24,"../util":54,"./base":40,"gl-matrix":29}],43:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var util = require('../util');
@@ -12009,7 +12218,7 @@ Sprite.prototype.alpha = function() {
 
 module.exports = Sprite;
 
-},{"../util":50,"./base":36}],40:[function(require,module,exports){
+},{"../util":54,"./base":40}],44:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var util = require('../util');
@@ -12354,7 +12563,7 @@ Sprite3d.prototype.isReflect = function(){
 
 module.exports = Sprite3d;
 
-},{"../constant_3d":20,"../util":50,"./base":36,"gl-matrix":25}],41:[function(require,module,exports){
+},{"../constant_3d":24,"../util":54,"./base":40,"gl-matrix":29}],45:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../util');
@@ -12411,7 +12620,7 @@ ObjectUIParts.prototype.draw = function(){
 
 module.exports = ObjectUIParts;
 
-},{"../util":50,"./base":36}],42:[function(require,module,exports){
+},{"../util":54,"./base":40}],46:[function(require,module,exports){
 'use strict';
 
 var SceneBase = function(core, scene) {
@@ -12661,7 +12870,7 @@ SceneBase.prototype.y = function(val) {
 module.exports = SceneBase;
 
 
-},{}],43:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 'use strict';
 
 // loading scene
@@ -12730,7 +12939,7 @@ SceneLoading.prototype.notifyAllLoaded = function(){
 
 module.exports = SceneLoading;
 
-},{"../util":50,"./base":42}],44:[function(require,module,exports){
+},{"../util":54,"./base":46}],48:[function(require,module,exports){
 'use strict';
 
 // typography speed
@@ -12977,13 +13186,13 @@ SerifManager.prototype.background_image = function () {
 
 module.exports = SerifManager;
 
-},{"./util":50}],45:[function(require,module,exports){
+},{"./util":54}],49:[function(require,module,exports){
 module.exports = "precision mediump float;\nuniform sampler2D uSampler;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tvec4 textureColor = texture2D(uSampler, vTextureCoordinates);\n\tgl_FragColor = textureColor * vColor;\n}\n\n";
 
-},{}],46:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 module.exports = "attribute vec3 aVertexPosition;\nattribute vec2 aTextureCoordinates;\nattribute vec4 aColor;\n\nuniform mat4 uMVMatrix;\nuniform mat4 uPMatrix;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tgl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);\n\tvTextureCoordinates = aTextureCoordinates;\n\tvColor = aColor;\n}\n\n";
 
-},{}],47:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 'use strict';
 var glmat = require("gl-matrix");
 
@@ -13054,7 +13263,7 @@ ShaderProgram.prototype.createShaderProgram = function(gl, vertex_shader, fragme
 
 module.exports = ShaderProgram;
 
-},{"gl-matrix":25}],48:[function(require,module,exports){
+},{"gl-matrix":29}],52:[function(require,module,exports){
 'use strict';
 
 /*
@@ -13254,7 +13463,7 @@ StorageBase.prototype._removeWebStorage = function() {
 
 module.exports = StorageBase;
 
-},{"../util":50}],49:[function(require,module,exports){
+},{"../util":54}],53:[function(require,module,exports){
 'use strict';
 var base_class = require('./base');
 var util = require('../util');
@@ -13276,7 +13485,7 @@ StorageSave.KEY = function(){
 
 module.exports = StorageSave;
 
-},{"../util":50,"./base":48}],50:[function(require,module,exports){
+},{"../util":54,"./base":52}],54:[function(require,module,exports){
 'use strict';
 var Util = {
 	inherit: function( child, parent ) {
@@ -13344,7 +13553,7 @@ var Util = {
 
 module.exports = Util;
 
-},{}],51:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 'use strict';
 var Game = require('./game');
 
@@ -13391,7 +13600,7 @@ if(window.require) {
 
 
 
-},{"./game":14}],52:[function(require,module,exports){
+},{"./game":18}],56:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -13455,7 +13664,7 @@ ObjectItemButton.prototype.collisionHeight = function(){
 
 module.exports = ObjectItemButton;
 
-},{"../hakurei":15}],53:[function(require,module,exports){
+},{"../hakurei":19}],57:[function(require,module,exports){
 'use strict';
 
 // こいしの歩く速度
@@ -13573,7 +13782,7 @@ Koishi.prototype.setMoveTarget = function(x, y) {
 
 module.exports = Koishi;
 
-},{"../anime/koishi/wait_anime_1":1,"../anime/koishi/walk_anime_1":2,"../constant":4,"../hakurei":15,"../object/sprite_studio":58}],54:[function(require,module,exports){
+},{"../anime/koishi/wait_anime_1":5,"../anime/koishi/walk_anime_1":6,"../constant":8,"../hakurei":19,"../object/sprite_studio":63}],58:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -13631,7 +13840,7 @@ ObjectLeftYajirushi.prototype.collisionHeight = function(){
 
 module.exports = ObjectLeftYajirushi;
 
-},{"../hakurei":15}],55:[function(require,module,exports){
+},{"../hakurei":19}],59:[function(require,module,exports){
 'use strict';
 
 /* メニューのアイテム */
@@ -13706,35 +13915,129 @@ ObjectMenuItem.prototype.use = function(){
 
 module.exports = ObjectMenuItem;
 
-},{"../hakurei":15}],56:[function(require,module,exports){
+},{"../hakurei":19}],60:[function(require,module,exports){
 'use strict';
-var base_scene = require('../../hakurei').object.base;
+var base_object = require('../../hakurei').object.base;
+var Util = require('../../hakurei').util;
+var SS = require('../sprite_studio');
+var AnimeMap = require('../../anime');
+
+var ObjectAnimeImage = function(core) {
+	base_object.apply(this, arguments);
+
+	// 拡縮
+	this.scale = 1;
+
+	this.before_anime = null;
+	this.click_anime  = null;
+	this.after_anime  = null;
+
+	// アニメ
+	this.sprite = new SS(this.scene);
+};
+Util.inherit(ObjectAnimeImage, base_object);
+
+ObjectAnimeImage.prototype.init = function(){
+	base_object.prototype.init.apply(this, arguments);
+
+	this.scale = 1;
+	this.before_anime = null;
+	this.click_anime  = null;
+	this.after_anime  = null;
+};
+ObjectAnimeImage.prototype.setPosition = function(x, y) {
+	base_object.prototype.setPosition.apply(this, arguments);
+
+	this.sprite.init(x, y, this.before_anime, 0, {scale: this.scale});
+
+	// update sprite
+	this.sprite.x(this.x());
+	this.sprite.y(this.y());
+};
+
+ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_anime, scale){
+	this.scale = scale || 1;
+	this.before_anime = AnimeMap[before_anime];
+	this.click_anime  = AnimeMap[click_anime];
+	this.after_anime  = AnimeMap[after_anime];
+};
+
+ObjectAnimeImage.prototype.onCollision = function(obj){
+	var self = this;
+
+	var sprite = self.sprite;
+	var after_anime = self.after_anime;
+	var click_anime = self.click_anime;
+	sprite.playAnimationOnce(click_anime, function (){
+		sprite.changeAnimation(after_anime);
+	});
+};
+
+ObjectAnimeImage.prototype.beforeDraw = function(x, y) {
+	base_object.prototype.beforeDraw.apply(this, arguments);
+	this.sprite.beforeDraw();
+};
+
+
+
+ObjectAnimeImage.prototype.draw = function(){
+	var ctx = this.core.ctx;
+
+	this.sprite.draw();
+};
+
+
+ObjectAnimeImage.prototype.collisionWidth = function(){
+	// index = 0 のみ有効
+	return this.before_anime[0].animation.CanvasWidth * this.scale;
+};
+
+ObjectAnimeImage.prototype.collisionHeight = function(){
+	// index = 0 のみ有効
+	return this.before_anime[0].animation.CanvasHeight * this.scale;
+};
+
+module.exports = ObjectAnimeImage;
+
+},{"../../anime":1,"../../hakurei":19,"../sprite_studio":63}],61:[function(require,module,exports){
+'use strict';
+var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
 
-var ObjectPiece = function(core) {
-	base_scene.apply(this, arguments);
+var ObjectStaticImage = function(core) {
+	base_object.apply(this, arguments);
+
+	// 画像オブジェクト
+	this.image = null;
+
+	// 画像の拡縮
+	this.scale = 1;
+};
+Util.inherit(ObjectStaticImage, base_object);
+
+ObjectStaticImage.prototype.init = function(){
+	base_object.prototype.init.apply(this, arguments);
 
 	this.image = null;
+	this.scale = 1;
 };
-Util.inherit(ObjectPiece, base_scene);
-
-ObjectPiece.prototype.init = function(){
-	base_scene.prototype.init.apply(this, arguments);
-
-	this.image = null;
+ObjectStaticImage.prototype.addImage = function(image_name, scale){
+	this.image = this.core.image_loader.getImage(image_name);
+	this.scale = scale || 1;
 };
 
-ObjectPiece.prototype.onCollision = function(obj){
+ObjectStaticImage.prototype.onCollision = function(obj){
+	// TODO:
 	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("talk");
+	//this.scene.mainStage().changeSubScene("talk");
 };
 
-ObjectPiece.prototype.draw = function(){
+ObjectStaticImage.prototype.draw = function(){
 	if (!this.image) return;
 	var ctx = this.core.ctx;
-	var SCALE = 0.3;
+	var image = this.image;
+
 	// 背景描画
-	var image = this.core.image_loader.getImage(this.image);
 	ctx.save();
 	ctx.drawImage(image,
 					this.x(),
@@ -13742,38 +14045,21 @@ ObjectPiece.prototype.draw = function(){
 					image.width * this.scale,
 					image.height * this.scale);
 	ctx.restore();
-
-
-
-	/*
-	// 仮で四角形を描画
-	var ctx = this.core.ctx;
-	ctx.save();
-	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
-	ctx.globalAlpha = 0.4;
-	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
-	ctx.restore();
-	*/
 };
 
 
 
-ObjectPiece.prototype.collisionWidth = function(){
-	return 100;
+ObjectStaticImage.prototype.collisionWidth = function(){
+	return this.image.width * this.scale;
 };
 
-ObjectPiece.prototype.collisionHeight = function(){
-	return 100;
+ObjectStaticImage.prototype.collisionHeight = function(){
+	return this.image.height * this.scale;
 };
 
-ObjectPiece.prototype.addImage = function(image_name, scale){
-	this.image = image_name;
-	this.scale = scale || 1;
-};
+module.exports = ObjectStaticImage;
 
-module.exports = ObjectPiece;
-
-},{"../../hakurei":15}],57:[function(require,module,exports){
+},{"../../hakurei":19}],62:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -13832,7 +14118,7 @@ ObjectRightYajirushi.prototype.collisionHeight = function(){
 
 module.exports = ObjectRightYajirushi;
 
-},{"../hakurei":15}],58:[function(require,module,exports){
+},{"../hakurei":19}],63:[function(require,module,exports){
 'use strict';
 
 var base_object = require('../hakurei').object.base;
@@ -13881,6 +14167,21 @@ SpriteStudio.prototype.changeAnimation = function(jsonData){
 
 };
 
+SpriteStudio.prototype.playAnimationOnce = function(jsonData, _callback){
+	var self = this;
+	var sprite = self.sprite;
+	var max_loop = sprite.getLoop();
+
+	var callback = function () {
+		sprite.setEndCallBack(null);
+		sprite.setLoop(max_loop);
+		_callback();
+	};
+
+	sprite.setEndCallBack(callback);
+	sprite.setLoop(1);
+	self.changeAnimation(jsonData);
+};
 
 
 
@@ -13944,7 +14245,7 @@ SpriteStudio.prototype.alpha = function() {
 
 module.exports = SpriteStudio;
 
-},{"../hakurei":15,"../vendor/SsaPlayer":69}],59:[function(require,module,exports){
+},{"../hakurei":19,"../vendor/SsaPlayer":74}],64:[function(require,module,exports){
 'use strict';
 
 // セーブデータ
@@ -14006,7 +14307,7 @@ SaveManager.prototype.increase3rdeyeGauge = function(num){
 
 module.exports = SaveManager;
 
-},{"./hakurei":15}],60:[function(require,module,exports){
+},{"./hakurei":19}],65:[function(require,module,exports){
 'use strict';
 
 // ローディングシーン
@@ -14109,13 +14410,14 @@ SceneLoading.prototype.progress = function(){
 
 module.exports = SceneLoading;
 
-},{"../assets_config":3,"../constant":4,"../hakurei":15}],61:[function(require,module,exports){
+},{"../assets_config":7,"../constant":8,"../hakurei":19}],66:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./stage_base');
 
 var util = require('../hakurei').util;
 var CONSTANT = require('../hakurei').constant;
+var CONSTANT2 = require('../constant');
 
 var SceneSubStagePlay = require('./sub_stage/play');
 var SceneSubStageTalk = require('./sub_stage/talk');
@@ -14123,7 +14425,8 @@ var SceneSubStageMenu = require('./sub_stage/menu');
 
 var Koishi = require('../object/koishi');
 
-var Piece = require('../object/piece/1');
+var ObjectStaticImage = require('../object/object/static_image');
+var ObjectAnimeImage = require('../object/object/anime_image');
 
 var LeftYajirushi = require('../object/left_yajirushi');
 var RightYajirushi = require('../object/right_yajirushi');
@@ -14262,17 +14565,30 @@ SceneStage.prototype.field = function(){
 
 SceneStage.prototype.setupPiece = function() {
 	this.pieces = [];
-	var objects = this.field().objects;
+	var object_data_list = this.field().objects;
 
-	for (var i = 0, len = objects.length; i < len; i++) {
-		var object = objects[i];
-		var piece = new Piece(this);
-		piece.init();
-		piece.setPosition(object.x, object.y);
-		piece.addImage(object.image, object.scale);
-		this.addObject(piece);
+	for (var i = 0, len = object_data_list.length; i < len; i++) {
+		var data = object_data_list[i];
+		var object;
+		if (data.type === CONSTANT2.STATIC_IMAGE_TYPE) {
+			object = new ObjectStaticImage(this);
+			object.init();
+			object.addImage(data.image, data.scale);
+			object.setPosition(data.x, data.y);
+			this.addObject(object);
 
-		this.pieces.push(piece);
+			this.pieces.push(object);
+		}
+		else if (data.type === CONSTANT2.ANIME_IMAGE_TYPE) {
+			object = new ObjectAnimeImage(this);
+			object.init();
+			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
+			object.setPosition(data.x, data.y);
+			this.addObject(object);
+
+			this.pieces.push(object);
+		}
+
 	}
 };
 
@@ -14280,7 +14596,7 @@ SceneStage.prototype.setupPiece = function() {
 
 module.exports = SceneStage;
 
-},{"../field":6,"../hakurei":15,"../object/item_button":52,"../object/koishi":53,"../object/left_yajirushi":54,"../object/piece/1":56,"../object/right_yajirushi":57,"./stage_base":62,"./sub_stage/menu":64,"./sub_stage/play":65,"./sub_stage/talk":66}],62:[function(require,module,exports){
+},{"../constant":8,"../field":10,"../hakurei":19,"../object/item_button":56,"../object/koishi":57,"../object/left_yajirushi":58,"../object/object/anime_image":60,"../object/object/static_image":61,"../object/right_yajirushi":62,"./stage_base":67,"./sub_stage/menu":69,"./sub_stage/play":70,"./sub_stage/talk":71}],67:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').scene.base;
 var Util = require('../hakurei').util;
@@ -14304,7 +14620,7 @@ SceneStageBase.prototype.mainStage = function(){
 
 module.exports = SceneStageBase;
 
-},{"../hakurei":15}],63:[function(require,module,exports){
+},{"../hakurei":19}],68:[function(require,module,exports){
 'use strict';
 var base_scene = require('../stage_base');
 var Util = require('../../hakurei').util;
@@ -14327,7 +14643,7 @@ SceneSubStageBase.prototype.mainStage = function(){
 
 module.exports = SceneSubStageBase;
 
-},{"../../hakurei":15,"../stage_base":62}],64:[function(require,module,exports){
+},{"../../hakurei":19,"../stage_base":67}],69:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -14580,7 +14896,7 @@ SceneSubStageTalk.prototype._useItem = function(){
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":15,"../../object/menu_item":55,"./base":63}],65:[function(require,module,exports){
+},{"../../hakurei":19,"../../object/menu_item":59,"./base":68}],70:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -14640,7 +14956,7 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 module.exports = SceneSubStagePlay;
 
-},{"../../hakurei":15,"./base":63}],66:[function(require,module,exports){
+},{"../../hakurei":19,"./base":68}],71:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -14765,7 +15081,7 @@ SceneSubStageTalk.prototype._showMessage = function() {
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":15,"../../serif/objects/1":68,"./base":63}],67:[function(require,module,exports){
+},{"../../hakurei":19,"../../serif/objects/1":73,"./base":68}],72:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -14900,7 +15216,7 @@ SceneTitle.prototype.draw = function(){
 
 module.exports = SceneTitle;
 
-},{"../constant":4,"../hakurei":15}],68:[function(require,module,exports){
+},{"../constant":8,"../hakurei":19}],73:[function(require,module,exports){
 'use strict';
 
 // セリフ
@@ -14910,7 +15226,7 @@ var Serif= [
 ];
 module.exports = Serif;
 
-},{}],69:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 //-----------------------------------------------------------
 // Ss5ConverterToSSAJSON v1.0.3
 //
@@ -15352,4 +15668,4 @@ module.exports = {
 
 
 
-},{}]},{},[51]);
+},{}]},{},[55]);
