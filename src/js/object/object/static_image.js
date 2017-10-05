@@ -48,11 +48,11 @@ ObjectStaticImage.prototype.draw = function(){
 
 
 ObjectStaticImage.prototype.collisionWidth = function(){
-	return this.image.width;
+	return this.image.width * this.scale;
 };
 
 ObjectStaticImage.prototype.collisionHeight = function(){
-	return this.image.height;
+	return this.image.height * this.scale;
 };
 
 module.exports = ObjectStaticImage;

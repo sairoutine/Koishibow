@@ -158,7 +158,7 @@ SceneStage.prototype.setupPiece = function() {
 		var data = object_data_list[i];
 		var object;
 		if (data.type === CONSTANT2.STATIC_IMAGE_TYPE) {
-			object = new ObjectAnimeImage(this);
+			object = new ObjectStaticImage(this);
 			object.init();
 			object.addImage(data.image, data.scale);
 			object.setPosition(data.x, data.y);
@@ -169,7 +169,7 @@ SceneStage.prototype.setupPiece = function() {
 		else if (data.type === CONSTANT2.ANIME_IMAGE_TYPE) {
 			object = new ObjectAnimeImage(this);
 			object.init();
-			object.addImage(data.image, data.scale);
+			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
 			object.setPosition(data.x, data.y);
 			this.addObject(object);
 
