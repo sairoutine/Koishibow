@@ -12,8 +12,8 @@ var SceneSubStageMenu = require('./sub_stage/menu');
 
 var Koishi = require('../object/koishi');
 
-var PieceStaticImage = require('../object/piece/static_image');
-var PieceAnimeImage = require('../object/piece/anime_image');
+var ObjectStaticImage = require('../object/object/static_image');
+var ObjectAnimeImage = require('../object/object/anime_image');
 
 var LeftYajirushi = require('../object/left_yajirushi');
 var RightYajirushi = require('../object/right_yajirushi');
@@ -152,28 +152,28 @@ SceneStage.prototype.field = function(){
 
 SceneStage.prototype.setupPiece = function() {
 	this.pieces = [];
-	var objects = this.field().objects;
+	var object_data_list = this.field().objects;
 
-	for (var i = 0, len = objects.length; i < len; i++) {
-		var object = objects[i];
-		var piece;
-		if (object.type === CONSTANT2.STATIC_IMAGE_TYPE) {
-			piece = new PieceStaticImage(this);
-			piece.init();
-			piece.addImage(object.image, object.scale);
-			piece.setPosition(object.x, object.y);
-			this.addObject(piece);
+	for (var i = 0, len = object_data_list.length; i < len; i++) {
+		var data = object_data_list[i];
+		var object;
+		if (data.type === CONSTANT2.STATIC_IMAGE_TYPE) {
+			object = new ObjectAnimeImage(this);
+			object.init();
+			object.addImage(data.image, data.scale);
+			object.setPosition(data.x, data.y);
+			this.addObject(object);
 
-			this.pieces.push(piece);
+			this.pieces.push(object);
 		}
-		else if (object.type === CONSTANT2.ANIME_IMAGE_TYPE) {
-			piece = new PieceAnimeImage(this);
-			piece.init();
-			piece.addImage(object.image, object.scale);
-			piece.setPosition(object.x, object.y);
-			this.addObject(piece);
+		else if (data.type === CONSTANT2.ANIME_IMAGE_TYPE) {
+			object = new ObjectAnimeImage(this);
+			object.init();
+			object.addImage(data.image, data.scale);
+			object.setPosition(data.x, data.y);
+			this.addObject(object);
 
-			this.pieces.push(piece);
+			this.pieces.push(object);
 		}
 
 	}
