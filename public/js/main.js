@@ -3025,9 +3025,9 @@ AssetsConfig.images = {
 	"koishi.png":                "./image/koishi.png",
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
-	"chapter0-myroom-obj-02-01.png": "./image/chapter0-myroom-obj-02-01.png",
-	"chapter0-myroom-obj-03-01.png": "./image/chapter0-myroom-obj-03-01.png",
-	"chapter0-myroom-obj-04-01.png": "./image/chapter0-myroom-obj-04-01.png",
+	"chapter0-myroom-obj-02-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",
+	"chapter0-myroom-obj-03-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-03-01.png",
+	"chapter0-myroom-obj-04-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-04-01.png",
 	"chapter0-myroom-obj-05-01": "./image/chapter0/myroom/chapter0-myroom-obj-05-01.png",
 
 	"chapter0-hospital_corridor1-bg-001":    "./image/chapter0/hospital_corridor1/chapter0-hospital-bg-001.jpg",
@@ -3074,7 +3074,7 @@ module.exports = CONSTANT;
 },{"./debug_constant":15}],15:[function(require,module,exports){
 'use strict';
 var DEBUG = {
-	ON: false,
+	ON: true,
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_hospital_corridor1"],
