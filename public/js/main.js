@@ -3622,6 +3622,7 @@ module.exports = CONSTANT;
 
 var WebGLDebugUtils = require("webgl-debug");
 var CONSTANT = require("./constant/button");
+var Util = require("./util");
 var DebugManager = require("./debug_manager");
 var InputManager = require("./input_manager");
 var ImageLoader = require("./asset_loader/image");
@@ -3760,7 +3761,7 @@ Core.prototype.run = function(){
 	this.input_manager.afterRun();
 
 	// tick
-	this.request_id = requestAnimationFrame(this.run.bind(this));
+	this.request_id = requestAnimationFrame(Util.bind(this.run, this));
 };
 Core.prototype.currentScene = function() {
 	if(this.current_scene === null) {
@@ -3950,7 +3951,7 @@ Core.prototype.createWebGLContext = function(canvas) {
 
 module.exports = Core;
 
-},{"./asset_loader/audio":26,"./asset_loader/font":27,"./asset_loader/image":28,"./constant/button":29,"./debug_manager":32,"./input_manager":34,"./scene/loading":53,"./shader/main.fs":55,"./shader/main.vs":56,"./shader_program":57,"webgl-debug":45}],32:[function(require,module,exports){
+},{"./asset_loader/audio":26,"./asset_loader/font":27,"./asset_loader/image":28,"./constant/button":29,"./debug_manager":32,"./input_manager":34,"./scene/loading":53,"./shader/main.fs":55,"./shader/main.vs":56,"./shader_program":57,"./util":60,"webgl-debug":45}],32:[function(require,module,exports){
 'use strict';
 
 var DebugManager = function (core) {
@@ -13648,7 +13649,7 @@ SerifManager.prototype._startPrintMessage = function () {
 		}
 	}
 
-	this._timeoutID = setTimeout(this._startPrintMessage.bind(this), TYPOGRAPHY_SPEED);
+	this._timeoutID = setTimeout(Util.bind(this._startPrintMessage, this), TYPOGRAPHY_SPEED);
 };
 
 SerifManager.prototype._cancelPrintMessage = function () {
