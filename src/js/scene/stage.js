@@ -3,8 +3,7 @@
 var base_scene = require('./stage_base');
 
 var util = require('../hakurei').util;
-var CONSTANT = require('../hakurei').constant;
-var CONSTANT2 = require('../constant');
+var CONSTANT = require('../constant');
 
 var SceneSubStagePlay = require('./sub_stage/play');
 var SceneSubStageTalk = require('./sub_stage/talk');
@@ -157,7 +156,7 @@ SceneStage.prototype.setupPiece = function() {
 	for (var i = 0, len = object_data_list.length; i < len; i++) {
 		var data = object_data_list[i];
 		var object;
-		if (data.type === CONSTANT2.STATIC_IMAGE_TYPE) {
+		if (data.type === CONSTANT.STATIC_IMAGE_TYPE) {
 			object = new ObjectStaticImage(this);
 			object.init();
 			object.addImage(data.image, data.scale);
@@ -166,7 +165,7 @@ SceneStage.prototype.setupPiece = function() {
 
 			this.pieces.push(object);
 		}
-		else if (data.type === CONSTANT2.ANIME_IMAGE_TYPE) {
+		else if (data.type === CONSTANT.ANIME_IMAGE_TYPE) {
 			object = new ObjectAnimeImage(this);
 			object.init();
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
