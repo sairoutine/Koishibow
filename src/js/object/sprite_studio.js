@@ -27,7 +27,8 @@ SpriteStudio.prototype.init = function(x, y, jsonData, data_index, opt){
 	this.is_reflect = false;
 
 	// TODO: preload
-	this.imageList = new SsImageList(jsonData[data_index].images, "./image/", true);
+	this.imageList = this._getImageList(jsonData[data_index].images);
+
 	this.animation = new SsAnimation(jsonData[data_index].animation, this.imageList);
 
 	var ss = new SsSprite(this.animation);
@@ -62,8 +63,19 @@ SpriteStudio.prototype.playAnimationOnce = function(jsonData, _callback){
 	self.changeAnimation(jsonData);
 };
 
+// sprite studio 用の SsImageList 代替オブジェクトを生成
+SpriteStudio.prototype._getImageList = function (imageFiles) {
+	var imageList = new SsImageList([], "");
 
+	for (var i = 0; i < imageFiles.length; i++) {
+		var image_name = imageFiles[i];
 
+		imageList.imagePaths[i] = null;
+		imageList.images[i] = this.core.image_loader.getImage(image_name);
+	}
+
+	return imageList;
+};
 
 SpriteStudio.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
