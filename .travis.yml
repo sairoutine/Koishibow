@@ -1,3 +1,4 @@
+language: none
 script:
   - npm test
 branches:
