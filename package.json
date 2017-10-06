@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron ./public/electron.js",
+    "test": "phantomjs ./test/headless.js",
     "build:win": "cd public && electron-packager ./ NewGame --overwrite --platform=win32  --arch=x64 --version=0.36.1 --icon=icon.ico --out ../Win64",
     "build:mac": "cd public && electron-packager ./ NewGame --overwrite --platform=darwin --arch=x64 --version=0.36.1 --icon=icon.icns --out ../Mac"
   },

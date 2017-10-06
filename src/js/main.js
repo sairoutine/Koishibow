@@ -22,6 +22,9 @@ window.onload = function() {
 
 	// ゲーム起動
 	game.startRun();
+
+	// for phantomjs headless test
+	window.game = game;
 };
 window.onerror = function (msg, file, line, column, err) {
 	/*
