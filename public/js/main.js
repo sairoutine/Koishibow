@@ -3022,11 +3022,12 @@ module.exports=[
 
 var AssetsConfig = {};
 AssetsConfig.images = {
+	"koishi.png":                "./image/koishi.png",
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
-	"chapter0-myroom-obj-02-01": "./image/chapter0-myroom-obj-02-01.png",
-	"chapter0-myroom-obj-03-01": "./image/chapter0-myroom-obj-03-01.png",
-	"chapter0-myroom-obj-04-01": "./image/chapter0-myroom-obj-04-01.png",
+	"chapter0-myroom-obj-02-01.png": "./image/chapter0-myroom-obj-02-01.png",
+	"chapter0-myroom-obj-03-01.png": "./image/chapter0-myroom-obj-03-01.png",
+	"chapter0-myroom-obj-04-01.png": "./image/chapter0-myroom-obj-04-01.png",
 	"chapter0-myroom-obj-05-01": "./image/chapter0/myroom/chapter0-myroom-obj-05-01.png",
 
 	"chapter0-hospital_corridor1-bg-001":    "./image/chapter0/hospital_corridor1/chapter0-hospital-bg-001.jpg",
@@ -3620,7 +3621,7 @@ module.exports = CONSTANT;
 /* TODO: create input_manager class */
 
 var WebGLDebugUtils = require("webgl-debug");
-var CONSTANT = require("./constant");
+var CONSTANT = require("./constant/button");
 var DebugManager = require("./debug_manager");
 var InputManager = require("./input_manager");
 var ImageLoader = require("./asset_loader/image");
@@ -3888,6 +3889,16 @@ Core.prototype.fontLoadingDone = function() {
 	this.font_loader.notifyLoadingDone();
 };
 
+Core.prototype.isAllLoaded = function() {
+	if (this.image_loader.isAllLoaded() && this.audio_loader.isAllLoaded() && this.font_loader.isAllLoaded()) {
+		return true;
+	}
+	return false;
+};
+
+
+
+
 Core.prototype.setupEvents = function() {
 	if(!window) return;
 
@@ -3939,7 +3950,7 @@ Core.prototype.createWebGLContext = function(canvas) {
 
 module.exports = Core;
 
-},{"./asset_loader/audio":26,"./asset_loader/font":27,"./asset_loader/image":28,"./constant":29,"./debug_manager":32,"./input_manager":34,"./scene/loading":53,"./shader/main.fs":55,"./shader/main.vs":56,"./shader_program":57,"webgl-debug":45}],32:[function(require,module,exports){
+},{"./asset_loader/audio":26,"./asset_loader/font":27,"./asset_loader/image":28,"./constant/button":29,"./debug_manager":32,"./input_manager":34,"./scene/loading":53,"./shader/main.fs":55,"./shader/main.vs":56,"./shader_program":57,"webgl-debug":45}],32:[function(require,module,exports){
 'use strict';
 
 var DebugManager = function (core) {
@@ -4011,7 +4022,10 @@ module.exports = DebugManager;
 module.exports = {
 	util: require("./util"),
 	core: require("./core"),
-	constant: require("./constant"),
+	// constant.BUTTON_NAME is deprecated.
+	constant: require("./util").assign(require("./constant/button"), {
+		button: require("./constant/button"),
+	}),
 	serif_manager: require("./serif_manager"),
 	shader_program: require("./shader_program"),
 	scene: {
@@ -4038,10 +4052,10 @@ module.exports = {
 
 };
 
-},{"./asset_loader/audio":26,"./asset_loader/font":27,"./asset_loader/image":28,"./constant":29,"./core":31,"./object/base":46,"./object/pool_manager":47,"./object/pool_manager3d":48,"./object/sprite":49,"./object/sprite3d":50,"./object/ui_parts":51,"./scene/base":52,"./scene/loading":53,"./serif_manager":54,"./shader_program":57,"./storage/base":58,"./storage/save":59,"./util":60}],34:[function(require,module,exports){
+},{"./asset_loader/audio":26,"./asset_loader/font":27,"./asset_loader/image":28,"./constant/button":29,"./core":31,"./object/base":46,"./object/pool_manager":47,"./object/pool_manager3d":48,"./object/sprite":49,"./object/sprite3d":50,"./object/ui_parts":51,"./scene/base":52,"./scene/loading":53,"./serif_manager":54,"./shader_program":57,"./storage/base":58,"./storage/save":59,"./util":60}],34:[function(require,module,exports){
 'use strict';
 
-var CONSTANT = require("./constant");
+var CONSTANT = require("./constant/button");
 var Util = require("./util");
 
 // const
@@ -4435,7 +4449,7 @@ InputManager.prototype.dumpGamePadKey = function() {
 
 module.exports = InputManager;
 
-},{"./constant":29,"./util":60}],35:[function(require,module,exports){
+},{"./constant/button":29,"./util":60}],35:[function(require,module,exports){
 /**
  * @fileoverview gl-matrix - High performance matrix and vector operations
  * @author Brandon Jones
@@ -12374,7 +12388,7 @@ var base_object = require('./base');
 var util = require('../util');
 var glmat = require('gl-matrix');
 
-var CONSTANT_3D = require('../constant_3d').SPRITE3D;
+var CONSTANT_3D = require('../constant/webgl').SPRITE3D;
 
 var PoolManager3D = function(scene, Class) {
 	base_object.apply(this, arguments);
@@ -12606,7 +12620,7 @@ PoolManager3D.prototype.shader = function(){
 
 module.exports = PoolManager3D;
 
-},{"../constant_3d":30,"../util":60,"./base":46,"gl-matrix":35}],49:[function(require,module,exports){
+},{"../constant/webgl":30,"../util":60,"./base":46,"gl-matrix":35}],49:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var util = require('../util');
@@ -12753,7 +12767,7 @@ module.exports = Sprite;
 'use strict';
 var base_object = require('./base');
 var util = require('../util');
-var CONSTANT_3D = require('../constant_3d').SPRITE3D;
+var CONSTANT_3D = require('../constant/webgl').SPRITE3D;
 var glmat = require('gl-matrix');
 
 var Sprite3d = function(scene) {
@@ -13094,7 +13108,7 @@ Sprite3d.prototype.isReflect = function(){
 
 module.exports = Sprite3d;
 
-},{"../constant_3d":30,"../util":60,"./base":46,"gl-matrix":35}],51:[function(require,module,exports){
+},{"../constant/webgl":30,"../util":60,"./base":46,"gl-matrix":35}],51:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../util');
@@ -13108,7 +13122,7 @@ var ObjectUIParts = function(scene, x, y, width, height, draw_function) {
 	this._width  = width;
 	this._height = height;
 
-	this._draw_function = draw_function.bind(this);
+	this._draw_function = Util.bind(draw_function, this);
 
 	this._is_show_rect = false;
 
@@ -14079,7 +14093,55 @@ var Util = {
 			dst_hash[k] = src_hash[k];
 		}
 		return dst_hash;
-	}
+	},
+
+	// for old browser
+	assign: function assign(target, varArgs) { // .length of function is 2
+		if (!target) { // TypeError if undefined or null
+			throw new TypeError('Cannot convert undefined or null to object');
+		}
+
+		var to = Object(target);
+
+		for (var index = 1; index < arguments.length; index++) {
+			var nextSource = arguments[index];
+
+			if (nextSource) { // Skip over if undefined or null
+				for (var nextKey in nextSource) {
+					// Avoid bugs when hasOwnProperty is shadowed
+					if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+						to[nextKey] = nextSource[nextKey];
+					}
+				}
+			}
+		}
+		return to;
+	},
+
+	// for old browser
+	bind: function(func, oThis) {
+		if (typeof func !== 'function') {
+			// closest thing possible to the ECMAScript 5
+			// internal IsCallable function
+			throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+		}
+
+		var aArgs   = Array.prototype.slice.call(arguments, 1),
+		fToBind = func,
+		FNOP    = function() {},
+		fBound  = function() {
+			return fToBind.apply(func instanceof FNOP ? func : oThis,
+				aArgs.concat(Array.prototype.slice.call(arguments)));
+		};
+
+		if (func.prototype) {
+			// Function.prototype doesn't have a prototype property
+			FNOP.prototype = func.prototype;
+		}
+		fBound.prototype = new FNOP();
+
+		return fBound;
+	},
 };
 
 module.exports = Util;
@@ -14109,6 +14171,9 @@ window.onload = function() {
 
 	// ゲーム起動
 	game.startRun();
+
+	// for phantomjs headless test
+	window.game = game;
 };
 window.onerror = function (msg, file, line, column, err) {
 	/*
@@ -14679,7 +14744,8 @@ SpriteStudio.prototype.init = function(x, y, jsonData, data_index, opt){
 	this.is_reflect = false;
 
 	// TODO: preload
-	this.imageList = new SsImageList(jsonData[data_index].images, "./image/", true);
+	this.imageList = this._getImageList(jsonData[data_index].images);
+
 	this.animation = new SsAnimation(jsonData[data_index].animation, this.imageList);
 
 	var ss = new SsSprite(this.animation);
@@ -14714,8 +14780,19 @@ SpriteStudio.prototype.playAnimationOnce = function(jsonData, _callback){
 	self.changeAnimation(jsonData);
 };
 
+// sprite studio 用の SsImageList 代替オブジェクトを生成
+SpriteStudio.prototype._getImageList = function (imageFiles) {
+	var imageList = new SsImageList([], "");
 
+	for (var i = 0; i < imageFiles.length; i++) {
+		var image_name = imageFiles[i];
 
+		imageList.imagePaths[i] = null;
+		imageList.images[i] = this.core.image_loader.getImage(image_name);
+	}
+
+	return imageList;
+};
 
 SpriteStudio.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
@@ -14947,8 +15024,7 @@ module.exports = SceneLoading;
 var base_scene = require('./stage_base');
 
 var util = require('../hakurei').util;
-var CONSTANT = require('../hakurei').constant;
-var CONSTANT2 = require('../constant');
+var CONSTANT = require('../constant');
 
 var SceneSubStagePlay = require('./sub_stage/play');
 var SceneSubStageTalk = require('./sub_stage/talk');
@@ -15101,7 +15177,7 @@ SceneStage.prototype.setupPiece = function() {
 	for (var i = 0, len = object_data_list.length; i < len; i++) {
 		var data = object_data_list[i];
 		var object;
-		if (data.type === CONSTANT2.STATIC_IMAGE_TYPE) {
+		if (data.type === CONSTANT.STATIC_IMAGE_TYPE) {
 			object = new ObjectStaticImage(this);
 			object.init();
 			object.addImage(data.image, data.scale);
@@ -15110,7 +15186,7 @@ SceneStage.prototype.setupPiece = function() {
 
 			this.pieces.push(object);
 		}
-		else if (data.type === CONSTANT2.ANIME_IMAGE_TYPE) {
+		else if (data.type === CONSTANT.ANIME_IMAGE_TYPE) {
 			object = new ObjectAnimeImage(this);
 			object.init();
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
