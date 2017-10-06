@@ -1,23 +1,22 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var anime_list = [
-	require('./anime/chapter0/myroom/obj-02-01/obj01_anime_1'),
-	require('./anime/chapter0/myroom/obj-02-01/obj02_anime_1'),
-	require('./anime/chapter0/myroom/obj-02-01/obj03_anime_1'),
-];
+'use strict';
+var anime_map = {
+	"chapter0-myroom-obj-02-01-obj01": require('./anime/chapter0/myroom/obj-02-01/obj01_anime_1'),
+	"chapter0-myroom-obj-02-01-obj02": require('./anime/chapter0/myroom/obj-02-01/obj02_anime_1'),
+	"chapter0-myroom-obj-02-01-obj03": require('./anime/chapter0/myroom/obj-02-01/obj03_anime_1'),
+	"chapter0-myroom-obj-03-01-obj01": require('./anime/chapter0/myroom/obj-03-01/obj01_anime_1'),
+	"chapter0-myroom-obj-03-01-obj02": require('./anime/chapter0/myroom/obj-03-01/obj02_anime_1'),
+	"chapter0-myroom-obj-03-01-obj03": require('./anime/chapter0/myroom/obj-03-01/obj03_anime_1'),
+	"chapter0-myroom-obj-04-01-obj01": require('./anime/chapter0/myroom/obj-04-01/obj01_anime_1'),
+	"chapter0-myroom-obj-04-01-obj02": require('./anime/chapter0/myroom/obj-04-01/obj02_anime_1'),
+	"chapter0-myroom-obj-04-01-obj03": require('./anime/chapter0/myroom/obj-04-01/obj03_anime_1'),
 
-var anime_map = {};
+};
 
-for (var i = 0, len = anime_list.length; i < len; i++) {
-	var anime = anime_list[i];
-	// index = 0 のみ有効
-	anime_map[anime[0].name] = anime;
-
-	// TODO: key 名が被ってたらデバッグではエラー
-}
 module.exports = anime_map;
 
 
-},{"./anime/chapter0/myroom/obj-02-01/obj01_anime_1":2,"./anime/chapter0/myroom/obj-02-01/obj02_anime_1":3,"./anime/chapter0/myroom/obj-02-01/obj03_anime_1":4}],2:[function(require,module,exports){
+},{"./anime/chapter0/myroom/obj-02-01/obj01_anime_1":2,"./anime/chapter0/myroom/obj-02-01/obj02_anime_1":3,"./anime/chapter0/myroom/obj-02-01/obj03_anime_1":4,"./anime/chapter0/myroom/obj-03-01/obj01_anime_1":5,"./anime/chapter0/myroom/obj-03-01/obj02_anime_1":6,"./anime/chapter0/myroom/obj-03-01/obj03_anime_1":7,"./anime/chapter0/myroom/obj-04-01/obj01_anime_1":8,"./anime/chapter0/myroom/obj-04-01/obj02_anime_1":9,"./anime/chapter0/myroom/obj-04-01/obj03_anime_1":10}],2:[function(require,module,exports){
 module.exports=[
 {
 "images":["chapter0-myroom-obj-02-01.png"],
@@ -192,6 +191,535 @@ module.exports=[
 ]
 
 },{}],5:[function(require,module,exports){
+module.exports=[
+{
+"images":["chapter0-myroom-obj-03-01.png"],
+"name": "obj01_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 500,
+"CanvasHeight": 500,
+"MarginWidth": 258,
+"MarginHeight": 258,
+"parts": ["root","Obj","01","02"],
+"ssa": [
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,-62.0,7.0,2.722714,0.760000,0.760000,37,12,0,1]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,-62.0,7.0,2.722714,0.760000,0.760000,37,12,0,1]
+]
+]
+}
+}
+]
+
+},{}],6:[function(require,module,exports){
+module.exports=[
+{
+"images":["chapter0-myroom-obj-03-01.png"],
+"name": "obj02_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 500,
+"CanvasHeight": 500,
+"MarginWidth": 258,
+"MarginHeight": 258,
+"parts": ["root","Obj","01","02"],
+"ssa": [
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,168.0,23.0,0.244346,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,168.500000,24.150000,0.232129,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,169.0,25.299999,0.219911,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,169.500000,26.450001,0.207694,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,170.0,27.600000,0.195477,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,170.500000,28.750000,0.183260,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,171.0,29.900000,0.171042,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,171.500000,31.049999,0.158825,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,172.0,32.200001,0.146608,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,172.500000,33.349998,0.134390,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,173.0,34.500000,0.122173,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,173.500000,35.650002,0.109956,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,174.0,36.799999,0.097738,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,174.500000,37.950001,0.085521,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,175.0,39.099998,0.073304,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,175.500000,40.250000,0.061087,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,176.0,41.400002,0.048869,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,176.500000,42.549999,0.036652,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,177.0,43.700001,0.024435,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,177.500000,44.849998,0.012217,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+]
+]
+}
+}
+]
+
+},{}],7:[function(require,module,exports){
+module.exports=[
+{
+"images":["chapter0-myroom-obj-03-01.png"],
+"name": "obj03_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 500,
+"CanvasHeight": 500,
+"MarginWidth": 258,
+"MarginHeight": 258,
+"parts": ["root","Obj","01","02"],
+"ssa": [
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+],
+[
+[1,0,0,38,232,90,0.0,0.0,0.0,1.0,1.0,116,45],
+[2,0,0,12,75,24,178.0,46.0,0.0,1.0,1.0,37,12]
+]
+]
+}
+}
+]
+
+},{}],8:[function(require,module,exports){
+module.exports=[
+{
+"images":["chapter0-myroom-obj-04-01.png"],
+"name": "obj01_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 500,
+"CanvasHeight": 800,
+"MarginWidth": 258,
+"MarginHeight": 408,
+"parts": ["root","Obj","01","03","02"],
+"ssa": [
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,123.0,0.0,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,122.800003,0.000582,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,122.599998,0.001164,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,122.400002,0.001745,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,122.199997,0.002327,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,122.0,0.002909,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,121.800003,0.003491,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,121.599998,0.004072,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,121.400002,0.004654,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,121.199997,0.005236,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,121.0,0.005818,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,120.800003,0.006400,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,120.599998,0.006981,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,120.400002,0.007563,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,120.199997,0.008145,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,120.0,0.008727,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,120.214287,0.008103,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,120.428574,0.007480,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,120.642860,0.006857,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,120.857140,0.006233,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,121.071426,0.005610,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,121.285713,0.004987,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,121.500000,0.004363,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,121.714287,0.003740,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,121.928574,0.003117,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,122.142860,0.002493,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,122.357140,0.001870,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,122.571426,0.001247,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,122.785713,0.000623,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,123.0,0.0,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+]
+]
+}
+}
+]
+
+},{}],9:[function(require,module,exports){
+module.exports=[
+{
+"images":["chapter0-myroom-obj-04-01.png"],
+"name": "obj02_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 500,
+"CanvasHeight": 800,
+"MarginWidth": 258,
+"MarginHeight": 408,
+"parts": ["root","Obj","01","03","02"],
+"ssa": [
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,86.0,123.0,0.0,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,80.500000,118.500000,0.016020,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,75.0,114.0,0.032039,1.0,1.0,94,161],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,77.400002,115.400002,0.048059,1.0,1.0,94,161,0,0,0.800000,0,23,4,0,12,20,-5,-2,-7],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,79.800003,116.800003,0.064079,1.0,1.0,94,161,0,0,0.600000,0,47,8,0,25,40,-10,-4,-14],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,82.199997,118.199997,0.080098,1.0,1.0,94,161,0,0,0.400000,0,71,13,1,38,60,-16,-6,-21],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,696,702,188,322,84.599998,119.599998,0.096118,1.0,1.0,94,161,0,0,0.200000,0,95,17,1,51,80,-21,-8,-28],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[3,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+]
+]
+}
+}
+]
+
+},{}],10:[function(require,module,exports){
+module.exports=[
+{
+"images":["chapter0-myroom-obj-04-01.png"],
+"name": "obj03_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 500,
+"CanvasHeight": 800,
+"MarginWidth": 258,
+"MarginHeight": 408,
+"parts": ["root","Obj","01","02"],
+"ssa": [
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,1.0,1.0,169,362],
+[2,0,341,267,353,757,12.0,11.0,0.0,1.0,1.0,176,378]
+]
+]
+}
+}
+]
+
+},{}],11:[function(require,module,exports){
 module.exports=[
 {
 "images":["koishi.png"],
@@ -1571,7 +2099,7 @@ module.exports=[
 }
 ]
 
-},{}],6:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports=[
 {
 "images":["koishi.png"],
@@ -2489,14 +3017,16 @@ module.exports=[
 }
 ]
 
-},{}],7:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 var AssetsConfig = {};
 AssetsConfig.images = {
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
-	"chapter0-myroom-obj-02-01": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",
+	"chapter0-myroom-obj-02-01": "./image/chapter0-myroom-obj-02-01.png",
+	"chapter0-myroom-obj-03-01": "./image/chapter0-myroom-obj-03-01.png",
+	"chapter0-myroom-obj-04-01": "./image/chapter0-myroom-obj-04-01.png",
 	"chapter0-myroom-obj-05-01": "./image/chapter0/myroom/chapter0-myroom-obj-05-01.png",
 
 	"chapter0-hospital_corridor1-bg-001":    "./image/chapter0/hospital_corridor1/chapter0-hospital-bg-001.jpg",
@@ -2522,7 +3052,7 @@ AssetsConfig.bgms = {
 
 module.exports = AssetsConfig;
 
-},{}],8:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 var DEBUG = require("./debug_constant");
 
@@ -2540,7 +3070,7 @@ if (DEBUG.ON) {
 }
 module.exports = CONSTANT;
 
-},{"./debug_constant":9}],9:[function(require,module,exports){
+},{"./debug_constant":15}],15:[function(require,module,exports){
 'use strict';
 var DEBUG = {
 	ON: true,
@@ -2552,7 +3082,7 @@ var DEBUG = {
 
 module.exports = DEBUG;
 
-},{}],10:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 var field_list = [
 	require("./field/chapter0/myroom"),
 	require("./field/chapter0/hospital_corridor1"),
@@ -2577,7 +3107,7 @@ for (var i = 0, len = field_list.length; i < len; i++) {
 module.exports = field_map;
 
 
-},{"./field/chapter0/hospital_corridor1":11,"./field/chapter0/hospital_corridor2":12,"./field/chapter0/mansion_corridor1":13,"./field/chapter0/mansion_corridor2":14,"./field/chapter0/mansion_corridor3":15,"./field/chapter0/mansion_gallery1":16,"./field/chapter0/myroom":17}],11:[function(require,module,exports){
+},{"./field/chapter0/hospital_corridor1":17,"./field/chapter0/hospital_corridor2":18,"./field/chapter0/mansion_corridor1":19,"./field/chapter0/mansion_corridor2":20,"./field/chapter0/mansion_corridor3":21,"./field/chapter0/mansion_gallery1":22,"./field/chapter0/myroom":23}],17:[function(require,module,exports){
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
 var CONSTANT = require("../../constant");
 module.exports = {
@@ -2596,7 +3126,7 @@ module.exports = {
 	],
 };
 
-},{"../../constant":8}],12:[function(require,module,exports){
+},{"../../constant":14}],18:[function(require,module,exports){
 // 病院の廊下2(こころ)
 var CONSTANT = require("../../constant");
 module.exports = {
@@ -2614,7 +3144,7 @@ module.exports = {
 
 
 
-},{"../../constant":8}],13:[function(require,module,exports){
+},{"../../constant":14}],19:[function(require,module,exports){
 // 屋敷の廊下1
 var CONSTANT = require("../../constant");
 module.exports = {
@@ -2630,7 +3160,7 @@ module.exports = {
 
 };
 
-},{"../../constant":8}],14:[function(require,module,exports){
+},{"../../constant":14}],20:[function(require,module,exports){
 // 屋敷の廊下2(ドアがある) 最初のフラッシュバックが入る
 var CONSTANT = require("../../constant");
 module.exports = {
@@ -2647,7 +3177,7 @@ module.exports = {
 };
 
 
-},{"../../constant":8}],15:[function(require,module,exports){
+},{"../../constant":14}],21:[function(require,module,exports){
 // 屋敷の廊下3(家具) 行き止まり (サードアイを使用すると、家具が豹変／床に扉が出現)
 var CONSTANT = require("../../constant");
 module.exports = {
@@ -2664,7 +3194,7 @@ module.exports = {
 };
 
 
-},{"../../constant":8}],16:[function(require,module,exports){
+},{"../../constant":14}],22:[function(require,module,exports){
 // 画廊(屋敷の廊下2から遷移)
 var CONSTANT = require("../../constant");
 module.exports = {
@@ -2681,7 +3211,7 @@ module.exports = {
 };
 
 
-},{"../../constant":8}],17:[function(require,module,exports){
+},{"../../constant":14}],23:[function(require,module,exports){
 // こいしの自室(ベッド／帽子／ドア) 帽子はベッドのふちにかけてある
 var CONSTANT = require("../../constant");
 module.exports = {
@@ -2695,14 +3225,15 @@ module.exports = {
 	objects: [
 		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", x: 80, y: 270, scale: 0.3},
 		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "机", x: 0, y: 425, scale: 0.3},
-		{image: "chapter0-myroom-obj-02-01", type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", x: 340, y: 530, scale: 0.3, anime1: "obj01_anime_1", anime2: "obj02_anime_1", anime3: "obj03_anime_1",
-		}
+		{image: "chapter0-myroom-obj-02-01", type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", x: 340, y: 530, scale: 0.3, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03"},
+		{image: "chapter0-myroom-obj-03-01", type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", x: 600, y: 530, scale: 0.3, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03"},
+		{image: "chapter0-myroom-obj-04-01", type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", x: 5, y: 180, scale: 0.3, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03"},
 	],
 };
 
 
 
-},{"../../constant":8}],18:[function(require,module,exports){
+},{"../../constant":14}],24:[function(require,module,exports){
 'use strict';
 var core = require('./hakurei').core;
 var util = require('./hakurei').util;
@@ -2753,12 +3284,12 @@ Game.prototype.stopBGM = function () {
 
 module.exports = Game;
 
-},{"./constant":8,"./hakurei":19,"./save_manager":64,"./scene/loading":65,"./scene/stage":66,"./scene/title":72}],19:[function(require,module,exports){
+},{"./constant":14,"./hakurei":25,"./save_manager":70,"./scene/loading":71,"./scene/stage":72,"./scene/title":78}],25:[function(require,module,exports){
 'use strict';
 
 module.exports = require("./hakureijs/index");
 
-},{"./hakureijs/index":27}],20:[function(require,module,exports){
+},{"./hakureijs/index":33}],26:[function(require,module,exports){
 'use strict';
 
 var AudioLoader = function() {
@@ -2954,7 +3485,7 @@ AudioLoader.prototype.progress = function() {
 
 module.exports = AudioLoader;
 
-},{}],21:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 var FontLoader = function() {
@@ -2980,7 +3511,7 @@ FontLoader.prototype.progress = function() {
 
 module.exports = FontLoader;
 
-},{}],22:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 var ImageLoader = function() {
@@ -3034,7 +3565,7 @@ ImageLoader.prototype.progress = function() {
 
 module.exports = ImageLoader;
 
-},{}],23:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 // only keyboard (because core class uses key board map)
@@ -3051,7 +3582,7 @@ var Constant = {
 
 module.exports = Constant;
 
-},{}],24:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 var CONSTANT = {
@@ -3083,7 +3614,7 @@ CONSTANT.SPRITE3D.A_SIZE =
 
 module.exports = CONSTANT;
 
-},{}],25:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 /* TODO: create input_manager class */
@@ -3408,7 +3939,7 @@ Core.prototype.createWebGLContext = function(canvas) {
 
 module.exports = Core;
 
-},{"./asset_loader/audio":20,"./asset_loader/font":21,"./asset_loader/image":22,"./constant":23,"./debug_manager":26,"./input_manager":28,"./scene/loading":47,"./shader/main.fs":49,"./shader/main.vs":50,"./shader_program":51,"webgl-debug":39}],26:[function(require,module,exports){
+},{"./asset_loader/audio":26,"./asset_loader/font":27,"./asset_loader/image":28,"./constant":29,"./debug_manager":32,"./input_manager":34,"./scene/loading":53,"./shader/main.fs":55,"./shader/main.vs":56,"./shader_program":57,"webgl-debug":45}],32:[function(require,module,exports){
 'use strict';
 
 var DebugManager = function (core) {
@@ -3475,7 +4006,7 @@ DebugManager.prototype.isShowingCollisionArea = function () {
 
 module.exports = DebugManager;
 
-},{}],27:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict';
 module.exports = {
 	util: require("./util"),
@@ -3507,7 +4038,7 @@ module.exports = {
 
 };
 
-},{"./asset_loader/audio":20,"./asset_loader/font":21,"./asset_loader/image":22,"./constant":23,"./core":25,"./object/base":40,"./object/pool_manager":41,"./object/pool_manager3d":42,"./object/sprite":43,"./object/sprite3d":44,"./object/ui_parts":45,"./scene/base":46,"./scene/loading":47,"./serif_manager":48,"./shader_program":51,"./storage/base":52,"./storage/save":53,"./util":54}],28:[function(require,module,exports){
+},{"./asset_loader/audio":26,"./asset_loader/font":27,"./asset_loader/image":28,"./constant":29,"./core":31,"./object/base":46,"./object/pool_manager":47,"./object/pool_manager3d":48,"./object/sprite":49,"./object/sprite3d":50,"./object/ui_parts":51,"./scene/base":52,"./scene/loading":53,"./serif_manager":54,"./shader_program":57,"./storage/base":58,"./storage/save":59,"./util":60}],34:[function(require,module,exports){
 'use strict';
 
 var CONSTANT = require("./constant");
@@ -3904,7 +4435,7 @@ InputManager.prototype.dumpGamePadKey = function() {
 
 module.exports = InputManager;
 
-},{"./constant":23,"./util":54}],29:[function(require,module,exports){
+},{"./constant":29,"./util":60}],35:[function(require,module,exports){
 /**
  * @fileoverview gl-matrix - High performance matrix and vector operations
  * @author Brandon Jones
@@ -3942,7 +4473,7 @@ exports.quat = require("./gl-matrix/quat.js");
 exports.vec2 = require("./gl-matrix/vec2.js");
 exports.vec3 = require("./gl-matrix/vec3.js");
 exports.vec4 = require("./gl-matrix/vec4.js");
-},{"./gl-matrix/common.js":30,"./gl-matrix/mat2.js":31,"./gl-matrix/mat2d.js":32,"./gl-matrix/mat3.js":33,"./gl-matrix/mat4.js":34,"./gl-matrix/quat.js":35,"./gl-matrix/vec2.js":36,"./gl-matrix/vec3.js":37,"./gl-matrix/vec4.js":38}],30:[function(require,module,exports){
+},{"./gl-matrix/common.js":36,"./gl-matrix/mat2.js":37,"./gl-matrix/mat2d.js":38,"./gl-matrix/mat3.js":39,"./gl-matrix/mat4.js":40,"./gl-matrix/quat.js":41,"./gl-matrix/vec2.js":42,"./gl-matrix/vec3.js":43,"./gl-matrix/vec4.js":44}],36:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -4014,7 +4545,7 @@ glMatrix.equals = function(a, b) {
 
 module.exports = glMatrix;
 
-},{}],31:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -4452,7 +4983,7 @@ mat2.multiplyScalarAndAdd = function(out, a, b, scale) {
 
 module.exports = mat2;
 
-},{"./common.js":30}],32:[function(require,module,exports){
+},{"./common.js":36}],38:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -4923,7 +5454,7 @@ mat2d.equals = function (a, b) {
 
 module.exports = mat2d;
 
-},{"./common.js":30}],33:[function(require,module,exports){
+},{"./common.js":36}],39:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -5671,7 +6202,7 @@ mat3.equals = function (a, b) {
 
 module.exports = mat3;
 
-},{"./common.js":30}],34:[function(require,module,exports){
+},{"./common.js":36}],40:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -7809,7 +8340,7 @@ mat4.equals = function (a, b) {
 
 module.exports = mat4;
 
-},{"./common.js":30}],35:[function(require,module,exports){
+},{"./common.js":36}],41:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -8411,7 +8942,7 @@ quat.equals = vec4.equals;
 
 module.exports = quat;
 
-},{"./common.js":30,"./mat3.js":33,"./vec3.js":37,"./vec4.js":38}],36:[function(require,module,exports){
+},{"./common.js":36,"./mat3.js":39,"./vec3.js":43,"./vec4.js":44}],42:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -9000,7 +9531,7 @@ vec2.equals = function (a, b) {
 
 module.exports = vec2;
 
-},{"./common.js":30}],37:[function(require,module,exports){
+},{"./common.js":36}],43:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -9779,7 +10310,7 @@ vec3.equals = function (a, b) {
 
 module.exports = vec3;
 
-},{"./common.js":30}],38:[function(require,module,exports){
+},{"./common.js":36}],44:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -10390,7 +10921,7 @@ vec4.equals = function (a, b) {
 
 module.exports = vec4;
 
-},{"./common.js":30}],39:[function(require,module,exports){
+},{"./common.js":36}],45:[function(require,module,exports){
 (function (global){
 /*
 ** Copyright (c) 2012 The Khronos Group Inc.
@@ -11348,7 +11879,7 @@ return {
 module.exports = WebGLDebugUtils;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],40:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 'use strict';
 
 var util = require('../util');
@@ -11736,7 +12267,7 @@ ObjectPoint.prototype.height = function() {
 
 module.exports = ObjectBase;
 
-},{"../util":54}],41:[function(require,module,exports){
+},{"../util":60}],47:[function(require,module,exports){
 'use strict';
 
 // TODO: add pooling logic
@@ -11834,7 +12365,7 @@ PoolManager.prototype.removeOutOfStageObjects = function() {
 
 module.exports = PoolManager;
 
-},{"../util":54,"./base":40}],42:[function(require,module,exports){
+},{"../util":60,"./base":46}],48:[function(require,module,exports){
 'use strict';
 
 // TODO: add pooling logic
@@ -12075,7 +12606,7 @@ PoolManager3D.prototype.shader = function(){
 
 module.exports = PoolManager3D;
 
-},{"../constant_3d":24,"../util":54,"./base":40,"gl-matrix":29}],43:[function(require,module,exports){
+},{"../constant_3d":30,"../util":60,"./base":46,"gl-matrix":35}],49:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var util = require('../util');
@@ -12218,7 +12749,7 @@ Sprite.prototype.alpha = function() {
 
 module.exports = Sprite;
 
-},{"../util":54,"./base":40}],44:[function(require,module,exports){
+},{"../util":60,"./base":46}],50:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var util = require('../util');
@@ -12563,7 +13094,7 @@ Sprite3d.prototype.isReflect = function(){
 
 module.exports = Sprite3d;
 
-},{"../constant_3d":24,"../util":54,"./base":40,"gl-matrix":29}],45:[function(require,module,exports){
+},{"../constant_3d":30,"../util":60,"./base":46,"gl-matrix":35}],51:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../util');
@@ -12620,7 +13151,7 @@ ObjectUIParts.prototype.draw = function(){
 
 module.exports = ObjectUIParts;
 
-},{"../util":54,"./base":40}],46:[function(require,module,exports){
+},{"../util":60,"./base":46}],52:[function(require,module,exports){
 'use strict';
 
 var SceneBase = function(core, scene) {
@@ -12870,7 +13401,7 @@ SceneBase.prototype.y = function(val) {
 module.exports = SceneBase;
 
 
-},{}],47:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 'use strict';
 
 // loading scene
@@ -12939,7 +13470,7 @@ SceneLoading.prototype.notifyAllLoaded = function(){
 
 module.exports = SceneLoading;
 
-},{"../util":54,"./base":46}],48:[function(require,module,exports){
+},{"../util":60,"./base":52}],54:[function(require,module,exports){
 'use strict';
 
 // typography speed
@@ -13186,13 +13717,13 @@ SerifManager.prototype.background_image = function () {
 
 module.exports = SerifManager;
 
-},{"./util":54}],49:[function(require,module,exports){
+},{"./util":60}],55:[function(require,module,exports){
 module.exports = "precision mediump float;\nuniform sampler2D uSampler;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tvec4 textureColor = texture2D(uSampler, vTextureCoordinates);\n\tgl_FragColor = textureColor * vColor;\n}\n\n";
 
-},{}],50:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 module.exports = "attribute vec3 aVertexPosition;\nattribute vec2 aTextureCoordinates;\nattribute vec4 aColor;\n\nuniform mat4 uMVMatrix;\nuniform mat4 uPMatrix;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tgl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);\n\tvTextureCoordinates = aTextureCoordinates;\n\tvColor = aColor;\n}\n\n";
 
-},{}],51:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 'use strict';
 var glmat = require("gl-matrix");
 
@@ -13263,7 +13794,7 @@ ShaderProgram.prototype.createShaderProgram = function(gl, vertex_shader, fragme
 
 module.exports = ShaderProgram;
 
-},{"gl-matrix":29}],52:[function(require,module,exports){
+},{"gl-matrix":35}],58:[function(require,module,exports){
 'use strict';
 
 /*
@@ -13463,7 +13994,7 @@ StorageBase.prototype._removeWebStorage = function() {
 
 module.exports = StorageBase;
 
-},{"../util":54}],53:[function(require,module,exports){
+},{"../util":60}],59:[function(require,module,exports){
 'use strict';
 var base_class = require('./base');
 var util = require('../util');
@@ -13485,7 +14016,7 @@ StorageSave.KEY = function(){
 
 module.exports = StorageSave;
 
-},{"../util":54,"./base":52}],54:[function(require,module,exports){
+},{"../util":60,"./base":58}],60:[function(require,module,exports){
 'use strict';
 var Util = {
 	inherit: function( child, parent ) {
@@ -13553,7 +14084,7 @@ var Util = {
 
 module.exports = Util;
 
-},{}],55:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 'use strict';
 var Game = require('./game');
 
@@ -13600,7 +14131,7 @@ if(window.require) {
 
 
 
-},{"./game":18}],56:[function(require,module,exports){
+},{"./game":24}],62:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -13664,7 +14195,7 @@ ObjectItemButton.prototype.collisionHeight = function(){
 
 module.exports = ObjectItemButton;
 
-},{"../hakurei":19}],57:[function(require,module,exports){
+},{"../hakurei":25}],63:[function(require,module,exports){
 'use strict';
 
 // こいしの歩く速度
@@ -13782,7 +14313,7 @@ Koishi.prototype.setMoveTarget = function(x, y) {
 
 module.exports = Koishi;
 
-},{"../anime/koishi/wait_anime_1":5,"../anime/koishi/walk_anime_1":6,"../constant":8,"../hakurei":19,"../object/sprite_studio":63}],58:[function(require,module,exports){
+},{"../anime/koishi/wait_anime_1":11,"../anime/koishi/walk_anime_1":12,"../constant":14,"../hakurei":25,"../object/sprite_studio":69}],64:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -13840,7 +14371,7 @@ ObjectLeftYajirushi.prototype.collisionHeight = function(){
 
 module.exports = ObjectLeftYajirushi;
 
-},{"../hakurei":19}],59:[function(require,module,exports){
+},{"../hakurei":25}],65:[function(require,module,exports){
 'use strict';
 
 /* メニューのアイテム */
@@ -13915,7 +14446,7 @@ ObjectMenuItem.prototype.use = function(){
 
 module.exports = ObjectMenuItem;
 
-},{"../hakurei":19}],60:[function(require,module,exports){
+},{"../hakurei":25}],66:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
@@ -13999,7 +14530,7 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 
 module.exports = ObjectAnimeImage;
 
-},{"../../anime":1,"../../hakurei":19,"../sprite_studio":63}],61:[function(require,module,exports){
+},{"../../anime":1,"../../hakurei":25,"../sprite_studio":69}],67:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
@@ -14059,7 +14590,7 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 
 module.exports = ObjectStaticImage;
 
-},{"../../hakurei":19}],62:[function(require,module,exports){
+},{"../../hakurei":25}],68:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -14118,7 +14649,7 @@ ObjectRightYajirushi.prototype.collisionHeight = function(){
 
 module.exports = ObjectRightYajirushi;
 
-},{"../hakurei":19}],63:[function(require,module,exports){
+},{"../hakurei":25}],69:[function(require,module,exports){
 'use strict';
 
 var base_object = require('../hakurei').object.base;
@@ -14245,7 +14776,7 @@ SpriteStudio.prototype.alpha = function() {
 
 module.exports = SpriteStudio;
 
-},{"../hakurei":19,"../vendor/SsaPlayer":74}],64:[function(require,module,exports){
+},{"../hakurei":25,"../vendor/SsaPlayer":80}],70:[function(require,module,exports){
 'use strict';
 
 // セーブデータ
@@ -14307,7 +14838,7 @@ SaveManager.prototype.increase3rdeyeGauge = function(num){
 
 module.exports = SaveManager;
 
-},{"./hakurei":19}],65:[function(require,module,exports){
+},{"./hakurei":25}],71:[function(require,module,exports){
 'use strict';
 
 // ローディングシーン
@@ -14410,7 +14941,7 @@ SceneLoading.prototype.progress = function(){
 
 module.exports = SceneLoading;
 
-},{"../assets_config":7,"../constant":8,"../hakurei":19}],66:[function(require,module,exports){
+},{"../assets_config":13,"../constant":14,"../hakurei":25}],72:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./stage_base');
@@ -14596,7 +15127,7 @@ SceneStage.prototype.setupPiece = function() {
 
 module.exports = SceneStage;
 
-},{"../constant":8,"../field":10,"../hakurei":19,"../object/item_button":56,"../object/koishi":57,"../object/left_yajirushi":58,"../object/object/anime_image":60,"../object/object/static_image":61,"../object/right_yajirushi":62,"./stage_base":67,"./sub_stage/menu":69,"./sub_stage/play":70,"./sub_stage/talk":71}],67:[function(require,module,exports){
+},{"../constant":14,"../field":16,"../hakurei":25,"../object/item_button":62,"../object/koishi":63,"../object/left_yajirushi":64,"../object/object/anime_image":66,"../object/object/static_image":67,"../object/right_yajirushi":68,"./stage_base":73,"./sub_stage/menu":75,"./sub_stage/play":76,"./sub_stage/talk":77}],73:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').scene.base;
 var Util = require('../hakurei').util;
@@ -14620,7 +15151,7 @@ SceneStageBase.prototype.mainStage = function(){
 
 module.exports = SceneStageBase;
 
-},{"../hakurei":19}],68:[function(require,module,exports){
+},{"../hakurei":25}],74:[function(require,module,exports){
 'use strict';
 var base_scene = require('../stage_base');
 var Util = require('../../hakurei').util;
@@ -14643,7 +15174,7 @@ SceneSubStageBase.prototype.mainStage = function(){
 
 module.exports = SceneSubStageBase;
 
-},{"../../hakurei":19,"../stage_base":67}],69:[function(require,module,exports){
+},{"../../hakurei":25,"../stage_base":73}],75:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -14896,7 +15427,7 @@ SceneSubStageTalk.prototype._useItem = function(){
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":19,"../../object/menu_item":59,"./base":68}],70:[function(require,module,exports){
+},{"../../hakurei":25,"../../object/menu_item":65,"./base":74}],76:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -14956,7 +15487,7 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 module.exports = SceneSubStagePlay;
 
-},{"../../hakurei":19,"./base":68}],71:[function(require,module,exports){
+},{"../../hakurei":25,"./base":74}],77:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -15081,7 +15612,7 @@ SceneSubStageTalk.prototype._showMessage = function() {
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":19,"../../serif/objects/1":73,"./base":68}],72:[function(require,module,exports){
+},{"../../hakurei":25,"../../serif/objects/1":79,"./base":74}],78:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -15216,7 +15747,7 @@ SceneTitle.prototype.draw = function(){
 
 module.exports = SceneTitle;
 
-},{"../constant":8,"../hakurei":19}],73:[function(require,module,exports){
+},{"../constant":14,"../hakurei":25}],79:[function(require,module,exports){
 'use strict';
 
 // セリフ
@@ -15226,7 +15757,7 @@ var Serif= [
 ];
 module.exports = Serif;
 
-},{}],74:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 //-----------------------------------------------------------
 // Ss5ConverterToSSAJSON v1.0.3
 //
@@ -15668,4 +16199,4 @@ module.exports = {
 
 
 
-},{}]},{},[55]);
+},{}]},{},[61]);
