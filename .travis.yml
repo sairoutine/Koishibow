@@ -4,3 +4,6 @@ script:
 branches:
   only:
     - gh-pages
+notifications:
+  on_success: never
+  on_failure: always
