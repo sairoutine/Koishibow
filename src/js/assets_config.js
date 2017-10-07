@@ -16,6 +16,11 @@ AssetsConfig.images = {
 	"chapter0-hospital_corridor1-obj-03-01": "./image/chapter0/hospital_corridor1/chapter0-hospital-obj-03-01.png",
 	"chapter0-hospital_corridor1-obj-04-01": "./image/chapter0/hospital_corridor1/chapter0-hospital-obj-04-01.png",
 
+	"chapter0-hospital2-bg-001":        "./image/chapter0/hospital_corridor2/chapter0-hospital2-bg-001.jpg",
+	"chapter0-hospital2-obj-01-01.png": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-01-01.png",
+	"chapter0-hospital2-obj-02-01": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-02-01.png",
+	"chapter0-hospital2-obj-03-01.png": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-03-01.png",
+
 	// TODO: delete
 	bg:  "./image/bg.png",
 
