@@ -9,7 +9,7 @@ module.exports = {
 	left_field: null,
 	background: "chapter0-myroom-bg-001",
 	objects: [
-		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", x: 80, y: 270, scale: 0.7},
+		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", x: 50, y: 270, scale: 0.7},
 		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "机", x: 0, y: 425, scale: 0.7},
 		{image: "chapter0-myroom-obj-02-01", type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03"},
 		{image: "chapter0-myroom-obj-03-01", type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03"},
