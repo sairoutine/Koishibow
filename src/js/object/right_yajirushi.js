@@ -1,14 +1,14 @@
 'use strict';
-var base_scene = require('../hakurei').object.base;
+var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
 
 var ObjectRightYajirushi = function(core) {
-	base_scene.apply(this, arguments);
+	base_object.apply(this, arguments);
 };
-Util.inherit(ObjectRightYajirushi, base_scene);
+Util.inherit(ObjectRightYajirushi, base_object);
 
 ObjectRightYajirushi.prototype.init = function(){
-	base_scene.prototype.init.apply(this, arguments);
+	base_object.prototype.init.apply(this, arguments);
 
 	this.setPosition();
 };
@@ -25,6 +25,7 @@ ObjectRightYajirushi.prototype.setPosition = function(){
 };
 
 ObjectRightYajirushi.prototype.draw = function(){
+	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 	ctx.save();
 	/*

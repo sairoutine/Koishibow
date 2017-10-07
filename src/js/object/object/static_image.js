@@ -31,6 +31,7 @@ ObjectStaticImage.prototype.onCollision = function(obj){
 };
 
 ObjectStaticImage.prototype.draw = function(){
+	base_object.prototype.draw.apply(this, arguments);
 	if (!this.image) return;
 	var ctx = this.core.ctx;
 	var image = this.image;

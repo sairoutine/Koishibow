@@ -89,6 +89,7 @@ SpriteStudio.prototype.beforeDraw = function(){
 
 // 画面更新
 SpriteStudio.prototype.draw = function(){
+	base_object.prototype.draw.apply(this, arguments);
 	if (!this.isShow()) return;
 	var ctx = this.core.ctx;
 

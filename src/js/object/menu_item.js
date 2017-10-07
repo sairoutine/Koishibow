@@ -22,6 +22,7 @@ ObjectMenuItem.prototype.onCollision = function(obj){
 };
 
 ObjectMenuItem.prototype.draw = function(){
+	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 	ctx.save();
 

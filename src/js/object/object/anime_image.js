@@ -63,6 +63,7 @@ ObjectAnimeImage.prototype.beforeDraw = function(x, y) {
 
 
 ObjectAnimeImage.prototype.draw = function(){
+	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 
 	this.sprite.draw();

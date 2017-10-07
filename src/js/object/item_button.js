@@ -1,14 +1,14 @@
 'use strict';
-var base_scene = require('../hakurei').object.base;
+var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
 
 var ObjectItemButton = function(core) {
-	base_scene.apply(this, arguments);
+	base_object.apply(this, arguments);
 };
-Util.inherit(ObjectItemButton, base_scene);
+Util.inherit(ObjectItemButton, base_object);
 
 ObjectItemButton.prototype.init = function(){
-	base_scene.prototype.init.apply(this, arguments);
+	base_object.prototype.init.apply(this, arguments);
 	this.setPosition();
 };
 
@@ -31,6 +31,7 @@ ObjectItemButton.prototype.setPosition = function(){
 };
 
 ObjectItemButton.prototype.draw = function(){
+	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 	ctx.save();
 
