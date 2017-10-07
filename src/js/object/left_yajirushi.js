@@ -1,6 +1,7 @@
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
+var CONSTANT = require('../constant');
 
 var ObjectLeftYajirushi = function(core) {
 	base_object.apply(this, arguments);
@@ -26,6 +27,11 @@ ObjectLeftYajirushi.prototype.setPosition = function(){
 
 ObjectLeftYajirushi.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+
+	// デバッグ用の仮描画する
+	if (!CONSTANT.DEBUG.ON) return;
+
+
 	var ctx = this.core.ctx;
 	ctx.save();
 	/*

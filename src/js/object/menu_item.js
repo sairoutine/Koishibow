@@ -4,6 +4,7 @@
 
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
+var CONSTANT = require('../constant');
 
 var ObjectMenuItem = function(scene, item_id) {
 	base_object.apply(this, arguments);
@@ -25,6 +26,10 @@ ObjectMenuItem.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 	ctx.save();
+
+	// デバッグ用の仮描画する
+	if (!CONSTANT.DEBUG.ON) return;
+
 
 	// 仮で四角形を描画
 	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
