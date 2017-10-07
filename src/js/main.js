@@ -1,5 +1,6 @@
 'use strict';
 var Game = require('./game');
+var CONSTANT = require('./constant');
 
 var game;
 
@@ -12,13 +13,12 @@ window.onload = function() {
 	game.init();
 	// イベントハンドラの設定
 	game.setupEvents();
-	/*
+
 	// デバッグ設定
 	if (CONSTANT.DEBUG.ON) {
 		var debugDOM = document.getElementById('debug');
 		game.setupDebug(debugDOM);
 	}
-	*/
 
 	// ゲーム起動
 	game.startRun();

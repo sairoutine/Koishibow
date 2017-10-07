@@ -27,6 +27,40 @@ Game.prototype.init = function () {
 
 	this.changeScene("loading");
 };
+Game.prototype.setupDebug = function (dom) {
+	if (!CONSTANT.DEBUG.ON) return;
+
+	this.debug_manager.setOn(dom);
+
+	// テキスト追加
+	this.debug_manager.addMenuText("マウスクリックで移動／調べる");
+
+	// ゲームスタート ボタン
+	this.debug_manager.addMenuButton("Run", function (game) {
+		game.startRun();
+	});
+
+	// ゲームストップ ボタン
+	this.debug_manager.addMenuButton("Stop", function (game) {
+		game.stopRun();
+	});
+
+	// フルスクリーン ボタン
+	this.debug_manager.addMenuButton("最大化", function (game) {
+		game.fullscreen();
+	});
+
+	this.debug_manager.addMenuButton("当たり判定表示", function (game) {
+		game.debug_manager.setShowingCollisionAreaOn();
+	});
+	this.debug_manager.addMenuButton("当たり判定非表示", function (game) {
+		game.debug_manager.setShowingCollisionAreaOff();
+	});
+};
+
+
+
+
 /*
 Game.prototype.playSound = function () {
 	if (CONSTANT.DEBUG.SOUND_OFF) return;
