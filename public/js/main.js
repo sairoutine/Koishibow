@@ -3435,7 +3435,7 @@ module.exports = CONSTANT;
 },{"./debug_constant":18}],18:[function(require,module,exports){
 'use strict';
 var DEBUG = {
-	ON: true,
+	ON: false,
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_hospital_corridor1"],
@@ -14598,6 +14598,7 @@ if(window.require) {
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
+var CONSTANT = require('../constant');
 
 var ObjectItemButton = function(core) {
 	base_object.apply(this, arguments);
@@ -14629,6 +14630,10 @@ ObjectItemButton.prototype.setPosition = function(){
 
 ObjectItemButton.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+
+	// デバッグ用の仮描画する
+	if (!CONSTANT.DEBUG.ON) return;
+
 	var ctx = this.core.ctx;
 	ctx.save();
 
@@ -14659,7 +14664,7 @@ ObjectItemButton.prototype.collisionHeight = function(){
 
 module.exports = ObjectItemButton;
 
-},{"../hakurei":28}],66:[function(require,module,exports){
+},{"../constant":17,"../hakurei":28}],66:[function(require,module,exports){
 'use strict';
 
 // こいしの歩く速度
@@ -14781,6 +14786,7 @@ module.exports = Koishi;
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
+var CONSTANT = require('../constant');
 
 var ObjectLeftYajirushi = function(core) {
 	base_object.apply(this, arguments);
@@ -14806,6 +14812,11 @@ ObjectLeftYajirushi.prototype.setPosition = function(){
 
 ObjectLeftYajirushi.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+
+	// デバッグ用の仮描画する
+	if (!CONSTANT.DEBUG.ON) return;
+
+
 	var ctx = this.core.ctx;
 	ctx.save();
 	/*
@@ -14836,13 +14847,14 @@ ObjectLeftYajirushi.prototype.collisionHeight = function(){
 
 module.exports = ObjectLeftYajirushi;
 
-},{"../hakurei":28}],68:[function(require,module,exports){
+},{"../constant":17,"../hakurei":28}],68:[function(require,module,exports){
 'use strict';
 
 /* メニューのアイテム */
 
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
+var CONSTANT = require('../constant');
 
 var ObjectMenuItem = function(scene, item_id) {
 	base_object.apply(this, arguments);
@@ -14864,6 +14876,10 @@ ObjectMenuItem.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 	ctx.save();
+
+	// デバッグ用の仮描画する
+	if (!CONSTANT.DEBUG.ON) return;
+
 
 	// 仮で四角形を描画
 	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
@@ -14912,7 +14928,7 @@ ObjectMenuItem.prototype.use = function(){
 
 module.exports = ObjectMenuItem;
 
-},{"../hakurei":28}],69:[function(require,module,exports){
+},{"../constant":17,"../hakurei":28}],69:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
@@ -15062,6 +15078,7 @@ module.exports = ObjectStaticImage;
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
+var CONSTANT = require('../constant');
 
 var ObjectRightYajirushi = function(core) {
 	base_object.apply(this, arguments);
@@ -15089,6 +15106,10 @@ ObjectRightYajirushi.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 	ctx.save();
+
+	// デバッグ用の仮描画する
+	if (!CONSTANT.DEBUG.ON) return;
+
 	/*
 	// 仮で四角形を描画
 	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
@@ -15118,7 +15139,7 @@ ObjectRightYajirushi.prototype.collisionHeight = function(){
 
 module.exports = ObjectRightYajirushi;
 
-},{"../hakurei":28}],72:[function(require,module,exports){
+},{"../constant":17,"../hakurei":28}],72:[function(require,module,exports){
 'use strict';
 
 var base_object = require('../hakurei').object.base;
@@ -15545,16 +15566,21 @@ SceneStage.prototype.draw = function(){
 					this.core.height);
 	ctx.restore();
 
-	ctx.save();
-	// フィールド名 表示
-	// TODO: 削除
-	ctx.font = "60px 'OradanoGSRR'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText(this.field().name, this.width - 180, this.height - 20);
 
-	ctx.restore();
+	// デバッグ用の仮描画する
+	if (CONSTANT.DEBUG.ON) {
+
+		ctx.save();
+		// フィールド名 表示
+		// TODO: 削除
+		ctx.font = "60px 'OradanoGSRR'";
+		ctx.textAlign = 'center';
+		ctx.textBaseAlign = 'middle';
+		ctx.fillStyle = 'rgb( 0, 0, 0 )';
+		ctx.fillText(this.field().name, this.width - 180, this.height - 20);
+		ctx.restore();
+	}
+
 
 	// こいし／サブシーン描画
 	base_scene.prototype.draw.apply(this, arguments);
