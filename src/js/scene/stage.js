@@ -17,6 +17,7 @@ var ObjectAnimeImage = require('../object/object/anime_image');
 var LeftYajirushi = require('../object/left_yajirushi');
 var RightYajirushi = require('../object/right_yajirushi');
 var ItemButton = require('../object/item_button');
+var Eye = require('../object/eye');
 
 var FieldMap = require('../field');
 
@@ -40,6 +41,9 @@ var SceneStage = function(core) {
 
 	this.item_button = new ItemButton(this);
 	this.addObject(this.item_button);
+
+	this.eye = new Eye(this);
+	this.addObject(this.eye);
 
 	/* sub scene 一覧
 	調べてるオブジェクト(机の上、窓の外) →そこからさらにアイテム調べられるので、サブシーンのサブシーンができるように、各サブシーンを作っておかねば。
@@ -93,6 +97,7 @@ SceneStage.prototype.init = function(field_name, is_right){
 	}
 
 	this.addObject(this.item_button);
+	this.addObject(this.eye);
 
 	this.changeSubScene("play");
 };

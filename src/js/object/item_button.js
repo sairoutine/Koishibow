@@ -56,12 +56,4 @@ ObjectItemButton.prototype.scaleHeight = function(){
 ObjectItemButton.prototype.scaleWidth = function(){
 	return 0.6;
 };
-ObjectItemButton.prototype.draw = function(){
-	base_object.prototype.draw.apply(this, arguments);
-};
-
-
-
-
-
 module.exports = ObjectItemButton;
