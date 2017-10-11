@@ -38,9 +38,10 @@ ObjectStaticImage.prototype.draw = function(){
 
 	// 背景描画
 	ctx.save();
+	ctx.translate(this.x(), this.y());
 	ctx.drawImage(image,
-					this.x(),
-					this.y(),
+					-image.width*this.scale/2,
+					-image.height*this.scale/2,
 					image.width * this.scale,
 					image.height * this.scale);
 	ctx.restore();
