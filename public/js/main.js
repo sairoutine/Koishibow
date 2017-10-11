@@ -3444,7 +3444,7 @@ var DEBUG = {
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_hospital_corridor1"],
-	START_SCENE: ["stage", "chapter0_hospital_corridor2"],
+	START_SCENE: ["stage", "chapter0_hospital_corridor1"],
 };
 
 module.exports = DEBUG;
@@ -3486,12 +3486,14 @@ module.exports = {
 	left_field: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
 	objects: [
-		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "手術台", x: 555, y: 470, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "金庫",   x: 205, y: 300, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "バケツ", x: 230, y: 240, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-04-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "メス",   x: 830, y: 530, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "手術台", x: 814, y: 608, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "金庫",   x: 279, y: 378, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "バケツ", x: 281, y: 280, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-04-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "メス",   x: 853, y: 534, scale: 0.7},
 	],
 };
+
+
 
 },{"../../constant":17}],21:[function(require,module,exports){
 // 病院の廊下2(こころ)
@@ -3505,12 +3507,11 @@ module.exports = {
 	left_field: "chapter0_hospital_corridor1",
 	background: "chapter0-hospital2-bg-001",
 	objects: [
-		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "包帯", x: 275, y: 435, scale: 0.7},
+		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "包帯", x: 302, y: 443, scale: 0.7},
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03"},
 	],
 
 };
-
 
 
 },{"../../constant":17}],22:[function(require,module,exports){
@@ -3592,14 +3593,13 @@ module.exports = {
 	left_field: null,
 	background: "chapter0-myroom-bg-001",
 	objects: [
-		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", x: 50, y: 270, scale: 0.7},
-		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "机", x: 0, y: 425, scale: 0.7},
+		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", x: 258, y: 389, scale: 0.7},
+		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "机", x: 59, y: 496, scale: 0.7},
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03"},
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03"},
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03"},
 	],
 };
-
 
 
 },{"../../constant":17}],27:[function(require,module,exports){
@@ -12423,11 +12423,11 @@ ObjectBase.prototype.globalRightX = function() {
 };
 
 ObjectBase.prototype.globalUpY = function() {
-	return this.scene.x() + this.y() - this.height()/2;
+	return this.scene.y() + this.y() - this.height()/2;
 };
 
 ObjectBase.prototype.globalDownY = function() {
-	return this.scene.x() + this.y() + this.height()/2;
+	return this.scene.y() + this.y() + this.height()/2;
 };
 
 /*
@@ -15099,9 +15099,10 @@ ObjectStaticImage.prototype.draw = function(){
 
 	// 背景描画
 	ctx.save();
+	ctx.translate(this.x(), this.y());
 	ctx.drawImage(image,
-					this.x(),
-					this.y(),
+					-image.width*this.scale/2,
+					-image.height*this.scale/2,
 					image.width * this.scale,
 					image.height * this.scale);
 	ctx.restore();
@@ -16012,7 +16013,8 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 		this.mainStage().pieces.forEach(function(piece) {
 			var is_collision = piece.checkCollisionWithPosition(x, y);
 
-			if (is_collision) is_talk = true;
+			// TODO: 会話ー＞シーン遷移の当たり判定でなく、シーン遷移ー＞会話の当たり判定にする
+			//if (is_collision) is_talk = true;
 		});
 
 
@@ -16024,7 +16026,6 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 			// シーン遷移
 			if(this.mainStage().field().left_field && this.mainStage().left_yajirushi.checkCollisionWithPosition(x, y)) {
-
 			}
 			// シーン遷移
 			else if(this.mainStage().field().right_field && this.mainStage().right_yajirushi.checkCollisionWithPosition(x, y)) {
