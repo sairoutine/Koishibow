@@ -25,7 +25,8 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 		this.mainStage().pieces.forEach(function(piece) {
 			var is_collision = piece.checkCollisionWithPosition(x, y);
 
-			if (is_collision) is_talk = true;
+			// TODO: 会話ー＞シーン遷移の当たり判定でなく、シーン遷移ー＞会話の当たり判定にする
+			//if (is_collision) is_talk = true;
 		});
 
 
@@ -37,7 +38,6 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 			// シーン遷移
 			if(this.mainStage().field().left_field && this.mainStage().left_yajirushi.checkCollisionWithPosition(x, y)) {
-
 			}
 			// シーン遷移
 			else if(this.mainStage().field().right_field && this.mainStage().right_yajirushi.checkCollisionWithPosition(x, y)) {
