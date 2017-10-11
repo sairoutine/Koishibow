@@ -14,7 +14,7 @@ ObjectItemButton.prototype.init = function(){
 };
 
 ObjectItemButton.prototype.setPosition = function(){
-	this.x(48 + 24);
+	this.x(48 + 32);
 	this.y(this.scene.mainStage().height - 75);
 };
 

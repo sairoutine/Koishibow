@@ -126,7 +126,7 @@ SceneStage.prototype.draw = function(){
 
 
 	// デバッグ用の仮描画する
-	if (CONSTANT.DEBUG.ON) {
+	if (0) {
 
 		ctx.save();
 		// フィールド名 表示
