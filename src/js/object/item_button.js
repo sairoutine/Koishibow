@@ -1,5 +1,5 @@
 'use strict';
-var base_object = require('../hakurei').object.base;
+var base_object = require('../hakurei').object.sprite;
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 
@@ -13,6 +13,10 @@ ObjectItemButton.prototype.init = function(){
 	this.setPosition();
 };
 
+ObjectItemButton.prototype.setPosition = function(){
+	this.x(48 + 24);
+	this.y(this.scene.mainStage().height - 75);
+};
 
 ObjectItemButton.prototype.onCollision = function(obj){
 	var scene_name = this.scene.mainStage().current_scene;
@@ -26,37 +30,6 @@ ObjectItemButton.prototype.onCollision = function(obj){
 	}
 };
 
-ObjectItemButton.prototype.setPosition = function(){
-	this.x(48 + 24);
-	this.y(this.scene.mainStage().height - 75);
-};
-
-ObjectItemButton.prototype.draw = function(){
-	base_object.prototype.draw.apply(this, arguments);
-
-	// デバッグ用の仮描画する
-	if (!CONSTANT.DEBUG.ON) return;
-
-	var ctx = this.core.ctx;
-	ctx.save();
-
-	// 仮で四角形を描画
-	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
-	//ctx.globalAlpha = 0.4;
-	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
-
-	// メニュー文字 表示
-	ctx.font = "24px 'Migu'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText("メニュー", this.x() + 5, this.y() + 5);
-
-	ctx.restore();
-};
-
-
-
 ObjectItemButton.prototype.collisionWidth = function(){
 	return 128;
 };
@@ -64,5 +37,31 @@ ObjectItemButton.prototype.collisionWidth = function(){
 ObjectItemButton.prototype.collisionHeight = function(){
 	return 128;
 };
+
+ObjectItemButton.prototype.spriteName = function(){
+	return "tool";
+};
+ObjectItemButton.prototype.spriteIndices = function(){
+	return [{x: 0, y: 0}];
+};
+ObjectItemButton.prototype.spriteWidth = function(){
+	return 260;
+};
+ObjectItemButton.prototype.spriteHeight = function(){
+	return 180;
+};
+ObjectItemButton.prototype.scaleHeight = function(){
+	return 0.6;
+};
+ObjectItemButton.prototype.scaleWidth = function(){
+	return 0.6;
+};
+ObjectItemButton.prototype.draw = function(){
+	base_object.prototype.draw.apply(this, arguments);
+};
+
+
+
+
 
 module.exports = ObjectItemButton;
