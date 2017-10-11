@@ -24,6 +24,11 @@ AssetsConfig.images = {
 	// TODO: delete
 	bg:  "./image/bg.png",
 
+	// アイテムボタン
+	tool: "./image/ui-common-btn-tool-1.png",
+	// 第三の目
+	eye:  "./image/ui-common-btn-eye-1.png",
+
 	fukidashi:  "./image/fukidashi.png",
 	title:  "./image/title.png",
 	logo_wht:  "./image/logo_wht.png",
