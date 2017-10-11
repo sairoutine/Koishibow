@@ -3440,7 +3440,7 @@ module.exports = CONSTANT;
 },{"./debug_constant":18}],18:[function(require,module,exports){
 'use strict';
 var DEBUG = {
-	ON: true,
+	ON: false,
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_hospital_corridor1"],
