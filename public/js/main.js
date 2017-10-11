@@ -3400,6 +3400,11 @@ AssetsConfig.images = {
 	// TODO: delete
 	bg:  "./image/bg.png",
 
+	// アイテムボタン
+	tool: "./image/ui-common-btn-tool-1.png",
+	// 第三の目
+	eye:  "./image/ui-common-btn-eye-1.png",
+
 	fukidashi:  "./image/fukidashi.png",
 	title:  "./image/title.png",
 	logo_wht:  "./image/logo_wht.png",
@@ -3435,7 +3440,7 @@ module.exports = CONSTANT;
 },{"./debug_constant":18}],18:[function(require,module,exports){
 'use strict';
 var DEBUG = {
-	ON: false,
+	ON: true,
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_hospital_corridor1"],
@@ -3682,7 +3687,7 @@ Game.prototype.stopBGM = function () {
 
 module.exports = Game;
 
-},{"./constant":17,"./hakurei":28,"./save_manager":73,"./scene/loading":74,"./scene/stage":75,"./scene/title":81}],28:[function(require,module,exports){
+},{"./constant":17,"./hakurei":28,"./save_manager":74,"./scene/loading":75,"./scene/stage":76,"./scene/title":82}],28:[function(require,module,exports){
 'use strict';
 
 module.exports = require("./hakureijs/index");
@@ -13062,7 +13067,7 @@ Sprite.prototype.draw = function(){
 		ctx.translate(this.globalCenterX(), this.globalCenterY());
 
 		// rotate
-		var rotate = util.thetaToRadian(this.velocity.theta + this.rotateAdjust());
+		var rotate = util.thetaToRadian(this._velocity.theta + this.rotateAdjust());
 		ctx.rotate(rotate);
 
 		var sprite_width  = this.spriteWidth();
@@ -14596,7 +14601,56 @@ if(window.require) {
 
 },{"./constant":17,"./game":27}],65:[function(require,module,exports){
 'use strict';
-var base_object = require('../hakurei').object.base;
+var base_object = require('../hakurei').object.sprite;
+var Util = require('../hakurei').util;
+var CONSTANT = require('../constant');
+
+var ObjectEye = function(core) {
+	base_object.apply(this, arguments);
+};
+Util.inherit(ObjectEye, base_object);
+
+ObjectEye.prototype.init = function(){
+	base_object.prototype.init.apply(this, arguments);
+	this.setPosition();
+};
+
+ObjectEye.prototype.setPosition = function(){
+	this.x(this.scene.mainStage().width - 48 - 20);
+	this.y(this.scene.mainStage().height - 70);
+};
+
+ObjectEye.prototype.collisionWidth = function(){
+	return 200;
+};
+
+ObjectEye.prototype.collisionHeight = function(){
+	return 160;
+};
+
+ObjectEye.prototype.spriteName = function(){
+	return "eye";
+};
+ObjectEye.prototype.spriteIndices = function(){
+	return [{x: 0, y: 0}];
+};
+ObjectEye.prototype.spriteWidth = function(){
+	return 260;
+};
+ObjectEye.prototype.spriteHeight = function(){
+	return 180;
+};
+ObjectEye.prototype.scaleHeight = function(){
+	return 0.8;
+};
+ObjectEye.prototype.scaleWidth = function(){
+	return 0.8;
+};
+module.exports = ObjectEye;
+
+},{"../constant":17,"../hakurei":28}],66:[function(require,module,exports){
+'use strict';
+var base_object = require('../hakurei').object.sprite;
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 
@@ -14610,6 +14664,10 @@ ObjectItemButton.prototype.init = function(){
 	this.setPosition();
 };
 
+ObjectItemButton.prototype.setPosition = function(){
+	this.x(48 + 32);
+	this.y(this.scene.mainStage().height - 75);
+};
 
 ObjectItemButton.prototype.onCollision = function(obj){
 	var scene_name = this.scene.mainStage().current_scene;
@@ -14623,37 +14681,6 @@ ObjectItemButton.prototype.onCollision = function(obj){
 	}
 };
 
-ObjectItemButton.prototype.setPosition = function(){
-	this.x(48 + 24);
-	this.y(this.scene.mainStage().height - 75);
-};
-
-ObjectItemButton.prototype.draw = function(){
-	base_object.prototype.draw.apply(this, arguments);
-
-	// デバッグ用の仮描画する
-	if (!CONSTANT.DEBUG.ON) return;
-
-	var ctx = this.core.ctx;
-	ctx.save();
-
-	// 仮で四角形を描画
-	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
-	//ctx.globalAlpha = 0.4;
-	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
-
-	// メニュー文字 表示
-	ctx.font = "24px 'Migu'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText("メニュー", this.x() + 5, this.y() + 5);
-
-	ctx.restore();
-};
-
-
-
 ObjectItemButton.prototype.collisionWidth = function(){
 	return 128;
 };
@@ -14662,9 +14689,27 @@ ObjectItemButton.prototype.collisionHeight = function(){
 	return 128;
 };
 
+ObjectItemButton.prototype.spriteName = function(){
+	return "tool";
+};
+ObjectItemButton.prototype.spriteIndices = function(){
+	return [{x: 0, y: 0}];
+};
+ObjectItemButton.prototype.spriteWidth = function(){
+	return 260;
+};
+ObjectItemButton.prototype.spriteHeight = function(){
+	return 180;
+};
+ObjectItemButton.prototype.scaleHeight = function(){
+	return 0.6;
+};
+ObjectItemButton.prototype.scaleWidth = function(){
+	return 0.6;
+};
 module.exports = ObjectItemButton;
 
-},{"../constant":17,"../hakurei":28}],66:[function(require,module,exports){
+},{"../constant":17,"../hakurei":28}],67:[function(require,module,exports){
 'use strict';
 
 // こいしの歩く速度
@@ -14782,7 +14827,7 @@ Koishi.prototype.setMoveTarget = function(x, y) {
 
 module.exports = Koishi;
 
-},{"../anime/koishi/wait_anime_1":14,"../anime/koishi/walk_anime_1":15,"../constant":17,"../hakurei":28,"../object/sprite_studio":72}],67:[function(require,module,exports){
+},{"../anime/koishi/wait_anime_1":14,"../anime/koishi/walk_anime_1":15,"../constant":17,"../hakurei":28,"../object/sprite_studio":73}],68:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -14847,7 +14892,7 @@ ObjectLeftYajirushi.prototype.collisionHeight = function(){
 
 module.exports = ObjectLeftYajirushi;
 
-},{"../constant":17,"../hakurei":28}],68:[function(require,module,exports){
+},{"../constant":17,"../hakurei":28}],69:[function(require,module,exports){
 'use strict';
 
 /* メニューのアイテム */
@@ -14928,7 +14973,7 @@ ObjectMenuItem.prototype.use = function(){
 
 module.exports = ObjectMenuItem;
 
-},{"../constant":17,"../hakurei":28}],69:[function(require,module,exports){
+},{"../constant":17,"../hakurei":28}],70:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
@@ -15013,7 +15058,7 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 
 module.exports = ObjectAnimeImage;
 
-},{"../../anime":1,"../../hakurei":28,"../sprite_studio":72}],70:[function(require,module,exports){
+},{"../../anime":1,"../../hakurei":28,"../sprite_studio":73}],71:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
@@ -15074,7 +15119,7 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 
 module.exports = ObjectStaticImage;
 
-},{"../../hakurei":28}],71:[function(require,module,exports){
+},{"../../hakurei":28}],72:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -15139,7 +15184,7 @@ ObjectRightYajirushi.prototype.collisionHeight = function(){
 
 module.exports = ObjectRightYajirushi;
 
-},{"../constant":17,"../hakurei":28}],72:[function(require,module,exports){
+},{"../constant":17,"../hakurei":28}],73:[function(require,module,exports){
 'use strict';
 
 var base_object = require('../hakurei').object.base;
@@ -15279,7 +15324,7 @@ SpriteStudio.prototype.alpha = function() {
 
 module.exports = SpriteStudio;
 
-},{"../hakurei":28,"../vendor/SsaPlayer":83}],73:[function(require,module,exports){
+},{"../hakurei":28,"../vendor/SsaPlayer":84}],74:[function(require,module,exports){
 'use strict';
 
 // セーブデータ
@@ -15341,7 +15386,7 @@ SaveManager.prototype.increase3rdeyeGauge = function(num){
 
 module.exports = SaveManager;
 
-},{"./hakurei":28}],74:[function(require,module,exports){
+},{"./hakurei":28}],75:[function(require,module,exports){
 'use strict';
 
 // ローディングシーン
@@ -15444,7 +15489,7 @@ SceneLoading.prototype.progress = function(){
 
 module.exports = SceneLoading;
 
-},{"../assets_config":16,"../constant":17,"../hakurei":28}],75:[function(require,module,exports){
+},{"../assets_config":16,"../constant":17,"../hakurei":28}],76:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./stage_base');
@@ -15464,6 +15509,7 @@ var ObjectAnimeImage = require('../object/object/anime_image');
 var LeftYajirushi = require('../object/left_yajirushi');
 var RightYajirushi = require('../object/right_yajirushi');
 var ItemButton = require('../object/item_button');
+var Eye = require('../object/eye');
 
 var FieldMap = require('../field');
 
@@ -15487,6 +15533,9 @@ var SceneStage = function(core) {
 
 	this.item_button = new ItemButton(this);
 	this.addObject(this.item_button);
+
+	this.eye = new Eye(this);
+	this.addObject(this.eye);
 
 	/* sub scene 一覧
 	調べてるオブジェクト(机の上、窓の外) →そこからさらにアイテム調べられるので、サブシーンのサブシーンができるように、各サブシーンを作っておかねば。
@@ -15540,6 +15589,7 @@ SceneStage.prototype.init = function(field_name, is_right){
 	}
 
 	this.addObject(this.item_button);
+	this.addObject(this.eye);
 
 	this.changeSubScene("play");
 };
@@ -15568,7 +15618,7 @@ SceneStage.prototype.draw = function(){
 
 
 	// デバッグ用の仮描画する
-	if (CONSTANT.DEBUG.ON) {
+	if (0) {
 
 		ctx.save();
 		// フィールド名 表示
@@ -15634,7 +15684,7 @@ SceneStage.prototype.setupPiece = function() {
 
 module.exports = SceneStage;
 
-},{"../constant":17,"../field":19,"../hakurei":28,"../object/item_button":65,"../object/koishi":66,"../object/left_yajirushi":67,"../object/object/anime_image":69,"../object/object/static_image":70,"../object/right_yajirushi":71,"./stage_base":76,"./sub_stage/menu":78,"./sub_stage/play":79,"./sub_stage/talk":80}],76:[function(require,module,exports){
+},{"../constant":17,"../field":19,"../hakurei":28,"../object/eye":65,"../object/item_button":66,"../object/koishi":67,"../object/left_yajirushi":68,"../object/object/anime_image":70,"../object/object/static_image":71,"../object/right_yajirushi":72,"./stage_base":77,"./sub_stage/menu":79,"./sub_stage/play":80,"./sub_stage/talk":81}],77:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').scene.base;
 var Util = require('../hakurei').util;
@@ -15658,7 +15708,7 @@ SceneStageBase.prototype.mainStage = function(){
 
 module.exports = SceneStageBase;
 
-},{"../hakurei":28}],77:[function(require,module,exports){
+},{"../hakurei":28}],78:[function(require,module,exports){
 'use strict';
 var base_scene = require('../stage_base');
 var Util = require('../../hakurei').util;
@@ -15681,7 +15731,7 @@ SceneSubStageBase.prototype.mainStage = function(){
 
 module.exports = SceneSubStageBase;
 
-},{"../../hakurei":28,"../stage_base":76}],78:[function(require,module,exports){
+},{"../../hakurei":28,"../stage_base":77}],79:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -15934,7 +15984,7 @@ SceneSubStageTalk.prototype._useItem = function(){
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":28,"../../object/menu_item":68,"./base":77}],79:[function(require,module,exports){
+},{"../../hakurei":28,"../../object/menu_item":69,"./base":78}],80:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -15994,7 +16044,7 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 module.exports = SceneSubStagePlay;
 
-},{"../../hakurei":28,"./base":77}],80:[function(require,module,exports){
+},{"../../hakurei":28,"./base":78}],81:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -16119,7 +16169,7 @@ SceneSubStageTalk.prototype._showMessage = function() {
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":28,"../../serif/objects/1":82,"./base":77}],81:[function(require,module,exports){
+},{"../../hakurei":28,"../../serif/objects/1":83,"./base":78}],82:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -16254,7 +16304,7 @@ SceneTitle.prototype.draw = function(){
 
 module.exports = SceneTitle;
 
-},{"../constant":17,"../hakurei":28}],82:[function(require,module,exports){
+},{"../constant":17,"../hakurei":28}],83:[function(require,module,exports){
 'use strict';
 
 // セリフ
@@ -16264,7 +16314,7 @@ var Serif= [
 ];
 module.exports = Serif;
 
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 //-----------------------------------------------------------
 // Ss5ConverterToSSAJSON v1.0.3
 //
