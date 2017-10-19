@@ -56,13 +56,13 @@ SceneSubStageTalk.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
 	ctx.save();
 
-	var x = this.koishi().x() - 0;
+	var x = this.koishi().x() - 550;
 	var y = this.koishi().y() - 330;
 
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
 
 	// TODO: 実装
-	if(false) {
+	if(true) {
 		x = -x; // 反転
 		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
 	}
