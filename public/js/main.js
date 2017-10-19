@@ -3405,7 +3405,7 @@ AssetsConfig.images = {
 	// 第三の目
 	eye:  "./image/ui-common-btn-eye-1.png",
 
-	fukidashi:  "./image/fukidashi.png",
+	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
 	title:  "./image/title.png",
 	logo_wht:  "./image/logo_wht.png",
 };
@@ -15023,12 +15023,16 @@ ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_
 ObjectAnimeImage.prototype.onCollision = function(obj){
 	var self = this;
 
+	// オブジェクトのアニメーション
 	var sprite = self.sprite;
 	var after_anime = self.after_anime;
 	var click_anime = self.click_anime;
 	sprite.playAnimationOnce(click_anime, function (){
 		sprite.changeAnimation(after_anime);
 	});
+
+	// 会話するオブジェクトなので、クリックしたら会話する
+	this.scene.mainStage().changeSubScene("talk");
 };
 
 ObjectAnimeImage.prototype.beforeDraw = function(x, y) {
@@ -15086,9 +15090,8 @@ ObjectStaticImage.prototype.addImage = function(image_name, scale){
 };
 
 ObjectStaticImage.prototype.onCollision = function(obj){
-	// TODO:
 	// 会話するオブジェクトなので、クリックしたら会話する
-	//this.scene.mainStage().changeSubScene("talk");
+	this.scene.mainStage().changeSubScene("talk");
 };
 
 ObjectStaticImage.prototype.draw = function(){
