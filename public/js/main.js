@@ -3486,10 +3486,10 @@ module.exports = {
 	left_field: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
 	objects: [
-		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "手術台", x: 814, y: 608, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "金庫",   x: 279, y: 378, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "バケツ", x: 281, y: 280, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-04-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "メス",   x: 853, y: 534, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ストレッチャー", serif: ["へんなベッド"],  x: 814, y: 608, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["くすりはいらない……"],   x: 279, y: 378, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "救急箱", serif: ["くーくーばこ！", "けがしてないよ！"], x: 281, y: 280, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-04-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "メス", serif: ["ナイフ"],   x: 853, y: 534, scale: 0.7},
 	],
 };
 
@@ -3507,8 +3507,8 @@ module.exports = {
 	left_field: "chapter0_hospital_corridor1",
 	background: "chapter0-hospital2-bg-001",
 	objects: [
-		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "包帯", x: 302, y: 443, scale: 0.7},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03"},
+		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "くつした", serif: ["やだやだ。"], x: 302, y: 443, scale: 0.7},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", serif: ["あしおったらのってもいい？"], x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03"},
 	],
 
 };
@@ -3593,11 +3593,12 @@ module.exports = {
 	left_field: null,
 	background: "chapter0-myroom-bg-001",
 	objects: [
-		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", x: 258, y: 389, scale: 0.7},
-		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "机", x: 59, y: 496, scale: 0.7},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03"},
+		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", serif: ["まだねむたくないもん"], x: 258, y: 389, scale: 0.7},
+		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["あけない"], x: 59, y: 496, scale: 0.7},
+
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", serif: ["にっきさんひさしぶり！", "だっておはなしすることないんだもん"], x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", serif: ["くれおん！", "ピンクなくなっちゃったなー"], x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03"},
 	],
 };
 
@@ -14990,6 +14991,8 @@ var ObjectAnimeImage = function(core) {
 	this.click_anime  = null;
 	this.after_anime  = null;
 
+	this.serif = null;
+
 	// アニメ
 	this.sprite = new SS(this.scene);
 };
@@ -15002,6 +15005,7 @@ ObjectAnimeImage.prototype.init = function(){
 	this.before_anime = null;
 	this.click_anime  = null;
 	this.after_anime  = null;
+	this.serif = null;
 };
 ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
@@ -15019,6 +15023,12 @@ ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_
 	this.click_anime  = AnimeMap[click_anime];
 	this.after_anime  = AnimeMap[after_anime];
 };
+ObjectAnimeImage.prototype.addSerif = function(serif) {
+	this.serif = serif;
+};
+
+
+
 
 ObjectAnimeImage.prototype.onCollision = function(obj){
 	var self = this;
@@ -15032,7 +15042,7 @@ ObjectAnimeImage.prototype.onCollision = function(obj){
 	});
 
 	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("talk");
+	this.scene.mainStage().changeSubScene("talk", this.serif);
 };
 
 ObjectAnimeImage.prototype.beforeDraw = function(x, y) {
@@ -15075,6 +15085,8 @@ var ObjectStaticImage = function(core) {
 
 	// 画像の拡縮
 	this.scale = 1;
+
+	this.serif = null;
 };
 Util.inherit(ObjectStaticImage, base_object);
 
@@ -15083,15 +15095,20 @@ ObjectStaticImage.prototype.init = function(){
 
 	this.image = null;
 	this.scale = 1;
+	this.serif = null;
 };
 ObjectStaticImage.prototype.addImage = function(image_name, scale){
 	this.image = this.core.image_loader.getImage(image_name);
 	this.scale = scale || 1;
 };
+ObjectStaticImage.prototype.addSerif = function(serif) {
+	this.serif = serif;
+};
+
 
 ObjectStaticImage.prototype.onCollision = function(obj){
 	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("talk");
+	this.scene.mainStage().changeSubScene("talk", this.serif);
 };
 
 ObjectStaticImage.prototype.draw = function(){
@@ -15665,6 +15682,7 @@ SceneStage.prototype.setupPiece = function() {
 		if (data.type === CONSTANT.STATIC_IMAGE_TYPE) {
 			object = new ObjectStaticImage(this);
 			object.init();
+			object.addSerif(data.serif);
 			object.addImage(data.image, data.scale);
 			object.setPosition(data.x, data.y);
 			this.addObject(object);
@@ -15674,6 +15692,7 @@ SceneStage.prototype.setupPiece = function() {
 		else if (data.type === CONSTANT.ANIME_IMAGE_TYPE) {
 			object = new ObjectAnimeImage(this);
 			object.init();
+			object.addSerif(data.serif);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
 			object.setPosition(data.x, data.y);
 			this.addObject(object);
@@ -16006,43 +16025,46 @@ SceneSubStagePlay.prototype.draw = function(){
 SceneSubStagePlay.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
+	this._collisionCheck();
+
+};
+
+SceneSubStagePlay.prototype._collisionCheck = function(){
 	if(this.core.input_manager.isLeftClickPush()) {
 		// 左クリックしたところを取得
 		var x = this.core.input_manager.mousePositionX();
 		var y = this.core.input_manager.mousePositionY();
 
-		// 会話するオブジェクトとの当たり判定
-		var is_talk = false;
-		this.mainStage().pieces.forEach(function(piece) {
-			var is_collision = piece.checkCollisionWithPosition(x, y);
+		// シーン遷移の当たり判定
+		if(this.mainStage().field().left_field  && this.mainStage().left_yajirushi.checkCollisionWithPosition(x, y)) {
+			return true;
+		}
 
-			// TODO: 会話ー＞シーン遷移の当たり判定でなく、シーン遷移ー＞会話の当たり判定にする
-			//if (is_collision) is_talk = true;
-		});
+		// シーン遷移の当たり判定
+		if(this.mainStage().field().right_field && this.mainStage().right_yajirushi.checkCollisionWithPosition(x, y)) {
+			return true;
+		}
 
+		// アイテムボタンの当たり判定
+		if(this.mainStage().item_button.checkCollisionWithPosition(x, y)) {
+			return true;
+		}
 
-		// 会話するオブジェクトとの当たり判定にならなかったら
-		if (!is_talk) {
-			var is_change_scene = false;
-
-			// TODO: refactor
-
-			// シーン遷移
-			if(this.mainStage().field().left_field && this.mainStage().left_yajirushi.checkCollisionWithPosition(x, y)) {
-			}
-			// シーン遷移
-			else if(this.mainStage().field().right_field && this.mainStage().right_yajirushi.checkCollisionWithPosition(x, y)) {
-
-			}
-			else if (this.mainStage().item_button.checkCollisionWithPosition(x, y)) {
-
-			}
-			// こいしを移動
-			else {
-				this.koishi().setMoveTarget(x, y);
+		// フィールドの各種オブジェクトとの当たり判定
+		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
+			var piece = this.mainStage().pieces[i];
+			if(piece.checkCollisionWithPosition(x, y)) {
+				return true;
 			}
 		}
+
+		// どことも当たり判定しなかったら
+		// こいしを移動
+		// TODO: この関数でやらず、外でやったほうがいい？(この関数は当たり判定したら true or false 返す)
+		this.koishi().setMoveTarget(x, y);
 	}
+
+	return false;
 };
 
 
@@ -16063,10 +16085,18 @@ var SceneSubStageTalk = function(core, stage) {
 };
 Util.inherit(SceneSubStageTalk, base_scene);
 
-SceneSubStageTalk.prototype.init = function(){
+SceneSubStageTalk.prototype.init = function(serif_list){
 	base_scene.prototype.init.apply(this, arguments);
 
-	this.serif.init(serif_script); // TODO: 他のセリフにも対応
+	// セリフデータの生成
+	var serif_script = [];
+	for (var i = 0, len = serif_list.length; i < len; i++) {
+		var serif = serif_list[i];
+
+		serif_script.push({"chara":"koishi","serif": serif});
+	}
+
+	this.serif.init(serif_script);
 };
 
 SceneSubStageTalk.prototype.beforeDraw = function(){
@@ -16107,13 +16137,13 @@ SceneSubStageTalk.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
 	ctx.save();
 
-	var x = this.koishi().x() - 0;
+	var x = this.koishi().x() - 550;
 	var y = this.koishi().y() - 330;
 
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
 
 	// TODO: 実装
-	if(false) {
+	if(true) {
 		x = -x; // 反転
 		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
 	}
@@ -16132,17 +16162,10 @@ SceneSubStageTalk.prototype._showMessage = function() {
 	var ctx = this.core.ctx;
 	ctx.save();
 
-	/*
 	// セリフの色
-	var font_color = this.serif.font_color();
-	if(font_color) {
-		font_color = util.hexToRGBString(font_color);
-	}
-	else {
-		font_color = 'rgb(255, 255, 255)';
-	}
-	*/
+	var font_color = Util.hexToRGBString("#d4c9aa");
 
+	ctx.fillStyle = font_color;
 	ctx.font = "18px 'OradanoGSRR'";
 	ctx.textAlign = 'left';
 	ctx.textBaseAlign = 'middle';
@@ -16158,7 +16181,6 @@ SceneSubStageTalk.prototype._showMessage = function() {
 		y = y + 40;
 
 		for(var i = 0, len = lines.length; i < len; i++) {
-			ctx.fillStyle = "black";
 			ctx.fillText(lines[i], x, y); // 1行表示
 
 			y+= 30;
