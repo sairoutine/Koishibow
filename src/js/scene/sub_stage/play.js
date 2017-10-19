@@ -15,43 +15,46 @@ SceneSubStagePlay.prototype.draw = function(){
 SceneSubStagePlay.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
+	this._collisionCheck();
+
+};
+
+SceneSubStagePlay.prototype._collisionCheck = function(){
 	if(this.core.input_manager.isLeftClickPush()) {
 		// 左クリックしたところを取得
 		var x = this.core.input_manager.mousePositionX();
 		var y = this.core.input_manager.mousePositionY();
 
-		// 会話するオブジェクトとの当たり判定
-		var is_talk = false;
-		this.mainStage().pieces.forEach(function(piece) {
-			var is_collision = piece.checkCollisionWithPosition(x, y);
+		// シーン遷移の当たり判定
+		if(this.mainStage().field().left_field  && this.mainStage().left_yajirushi.checkCollisionWithPosition(x, y)) {
+			return true;
+		}
 
-			// TODO: 会話ー＞シーン遷移の当たり判定でなく、シーン遷移ー＞会話の当たり判定にする
-			//if (is_collision) is_talk = true;
-		});
+		// シーン遷移の当たり判定
+		if(this.mainStage().field().right_field && this.mainStage().right_yajirushi.checkCollisionWithPosition(x, y)) {
+			return true;
+		}
 
+		// アイテムボタンの当たり判定
+		if(this.mainStage().item_button.checkCollisionWithPosition(x, y)) {
+			return true;
+		}
 
-		// 会話するオブジェクトとの当たり判定にならなかったら
-		if (!is_talk) {
-			var is_change_scene = false;
-
-			// TODO: refactor
-
-			// シーン遷移
-			if(this.mainStage().field().left_field && this.mainStage().left_yajirushi.checkCollisionWithPosition(x, y)) {
-			}
-			// シーン遷移
-			else if(this.mainStage().field().right_field && this.mainStage().right_yajirushi.checkCollisionWithPosition(x, y)) {
-
-			}
-			else if (this.mainStage().item_button.checkCollisionWithPosition(x, y)) {
-
-			}
-			// こいしを移動
-			else {
-				this.koishi().setMoveTarget(x, y);
+		// フィールドの各種オブジェクトとの当たり判定
+		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
+			var piece = this.mainStage().pieces[i];
+			if(piece.checkCollisionWithPosition(x, y)) {
+				return true;
 			}
 		}
+
+		// どことも当たり判定しなかったら
+		// こいしを移動
+		// TODO: この関数でやらず、外でやったほうがいい？(この関数は当たり判定したら true or false 返す)
+		this.koishi().setMoveTarget(x, y);
 	}
+
+	return false;
 };
 
 
