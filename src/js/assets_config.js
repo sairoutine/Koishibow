@@ -29,7 +29,7 @@ AssetsConfig.images = {
 	// 第三の目
 	eye:  "./image/ui-common-btn-eye-1.png",
 
-	fukidashi:  "./image/fukidashi.png",
+	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
 	title:  "./image/title.png",
 	logo_wht:  "./image/logo_wht.png",
 };
