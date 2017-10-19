@@ -81,17 +81,10 @@ SceneSubStageTalk.prototype._showMessage = function() {
 	var ctx = this.core.ctx;
 	ctx.save();
 
-	/*
 	// セリフの色
-	var font_color = this.serif.font_color();
-	if(font_color) {
-		font_color = util.hexToRGBString(font_color);
-	}
-	else {
-		font_color = 'rgb(255, 255, 255)';
-	}
-	*/
+	var font_color = Util.hexToRGBString("#d4c9aa");
 
+	ctx.fillStyle = font_color;
 	ctx.font = "18px 'OradanoGSRR'";
 	ctx.textAlign = 'left';
 	ctx.textBaseAlign = 'middle';
@@ -107,7 +100,6 @@ SceneSubStageTalk.prototype._showMessage = function() {
 		y = y + 40;
 
 		for(var i = 0, len = lines.length; i < len; i++) {
-			ctx.fillStyle = "black";
 			ctx.fillText(lines[i], x, y); // 1行表示
 
 			y+= 30;
