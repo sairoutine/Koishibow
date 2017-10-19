@@ -12,10 +12,18 @@ var SceneSubStageTalk = function(core, stage) {
 };
 Util.inherit(SceneSubStageTalk, base_scene);
 
-SceneSubStageTalk.prototype.init = function(){
+SceneSubStageTalk.prototype.init = function(serif_list){
 	base_scene.prototype.init.apply(this, arguments);
 
-	this.serif.init(serif_script); // TODO: 他のセリフにも対応
+	// セリフデータの生成
+	var serif_script = [];
+	for (var i = 0, len = serif_list.length; i < len; i++) {
+		var serif = serif_list[i];
+
+		serif_script.push({"chara":"koishi","serif": serif});
+	}
+
+	this.serif.init(serif_script);
 };
 
 SceneSubStageTalk.prototype.beforeDraw = function(){

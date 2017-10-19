@@ -14,6 +14,8 @@ var ObjectAnimeImage = function(core) {
 	this.click_anime  = null;
 	this.after_anime  = null;
 
+	this.serif = null;
+
 	// アニメ
 	this.sprite = new SS(this.scene);
 };
@@ -26,6 +28,7 @@ ObjectAnimeImage.prototype.init = function(){
 	this.before_anime = null;
 	this.click_anime  = null;
 	this.after_anime  = null;
+	this.serif = null;
 };
 ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
@@ -43,6 +46,12 @@ ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_
 	this.click_anime  = AnimeMap[click_anime];
 	this.after_anime  = AnimeMap[after_anime];
 };
+ObjectAnimeImage.prototype.addSerif = function(serif) {
+	this.serif = serif;
+};
+
+
+
 
 ObjectAnimeImage.prototype.onCollision = function(obj){
 	var self = this;
@@ -56,7 +65,7 @@ ObjectAnimeImage.prototype.onCollision = function(obj){
 	});
 
 	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("talk");
+	this.scene.mainStage().changeSubScene("talk", this.serif);
 };
 
 ObjectAnimeImage.prototype.beforeDraw = function(x, y) {

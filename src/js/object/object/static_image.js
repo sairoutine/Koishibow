@@ -10,6 +10,8 @@ var ObjectStaticImage = function(core) {
 
 	// 画像の拡縮
 	this.scale = 1;
+
+	this.serif = null;
 };
 Util.inherit(ObjectStaticImage, base_object);
 
@@ -18,15 +20,20 @@ ObjectStaticImage.prototype.init = function(){
 
 	this.image = null;
 	this.scale = 1;
+	this.serif = null;
 };
 ObjectStaticImage.prototype.addImage = function(image_name, scale){
 	this.image = this.core.image_loader.getImage(image_name);
 	this.scale = scale || 1;
 };
+ObjectStaticImage.prototype.addSerif = function(serif) {
+	this.serif = serif;
+};
+
 
 ObjectStaticImage.prototype.onCollision = function(obj){
 	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("talk");
+	this.scene.mainStage().changeSubScene("talk", this.serif);
 };
 
 ObjectStaticImage.prototype.draw = function(){
