@@ -47,12 +47,16 @@ ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_
 ObjectAnimeImage.prototype.onCollision = function(obj){
 	var self = this;
 
+	// オブジェクトのアニメーション
 	var sprite = self.sprite;
 	var after_anime = self.after_anime;
 	var click_anime = self.click_anime;
 	sprite.playAnimationOnce(click_anime, function (){
 		sprite.changeAnimation(after_anime);
 	});
+
+	// 会話するオブジェクトなので、クリックしたら会話する
+	this.scene.mainStage().changeSubScene("talk");
 };
 
 ObjectAnimeImage.prototype.beforeDraw = function(x, y) {

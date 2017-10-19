@@ -25,9 +25,8 @@ ObjectStaticImage.prototype.addImage = function(image_name, scale){
 };
 
 ObjectStaticImage.prototype.onCollision = function(obj){
-	// TODO:
 	// 会話するオブジェクトなので、クリックしたら会話する
-	//this.scene.mainStage().changeSubScene("talk");
+	this.scene.mainStage().changeSubScene("talk");
 };
 
 ObjectStaticImage.prototype.draw = function(){
