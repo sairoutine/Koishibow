@@ -16,7 +16,7 @@ var jsonDataOfWalk = require('../anime/koishi/walk_anime_1');
 var SS = require('../object/sprite_studio');
 
 
-var Koishi = function (scene, parent) {
+var Koishi = function (scene) {
 	base_object.apply(this, arguments);
 
 	this.sprite = new SS(this.scene);

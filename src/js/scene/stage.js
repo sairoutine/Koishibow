@@ -52,11 +52,11 @@ var SceneStage = function(core) {
 	*/
 
 	// 通常
-	this.addSubScene("play", new SceneSubStagePlay(core, this));
+	this.addSubScene("play", new SceneSubStagePlay(core));
 	// 会話中
-	this.addSubScene("talk", new SceneSubStageTalk(core, this));
+	this.addSubScene("talk", new SceneSubStageTalk(core));
 	// メニュー
-	this.addSubScene("menu", new SceneSubStageMenu(core, this));
+	this.addSubScene("menu", new SceneSubStageMenu(core));
 };
 util.inherit(SceneStage, base_scene);
 
