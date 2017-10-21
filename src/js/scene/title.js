@@ -10,13 +10,13 @@ var UIParts = require('../hakurei').object.ui_parts;
 var SHOW_TRANSITION_COUNT = 100;
 
 var MENU = [
-	["New Game", function (core) { return true; }, function (core) {
+	["ui-titlepg-btn-ng", function (core) { return true; }, function (core) {
 		core.changeScene("stage", "chapter0_myroom");
 	}],
-	["Continue", function (core) { return true; }, function (core) {
+	["ui-titlepg-btn-con", function (core) { return true; }, function (core) {
 		core.changeScene("stage", "chapter0_myroom");
 	}],
-	["Options", function (core) { return true; }, function (core) {
+	["ui-titlepg-btn-opt", function (core) { return true; }, function (core) {
 		core.changeScene("stage", "chapter0_myroom");
 	}],
 ];
@@ -33,20 +33,20 @@ var SceneTitle = function(core) {
 		var menu = MENU[i];
 
 		(function (menu) {
-			self.menu_ui.push(new UIParts(self, 780, 300 + i*75, 240, 60, function draw () {
+			self.menu_ui.push(new UIParts(self, 280 + i*200, 670, 190, 63, function draw () {
 				var ctx = this.core.ctx;
 				ctx.textAlign = 'center';
 				ctx.textBaseline = 'middle';
 				ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
+				var logo;
 				if (this.is_big) {
-					ctx.font = "64px 'OradanoGSRR'";
+					logo = this.core.image_loader.getImage(menu[0] + "-on");
 				}
 				else {
-					ctx.font = "56px 'OradanoGSRR'";
+					logo = this.core.image_loader.getImage(menu[0] + "-off");
 				}
-
-				ctx.fillText(menu[0], this.x(), this.y());
+				ctx.drawImage(logo, this.getCollisionLeftX(), this.getCollisionUpY(), logo.width*0.7, logo.height*0.7);
 			}));
 		})(menu);
 	}
@@ -105,7 +105,7 @@ SceneTitle.prototype.draw = function(){
 
 	ctx.save();
 
-	var title_bg = this.core.image_loader.getImage('title');
+	var title_bg = this.core.image_loader.getImage("ui-titlepg-bg-1");
 
 	// 背景画像表示
 	ctx.drawImage(title_bg,
@@ -118,12 +118,12 @@ SceneTitle.prototype.draw = function(){
 					this.core.width,
 					this.core.height);
 
-	var logo = this.core.image_loader.getImage('logo_wht');
+	var logo = this.core.image_loader.getImage("ui-titlepg-img-logo-1");
 	// ロゴ画像表示
 		ctx.drawImage(logo,
-		180,
-		-180,
-		logo.width*0.3, logo.height*0.3);
+		310,
+		455,
+		logo.width*0.6, logo.height*0.6);
 
 	ctx.restore();
 
