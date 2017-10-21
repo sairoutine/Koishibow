@@ -13,6 +13,20 @@ ObjectEye.prototype.init = function(){
 	this.setPosition();
 };
 
+ObjectEye.prototype.onCollision = function(obj){
+	var stage = this.scene.mainStage();
+
+	if (stage.isUsingEye()) {
+		// サードアイOff
+		stage.unUseEye();
+	}
+	else {
+		// サードアイOn
+		stage.useEye();
+	}
+};
+
+
 ObjectEye.prototype.setPosition = function(){
 	this.x(this.scene.mainStage().width - 48 - 20);
 	this.y(this.scene.mainStage().height - 70);
