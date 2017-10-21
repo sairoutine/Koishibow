@@ -29,21 +29,16 @@ var SceneStage = function(core) {
 	// フィールド一覧
 	this._field_map = FieldMap;
 
-	// TODO: この addobject なくせないかな...
 	// 自機
 	this._koishi = new Koishi(this);
-	this.addObject(this._koishi);
+
+	// ステージ上のオブジェクト一覧
+	this.pieces = [];
 
 	this.left_yajirushi  = new LeftYajirushi(this);
 	this.right_yajirushi = new RightYajirushi(this);
-	this.addObject(this.left_yajirushi);
-	this.addObject(this.right_yajirushi);
-
-	this.item_button = new ItemButton(this);
-	this.addObject(this.item_button);
-
-	this.eye = new Eye(this);
-	this.addObject(this.eye);
+	this.item_button     = new ItemButton(this);
+	this.eye             = new Eye(this);
 
 	/* sub scene 一覧
 	調べてるオブジェクト(机の上、窓の外) →そこからさらにアイテム調べられるので、サブシーンのサブシーンができるように、各サブシーンを作っておかねば。
@@ -66,12 +61,14 @@ SceneStage.prototype.init = function(field_name, is_right){
 	// 現在のフィールド
 	this._current_field_name = field_name;
 
-	this.removeAllObject();
-	this.setupPiece();
-	this.addObject(this._koishi);
-
 	// フィールド移動時にフェードインする
 	this.setFadeIn(30, "black");
+
+
+	this._koishi.init();
+	this._initOfMenuObject();
+
+	this.setupPiece();
 
 
 	// フィールド開始時の初期位置の決定
@@ -88,22 +85,69 @@ SceneStage.prototype.init = function(field_name, is_right){
 	}
 
 
-	if (this.field().left_field) {
-		this.addObject(this.left_yajirushi);
-	}
-
-	if (this.field().right_field) {
-		this.addObject(this.right_yajirushi);
-	}
-
-	this.addObject(this.item_button);
-	this.addObject(this.eye);
-
 	this.changeSubScene("play");
 };
 
 SceneStage.prototype.beforeDraw = function(){
+	this._beforeDrawOfPieces();
+	this._koishi.beforeDraw();
+	this._beforeDrawOfMenuObject();
 	base_scene.prototype.beforeDraw.apply(this, arguments);
+};
+
+
+
+SceneStage.prototype._beforeDrawOfPieces = function(){
+	for (var i = 0, len = this.pieces.length; i < len; i++) {
+		var piece = this.pieces[i];
+		piece.beforeDraw();
+	}
+};
+SceneStage.prototype._drawOfPieces = function(){
+	for (var i = 0, len = this.pieces.length; i < len; i++) {
+		var piece = this.pieces[i];
+		piece.draw();
+	}
+};
+
+
+
+SceneStage.prototype._initOfMenuObject = function(){
+	if (this.field().left_field) {
+		this.left_yajirushi.init();
+	}
+
+	if (this.field().right_field) {
+		this.right_yajirushi.init();
+	}
+
+	this.item_button.init();
+	this.eye.init();
+};
+
+SceneStage.prototype._beforeDrawOfMenuObject = function(){
+	if (this.field().left_field) {
+		this.left_yajirushi.beforeDraw();
+	}
+
+	if (this.field().right_field) {
+		this.right_yajirushi.beforeDraw();
+	}
+
+	this.item_button.beforeDraw();
+	this.eye.beforeDraw();
+};
+SceneStage.prototype._drawOfMenuObject = function(){
+	if (this.field().left_field) {
+		this.left_yajirushi.draw();
+	}
+
+	if (this.field().right_field) {
+		this.right_yajirushi.draw();
+	}
+
+	this.item_button.draw();
+	this.eye.draw();
 };
 
 // 画面更新
@@ -138,11 +182,16 @@ SceneStage.prototype.draw = function(){
 		ctx.restore();
 	}
 
-
-	// こいし／サブシーン描画
-	base_scene.prototype.draw.apply(this, arguments);
+	this._drawOfPieces();
+	this._koishi.draw();
 
 	this._drawLight();
+
+	this._drawOfMenuObject();
+
+	// サブシーン描画
+	base_scene.prototype.draw.apply(this, arguments);
+
 };
 SceneStage.prototype._drawLight = function(){
 	var ctx = this.core.ctx;
@@ -210,7 +259,6 @@ SceneStage.prototype.setupPiece = function() {
 			object.addSerif(data.serif);
 			object.addImage(data.image, data.scale);
 			object.setPosition(data.x, data.y);
-			this.addObject(object);
 
 			this.pieces.push(object);
 		}
@@ -220,7 +268,6 @@ SceneStage.prototype.setupPiece = function() {
 			object.addSerif(data.serif);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
 			object.setPosition(data.x, data.y);
-			this.addObject(object);
 
 			this.pieces.push(object);
 		}
