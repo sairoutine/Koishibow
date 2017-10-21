@@ -24,6 +24,8 @@ AssetsConfig.images = {
 	// TODO: delete
 	bg:  "./image/bg.png",
 
+	light:  "./image/light.png",
+
 	// アイテムボタン
 	tool: "./image/ui-common-btn-tool-1.png",
 	// 第三の目
