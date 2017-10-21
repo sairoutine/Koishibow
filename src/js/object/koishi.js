@@ -50,6 +50,10 @@ Koishi.prototype.setWalk = function() {
 Koishi.prototype.setReflect = function(flag) {
 	this.sprite.setReflect(flag);
 };
+Koishi.prototype.isReflect = function() {
+	return this.sprite.isReflect();
+};
+
 
 
 
