@@ -215,7 +215,7 @@ SceneStage.prototype._drawLight = function(){
 	// 背景
 	ctx.save();
 	ctx.fillStyle = 'black';
-	ctx.globalAlpha = 0.9;
+	ctx.globalAlpha = 0.7;
 	ctx.fillRect(0, 0, this.width, this.height);
 	ctx.restore();
 
@@ -226,10 +226,10 @@ SceneStage.prototype._drawLight = function(){
 	var y = this.core.input_manager.mousePositionY();
 
 	if (this.koishi().isReflect()) {
-		ctx.translate(this.koishi().x() - 50, this.koishi().y() - 100);
+		ctx.translate(this.koishi().x() - 60, this.koishi().y() - 100);
 	}
 	else {
-		ctx.translate(this.koishi().x() + 50, this.koishi().y() - 100);
+		ctx.translate(this.koishi().x() + 60, this.koishi().y() - 100);
 	}
 
 	var ax = x - this.koishi().x();
