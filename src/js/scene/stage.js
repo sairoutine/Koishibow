@@ -124,7 +124,6 @@ SceneStage.prototype.draw = function(){
 					this.core.height);
 	ctx.restore();
 
-
 	// デバッグ用の仮描画する
 	if (0) {
 
@@ -142,6 +141,45 @@ SceneStage.prototype.draw = function(){
 
 	// こいし／サブシーン描画
 	base_scene.prototype.draw.apply(this, arguments);
+
+	this._drawLight();
+};
+SceneStage.prototype._drawLight = function(){
+	var ctx = this.core.ctx;
+
+	// 背景
+	ctx.save();
+	ctx.fillStyle = 'black';
+	ctx.globalAlpha = 0.9;
+	ctx.fillRect(0, 0, this.width, this.height);
+	ctx.restore();
+
+	// 光 描画
+	var light = this.core.image_loader.getImage("light");
+	ctx.save();
+	var x = this.core.input_manager.mousePositionX();
+	var y = this.core.input_manager.mousePositionY();
+
+	if (this.koishi().isReflect()) {
+		ctx.translate(this.koishi().x() - 50, this.koishi().y() - 100);
+	}
+	else {
+		ctx.translate(this.koishi().x() + 50, this.koishi().y() - 100);
+	}
+
+	var ax = x - this.koishi().x();
+	var ay = y - this.koishi().y();
+	var rad = Math.atan2(ay, ax) + 150*Math.PI/180;
+
+	ctx.rotate(rad);
+	ctx.drawImage(light,
+		0, 0,
+		light.width/2 - 250, light.height/2 - 150,
+		-light.width/2,                           -light.height/2,
+		light.width/2, light.height/2
+	);
+
+	ctx.restore();
 };
 
 
