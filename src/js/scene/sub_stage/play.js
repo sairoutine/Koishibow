@@ -40,6 +40,13 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 			return true;
 		}
 
+		// サードアイの当たり判定
+		if(this.mainStage().eye.checkCollisionWithPosition(x, y)) {
+			return true;
+		}
+
+
+
 		// フィールドの各種オブジェクトとの当たり判定
 		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
 			var piece = this.mainStage().pieces[i];

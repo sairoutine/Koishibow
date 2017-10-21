@@ -40,6 +40,7 @@ var SceneStage = function(core) {
 	this.item_button     = new ItemButton(this);
 	this.eye             = new Eye(this);
 
+	this.is_use_eye = false;
 	/* sub scene 一覧
 	調べてるオブジェクト(机の上、窓の外) →そこからさらにアイテム調べられるので、サブシーンのサブシーンができるように、各サブシーンを作っておかねば。
 	アイテムを読んでいるサブシーン(ページ送り等)
@@ -60,6 +61,8 @@ SceneStage.prototype.init = function(field_name, is_right){
 
 	// 現在のフィールド
 	this._current_field_name = field_name;
+
+	this.is_use_eye = false;
 
 	// フィールド移動時にフェードインする
 	this.setFadeIn(30, "black");
@@ -86,6 +89,17 @@ SceneStage.prototype.init = function(field_name, is_right){
 
 
 	this.changeSubScene("play");
+};
+
+
+SceneStage.prototype.isUsingEye = function() {
+	return this.is_use_eye;
+};
+SceneStage.prototype.unUseEye = function() {
+	this.is_use_eye = false;
+};
+SceneStage.prototype.useEye = function() {
+	this.is_use_eye = true;
 };
 
 SceneStage.prototype.beforeDraw = function(){
@@ -185,7 +199,9 @@ SceneStage.prototype.draw = function(){
 	this._drawOfPieces();
 	this._koishi.draw();
 
-	this._drawLight();
+	if (this.isUsingEye()) {
+		this._drawLight();
+	}
 
 	this._drawOfMenuObject();
 
