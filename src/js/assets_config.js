@@ -30,8 +30,16 @@ AssetsConfig.images = {
 	eye:  "./image/ui-common-btn-eye-1.png",
 
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
-	title:  "./image/title.png",
-	logo_wht:  "./image/logo_wht.png",
+
+	// タイトル画面
+	"ui-titlepg-bg-1":         "./image/title/ui-titlepg-bg-1.jpg",
+	"ui-titlepg-btn-con-off":  "./image/title/ui-titlepg-btn-con-off.png",
+	"ui-titlepg-btn-con-on":   "./image/title/ui-titlepg-btn-con-on.png",
+	"ui-titlepg-btn-ng-off":   "./image/title/ui-titlepg-btn-ng-off.png",
+	"ui-titlepg-btn-ng-on":    "./image/title/ui-titlepg-btn-ng-on.png",
+	"ui-titlepg-btn-opt-off":  "./image/title/ui-titlepg-btn-opt-off.png",
+	"ui-titlepg-btn-opt-on":   "./image/title/ui-titlepg-btn-opt-on.png",
+	"ui-titlepg-img-logo-1":   "./image/title/ui-titlepg-img-logo-1.png",
 };
 
 AssetsConfig.sounds = {
