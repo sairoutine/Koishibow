@@ -3400,14 +3400,24 @@ AssetsConfig.images = {
 	// TODO: delete
 	bg:  "./image/bg.png",
 
+	light:  "./image/light.png",
+
 	// アイテムボタン
 	tool: "./image/ui-common-btn-tool-1.png",
 	// 第三の目
 	eye:  "./image/ui-common-btn-eye-1.png",
 
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
-	title:  "./image/title.png",
-	logo_wht:  "./image/logo_wht.png",
+
+	// タイトル画面
+	"ui-titlepg-bg-1":         "./image/title/ui-titlepg-bg-1.jpg",
+	"ui-titlepg-btn-con-off":  "./image/title/ui-titlepg-btn-con-off.png",
+	"ui-titlepg-btn-con-on":   "./image/title/ui-titlepg-btn-con-on.png",
+	"ui-titlepg-btn-ng-off":   "./image/title/ui-titlepg-btn-ng-off.png",
+	"ui-titlepg-btn-ng-on":    "./image/title/ui-titlepg-btn-ng-on.png",
+	"ui-titlepg-btn-opt-off":  "./image/title/ui-titlepg-btn-opt-off.png",
+	"ui-titlepg-btn-opt-on":   "./image/title/ui-titlepg-btn-opt-on.png",
+	"ui-titlepg-img-logo-1":   "./image/title/ui-titlepg-img-logo-1.png",
 };
 
 AssetsConfig.sounds = {
@@ -3443,8 +3453,8 @@ var DEBUG = {
 	ON: true,
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
-	//START_SCENE: ["stage", "chapter0_hospital_corridor1"],
 	START_SCENE: ["stage", "chapter0_hospital_corridor1"],
+	//START_SCENE: ["title"],
 };
 
 module.exports = DEBUG;
@@ -12307,10 +12317,10 @@ var EXTRA_OUT_OF_SIZE = 100;
 
 var id = 0;
 
-var ObjectBase = function(scene, object) {
+var ObjectBase = function(scene) {
 	this.scene = scene;
 	this.core = scene.core;
-	this.parent = object; // parent object if this is sub object
+	this.parent = null; // parent object if this is sub object
 	this.id = ++id;
 
 	this.frame_count = 0;
@@ -12439,6 +12449,7 @@ ObjectBase.prototype.globalDownY = function() {
 
 // add sub object
 ObjectBase.prototype.addSubObject = function(object){
+	object.setParent(this);
 	this.objects.push(object);
 };
 
@@ -12446,6 +12457,7 @@ ObjectBase.prototype.removeSubObject = function(object){
 	// TODO: O(n) -> O(1)
 	for(var i = 0, len = this.objects.length; i < len; i++) {
 		if(this.objects[i].id === object.id) {
+			this.objects[i].resetParent();
 			this.objects.splice(i, 1);
 			break;
 		}
@@ -12453,7 +12465,21 @@ ObjectBase.prototype.removeSubObject = function(object){
 };
 
 ObjectBase.prototype.removeAllSubObject = function() {
+	for(var i = 0, len = this.objects.length; i < len; i++) {
+		this.objects[i].resetParent();
+	}
+
 	this.objects = [];
+};
+
+// set parent object if this is sub object
+ObjectBase.prototype.setParent = function(parent_object) {
+	if(this.parent) throw new Error("already set parent");
+	this.parent = parent_object;
+};
+
+ObjectBase.prototype.resetParent = function() {
+	this.parent = null;
 };
 
 /*
@@ -13572,9 +13598,9 @@ module.exports = ObjectUIParts;
 },{"../util":63,"./base":49}],55:[function(require,module,exports){
 'use strict';
 
-var SceneBase = function(core, scene) {
+var SceneBase = function(core) {
 	this.core = core;
-	this.parent = scene; // parent scene if this is sub scene
+	this.parent = null; // parent scene if this is sub scene
 	this.width = this.core.width; // default
 	this.height = this.core.height; // default
 
@@ -13729,7 +13755,15 @@ SceneBase.prototype.removeObject = function(object){
 
 
 
+// set parent scene if this is sub scene
+SceneBase.prototype.setParent = function(parent_scene) {
+	if(this.parent) throw new Error("already set parent");
+	this.parent = parent_scene;
+};
 
+SceneBase.prototype.resetParent = function() {
+	this.parent = null;
+};
 
 SceneBase.prototype.currentSubScene = function() {
 	if(this.current_scene === null) {
@@ -13743,6 +13777,7 @@ SceneBase.prototype.getSubScene = function(name) {
 };
 
 SceneBase.prototype.addSubScene = function(name, scene) {
+	scene.setParent(this);
 	this.scenes[name] = scene;
 };
 SceneBase.prototype.changeSubScene = function() {
@@ -14616,6 +14651,20 @@ ObjectEye.prototype.init = function(){
 	this.setPosition();
 };
 
+ObjectEye.prototype.onCollision = function(obj){
+	var stage = this.scene.mainStage();
+
+	if (stage.isUsingEye()) {
+		// サードアイOff
+		stage.unUseEye();
+	}
+	else {
+		// サードアイOn
+		stage.useEye();
+	}
+};
+
+
 ObjectEye.prototype.setPosition = function(){
 	this.x(this.scene.mainStage().width - 48 - 20);
 	this.y(this.scene.mainStage().height - 70);
@@ -14729,7 +14778,7 @@ var jsonDataOfWalk = require('../anime/koishi/walk_anime_1');
 var SS = require('../object/sprite_studio');
 
 
-var Koishi = function (scene, parent) {
+var Koishi = function (scene) {
 	base_object.apply(this, arguments);
 
 	this.sprite = new SS(this.scene);
@@ -14763,6 +14812,10 @@ Koishi.prototype.setWalk = function() {
 Koishi.prototype.setReflect = function(flag) {
 	this.sprite.setReflect(flag);
 };
+Koishi.prototype.isReflect = function() {
+	return this.sprite.isReflect();
+};
+
 
 
 
@@ -15542,22 +15595,18 @@ var SceneStage = function(core) {
 	// フィールド一覧
 	this._field_map = FieldMap;
 
-	// TODO: この addobject なくせないかな...
 	// 自機
 	this._koishi = new Koishi(this);
-	this.addObject(this._koishi);
+
+	// ステージ上のオブジェクト一覧
+	this.pieces = [];
 
 	this.left_yajirushi  = new LeftYajirushi(this);
 	this.right_yajirushi = new RightYajirushi(this);
-	this.addObject(this.left_yajirushi);
-	this.addObject(this.right_yajirushi);
+	this.item_button     = new ItemButton(this);
+	this.eye             = new Eye(this);
 
-	this.item_button = new ItemButton(this);
-	this.addObject(this.item_button);
-
-	this.eye = new Eye(this);
-	this.addObject(this.eye);
-
+	this.is_use_eye = false;
 	/* sub scene 一覧
 	調べてるオブジェクト(机の上、窓の外) →そこからさらにアイテム調べられるので、サブシーンのサブシーンができるように、各サブシーンを作っておかねば。
 	アイテムを読んでいるサブシーン(ページ送り等)
@@ -15565,11 +15614,11 @@ var SceneStage = function(core) {
 	*/
 
 	// 通常
-	this.addSubScene("play", new SceneSubStagePlay(core, this));
+	this.addSubScene("play", new SceneSubStagePlay(core));
 	// 会話中
-	this.addSubScene("talk", new SceneSubStageTalk(core, this));
+	this.addSubScene("talk", new SceneSubStageTalk(core));
 	// メニュー
-	this.addSubScene("menu", new SceneSubStageMenu(core, this));
+	this.addSubScene("menu", new SceneSubStageMenu(core));
 };
 util.inherit(SceneStage, base_scene);
 
@@ -15579,12 +15628,16 @@ SceneStage.prototype.init = function(field_name, is_right){
 	// 現在のフィールド
 	this._current_field_name = field_name;
 
-	this.removeAllObject();
-	this.setupPiece();
-	this.addObject(this._koishi);
+	this.is_use_eye = false;
 
 	// フィールド移動時にフェードインする
 	this.setFadeIn(30, "black");
+
+
+	this._koishi.init();
+	this._initOfMenuObject();
+
+	this.setupPiece();
 
 
 	// フィールド開始時の初期位置の決定
@@ -15601,22 +15654,80 @@ SceneStage.prototype.init = function(field_name, is_right){
 	}
 
 
-	if (this.field().left_field) {
-		this.addObject(this.left_yajirushi);
-	}
-
-	if (this.field().right_field) {
-		this.addObject(this.right_yajirushi);
-	}
-
-	this.addObject(this.item_button);
-	this.addObject(this.eye);
-
 	this.changeSubScene("play");
 };
 
+
+SceneStage.prototype.isUsingEye = function() {
+	return this.is_use_eye;
+};
+SceneStage.prototype.unUseEye = function() {
+	this.is_use_eye = false;
+};
+SceneStage.prototype.useEye = function() {
+	this.is_use_eye = true;
+};
+
 SceneStage.prototype.beforeDraw = function(){
+	this._beforeDrawOfPieces();
+	this._koishi.beforeDraw();
+	this._beforeDrawOfMenuObject();
 	base_scene.prototype.beforeDraw.apply(this, arguments);
+};
+
+
+
+SceneStage.prototype._beforeDrawOfPieces = function(){
+	for (var i = 0, len = this.pieces.length; i < len; i++) {
+		var piece = this.pieces[i];
+		piece.beforeDraw();
+	}
+};
+SceneStage.prototype._drawOfPieces = function(){
+	for (var i = 0, len = this.pieces.length; i < len; i++) {
+		var piece = this.pieces[i];
+		piece.draw();
+	}
+};
+
+
+
+SceneStage.prototype._initOfMenuObject = function(){
+	if (this.field().left_field) {
+		this.left_yajirushi.init();
+	}
+
+	if (this.field().right_field) {
+		this.right_yajirushi.init();
+	}
+
+	this.item_button.init();
+	this.eye.init();
+};
+
+SceneStage.prototype._beforeDrawOfMenuObject = function(){
+	if (this.field().left_field) {
+		this.left_yajirushi.beforeDraw();
+	}
+
+	if (this.field().right_field) {
+		this.right_yajirushi.beforeDraw();
+	}
+
+	this.item_button.beforeDraw();
+	this.eye.beforeDraw();
+};
+SceneStage.prototype._drawOfMenuObject = function(){
+	if (this.field().left_field) {
+		this.left_yajirushi.draw();
+	}
+
+	if (this.field().right_field) {
+		this.right_yajirushi.draw();
+	}
+
+	this.item_button.draw();
+	this.eye.draw();
 };
 
 // 画面更新
@@ -15637,7 +15748,6 @@ SceneStage.prototype.draw = function(){
 					this.core.height);
 	ctx.restore();
 
-
 	// デバッグ用の仮描画する
 	if (0) {
 
@@ -15652,9 +15762,55 @@ SceneStage.prototype.draw = function(){
 		ctx.restore();
 	}
 
+	this._drawOfPieces();
+	this._koishi.draw();
 
-	// こいし／サブシーン描画
+	if (this.isUsingEye()) {
+		this._drawLight();
+	}
+
+	this._drawOfMenuObject();
+
+	// サブシーン描画
 	base_scene.prototype.draw.apply(this, arguments);
+
+};
+SceneStage.prototype._drawLight = function(){
+	var ctx = this.core.ctx;
+
+	// 背景
+	ctx.save();
+	ctx.fillStyle = 'black';
+	ctx.globalAlpha = 0.9;
+	ctx.fillRect(0, 0, this.width, this.height);
+	ctx.restore();
+
+	// 光 描画
+	var light = this.core.image_loader.getImage("light");
+	ctx.save();
+	var x = this.core.input_manager.mousePositionX();
+	var y = this.core.input_manager.mousePositionY();
+
+	if (this.koishi().isReflect()) {
+		ctx.translate(this.koishi().x() - 50, this.koishi().y() - 100);
+	}
+	else {
+		ctx.translate(this.koishi().x() + 50, this.koishi().y() - 100);
+	}
+
+	var ax = x - this.koishi().x();
+	var ay = y - this.koishi().y();
+	var rad = Math.atan2(ay, ax) + 150*Math.PI/180;
+
+	ctx.rotate(rad);
+	ctx.drawImage(light,
+		0, 0,
+		light.width/2 - 250, light.height/2 - 150,
+		-light.width/2,                           -light.height/2,
+		light.width/2, light.height/2
+	);
+
+	ctx.restore();
 };
 
 
@@ -15685,7 +15841,6 @@ SceneStage.prototype.setupPiece = function() {
 			object.addSerif(data.serif);
 			object.addImage(data.image, data.scale);
 			object.setPosition(data.x, data.y);
-			this.addObject(object);
 
 			this.pieces.push(object);
 		}
@@ -15695,7 +15850,6 @@ SceneStage.prototype.setupPiece = function() {
 			object.addSerif(data.serif);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
 			object.setPosition(data.x, data.y);
-			this.addObject(object);
 
 			this.pieces.push(object);
 		}
@@ -16050,6 +16204,13 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 			return true;
 		}
 
+		// サードアイの当たり判定
+		if(this.mainStage().eye.checkCollisionWithPosition(x, y)) {
+			return true;
+		}
+
+
+
 		// フィールドの各種オブジェクトとの当たり判定
 		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
 			var piece = this.mainStage().pieces[i];
@@ -16208,13 +16369,13 @@ var UIParts = require('../hakurei').object.ui_parts;
 var SHOW_TRANSITION_COUNT = 100;
 
 var MENU = [
-	["New Game", function (core) { return true; }, function (core) {
+	["ui-titlepg-btn-ng", function (core) { return true; }, function (core) {
 		core.changeScene("stage", "chapter0_myroom");
 	}],
-	["Continue", function (core) { return true; }, function (core) {
+	["ui-titlepg-btn-con", function (core) { return true; }, function (core) {
 		core.changeScene("stage", "chapter0_myroom");
 	}],
-	["Options", function (core) { return true; }, function (core) {
+	["ui-titlepg-btn-opt", function (core) { return true; }, function (core) {
 		core.changeScene("stage", "chapter0_myroom");
 	}],
 ];
@@ -16231,20 +16392,20 @@ var SceneTitle = function(core) {
 		var menu = MENU[i];
 
 		(function (menu) {
-			self.menu_ui.push(new UIParts(self, 780, 300 + i*75, 240, 60, function draw () {
+			self.menu_ui.push(new UIParts(self, 280 + i*200, 670, 190, 63, function draw () {
 				var ctx = this.core.ctx;
 				ctx.textAlign = 'center';
 				ctx.textBaseline = 'middle';
 				ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
+				var logo;
 				if (this.is_big) {
-					ctx.font = "64px 'OradanoGSRR'";
+					logo = this.core.image_loader.getImage(menu[0] + "-on");
 				}
 				else {
-					ctx.font = "56px 'OradanoGSRR'";
+					logo = this.core.image_loader.getImage(menu[0] + "-off");
 				}
-
-				ctx.fillText(menu[0], this.x(), this.y());
+				ctx.drawImage(logo, this.getCollisionLeftX(), this.getCollisionUpY(), logo.width*0.7, logo.height*0.7);
 			}));
 		})(menu);
 	}
@@ -16303,7 +16464,7 @@ SceneTitle.prototype.draw = function(){
 
 	ctx.save();
 
-	var title_bg = this.core.image_loader.getImage('title');
+	var title_bg = this.core.image_loader.getImage("ui-titlepg-bg-1");
 
 	// 背景画像表示
 	ctx.drawImage(title_bg,
@@ -16316,12 +16477,12 @@ SceneTitle.prototype.draw = function(){
 					this.core.width,
 					this.core.height);
 
-	var logo = this.core.image_loader.getImage('logo_wht');
+	var logo = this.core.image_loader.getImage("ui-titlepg-img-logo-1");
 	// ロゴ画像表示
 		ctx.drawImage(logo,
-		180,
-		-180,
-		logo.width*0.3, logo.height*0.3);
+		310,
+		455,
+		logo.width*0.6, logo.height*0.6);
 
 	ctx.restore();
 
