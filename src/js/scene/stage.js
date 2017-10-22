@@ -269,6 +269,7 @@ SceneStage.prototype.setupPiece = function() {
 		if (data.type === CONSTANT.STATIC_IMAGE_TYPE) {
 			object = new ObjectStaticImage(this);
 			object.init();
+			object.addSize(data.width, data.height);
 			object.addSerif(data.serif);
 			object.addImage(data.image, data.scale);
 			object.setPosition(data.x, data.y);
@@ -278,6 +279,7 @@ SceneStage.prototype.setupPiece = function() {
 		else if (data.type === CONSTANT.ANIME_IMAGE_TYPE) {
 			object = new ObjectAnimeImage(this);
 			object.init();
+			object.addSize(data.width, data.height);
 			object.addSerif(data.serif);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
 			object.setPosition(data.x, data.y);

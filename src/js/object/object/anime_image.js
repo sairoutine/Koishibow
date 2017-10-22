@@ -16,6 +16,9 @@ var ObjectAnimeImage = function(core) {
 
 	this.serif = null;
 
+	this._width  = null;
+	this._height = null;
+
 	// アニメ
 	this.sprite = new SS(this.scene);
 };
@@ -29,6 +32,10 @@ ObjectAnimeImage.prototype.init = function(){
 	this.click_anime  = null;
 	this.after_anime  = null;
 	this.serif = null;
+
+	this._width  = null;
+	this._height = null;
+
 };
 ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
@@ -49,6 +56,11 @@ ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_
 ObjectAnimeImage.prototype.addSerif = function(serif) {
 	this.serif = serif;
 };
+ObjectAnimeImage.prototype.addSize = function(width, height){
+	this._width  = width;
+	this._height = height;
+};
+
 
 
 
@@ -84,13 +96,15 @@ ObjectAnimeImage.prototype.draw = function(){
 
 
 ObjectAnimeImage.prototype.collisionWidth = function(){
+	if(this._width) return this._width;
 	// index = 0 のみ有効
-	return this.before_anime[0].animation.CanvasWidth * this.scale;
+	return this.before_anime[0].animation.MarginWidth * this.scale;
 };
 
 ObjectAnimeImage.prototype.collisionHeight = function(){
+	if(this._height) return this._height;
 	// index = 0 のみ有効
-	return this.before_anime[0].animation.CanvasHeight * this.scale;
+	return this.before_anime[0].animation.MarginHeight * this.scale;
 };
 
 module.exports = ObjectAnimeImage;

@@ -12,6 +12,9 @@ var ObjectStaticImage = function(core) {
 	this.scale = 1;
 
 	this.serif = null;
+
+	this._width  = null;
+	this._height = null;
 };
 Util.inherit(ObjectStaticImage, base_object);
 
@@ -21,6 +24,9 @@ ObjectStaticImage.prototype.init = function(){
 	this.image = null;
 	this.scale = 1;
 	this.serif = null;
+
+	this._width  = null;
+	this._height = null;
 };
 ObjectStaticImage.prototype.addImage = function(image_name, scale){
 	this.image = this.core.image_loader.getImage(image_name);
@@ -29,6 +35,11 @@ ObjectStaticImage.prototype.addImage = function(image_name, scale){
 ObjectStaticImage.prototype.addSerif = function(serif) {
 	this.serif = serif;
 };
+ObjectStaticImage.prototype.addSize = function(width, height){
+	this._width  = width;
+	this._height = height;
+};
+
 
 
 ObjectStaticImage.prototype.onCollision = function(obj){
@@ -56,10 +67,12 @@ ObjectStaticImage.prototype.draw = function(){
 
 
 ObjectStaticImage.prototype.collisionWidth = function(){
+	if(this._width) return this._width;
 	return this.image.width * this.scale;
 };
 
 ObjectStaticImage.prototype.collisionHeight = function(){
+	if(this._height) return this._height;
 	return this.image.height * this.scale;
 };
 
