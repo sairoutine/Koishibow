@@ -7,14 +7,23 @@ var SceneSubStagePlay = function(core, stage) {
 };
 Util.inherit(SceneSubStagePlay, base_scene);
 
+SceneSubStagePlay.prototype.init = function(){
+	base_scene.prototype.init.apply(this, arguments);
+	this.mainStage().eye.init();
+};
+
+
+
+
 SceneSubStagePlay.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
-	var ctx = this.core.ctx;
+	this.mainStage().eye.draw();
 };
 
 SceneSubStagePlay.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
+	this.mainStage().eye.beforeDraw();
 	this._collisionCheck();
 
 };

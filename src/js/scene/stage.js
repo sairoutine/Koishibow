@@ -136,7 +136,6 @@ SceneStage.prototype._initOfMenuObject = function(){
 	}
 
 	this.item_button.init();
-	this.eye.init();
 };
 
 SceneStage.prototype._beforeDrawOfMenuObject = function(){
@@ -149,7 +148,6 @@ SceneStage.prototype._beforeDrawOfMenuObject = function(){
 	}
 
 	this.item_button.beforeDraw();
-	this.eye.beforeDraw();
 };
 SceneStage.prototype._drawOfMenuObject = function(){
 	if (this.field().left_field) {
@@ -161,7 +159,6 @@ SceneStage.prototype._drawOfMenuObject = function(){
 	}
 
 	this.item_button.draw();
-	this.eye.draw();
 };
 
 // 画面更新
