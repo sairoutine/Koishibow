@@ -36,6 +36,12 @@ AssetsConfig.images = {
 
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
 
+	// メニュー
+	"ui-common-bg-toolpu-blk":   "./image/menu/ui-common-bg-toolpu-blk.png",
+	"ui-common-btn-toolpu-blu1": "./image/menu/ui-common-btn-toolpu-blu1.png",
+	"ui-common-btn-toolpu-blu2": "./image/menu/ui-common-btn-toolpu-blu2.png",
+	"ui-common-frame-toolpu":    "./image/menu/ui-common-frame-toolpu.png",
+
 	// タイトル画面
 	"ui-titlepg-bg-1":         "./image/title/ui-titlepg-bg-1.jpg",
 	"ui-titlepg-btn-con-off":  "./image/title/ui-titlepg-btn-con-off.png",
