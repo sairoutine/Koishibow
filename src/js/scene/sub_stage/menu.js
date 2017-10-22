@@ -29,7 +29,7 @@ SceneSubStageTalk.prototype.init = function(){
 		var item_id = item_list[i];
 		var item = new MenuItem(this, item_id);
 		item.init();
-		item.setPosition(68 + i*100, 68);
+		item.setPosition(180 + i*120, 160);
 		self.addObject(item);
 	}
 
@@ -37,31 +37,34 @@ SceneSubStageTalk.prototype.init = function(){
 	this.use_button = new UIParts(self, 150, self.mainStage().height - 150, 160, 60, function draw () {
 		var ctx = this.core.ctx;
 
+		var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
+
 		ctx.save();
-		// 四角形
-		ctx.globalAlpha = 0.8;
-		ctx.fillStyle = 'rgb( 0, 0, 0 )';
-		ctx.fillRect(
-			MESSAGE_WINDOW_OUTLINE_MARGIN + 150,
-			this.scene.mainStage().height - 150,
+		ctx.drawImage(button_window,
 			160,
-			60
+			this.scene.mainStage().height - 150,
+			button_window.width*2/3,
+			button_window.height*2/3
 		);
 
 		// メニュー文字 表示
-		ctx.font = "32px 'Migu'";
+		ctx.font = "28px 'OradanoGSRR'";
 		ctx.textAlign = 'center';
 		ctx.textBaseAlign = 'middle';
 		ctx.fillStyle = 'rgb( 255, 255, 255 )';
 		ctx.fillText("使用",
-			MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60,
+			160 + 80,
 			this.scene.mainStage().height - 150 + 40
 		);
+
 		ctx.restore();
 	});
 	self.addObject(this.use_button);
 
 };
+
+
+
 
 SceneSubStageTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
@@ -128,13 +131,12 @@ SceneSubStageTalk.prototype.draw = function(){
 SceneSubStageTalk.prototype._showWindow = function(){
 	var ctx = this.core.ctx;
 
-	ctx.globalAlpha = 0.8;
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN,
-		MESSAGE_WINDOW_OUTLINE_MARGIN,
-		this.mainStage().width - MESSAGE_WINDOW_OUTLINE_MARGIN * 2,
-		this.mainStage().height - 150 - MESSAGE_WINDOW_OUTLINE_MARGIN * 2
+	var window_frame = this.core.image_loader.getImage('ui-common-frame-toolpu');
+
+	ctx.drawImage(window_frame,
+		0, 0,
+		window_frame.width*2/3,
+		window_frame.height*2/3
 	);
 
 };
@@ -142,50 +144,44 @@ SceneSubStageTalk.prototype._showWindow = function(){
 SceneSubStageTalk.prototype._showButtons = function(){
 	var ctx = this.core.ctx;
 
+	var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
 	ctx.save();
 
-
 	/* combine */
-
-	// 四角形
-	ctx.globalAlpha = 0.8;
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+	ctx.drawImage(button_window,
+		160*2 + 16*1,
 		this.mainStage().height - 150,
-		160,
-		60
+		button_window.width*2/3,
+		button_window.height*2/3
 	);
 
 	// メニュー文字 表示
-	ctx.font = "32px 'Migu'";
+	ctx.font = "28px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("合成",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		160*2 + 16*1 + 80,
 		this.mainStage().height - 150 + 40
 	);
 
 	/* examine */
 
 	// 四角形
-	ctx.globalAlpha = 0.8;
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+	ctx.drawImage(button_window,
+		160*3 + 16*2,
 		this.mainStage().height - 150,
-		160,
-		60
+		button_window.width*2/3,
+		button_window.height*2/3
 	);
 
 	// メニュー文字 表示
-	ctx.font = "32px 'Migu'";
+	ctx.font = "28px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("調べる",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		160*3 + 16*2 + 80,
 		this.mainStage().height - 150 + 40
 	);
 
@@ -200,14 +196,17 @@ SceneSubStageTalk.prototype._showButtons = function(){
 SceneSubStageTalk.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
 
-	ctx.globalAlpha = 0.8;
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150,
+	ctx.save();
+
+	var message_window = this.core.image_loader.getImage('ui-common-bg-toolpu-blk');
+
+	ctx.drawImage(message_window,
+		150,
 		this.mainStage().height - 80,
-		this.mainStage().width  - 180 - MESSAGE_WINDOW_OUTLINE_MARGIN * 2,
-		70
+		message_window.width*2/3,
+		message_window.height*2/3
 	);
+	ctx.restore();
 
 };
 
@@ -215,7 +214,7 @@ SceneSubStageTalk.prototype._showMessage = function(){
 	var ctx = this.core.ctx;
 
 	// メニュー文字 表示
-	ctx.font = "27px 'Migu'";
+	ctx.font = "28px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
