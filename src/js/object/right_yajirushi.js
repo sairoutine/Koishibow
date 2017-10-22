@@ -1,5 +1,5 @@
 'use strict';
-var base_object = require('../hakurei').object.base;
+var base_object = require('../hakurei').object.sprite;
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 
@@ -10,8 +10,12 @@ Util.inherit(ObjectRightYajirushi, base_object);
 
 ObjectRightYajirushi.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
-
 	this.setPosition();
+};
+
+ObjectRightYajirushi.prototype.setPosition = function(){
+	this.x(this.scene.mainStage().width - 48);
+	this.y(this.scene.mainStage().height/2);
 };
 
 ObjectRightYajirushi.prototype.onCollision = function(obj){
@@ -20,44 +24,32 @@ ObjectRightYajirushi.prototype.onCollision = function(obj){
 	this.core.changeScene("stage", this.scene.mainStage().field().right_field, false);
 };
 
-ObjectRightYajirushi.prototype.setPosition = function(){
-	this.x(this.scene.mainStage().width - 48);
-	this.y(this.scene.mainStage().height/2);
-};
-
-ObjectRightYajirushi.prototype.draw = function(){
-	base_object.prototype.draw.apply(this, arguments);
-	var ctx = this.core.ctx;
-	ctx.save();
-
-	// デバッグ用の仮描画する
-	if (!CONSTANT.DEBUG.ON) return;
-
-	/*
-	// 仮で四角形を描画
-	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
-	ctx.globalAlpha = 0.4;
-	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
-	*/
-
-	// フィールド遷移矢印 表示
-	ctx.font = "96px 'Migu'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-	ctx.fillText("▶", this.x(), this.y() + 20);
-
-	ctx.restore();
-};
-
-
-
 ObjectRightYajirushi.prototype.collisionWidth = function(){
 	return 128;
 };
 
 ObjectRightYajirushi.prototype.collisionHeight = function(){
 	return 128;
+};
+
+ObjectRightYajirushi.prototype.spriteName = function(){
+	return "arrow";
+};
+ObjectRightYajirushi.prototype.spriteIndices = function(){
+	return [{x: 0, y: 0}];
+};
+ObjectRightYajirushi.prototype.spriteWidth = function(){
+	return 136;
+};
+ObjectRightYajirushi.prototype.spriteHeight = function(){
+	return 124;
+};
+
+ObjectRightYajirushi.prototype.scaleHeight = function(){
+	return 0.6;
+};
+ObjectRightYajirushi.prototype.scaleWidth = function(){
+	return 0.6;
 };
 
 module.exports = ObjectRightYajirushi;

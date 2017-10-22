@@ -1,5 +1,5 @@
 'use strict';
-var base_object = require('../hakurei').object.base;
+var base_object = require('../hakurei').object.sprite;
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 
@@ -13,7 +13,6 @@ ObjectLeftYajirushi.prototype.init = function(){
 	this.setPosition();
 };
 
-
 ObjectLeftYajirushi.prototype.onCollision = function(obj){
 	// フィールド遷移
 	this.scene.mainStage().setFadeOut(30, "black");
@@ -25,39 +24,34 @@ ObjectLeftYajirushi.prototype.setPosition = function(){
 	this.y(this.scene.mainStage().height/2);
 };
 
-ObjectLeftYajirushi.prototype.draw = function(){
-	base_object.prototype.draw.apply(this, arguments);
-
-	// デバッグ用の仮描画する
-	if (!CONSTANT.DEBUG.ON) return;
-
-
-	var ctx = this.core.ctx;
-	ctx.save();
-	/*
-	// 仮で四角形を描画
-	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
-	ctx.globalAlpha = 0.4;
-	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
-	*/
-	// フィールド遷移矢印 表示
-	ctx.font = "96px 'Migu'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-	ctx.fillText("◀", this.x(), this.y() + 20);
-
-	ctx.restore();
-};
-
-
-
 ObjectLeftYajirushi.prototype.collisionWidth = function(){
 	return 128;
 };
 
 ObjectLeftYajirushi.prototype.collisionHeight = function(){
 	return 128;
+};
+
+ObjectLeftYajirushi.prototype.spriteName = function(){
+	return "arrow";
+};
+ObjectLeftYajirushi.prototype.spriteIndices = function(){
+	return [{x: 0, y: 0}];
+};
+ObjectLeftYajirushi.prototype.spriteWidth = function(){
+	return 136;
+};
+ObjectLeftYajirushi.prototype.spriteHeight = function(){
+	return 124;
+};
+ObjectLeftYajirushi.prototype.scaleHeight = function(){
+	return 0.6;
+};
+ObjectLeftYajirushi.prototype.scaleWidth = function(){
+	return 0.6;
+};
+ObjectLeftYajirushi.prototype.isReflect = function(){
+	return true;
 };
 
 module.exports = ObjectLeftYajirushi;

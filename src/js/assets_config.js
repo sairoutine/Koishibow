@@ -26,6 +26,9 @@ AssetsConfig.images = {
 
 	light:  "./image/light.png",
 
+	// 画面遷移用やじるし
+	arrow:  "./image/ui-common-btn-arrow-wht.png",
+
 	// アイテムボタン
 	tool: "./image/ui-common-btn-tool-1.png",
 	// 第三の目
