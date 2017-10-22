@@ -3462,7 +3462,8 @@ var DEBUG = {
 	ON: true,
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
-	START_SCENE: ["stage", "chapter0_mansion_corridor1"],
+	//START_SCENE: ["stage", "chapter0_mansion_corridor1"],
+	START_SCENE: ["stage", "chapter0_myroom"],
 	//START_SCENE: ["title"],
 };
 
@@ -3615,8 +3616,8 @@ module.exports = {
 		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", serif: ["まだねむたくないもん"], x: 258, y: 389, scale: 0.7},
 		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["あけない"], x: 59, y: 496, scale: 0.7},
 
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", serif: ["にっきさんひさしぶり！", "だっておはなしすることないんだもん"], x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", serif: ["くれおん！", "ピンクなくなっちゃったなー"], x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", serif: ["にっきさんひさしぶり！", "だっておはなしすることないんだもん"], x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03", width: 80, height: 80},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", serif: ["くれおん！", "ピンクなくなっちゃったなー"], x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03", width: 80, height: 80},
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03"},
 	],
 };
@@ -15051,6 +15052,9 @@ var ObjectAnimeImage = function(core) {
 
 	this.serif = null;
 
+	this._width  = null;
+	this._height = null;
+
 	// アニメ
 	this.sprite = new SS(this.scene);
 };
@@ -15064,6 +15068,10 @@ ObjectAnimeImage.prototype.init = function(){
 	this.click_anime  = null;
 	this.after_anime  = null;
 	this.serif = null;
+
+	this._width  = null;
+	this._height = null;
+
 };
 ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
@@ -15084,6 +15092,11 @@ ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_
 ObjectAnimeImage.prototype.addSerif = function(serif) {
 	this.serif = serif;
 };
+ObjectAnimeImage.prototype.addSize = function(width, height){
+	this._width  = width;
+	this._height = height;
+};
+
 
 
 
@@ -15119,13 +15132,15 @@ ObjectAnimeImage.prototype.draw = function(){
 
 
 ObjectAnimeImage.prototype.collisionWidth = function(){
+	if(this._width) return this._width;
 	// index = 0 のみ有効
-	return this.before_anime[0].animation.CanvasWidth * this.scale;
+	return this.before_anime[0].animation.MarginWidth * this.scale;
 };
 
 ObjectAnimeImage.prototype.collisionHeight = function(){
+	if(this._height) return this._height;
 	// index = 0 のみ有効
-	return this.before_anime[0].animation.CanvasHeight * this.scale;
+	return this.before_anime[0].animation.MarginHeight * this.scale;
 };
 
 module.exports = ObjectAnimeImage;
@@ -15145,6 +15160,9 @@ var ObjectStaticImage = function(core) {
 	this.scale = 1;
 
 	this.serif = null;
+
+	this._width  = null;
+	this._height = null;
 };
 Util.inherit(ObjectStaticImage, base_object);
 
@@ -15154,6 +15172,9 @@ ObjectStaticImage.prototype.init = function(){
 	this.image = null;
 	this.scale = 1;
 	this.serif = null;
+
+	this._width  = null;
+	this._height = null;
 };
 ObjectStaticImage.prototype.addImage = function(image_name, scale){
 	this.image = this.core.image_loader.getImage(image_name);
@@ -15162,6 +15183,11 @@ ObjectStaticImage.prototype.addImage = function(image_name, scale){
 ObjectStaticImage.prototype.addSerif = function(serif) {
 	this.serif = serif;
 };
+ObjectStaticImage.prototype.addSize = function(width, height){
+	this._width  = width;
+	this._height = height;
+};
+
 
 
 ObjectStaticImage.prototype.onCollision = function(obj){
@@ -15189,10 +15215,12 @@ ObjectStaticImage.prototype.draw = function(){
 
 
 ObjectStaticImage.prototype.collisionWidth = function(){
+	if(this._width) return this._width;
 	return this.image.width * this.scale;
 };
 
 ObjectStaticImage.prototype.collisionHeight = function(){
+	if(this._height) return this._height;
 	return this.image.height * this.scale;
 };
 
@@ -15832,6 +15860,7 @@ SceneStage.prototype.setupPiece = function() {
 		if (data.type === CONSTANT.STATIC_IMAGE_TYPE) {
 			object = new ObjectStaticImage(this);
 			object.init();
+			object.addSize(data.width, data.height);
 			object.addSerif(data.serif);
 			object.addImage(data.image, data.scale);
 			object.setPosition(data.x, data.y);
@@ -15841,6 +15870,7 @@ SceneStage.prototype.setupPiece = function() {
 		else if (data.type === CONSTANT.ANIME_IMAGE_TYPE) {
 			object = new ObjectAnimeImage(this);
 			object.init();
+			object.addSize(data.width, data.height);
 			object.addSerif(data.serif);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
 			object.setPosition(data.x, data.y);
@@ -15959,7 +15989,7 @@ SceneSubStageTalk.prototype.init = function(){
 		);
 
 		// メニュー文字 表示
-		ctx.font = "28px 'OradanoGSRR'";
+		ctx.font = "24px 'OradanoGSRR'";
 		ctx.textAlign = 'center';
 		ctx.textBaseAlign = 'middle';
 		ctx.fillStyle = 'rgb( 255, 255, 255 )';
@@ -16074,7 +16104,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	);
 
 	// メニュー文字 表示
-	ctx.font = "28px 'OradanoGSRR'";
+	ctx.font = "24px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
@@ -16094,7 +16124,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	);
 
 	// メニュー文字 表示
-	ctx.font = "28px 'OradanoGSRR'";
+	ctx.font = "24px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
@@ -16132,7 +16162,7 @@ SceneSubStageTalk.prototype._showMessage = function(){
 	var ctx = this.core.ctx;
 
 	// メニュー文字 表示
-	ctx.font = "28px 'OradanoGSRR'";
+	ctx.font = "24px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
