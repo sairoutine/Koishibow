@@ -50,8 +50,9 @@ ObjectLeftYajirushi.prototype.scaleHeight = function(){
 ObjectLeftYajirushi.prototype.scaleWidth = function(){
 	return 0.6;
 };
-ObjectLeftYajirushi.prototype.isReflect = function(){
-	return true;
+ObjectLeftYajirushi.prototype.rotateAdjust = function(){
+	return 180;
 };
+
 
 module.exports = ObjectLeftYajirushi;
