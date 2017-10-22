@@ -3402,12 +3402,21 @@ AssetsConfig.images = {
 
 	light:  "./image/light.png",
 
+	// 画面遷移用やじるし
+	arrow:  "./image/ui-common-btn-arrow-wht.png",
+
 	// アイテムボタン
 	tool: "./image/ui-common-btn-tool-1.png",
 	// 第三の目
 	eye:  "./image/ui-common-btn-eye-1.png",
 
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
+
+	// メニュー
+	"ui-common-bg-toolpu-blk":   "./image/menu/ui-common-bg-toolpu-blk.png",
+	"ui-common-btn-toolpu-blu1": "./image/menu/ui-common-btn-toolpu-blu1.png",
+	"ui-common-btn-toolpu-blu2": "./image/menu/ui-common-btn-toolpu-blu2.png",
+	"ui-common-frame-toolpu":    "./image/menu/ui-common-frame-toolpu.png",
 
 	// タイトル画面
 	"ui-titlepg-bg-1":         "./image/title/ui-titlepg-bg-1.jpg",
@@ -3453,7 +3462,7 @@ var DEBUG = {
 	ON: true,
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
-	START_SCENE: ["stage", "chapter0_hospital_corridor1"],
+	START_SCENE: ["stage", "chapter0_mansion_corridor1"],
 	//START_SCENE: ["title"],
 };
 
@@ -13579,6 +13588,7 @@ ObjectUIParts.prototype.setVariable = function (name, value){
 };
 
 ObjectUIParts.prototype.draw = function(){
+	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 	ctx.save();
 	this._draw_function();
@@ -14883,7 +14893,7 @@ module.exports = Koishi;
 
 },{"../anime/koishi/wait_anime_1":14,"../anime/koishi/walk_anime_1":15,"../constant":17,"../hakurei":28,"../object/sprite_studio":73}],68:[function(require,module,exports){
 'use strict';
-var base_object = require('../hakurei').object.base;
+var base_object = require('../hakurei').object.sprite;
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 
@@ -14897,7 +14907,6 @@ ObjectLeftYajirushi.prototype.init = function(){
 	this.setPosition();
 };
 
-
 ObjectLeftYajirushi.prototype.onCollision = function(obj){
 	// フィールド遷移
 	this.scene.mainStage().setFadeOut(30, "black");
@@ -14909,33 +14918,6 @@ ObjectLeftYajirushi.prototype.setPosition = function(){
 	this.y(this.scene.mainStage().height/2);
 };
 
-ObjectLeftYajirushi.prototype.draw = function(){
-	base_object.prototype.draw.apply(this, arguments);
-
-	// デバッグ用の仮描画する
-	if (!CONSTANT.DEBUG.ON) return;
-
-
-	var ctx = this.core.ctx;
-	ctx.save();
-	/*
-	// 仮で四角形を描画
-	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
-	ctx.globalAlpha = 0.4;
-	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
-	*/
-	// フィールド遷移矢印 表示
-	ctx.font = "96px 'Migu'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-	ctx.fillText("◀", this.x(), this.y() + 20);
-
-	ctx.restore();
-};
-
-
-
 ObjectLeftYajirushi.prototype.collisionWidth = function(){
 	return 128;
 };
@@ -14943,6 +14925,29 @@ ObjectLeftYajirushi.prototype.collisionWidth = function(){
 ObjectLeftYajirushi.prototype.collisionHeight = function(){
 	return 128;
 };
+
+ObjectLeftYajirushi.prototype.spriteName = function(){
+	return "arrow";
+};
+ObjectLeftYajirushi.prototype.spriteIndices = function(){
+	return [{x: 0, y: 0}];
+};
+ObjectLeftYajirushi.prototype.spriteWidth = function(){
+	return 136;
+};
+ObjectLeftYajirushi.prototype.spriteHeight = function(){
+	return 124;
+};
+ObjectLeftYajirushi.prototype.scaleHeight = function(){
+	return 0.6;
+};
+ObjectLeftYajirushi.prototype.scaleWidth = function(){
+	return 0.6;
+};
+ObjectLeftYajirushi.prototype.rotateAdjust = function(){
+	return 180;
+};
+
 
 module.exports = ObjectLeftYajirushi;
 
@@ -15195,7 +15200,7 @@ module.exports = ObjectStaticImage;
 
 },{"../../hakurei":28}],72:[function(require,module,exports){
 'use strict';
-var base_object = require('../hakurei').object.base;
+var base_object = require('../hakurei').object.sprite;
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 
@@ -15206,8 +15211,12 @@ Util.inherit(ObjectRightYajirushi, base_object);
 
 ObjectRightYajirushi.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
-
 	this.setPosition();
+};
+
+ObjectRightYajirushi.prototype.setPosition = function(){
+	this.x(this.scene.mainStage().width - 48);
+	this.y(this.scene.mainStage().height/2);
 };
 
 ObjectRightYajirushi.prototype.onCollision = function(obj){
@@ -15216,44 +15225,32 @@ ObjectRightYajirushi.prototype.onCollision = function(obj){
 	this.core.changeScene("stage", this.scene.mainStage().field().right_field, false);
 };
 
-ObjectRightYajirushi.prototype.setPosition = function(){
-	this.x(this.scene.mainStage().width - 48);
-	this.y(this.scene.mainStage().height/2);
-};
-
-ObjectRightYajirushi.prototype.draw = function(){
-	base_object.prototype.draw.apply(this, arguments);
-	var ctx = this.core.ctx;
-	ctx.save();
-
-	// デバッグ用の仮描画する
-	if (!CONSTANT.DEBUG.ON) return;
-
-	/*
-	// 仮で四角形を描画
-	ctx.fillStyle = 'rgb( 255, 255, 255 )' ;
-	ctx.globalAlpha = 0.4;
-	ctx.fillRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
-	*/
-
-	// フィールド遷移矢印 表示
-	ctx.font = "96px 'Migu'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-	ctx.fillText("▶", this.x(), this.y() + 20);
-
-	ctx.restore();
-};
-
-
-
 ObjectRightYajirushi.prototype.collisionWidth = function(){
 	return 128;
 };
 
 ObjectRightYajirushi.prototype.collisionHeight = function(){
 	return 128;
+};
+
+ObjectRightYajirushi.prototype.spriteName = function(){
+	return "arrow";
+};
+ObjectRightYajirushi.prototype.spriteIndices = function(){
+	return [{x: 0, y: 0}];
+};
+ObjectRightYajirushi.prototype.spriteWidth = function(){
+	return 136;
+};
+ObjectRightYajirushi.prototype.spriteHeight = function(){
+	return 124;
+};
+
+ObjectRightYajirushi.prototype.scaleHeight = function(){
+	return 0.6;
+};
+ObjectRightYajirushi.prototype.scaleWidth = function(){
+	return 0.6;
 };
 
 module.exports = ObjectRightYajirushi;
@@ -15702,7 +15699,6 @@ SceneStage.prototype._initOfMenuObject = function(){
 	}
 
 	this.item_button.init();
-	this.eye.init();
 };
 
 SceneStage.prototype._beforeDrawOfMenuObject = function(){
@@ -15715,7 +15711,6 @@ SceneStage.prototype._beforeDrawOfMenuObject = function(){
 	}
 
 	this.item_button.beforeDraw();
-	this.eye.beforeDraw();
 };
 SceneStage.prototype._drawOfMenuObject = function(){
 	if (this.field().left_field) {
@@ -15727,7 +15722,6 @@ SceneStage.prototype._drawOfMenuObject = function(){
 	}
 
 	this.item_button.draw();
-	this.eye.draw();
 };
 
 // 画面更新
@@ -15940,48 +15934,56 @@ SceneSubStageTalk.prototype.init = function(){
 		var item_id = item_list[i];
 		var item = new MenuItem(this, item_id);
 		item.init();
-		item.setPosition(68 + i*100, 68);
+		item.setPosition(180 + i*120, 160);
 		self.addObject(item);
 	}
 
 	// 使用ボタン
-	this.use_button = new UIParts(self, 150, self.mainStage().height - 150, 160, 60, function draw () {
+	this.use_button = new UIParts(self, 160 + 250/3, self.mainStage().height - 150 + 105/3, 250*2/3, 105*2/3, function draw () {
 		var ctx = this.core.ctx;
 
+		var button_window;
+		if (this.onfocus) {
+			button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu2');
+		}
+		else {
+			button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
+		}
+
 		ctx.save();
-		// 四角形
-		ctx.globalAlpha = 0.8;
-		ctx.fillStyle = 'rgb( 0, 0, 0 )';
-		ctx.fillRect(
-			MESSAGE_WINDOW_OUTLINE_MARGIN + 150,
-			this.scene.mainStage().height - 150,
-			160,
-			60
+		ctx.drawImage(button_window,
+			this.getCollisionLeftX(),
+			this.getCollisionUpY(),
+			button_window.width*2/3,
+			button_window.height*2/3
 		);
 
 		// メニュー文字 表示
-		ctx.font = "32px 'Migu'";
+		ctx.font = "28px 'OradanoGSRR'";
 		ctx.textAlign = 'center';
 		ctx.textBaseAlign = 'middle';
 		ctx.fillStyle = 'rgb( 255, 255, 255 )';
 		ctx.fillText("使用",
-			MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60,
-			this.scene.mainStage().height - 150 + 40
+			this.getCollisionLeftX() + 80,
+			this.getCollisionUpY()   + 40
 		);
+
 		ctx.restore();
 	});
 	self.addObject(this.use_button);
 
 };
 
+
+
+
 SceneSubStageTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	if(this.core.input_manager.isLeftClickPush()) {
-		// 左クリックしたところを取得
-		var x = this.core.input_manager.mousePositionX();
-		var y = this.core.input_manager.mousePositionY();
+	var x = this.core.input_manager.mousePositionX();
+	var y = this.core.input_manager.mousePositionY();
 
+	if(this.core.input_manager.isLeftClickPush()) {
 		// メニュー閉じる
 		this.mainStage().item_button.checkCollisionWithPosition(x, y);
 
@@ -15997,7 +15999,15 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 		}
 
 	}
-
+	else {
+		// マウスカーソルが当たったら
+		if(this.use_button.checkCollisionWithPosition(x, y)) {
+			this.use_button.setVariable("onfocus", true);
+		}
+		else {
+			this.use_button.setVariable("onfocus", false);
+		}
+	}
 
 /*
 	if(this.core.input_manager.isLeftClickPush()) {
@@ -16039,13 +16049,12 @@ SceneSubStageTalk.prototype.draw = function(){
 SceneSubStageTalk.prototype._showWindow = function(){
 	var ctx = this.core.ctx;
 
-	ctx.globalAlpha = 0.8;
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN,
-		MESSAGE_WINDOW_OUTLINE_MARGIN,
-		this.mainStage().width - MESSAGE_WINDOW_OUTLINE_MARGIN * 2,
-		this.mainStage().height - 150 - MESSAGE_WINDOW_OUTLINE_MARGIN * 2
+	var window_frame = this.core.image_loader.getImage('ui-common-frame-toolpu');
+
+	ctx.drawImage(window_frame,
+		0, 0,
+		window_frame.width*2/3,
+		window_frame.height*2/3
 	);
 
 };
@@ -16053,50 +16062,44 @@ SceneSubStageTalk.prototype._showWindow = function(){
 SceneSubStageTalk.prototype._showButtons = function(){
 	var ctx = this.core.ctx;
 
+	var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
 	ctx.save();
 
-
 	/* combine */
-
-	// 四角形
-	ctx.globalAlpha = 0.8;
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+	ctx.drawImage(button_window,
+		160*2 + 16*1,
 		this.mainStage().height - 150,
-		160,
-		60
+		button_window.width*2/3,
+		button_window.height*2/3
 	);
 
 	// メニュー文字 表示
-	ctx.font = "32px 'Migu'";
+	ctx.font = "28px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("合成",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		160*2 + 16*1 + 80,
 		this.mainStage().height - 150 + 40
 	);
 
 	/* examine */
 
 	// 四角形
-	ctx.globalAlpha = 0.8;
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+	ctx.drawImage(button_window,
+		160*3 + 16*2,
 		this.mainStage().height - 150,
-		160,
-		60
+		button_window.width*2/3,
+		button_window.height*2/3
 	);
 
 	// メニュー文字 表示
-	ctx.font = "32px 'Migu'";
+	ctx.font = "28px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 	ctx.fillText("調べる",
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150 + 60 + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + MESSAGE_WINDOW_OUTLINE_MARGIN,
+		160*3 + 16*2 + 80,
 		this.mainStage().height - 150 + 40
 	);
 
@@ -16111,14 +16114,17 @@ SceneSubStageTalk.prototype._showButtons = function(){
 SceneSubStageTalk.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
 
-	ctx.globalAlpha = 0.8;
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillRect(
-		MESSAGE_WINDOW_OUTLINE_MARGIN + 150,
+	ctx.save();
+
+	var message_window = this.core.image_loader.getImage('ui-common-bg-toolpu-blk');
+
+	ctx.drawImage(message_window,
+		150,
 		this.mainStage().height - 80,
-		this.mainStage().width  - 180 - MESSAGE_WINDOW_OUTLINE_MARGIN * 2,
-		70
+		message_window.width*2/3,
+		message_window.height*2/3
 	);
+	ctx.restore();
 
 };
 
@@ -16126,7 +16132,7 @@ SceneSubStageTalk.prototype._showMessage = function(){
 	var ctx = this.core.ctx;
 
 	// メニュー文字 表示
-	ctx.font = "27px 'Migu'";
+	ctx.font = "28px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
@@ -16171,14 +16177,23 @@ var SceneSubStagePlay = function(core, stage) {
 };
 Util.inherit(SceneSubStagePlay, base_scene);
 
+SceneSubStagePlay.prototype.init = function(){
+	base_scene.prototype.init.apply(this, arguments);
+	this.mainStage().eye.init();
+};
+
+
+
+
 SceneSubStagePlay.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
-	var ctx = this.core.ctx;
+	this.mainStage().eye.draw();
 };
 
 SceneSubStagePlay.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
+	this.mainStage().eye.beforeDraw();
 	this._collisionCheck();
 
 };
