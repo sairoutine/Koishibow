@@ -54,7 +54,7 @@ SceneSubStageTalk.prototype.init = function(){
 		);
 
 		// メニュー文字 表示
-		ctx.font = "28px 'OradanoGSRR'";
+		ctx.font = "24px 'OradanoGSRR'";
 		ctx.textAlign = 'center';
 		ctx.textBaseAlign = 'middle';
 		ctx.fillStyle = 'rgb( 255, 255, 255 )';
@@ -169,7 +169,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	);
 
 	// メニュー文字 表示
-	ctx.font = "28px 'OradanoGSRR'";
+	ctx.font = "24px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
@@ -189,7 +189,7 @@ SceneSubStageTalk.prototype._showButtons = function(){
 	);
 
 	// メニュー文字 表示
-	ctx.font = "28px 'OradanoGSRR'";
+	ctx.font = "24px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
@@ -227,7 +227,7 @@ SceneSubStageTalk.prototype._showMessage = function(){
 	var ctx = this.core.ctx;
 
 	// メニュー文字 表示
-	ctx.font = "28px 'OradanoGSRR'";
+	ctx.font = "24px 'OradanoGSRR'";
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
