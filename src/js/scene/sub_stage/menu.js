@@ -34,15 +34,21 @@ SceneSubStageTalk.prototype.init = function(){
 	}
 
 	// 使用ボタン
-	this.use_button = new UIParts(self, 150, self.mainStage().height - 150, 160, 60, function draw () {
+	this.use_button = new UIParts(self, 160 + 250/3, self.mainStage().height - 150 + 105/3, 250*2/3, 105*2/3, function draw () {
 		var ctx = this.core.ctx;
 
-		var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
+		var button_window;
+		if (this.onfocus) {
+			button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu2');
+		}
+		else {
+			button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
+		}
 
 		ctx.save();
 		ctx.drawImage(button_window,
-			160,
-			this.scene.mainStage().height - 150,
+			this.getCollisionLeftX(),
+			this.getCollisionUpY(),
 			button_window.width*2/3,
 			button_window.height*2/3
 		);
@@ -53,8 +59,8 @@ SceneSubStageTalk.prototype.init = function(){
 		ctx.textBaseAlign = 'middle';
 		ctx.fillStyle = 'rgb( 255, 255, 255 )';
 		ctx.fillText("使用",
-			160 + 80,
-			this.scene.mainStage().height - 150 + 40
+			this.getCollisionLeftX() + 80,
+			this.getCollisionUpY()   + 40
 		);
 
 		ctx.restore();
@@ -69,11 +75,10 @@ SceneSubStageTalk.prototype.init = function(){
 SceneSubStageTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	if(this.core.input_manager.isLeftClickPush()) {
-		// 左クリックしたところを取得
-		var x = this.core.input_manager.mousePositionX();
-		var y = this.core.input_manager.mousePositionY();
+	var x = this.core.input_manager.mousePositionX();
+	var y = this.core.input_manager.mousePositionY();
 
+	if(this.core.input_manager.isLeftClickPush()) {
 		// メニュー閉じる
 		this.mainStage().item_button.checkCollisionWithPosition(x, y);
 
@@ -89,7 +94,15 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 		}
 
 	}
-
+	else {
+		// マウスカーソルが当たったら
+		if(this.use_button.checkCollisionWithPosition(x, y)) {
+			this.use_button.setVariable("onfocus", true);
+		}
+		else {
+			this.use_button.setVariable("onfocus", false);
+		}
+	}
 
 /*
 	if(this.core.input_manager.isLeftClickPush()) {
