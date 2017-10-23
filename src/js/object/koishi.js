@@ -11,8 +11,27 @@ var WALK_DEPTH_LIMIT = 300;
 var base_object = require('../hakurei').object.base;
 var util = require('../hakurei').util;
 var CONSTANT = require('../constant');
+
+
+/* 使用用途	リピート	fps	フレーム	時間 */
+
+// 	待機	可	30	45	1.5秒
 var jsonDataOfWait = require('../anime/koishi/wait_anime_1');
+//	歩き	可	30	30	1秒
 var jsonDataOfWalk = require('../anime/koishi/walk_anime_1');
+// 	サードアイ使用	不	30	15	0.5秒
+var jsonDataOfReaction3rdeye = require('../anime/koishi/reaction_3rdeye_anime_1');
+// 	下を見る	不	30	15	0.5秒
+var jsonDataOfReactionLookBottom = require('../anime/koishi/reaction_look_bottom_anime_1');
+// 	前を見る	不	30	15	0.5秒
+var jsonDataOfReactionLookFront = require('../anime/koishi/reaction_look_front_anime_1');
+//	上を見る	不	30	15	0.5秒
+var jsonDataOfReactionLookTop = require('../anime/koishi/reaction_look_top_anime_1');
+//	触る、物を取る	不	30	15	0.5秒
+var jsonDataOfReactionTouch = require('../anime/koishi/reaction_touch_anime_1');
+//	YES、うなずく	不	30	15	0.5秒
+var jsonDataOfReactionYes = require('../anime/koishi/reaction_yes_anime_1');
+
 var SS = require('../object/sprite_studio');
 
 
@@ -43,6 +62,15 @@ Koishi.prototype.setWait = function() {
 Koishi.prototype.setWalk = function() {
 	this.sprite.changeAnimation(jsonDataOfWalk);
 };
+Koishi.prototype.useEye = function(){
+	var self = this;
+
+	var sprite = self.sprite;
+	sprite.playAnimationOnce(jsonDataOfReaction3rdeye, function (){
+		sprite.changeAnimation(jsonDataOfWait);
+	});
+};
+
 
 
 

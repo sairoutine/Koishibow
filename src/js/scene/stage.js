@@ -99,6 +99,7 @@ SceneStage.prototype.unUseEye = function() {
 	this.is_use_eye = false;
 };
 SceneStage.prototype.useEye = function() {
+	this.koishi().useEye();
 	this.is_use_eye = true;
 };
 
