@@ -66,10 +66,14 @@ Koishi.prototype.useEye = function(){
 	var self = this;
 
 	var sprite = self.sprite;
-	sprite.playAnimationOnce(jsonDataOfReaction3rdeye, function (){
-		sprite.changeAnimation(jsonDataOfWait);
-	});
+	sprite.playAnimationOnce(jsonDataOfReaction3rdeye);
 };
+Koishi.prototype.unUseEye = function(){
+	var self = this;
+
+	this.setWait();
+};
+
 
 
 

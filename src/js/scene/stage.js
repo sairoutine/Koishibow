@@ -96,6 +96,7 @@ SceneStage.prototype.isUsingEye = function() {
 	return this.is_use_eye;
 };
 SceneStage.prototype.unUseEye = function() {
+	this.koishi().unUseEye();
 	this.is_use_eye = false;
 };
 SceneStage.prototype.useEye = function() {

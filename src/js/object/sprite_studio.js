@@ -36,13 +36,15 @@ SpriteStudio.prototype.init = function(x, y, jsonData, data_index, opt){
 	this.sprite = ss;
 };
 
-SpriteStudio.prototype.changeAnimation = function(jsonData){
+SpriteStudio.prototype.changeAnimation = function(jsonData, loop){
+	loop = loop || 0;
 	var data_index = 0;
 	this.width = jsonData[data_index].animation.CanvasWidth;
 	this.height = jsonData[data_index].animation.CanvasHeight;
 
 	this.animation = new SsAnimation(jsonData[data_index].animation, this.imageList);
 
+	this.sprite.setLoop(loop);
 	this.sprite.setAnimation(this.animation);
 
 };
@@ -52,15 +54,18 @@ SpriteStudio.prototype.playAnimationOnce = function(jsonData, _callback){
 	var sprite = self.sprite;
 	var max_loop = sprite.getLoop();
 
-	var callback = function () {
-		sprite.setEndCallBack(null);
-		sprite.setLoop(max_loop);
-		_callback();
-	};
+	// アニメーション後のコールバック
+	if (_callback) {
+		var callback = function () {
+			sprite.setEndCallBack(null);
+			sprite.setLoop(max_loop);
+			_callback();
+		};
 
-	sprite.setEndCallBack(callback);
-	sprite.setLoop(1);
-	self.changeAnimation(jsonData);
+		sprite.setEndCallBack(callback);
+	}
+
+	self.changeAnimation(jsonData, 1);
 };
 
 // sprite studio 用の SsImageList 代替オブジェクトを生成
