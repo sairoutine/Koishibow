@@ -6330,9 +6330,9 @@ module.exports = {
 	left_field: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
 	objects: [
-		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ストレッチャー", serif: ["へんなベッド"],  x: 814, y: 608, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ストレッチャー", serif: ["へんなベッド"],  x: 814, y: 608, scale: 0.7, action: "touch"},
 		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["くすりはいらない……"],   x: 279, y: 378, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "救急箱", serif: ["くーくーばこ！", "けがしてないよ！"], x: 281, y: 280, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "救急箱", serif: ["くーくーばこ！", "けがしてないよ！"], x: 281, y: 280, scale: 0.7, action: "touch"},
 		{image: "chapter0-hospital_corridor1-obj-04-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "メス", serif: ["ナイフ"],   x: 853, y: 534, scale: 0.7},
 	],
 };
@@ -6351,8 +6351,8 @@ module.exports = {
 	left_field: "chapter0_hospital_corridor1",
 	background: "chapter0-hospital2-bg-001",
 	objects: [
-		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "くつした", serif: ["やだやだ。"], x: 302, y: 443, scale: 0.7},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", serif: ["あしおったらのってもいい？"], x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03"},
+		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "くつした", serif: ["やだやだ。"], x: 302, y: 443, scale: 0.7, action: "look_bottom"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", serif: ["あしおったらのってもいい？"], x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03", action: "touch"},
 	],
 
 };
@@ -6437,12 +6437,12 @@ module.exports = {
 	left_field: null,
 	background: "chapter0-myroom-bg-001",
 	objects: [
-		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", serif: ["まだねむたくないもん"], x: 258, y: 389, scale: 0.7},
-		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["あけない"], x: 59, y: 496, scale: 0.7},
+		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", serif: ["まだねむたくないもん"], x: 258, y: 389, scale: 0.7, action: "touch"},
+		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["あけない"], x: 59, y: 496, scale: 0.7, action: "touch"},
 
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", serif: ["にっきさんひさしぶり！", "だっておはなしすることないんだもん"], x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03", width: 80, height: 80},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", serif: ["くれおん！", "ピンクなくなっちゃったなー"], x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03", width: 80, height: 80},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", serif: ["にっきさんひさしぶり！", "だっておはなしすることないんだもん"], x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03", width: 80, height: 80, action: "look_bottom"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", serif: ["くれおん！", "ピンクなくなっちゃったなー"], x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03", width: 80, height: 80, action: "look_bottom"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03", action: "look_top"},
 	],
 };
 
@@ -17660,6 +17660,7 @@ Koishi.prototype.setWalk = function() {
 	this.sprite.changeAnimation(jsonDataOfWalk);
 };
 Koishi.prototype.useEye = function(){
+	this.stopMove();
 	var self = this;
 
 	var sprite = self.sprite;
@@ -17668,11 +17669,39 @@ Koishi.prototype.useEye = function(){
 Koishi.prototype.unUseEye = function(){
 	var self = this;
 
-	this.setWait();
+	if (!this.isMoving()) {
+		this.setWait();
+	}
+};
+Koishi.prototype.actionByName = function(action_name) {
+	this.stopMove();
+	var self = this;
+
+	var sprite = self.sprite;
+	sprite.playAnimationOnce(this._getAction(action_name));
 };
 
-
-
+Koishi.prototype._getAction = function(action_name) {
+	// 下を見る
+	if (action_name === "look_bottom") {
+		return jsonDataOfReactionLookBottom;
+	}
+	// 前を見る
+	else if (action_name === "look_front") {
+		return jsonDataOfReactionLookFront;
+	}
+	// 上を見る
+	else if (action_name === "look_top") {
+		return jsonDataOfReactionLookTop;
+	}
+	// 触る
+	else if (action_name === "touch") {
+		return jsonDataOfReactionTouch;
+	}
+	else {
+		throw new Error("action_name: " + action_name + "does not exists.");
+	}
+};
 
 
 
@@ -17699,19 +17728,13 @@ Koishi.prototype.beforeDraw = function(){
 	if (this._target_x) {
 		if (this.x() + SPEED >= this._target_x && this._target_x > this.x() - SPEED) {
 			// end move
-			this._target_x = 0;
-			this.setVelocity({magnitude:0, theta:0});
-
-			this.setWait();
+			this.stopMove();
 		}
 	}
 	if (this._target_y) {
 		if (this.y() + SPEED >= this._target_y && this._target_y > this.y() - SPEED) {
 			// end move
-			this._target_y = 0;
-			this.setVelocity({magnitude:0, theta:0});
-
-			this.setWait();
+			this.stopMove();
 		}
 	}
 
@@ -17744,6 +17767,19 @@ Koishi.prototype.setMoveTarget = function(x, y) {
 	else {
 		this.sprite.setReflect(true);
 	}
+};
+
+Koishi.prototype.isMoving = function() {
+	return this._target_x !== 0 && this._target_y !== 0;
+};
+Koishi.prototype.stopMove = function() {
+	if(!this.isMoving()) return;
+
+	this._target_x = 0;
+	this._target_y = 0;
+	this.setVelocity({magnitude:0, theta:0});
+
+	this.setWait();
 };
 
 module.exports = Koishi;
@@ -17911,8 +17947,12 @@ var ObjectAnimeImage = function(core) {
 	this._width  = null;
 	this._height = null;
 
+	this._action_name = null;
+
 	// アニメ
 	this.sprite = new SS(this.scene);
+
+	this._is_touch = false;
 };
 Util.inherit(ObjectAnimeImage, base_object);
 
@@ -17928,6 +17968,9 @@ ObjectAnimeImage.prototype.init = function(){
 	this._width  = null;
 	this._height = null;
 
+	this._action_name = null;
+
+	this._is_touch = false;
 };
 ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
@@ -17952,6 +17995,10 @@ ObjectAnimeImage.prototype.addSize = function(width, height){
 	this._width  = width;
 	this._height = height;
 };
+ObjectAnimeImage.prototype.addKoishiAction = function(action_name){
+	this._action_name  = action_name;
+};
+
 
 
 
@@ -17960,6 +18007,7 @@ ObjectAnimeImage.prototype.addSize = function(width, height){
 ObjectAnimeImage.prototype.onCollision = function(obj){
 	var self = this;
 
+	if (this._is_touch) return;
 	// オブジェクトのアニメーション
 	var sprite = self.sprite;
 	var after_anime = self.after_anime;
@@ -17970,6 +18018,13 @@ ObjectAnimeImage.prototype.onCollision = function(obj){
 
 	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.mainStage().changeSubScene("talk", this.serif);
+
+	// こいしのアクション
+	if (this._action_name) {
+		this.scene.mainStage().koishi().actionByName(this._action_name);
+	}
+
+	this._is_touch = true;
 };
 
 ObjectAnimeImage.prototype.beforeDraw = function(x, y) {
@@ -18019,6 +18074,8 @@ var ObjectStaticImage = function(core) {
 
 	this._width  = null;
 	this._height = null;
+
+	this._action_name = null;
 };
 Util.inherit(ObjectStaticImage, base_object);
 
@@ -18031,6 +18088,8 @@ ObjectStaticImage.prototype.init = function(){
 
 	this._width  = null;
 	this._height = null;
+
+	this._action_name = null;
 };
 ObjectStaticImage.prototype.addImage = function(image_name, scale){
 	this.image = this.core.image_loader.getImage(image_name);
@@ -18043,12 +18102,21 @@ ObjectStaticImage.prototype.addSize = function(width, height){
 	this._width  = width;
 	this._height = height;
 };
+ObjectStaticImage.prototype.addKoishiAction = function(action_name){
+	this._action_name  = action_name;
+};
+
 
 
 
 ObjectStaticImage.prototype.onCollision = function(obj){
 	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.mainStage().changeSubScene("talk", this.serif);
+
+	// こいしのアクション
+	if (this._action_name) {
+		this.scene.mainStage().koishi().actionByName(this._action_name);
+	}
 };
 
 ObjectStaticImage.prototype.draw = function(){
@@ -18725,6 +18793,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.init();
 			object.addSize(data.width, data.height);
 			object.addSerif(data.serif);
+			object.addKoishiAction(data.action);
 			object.addImage(data.image, data.scale);
 			object.setPosition(data.x, data.y);
 
@@ -18735,6 +18804,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.init();
 			object.addSize(data.width, data.height);
 			object.addSerif(data.serif);
+			object.addKoishiAction(data.action);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
 			object.setPosition(data.x, data.y);
 
@@ -19073,6 +19143,7 @@ Util.inherit(SceneSubStagePlay, base_scene);
 SceneSubStagePlay.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 	this.mainStage().eye.init();
+	this.mainStage().koishi().setWait();
 };
 
 
@@ -19087,8 +19158,8 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	this.mainStage().eye.beforeDraw();
-	this._collisionCheck();
 
+	this._collisionCheck();
 };
 
 SceneSubStagePlay.prototype._collisionCheck = function(){
@@ -19130,7 +19201,9 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 		// どことも当たり判定しなかったら
 		// こいしを移動
 		// TODO: この関数でやらず、外でやったほうがいい？(この関数は当たり判定したら true or false 返す)
-		this.koishi().setMoveTarget(x, y);
+		if (!this.mainStage().koishi().isMoving()) {
+			this.koishi().setMoveTarget(x, y);
+		}
 	}
 
 	return false;
