@@ -23,6 +23,8 @@ var ObjectAnimeImage = function(core) {
 
 	// アニメ
 	this.sprite = new SS(this.scene);
+
+	this._is_touch = false;
 };
 Util.inherit(ObjectAnimeImage, base_object);
 
@@ -40,6 +42,7 @@ ObjectAnimeImage.prototype.init = function(){
 
 	this._action_name = null;
 
+	this._is_touch = false;
 };
 ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
@@ -76,6 +79,7 @@ ObjectAnimeImage.prototype.addKoishiAction = function(action_name){
 ObjectAnimeImage.prototype.onCollision = function(obj){
 	var self = this;
 
+	if (this._is_touch) return;
 	// オブジェクトのアニメーション
 	var sprite = self.sprite;
 	var after_anime = self.after_anime;
@@ -91,6 +95,8 @@ ObjectAnimeImage.prototype.onCollision = function(obj){
 	if (this._action_name) {
 		this.scene.mainStage().koishi().actionByName(this._action_name);
 	}
+
+	this._is_touch = true;
 };
 
 ObjectAnimeImage.prototype.beforeDraw = function(x, y) {
