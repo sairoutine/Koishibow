@@ -76,9 +76,35 @@ Koishi.prototype.unUseEye = function(){
 		this.setWait();
 	}
 };
+Koishi.prototype.actionByName = function(action_name) {
+	this.stopMove();
+	var self = this;
 
+	var sprite = self.sprite;
+	sprite.playAnimationOnce(this._getAction(action_name));
+};
 
-
+Koishi.prototype._getAction = function(action_name) {
+	// 下を見る
+	if (action_name === "look_bottom") {
+		return jsonDataOfReactionLookBottom;
+	}
+	// 前を見る
+	else if (action_name === "look_front") {
+		return jsonDataOfReactionLookFront;
+	}
+	// 上を見る
+	else if (action_name === "look_top") {
+		return jsonDataOfReactionLookTop;
+	}
+	// 触る
+	else if (action_name === "touch") {
+		return jsonDataOfReactionTouch;
+	}
+	else {
+		throw new Error("action_name: " + action_name + "does not exists.");
+	}
+};
 
 
 

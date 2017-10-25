@@ -10,6 +10,7 @@ Util.inherit(SceneSubStagePlay, base_scene);
 SceneSubStagePlay.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 	this.mainStage().eye.init();
+	this.mainStage().koishi().setWait();
 };
 
 

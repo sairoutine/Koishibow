@@ -19,6 +19,8 @@ var ObjectAnimeImage = function(core) {
 	this._width  = null;
 	this._height = null;
 
+	this._action_name = null;
+
 	// アニメ
 	this.sprite = new SS(this.scene);
 };
@@ -35,6 +37,8 @@ ObjectAnimeImage.prototype.init = function(){
 
 	this._width  = null;
 	this._height = null;
+
+	this._action_name = null;
 
 };
 ObjectAnimeImage.prototype.setPosition = function(x, y) {
@@ -60,6 +64,10 @@ ObjectAnimeImage.prototype.addSize = function(width, height){
 	this._width  = width;
 	this._height = height;
 };
+ObjectAnimeImage.prototype.addKoishiAction = function(action_name){
+	this._action_name  = action_name;
+};
+
 
 
 
@@ -78,6 +86,11 @@ ObjectAnimeImage.prototype.onCollision = function(obj){
 
 	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.mainStage().changeSubScene("talk", this.serif);
+
+	// こいしのアクション
+	if (this._action_name) {
+		this.scene.mainStage().koishi().actionByName(this._action_name);
+	}
 };
 
 ObjectAnimeImage.prototype.beforeDraw = function(x, y) {

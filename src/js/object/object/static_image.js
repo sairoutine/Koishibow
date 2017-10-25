@@ -15,6 +15,8 @@ var ObjectStaticImage = function(core) {
 
 	this._width  = null;
 	this._height = null;
+
+	this._action_name = null;
 };
 Util.inherit(ObjectStaticImage, base_object);
 
@@ -27,6 +29,8 @@ ObjectStaticImage.prototype.init = function(){
 
 	this._width  = null;
 	this._height = null;
+
+	this._action_name = null;
 };
 ObjectStaticImage.prototype.addImage = function(image_name, scale){
 	this.image = this.core.image_loader.getImage(image_name);
@@ -39,12 +43,21 @@ ObjectStaticImage.prototype.addSize = function(width, height){
 	this._width  = width;
 	this._height = height;
 };
+ObjectStaticImage.prototype.addKoishiAction = function(action_name){
+	this._action_name  = action_name;
+};
+
 
 
 
 ObjectStaticImage.prototype.onCollision = function(obj){
 	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.mainStage().changeSubScene("talk", this.serif);
+
+	// こいしのアクション
+	if (this._action_name) {
+		this.scene.mainStage().koishi().actionByName(this._action_name);
+	}
 };
 
 ObjectStaticImage.prototype.draw = function(){
