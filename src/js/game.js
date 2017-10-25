@@ -56,6 +56,15 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.addMenuButton("当たり判定非表示", function (game) {
 		game.debug_manager.setShowingCollisionAreaOff();
 	});
+
+	this.debug_manager.addMenuButton("移動制限範囲表示", function (game) {
+		game.debug_manager.set("is_show_immovable_area", true);
+	});
+	this.debug_manager.addMenuButton("移動制限範囲非表示", function (game) {
+		game.debug_manager.set("is_show_immovable_area", false);
+	});
+
+
 };
 
 

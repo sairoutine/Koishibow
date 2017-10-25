@@ -3,11 +3,6 @@
 // こいしの歩く速度
 var SPEED = 2;
 
-// こいしの歩ける奥行き制限(px)
-var WALK_DEPTH_LIMIT = 300;
-
-
-
 var base_object = require('../hakurei').object.base;
 var util = require('../hakurei').util;
 var CONSTANT = require('../constant');
@@ -142,8 +137,8 @@ Koishi.prototype.beforeDraw = function(){
 	}
 
 	// 一定以上の奥行きには移動できない
-	if (this.y() < this.scene.height - WALK_DEPTH_LIMIT) {
-		this.y(this.scene.height - WALK_DEPTH_LIMIT);
+	if (this.y() < this.scene.height - CONSTANT.WALK_DEPTH_LIMIT) {
+		this.y(this.scene.height - CONSTANT.WALK_DEPTH_LIMIT);
 	}
 };
 Koishi.prototype.draw = function(){

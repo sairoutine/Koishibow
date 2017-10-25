@@ -181,6 +181,11 @@ SceneStage.prototype.draw = function(){
 					this.core.height);
 	ctx.restore();
 
+	// 移動不可能範囲のデバッグ表示
+	if (this.core.debug_manager.get("is_show_immovable_area")) {
+		this._drawImmovableArea();
+	}
+
 	// デバッグ用の仮描画する
 	if (0) {
 
@@ -295,5 +300,17 @@ SceneStage.prototype.setupPiece = function() {
 };
 
 
+SceneStage.prototype._drawImmovableArea = function() {
+	var ctx = this.core.ctx;
+	ctx.save();
+	ctx.fillStyle = 'rgb( 255, 0, 0 )' ;
+	ctx.globalAlpha = 0.4;
+
+	// 奥行きの移動範囲制限
+	ctx.fillRect(
+		0,0, this.width, this.height - CONSTANT.WALK_DEPTH_LIMIT
+	);
+	ctx.restore();
+};
 
 module.exports = SceneStage;
