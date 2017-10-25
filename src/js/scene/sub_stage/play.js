@@ -24,8 +24,8 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	this.mainStage().eye.beforeDraw();
-	this._collisionCheck();
 
+	this._collisionCheck();
 };
 
 SceneSubStagePlay.prototype._collisionCheck = function(){
@@ -67,7 +67,9 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 		// どことも当たり判定しなかったら
 		// こいしを移動
 		// TODO: この関数でやらず、外でやったほうがいい？(この関数は当たり判定したら true or false 返す)
-		this.koishi().setMoveTarget(x, y);
+		if (!this.mainStage().koishi().isMoving()) {
+			this.koishi().setMoveTarget(x, y);
+		}
 	}
 
 	return false;

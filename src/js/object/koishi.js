@@ -63,6 +63,7 @@ Koishi.prototype.setWalk = function() {
 	this.sprite.changeAnimation(jsonDataOfWalk);
 };
 Koishi.prototype.useEye = function(){
+	this.stopMove();
 	var self = this;
 
 	var sprite = self.sprite;
@@ -71,7 +72,9 @@ Koishi.prototype.useEye = function(){
 Koishi.prototype.unUseEye = function(){
 	var self = this;
 
-	this.setWait();
+	if (!this.isMoving()) {
+		this.setWait();
+	}
 };
 
 
@@ -102,19 +105,13 @@ Koishi.prototype.beforeDraw = function(){
 	if (this._target_x) {
 		if (this.x() + SPEED >= this._target_x && this._target_x > this.x() - SPEED) {
 			// end move
-			this._target_x = 0;
-			this.setVelocity({magnitude:0, theta:0});
-
-			this.setWait();
+			this.stopMove();
 		}
 	}
 	if (this._target_y) {
 		if (this.y() + SPEED >= this._target_y && this._target_y > this.y() - SPEED) {
 			// end move
-			this._target_y = 0;
-			this.setVelocity({magnitude:0, theta:0});
-
-			this.setWait();
+			this.stopMove();
 		}
 	}
 
@@ -147,6 +144,19 @@ Koishi.prototype.setMoveTarget = function(x, y) {
 	else {
 		this.sprite.setReflect(true);
 	}
+};
+
+Koishi.prototype.isMoving = function() {
+	return this._target_x !== 0 && this._target_y !== 0;
+};
+Koishi.prototype.stopMove = function() {
+	if(!this.isMoving()) return;
+
+	this._target_x = 0;
+	this._target_y = 0;
+	this.setVelocity({magnitude:0, theta:0});
+
+	this.setWait();
 };
 
 module.exports = Koishi;
