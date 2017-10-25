@@ -6273,6 +6273,9 @@ var CONSTANT = {
 	STATIC_IMAGE_TYPE: 1,
 	ANIME_IMAGE_TYPE:  2,
 
+
+	// こいしの歩ける範囲の上 上限(px)
+	WALK_DEPTH_LIMIT: 300,
 };
 
 if (DEBUG.ON) {
@@ -6506,6 +6509,15 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.addMenuButton("当たり判定非表示", function (game) {
 		game.debug_manager.setShowingCollisionAreaOff();
 	});
+
+	this.debug_manager.addMenuButton("移動制限範囲表示", function (game) {
+		game.debug_manager.set("is_show_immovable_area", true);
+	});
+	this.debug_manager.addMenuButton("移動制限範囲非表示", function (game) {
+		game.debug_manager.set("is_show_immovable_area", false);
+	});
+
+
 };
 
 
@@ -7209,6 +7221,8 @@ var DebugManager = function (core) {
 
 
 	this._is_showing_collision_area = false; // default: false
+
+	this._variables = {};
 };
 
 DebugManager.prototype.setOn = function (dom) {
@@ -7219,6 +7233,19 @@ DebugManager.prototype.setOff = function () {
 	this.is_debug_mode = false;
 	this.dom = null;
 };
+
+DebugManager.prototype.set = function (name, value) {
+	if(!this.is_debug_mode) return;
+
+	this._variables[name] = value;
+};
+DebugManager.prototype.get = function (name) {
+	if(!this.is_debug_mode) return null;
+
+	return this._variables[name];
+};
+
+
 
 // add text menu
 DebugManager.prototype.addMenuText = function (text) {
@@ -17600,11 +17627,6 @@ module.exports = ObjectItemButton;
 // こいしの歩く速度
 var SPEED = 2;
 
-// こいしの歩ける奥行き制限(px)
-var WALK_DEPTH_LIMIT = 300;
-
-
-
 var base_object = require('../hakurei').object.base;
 var util = require('../hakurei').util;
 var CONSTANT = require('../constant');
@@ -17739,8 +17761,8 @@ Koishi.prototype.beforeDraw = function(){
 	}
 
 	// 一定以上の奥行きには移動できない
-	if (this.y() < this.scene.height - WALK_DEPTH_LIMIT) {
-		this.y(this.scene.height - WALK_DEPTH_LIMIT);
+	if (this.y() < this.scene.height - CONSTANT.WALK_DEPTH_LIMIT) {
+		this.y(this.scene.height - CONSTANT.WALK_DEPTH_LIMIT);
 	}
 };
 Koishi.prototype.draw = function(){
@@ -18701,6 +18723,11 @@ SceneStage.prototype.draw = function(){
 					this.core.height);
 	ctx.restore();
 
+	// 移動不可能範囲のデバッグ表示
+	if (this.core.debug_manager.get("is_show_immovable_area")) {
+		this._drawImmovableArea();
+	}
+
 	// デバッグ用の仮描画する
 	if (0) {
 
@@ -18815,6 +18842,18 @@ SceneStage.prototype.setupPiece = function() {
 };
 
 
+SceneStage.prototype._drawImmovableArea = function() {
+	var ctx = this.core.ctx;
+	ctx.save();
+	ctx.fillStyle = 'rgb( 255, 0, 0 )' ;
+	ctx.globalAlpha = 0.4;
+
+	// 奥行きの移動範囲制限
+	ctx.fillRect(
+		0,0, this.width, this.height - CONSTANT.WALK_DEPTH_LIMIT
+	);
+	ctx.restore();
+};
 
 module.exports = SceneStage;
 
