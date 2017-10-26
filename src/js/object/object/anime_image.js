@@ -21,6 +21,8 @@ var ObjectAnimeImage = function(core) {
 
 	this._action_name = null;
 
+	this._sound_name  = null;
+
 	// アニメ
 	this.sprite = new SS(this.scene);
 
@@ -41,6 +43,8 @@ ObjectAnimeImage.prototype.init = function(){
 	this._height = null;
 
 	this._action_name = null;
+
+	this._sound_name  = null;
 
 	this._is_touch = false;
 };
@@ -70,6 +74,10 @@ ObjectAnimeImage.prototype.addSize = function(width, height){
 ObjectAnimeImage.prototype.addKoishiAction = function(action_name){
 	this._action_name  = action_name;
 };
+ObjectAnimeImage.prototype.addSound = function(sound_name){
+	this._sound_name  = sound_name;
+};
+
 
 
 
@@ -103,6 +111,10 @@ ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 		this.scene.mainStage().koishi().actionByName(this._action_name);
 	}
 
+	// 音
+	if (this._sound_name) {
+		this.core.playSound(this._sound_name);
+	}
 	this._is_touch = true;
 };
 
