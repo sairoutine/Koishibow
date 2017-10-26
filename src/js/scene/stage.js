@@ -59,6 +59,10 @@ util.inherit(SceneStage, base_scene);
 SceneStage.prototype.init = function(field_name, is_right){
 	base_scene.prototype.init.apply(this, arguments);
 
+	if(this.core.audio_loader.currentPlayingBGM() !== "field") {
+		this.core.stopBGM();
+	}
+
 	// 現在のフィールド
 	this._current_field_name = field_name;
 
@@ -105,6 +109,10 @@ SceneStage.prototype.useEye = function() {
 };
 
 SceneStage.prototype.beforeDraw = function(){
+	if(this.frame_count === 60) {
+		this.core.changeBGM("field");
+	}
+
 	this._beforeDrawOfPieces();
 	this._koishi.beforeDraw();
 	this._beforeDrawOfMenuObject();

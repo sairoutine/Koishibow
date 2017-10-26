@@ -57,7 +57,7 @@ util.inherit(SceneTitle, base_scene);
 SceneTitle.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
-	//TODO: this.core.stopBGM();
+	this.core.stopBGM();
 
 	// フェードインする
 	this.setFadeIn(SHOW_TRANSITION_COUNT);
@@ -69,7 +69,7 @@ SceneTitle.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if(this.frame_count === 60) {
-		//TODO: this.core.playBGM();
+		this.core.playBGM("title");
 	}
 
 	// マウスの位置を取得
