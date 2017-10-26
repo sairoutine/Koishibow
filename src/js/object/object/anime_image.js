@@ -77,6 +77,13 @@ ObjectAnimeImage.prototype.addKoishiAction = function(action_name){
 
 
 ObjectAnimeImage.prototype.onCollision = function(obj){
+	if (!this.scene.mainStage().koishi().isMoving()) {
+		this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
+		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+	}
+
+};
+ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 	var self = this;
 
 	if (this._is_touch) return;

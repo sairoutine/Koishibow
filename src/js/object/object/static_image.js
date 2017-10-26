@@ -48,9 +48,16 @@ ObjectStaticImage.prototype.addKoishiAction = function(action_name){
 };
 
 
-
-
 ObjectStaticImage.prototype.onCollision = function(obj){
+	if (!this.scene.mainStage().koishi().isMoving()) {
+		this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
+		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+	}
+
+};
+
+
+ObjectStaticImage.prototype.onCollisionAfterKoishiWalk = function(){
 	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.mainStage().changeSubScene("talk", this.serif);
 

@@ -42,6 +42,7 @@ Koishi.prototype.init = function() {
 
 	this._target_x = 0;
 	this._target_y = 0;
+	this._move_callback = null; // 歩いて止まった後の callback
 
 	this.setVelocity({magnitude:0, theta:0});
 };
@@ -111,6 +112,10 @@ Koishi.prototype.isReflect = function() {
 };
 
 
+Koishi.prototype.setAfterMoveCallback = function(cb) {
+	this._move_callback = cb;
+};
+
 
 
 
@@ -178,6 +183,12 @@ Koishi.prototype.stopMove = function() {
 	this.setVelocity({magnitude:0, theta:0});
 
 	this.setWait();
+
+	// 歩いたあとのコールバック
+	if (this._move_callback) {
+		this._move_callback();
+		this._move_callback = null;
+	}
 };
 
 module.exports = Koishi;
