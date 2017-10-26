@@ -6257,6 +6257,17 @@ AssetsConfig.sounds = {
 };
 
 AssetsConfig.bgms = {
+	title: {
+		path: "./bgm/title1.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+	},
+
+	field: {
+		path: "./bgm/field1.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+	},
 };
 
 
@@ -6290,8 +6301,8 @@ var DEBUG = {
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_mansion_corridor1"],
-	START_SCENE: ["stage", "chapter0_myroom"],
-	//START_SCENE: ["title"],
+	//START_SCENE: ["stage", "chapter0_myroom"],
+	START_SCENE: ["title"],
 };
 
 module.exports = DEBUG;
@@ -6523,7 +6534,6 @@ Game.prototype.setupDebug = function (dom) {
 
 
 
-/*
 Game.prototype.playSound = function () {
 	if (CONSTANT.DEBUG.SOUND_OFF) return;
 	return this.audio_loader.playSound.apply(this.audio_loader, arguments);
@@ -6540,7 +6550,6 @@ Game.prototype.stopBGM = function () {
 	if (CONSTANT.DEBUG.SOUND_OFF) return;
 	return this.audio_loader.stopBGM.apply(this.audio_loader, arguments);
 };
-*/
 
 module.exports = Game;
 
@@ -6722,7 +6731,7 @@ AudioLoader.prototype._createSourceNode = function(name) {
 	var source = self.audio_context.createBufferSource();
 	source.buffer = data.audio;
 
-	if(data.loopStart || data.loopEnd) { source.loop = true; }
+	if("loopStart" in data || "loopEnd" in data) { source.loop = true; }
 	if(data.loopStart) { source.loopStart = data.loopStart; }
 	if(data.loopEnd)   { source.loopEnd = data.loopEnd; }
 
@@ -18626,6 +18635,10 @@ util.inherit(SceneStage, base_scene);
 SceneStage.prototype.init = function(field_name, is_right){
 	base_scene.prototype.init.apply(this, arguments);
 
+	if(this.core.audio_loader.currentPlayingBGM() !== "field") {
+		this.core.stopBGM();
+	}
+
 	// 現在のフィールド
 	this._current_field_name = field_name;
 
@@ -18672,6 +18685,10 @@ SceneStage.prototype.useEye = function() {
 };
 
 SceneStage.prototype.beforeDraw = function(){
+	if(this.frame_count === 60) {
+		this.core.changeBGM("field");
+	}
+
 	this._beforeDrawOfPieces();
 	this._koishi.beforeDraw();
 	this._beforeDrawOfMenuObject();
@@ -19461,7 +19478,7 @@ util.inherit(SceneTitle, base_scene);
 SceneTitle.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
-	//TODO: this.core.stopBGM();
+	this.core.stopBGM();
 
 	// フェードインする
 	this.setFadeIn(SHOW_TRANSITION_COUNT);
@@ -19473,7 +19490,7 @@ SceneTitle.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if(this.frame_count === 60) {
-		//TODO: this.core.playBGM();
+		this.core.playBGM("title");
 	}
 
 	// マウスの位置を取得
