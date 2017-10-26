@@ -57,6 +57,17 @@ AssetsConfig.sounds = {
 };
 
 AssetsConfig.bgms = {
+	title: {
+		path: "./bgm/title1.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+	},
+
+	field: {
+		path: "./bgm/field1.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+	},
 };
 
 
