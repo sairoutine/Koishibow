@@ -54,6 +54,27 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
+	// TODO: chapter 間やフィールド間でも音が被っても大丈夫なようにする
+	get_hat:    {
+		path: "./sound/chapter0/myroom/get_hat.ogg",
+		volume: 1.0,
+	},
+	open_book:    {
+		path: "./sound/chapter0/myroom/open_book.ogg",
+		volume: 1.0,
+	},
+	door_open:    {
+		path: "./sound/chapter0/myroom/door_open.ogg",
+		volume: 1.0,
+	},
+	move_crayon:    {
+		path: "./sound/chapter0/myroom/move_crayon.ogg",
+		volume: 1.0,
+	},
+	sound_window:    {
+		path: "./sound/chapter0/myroom/sound_window.ogg",
+		volume: 1.0,
+	},
 };
 
 AssetsConfig.bgms = {
