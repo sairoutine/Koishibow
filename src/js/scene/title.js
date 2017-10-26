@@ -16,9 +16,11 @@ var MENU = [
 	["ui-titlepg-btn-con", function (core) { return true; }, function (core) {
 		core.changeScene("stage", "chapter0_myroom");
 	}],
+	/*
 	["ui-titlepg-btn-opt", function (core) { return true; }, function (core) {
 		core.changeScene("stage", "chapter0_myroom");
 	}],
+	*/
 ];
 
 var SceneTitle = function(core) {
@@ -33,7 +35,7 @@ var SceneTitle = function(core) {
 		var menu = MENU[i];
 
 		(function (menu) {
-			self.menu_ui.push(new UIParts(self, 280 + i*200, 670, 190, 63, function draw () {
+			self.menu_ui.push(new UIParts(self, 380 + i*200, 670, 190, 63, function draw () {
 				var ctx = this.core.ctx;
 				ctx.textAlign = 'center';
 				ctx.textBaseline = 'middle';
