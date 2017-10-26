@@ -6254,6 +6254,27 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
+	// TODO: chapter 間やフィールド間でも音が被っても大丈夫なようにする
+	get_hat:    {
+		path: "./sound/chapter0/myroom/get_hat.ogg",
+		volume: 1.0,
+	},
+	open_book:    {
+		path: "./sound/chapter0/myroom/open_book.ogg",
+		volume: 1.0,
+	},
+	door_open:    {
+		path: "./sound/chapter0/myroom/door_open.ogg",
+		volume: 1.0,
+	},
+	move_crayon:    {
+		path: "./sound/chapter0/myroom/move_crayon.ogg",
+		volume: 1.0,
+	},
+	sound_window:    {
+		path: "./sound/chapter0/myroom/sound_window.ogg",
+		volume: 1.0,
+	},
 };
 
 AssetsConfig.bgms = {
@@ -6454,9 +6475,9 @@ module.exports = {
 		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", serif: ["まだねむたくないもん"], x: 258, y: 389, scale: 0.7, action: "touch"},
 		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["あけない"], x: 59, y: 496, scale: 0.7, action: "touch"},
 
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", serif: ["にっきさんひさしぶり！", "だっておはなしすることないんだもん"], x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03", width: 80, height: 80, action: "look_bottom"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", serif: ["くれおん！", "ピンクなくなっちゃったなー"], x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03", width: 80, height: 80, action: "look_bottom"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03", action: "look_top"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", serif: ["にっきさんひさしぶり！", "だっておはなしすることないんだもん"], x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03", width: 80, height: 80, action: "look_bottom", sound: "open_book"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", serif: ["くれおん！", "ピンクなくなっちゃったなー"], x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03", width: 80, height: 80, action: "look_bottom", sound: "move_crayon"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03", action: "look_top", sound: "sound_window"},
 	],
 };
 
@@ -17991,6 +18012,8 @@ var ObjectAnimeImage = function(core) {
 
 	this._action_name = null;
 
+	this._sound_name  = null;
+
 	// アニメ
 	this.sprite = new SS(this.scene);
 
@@ -18011,6 +18034,8 @@ ObjectAnimeImage.prototype.init = function(){
 	this._height = null;
 
 	this._action_name = null;
+
+	this._sound_name  = null;
 
 	this._is_touch = false;
 };
@@ -18040,6 +18065,10 @@ ObjectAnimeImage.prototype.addSize = function(width, height){
 ObjectAnimeImage.prototype.addKoishiAction = function(action_name){
 	this._action_name  = action_name;
 };
+ObjectAnimeImage.prototype.addSound = function(sound_name){
+	this._sound_name  = sound_name;
+};
+
 
 
 
@@ -18073,6 +18102,10 @@ ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 		this.scene.mainStage().koishi().actionByName(this._action_name);
 	}
 
+	// 音
+	if (this._sound_name) {
+		this.core.playSound(this._sound_name);
+	}
 	this._is_touch = true;
 };
 
@@ -18873,6 +18906,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.init();
 			object.addSize(data.width, data.height);
 			object.addSerif(data.serif);
+			object.addSound(data.sound);
 			object.addKoishiAction(data.action);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
 			object.setPosition(data.x, data.y);
