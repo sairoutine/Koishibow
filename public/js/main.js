@@ -6627,6 +6627,8 @@ AudioLoader.prototype.init = function() {
 };
 
 AudioLoader.prototype.loadSound = function(name, path, volume) {
+	if(!window || !window.Audio) return;
+
 	var self = this;
 	self.loading_audio_num++;
 
@@ -6638,7 +6640,7 @@ AudioLoader.prototype.loadSound = function(name, path, volume) {
 		self.loaded_audio_num++;
 	};
 
-	var audio = new Audio(path);
+	var audio = new window.Audio(path);
 	audio.volume = volume;
 	audio.addEventListener('canplay', onload_function);
 	audio.load();
@@ -6649,6 +6651,8 @@ AudioLoader.prototype.loadSound = function(name, path, volume) {
 };
 
 AudioLoader.prototype.loadBGM = function(name, path, volume, loopStart, loopEnd) {
+	if (!this.audio_context) return;
+
 	var self = this;
 	self.loading_audio_num++;
 
