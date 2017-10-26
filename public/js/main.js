@@ -17666,6 +17666,7 @@ Koishi.prototype.init = function() {
 
 	this._target_x = 0;
 	this._target_y = 0;
+	this._move_callback = null; // 歩いて止まった後の callback
 
 	this.setVelocity({magnitude:0, theta:0});
 };
@@ -17735,6 +17736,10 @@ Koishi.prototype.isReflect = function() {
 };
 
 
+Koishi.prototype.setAfterMoveCallback = function(cb) {
+	this._move_callback = cb;
+};
+
 
 
 
@@ -17802,6 +17807,12 @@ Koishi.prototype.stopMove = function() {
 	this.setVelocity({magnitude:0, theta:0});
 
 	this.setWait();
+
+	// 歩いたあとのコールバック
+	if (this._move_callback) {
+		this._move_callback();
+		this._move_callback = null;
+	}
 };
 
 module.exports = Koishi;
@@ -18027,6 +18038,13 @@ ObjectAnimeImage.prototype.addKoishiAction = function(action_name){
 
 
 ObjectAnimeImage.prototype.onCollision = function(obj){
+	if (!this.scene.mainStage().koishi().isMoving()) {
+		this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
+		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+	}
+
+};
+ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 	var self = this;
 
 	if (this._is_touch) return;
@@ -18129,9 +18147,16 @@ ObjectStaticImage.prototype.addKoishiAction = function(action_name){
 };
 
 
-
-
 ObjectStaticImage.prototype.onCollision = function(obj){
+	if (!this.scene.mainStage().koishi().isMoving()) {
+		this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
+		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+	}
+
+};
+
+
+ObjectStaticImage.prototype.onCollisionAfterKoishiWalk = function(){
 	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.mainStage().changeSubScene("talk", this.serif);
 
