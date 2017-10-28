@@ -49,13 +49,17 @@ ObjectStaticImage.prototype.addKoishiAction = function(action_name){
 
 
 ObjectStaticImage.prototype.onCollision = function(obj){
-	if(!this.core.input_manager.isLeftClickPush()) return;
-
-	if (!this.scene.mainStage().koishi().isMoving()) {
-		this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
-		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+	// クリックした場合
+	if(this.core.input_manager.isLeftClickPush()) {
+		if (!this.scene.mainStage().koishi().isMoving()) {
+			this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
+			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+		}
 	}
+	// マウスオーバーした場合
+	else {
 
+	}
 };
 
 
