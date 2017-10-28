@@ -237,16 +237,27 @@ SceneStage.prototype._drawLight = function(){
 	var x = this.core.input_manager.mousePositionX();
 	var y = this.core.input_manager.mousePositionY();
 
+	var ax = x - this.koishi().x();
+	var ay = y - this.koishi().y();
+	var rad = Math.atan2(ay, ax);
+
 	if (this.koishi().isReflect()) {
+		// ライトの稼働角度には制限がある
+		if (-Math.PI*5/6 < rad && rad < 0) { rad = -Math.PI*5/6; }
+		else if(0 <= rad && rad < Math.PI*4/6) { rad = Math.PI*4/6; }
+
 		ctx.translate(this.koishi().x() - 60, this.koishi().y() - 100);
 	}
 	else {
+		// ライトの稼働角度には制限がある
+		if (rad < -Math.PI*2/6) rad = -Math.PI*2/6;
+		else if (Math.PI*1/6 < rad) rad = Math.PI*1/6;
+
 		ctx.translate(this.koishi().x() + 60, this.koishi().y() - 100);
 	}
 
-	var ax = x - this.koishi().x();
-	var ay = y - this.koishi().y();
-	var rad = Math.atan2(ay, ax) + 150*Math.PI/180;
+	// ライトの角度分
+	rad += 150*Math.PI/180;
 
 	ctx.rotate(rad);
 	ctx.drawImage(light,
