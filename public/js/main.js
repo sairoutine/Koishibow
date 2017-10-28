@@ -10752,9 +10752,9 @@ module.exports = CONSTANT;
 'use strict';
 var DEBUG = {
 	ON: true,
-	SOUND_OFF: true,
+	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
-	START_SCENE: ["stage", "chapter0_mansion_corridor1"],
+	//START_SCENE: ["stage", "chapter0_mansion_corridor1"],
 	//START_SCENE: ["stage", "chapter0_myroom"],
 	//START_SCENE: ["title"],
 };
@@ -10838,9 +10838,52 @@ module.exports = {
 	left_field: "chapter0_hospital_corridor2",
 	background: "chapter0-mansionpas-001",
 	objects: [
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "ランプ", serif: ["まぶしい"], x: 805, y: 65, scale: 0.7, anime1: "chapter0-mansion_corridor1-obj-01-01-obj01", anime2: "chapter0-mansion_corridor1-obj-01-01-obj02", anime3:"chapter0-mansion_corridor1-obj-01-01-obj03", action: "look_top"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "三輪車", serif: ["あとでのろっと"], x: 815, y: 515, scale: 0.7, anime1: "chapter0-mansion_corridor1-obj-02-01-obj01", anime2: "chapter0-mansion_corridor1-obj-02-01-obj02", anime3:"chapter0-mansion_corridor1-obj-02-01-obj03", action: "touch"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "カーテン", serif: ["いまはかくれんぼしてないからあとでね！"], x: 190, y: 135, scale: 0.7, anime1: "chapter0-mansion_corridor1-obj-03-01-obj01", anime2: "chapter0-mansion_corridor1-obj-03-01-obj02", anime3:"chapter0-mansion_corridor1-obj-03-01-obj03", action: "look_top"},
+		{
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "ランプ",
+			serif: ["まぶしい"],
+			x: 805,
+			y: 65,
+			scale: 0.7,
+			anime1: "chapter0-mansion_corridor1-obj-01-01-obj01",
+			anime2: "chapter0-mansion_corridor1-obj-01-01-obj02",
+			anime3: "chapter0-mansion_corridor1-obj-01-01-obj03",
+			anime4: "chapter0-mansion_corridor1-obj-01-01-obj04",
+			anime5: "chapter0-mansion_corridor1-obj-01-01-obj05",
+			anime6: "chapter0-mansion_corridor1-obj-01-01-obj06",
+
+			action: "look_top"
+		},
+		{
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "三輪車",
+			serif: ["あとでのろっと"],
+			x: 815,
+			y: 515,
+			scale: 0.7,
+			anime1: "chapter0-mansion_corridor1-obj-02-01-obj01",
+			anime2: "chapter0-mansion_corridor1-obj-02-01-obj02",
+			anime3: "chapter0-mansion_corridor1-obj-02-01-obj03",
+			anime4: "chapter0-mansion_corridor1-obj-02-01-obj04",
+			anime5: "chapter0-mansion_corridor1-obj-02-01-obj05",
+			anime6: "chapter0-mansion_corridor1-obj-02-01-obj06",
+			action: "touch"
+		},
+		{
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "カーテン",
+			serif: ["いまはかくれんぼしてないからあとでね！"],
+			x: 190,
+			y: 135,
+			scale: 0.7,
+			anime1: "chapter0-mansion_corridor1-obj-03-01-obj01",
+			anime2: "chapter0-mansion_corridor1-obj-03-01-obj02",
+			anime3: "chapter0-mansion_corridor1-obj-03-01-obj03",
+			anime4: "chapter0-mansion_corridor1-obj-03-01-obj04",
+			anime5: "chapter0-mansion_corridor1-obj-03-01-obj05",
+			anime6: "chapter0-mansion_corridor1-obj-03-01-obj06",
+			action: "look_top"
+		},
 	],
 
 };
@@ -11935,10 +11978,18 @@ InputManager.prototype.isRightClickPush = function() {
 InputManager.prototype.handleMouseMove = function (d) {
 	d = d ? d : window.event;
 	d.preventDefault();
-	this.mouse_change_x = this.mouse_x - d.clientX;
-	this.mouse_change_y = this.mouse_y - d.clientY;
-	this.mouse_x = d.clientX;
-	this.mouse_y = d.clientY;
+
+	// get absolute coordinate position of canvas and adjust click position
+	// because clientX and clientY return the position from the document.
+	var rect = d.target.getBoundingClientRect();
+
+	var x = d.clientX - rect.left;
+	var y = d.clientY - rect.top;
+
+	this.mouse_change_x = this.mouse_x - x;
+	this.mouse_change_y = this.mouse_y - y;
+	this.mouse_x = x;
+	this.mouse_y = y;
 };
 InputManager.prototype.mousePositionX = function () {
 	return this.mouse_x;
@@ -22444,6 +22495,10 @@ var ObjectAnimeImage = function(core) {
 	this.before_anime = null;
 	this.click_anime  = null;
 	this.after_anime  = null;
+	this.onmouseover_start_anime = null;
+	this.onmouseover_anime       = null;
+	this.onmouseover_end_anime   = null;
+
 
 	this.serif = null;
 
@@ -22458,6 +22513,7 @@ var ObjectAnimeImage = function(core) {
 	this.sprite = new SS(this.scene);
 
 	this._is_touch = false;
+	this._is_mouseover = false;
 };
 Util.inherit(ObjectAnimeImage, base_object);
 
@@ -22468,6 +22524,10 @@ ObjectAnimeImage.prototype.init = function(){
 	this.before_anime = null;
 	this.click_anime  = null;
 	this.after_anime  = null;
+	this.onmouseover_start_anime = null;
+	this.onmouseover_anime       = null;
+	this.onmouseover_end_anime   = null;
+
 	this.serif = null;
 
 	this._width  = null;
@@ -22478,6 +22538,7 @@ ObjectAnimeImage.prototype.init = function(){
 	this._sound_name  = null;
 
 	this._is_touch = false;
+	this._is_mouseover = false;
 };
 ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
@@ -22489,11 +22550,14 @@ ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	this.sprite.y(this.y());
 };
 
-ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_anime, scale){
+ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_anime, onmouseover_start_anime, onmouseover_anime, onmouseover_end_anime, scale){
 	this.scale = scale || 1;
 	this.before_anime = AnimeMap[before_anime];
 	this.click_anime  = AnimeMap[click_anime];
 	this.after_anime  = AnimeMap[after_anime];
+	this.onmouseover_start_anime = AnimeMap[onmouseover_start_anime];
+	this.onmouseover_anime       = AnimeMap[onmouseover_anime];
+	this.onmouseover_end_anime   = AnimeMap[onmouseover_end_anime];
 };
 ObjectAnimeImage.prototype.addSerif = function(serif) {
 	this.serif = serif;
@@ -22516,11 +22580,20 @@ ObjectAnimeImage.prototype.addSound = function(sound_name){
 
 
 ObjectAnimeImage.prototype.onCollision = function(obj){
-	if (!this.scene.mainStage().koishi().isMoving()) {
-		this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
-		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-	}
+	// クリックした場合
+	if(this.core.input_manager.isLeftClickPush()) {
+		// サードアイ使用中なら今のところ何もしない
+		if (this.scene.mainStage().isUsingEye()) return;
 
+		if (!this.scene.mainStage().koishi().isMoving()) {
+			this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
+			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+		}
+	}
+	// マウスオーバーした場合
+	else {
+		this.onCollisionByMouseOver();
+	}
 };
 ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 	var self = this;
@@ -22549,9 +22622,66 @@ ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 	this._is_touch = true;
 };
 
-ObjectAnimeImage.prototype.beforeDraw = function(x, y) {
+
+// マウスオーバーした場合
+ObjectAnimeImage.prototype.onCollisionByMouseOver = function(){
+	// サードアイを使用してなければ何もしない
+	if (!this.scene.mainStage().isUsingEye()) return;
+
+	// 既にマウスオーバーアニメ中なら何もしない
+	if (this._is_mouseover) return;
+
+	// マウスオーバーアニメが設定されてないオブジェクトなら何もしない
+	if (!this.onmouseover_start_anime && !this.onmouseover_anime && !this.onmouseover_end_anime) return;
+
+	// こいしの後ろにマウスカーソルがあるならアニメしない
+	var x = this.core.input_manager.mousePositionX();
+	if (this.scene.mainStage().koishi().isReflect()) {
+		if (this.scene.mainStage().koishi().x() < x) {
+			return;
+		}
+	}
+	else {
+		if (this.scene.mainStage().koishi().x() > x) {
+			return;
+		}
+	}
+
+
+
+	this._is_mouseover = true;
+
+	var sprite = this.sprite;
+	var onmouseover_anime = this.onmouseover_anime;
+	sprite.playAnimationOnce(this.onmouseover_start_anime, function (){
+		sprite.changeAnimation(onmouseover_anime);
+	});
+
+
+
+};
+
+ObjectAnimeImage.prototype.beforeDraw = function() {
 	base_object.prototype.beforeDraw.apply(this, arguments);
 	this.sprite.beforeDraw();
+
+	if(this._is_mouseover) {
+		// マウス位置したところを取得
+		var x = this.core.input_manager.mousePositionX();
+		var y = this.core.input_manager.mousePositionY();
+
+		// マウスオーバーしてないなら解除
+		if(!this.checkCollisionWithPosition(x, y)) {
+			var sprite = this.sprite;
+			var anime = this._is_touch ? this.after_anime : this.before_anime;
+			sprite.playAnimationOnce(this.onmouseover_end_anime, function (){
+				sprite.changeAnimation(anime);
+			});
+
+
+			this._is_mouseover = false;
+		}
+	}
 };
 
 
@@ -22630,11 +22760,17 @@ ObjectStaticImage.prototype.addKoishiAction = function(action_name){
 
 
 ObjectStaticImage.prototype.onCollision = function(obj){
-	if (!this.scene.mainStage().koishi().isMoving()) {
-		this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
-		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+	// クリックした場合
+	if(this.core.input_manager.isLeftClickPush()) {
+		if (!this.scene.mainStage().koishi().isMoving()) {
+			this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
+			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+		}
 	}
+	// マウスオーバーした場合
+	else {
 
+	}
 };
 
 
@@ -23286,16 +23422,27 @@ SceneStage.prototype._drawLight = function(){
 	var x = this.core.input_manager.mousePositionX();
 	var y = this.core.input_manager.mousePositionY();
 
+	var ax = x - this.koishi().x();
+	var ay = y - this.koishi().y();
+	var rad = Math.atan2(ay, ax);
+
 	if (this.koishi().isReflect()) {
+		// ライトの稼働角度には制限がある
+		if (-Math.PI*5/6 < rad && rad < 0) { rad = -Math.PI*5/6; }
+		else if(0 <= rad && rad < Math.PI*4/6) { rad = Math.PI*4/6; }
+
 		ctx.translate(this.koishi().x() - 60, this.koishi().y() - 100);
 	}
 	else {
+		// ライトの稼働角度には制限がある
+		if (rad < -Math.PI*2/6) rad = -Math.PI*2/6;
+		else if (Math.PI*1/6 < rad) rad = Math.PI*1/6;
+
 		ctx.translate(this.koishi().x() + 60, this.koishi().y() - 100);
 	}
 
-	var ax = x - this.koishi().x();
-	var ay = y - this.koishi().y();
-	var rad = Math.atan2(ay, ax) + 150*Math.PI/180;
+	// ライトの角度分
+	rad += 150*Math.PI/180;
 
 	ctx.rotate(rad);
 	ctx.drawImage(light,
@@ -23348,7 +23495,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.addSerif(data.serif);
 			object.addSound(data.sound);
 			object.addKoishiAction(data.action);
-			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
+			object.addAnime(data.anime1, data.anime2, data.anime3, data.anime4, data.anime5, data.anime6, data.scale);
 			object.setPosition(data.x, data.y);
 
 			this.pieces.push(object);
@@ -23718,11 +23865,12 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 };
 
 SceneSubStagePlay.prototype._collisionCheck = function(){
-	if(this.core.input_manager.isLeftClickPush()) {
-		// 左クリックしたところを取得
-		var x = this.core.input_manager.mousePositionX();
-		var y = this.core.input_manager.mousePositionY();
+	// マウス位置したところを取得
+	var x = this.core.input_manager.mousePositionX();
+	var y = this.core.input_manager.mousePositionY();
 
+	// クリックしたときに当たり判定するものたち
+	if(this.core.input_manager.isLeftClickPush()) {
 		// シーン遷移の当たり判定
 		if(this.mainStage().field().left_field  && this.mainStage().left_yajirushi.checkCollisionWithPosition(x, y)) {
 			return true;
@@ -23742,17 +23890,20 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 		if(this.mainStage().eye.checkCollisionWithPosition(x, y)) {
 			return true;
 		}
+	}
 
 
-
-		// フィールドの各種オブジェクトとの当たり判定
-		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
-			var piece = this.mainStage().pieces[i];
-			if(piece.checkCollisionWithPosition(x, y)) {
-				return true;
-			}
+	// クリックする／しない関わらず当たり判定
+	// フィールドの各種オブジェクトとの当たり判定
+	for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
+		var piece = this.mainStage().pieces[i];
+		if(piece.checkCollisionWithPosition(x, y)) {
+			return true;
 		}
+	}
 
+	// クリックしたときに当たり判定するものたち
+	if(this.core.input_manager.isLeftClickPush()) {
 		// どことも当たり判定しなかったら
 		// こいしを移動
 		// TODO: この関数でやらず、外でやったほうがいい？(この関数は当たり判定したら true or false 返す)
