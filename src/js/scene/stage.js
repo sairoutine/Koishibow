@@ -310,7 +310,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.addSerif(data.serif);
 			object.addSound(data.sound);
 			object.addKoishiAction(data.action);
-			object.addAnime(data.anime1, data.anime2, data.anime3, data.scale);
+			object.addAnime(data.anime1, data.anime2, data.anime3, data.anime4, data.anime5, data.anime6, data.scale);
 			object.setPosition(data.x, data.y);
 
 			this.pieces.push(object);

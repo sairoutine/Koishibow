@@ -9,9 +9,52 @@ module.exports = {
 	left_field: "chapter0_hospital_corridor2",
 	background: "chapter0-mansionpas-001",
 	objects: [
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "ランプ", serif: ["まぶしい"], x: 805, y: 65, scale: 0.7, anime1: "chapter0-mansion_corridor1-obj-01-01-obj01", anime2: "chapter0-mansion_corridor1-obj-01-01-obj02", anime3:"chapter0-mansion_corridor1-obj-01-01-obj03", action: "look_top"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "三輪車", serif: ["あとでのろっと"], x: 815, y: 515, scale: 0.7, anime1: "chapter0-mansion_corridor1-obj-02-01-obj01", anime2: "chapter0-mansion_corridor1-obj-02-01-obj02", anime3:"chapter0-mansion_corridor1-obj-02-01-obj03", action: "touch"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "カーテン", serif: ["いまはかくれんぼしてないからあとでね！"], x: 190, y: 135, scale: 0.7, anime1: "chapter0-mansion_corridor1-obj-03-01-obj01", anime2: "chapter0-mansion_corridor1-obj-03-01-obj02", anime3:"chapter0-mansion_corridor1-obj-03-01-obj03", action: "look_top"},
+		{
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "ランプ",
+			serif: ["まぶしい"],
+			x: 805,
+			y: 65,
+			scale: 0.7,
+			anime1: "chapter0-mansion_corridor1-obj-01-01-obj01",
+			anime2: "chapter0-mansion_corridor1-obj-01-01-obj02",
+			anime3: "chapter0-mansion_corridor1-obj-01-01-obj03",
+			anime4: "chapter0-mansion_corridor1-obj-01-01-obj04",
+			anime5: "chapter0-mansion_corridor1-obj-01-01-obj05",
+			anime6: "chapter0-mansion_corridor1-obj-01-01-obj06",
+
+			action: "look_top"
+		},
+		{
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "三輪車",
+			serif: ["あとでのろっと"],
+			x: 815,
+			y: 515,
+			scale: 0.7,
+			anime1: "chapter0-mansion_corridor1-obj-02-01-obj01",
+			anime2: "chapter0-mansion_corridor1-obj-02-01-obj02",
+			anime3: "chapter0-mansion_corridor1-obj-02-01-obj03",
+			anime4: "chapter0-mansion_corridor1-obj-02-01-obj04",
+			anime5: "chapter0-mansion_corridor1-obj-02-01-obj05",
+			anime6: "chapter0-mansion_corridor1-obj-02-01-obj06",
+			action: "touch"
+		},
+		{
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "カーテン",
+			serif: ["いまはかくれんぼしてないからあとでね！"],
+			x: 190,
+			y: 135,
+			scale: 0.7,
+			anime1: "chapter0-mansion_corridor1-obj-03-01-obj01",
+			anime2: "chapter0-mansion_corridor1-obj-03-01-obj02",
+			anime3: "chapter0-mansion_corridor1-obj-03-01-obj03",
+			anime4: "chapter0-mansion_corridor1-obj-03-01-obj04",
+			anime5: "chapter0-mansion_corridor1-obj-03-01-obj05",
+			anime6: "chapter0-mansion_corridor1-obj-03-01-obj06",
+			action: "look_top"
+		},
 	],
 
 };

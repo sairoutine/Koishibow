@@ -13,6 +13,10 @@ var ObjectAnimeImage = function(core) {
 	this.before_anime = null;
 	this.click_anime  = null;
 	this.after_anime  = null;
+	this.onmouseover_start_anime = null;
+	this.onmouseover_anime       = null;
+	this.onmouseover_end_anime   = null;
+
 
 	this.serif = null;
 
@@ -27,6 +31,7 @@ var ObjectAnimeImage = function(core) {
 	this.sprite = new SS(this.scene);
 
 	this._is_touch = false;
+	this._is_mouseover = false;
 };
 Util.inherit(ObjectAnimeImage, base_object);
 
@@ -37,6 +42,10 @@ ObjectAnimeImage.prototype.init = function(){
 	this.before_anime = null;
 	this.click_anime  = null;
 	this.after_anime  = null;
+	this.onmouseover_start_anime = null;
+	this.onmouseover_anime       = null;
+	this.onmouseover_end_anime   = null;
+
 	this.serif = null;
 
 	this._width  = null;
@@ -47,6 +56,7 @@ ObjectAnimeImage.prototype.init = function(){
 	this._sound_name  = null;
 
 	this._is_touch = false;
+	this._is_mouseover = false;
 };
 ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
@@ -58,11 +68,14 @@ ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	this.sprite.y(this.y());
 };
 
-ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_anime, scale){
+ObjectAnimeImage.prototype.addAnime = function(before_anime, click_anime, after_anime, onmouseover_start_anime, onmouseover_anime, onmouseover_end_anime, scale){
 	this.scale = scale || 1;
 	this.before_anime = AnimeMap[before_anime];
 	this.click_anime  = AnimeMap[click_anime];
 	this.after_anime  = AnimeMap[after_anime];
+	this.onmouseover_start_anime = AnimeMap[onmouseover_start_anime];
+	this.onmouseover_anime       = AnimeMap[onmouseover_anime];
+	this.onmouseover_end_anime   = AnimeMap[onmouseover_end_anime];
 };
 ObjectAnimeImage.prototype.addSerif = function(serif) {
 	this.serif = serif;
@@ -87,6 +100,9 @@ ObjectAnimeImage.prototype.addSound = function(sound_name){
 ObjectAnimeImage.prototype.onCollision = function(obj){
 	// クリックした場合
 	if(this.core.input_manager.isLeftClickPush()) {
+		// サードアイ使用中なら今のところ何もしない
+		if (this.scene.mainStage().isUsingEye()) return;
+
 		if (!this.scene.mainStage().koishi().isMoving()) {
 			this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
 			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
@@ -94,7 +110,7 @@ ObjectAnimeImage.prototype.onCollision = function(obj){
 	}
 	// マウスオーバーした場合
 	else {
-
+		this.onCollisionByMouseOver();
 	}
 };
 ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
@@ -124,9 +140,66 @@ ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 	this._is_touch = true;
 };
 
-ObjectAnimeImage.prototype.beforeDraw = function(x, y) {
+
+// マウスオーバーした場合
+ObjectAnimeImage.prototype.onCollisionByMouseOver = function(){
+	// サードアイを使用してなければ何もしない
+	if (!this.scene.mainStage().isUsingEye()) return;
+
+	// 既にマウスオーバーアニメ中なら何もしない
+	if (this._is_mouseover) return;
+
+	// マウスオーバーアニメが設定されてないオブジェクトなら何もしない
+	if (!this.onmouseover_start_anime && !this.onmouseover_anime && !this.onmouseover_end_anime) return;
+
+	// こいしの後ろにマウスカーソルがあるならアニメしない
+	var x = this.core.input_manager.mousePositionX();
+	if (this.scene.mainStage().koishi().isReflect()) {
+		if (this.scene.mainStage().koishi().x() < x) {
+			return;
+		}
+	}
+	else {
+		if (this.scene.mainStage().koishi().x() > x) {
+			return;
+		}
+	}
+
+
+
+	this._is_mouseover = true;
+
+	var sprite = this.sprite;
+	var onmouseover_anime = this.onmouseover_anime;
+	sprite.playAnimationOnce(this.onmouseover_start_anime, function (){
+		sprite.changeAnimation(onmouseover_anime);
+	});
+
+
+
+};
+
+ObjectAnimeImage.prototype.beforeDraw = function() {
 	base_object.prototype.beforeDraw.apply(this, arguments);
 	this.sprite.beforeDraw();
+
+	if(this._is_mouseover) {
+		// マウス位置したところを取得
+		var x = this.core.input_manager.mousePositionX();
+		var y = this.core.input_manager.mousePositionY();
+
+		// マウスオーバーしてないなら解除
+		if(!this.checkCollisionWithPosition(x, y)) {
+			var sprite = this.sprite;
+			var anime = this._is_touch ? this.after_anime : this.before_anime;
+			sprite.playAnimationOnce(this.onmouseover_end_anime, function (){
+				sprite.changeAnimation(anime);
+			});
+
+
+			this._is_mouseover = false;
+		}
+	}
 };
 
 
