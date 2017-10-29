@@ -10708,6 +10708,22 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter0/myroom/sound_window.ogg",
 		volume: 1.0,
 	},
+	walking_bare_default_left:    {
+		path: "./sound/walking/bare_default_left.ogg",
+		volume: 1.0,
+	},
+	walking_bare_default_right:    {
+		path: "./sound/walking/bare_default_right.ogg",
+		volume: 1.0,
+	},
+	walking_bare_wood_left:    {
+		path: "./sound/walking/bare_wood_left.ogg",
+		volume: 1.0,
+	},
+	walking_bare_wood_right:    {
+		path: "./sound/walking/bare_wood_right.ogg",
+		volume: 1.0,
+	},
 };
 
 AssetsConfig.bgms = {
@@ -10754,7 +10770,7 @@ var DEBUG = {
 	ON: true,
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
-	//START_SCENE: ["stage", "chapter0_mansion_corridor1"],
+	START_SCENE: ["stage", "chapter0_mansion_corridor1"],
 	//START_SCENE: ["stage", "chapter0_myroom"],
 	//START_SCENE: ["title"],
 };
@@ -10797,6 +10813,7 @@ module.exports = {
 	right_field: "chapter0_hospital_corridor2",
 	left_field: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
+	walk_sound: "walking_bare_default",
 	objects: [
 		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ストレッチャー", serif: ["へんなベッド"],  x: 814, y: 608, scale: 0.7, action: "touch"},
 		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["くすりはいらない……"],   x: 279, y: 378, scale: 0.7},
@@ -10818,6 +10835,7 @@ module.exports = {
 	right_field: "chapter0_mansion_corridor1",
 	left_field: "chapter0_hospital_corridor1",
 	background: "chapter0-hospital2-bg-001",
+	walk_sound: "walking_bare_default",
 	objects: [
 		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "くつした", serif: ["やだやだ。"], x: 302, y: 443, scale: 0.7, action: "look_bottom"},
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", serif: ["あしおったらのってもいい？"], x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03", action: "touch"},
@@ -10837,6 +10855,7 @@ module.exports = {
 	right_field: "chapter0_mansion_corridor2",
 	left_field: "chapter0_hospital_corridor2",
 	background: "chapter0-mansionpas-001",
+	walk_sound: "walking_bare_wood",
 	objects: [
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -10899,6 +10918,7 @@ module.exports = {
 	right_field: "chapter0_mansion_corridor3",
 	left_field: "chapter0_mansion_corridor1",
 	background: "bg",
+	walk_sound: "walking_bare_wood",
 	objects: [
 	],
 
@@ -10916,6 +10936,7 @@ module.exports = {
 	right_field: null,
 	left_field: "chapter0_mansion_corridor2",
 	background: "bg",
+	walk_sound: "walking_bare_wood",
 	objects: [
 	],
 
@@ -10950,6 +10971,7 @@ module.exports = {
 	right_field: "chapter0_hospital_corridor1",
 	left_field: null,
 	background: "chapter0-myroom-bg-001",
+	walk_sound: "walking_bare_default",
 	objects: [
 		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", serif: ["まだねむたくないもん"], x: 258, y: 389, scale: 0.7, action: "touch"},
 		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["あけない"], x: 59, y: 496, scale: 0.7, action: "touch"},
@@ -22266,6 +22288,17 @@ Koishi.prototype.setAfterMoveCallback = function(cb) {
 
 Koishi.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
+
+	// 足音
+	if (this.isMoving()) {
+		if(this.sprite.sprite.getFrameNo() === 14) {
+			this.core.playSound(this.scene.field().walk_sound + "_right");
+		}
+		else if(this.sprite.sprite.getFrameNo() === 29) {
+			this.core.playSound(this.scene.field().walk_sound + "_left");
+		}
+
+	}
 
 	// update sprite
 	this.sprite.x(this.x());
