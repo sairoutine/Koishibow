@@ -122,6 +122,17 @@ Koishi.prototype.setAfterMoveCallback = function(cb) {
 Koishi.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
 
+	// 足音
+	if (this.isMoving()) {
+		if(this.sprite.sprite.getFrameNo() === 14) {
+			this.core.playSound(this.scene.field().walk_sound + "_right");
+		}
+		else if(this.sprite.sprite.getFrameNo() === 29) {
+			this.core.playSound(this.scene.field().walk_sound + "_left");
+		}
+
+	}
+
 	// update sprite
 	this.sprite.x(this.x());
 	this.sprite.y(this.y());
