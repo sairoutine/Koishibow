@@ -82,6 +82,22 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter0/myroom/sound_window.ogg",
 		volume: 1.0,
 	},
+	walking_bare_default_left:    {
+		path: "./sound/walking/bare_default_left.ogg",
+		volume: 1.0,
+	},
+	walking_bare_default_right:    {
+		path: "./sound/walking/bare_default_right.ogg",
+		volume: 1.0,
+	},
+	walking_bare_wood_left:    {
+		path: "./sound/walking/bare_wood_left.ogg",
+		volume: 1.0,
+	},
+	walking_bare_wood_right:    {
+		path: "./sound/walking/bare_wood_right.ogg",
+		volume: 1.0,
+	},
 };
 
 AssetsConfig.bgms = {
