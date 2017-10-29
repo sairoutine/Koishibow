@@ -8,6 +8,7 @@ module.exports = {
 	right_field: "chapter0_mansion_corridor2",
 	left_field: "chapter0_hospital_corridor2",
 	background: "chapter0-mansionpas-001",
+	walk_sound: "walking_bare_wood",
 	objects: [
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,

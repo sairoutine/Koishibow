@@ -8,6 +8,7 @@ module.exports = {
 	right_field: "chapter0_mansion_corridor3",
 	left_field: "chapter0_mansion_corridor1",
 	background: "bg",
+	walk_sound: "walking_bare_wood",
 	objects: [
 	],
 

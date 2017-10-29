@@ -8,6 +8,7 @@ module.exports = {
 	right_field: "chapter0_hospital_corridor2",
 	left_field: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
+	walk_sound: "walking_bare_default",
 	objects: [
 		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ストレッチャー", serif: ["へんなベッド"],  x: 814, y: 608, scale: 0.7, action: "touch"},
 		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["くすりはいらない……"],   x: 279, y: 378, scale: 0.7},
