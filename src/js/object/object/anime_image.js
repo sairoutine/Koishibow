@@ -3,6 +3,7 @@ var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
 var SS = require('../sprite_studio');
 var AnimeMap = require('../../anime');
+var WalkImmovableArea = require('../walk_immovable_area');
 
 var ObjectAnimeImage = function(core) {
 	base_object.apply(this, arguments);
@@ -223,5 +224,14 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 	// index = 0 のみ有効
 	return this.before_anime[0].animation.MarginHeight * this.scale;
 };
+ObjectAnimeImage.prototype.getImmovableArea = function() {
+	var area = new WalkImmovableArea(this.scene);
+	area.init();
+	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
+	area.setSize(this.collisionWidth(), this.collisionHeight()/2);
+
+	return area;
+};
+
 
 module.exports = ObjectAnimeImage;

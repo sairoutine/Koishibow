@@ -35,6 +35,9 @@ var SceneStage = function(core) {
 	// ステージ上のオブジェクト一覧
 	this.pieces = [];
 
+	// 移動制限範囲
+	this.walk_immovable_areas = [];
+
 	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
 	this._koishi_and_pieces = [];
 
@@ -124,10 +127,18 @@ SceneStage.prototype.beforeDraw = function(){
 		if(a.y() > b.y()) return 1;
 		return 0;
 	});
-	for (var i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
-		var obj = this._koishi_and_pieces[i];
+	var obj, i, len;
+	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
+		obj = this._koishi_and_pieces[i];
 		obj.beforeDraw();
 	}
+	for (i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
+		obj = this.walk_immovable_areas[i];
+		obj.beforeDraw();
+	}
+
+
+
 
 	this._beforeDrawOfMenuObject();
 
@@ -194,10 +205,16 @@ SceneStage.prototype.draw = function(){
 	}
 
 	// こいしとオブジェクトの描画
-	for (var i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
-		var obj = this._koishi_and_pieces[i];
+	var obj, i, len;
+	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
+		obj = this._koishi_and_pieces[i];
 		obj.draw();
 	}
+	for (i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
+		obj = this.walk_immovable_areas[i];
+		obj.draw();
+	}
+
 
 	if (this.isUsingEye()) {
 		this._drawLight();
@@ -275,6 +292,7 @@ SceneStage.prototype.field = function(){
 
 SceneStage.prototype.setupPiece = function() {
 	this.pieces = [];
+	this.walk_immovable_areas = [];
 	var object_data_list = this.field().objects;
 
 	for (var i = 0, len = object_data_list.length; i < len; i++) {
@@ -290,6 +308,8 @@ SceneStage.prototype.setupPiece = function() {
 			object.setPosition(data.x, data.y);
 
 			this.pieces.push(object);
+
+			this.walk_immovable_areas.push(object.getImmovableArea());
 		}
 		else if (data.type === CONSTANT.ANIME_IMAGE_TYPE) {
 			object = new ObjectAnimeImage(this);
@@ -302,6 +322,8 @@ SceneStage.prototype.setupPiece = function() {
 			object.setPosition(data.x, data.y);
 
 			this.pieces.push(object);
+
+			this.walk_immovable_areas.push(object.getImmovableArea());
 		}
 
 	}

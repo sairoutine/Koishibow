@@ -1,6 +1,7 @@
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
+var WalkImmovableArea = require('../walk_immovable_area');
 
 var ObjectStaticImage = function(core) {
 	base_object.apply(this, arguments);
@@ -101,5 +102,14 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 	if(this._height) return this._height;
 	return this.image.height * this.scale;
 };
+ObjectStaticImage.prototype.getImmovableArea = function() {
+	var area = new WalkImmovableArea(this.scene);
+	area.init();
+	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
+	area.setSize(this.collisionWidth(), this.collisionHeight()/2);
+
+	return area;
+};
+
 
 module.exports = ObjectStaticImage;
