@@ -194,20 +194,6 @@ SceneStage.prototype.draw = function(){
 		this._drawImmovableArea();
 	}
 
-	// デバッグ用の仮描画する
-	if (0) {
-
-		ctx.save();
-		// フィールド名 表示
-		// TODO: 削除
-		ctx.font = "60px 'OradanoGSRR'";
-		ctx.textAlign = 'center';
-		ctx.textBaseAlign = 'middle';
-		ctx.fillStyle = 'rgb( 0, 0, 0 )';
-		ctx.fillText(this.field().name, this.width - 180, this.height - 20);
-		ctx.restore();
-	}
-
 	this._drawOfPieces();
 	this._koishi.draw();
 
