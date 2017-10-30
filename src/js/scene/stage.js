@@ -35,6 +35,9 @@ var SceneStage = function(core) {
 	// ステージ上のオブジェクト一覧
 	this.pieces = [];
 
+	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
+	this._koishi_and_pieces = [];
+
 	this.left_yajirushi  = new LeftYajirushi(this);
 	this.right_yajirushi = new RightYajirushi(this);
 	this.item_button     = new ItemButton(this);
@@ -73,10 +76,12 @@ SceneStage.prototype.init = function(field_name, is_right){
 
 
 	this._koishi.init();
+	this.setupPiece();
 	this._initOfMenuObject();
 
-	this.setupPiece();
 
+	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
+	this._koishi_and_pieces = this.pieces.concat(this._koishi);
 
 	// フィールド開始時の初期位置の決定
 	// 右から来たか、左から来たかでこいしの初期位置が変わる
@@ -113,27 +118,21 @@ SceneStage.prototype.beforeDraw = function(){
 		this.core.changeBGM("field");
 	}
 
-	this._beforeDrawOfPieces();
-	this._koishi.beforeDraw();
+	// y 軸(y が大きい方が z軸が大きい)の降順ソート
+	this._koishi_and_pieces.sort(function(a,b){
+		if(a.y() < b.y()) return -1;
+		if(a.y() > b.y()) return 1;
+		return 0;
+	});
+	for (var i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
+		var obj = this._koishi_and_pieces[i];
+		obj.beforeDraw();
+	}
+
 	this._beforeDrawOfMenuObject();
+
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 };
-
-
-
-SceneStage.prototype._beforeDrawOfPieces = function(){
-	for (var i = 0, len = this.pieces.length; i < len; i++) {
-		var piece = this.pieces[i];
-		piece.beforeDraw();
-	}
-};
-SceneStage.prototype._drawOfPieces = function(){
-	for (var i = 0, len = this.pieces.length; i < len; i++) {
-		var piece = this.pieces[i];
-		piece.draw();
-	}
-};
-
 
 
 SceneStage.prototype._initOfMenuObject = function(){
@@ -194,8 +193,11 @@ SceneStage.prototype.draw = function(){
 		this._drawImmovableArea();
 	}
 
-	this._drawOfPieces();
-	this._koishi.draw();
+	// こいしとオブジェクトの描画
+	for (var i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
+		var obj = this._koishi_and_pieces[i];
+		obj.draw();
+	}
 
 	if (this.isUsingEye()) {
 		this._drawLight();
