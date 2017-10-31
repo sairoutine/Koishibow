@@ -23633,15 +23633,11 @@ SceneStage.prototype._drawLight = function(){
 	}
 
 	// ライトの角度分
-	rad += 150*Math.PI/180;
+	//rad += 150*Math.PI/180;
 
 	ctx.rotate(rad);
-	ctx.drawImage(light,
-		0, 0,
-		light.width/2 - 250, light.height/2 - 150,
-		-light.width/2,                           -light.height/2,
-		light.width/2, light.height/2
-	);
+	ctx.globalCompositeOperation = "lighter";
+	ctx.drawImage(light, -13, -336);
 
 	ctx.restore();
 };
