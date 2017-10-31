@@ -11049,6 +11049,38 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.addMenuButton("移動制限範囲非表示", function (game) {
 		game.debug_manager.set("is_show_immovable_area", false);
 	});
+	this.debug_manager.addMenuSelect("ライトの合成方法", [
+		{value: "source-over"},
+		{value: "destination-over"},
+		{value: "source-in"},
+		{value: "destination-in"},
+		{value: "source-out"},
+		{value: "destination-out"},
+		{value: "source-atop"},
+		{value: "destination-atop"},
+		{value: "lighter"},
+		{value: "xor"},
+		{value: "copy"},
+		{value: "normal"},
+		{value: "multiply"},
+		{value: "screen"},
+		{value: "overlay"},
+		{value: "darken"},
+		{value: "lighten"},
+		{value: "color-dodge"},
+		{value: "color-burn"},
+		{value: "hard-light"},
+		{value: "soft-light"},
+		{value: "difference"},
+		{value: "exclusion"},
+		{value: "hue"},
+		{value: "saturation"},
+		{value: "color"},
+		{value: "luminosity"}
+	], function (game, value) {
+		game.debug_manager.set("light_global_composite", value);
+	});
+
 
 
 };
@@ -11813,6 +11845,55 @@ DebugManager.prototype.addMenuButton = function (button_value, func) {
 	// add element
 	this.dom.appendChild(input);
 };
+
+// add select pull down menu
+DebugManager.prototype.addMenuSelect = function (button_value, pulldown_list, func) {
+	if(!this.is_debug_mode) return;
+
+	var core = this.core;
+
+	// create element
+	var input = window.document.createElement('input');
+
+	// select tag
+	var select = window.document.createElement("select");
+
+	// label
+	var option_label = document.createElement("option");
+	option_label.setAttribute("value", "");
+	option_label.appendChild(document.createTextNode(button_value));
+	select.appendChild(option_label);
+
+	// add event
+	select.onchange = function () {
+		if(select.value === "") return;
+		func(core, select.value);
+	};
+
+	// set attributes
+	for (var i = 0, len = pulldown_list.length; i < len; i++) {
+		var opt = pulldown_list[i];
+		var value = opt.value;
+		var name = name in opt ? opt.name : value;
+
+		var option = document.createElement("option");
+		option.setAttribute("value", value);
+		option.appendChild( document.createTextNode(name) );
+		select.appendChild(option);
+	}
+
+	// add element
+	this.dom.appendChild(select);
+};
+
+
+
+
+
+
+
+
+
 
 // show collision area of object instance
 DebugManager.prototype.setShowingCollisionAreaOn = function () {
@@ -23636,7 +23717,13 @@ SceneStage.prototype._drawLight = function(){
 	//rad += 150*Math.PI/180;
 
 	ctx.rotate(rad);
-	ctx.globalCompositeOperation = "lighter";
+
+	if (this.core.debug_manager.get('light_global_composite')) {
+		ctx.globalCompositeOperation = this.core.debug_manager.get('light_global_composite');
+	}
+	else {
+		ctx.globalCompositeOperation = "lighter";
+	}
 	ctx.drawImage(light, -13, -336);
 
 	ctx.restore();
