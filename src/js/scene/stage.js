@@ -265,7 +265,13 @@ SceneStage.prototype._drawLight = function(){
 	//rad += 150*Math.PI/180;
 
 	ctx.rotate(rad);
-	ctx.globalCompositeOperation = "lighter";
+
+	if (this.core.debug_manager.get('light_global_composite')) {
+		ctx.globalCompositeOperation = this.core.debug_manager.get('light_global_composite');
+	}
+	else {
+		ctx.globalCompositeOperation = "lighter";
+	}
 	ctx.drawImage(light, -13, -336);
 
 	ctx.restore();

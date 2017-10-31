@@ -63,6 +63,38 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.addMenuButton("移動制限範囲非表示", function (game) {
 		game.debug_manager.set("is_show_immovable_area", false);
 	});
+	this.debug_manager.addMenuSelect("ライトの合成方法", [
+		{value: "source-over"},
+		{value: "destination-over"},
+		{value: "source-in"},
+		{value: "destination-in"},
+		{value: "source-out"},
+		{value: "destination-out"},
+		{value: "source-atop"},
+		{value: "destination-atop"},
+		{value: "lighter"},
+		{value: "xor"},
+		{value: "copy"},
+		{value: "normal"},
+		{value: "multiply"},
+		{value: "screen"},
+		{value: "overlay"},
+		{value: "darken"},
+		{value: "lighten"},
+		{value: "color-dodge"},
+		{value: "color-burn"},
+		{value: "hard-light"},
+		{value: "soft-light"},
+		{value: "difference"},
+		{value: "exclusion"},
+		{value: "hue"},
+		{value: "saturation"},
+		{value: "color"},
+		{value: "luminosity"}
+	], function (game, value) {
+		game.debug_manager.set("light_global_composite", value);
+	});
+
 
 
 };
