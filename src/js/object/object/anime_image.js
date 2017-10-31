@@ -105,7 +105,7 @@ ObjectAnimeImage.prototype.onCollision = function(obj){
 		if (this.scene.mainStage().isUsingEye()) return;
 
 		if (!this.scene.mainStage().koishi().isMoving()) {
-			this.scene.mainStage().koishi().setMoveTarget(obj.x(), obj.y());
+			this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
 			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
 		}
 	}
@@ -229,6 +229,7 @@ ObjectAnimeImage.prototype.getImmovableArea = function() {
 	area.init();
 	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
 	area.setSize(this.collisionWidth(), this.collisionHeight()/2);
+	area.setParentID(this.id);
 
 	return area;
 };

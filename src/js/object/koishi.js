@@ -42,6 +42,7 @@ Koishi.prototype.init = function() {
 
 	this._target_x = 0;
 	this._target_y = 0;
+	this._target_object = null;
 	this._move_callback = null; // 歩いて止まった後の callback
 
 	this.setVelocity({magnitude:0, theta:0});
@@ -151,17 +152,57 @@ Koishi.prototype.beforeDraw = function(){
 			this.stopMove();
 		}
 	}
+	// オブジェクトとぶつかったら止まる
+	if (this.isMoving() && this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
+		this.stopMove();
+	}
 
 	// 一定以上の奥行きには移動できない
 	if (this.y() < this.scene.height - CONSTANT.WALK_DEPTH_LIMIT) {
 		this.y(this.scene.height - CONSTANT.WALK_DEPTH_LIMIT);
 	}
 };
+
+
+Koishi.prototype.onCollision = function(obj) {
+	/*
+	// オブジェクトの下にこいし
+	if(obj.y() < this.y() && obj.getCollisionDownY() > this.y()) {
+		this.y(obj.getCollisionDownY());
+	}
+	// オブジェクトの上にこいし
+	else if(obj.y() > this.y() && obj.getCollisionUpY() < this.y()) {
+		this.y(obj.getCollisionDownY());
+	}
+	// オブジェクトの右にこいし
+	if(obj.x() > this.x() && obj.getCollisionRightX() < this.x()) {
+		this.x(obj.getCollisionRightX());
+	}
+	// オブジェクトの左にこいし
+	else if(obj.x() < this.x() && obj.getCollisionLeftX() > this.x()) {
+		this.x(obj.getCollisionLeftX());
+	}
+	*/
+	this.moveBack();
+
+	if (this._target_object && this._target_object.id !== obj.__id) {
+		this._move_callback = null;
+	}
+};
+
 Koishi.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	this.sprite.draw();
 };
 
+
+
+
+
+Koishi.prototype.setMoveTargetObject = function(point, obj) {
+	this._target_object = obj;
+	return this.setMoveTarget(point.x(), point.y());
+};
 Koishi.prototype.setMoveTarget = function(x, y) {
 	base_object.prototype.beforeDraw.apply(this, arguments);
 	var ax = x - this.x();
@@ -186,20 +227,35 @@ Koishi.prototype.setMoveTarget = function(x, y) {
 Koishi.prototype.isMoving = function() {
 	return this._target_x !== 0 && this._target_y !== 0;
 };
-Koishi.prototype.stopMove = function() {
+Koishi.prototype.stopMoveWithoutCallBack = function() {
 	if(!this.isMoving()) return;
 
 	this._target_x = 0;
 	this._target_y = 0;
+	this._target_object = null;
 	this.setVelocity({magnitude:0, theta:0});
 
 	this.setWait();
-
+};
+Koishi.prototype.stopMove = function() {
+	this.stopMoveWithoutCallBack();
 	// 歩いたあとのコールバック
 	if (this._move_callback) {
-		this._move_callback();
+		var cb = this._move_callback;
 		this._move_callback = null;
+		cb();
 	}
 };
+
+Koishi.prototype.collisionWidth = function(){
+	return 1;
+};
+
+Koishi.prototype.collisionHeight = function(){
+	return 1;
+};
+
+
+
 
 module.exports = Koishi;

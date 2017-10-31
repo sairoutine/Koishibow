@@ -12,12 +12,17 @@ WalkImmovableArea.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 	this._width  = null;
 	this._height = null;
+	this.__id    = null;
 };
 
 WalkImmovableArea.prototype.setSize = function(width, height) {
 	this._width  = width;
 	this._height = height;
 };
+WalkImmovableArea.prototype.setParentID = function(id) {
+	this.__id  = id;
+};
+
 WalkImmovableArea.prototype.collisionWidth = function(){
 	return this._width;
 };
