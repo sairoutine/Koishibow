@@ -52,6 +52,11 @@ Game.prototype.setupDebug = function (dom) {
 		game.fullscreen();
 	});
 
+	// ゲームデータ消去ボタン
+	this.debug_manager.addMenuButton("セーブクリア", function (game) {
+		game.save_manager.del();
+	});
+
 	this.debug_manager.addMenuButton("当たり判定表示", function (game) {
 		game.debug_manager.setShowingCollisionAreaOn();
 	});
