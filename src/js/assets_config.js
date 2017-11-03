@@ -102,6 +102,27 @@ AssetsConfig.sounds = {
 		path: "./sound/walking/bare_wood_right.ogg",
 		volume: 1.0,
 	},
+
+	noise1:    {
+		path: "./sound/noise/noise1.ogg",
+		volume: 1.0,
+	},
+	noise2:    {
+		path: "./sound/noise/noise2.ogg",
+		volume: 1.0,
+	},
+	noise3:    {
+		path: "./sound/noise/noise3.ogg",
+		volume: 1.0,
+	},
+	noise4:    {
+		path: "./sound/noise/noise4.ogg",
+		volume: 1.0,
+	},
+	noise5:    {
+		path: "./sound/noise/noise5.ogg",
+		volume: 1.0,
+	},
 };
 
 AssetsConfig.bgms = {

@@ -11,6 +11,11 @@ var CONSTANT = {
 
 	// こいしの歩ける範囲の上 上限(px)
 	WALK_DEPTH_LIMIT: 300,
+
+	// フィールドでランダムに流れるノイズ
+	NOISE_SOUND_LIST: ["noise1", "noise2", "noise3", "noise4", "noise5"],
+	NOISE_SOUND_INTERVAL_COUNT: 600,
+	NOISE_SOUND_PROB: 50,
 };
 
 if (DEBUG.ON) {

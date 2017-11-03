@@ -116,9 +116,21 @@ SceneStage.prototype.useEye = function() {
 };
 
 SceneStage.prototype.beforeDraw = function(){
+	// BGM 再生
 	if(this.frame_count === 60) {
 		this.core.changeBGM(this.field().bgm);
 	}
+
+	// ランダムノイズ再生
+	// N秒ごとにN%の確率で再生
+	if(this.core.frame_count % CONSTANT.NOISE_SOUND_INTERVAL_COUNT === 0) {
+		if (util.getRandomInt(100) <= CONSTANT.NOISE_SOUND_PROB) {
+			var sound_name = CONSTANT.NOISE_SOUND_LIST[ util.getRandomInt(0, CONSTANT.NOISE_SOUND_LIST.length - 1) ];
+			this.core.playSound(sound_name);
+		}
+	}
+
+
 
 	// y 軸(y が大きい方が z軸が大きい)の降順ソート
 	this._koishi_and_pieces.sort(function(a,b){
