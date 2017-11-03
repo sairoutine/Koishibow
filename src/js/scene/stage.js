@@ -232,7 +232,7 @@ SceneStage.prototype._drawLight = function(){
 	// 背景
 	ctx.save();
 	ctx.fillStyle = 'black';
-	ctx.globalAlpha = 0.7;
+	ctx.globalAlpha = 0.3;
 	ctx.fillRect(0, 0, this.width, this.height);
 	ctx.restore();
 
@@ -270,7 +270,7 @@ SceneStage.prototype._drawLight = function(){
 		ctx.globalCompositeOperation = this.core.debug_manager.get('light_global_composite');
 	}
 	else {
-		ctx.globalCompositeOperation = "lighter";
+		ctx.globalCompositeOperation = "overlay";
 	}
 	ctx.drawImage(light, -13, -336);
 
