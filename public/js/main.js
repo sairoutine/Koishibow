@@ -12132,6 +12132,27 @@ AssetsConfig.sounds = {
 		path: "./sound/walking/bare_wood_right.ogg",
 		volume: 1.0,
 	},
+
+	noise1:    {
+		path: "./sound/noise/noise1.ogg",
+		volume: 1.0,
+	},
+	noise2:    {
+		path: "./sound/noise/noise2.ogg",
+		volume: 1.0,
+	},
+	noise3:    {
+		path: "./sound/noise/noise3.ogg",
+		volume: 1.0,
+	},
+	noise4:    {
+		path: "./sound/noise/noise4.ogg",
+		volume: 1.0,
+	},
+	noise5:    {
+		path: "./sound/noise/noise5.ogg",
+		volume: 1.0,
+	},
 };
 
 AssetsConfig.bgms = {
@@ -12141,11 +12162,17 @@ AssetsConfig.bgms = {
 		//loopEnd: 1*60 + 47 + 0.027,
 	},
 
-	field: {
+	field1: {
 		path: "./bgm/field1.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 	},
+	field2: {
+		path: "./bgm/field2.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+	},
+
 };
 
 
@@ -12165,6 +12192,11 @@ var CONSTANT = {
 
 	// こいしの歩ける範囲の上 上限(px)
 	WALK_DEPTH_LIMIT: 300,
+
+	// フィールドでランダムに流れるノイズ
+	NOISE_SOUND_LIST: ["noise1", "noise2", "noise3", "noise4", "noise5"],
+	NOISE_SOUND_INTERVAL_COUNT: 600,
+	NOISE_SOUND_PROB: 50,
 };
 
 if (DEBUG.ON) {
@@ -12216,6 +12248,7 @@ var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_hospital_corridor1",
 	name: "病院の廊下1",
+	bgm: "field1",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_hospital_corridor2",
@@ -12238,6 +12271,7 @@ var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_hospital_corridor2",
 	name: "病院の廊下2",
+	bgm: "field1",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_mansion_corridor1",
@@ -12258,6 +12292,7 @@ var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_mansion_corridor1",
 	name: "屋敷の廊下1",
+	bgm: "field2",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_mansion_corridor2",
@@ -12321,6 +12356,7 @@ var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_mansion_corridor2",
 	name: "屋敷の廊下2",
+	bgm: "field2",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_mansion_corridor3",
@@ -12383,6 +12419,7 @@ var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_mansion_corridor3",
 	name: "屋敷の廊下3",
+	bgm: "field2",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
 	right_field: null,
@@ -12401,6 +12438,7 @@ var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_mansion_gallery1",
 	name: "屋敷の廊下3",
+	bgm: "field2",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
 	right_field: null,
@@ -12418,6 +12456,7 @@ var CONSTANT = require("../../constant");
 module.exports = {
 	key: "chapter0_myroom",
 	name: "こいしの部屋",
+	bgm: "field1",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_hospital_corridor1",
@@ -23686,6 +23725,15 @@ var Util = {
 
 		return false;
 	},
+
+	getRandomInt: function(min, max) {
+		if (arguments.length === 1) {
+			max = arguments[0];
+			min = 1;
+		}
+
+		return Math.floor( Math.random() * (max - min + 1) ) + min;
+	},
 	shallowCopyHash: function (src_hash) {
 		var dst_hash = {};
 		for(var k in src_hash){
@@ -25179,10 +25227,6 @@ util.inherit(SceneStage, base_scene);
 SceneStage.prototype.init = function(field_name, is_right){
 	base_scene.prototype.init.apply(this, arguments);
 
-	if(this.core.audio_loader.currentPlayingBGM() !== "field") {
-		this.core.stopBGM();
-	}
-
 	// 現在のフィールド
 	this.core.save_manager.setCurrentField(field_name);
 	this.core.save_manager.save();
@@ -25214,6 +25258,11 @@ SceneStage.prototype.init = function(field_name, is_right){
 		this.koishi().setPosition(pos.x, pos.y);
 	}
 
+	// BGM 止める
+	if(this.core.audio_loader.currentPlayingBGM() !== this.field().bgm) {
+		this.core.stopBGM();
+	}
+
 	this.changeSubScene("play");
 };
 
@@ -25231,9 +25280,21 @@ SceneStage.prototype.useEye = function() {
 };
 
 SceneStage.prototype.beforeDraw = function(){
+	// BGM 再生
 	if(this.frame_count === 60) {
-		this.core.changeBGM("field");
+		this.core.changeBGM(this.field().bgm);
 	}
+
+	// ランダムノイズ再生
+	// N秒ごとにN%の確率で再生
+	if(this.core.frame_count % CONSTANT.NOISE_SOUND_INTERVAL_COUNT === 0) {
+		if (util.getRandomInt(100) <= CONSTANT.NOISE_SOUND_PROB) {
+			var sound_name = CONSTANT.NOISE_SOUND_LIST[ util.getRandomInt(0, CONSTANT.NOISE_SOUND_LIST.length - 1) ];
+			this.core.playSound(sound_name);
+		}
+	}
+
+
 
 	// y 軸(y が大きい方が z軸が大きい)の降順ソート
 	this._koishi_and_pieces.sort(function(a,b){
