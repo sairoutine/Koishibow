@@ -24,8 +24,6 @@ var FieldMap = require('../field');
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
-	// 現在のフィールド
-	this._current_field_name = null;
 	// フィールド一覧
 	this._field_map = FieldMap;
 
@@ -70,7 +68,8 @@ SceneStage.prototype.init = function(field_name, is_right){
 	}
 
 	// 現在のフィールド
-	this._current_field_name = field_name;
+	this.core.save_manager.setCurrentField(field_name);
+	this.core.save_manager.save();
 
 	this.is_use_eye = false;
 
@@ -98,7 +97,6 @@ SceneStage.prototype.init = function(field_name, is_right){
 		pos = this.field().left_start_position;
 		this.koishi().setPosition(pos.x, pos.y);
 	}
-
 
 	this.changeSubScene("play");
 };
@@ -287,7 +285,7 @@ SceneStage.prototype.mainStage = function(){
 };
 
 SceneStage.prototype.field = function(){
-	return this._field_map[this._current_field_name];
+	return this._field_map[this.core.save_manager.getCurrentField()];
 };
 
 

@@ -11,12 +11,13 @@ var SHOW_TRANSITION_COUNT = 100;
 
 var MENU = [
 	["ui-titlepg-btn-ng", function (core) { return true; }, function (core) {
+		core.save_manager.del();
 		core.changeScene("stage", "chapter0_myroom");
 	}],
 	["ui-titlepg-btn-con", function (core) {
-		return core.save_manager.getCurrentStage() ? true : false;
+		return core.save_manager.getCurrentField() ? true : false;
 	}, function (core) {
-		core.changeScene("stage", core.save_manager.getCurrentStage());
+		core.changeScene("stage", core.save_manager.getCurrentField());
 	}],
 	/*
 	["ui-titlepg-btn-opt", function (core) { return true; }, function (core) {

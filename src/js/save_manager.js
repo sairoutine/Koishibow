@@ -52,13 +52,16 @@ SaveManager.prototype.increase3rdeyeGauge = function(num){
 	this.set("3rdeye_gauge", gauge);
 };
 
-// 現在のステージを取得
-SaveManager.prototype.getCurrentStage = function() {
-	var stage_name = this.get("current_stage");
+// 現在のフィールドを取得
+SaveManager.prototype.getCurrentField = function() {
+	var field_name = this.get("current_field");
 
-	return stage_name;
+	return field_name;
 };
-
+// 現在のフィールドを設定
+SaveManager.prototype.setCurrentField = function(field_name) {
+	this.set("current_field", field_name);
+};
 
 
 
