@@ -34,7 +34,9 @@ SceneSubStageTalk.prototype.init = function(){
 	}
 
 	// 使用ボタン
-	this.use_button = new UIParts(self, 160 + 250/3, self.mainStage().height - 150 + 105/3, 250*2/3, 105*2/3, function draw () {
+	// TODO: 調べる・組み合わせるの後に戻す
+	//this.use_button = new UIParts(self, 160 + 250/3, self.mainStage().height - 150 + 105/3, 250*2/3, 105*2/3, function draw () {
+	this.use_button = new UIParts(self, self.mainStage().width - 200 + 250/3, self.mainStage().height - 150 + 105/3, 250*2/3, 105*2/3, function draw () {
 		var ctx = this.core.ctx;
 
 		var button_window;
@@ -130,7 +132,7 @@ SceneSubStageTalk.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 
 	// ボタン表示
-	this._showButtons();
+	//this._showButtons();
 
 	// メッセージウィンドウ表示
 	this._showMessageWindow();
