@@ -13,8 +13,10 @@ var MENU = [
 	["ui-titlepg-btn-ng", function (core) { return true; }, function (core) {
 		core.changeScene("stage", "chapter0_myroom");
 	}],
-	["ui-titlepg-btn-con", function (core) { return true; }, function (core) {
-		core.changeScene("stage", "chapter0_myroom");
+	["ui-titlepg-btn-con", function (core) {
+		return core.save_manager.getCurrentStage() ? true : false;
+	}, function (core) {
+		core.changeScene("stage", core.save_manager.getCurrentStage());
 	}],
 	/*
 	["ui-titlepg-btn-opt", function (core) { return true; }, function (core) {
@@ -42,7 +44,7 @@ var SceneTitle = function(core) {
 				ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
 				var logo;
-				if (this.is_big) {
+				if (this.is_big && menu[1](this.core)) {
 					logo = this.core.image_loader.getImage(menu[0] + "-on");
 				}
 				else {
@@ -82,7 +84,7 @@ SceneTitle.prototype.beforeDraw = function(){
 	if(this.core.input_manager.isLeftClickPush()) {
 		this.menu_ui.forEach(function(menu, i) {
 			// クリックしたら
-			if(menu.checkCollisionWithPosition(x, y)) {
+			if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](self.core)) {
 				MENU[i][2](self.core);
 			}
 		});

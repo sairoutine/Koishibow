@@ -34,12 +34,13 @@ SaveManager.prototype.addItem = function(item_id){
 	return list.length - 1;
 };
 
-
+// 3rd eye ゲージの取得
 SaveManager.prototype.get3rdeyeGauge = function(){
 	var gauge = this.get("3rdeye_gauge") || 0;
 
 	return gauge;
 };
+// 3rd eye ゲージの上昇
 SaveManager.prototype.increase3rdeyeGauge = function(num){
 	var gauge = this.get3rdeyeGauge();
 
@@ -50,6 +51,14 @@ SaveManager.prototype.increase3rdeyeGauge = function(num){
 
 	this.set("3rdeye_gauge", gauge);
 };
+
+// 現在のステージを取得
+SaveManager.prototype.getCurrentStage = function() {
+	var stage_name = this.get("current_stage");
+
+	return stage_name;
+};
+
 
 
 
