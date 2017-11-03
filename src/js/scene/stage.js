@@ -141,6 +141,17 @@ SceneStage.prototype.beforeDraw = function(){
 	this._beforeDrawOfMenuObject();
 
 	base_scene.prototype.beforeDraw.apply(this, arguments);
+
+
+	// クリック位置を出力
+	if (CONSTANT.DEBUG.ON) {
+		if(this.core.input_manager.isRightClickPush()) {
+			var x = this.core.input_manager.mousePositionX();
+			var y = this.core.input_manager.mousePositionY();
+
+			console.log("x: " + x + ", y: " + y);
+		}
+	}
 };
 
 
