@@ -3,14 +3,14 @@
 // ローディングシーン
 
 var base_scene = require('../hakurei').scene.base;
-var util = require('../hakurei').util;
+var Util = require('../hakurei').util;
 var AssetsConfig = require('../assets_config');
 var CONSTANT = require('../constant');
 
 var SceneLoading = function(core) {
 	base_scene.apply(this, arguments);
 };
-util.inherit(SceneLoading, base_scene);
+Util.inherit(SceneLoading, base_scene);
 
 SceneLoading.prototype.init = function() {
 	base_scene.prototype.init.apply(this, arguments);
@@ -55,7 +55,7 @@ SceneLoading.prototype.draw = function(){
 
 	// 背景
 	ctx.save();
-	ctx.fillStyle = 'white';
+	ctx.fillStyle = 'black';
 	ctx.fillRect(0, 0, this.core.width, this.core.height);
 	ctx.restore();
 
@@ -78,7 +78,7 @@ SceneLoading.prototype.draw = function(){
 	}
 
 	ctx.save();
-	ctx.fillStyle = 'rgb( 0, 0, 0 )';
+	ctx.fillStyle = "white";
 	ctx.textAlign = 'left';
 	ctx.font = "30px 'OradanoGSRR'";
 	ctx.fillText('Now Loading' + dot, this.core.width - 250, this.core.height - 50);
@@ -87,7 +87,7 @@ SceneLoading.prototype.draw = function(){
 
 	// プログレスバー
 	ctx.save();
-	ctx.fillStyle = 'rgb(119, 66, 244)';
+	ctx.fillStyle = "white";
 	ctx.fillRect(0, this.core.height - 20, this.core.width * this.progress(), 50);
 	ctx.restore();
 };
