@@ -22,11 +22,15 @@ AssetsConfig.images = {
 	"chapter0-hospital2-obj-03-01.png": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-03-01.png",
 
 
-	"chapter0-mansionpas-001":        "./image/chapter0/mansion_corridor1/chapter0-mansionpas-001.jpg",
+	"chapter0-mansionpas-001":          "./image/chapter0/mansion_corridor1/chapter0-mansionpas-001.jpg",
 	"chapter0-mspassage-obj-01-01.png": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-01-01.png",
 	"chapter0-mspassage-obj-02-01.png": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-02-01.png",
 	"chapter0-mspassage-obj-03-01.png": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-03-01.png",
 
+	"chapter0-mansionpas-002":          "./image/chapter0/mansion_corridor2/chapter0-mspassage-bg-002.jpg",
+	"chapter0-mspassage-obj-04-01.png": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-04-01.png",
+	"chapter0-mspassage-obj-05-01.png": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-05-01.png",
+	"chapter0-mspassage-obj-06-01.png": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-06-01.png",
 
 	// TODO: delete
 	bg:  "./image/bg.png",

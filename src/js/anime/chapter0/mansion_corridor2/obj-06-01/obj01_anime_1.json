@@ -1,0 +1,22 @@
+[
+{
+"images":["chapter0-mspassage-obj-06-01.png"],
+"name": "obj01_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 440,
+"CanvasHeight": 600,
+"MarginWidth": 228,
+"MarginHeight": 308,
+"parts": ["root","Obj","01"],
+"ssa": [
+[
+[1,0,0,502,366,522,0.0,0.0,0.0,1.0,1.0,183,261]
+],
+[
+[1,0,0,502,366,522,0.0,0.0,0.0,1.0,1.0,183,261]
+]
+]
+}
+}
+]
