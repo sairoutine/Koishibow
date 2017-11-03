@@ -10768,7 +10768,7 @@ module.exports = CONSTANT;
 'use strict';
 var DEBUG = {
 	ON: true,
-	SOUND_OFF: false,
+	SOUND_OFF: true,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_mansion_corridor1"],
 	//START_SCENE: ["stage", "chapter0_myroom"],
@@ -11020,6 +11020,8 @@ Game.prototype.setupDebug = function (dom) {
 
 	// テキスト追加
 	this.debug_manager.addMenuText("マウスクリックで移動／調べる");
+
+	this.debug_manager.addGitLatestCommitInfo("sairoutine", "Koishibow", "gh-pages");
 
 	// ゲームスタート ボタン
 	this.debug_manager.addMenuButton("Run", function (game) {
@@ -11886,6 +11888,51 @@ DebugManager.prototype.addMenuSelect = function (button_value, pulldown_list, fu
 	this.dom.appendChild(select);
 };
 
+DebugManager.prototype.addGitLatestCommitInfo = function (user_name, repo_name, branch) {
+	if(!this.is_debug_mode) return;
+
+	branch = branch || "master";
+
+	var core = this.core;
+
+	// create element
+	var dom = window.document.createElement('pre');
+
+	// add element
+	this.dom.appendChild(dom);
+
+	var git_api_url = "https://api.github.com/repos/" + user_name + "/" + repo_name + "/branches/" + branch;
+
+	// fetch git info
+	var xhr = new XMLHttpRequest();
+	xhr.onload = function() {
+		if(xhr.status !== 200) {
+			return;
+		}
+
+		var json_text = xhr.response;
+
+		var json;
+		if (json_text) {
+			json = JSON.parse(json_text);
+		}
+		else {
+			throw new Error("Can't parse git lastest commit info");
+		}
+
+		dom.textContent =
+			//"sha: " + json.commit.sha + "\n" +
+			//"author: " + json.commit.commit.author.name + "\n" +
+			"last update date: " + json.commit.commit.author.date + "\n" +
+			//"message: " + json.commit.commit.message + "\n" +
+			""
+		;
+	};
+
+	xhr.open('GET', git_api_url, true);
+	xhr.send(null);
+};
+
 
 
 
@@ -11897,12 +11944,15 @@ DebugManager.prototype.addMenuSelect = function (button_value, pulldown_list, fu
 
 // show collision area of object instance
 DebugManager.prototype.setShowingCollisionAreaOn = function () {
+	if(!this.is_debug_mode) return null;
 	this._is_showing_collision_area = true;
 };
 DebugManager.prototype.setShowingCollisionAreaOff = function () {
+	if(!this.is_debug_mode) return null;
 	this._is_showing_collision_area = false;
 };
 DebugManager.prototype.isShowingCollisionArea = function () {
+	if(!this.is_debug_mode) return false;
 	return this._is_showing_collision_area;
 };
 
