@@ -63,10 +63,6 @@ util.inherit(SceneStage, base_scene);
 SceneStage.prototype.init = function(field_name, is_right){
 	base_scene.prototype.init.apply(this, arguments);
 
-	if(this.core.audio_loader.currentPlayingBGM() !== "field") {
-		this.core.stopBGM();
-	}
-
 	// 現在のフィールド
 	this.core.save_manager.setCurrentField(field_name);
 	this.core.save_manager.save();
@@ -98,6 +94,11 @@ SceneStage.prototype.init = function(field_name, is_right){
 		this.koishi().setPosition(pos.x, pos.y);
 	}
 
+	// BGM 止める
+	if(this.core.audio_loader.currentPlayingBGM() !== this.field().bgm) {
+		this.core.stopBGM();
+	}
+
 	this.changeSubScene("play");
 };
 
@@ -116,7 +117,7 @@ SceneStage.prototype.useEye = function() {
 
 SceneStage.prototype.beforeDraw = function(){
 	if(this.frame_count === 60) {
-		this.core.changeBGM("field");
+		this.core.changeBGM(this.field().bgm);
 	}
 
 	// y 軸(y が大きい方が z軸が大きい)の降順ソート

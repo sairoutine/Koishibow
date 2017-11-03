@@ -111,11 +111,17 @@ AssetsConfig.bgms = {
 		//loopEnd: 1*60 + 47 + 0.027,
 	},
 
-	field: {
+	field1: {
 		path: "./bgm/field1.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 	},
+	field2: {
+		path: "./bgm/field2.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+	},
+
 };
 
 
