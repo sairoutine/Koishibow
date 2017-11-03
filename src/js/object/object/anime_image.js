@@ -127,7 +127,9 @@ ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 	});
 
 	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("talk", this.serif);
+	if (this.serif) {
+		this.scene.mainStage().changeSubScene("talk", this.serif);
+	}
 
 	// こいしのアクション
 	if (this._action_name) {
