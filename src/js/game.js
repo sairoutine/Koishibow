@@ -35,6 +35,8 @@ Game.prototype.setupDebug = function (dom) {
 	// テキスト追加
 	this.debug_manager.addMenuText("マウスクリックで移動／調べる");
 
+	this.debug_manager.addGitLatestCommitInfo("sairoutine", "Koishibow", "gh-pages");
+
 	// ゲームスタート ボタン
 	this.debug_manager.addMenuButton("Run", function (game) {
 		game.startRun();
