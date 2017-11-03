@@ -19,6 +19,8 @@ ObjectItemButton.prototype.setPosition = function(){
 };
 
 ObjectItemButton.prototype.onCollision = function(obj){
+	this.core.playSound("open_menu");
+
 	var scene_name = this.scene.mainStage().current_scene;
 	if (scene_name === "play") {
 		// メニューを開く

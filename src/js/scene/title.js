@@ -86,6 +86,7 @@ SceneTitle.prototype.beforeDraw = function(){
 		this.menu_ui.forEach(function(menu, i) {
 			// クリックしたら
 			if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](self.core)) {
+				self.core.playSound("select_title");
 				MENU[i][2](self.core);
 			}
 		});

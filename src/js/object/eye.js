@@ -16,11 +16,14 @@ ObjectEye.prototype.init = function(){
 ObjectEye.prototype.onCollision = function(obj){
 	var stage = this.scene.mainStage();
 
+
 	if (stage.isUsingEye()) {
 		// サードアイOff
 		stage.unUseEye();
 	}
 	else {
+		this.core.playSound("use_3rdeye");
+
 		// サードアイOn
 		stage.useEye();
 	}

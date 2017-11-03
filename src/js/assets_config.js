@@ -66,6 +66,27 @@ AssetsConfig.images = {
 
 AssetsConfig.sounds = {
 	// TODO: chapter 間やフィールド間でも音が被っても大丈夫なようにする
+	open_menu:    {
+		path: "./sound/open_menu.ogg",
+		volume: 1.0,
+	},
+	select_item:    {
+		path: "./sound/select_item.ogg",
+		volume: 1.0,
+	},
+	select_title:    {
+		path: "./sound/select_title.ogg",
+		volume: 1.0,
+	},
+	use_3rdeye:    {
+		path: "./sound/use_3rdeye.ogg",
+		volume: 1.0,
+	},
+	use_eyedrops:    {
+		path: "./sound/use_eyedrops.ogg",
+		volume: 1.0,
+	},
+
 	get_hat:    {
 		path: "./sound/chapter0/myroom/get_hat.ogg",
 		volume: 1.0,

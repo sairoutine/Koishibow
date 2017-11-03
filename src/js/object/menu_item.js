@@ -19,6 +19,7 @@ ObjectMenuItem.prototype.init = function(){
 
 
 ObjectMenuItem.prototype.onCollision = function(obj){
+	this.core.playSound("select_item");
 	this.scene.focus_item_id = this.item_id;
 };
 
@@ -66,6 +67,7 @@ ObjectMenuItem.prototype.collisionHeight = function(){
 
 // アイテムが使用されたとき
 ObjectMenuItem.prototype.use = function(){
+	this.core.playSound("use_eyedrops");
 	this.core.save_manager.increase3rdeyeGauge(100); // TODO:
 };
 
