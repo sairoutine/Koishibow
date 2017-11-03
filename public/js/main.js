@@ -12096,6 +12096,27 @@ AssetsConfig.images = {
 
 AssetsConfig.sounds = {
 	// TODO: chapter 間やフィールド間でも音が被っても大丈夫なようにする
+	open_menu:    {
+		path: "./sound/open_menu.ogg",
+		volume: 1.0,
+	},
+	select_item:    {
+		path: "./sound/select_item.ogg",
+		volume: 1.0,
+	},
+	select_title:    {
+		path: "./sound/select_title.ogg",
+		volume: 1.0,
+	},
+	use_3rdeye:    {
+		path: "./sound/use_3rdeye.ogg",
+		volume: 1.0,
+	},
+	use_eyedrops:    {
+		path: "./sound/use_eyedrops.ogg",
+		volume: 1.0,
+	},
+
 	get_hat:    {
 		path: "./sound/chapter0/myroom/get_hat.ogg",
 		volume: 1.0,
@@ -23862,11 +23883,14 @@ ObjectEye.prototype.init = function(){
 ObjectEye.prototype.onCollision = function(obj){
 	var stage = this.scene.mainStage();
 
+
 	if (stage.isUsingEye()) {
 		// サードアイOff
 		stage.unUseEye();
 	}
 	else {
+		this.core.playSound("use_3rdeye");
+
 		// サードアイOn
 		stage.useEye();
 	}
@@ -23928,6 +23952,8 @@ ObjectItemButton.prototype.setPosition = function(){
 };
 
 ObjectItemButton.prototype.onCollision = function(obj){
+	this.core.playSound("open_menu");
+
 	var scene_name = this.scene.mainStage().current_scene;
 	if (scene_name === "play") {
 		// メニューを開く
@@ -24312,6 +24338,7 @@ ObjectMenuItem.prototype.init = function(){
 
 
 ObjectMenuItem.prototype.onCollision = function(obj){
+	this.core.playSound("select_item");
 	this.scene.focus_item_id = this.item_id;
 };
 
@@ -24359,6 +24386,7 @@ ObjectMenuItem.prototype.collisionHeight = function(){
 
 // アイテムが使用されたとき
 ObjectMenuItem.prototype.use = function(){
+	this.core.playSound("use_eyedrops");
 	this.core.save_manager.increase3rdeyeGauge(100); // TODO:
 };
 
@@ -26147,6 +26175,7 @@ SceneTitle.prototype.beforeDraw = function(){
 		this.menu_ui.forEach(function(menu, i) {
 			// クリックしたら
 			if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](self.core)) {
+				self.core.playSound("select_title");
 				MENU[i][2](self.core);
 			}
 		});
