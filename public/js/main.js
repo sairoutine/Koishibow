@@ -24439,11 +24439,11 @@ ObjectMenuItem.prototype.draw = function(){
 
 
 ObjectMenuItem.prototype.collisionWidth = function(){
-	return 96;
+	return 128;
 };
 
 ObjectMenuItem.prototype.collisionHeight = function(){
-	return 96;
+	return 128;
 };
 
 
@@ -25706,6 +25706,14 @@ var SceneSubStageTalk = function(core, stage) {
 	// TODO: 削除
 	this.core.save_manager.addItem(1);
 	this.core.save_manager.addItem(2);
+	this.core.save_manager.addItem(3);
+	this.core.save_manager.addItem(4);
+	this.core.save_manager.addItem(5);
+	this.core.save_manager.addItem(6);
+	this.core.save_manager.addItem(7);
+	this.core.save_manager.addItem(8);
+	this.core.save_manager.addItem(9);
+	this.core.save_manager.addItem(10);
 };
 Util.inherit(SceneSubStageTalk, base_scene);
 
@@ -25722,7 +25730,7 @@ SceneSubStageTalk.prototype.init = function(){
 		var item_id = item_list[i];
 		var item = new MenuItem(this, item_id);
 		item.init();
-		item.setPosition(180 + i*120, 160);
+		item.setPosition(180 + (i%5)*160, 180 + 160*(Math.floor(i/5)));
 		self.addObject(item);
 	}
 
