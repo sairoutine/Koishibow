@@ -18,6 +18,8 @@ var ObjectStaticImage = function(core) {
 	this._height = null;
 
 	this._action_name = null;
+
+	this._sound_name  = null;
 };
 Util.inherit(ObjectStaticImage, base_object);
 
@@ -32,6 +34,8 @@ ObjectStaticImage.prototype.init = function(){
 	this._height = null;
 
 	this._action_name = null;
+
+	this._sound_name  = null;
 };
 ObjectStaticImage.prototype.addImage = function(image_name, scale){
 	this.image = this.core.image_loader.getImage(image_name);
@@ -47,6 +51,10 @@ ObjectStaticImage.prototype.addSize = function(width, height){
 ObjectStaticImage.prototype.addKoishiAction = function(action_name){
 	this._action_name  = action_name;
 };
+ObjectStaticImage.prototype.addSound = function(sound_name){
+	this._sound_name  = sound_name;
+};
+
 
 
 ObjectStaticImage.prototype.onCollision = function(obj){
@@ -71,6 +79,11 @@ ObjectStaticImage.prototype.onCollisionAfterKoishiWalk = function(){
 	// こいしのアクション
 	if (this._action_name) {
 		this.scene.mainStage().koishi().actionByName(this._action_name);
+	}
+
+	// 音を再生
+	if (this._sound_name) {
+		this.core.playSound(this._sound_name);
 	}
 };
 
