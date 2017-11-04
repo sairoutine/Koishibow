@@ -12076,6 +12076,7 @@ AssetsConfig.images = {
 	eye:  "./image/ui-common-btn-eye-1.png",
 
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
+	fukidashi_arrow:  "./image/ui-common-btn-arrow-brn.png",
 
 	// メニュー
 	"ui-common-bg-toolpu-blk":   "./image/menu/ui-common-bg-toolpu-blk.png",
@@ -12285,9 +12286,9 @@ module.exports = CONSTANT;
 'use strict';
 var DEBUG = {
 	ON: true,
-	SOUND_OFF: false,
+	SOUND_OFF: true,
 	// 第一引数: scene name, 第二引数以降: 引数
-	//START_SCENE: ["stage", "chapter0_mansion_corridor2"],
+	START_SCENE: ["stage", "chapter0_mansion_corridor2"],
 	//START_SCENE: ["stage", "chapter0_myroom"],
 	//START_SCENE: ["movie", "./movie/trailer.mp4", "title"],
 };
@@ -23347,6 +23348,15 @@ SerifManager.prototype._printMessage = function (message) {
 
 	this._startPrintMessage();
 };
+// is waiting to be called next?
+SerifManager.prototype.isWaitingNext = function () {
+	return this.isEndPrinting() && !this.isEnd();
+};
+
+SerifManager.prototype.isEndPrinting = function () {
+	var char_length = this._char_list.length;
+	return this._char_idx >= char_length ? true : false;
+};
 
 SerifManager.prototype._startPrintMessage = function () {
 	var char_length = this._char_list.length;
@@ -25042,7 +25052,7 @@ SpriteStudio.prototype.alpha = function() {
 
 module.exports = SpriteStudio;
 
-},{"../hakurei":67,"../vendor/SsaPlayer":125}],114:[function(require,module,exports){
+},{"../hakurei":67,"../vendor/SsaPlayer":124}],114:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -26057,7 +26067,6 @@ var base_scene = require('./base');
 var Util = require('../../hakurei').util;
 
 var SerifManager = require('../../hakurei').serif_manager;
-var serif_script = require("../../serif/objects/1"); // rename objects -> pieces
 
 var SceneSubStageTalk = function(core, stage) {
 	base_scene.apply(this, arguments);
@@ -26068,6 +26077,10 @@ Util.inherit(SceneSubStageTalk, base_scene);
 
 SceneSubStageTalk.prototype.init = function(serif_list){
 	base_scene.prototype.init.apply(this, arguments);
+
+	// クリック待ちカーソルの状態
+	this._cursor_y = 0;
+	this._cursor_reverse = false;
 
 	// セリフデータの生成
 	var serif_script = [];
@@ -26084,7 +26097,7 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if(this.core.input_manager.isLeftClickPush()) {
-		if(this.serif.is_end()) {
+		if(this.serif.isEnd()) {
 			// セリフ終わり
 			this.mainStage().changeSubScene("play");
 		}
@@ -26111,20 +26124,38 @@ SceneSubStageTalk.prototype.draw = function(){
 	ctx.restore();
 };
 
+// セリフ表示を右に表示させるかどうか
+SceneSubStageTalk.prototype._isShowRight = function(){
+	var x = this.koishi().x();
 
+	var scene_center_x = this.mainStage().width / 2;
+
+	if (x > scene_center_x) {
+		return true;
+	}
+	else {
+		return false;
+	}
+};
 
 // セリフウィンドウ表示
 SceneSubStageTalk.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
 	ctx.save();
 
-	var x = this.koishi().x() - 550;
-	var y = this.koishi().y() - 330;
+	var x,y;
+	if(!this._isShowRight()) {
+		x = this.koishi().x() - 550;
+		y = this.koishi().y() - 330;
+	}
+	else {
+		x = this.koishi().x() - 300;
+		y = this.koishi().y() - 330;
+	}
 
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
 
-	// TODO: 実装
-	if(true) {
+	if(!this._isShowRight()) {
 		x = -x; // 反転
 		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
 	}
@@ -26151,32 +26182,58 @@ SceneSubStageTalk.prototype._showMessage = function() {
 	ctx.textAlign = 'left';
 	ctx.textBaseAlign = 'middle';
 
-	var x = this.koishi().x() + 20;
-	var y = this.koishi().y() - 300;
+	var x,y;
+	if(!this._isShowRight()) {
+		x = this.koishi().x() + 80;
+		y = this.koishi().y() - 290;
+	}
+	else {
+		x = this.koishi().x() - 220;
+		y = this.koishi().y() - 290;
+	}
 
-	x = x + 60;
 	// セリフ表示
 	var lines = this.serif.lines();
 	if (lines.length) {
-		// セリフテキストの y 座標初期位置
-		y = y + 40;
-
 		for(var i = 0, len = lines.length; i < len; i++) {
+			y+= 30;
 			ctx.fillText(lines[i], x, y); // 1行表示
 
-			y+= 30;
+		}
+		// クリック待ちカーソル
+		if (this.serif.isWaitingNext()) {
+
+			// カーソルを上下に移動させる
+			if (this._cursor_reverse) {
+				this._cursor_y-=0.25;
+			}
+			else {
+				this._cursor_y+=0.25;
+			}
+
+			if (this._cursor_y > 6) {
+				this._cursor_reverse = true;
+			}
+			else if (this._cursor_y === 0) {
+				this._cursor_reverse = false;
+			}
+
+			var cursor = this.core.image_loader.getImage("fukidashi_arrow");
+			ctx.drawImage(cursor,
+				x + lines[lines.length-1].length*18,
+				y - 18 + 2 + this._cursor_y,
+				cursor.width*2/3,
+				cursor.height*2/3
+			);
 		}
 	}
 
 	ctx.restore();
 };
 
-
-
-
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":67,"../../serif/objects/1":124,"./base":119}],123:[function(require,module,exports){
+},{"../../hakurei":67,"./base":119}],123:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -26318,16 +26375,6 @@ SceneTitle.prototype.draw = function(){
 module.exports = SceneTitle;
 
 },{"../constant":56,"../hakurei":67}],124:[function(require,module,exports){
-'use strict';
-
-// セリフ
-var Serif= [
-	{"chara":"koishi","serif":"花が枯れちゃいそう..."},
-	{"chara":"koishi","serif":"お水をあげなくちゃ！"},
-];
-module.exports = Serif;
-
-},{}],125:[function(require,module,exports){
 //-----------------------------------------------------------
 // Ss5ConverterToSSAJSON v1.0.3
 //
