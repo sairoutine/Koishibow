@@ -95,7 +95,7 @@ SceneStage.prototype.init = function(field_name, is_right){
 	}
 
 	// BGM 止める
-	if(this.core.audio_loader.currentPlayingBGM() !== this.field().bgm) {
+	if(!this.core.audio_loader.isPlayingBGM(this.field().bgm)) {
 		this.core.stopBGM();
 	}
 
@@ -118,7 +118,16 @@ SceneStage.prototype.useEye = function() {
 SceneStage.prototype.beforeDraw = function(){
 	// BGM 再生
 	if(this.frame_count === 60) {
+		// メインBGM 再生
 		this.core.changeBGM(this.field().bgm);
+
+		// 既に再生していたサブBGMを止める
+		this.core.audio_loader.stopBGMWithout(this.field().bgm);
+
+		// サブBGM再生
+		if (this.field().bgm2) {
+			this.core.addBGM(this.field().bgm2);
+		}
 	}
 
 	// ランダムノイズ再生
