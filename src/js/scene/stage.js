@@ -19,6 +19,9 @@ var RightYajirushi = require('../object/right_yajirushi');
 var ItemButton = require('../object/item_button');
 var Eye = require('../object/eye');
 
+var jsonDataOfBlackMist = require('../anime/black-mist_anime_1');
+var SS = require('../object/sprite_studio');
+
 var FieldMap = require('../field');
 
 var SceneStage = function(core) {
@@ -43,6 +46,8 @@ var SceneStage = function(core) {
 	this.right_yajirushi = new RightYajirushi(this);
 	this.item_button     = new ItemButton(this);
 	this.eye             = new Eye(this);
+
+	this.black_mist = new SS(this);
 
 	this.is_use_eye = false;
 	/* sub scene 一覧
@@ -98,6 +103,8 @@ SceneStage.prototype.init = function(field_name, is_right){
 	if(!this.core.audio_loader.isPlayingBGM(this.field().bgm)) {
 		this.core.stopBGM();
 	}
+
+	this.black_mist.init(this.width/2, this.height/2, jsonDataOfBlackMist, 0, {scale: 2/3});
 
 	this.changeSubScene("play");
 };
@@ -159,11 +166,11 @@ SceneStage.prototype.beforeDraw = function(){
 
 
 
+	this.black_mist.beforeDraw();
 
 	this._beforeDrawOfMenuObject();
 
 	base_scene.prototype.beforeDraw.apply(this, arguments);
-
 
 	// クリック位置を出力
 	if (CONSTANT.DEBUG.ON) {
@@ -251,11 +258,12 @@ SceneStage.prototype.draw = function(){
 		this._drawLight();
 	}
 
+	this.black_mist.draw();
+
 	this._drawOfMenuObject();
 
 	// サブシーン描画
 	base_scene.prototype.draw.apply(this, arguments);
-
 };
 SceneStage.prototype._drawLight = function(){
 	var ctx = this.core.ctx;
