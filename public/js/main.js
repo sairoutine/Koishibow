@@ -16139,7 +16139,7 @@ AssetsConfig.sounds = {
 	},
 	"chapter0-myroom-move_crayon":    {
 		path: "./sound/chapter0/myroom/move_crayon.ogg",
-		volume: 1.0,
+		volume: 0.7,
 	},
 	"chapter0-myroom-sound_window":    {
 		path: "./sound/chapter0/myroom/sound_window.ogg",
@@ -16245,17 +16245,32 @@ AssetsConfig.bgms = {
 		path: "./bgm/title1.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 0.9,
 	},
 
 	field1: {
 		path: "./bgm/field1.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 0.9,
 	},
 	field2: {
 		path: "./bgm/field2.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 0.9,
+	},
+	"chapter0-mansion_corridor1-wind": {
+		path: "./bgm/chapter0/mansion_corridor1/wind.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-clock": {
+		path: "./bgm/chapter0/mansion_corridor3/clock.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
 	},
 
 };
@@ -16280,7 +16295,7 @@ var CONSTANT = {
 
 	// フィールドでランダムに流れるノイズ
 	NOISE_SOUND_LIST: ["noise1", "noise2", "noise3", "noise4", "noise5"],
-	NOISE_SOUND_INTERVAL_COUNT: 600,
+	NOISE_SOUND_INTERVAL_COUNT: 1200,
 	NOISE_SOUND_PROB: 50,
 };
 
@@ -16378,6 +16393,7 @@ module.exports = {
 	key: "chapter0_mansion_corridor1",
 	name: "屋敷の廊下1",
 	bgm: "field2",
+	bgm2: "chapter0-mansion_corridor1-wind",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter0_mansion_corridor2",
@@ -16432,7 +16448,7 @@ module.exports = {
 			anime5: "chapter0-mansion_corridor1-obj-03-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-03-01-obj06",
 			action: "look_top",
-			sound: "chapter0-mansion_corridor1-open_curtain"
+			sound_back: "chapter0-mansion_corridor1-open_curtain"
 		},
 	],
 
@@ -16511,10 +16527,11 @@ module.exports = {
 	key: "chapter0_mansion_corridor3",
 	name: "屋敷の廊下3",
 	bgm: "field2",
+	bgm2: "chapter0-mansion_corridor3-clock",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
 	right_field: null,
-	left_field: "chapter0_mansion_corridor3",
+	left_field: "chapter0_mansion_corridor2",
 	background: "chapter0-mansionpas-003",
 	walk_sound: "walking_bare_wood",
 	objects: [
@@ -16774,6 +16791,11 @@ Game.prototype.playBGM = function () {
 	if (CONSTANT.DEBUG.SOUND_OFF) return;
 	return this.audio_loader.playBGM.apply(this.audio_loader, arguments);
 };
+Game.prototype.addBGM = function () {
+	if (CONSTANT.DEBUG.SOUND_OFF) return;
+	return this.audio_loader.addBGM.apply(this.audio_loader, arguments);
+};
+
 Game.prototype.changeBGM = function () {
 	if (CONSTANT.DEBUG.SOUND_OFF) return;
 	return this.audio_loader.changeBGM.apply(this.audio_loader, arguments);
@@ -16813,11 +16835,8 @@ var AudioLoader = function() {
 		this.audio_context.createGain = this.audio_context.createGain || this.audio_context.createGainNode;
 	}
 
-	// playing bgm name
-	this._playing_bgm_name = null;
-
-	// playing AudioBufferSourceNode instance
-	this.audio_source = null;
+	// key: bgm name, value: playing AudioBufferSourceNode instance
+	this._audio_source_map = {};
 };
 AudioLoader.prototype.init = function() {
 	// TODO: cancel already loading bgms and sounds
@@ -16832,9 +16851,7 @@ AudioLoader.prototype.init = function() {
 
 	this.soundflag = 0x00;
 
-	this._playing_bgm_name = null;
-
-	this.audio_source = null;
+	this._audio_source_map = {};
 };
 
 AudioLoader.prototype.loadSound = function(name, path, volume) {
@@ -16928,37 +16945,61 @@ AudioLoader.prototype.executePlaySound = function() {
 	}
 };
 AudioLoader.prototype.playBGM = function(name) {
-	var self = this;
-
 	// stop playing bgm
-	self.stopBGM();
+	this.stopAllBGM();
 
-	self._playing_bgm_name = name;
-	self.audio_source = self._createSourceNode(name);
-	self.audio_source.start(0);
+	this.addBGM(name);
 };
+AudioLoader.prototype.addBGM = function(name) {
+	if (this.isPlayingBGM(name)) {
+		this.stopBGM(name);
+	}
+
+	this._audio_source_map[name] = this._createSourceNode(name);
+	this._audio_source_map[name].start(0);
+};
+
 
 // play if the bgm is not playing now
 AudioLoader.prototype.changeBGM = function(name) {
-	if (this._playing_bgm_name !== name) {
+	if (!this.isPlayingBGM(name)) {
 		this.playBGM(name);
 	}
 };
-AudioLoader.prototype.stopBGM = function() {
-	var self = this;
-	if(self.isPlayingBGM()) {
-		self.audio_source.stop(0);
-		self.audio_source = null;
-		self._playing_bgm_name = null;
+AudioLoader.prototype.stopAllBGM = function() {
+	for (var bgm_name in this._audio_source_map) {
+		this.stopBGM(bgm_name);
 	}
 };
-AudioLoader.prototype.isPlayingBGM = function() {
-	return this.audio_source ? true : false;
-};
-AudioLoader.prototype.currentPlayingBGM = function() {
-	return this._playing_bgm_name;
+AudioLoader.prototype.stopBGMWithout = function(exclude_bgm_name) {
+	for (var bgm_name in this._audio_source_map) {
+		if (bgm_name !== exclude_bgm_name) {
+			this.stopBGM(bgm_name);
+		}
+	}
 };
 
+
+
+AudioLoader.prototype.stopBGM = function(name) {
+	if(typeof name === "undefined") {
+		return this.stopAllBGM();
+	}
+
+	if (name in this._audio_source_map) {
+		var audio_source = this._audio_source_map[name];
+		audio_source.stop(0);
+		delete this._audio_source_map[name];
+	}
+};
+AudioLoader.prototype.isPlayingBGM = function(name) {
+	if(typeof name === "undefined") {
+		return Object.keys(this._audio_source_map).length ? true : false;
+	}
+	else {
+		return name in this._audio_source_map ? true : false;
+	}
+};
 
 // create AudioBufferSourceNode instance
 AudioLoader.prototype._createSourceNode = function(name) {
@@ -29308,7 +29349,7 @@ SceneLoading.prototype.init = function() {
 	// ゲームで使用するBGM一覧
 	for (var key3 in AssetsConfig.bgms) {
 		var conf3 = AssetsConfig.bgms[key3];
-		this.core.audio_loader.loadBGM(key3, conf3.path, 1.0, conf3.loopStart, conf3.loopEnd);
+		this.core.audio_loader.loadBGM(key3, conf3.path, conf3.volume, conf3.loopStart, conf3.loopEnd);
 	}
 };
 
@@ -29477,7 +29518,7 @@ SceneStage.prototype.init = function(field_name, is_right){
 	}
 
 	// BGM 止める
-	if(this.core.audio_loader.currentPlayingBGM() !== this.field().bgm) {
+	if(!this.core.audio_loader.isPlayingBGM(this.field().bgm)) {
 		this.core.stopBGM();
 	}
 
@@ -29500,7 +29541,16 @@ SceneStage.prototype.useEye = function() {
 SceneStage.prototype.beforeDraw = function(){
 	// BGM 再生
 	if(this.frame_count === 60) {
+		// メインBGM 再生
 		this.core.changeBGM(this.field().bgm);
+
+		// 既に再生していたサブBGMを止める
+		this.core.audio_loader.stopBGMWithout(this.field().bgm);
+
+		// サブBGM再生
+		if (this.field().bgm2) {
+			this.core.addBGM(this.field().bgm2);
+		}
 	}
 
 	// ランダムノイズ再生
@@ -30380,7 +30430,7 @@ var SceneTitle = function(core) {
 				ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
 				var logo;
-				if (this.is_big && menu[1](this.core)) {
+				if (this.is_big) {
 					logo = this.core.image_loader.getImage(menu[0] + "-on");
 				}
 				else {
@@ -30421,7 +30471,6 @@ SceneTitle.prototype.beforeDraw = function(){
 		this.menu_ui.forEach(function(menu, i) {
 			// クリックしたら
 			if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](self.core)) {
-				self.core.playSound("select_title");
 				MENU[i][2](self.core);
 			}
 		});
@@ -30429,7 +30478,11 @@ SceneTitle.prototype.beforeDraw = function(){
 	else {
 		this.menu_ui.forEach(function(menu, i) {
 			// マウスカーソルが当たったら
-			if(menu.checkCollisionWithPosition(x, y)) {
+			if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](self.core)) {
+				// マウスカーソルを乗せた瞬間に音を鳴らす
+				if (!menu.is_big) {
+					self.core.playSound("select_title");
+				}
 				menu.setVariable("is_big", true);
 			}
 			else {
