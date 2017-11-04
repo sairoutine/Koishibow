@@ -128,6 +128,11 @@ Game.prototype.playBGM = function () {
 	if (CONSTANT.DEBUG.SOUND_OFF) return;
 	return this.audio_loader.playBGM.apply(this.audio_loader, arguments);
 };
+Game.prototype.addBGM = function () {
+	if (CONSTANT.DEBUG.SOUND_OFF) return;
+	return this.audio_loader.addBGM.apply(this.audio_loader, arguments);
+};
+
 Game.prototype.changeBGM = function () {
 	if (CONSTANT.DEBUG.SOUND_OFF) return;
 	return this.audio_loader.changeBGM.apply(this.audio_loader, arguments);
