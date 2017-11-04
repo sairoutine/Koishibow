@@ -3,7 +3,6 @@ var base_scene = require('./base');
 var Util = require('../../hakurei').util;
 
 var SerifManager = require('../../hakurei').serif_manager;
-var serif_script = require("../../serif/objects/1"); // rename objects -> pieces
 
 var SceneSubStageTalk = function(core, stage) {
 	base_scene.apply(this, arguments);
@@ -14,6 +13,10 @@ Util.inherit(SceneSubStageTalk, base_scene);
 
 SceneSubStageTalk.prototype.init = function(serif_list){
 	base_scene.prototype.init.apply(this, arguments);
+
+	// クリック待ちカーソルの状態
+	this._cursor_y = 0;
+	this._cursor_reverse = false;
 
 	// セリフデータの生成
 	var serif_script = [];
@@ -30,7 +33,7 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if(this.core.input_manager.isLeftClickPush()) {
-		if(this.serif.is_end()) {
+		if(this.serif.isEnd()) {
 			// セリフ終わり
 			this.mainStage().changeSubScene("play");
 		}
@@ -118,30 +121,50 @@ SceneSubStageTalk.prototype._showMessage = function() {
 	var x,y;
 	if(!this._isShowRight()) {
 		x = this.koishi().x() + 80;
-		y = this.koishi().y() - 300;
+		y = this.koishi().y() - 290;
 	}
 	else {
 		x = this.koishi().x() - 220;
-		y = this.koishi().y() - 300;
+		y = this.koishi().y() - 290;
 	}
 
 	// セリフ表示
 	var lines = this.serif.lines();
 	if (lines.length) {
-		// セリフテキストの y 座標初期位置
-		y = y + 40;
-
 		for(var i = 0, len = lines.length; i < len; i++) {
+			y+= 30;
 			ctx.fillText(lines[i], x, y); // 1行表示
 
-			y+= 30;
+		}
+		// クリック待ちカーソル
+		if (this.serif.isWaitingNext()) {
+
+			// カーソルを上下に移動させる
+			if (this._cursor_reverse) {
+				this._cursor_y-=0.25;
+			}
+			else {
+				this._cursor_y+=0.25;
+			}
+
+			if (this._cursor_y > 6) {
+				this._cursor_reverse = true;
+			}
+			else if (this._cursor_y === 0) {
+				this._cursor_reverse = false;
+			}
+
+			var cursor = this.core.image_loader.getImage("fukidashi_arrow");
+			ctx.drawImage(cursor,
+				x + lines[lines.length-1].length*18,
+				y - 18 + 2 + this._cursor_y,
+				cursor.width*2/3,
+				cursor.height*2/3
+			);
 		}
 	}
 
 	ctx.restore();
 };
-
-
-
 
 module.exports = SceneSubStageTalk;

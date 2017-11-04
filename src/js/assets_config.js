@@ -46,6 +46,7 @@ AssetsConfig.images = {
 	eye:  "./image/ui-common-btn-eye-1.png",
 
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
+	fukidashi_arrow:  "./image/ui-common-btn-arrow-brn.png",
 
 	// メニュー
 	"ui-common-bg-toolpu-blk":   "./image/menu/ui-common-bg-toolpu-blk.png",
