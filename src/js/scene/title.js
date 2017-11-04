@@ -45,7 +45,7 @@ var SceneTitle = function(core) {
 				ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
 				var logo;
-				if (this.is_big && menu[1](this.core)) {
+				if (this.is_big) {
 					logo = this.core.image_loader.getImage(menu[0] + "-on");
 				}
 				else {
@@ -86,7 +86,6 @@ SceneTitle.prototype.beforeDraw = function(){
 		this.menu_ui.forEach(function(menu, i) {
 			// クリックしたら
 			if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](self.core)) {
-				self.core.playSound("select_title");
 				MENU[i][2](self.core);
 			}
 		});
@@ -94,7 +93,11 @@ SceneTitle.prototype.beforeDraw = function(){
 	else {
 		this.menu_ui.forEach(function(menu, i) {
 			// マウスカーソルが当たったら
-			if(menu.checkCollisionWithPosition(x, y)) {
+			if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](self.core)) {
+				// マウスカーソルを乗せた瞬間に音を鳴らす
+				if (!menu.is_big) {
+					self.core.playSound("select_title");
+				}
 				menu.setVariable("is_big", true);
 			}
 			else {
