@@ -106,7 +106,7 @@ AssetsConfig.sounds = {
 	},
 	"chapter0-myroom-move_crayon":    {
 		path: "./sound/chapter0/myroom/move_crayon.ogg",
-		volume: 1.0,
+		volume: 0.7,
 	},
 	"chapter0-myroom-sound_window":    {
 		path: "./sound/chapter0/myroom/sound_window.ogg",
@@ -212,17 +212,32 @@ AssetsConfig.bgms = {
 		path: "./bgm/title1.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 0.9,
 	},
 
 	field1: {
 		path: "./bgm/field1.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 0.9,
 	},
 	field2: {
 		path: "./bgm/field2.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 0.9,
+	},
+	"chapter0-mansion_corridor1-wind": {
+		path: "./bgm/chapter0/mansion_corridor1/wind.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-clock": {
+		path: "./bgm/chapter0/mansion_corridor3/clock.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
 	},
 
 };
