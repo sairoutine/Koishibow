@@ -39,9 +39,6 @@ AssetsConfig.images = {
 	"chapter0-mspassage-obj-10-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-10-01.png",
 	"chapter0-mspassage-obj-11-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-11-01.png",
 
-	// TODO: delete
-	bg:  "./image/bg.png",
-
 	light:  "./image/light.png",
 
 	// 画面遷移用やじるし
