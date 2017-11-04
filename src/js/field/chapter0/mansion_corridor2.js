@@ -24,8 +24,10 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor2-obj-04-01-obj04",
 			anime5: "chapter0-mansion_corridor2-obj-04-01-obj05",
 			anime6: "chapter0-mansion_corridor2-obj-04-01-obj06",
+			action: "touch",
+			sound:      "chapter0-mansion_corridor2-flower_front",
+			sound_back: "chapter0-mansion_corridor2-flower_back"
 
-			action: "touch"
 		},
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -52,7 +54,8 @@ module.exports = {
 			anime1: "chapter0-mansion_corridor2-obj-06-01-obj01",
 			anime2: "chapter0-mansion_corridor2-obj-06-01-obj02",
 			anime3: "chapter0-mansion_corridor2-obj-06-01-obj03",
-			action: null
+			action: null,
+			sound:      "chapter0-mansion_corridor2-open_door",
 		},
 	],
 

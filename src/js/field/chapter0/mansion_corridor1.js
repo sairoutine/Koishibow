@@ -24,8 +24,9 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor1-obj-01-01-obj04",
 			anime5: "chapter0-mansion_corridor1-obj-01-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-01-01-obj06",
-
-			action: "look_top"
+			action: "look_top",
+			sound:      "chapter0-mansion_corridor1-lamp_front",
+			sound_back: "chapter0-mansion_corridor1-lamp_back"
 		},
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -40,7 +41,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor1-obj-02-01-obj04",
 			anime5: "chapter0-mansion_corridor1-obj-02-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-02-01-obj06",
-			action: "touch"
+			action: "touch",
+			sound: "chapter0-mansion_corridor1-move_tricycle"
 		},
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -55,7 +57,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor1-obj-03-01-obj04",
 			anime5: "chapter0-mansion_corridor1-obj-03-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-03-01-obj06",
-			action: "look_top"
+			action: "look_top",
+			sound: "chapter0-mansion_corridor1-open_curtain"
 		},
 	],
 
