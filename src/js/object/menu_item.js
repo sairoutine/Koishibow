@@ -57,11 +57,11 @@ ObjectMenuItem.prototype.draw = function(){
 
 
 ObjectMenuItem.prototype.collisionWidth = function(){
-	return 96;
+	return 128;
 };
 
 ObjectMenuItem.prototype.collisionHeight = function(){
-	return 96;
+	return 128;
 };
 
 
