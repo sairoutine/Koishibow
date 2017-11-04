@@ -12095,7 +12095,6 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
-	// TODO: chapter 間やフィールド間でも音が被っても大丈夫なようにする
 	open_menu:    {
 		path: "./sound/open_menu.ogg",
 		volume: 1.0,
@@ -12117,24 +12116,81 @@ AssetsConfig.sounds = {
 		volume: 1.0,
 	},
 
-	get_hat:    {
+	"chapter0_myroom-get_hat":    {
 		path: "./sound/chapter0/myroom/get_hat.ogg",
 		volume: 1.0,
 	},
-	open_book:    {
-		path: "./sound/chapter0/myroom/open_book.ogg",
-		volume: 1.0,
-	},
-	door_open:    {
+	"chapter0-myroom-door_open":    {
 		path: "./sound/chapter0/myroom/door_open.ogg",
 		volume: 1.0,
 	},
-	move_crayon:    {
+
+	"chapter0-myroom-open_book":    {
+		path: "./sound/chapter0/myroom/open_book.ogg",
+		volume: 1.0,
+	},
+	"chapter0-myroom-move_crayon":    {
 		path: "./sound/chapter0/myroom/move_crayon.ogg",
 		volume: 1.0,
 	},
-	sound_window:    {
+	"chapter0-myroom-sound_window":    {
 		path: "./sound/chapter0/myroom/sound_window.ogg",
+		volume: 1.0,
+	},
+	"chapter0-hospital_corridor1-sound_aidkit":    {
+		path: "./sound/chapter0/hospital_corridor1/sound_aidkit.ogg",
+		volume: 1.0,
+	},
+	"chapter0-hospital_corridor1-sound_strecher":    {
+		path: "./sound/chapter0/hospital_corridor1/sound_strecher.ogg",
+		volume: 1.0,
+	},
+	"chapter0-hospital_corridor2-move_wheelchair":    {
+		path: "./sound/chapter0/hospital_corridor2/move_wheelchair.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-lamp_back":    {
+		path: "./sound/chapter0/mansion_corridor1/lamp_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-lamp_front":    {
+		path: "./sound/chapter0/mansion_corridor1/lamp_front.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-move_tricycle":    {
+		path: "./sound/chapter0/mansion_corridor1/move_tricycle.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-open_curtain":    {
+		path: "./sound/chapter0/mansion_corridor1/open_curtain.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-flower_back":    {
+		path: "./sound/chapter0/mansion_corridor2/flower_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-flower_front":    {
+		path: "./sound/chapter0/mansion_corridor2/flower_front.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-open_door":    {
+		path: "./sound/chapter0/mansion_corridor2/open_door.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-open_door":    {
+		path: "./sound/chapter0/mansion_corridor3/open_door.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-ring_clock_back":    {
+		path: "./sound/chapter0/mansion_corridor3/ring_clock_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-ring_clock_front":    {
+		path: "./sound/chapter0/mansion_corridor3/ring_clock_front.ogg",
+		volume: 1.0,
+	},
+	touch:    {
+		path: "./sound/touch.ogg",
 		volume: 1.0,
 	},
 	walking_bare_default_left:    {
@@ -12277,9 +12333,9 @@ module.exports = {
 	background: "chapter0-hospital_corridor1-bg-001",
 	walk_sound: "walking_bare_default",
 	objects: [
-		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ストレッチャー", serif: ["へんなベッド"],  x: 814, y: 608, scale: 0.7, action: "touch"},
+		{image: "chapter0-hospital_corridor1-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ストレッチャー", serif: ["へんなベッド"],  x: 814, y: 608, scale: 0.7, action: "touch", sound: "chapter0-hospital_corridor1-sound_strecher"},
 		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["くすりはいらない……"],   x: 279, y: 378, scale: 0.7},
-		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "救急箱", serif: ["くーくーばこ！", "けがしてないよ！"], x: 281, y: 280, scale: 0.7, action: "touch"},
+		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "救急箱", serif: ["くーくーばこ！", "けがしてないよ！"], x: 281, y: 280, scale: 0.7, action: "touch", sound: "chapter0-hospital_corridor1-sound_aidkit"},
 		{image: "chapter0-hospital_corridor1-obj-04-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "メス", serif: ["ナイフ"],   x: 853, y: 534, scale: 0.7},
 	],
 };
@@ -12301,7 +12357,7 @@ module.exports = {
 	walk_sound: "walking_bare_default",
 	objects: [
 		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "くつした", serif: ["やだやだ。"], x: 302, y: 443, scale: 0.7, action: "look_bottom"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", serif: ["あしおったらのってもいい？"], x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03", action: "touch"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", serif: ["あしおったらのってもいい？"], x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03", action: "touch", sound: "chapter0-hospital_corridor2-move_wheelchair"},
 	],
 
 };
@@ -12334,8 +12390,9 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor1-obj-01-01-obj04",
 			anime5: "chapter0-mansion_corridor1-obj-01-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-01-01-obj06",
-
-			action: "look_top"
+			action: "look_top",
+			sound:      "chapter0-mansion_corridor1-lamp_front",
+			sound_back: "chapter0-mansion_corridor1-lamp_back"
 		},
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -12350,7 +12407,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor1-obj-02-01-obj04",
 			anime5: "chapter0-mansion_corridor1-obj-02-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-02-01-obj06",
-			action: "touch"
+			action: "touch",
+			sound: "chapter0-mansion_corridor1-move_tricycle"
 		},
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -12365,7 +12423,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor1-obj-03-01-obj04",
 			anime5: "chapter0-mansion_corridor1-obj-03-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-03-01-obj06",
-			action: "look_top"
+			action: "look_top",
+			sound: "chapter0-mansion_corridor1-open_curtain"
 		},
 	],
 
@@ -12398,8 +12457,10 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor2-obj-04-01-obj04",
 			anime5: "chapter0-mansion_corridor2-obj-04-01-obj05",
 			anime6: "chapter0-mansion_corridor2-obj-04-01-obj06",
+			action: "touch",
+			sound:      "chapter0-mansion_corridor2-flower_front",
+			sound_back: "chapter0-mansion_corridor2-flower_back"
 
-			action: "touch"
 		},
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -12426,7 +12487,8 @@ module.exports = {
 			anime1: "chapter0-mansion_corridor2-obj-06-01-obj01",
 			anime2: "chapter0-mansion_corridor2-obj-06-01-obj02",
 			anime3: "chapter0-mansion_corridor2-obj-06-01-obj03",
-			action: null
+			action: null,
+			sound:      "chapter0-mansion_corridor2-open_door",
 		},
 	],
 
@@ -12485,12 +12547,12 @@ module.exports = {
 	background: "chapter0-myroom-bg-001",
 	walk_sound: "walking_bare_default",
 	objects: [
-		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", serif: ["まだねむたくないもん"], x: 258, y: 389, scale: 0.7, action: "touch"},
-		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["あけない"], x: 59, y: 496, scale: 0.7, action: "touch"},
+		{image: "chapter0-myroom-obj-01-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "ベッド", serif: ["まだねむたくないもん"], x: 258, y: 389, scale: 0.7, action: "touch", sound: "touch"},
+		{image: "chapter0-myroom-obj-05-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["あけない"], x: 59, y: 496, scale: 0.7, action: "touch", sound: "touch"},
 
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", serif: ["にっきさんひさしぶり！", "だっておはなしすることないんだもん"], x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03", width: 80, height: 80, action: "look_bottom", sound: "open_book"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", serif: ["くれおん！", "ピンクなくなっちゃったなー"], x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03", width: 80, height: 80, action: "look_bottom", sound: "move_crayon"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03", action: "look_top", sound: "sound_window"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", serif: ["にっきさんひさしぶり！", "だっておはなしすることないんだもん"], x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03", width: 80, height: 80, action: "look_bottom", sound: "chapter0-myroom-open_book"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", serif: ["くれおん！", "ピンクなくなっちゃったなー"], x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03", width: 80, height: 80, action: "look_bottom", sound: "chapter0-myroom-move_crayon"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03", action: "look_top", sound: "chapter0-myroom-sound_window"},
 	],
 };
 
@@ -12760,6 +12822,7 @@ AudioLoader.prototype.isAllLoaded = function() {
 };
 
 AudioLoader.prototype.playSound = function(name) {
+	if (!(name in this.sounds)) throw new Error("Can't find sound '" + name + "'.");
 	this.soundflag |= this.sounds[name].id;
 };
 
@@ -24429,6 +24492,7 @@ var ObjectAnimeImage = function(core) {
 	this._action_name = null;
 
 	this._sound_name  = null;
+	this._sound_back_name  = null;
 
 	// アニメ
 	this.sprite = new SS(this.scene);
@@ -24457,6 +24521,7 @@ ObjectAnimeImage.prototype.init = function(){
 	this._action_name = null;
 
 	this._sound_name  = null;
+	this._sound_back_name  = null;
 
 	this._is_touch = false;
 	this._is_mouseover = false;
@@ -24490,8 +24555,9 @@ ObjectAnimeImage.prototype.addSize = function(width, height){
 ObjectAnimeImage.prototype.addKoishiAction = function(action_name){
 	this._action_name  = action_name;
 };
-ObjectAnimeImage.prototype.addSound = function(sound_name){
+ObjectAnimeImage.prototype.addSound = function(sound_name, sound_back_name){
 	this._sound_name  = sound_name;
+	this._sound_back_name  = sound_back_name;
 };
 
 
@@ -24580,8 +24646,10 @@ ObjectAnimeImage.prototype.onCollisionByMouseOver = function(){
 		sprite.changeAnimation(onmouseover_anime);
 	});
 
-
-
+	// 音
+	if (this._sound_back_name) {
+		this.core.playSound(this._sound_back_name);
+	}
 };
 
 ObjectAnimeImage.prototype.beforeDraw = function() {
@@ -24662,6 +24730,8 @@ var ObjectStaticImage = function(core) {
 	this._height = null;
 
 	this._action_name = null;
+
+	this._sound_name  = null;
 };
 Util.inherit(ObjectStaticImage, base_object);
 
@@ -24676,6 +24746,8 @@ ObjectStaticImage.prototype.init = function(){
 	this._height = null;
 
 	this._action_name = null;
+
+	this._sound_name  = null;
 };
 ObjectStaticImage.prototype.addImage = function(image_name, scale){
 	this.image = this.core.image_loader.getImage(image_name);
@@ -24691,6 +24763,10 @@ ObjectStaticImage.prototype.addSize = function(width, height){
 ObjectStaticImage.prototype.addKoishiAction = function(action_name){
 	this._action_name  = action_name;
 };
+ObjectStaticImage.prototype.addSound = function(sound_name){
+	this._sound_name  = sound_name;
+};
+
 
 
 ObjectStaticImage.prototype.onCollision = function(obj){
@@ -24715,6 +24791,11 @@ ObjectStaticImage.prototype.onCollisionAfterKoishiWalk = function(){
 	// こいしのアクション
 	if (this._action_name) {
 		this.scene.mainStage().koishi().actionByName(this._action_name);
+	}
+
+	// 音を再生
+	if (this._sound_name) {
+		this.core.playSound(this._sound_name);
 	}
 };
 
@@ -25519,6 +25600,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.init();
 			object.addSize(data.width, data.height);
 			object.addSerif(data.serif);
+			object.addSound(data.sound);
 			object.addKoishiAction(data.action);
 			object.addImage(data.image, data.scale);
 			object.setPosition(data.x, data.y);
@@ -25532,7 +25614,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.init();
 			object.addSize(data.width, data.height);
 			object.addSerif(data.serif);
-			object.addSound(data.sound);
+			object.addSound(data.sound, data.sound_back);
 			object.addKoishiAction(data.action);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.anime4, data.anime5, data.anime6, data.scale);
 			object.setPosition(data.x, data.y);
