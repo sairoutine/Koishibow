@@ -107,7 +107,62 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter0/myroom/sound_window.ogg",
 		volume: 1.0,
 	},
-
+	"chapter0-hospital_corridor1-sound_aidkit":    {
+		path: "./sound/chapter0/hospital_corridor1/sound_aidkit.ogg",
+		volume: 1.0,
+	},
+	"chapter0-hospital_corridor1-sound_strecher":    {
+		path: "./sound/chapter0/hospital_corridor1/sound_strecher.ogg",
+		volume: 1.0,
+	},
+	"chapter0-hospital_corridor2-move_wheelchair":    {
+		path: "./sound/chapter0/hospital_corridor2/move_wheelchair.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-lamp_back":    {
+		path: "./sound/chapter0/mansion_corridor1/lamp_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-lamp_front":    {
+		path: "./sound/chapter0/mansion_corridor1/lamp_front.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-move_tricycle":    {
+		path: "./sound/chapter0/mansion_corridor1/move_tricycle.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-open_curtain":    {
+		path: "./sound/chapter0/mansion_corridor1/open_curtain.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-flower_back":    {
+		path: "./sound/chapter0/mansion_corridor2/flower_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-flower_front":    {
+		path: "./sound/chapter0/mansion_corridor2/flower_front.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-open_door":    {
+		path: "./sound/chapter0/mansion_corridor2/open_door.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-open_door":    {
+		path: "./sound/chapter0/mansion_corridor3/open_door.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-ring_clock_back":    {
+		path: "./sound/chapter0/mansion_corridor3/ring_clock_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-ring_clock_front":    {
+		path: "./sound/chapter0/mansion_corridor3/ring_clock_front.ogg",
+		volume: 1.0,
+	},
+	touch:    {
+		path: "./sound/touch.ogg",
+		volume: 1.0,
+	},
 	walking_bare_default_left:    {
 		path: "./sound/walking/bare_default_left.ogg",
 		volume: 1.0,
