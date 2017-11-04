@@ -47,8 +47,36 @@ var anime_map = {
 	"chapter0-mansion_corridor2-obj-06-01-obj02": require('./anime/chapter0/mansion_corridor2/obj-06-01/obj02_anime_1'),
 	"chapter0-mansion_corridor2-obj-06-01-obj03": require('./anime/chapter0/mansion_corridor2/obj-06-01/obj03_anime_1'),
 
-
-
+	"chapter0-mansion_corridor3-obj-07-01-obj01": require('./anime/chapter0/mansion_corridor3/obj-07-01/obj01_anime_1'),
+	"chapter0-mansion_corridor3-obj-07-01-obj02": require('./anime/chapter0/mansion_corridor3/obj-07-01/obj02_anime_1'),
+	"chapter0-mansion_corridor3-obj-07-01-obj03": require('./anime/chapter0/mansion_corridor3/obj-07-01/obj03_anime_1'),
+	"chapter0-mansion_corridor3-obj-07-01-obj04": require('./anime/chapter0/mansion_corridor3/obj-07-01/obj04_anime_1'),
+	"chapter0-mansion_corridor3-obj-07-01-obj05": require('./anime/chapter0/mansion_corridor3/obj-07-01/obj05_anime_1'),
+	"chapter0-mansion_corridor3-obj-07-01-obj06": require('./anime/chapter0/mansion_corridor3/obj-07-01/obj06_anime_1'),
+	"chapter0-mansion_corridor3-obj-08-01-obj01": require('./anime/chapter0/mansion_corridor3/obj-08-01/obj01_anime_1'),
+	"chapter0-mansion_corridor3-obj-08-01-obj02": require('./anime/chapter0/mansion_corridor3/obj-08-01/obj02_anime_1'),
+	"chapter0-mansion_corridor3-obj-08-01-obj03": require('./anime/chapter0/mansion_corridor3/obj-08-01/obj03_anime_1'),
+	"chapter0-mansion_corridor3-obj-08-01-obj04": require('./anime/chapter0/mansion_corridor3/obj-08-01/obj04_anime_1'),
+	"chapter0-mansion_corridor3-obj-08-01-obj05": require('./anime/chapter0/mansion_corridor3/obj-08-01/obj05_anime_1'),
+	"chapter0-mansion_corridor3-obj-08-01-obj06": require('./anime/chapter0/mansion_corridor3/obj-08-01/obj06_anime_1'),
+	"chapter0-mansion_corridor3-obj-09-01-obj01": require('./anime/chapter0/mansion_corridor3/obj-09-01/obj01_anime_1'),
+	"chapter0-mansion_corridor3-obj-09-01-obj02": require('./anime/chapter0/mansion_corridor3/obj-09-01/obj02_anime_1'),
+	"chapter0-mansion_corridor3-obj-09-01-obj03": require('./anime/chapter0/mansion_corridor3/obj-09-01/obj03_anime_1'),
+	"chapter0-mansion_corridor3-obj-09-01-obj04": require('./anime/chapter0/mansion_corridor3/obj-09-01/obj04_anime_1'),
+	"chapter0-mansion_corridor3-obj-09-01-obj05": require('./anime/chapter0/mansion_corridor3/obj-09-01/obj05_anime_1'),
+	"chapter0-mansion_corridor3-obj-09-01-obj06": require('./anime/chapter0/mansion_corridor3/obj-09-01/obj06_anime_1'),
+	"chapter0-mansion_corridor3-obj-10-01-obj01": require('./anime/chapter0/mansion_corridor3/obj-10-01/obj01_anime_1'),
+	"chapter0-mansion_corridor3-obj-10-01-obj02": require('./anime/chapter0/mansion_corridor3/obj-10-01/obj02_anime_1'),
+	"chapter0-mansion_corridor3-obj-10-01-obj03": require('./anime/chapter0/mansion_corridor3/obj-10-01/obj03_anime_1'),
+	"chapter0-mansion_corridor3-obj-10-01-obj04": require('./anime/chapter0/mansion_corridor3/obj-10-01/obj04_anime_1'),
+	"chapter0-mansion_corridor3-obj-10-01-obj05": require('./anime/chapter0/mansion_corridor3/obj-10-01/obj05_anime_1'),
+	"chapter0-mansion_corridor3-obj-10-01-obj06": require('./anime/chapter0/mansion_corridor3/obj-10-01/obj06_anime_1'),
+	"chapter0-mansion_corridor3-obj-11-01-obj01": require('./anime/chapter0/mansion_corridor3/obj-11-01/obj01_anime_1'),
+	"chapter0-mansion_corridor3-obj-11-01-obj02": require('./anime/chapter0/mansion_corridor3/obj-11-01/obj02_anime_1'),
+	"chapter0-mansion_corridor3-obj-11-01-obj03": require('./anime/chapter0/mansion_corridor3/obj-11-01/obj03_anime_1'),
+	"chapter0-mansion_corridor3-obj-11-01-obj04": require('./anime/chapter0/mansion_corridor3/obj-11-01/obj04_anime_1'),
+	"chapter0-mansion_corridor3-obj-11-01-obj05": require('./anime/chapter0/mansion_corridor3/obj-11-01/obj05_anime_1'),
+	"chapter0-mansion_corridor3-obj-11-01-obj06": require('./anime/chapter0/mansion_corridor3/obj-11-01/obj06_anime_1'),
 };
 
 module.exports = anime_map;
