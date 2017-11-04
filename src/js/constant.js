@@ -14,7 +14,7 @@ var CONSTANT = {
 
 	// フィールドでランダムに流れるノイズ
 	NOISE_SOUND_LIST: ["noise1", "noise2", "noise3", "noise4", "noise5"],
-	NOISE_SOUND_INTERVAL_COUNT: 600,
+	NOISE_SOUND_INTERVAL_COUNT: 1200,
 	NOISE_SOUND_PROB: 50,
 };
 
