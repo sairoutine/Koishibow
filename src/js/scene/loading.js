@@ -29,7 +29,7 @@ SceneLoading.prototype.init = function() {
 	// ゲームで使用するBGM一覧
 	for (var key3 in AssetsConfig.bgms) {
 		var conf3 = AssetsConfig.bgms[key3];
-		this.core.audio_loader.loadBGM(key3, conf3.path, 1.0, conf3.loopStart, conf3.loopEnd);
+		this.core.audio_loader.loadBGM(key3, conf3.path, conf3.volume, conf3.loopStart, conf3.loopEnd);
 	}
 };
 
