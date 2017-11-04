@@ -57,20 +57,38 @@ SceneSubStageTalk.prototype.draw = function(){
 	ctx.restore();
 };
 
+// セリフ表示を右に表示させるかどうか
+SceneSubStageTalk.prototype._isShowRight = function(){
+	var x = this.koishi().x();
 
+	var scene_center_x = this.mainStage().width / 2;
+
+	if (x > scene_center_x) {
+		return true;
+	}
+	else {
+		return false;
+	}
+};
 
 // セリフウィンドウ表示
 SceneSubStageTalk.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
 	ctx.save();
 
-	var x = this.koishi().x() - 550;
-	var y = this.koishi().y() - 330;
+	var x,y;
+	if(!this._isShowRight()) {
+		x = this.koishi().x() - 550;
+		y = this.koishi().y() - 330;
+	}
+	else {
+		x = this.koishi().x() - 300;
+		y = this.koishi().y() - 330;
+	}
 
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
 
-	// TODO: 実装
-	if(true) {
+	if(!this._isShowRight()) {
 		x = -x; // 反転
 		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
 	}
@@ -97,10 +115,16 @@ SceneSubStageTalk.prototype._showMessage = function() {
 	ctx.textAlign = 'left';
 	ctx.textBaseAlign = 'middle';
 
-	var x = this.koishi().x() + 20;
-	var y = this.koishi().y() - 300;
+	var x,y;
+	if(!this._isShowRight()) {
+		x = this.koishi().x() + 80;
+		y = this.koishi().y() - 300;
+	}
+	else {
+		x = this.koishi().x() - 220;
+		y = this.koishi().y() - 300;
+	}
 
-	x = x + 60;
 	// セリフ表示
 	var lines = this.serif.lines();
 	if (lines.length) {
