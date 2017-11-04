@@ -125,11 +125,25 @@ Koishi.prototype.beforeDraw = function(){
 
 	// 足音
 	if (this.isMoving()) {
+		var walk_sound = this.scene.field().walk_sound;
+
+		// 屋敷の廊下2は、病院の廊下の床と木の床の境なので、円判定で、音を切り替える
+		if (this.scene.field().key === "chapter0_hospital_corridor2") {
+			var arc_x = 860;
+			var arc_y = 95;
+			var r = 600;
+
+			// 円と点の衝突判定
+			if (Math.pow(arc_x-this.x(), 2) + Math.pow(arc_y-this.y(), 2) <= Math.pow(r, 2)) {
+				walk_sound = "walking_bare_wood";
+			}
+		}
+
 		if(this.sprite.sprite.getFrameNo() === 14) {
-			this.core.playSound(this.scene.field().walk_sound + "_right");
+			this.core.playSound(walk_sound + "_right");
 		}
 		else if(this.sprite.sprite.getFrameNo() === 29) {
-			this.core.playSound(this.scene.field().walk_sound + "_left");
+			this.core.playSound(walk_sound + "_left");
 		}
 
 	}
