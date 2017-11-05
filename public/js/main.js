@@ -20732,10 +20732,9 @@ var AudioLoader = function() {
 	this.loading_audio_num = 0;
 	this.loaded_audio_num = 0;
 
-	this.id = 0;
-
-	// flag which determine what sound.
-	this.soundflag = 0x00;
+	// key: sound_name, value: only true
+	// which determine what sound is played.
+	this._reserved_play_sound_name_map = {};
 
 	this.audio_context = null;
 	if (window && window.AudioContext) {
@@ -20757,9 +20756,7 @@ AudioLoader.prototype.init = function() {
 	this.loading_audio_num = 0;
 	this.loaded_audio_num = 0;
 
-	this.id = 0;
-
-	this.soundflag = 0x00;
+	this._reserved_play_sound_name_map = {};
 
 	this._audio_source_map = {};
 };
@@ -20783,7 +20780,6 @@ AudioLoader.prototype.loadSound = function(name, path, volume) {
 	audio.addEventListener('canplay', onload_function);
 	audio.load();
 	self.sounds[name] = {
-		id: 1 << self.id++,
 		audio: audio,
 	};
 };
@@ -20836,22 +20832,19 @@ AudioLoader.prototype.isAllLoaded = function() {
 
 AudioLoader.prototype.playSound = function(name) {
 	if (!(name in this.sounds)) throw new Error("Can't find sound '" + name + "'.");
-	this.soundflag |= this.sounds[name].id;
+
+	this._reserved_play_sound_name_map[name] = true;
 };
 
 AudioLoader.prototype.executePlaySound = function() {
+	for(var name in this._reserved_play_sound_name_map) {
+		// play
+		this.sounds[name].audio.pause();
+		this.sounds[name].audio.currentTime = 0;
+		this.sounds[name].audio.play();
 
-	for(var name in this.sounds) {
-		if(this.soundflag & this.sounds[name].id) {
-			// play
-			this.sounds[name].audio.pause();
-			this.sounds[name].audio.currentTime = 0;
-			this.sounds[name].audio.play();
-
-			// delete flag
-			this.soundflag &= ~this.sounds[name].id;
-
-		}
+		// delete flag
+		delete this._reserved_play_sound_name_map[name];
 	}
 };
 AudioLoader.prototype.playBGM = function(name) {
@@ -32398,6 +32391,12 @@ ObjectLeftYajirushi.prototype.init = function(){
 ObjectLeftYajirushi.prototype.onCollision = function(obj){
 	// フィールド遷移
 	this.scene.mainStage().setFadeOut(30, "black");
+
+	// chapter 0 の自室であれば遷移前／遷移先の際に、ドアを開けるおとを鳴らす
+	if (this.scene.mainStage().field().key === "chapter0_myroom" || this.scene.mainStage().field().left_field === "chapter0_myroom") {
+		this.core.playSound("chapter0-myroom-door_open");
+	}
+
 	this.core.changeScene("stage", this.scene.mainStage().field().left_field, true);
 };
 
@@ -32924,6 +32923,12 @@ ObjectRightYajirushi.prototype.setPosition = function(){
 ObjectRightYajirushi.prototype.onCollision = function(obj){
 	// フィールド遷移
 	this.scene.mainStage().setFadeOut(30, "black");
+
+	// chapter 0 の自室であれば遷移前／遷移先の際に、ドアを開けるおとを鳴らす
+	if (this.scene.mainStage().field().key === "chapter0_myroom" || this.scene.mainStage().field().right_field === "chapter0_myroom") {
+		this.core.playSound("chapter0-myroom-door_open");
+	}
+
 	this.core.changeScene("stage", this.scene.mainStage().field().right_field, false);
 };
 
