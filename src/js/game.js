@@ -115,6 +115,23 @@ Game.prototype.setupDebug = function (dom) {
 		game.debug_manager.set("light_global_composite", value);
 	});
 
+	this.debug_manager.addMenuSelect("こいし暗度", [
+		{value: "0.0"},
+		{value: "0.1"},
+		{value: "0.2"},
+		{value: "0.3"},
+		{value: "0.4"},
+		{value: "0.5"},
+		{value: "0.6"},
+		{value: "0.7"},
+		{value: "0.8"},
+		{value: "0.9"},
+		{value: "1.0"},
+	], function (game, value) {
+		game.debug_manager.set("koishi_alpha", value);
+	});
+
+
 
 
 };

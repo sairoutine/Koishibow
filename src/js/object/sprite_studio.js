@@ -4,6 +4,8 @@ var base_object = require('../hakurei').object.base;
 var util = require('../hakurei').util;
 var CONSTANT = require('../hakurei').constant;
 
+var CreateDarkerImage = require("../logic/create_darker_image");
+
 var SsaPlayer = require('../vendor/SsaPlayer');
 var SsImageList = SsaPlayer.SsImageList;
 var SsAnimation = SsaPlayer.SsAnimation;
@@ -98,7 +100,7 @@ SpriteStudio.prototype.beforeDraw = function(){
 };
 
 // 画面更新
-SpriteStudio.prototype.draw = function(){
+SpriteStudio.prototype.draw = function(alpha){
 	base_object.prototype.draw.apply(this, arguments);
 	if (!this.isShow()) return;
 	var ctx = this.core.ctx;
@@ -110,6 +112,12 @@ SpriteStudio.prototype.draw = function(){
 	var ctx2 = canvas.getContext('2d');
 	var t = new Date().getTime();
 	this.sprite.draw(ctx2, t);
+
+	// 暗くする
+	if (alpha) {
+		canvas = CreateDarkerImage.exec(canvas, alpha);
+	}
+
 
 	// draw
 	ctx.save();

@@ -206,7 +206,16 @@ Koishi.prototype.onCollision = function(obj) {
 
 Koishi.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
-	this.sprite.draw();
+
+
+	// こいしの暗度レイヤー
+	var alpha = this.core.debug_manager.get("koishi_alpha");
+	if (alpha) {
+		this.sprite.draw(alpha);
+	}
+	else {
+		this.sprite.draw();
+	}
 };
 
 
