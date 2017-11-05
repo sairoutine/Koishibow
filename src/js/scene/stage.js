@@ -14,6 +14,7 @@ var Koishi = require('../object/koishi');
 
 var ObjectStaticImage = require('../object/object/static_image');
 var ObjectAnimeImage = require('../object/object/anime_image');
+var ObjectPaper = require('../object/object/paper');
 
 var LeftYajirushi = require('../object/left_yajirushi');
 var RightYajirushi = require('../object/right_yajirushi');
@@ -375,6 +376,16 @@ SceneStage.prototype.setupPiece = function() {
 
 			this.walk_immovable_areas.push(object.getImmovableArea());
 		}
+		else if (data.type === CONSTANT.PAPER_TYPE) {
+			object = new ObjectPaper(this);
+			object.init();
+			object.addData(data);
+
+			this.pieces.push(object);
+
+			this.walk_immovable_areas.push(object.getImmovableArea());
+		}
+
 
 	}
 };

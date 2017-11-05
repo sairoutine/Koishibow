@@ -7,6 +7,7 @@ var CONSTANT = {
 	// オブジェクトの種類
 	STATIC_IMAGE_TYPE: 1,
 	ANIME_IMAGE_TYPE:  2,
+	PAPER_TYPE:        3,
 
 
 	// こいしの歩ける範囲の上 上限(px)
