@@ -236,7 +236,7 @@ AssetsConfig.bgms = {
 	},
 	"chapter0-event-encounter_satori": {
 		path: "./bgm/chapter0/event/encounter_satori.ogg",
-		volume: 1.0,
+		volume: 0.6,
 	},
 
 	"chapter0-mansion_corridor1-wind": {
