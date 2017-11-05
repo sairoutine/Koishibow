@@ -59226,10 +59226,10 @@ module.exports = CONSTANT;
 'use strict';
 var DEBUG = {
 	ON: true,
-	SOUND_OFF: false,
+	SOUND_OFF: true,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_hospital_corridor2"],
-	//START_SCENE: ["stage", "chapter0_myroom"],
+	START_SCENE: ["stage", "chapter0_myroom"],
 	//START_SCENE: ["movie", "./movie/trailer.mp4", "title"],
 	//START_SCENE: ["event", "./movie/trailer.mp4", "title"],
 };
@@ -59749,7 +59749,7 @@ Game.prototype.stopBGM = function () {
 
 module.exports = Game;
 
-},{"./constant":89,"./hakurei":100,"./save_manager":150,"./scene/event":151,"./scene/loading":152,"./scene/stage":153,"./scene/title":160}],100:[function(require,module,exports){
+},{"./constant":89,"./hakurei":100,"./save_manager":151,"./scene/event":152,"./scene/loading":153,"./scene/stage":154,"./scene/title":161}],100:[function(require,module,exports){
 'use strict';
 
 module.exports = require("./hakureijs/index");
@@ -70978,6 +70978,40 @@ module.exports = Util;
 
 },{}],137:[function(require,module,exports){
 'use strict';
+// 静的クラス
+var CreateDarkerImage = function() {};
+
+CreateDarkerImage.check = function (piece, main_stage) {
+	// 光の当たり判定の円の位置と大きさ(2つある)
+	var R1 = 180;
+	var R2 = 60;
+	var map1 = main_stage.calcLightCollisionPosition(336);
+	var map2 = main_stage.calcLightCollisionPosition(100);
+
+	// 1つ目の円
+	if(Math.pow(map1.x-piece.getCollisionLeftX(), 2)  + Math.pow(map1.y-piece.getCollisionUpY(), 2) <= Math.pow(R1, 2) ||
+	   Math.pow(map1.x-piece.getCollisionLeftX(), 2)  + Math.pow(map1.y-piece.getCollisionDownY(), 2) <= Math.pow(R1, 2) ||
+	   Math.pow(map1.x-piece.getCollisionRightX(), 2) + Math.pow(map1.y-piece.getCollisionUpY(), 2) <= Math.pow(R1, 2) ||
+	   Math.pow(map1.x-piece.getCollisionRightX(), 2) + Math.pow(map1.y-piece.getCollisionDownY(), 2) <= Math.pow(R1, 2)) {
+		return true;
+	}
+
+	// 2つ目の円
+	if(Math.pow(map2.x-piece.getCollisionLeftX(), 2)  + Math.pow(map2.y-piece.getCollisionUpY(), 2) <= Math.pow(R2, 2) ||
+	   Math.pow(map2.x-piece.getCollisionLeftX(), 2)  + Math.pow(map2.y-piece.getCollisionDownY(), 2) <= Math.pow(R2, 2) ||
+	   Math.pow(map2.x-piece.getCollisionRightX(), 2) + Math.pow(map2.y-piece.getCollisionUpY(), 2) <= Math.pow(R2, 2) ||
+	   Math.pow(map2.x-piece.getCollisionRightX(), 2) + Math.pow(map2.y-piece.getCollisionDownY(), 2) <= Math.pow(R2, 2)) {
+		return true;
+	}
+
+	return false;
+};
+
+
+module.exports = CreateDarkerImage;
+
+},{}],138:[function(require,module,exports){
+'use strict';
 
 /* 画像を暗くするロジック */
 
@@ -71018,7 +71052,7 @@ CreateDarkerImage.exec = function (image, alpha) {
 
 module.exports = CreateDarkerImage;
 
-},{}],138:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 'use strict';
 var Game = require('./game');
 var CONSTANT = require('./constant');
@@ -71068,7 +71102,7 @@ if(window.require) {
 
 
 
-},{"./constant":89,"./game":99}],139:[function(require,module,exports){
+},{"./constant":89,"./game":99}],140:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.sprite;
 var Util = require('../hakurei').util;
@@ -71134,7 +71168,7 @@ ObjectEye.prototype.scaleWidth = function(){
 };
 module.exports = ObjectEye;
 
-},{"../constant":89,"../hakurei":100}],140:[function(require,module,exports){
+},{"../constant":89,"../hakurei":100}],141:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.sprite;
 var Util = require('../hakurei').util;
@@ -71197,7 +71231,7 @@ ObjectItemButton.prototype.scaleWidth = function(){
 };
 module.exports = ObjectItemButton;
 
-},{"../constant":89,"../hakurei":100}],141:[function(require,module,exports){
+},{"../constant":89,"../hakurei":100}],142:[function(require,module,exports){
 'use strict';
 
 // こいしの歩く速度
@@ -71483,7 +71517,7 @@ Koishi.prototype.collisionHeight = function(){
 
 module.exports = Koishi;
 
-},{"../anime/koishi/reaction_3rdeye_anime_1":80,"../anime/koishi/reaction_look_bottom_anime_1":81,"../anime/koishi/reaction_look_front_anime_1":82,"../anime/koishi/reaction_look_top_anime_1":83,"../anime/koishi/reaction_touch_anime_1":84,"../anime/koishi/reaction_yes_anime_1":85,"../anime/koishi/wait_anime_1":86,"../anime/koishi/walk_anime_1":87,"../constant":89,"../hakurei":100,"../object/sprite_studio":148}],142:[function(require,module,exports){
+},{"../anime/koishi/reaction_3rdeye_anime_1":80,"../anime/koishi/reaction_look_bottom_anime_1":81,"../anime/koishi/reaction_look_front_anime_1":82,"../anime/koishi/reaction_look_top_anime_1":83,"../anime/koishi/reaction_touch_anime_1":84,"../anime/koishi/reaction_yes_anime_1":85,"../anime/koishi/wait_anime_1":86,"../anime/koishi/walk_anime_1":87,"../constant":89,"../hakurei":100,"../object/sprite_studio":149}],143:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.sprite;
 var Util = require('../hakurei').util;
@@ -71557,7 +71591,7 @@ ObjectLeftYajirushi.prototype.rotateAdjust = function(){
 
 module.exports = ObjectLeftYajirushi;
 
-},{"../constant":89,"../hakurei":100}],143:[function(require,module,exports){
+},{"../constant":89,"../hakurei":100}],144:[function(require,module,exports){
 'use strict';
 
 /* メニューのアイテム */
@@ -71640,13 +71674,14 @@ ObjectMenuItem.prototype.use = function(){
 
 module.exports = ObjectMenuItem;
 
-},{"../constant":89,"../hakurei":100}],144:[function(require,module,exports){
+},{"../constant":89,"../hakurei":100}],145:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
 var SS = require('../sprite_studio');
 var AnimeMap = require('../../anime');
 var WalkImmovableArea = require('../walk_immovable_area');
+var LogicCollideWithLight = require('../../logic/collide_with_light');
 
 var ObjectAnimeImage = function(core) {
 	base_object.apply(this, arguments);
@@ -71747,20 +71782,14 @@ ObjectAnimeImage.prototype.addSound = function(sound_name, sound_back_name){
 
 
 ObjectAnimeImage.prototype.onCollision = function(obj){
-	// クリックした場合
-	if(this.core.input_manager.isLeftClickPush()) {
-		// サードアイ使用中なら今のところ何もしない
-		if (this.scene.mainStage().isUsingEye()) return;
+	// サードアイ使用中なら今のところ何もしない
+	if (this.scene.mainStage().isUsingEye()) return;
 
-		if (!this.scene.mainStage().koishi().isMoving()) {
-			this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-		}
+	if (!this.scene.mainStage().koishi().isMoving()) {
+		this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
+		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
 	}
-	// マウスオーバーした場合
-	else {
-		this.onCollisionByMouseOver();
-	}
+
 };
 ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 	var self = this;
@@ -71793,7 +71822,7 @@ ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 
 
 // マウスオーバーした場合
-ObjectAnimeImage.prototype.onCollisionByMouseOver = function(){
+ObjectAnimeImage.prototype.onMouseOver = function(){
 	// サードアイを使用してなければ何もしない
 	if (!this.scene.mainStage().isUsingEye()) return;
 
@@ -71846,7 +71875,7 @@ ObjectAnimeImage.prototype.beforeDraw = function() {
 		var y = this.core.input_manager.mousePositionY();
 
 		// マウスオーバーしてないなら解除
-		if(!this.checkCollisionWithPosition(x, y)) {
+		if (!this.scene.mainStage().isUsingEye() || !LogicCollideWithLight.check(this, this.scene.mainStage())) {
 			var sprite = this.sprite;
 			var anime = this._is_touch ? this.after_anime : this.before_anime;
 
@@ -71900,7 +71929,7 @@ ObjectAnimeImage.prototype.getImmovableArea = function() {
 
 module.exports = ObjectAnimeImage;
 
-},{"../../anime":1,"../../hakurei":100,"../sprite_studio":148,"../walk_immovable_area":149}],145:[function(require,module,exports){
+},{"../../anime":1,"../../hakurei":100,"../../logic/collide_with_light":137,"../sprite_studio":149,"../walk_immovable_area":150}],146:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
@@ -71945,16 +71974,9 @@ ObjectPaper.prototype.addData = function(data) {
 };
 
 ObjectPaper.prototype.onCollision = function(obj){
-	// クリックした場合
-	if(this.core.input_manager.isLeftClickPush()) {
-		if (!this.scene.mainStage().koishi().isMoving()) {
-			this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-		}
-	}
-	// マウスオーバーした場合
-	else {
-
+	if (!this.scene.mainStage().koishi().isMoving()) {
+		this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
+		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
 	}
 };
 
@@ -72017,7 +72039,7 @@ ObjectPaper.prototype.getImmovableArea = function() {
 
 module.exports = ObjectPaper;
 
-},{"../../hakurei":100,"../walk_immovable_area":149}],146:[function(require,module,exports){
+},{"../../hakurei":100,"../walk_immovable_area":150}],147:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
@@ -72078,16 +72100,9 @@ ObjectStaticImage.prototype.addSound = function(sound_name){
 
 
 ObjectStaticImage.prototype.onCollision = function(obj){
-	// クリックした場合
-	if(this.core.input_manager.isLeftClickPush()) {
-		if (!this.scene.mainStage().koishi().isMoving()) {
-			this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-		}
-	}
-	// マウスオーバーした場合
-	else {
-
+	if (!this.scene.mainStage().koishi().isMoving()) {
+		this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
+		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
 	}
 };
 
@@ -72148,7 +72163,7 @@ ObjectStaticImage.prototype.getImmovableArea = function() {
 
 module.exports = ObjectStaticImage;
 
-},{"../../hakurei":100,"../walk_immovable_area":149}],147:[function(require,module,exports){
+},{"../../hakurei":100,"../walk_immovable_area":150}],148:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.sprite;
 var Util = require('../hakurei').util;
@@ -72220,7 +72235,7 @@ ObjectRightYajirushi.prototype.scaleWidth = function(){
 
 module.exports = ObjectRightYajirushi;
 
-},{"../constant":89,"../hakurei":100}],148:[function(require,module,exports){
+},{"../constant":89,"../hakurei":100}],149:[function(require,module,exports){
 'use strict';
 
 var base_object = require('../hakurei').object.base;
@@ -72377,7 +72392,7 @@ SpriteStudio.prototype.alpha = function() {
 
 module.exports = SpriteStudio;
 
-},{"../hakurei":100,"../logic/create_darker_image":137,"../vendor/SsaPlayer":161}],149:[function(require,module,exports){
+},{"../hakurei":100,"../logic/create_darker_image":138,"../vendor/SsaPlayer":162}],150:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -72428,7 +72443,7 @@ WalkImmovableArea.prototype.draw = function() {
 
 module.exports = WalkImmovableArea;
 
-},{"../constant":89,"../hakurei":100}],150:[function(require,module,exports){
+},{"../constant":89,"../hakurei":100}],151:[function(require,module,exports){
 'use strict';
 
 // セーブデータ
@@ -72523,7 +72538,7 @@ SaveManager.prototype.setPlayedEvent = function(event_name) {
 
 module.exports = SaveManager;
 
-},{"./hakurei":100}],151:[function(require,module,exports){
+},{"./hakurei":100}],152:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -72586,7 +72601,7 @@ SceneEvent.prototype.draw = function(){
 };
 module.exports = SceneEvent;
 
-},{"../anime/chapter0/event/encounter_satori/event01_anime_1":4,"../constant":89,"../hakurei":100,"../object/sprite_studio":148}],152:[function(require,module,exports){
+},{"../anime/chapter0/event/encounter_satori/event01_anime_1":4,"../constant":89,"../hakurei":100,"../object/sprite_studio":149}],153:[function(require,module,exports){
 'use strict';
 
 // ローディングシーン
@@ -72689,7 +72704,7 @@ SceneLoading.prototype.progress = function(){
 
 module.exports = SceneLoading;
 
-},{"../assets_config":88,"../constant":89,"../hakurei":100}],153:[function(require,module,exports){
+},{"../assets_config":88,"../constant":89,"../hakurei":100}],154:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./stage_base');
@@ -72956,15 +72971,72 @@ SceneStage.prototype.draw = function(){
 
 
 	if (this.isUsingEye()) {
+		// 3rd eye のライト使用
 		this._drawLight();
+
+		// デバッグモードだとライトの当たり判定を表示する
+		if (this.core.debug_manager.isShowingCollisionArea()) {
+			this._drawLightCollision();
+		}
 	}
 
 	this.black_mist.draw();
 
 	this._drawOfMenuObject();
 
+
 	// サブシーン描画
 	base_scene.prototype.draw.apply(this, arguments);
+};
+SceneStage.prototype.calcLightCollisionPosition = function(pos){
+	var mouse_x = this.core.input_manager.mousePositionX();
+	var mouse_y = this.core.input_manager.mousePositionY();
+
+	var ax = mouse_x - this.koishi().x();
+	var ay = mouse_y - this.koishi().y();
+	var rad = Math.atan2(ay, ax);
+
+	var x,y;
+	if (this.koishi().isReflect()) {
+		// ライトの稼働角度には制限がある
+		if (-Math.PI*5/6 < rad && rad < 0) { rad = -Math.PI*5/6; }
+		else if(0 <= rad && rad < Math.PI*4/6) { rad = Math.PI*4/6; }
+
+		x = this.koishi().x() - 60;
+		y = this.koishi().y() - 100;
+	}
+	else {
+		// ライトの稼働角度には制限がある
+		if (rad < -Math.PI*2/6) rad = -Math.PI*2/6;
+		else if (Math.PI*1/6 < rad) rad = Math.PI*1/6;
+
+		x = this.koishi().x() + 60;
+		y = this.koishi().y() - 100;
+	}
+
+	x += pos*Math.cos(rad);
+	y += pos*Math.sin(rad);
+	return {x: x, y: y};
+};
+
+SceneStage.prototype._drawLightCollision = function(){
+	var R1 = 180;
+	var R2 = 60;
+	var map1 = this.calcLightCollisionPosition(336);
+	var map2 = this.calcLightCollisionPosition(100);
+
+
+	var ctx = this.core.ctx;
+	ctx.save();
+
+	ctx.globalCompositeOperation = "overlay";
+
+	ctx.beginPath();
+	ctx.arc(map1.x, map1.y,R1,0,2*Math.PI);
+	ctx.arc(map2.x, map2.y,R2,0,2*Math.PI);
+	ctx.fill();
+
+	ctx.restore();
 };
 SceneStage.prototype._drawLight = function(){
 	var ctx = this.core.ctx;
@@ -73000,9 +73072,6 @@ SceneStage.prototype._drawLight = function(){
 
 		ctx.translate(this.koishi().x() + 60, this.koishi().y() - 100);
 	}
-
-	// ライトの角度分
-	//rad += 150*Math.PI/180;
 
 	ctx.rotate(rad);
 
@@ -73098,7 +73167,7 @@ SceneStage.prototype._drawImmovableArea = function() {
 
 module.exports = SceneStage;
 
-},{"../anime/black_mist/eff01_anime_1":2,"../anime/black_mist/eff02_anime_1":3,"../constant":89,"../field":91,"../hakurei":100,"../object/eye":139,"../object/item_button":140,"../object/koishi":141,"../object/left_yajirushi":142,"../object/object/anime_image":144,"../object/object/paper":145,"../object/object/static_image":146,"../object/right_yajirushi":147,"../object/sprite_studio":148,"./stage_base":154,"./sub_stage/menu":156,"./sub_stage/paper":157,"./sub_stage/play":158,"./sub_stage/talk":159}],154:[function(require,module,exports){
+},{"../anime/black_mist/eff01_anime_1":2,"../anime/black_mist/eff02_anime_1":3,"../constant":89,"../field":91,"../hakurei":100,"../object/eye":140,"../object/item_button":141,"../object/koishi":142,"../object/left_yajirushi":143,"../object/object/anime_image":145,"../object/object/paper":146,"../object/object/static_image":147,"../object/right_yajirushi":148,"../object/sprite_studio":149,"./stage_base":155,"./sub_stage/menu":157,"./sub_stage/paper":158,"./sub_stage/play":159,"./sub_stage/talk":160}],155:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').scene.base;
 var Util = require('../hakurei').util;
@@ -73122,7 +73191,7 @@ SceneStageBase.prototype.mainStage = function(){
 
 module.exports = SceneStageBase;
 
-},{"../hakurei":100}],155:[function(require,module,exports){
+},{"../hakurei":100}],156:[function(require,module,exports){
 'use strict';
 var base_scene = require('../stage_base');
 var Util = require('../../hakurei').util;
@@ -73145,7 +73214,7 @@ SceneSubStageBase.prototype.mainStage = function(){
 
 module.exports = SceneSubStageBase;
 
-},{"../../hakurei":100,"../stage_base":154}],156:[function(require,module,exports){
+},{"../../hakurei":100,"../stage_base":155}],157:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -73420,7 +73489,7 @@ SceneSubStageTalk.prototype._useItem = function(){
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":100,"../../object/menu_item":143,"./base":155}],157:[function(require,module,exports){
+},{"../../hakurei":100,"../../object/menu_item":144,"./base":156}],158:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -73519,10 +73588,12 @@ SceneSubStageTalk.prototype._showMessage = function() {
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":100,"./base":155}],158:[function(require,module,exports){
+},{"../../hakurei":100,"./base":156}],159:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
+var LogicCollideWithLight = require('../../logic/collide_with_light');
+var ObjectAnimeImage = require('../../object/object/anime_image');
 
 var SceneSubStagePlay = function(core, stage) {
 	base_scene.apply(this, arguments);
@@ -73548,6 +73619,22 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 	this.mainStage().eye.beforeDraw();
 
+	// 3rd eye の光の当たり判定チェック
+
+	if (this.mainStage().isUsingEye()) {
+		// フィールドの各種オブジェクトとの当たり判定
+		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
+			var piece = this.mainStage().pieces[i];
+
+			if(piece instanceof ObjectAnimeImage) {
+				if (LogicCollideWithLight.check(piece, this.mainStage())) {
+					piece.onMouseOver();
+				}
+			}
+		}
+	}
+
+	//クリックチェック
 	this._collisionCheck();
 };
 
@@ -73577,20 +73664,15 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 		if(this.mainStage().eye.checkCollisionWithPosition(x, y)) {
 			return true;
 		}
-	}
 
-
-	// クリックする／しない関わらず当たり判定
-	// フィールドの各種オブジェクトとの当たり判定
-	for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
-		var piece = this.mainStage().pieces[i];
-		if(piece.checkCollisionWithPosition(x, y)) {
-			return true;
+		// フィールドの各種オブジェクトとの当たり判定
+		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
+			var piece = this.mainStage().pieces[i];
+			if(piece.checkCollisionWithPosition(x, y)) {
+				return true;
+			}
 		}
-	}
 
-	// クリックしたときに当たり判定するものたち
-	if(this.core.input_manager.isLeftClickPush()) {
 		// どことも当たり判定しなかったら
 		// こいしを移動
 		// TODO: この関数でやらず、外でやったほうがいい？(この関数は当たり判定したら true or false 返す)
@@ -73605,7 +73687,7 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 
 module.exports = SceneSubStagePlay;
 
-},{"../../hakurei":100,"./base":155}],159:[function(require,module,exports){
+},{"../../hakurei":100,"../../logic/collide_with_light":137,"../../object/object/anime_image":145,"./base":156}],160:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -73777,7 +73859,7 @@ SceneSubStageTalk.prototype._showMessage = function() {
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":100,"./base":155}],160:[function(require,module,exports){
+},{"../../hakurei":100,"./base":156}],161:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -73921,7 +74003,7 @@ SceneTitle.prototype.draw = function(){
 
 module.exports = SceneTitle;
 
-},{"../constant":89,"../hakurei":100}],161:[function(require,module,exports){
+},{"../constant":89,"../hakurei":100}],162:[function(require,module,exports){
 //-----------------------------------------------------------
 // Ss5ConverterToSSAJSON v1.0.3
 //
@@ -74363,4 +74445,4 @@ module.exports = {
 
 
 
-},{}]},{},[138]);
+},{}]},{},[139]);
