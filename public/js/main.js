@@ -59890,8 +59890,8 @@ AudioLoader.prototype.addBGM = function(name) {
 		this.stopBGM(name);
 	}
 
-	this._audio_source_map[name] = this._createSourceNode(name);
-	this._audio_source_map[name].start(0);
+	this._audio_source_map[name] = this._createSourceNodeAndGainNode(name);
+	this._audio_source_map[name].source_node.start(0);
 };
 
 
@@ -59922,7 +59922,7 @@ AudioLoader.prototype.stopBGM = function(name) {
 	}
 
 	if (name in this._audio_source_map) {
-		var audio_source = this._audio_source_map[name];
+		var audio_source = this._audio_source_map[name].source_node;
 		audio_source.stop(0);
 		delete this._audio_source_map[name];
 	}
@@ -59935,9 +59935,32 @@ AudioLoader.prototype.isPlayingBGM = function(name) {
 		return name in this._audio_source_map ? true : false;
 	}
 };
+AudioLoader.prototype.fadeOutAllBGM = function (fadeout_time) {
+	for (var bgm_name in this._audio_source_map) {
+		this.fadeOutBGM(fadeout_time, bgm_name);
+	}
+};
 
-// create AudioBufferSourceNode instance
-AudioLoader.prototype._createSourceNode = function(name) {
+AudioLoader.prototype.fadeOutBGM = function (fadeout_time, bgm_name) {
+	if(typeof bgm_name === "undefined") {
+		return this.fadeOutAllBGM(fadeout_time);
+	}
+
+	var map = this._audio_source_map[bgm_name];
+
+	if (!map) return;
+
+	var audio_gain = map.gain_node;
+
+	var gain = audio_gain.gain;
+	var startTime = this.audio_context.currentTime;
+	gain.setValueAtTime(gain.value, startTime); // for old browser
+	var endTime = startTime + fadeout_time;
+	gain.linearRampToValueAtTime(0, endTime);
+};
+
+// create AudioBufferSourceNode and GainNode instance
+AudioLoader.prototype._createSourceNodeAndGainNode = function(name) {
 	var self = this;
 	var data = self.bgms[name];
 
@@ -59957,7 +59980,10 @@ AudioLoader.prototype._createSourceNode = function(name) {
 	source.start = source.start || source.noteOn;
 	source.stop  = source.stop  || source.noteOff;
 
-	return source;
+	return {
+		source_node: source,
+		gain_node: audio_gain,
+	};
 };
 
 AudioLoader.prototype.progress = function() {
@@ -72508,7 +72534,7 @@ SceneEvent.prototype.init = function(){
 	this.setFadeIn(30, "black");
 
 	// イベント再生後はフェードアウトする
-	this.setFadeOut(30, "black");
+	this.setFadeOut(120, "black");
 
 	// BGM 止める
 	this.core.stopBGM();
@@ -72516,11 +72542,13 @@ SceneEvent.prototype.init = function(){
 	// アニメ
 	this._event_anime.init(this.width/2, this.height/2, jsonDataOfEvent, 0, {scale: 2/3, loop: 1});
 
-	var self = this;
+	var core = this.core;
 	this._event_anime.sprite.setEndCallBack(function () {
-		self.core.changeScene("stage", "chapter0_mansion_corridor2");
+		core.changeScene("stage", "chapter0_mansion_corridor2");
 
-		self.core.save_manager.setPlayedEvent("chapter0-event-encounter_satori");
+		core.save_manager.setPlayedEvent("chapter0-event-encounter_satori");
+
+		core.audio_loader.fadeOutBGM(2);
 	});
 };
 
