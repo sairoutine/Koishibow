@@ -34,6 +34,11 @@ SpriteStudio.prototype.init = function(x, y, jsonData, data_index, opt){
 	var ss = new SsSprite(this.animation);
 
 	this.sprite = ss;
+
+	// ループ回数
+	var loop = opt && opt.loop ? opt.loop : 0;
+
+	ss.setLoop(loop);
 };
 
 SpriteStudio.prototype.changeAnimation = function(jsonData, loop){
@@ -105,7 +110,6 @@ SpriteStudio.prototype.draw = function(){
 	var ctx2 = canvas.getContext('2d');
 	var t = new Date().getTime();
 	this.sprite.draw(ctx2, t);
-
 
 	// draw
 	ctx.save();
