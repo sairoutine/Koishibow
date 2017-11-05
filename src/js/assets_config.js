@@ -9,6 +9,7 @@ AssetsConfig.images = {
 	"bg01.jpg": "./image/chapter0/event/encounter_satori/bg01.jpg",
 	"bg02.jpg": "./image/chapter0/event/encounter_satori/bg02.jpg",
 	"str.png":  "./image/chapter0/event/encounter_satori/str.png",
+	"black-mist.png": "./image/chapter0/event/encounter_satori/black-mist.png",
 
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",

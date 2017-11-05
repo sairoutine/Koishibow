@@ -5,7 +5,7 @@ var base_scene = require('../hakurei').scene.base;
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 var SS = require('../object/sprite_studio');
-var jsonDataOfEvent = require('../anime/chapter0/event/encounter_satori/event_01_anime_1');
+var jsonDataOfEvent = require('../anime/chapter0/event/encounter_satori/event01_anime_1');
 
 var SceneEvent = function(core) {
 	base_scene.apply(this, arguments);
@@ -21,7 +21,7 @@ SceneEvent.prototype.init = function(){
 	this.setFadeIn(30, "black");
 
 	// イベント再生後はフェードアウトする
-	this.setFadeOut(90, "black");
+	this.setFadeOut(30, "black");
 
 	// BGM 止める
 	this.core.stopBGM();
@@ -42,7 +42,7 @@ SceneEvent.prototype.beforeDraw = function(){
 	this._event_anime.beforeDraw();
 
 	// BGM 再生
-	if(this.frame_count === 0) {
+	if(this.frame_count === 200) { // 3.3秒後にBGM再生(白黒のところから再生したいので)
 		this.core.changeBGM("chapter0-event-encounter_satori");
 	}
 
