@@ -63,6 +63,27 @@ SaveManager.prototype.setCurrentField = function(field_name) {
 	this.set("current_field", field_name);
 };
 
+// 現在のフィールドを取得
+SaveManager.prototype.isPlayedEvent = function(event_name) {
+	var played_event_map = this.get("played_event_map");
+
+	if(!played_event_map) return false;
+
+	return played_event_map[event_name] ? true : false;
+};
+// 現在のフィールドを設定
+SaveManager.prototype.setPlayedEvent = function(event_name) {
+	var played_event_map = this.get("played_event_map");
+
+	if(!played_event_map) {
+		played_event_map = {};
+	}
+
+	played_event_map[event_name] = true;
+
+	this.set("played_event_map", played_event_map);
+};
+
 
 
 
