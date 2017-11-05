@@ -17,6 +17,10 @@ module.exports = {
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "本", serif: ["にっきさんひさしぶり！", "だっておはなしすることないんだもん"], x: 340, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-02-01-obj01", anime2: "chapter0-myroom-obj-02-01-obj02", anime3: "chapter0-myroom-obj-02-01-obj03", width: 80, height: 80, action: "look_bottom", sound: "chapter0-myroom-open_book"},
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "クレヨン", serif: ["くれおん！", "ピンクなくなっちゃったなー"], x: 600, y: 530, scale: 0.7, anime1: "chapter0-myroom-obj-03-01-obj01", anime2: "chapter0-myroom-obj-03-01-obj02", anime3: "chapter0-myroom-obj-03-01-obj03", width: 80, height: 80, action: "look_bottom", sound: "chapter0-myroom-move_crayon"},
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03", action: "look_top", sound: "chapter0-myroom-sound_window"},
+
+
+		// TODO: 削除
+		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 258, y: 689, scale: 2/3, picture: null, text: "あいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\nあいうえおかきくけこさしすせそなにぬねのはひ\n"},
 	],
 };
 
