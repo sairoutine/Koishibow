@@ -62,6 +62,13 @@ gulp.task('build', function(callback) {
 		callback
 	);
 });
+gulp.task('build_without_minify', function(callback) {
+	return runSequence(
+		'browserify',
+		'reload',
+		callback
+	);
+});
 
 gulp.task('browser-sync', function() {
 	return browserSync.init({
@@ -75,5 +82,11 @@ gulp.task('browser-sync', function() {
 gulp.task('watch', ['browser-sync'], function() {
 	watch(['src/js/**/*.js'], function(event) {
 		gulp.start("build");
+	});
+});
+
+gulp.task('watch_without_minify', ['browser-sync'], function() {
+	watch(['src/js/**/*.js'], function(event) {
+		gulp.start("build_without_minify");
 	});
 });
