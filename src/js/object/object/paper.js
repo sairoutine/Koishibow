@@ -42,16 +42,9 @@ ObjectPaper.prototype.addData = function(data) {
 };
 
 ObjectPaper.prototype.onCollision = function(obj){
-	// クリックした場合
-	if(this.core.input_manager.isLeftClickPush()) {
-		if (!this.scene.mainStage().koishi().isMoving()) {
-			this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-		}
-	}
-	// マウスオーバーした場合
-	else {
-
+	if (!this.scene.mainStage().koishi().isMoving()) {
+		this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
+		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
 	}
 };
 

@@ -264,15 +264,72 @@ SceneStage.prototype.draw = function(){
 
 
 	if (this.isUsingEye()) {
+		// 3rd eye のライト使用
 		this._drawLight();
+
+		// デバッグモードだとライトの当たり判定を表示する
+		if (this.core.debug_manager.isShowingCollisionArea()) {
+			this._drawLightCollision();
+		}
 	}
 
 	this.black_mist.draw();
 
 	this._drawOfMenuObject();
 
+
 	// サブシーン描画
 	base_scene.prototype.draw.apply(this, arguments);
+};
+SceneStage.prototype.calcLightCollisionPosition = function(pos){
+	var mouse_x = this.core.input_manager.mousePositionX();
+	var mouse_y = this.core.input_manager.mousePositionY();
+
+	var ax = mouse_x - this.koishi().x();
+	var ay = mouse_y - this.koishi().y();
+	var rad = Math.atan2(ay, ax);
+
+	var x,y;
+	if (this.koishi().isReflect()) {
+		// ライトの稼働角度には制限がある
+		if (-Math.PI*5/6 < rad && rad < 0) { rad = -Math.PI*5/6; }
+		else if(0 <= rad && rad < Math.PI*4/6) { rad = Math.PI*4/6; }
+
+		x = this.koishi().x() - 60;
+		y = this.koishi().y() - 100;
+	}
+	else {
+		// ライトの稼働角度には制限がある
+		if (rad < -Math.PI*2/6) rad = -Math.PI*2/6;
+		else if (Math.PI*1/6 < rad) rad = Math.PI*1/6;
+
+		x = this.koishi().x() + 60;
+		y = this.koishi().y() - 100;
+	}
+
+	x += pos*Math.cos(rad);
+	y += pos*Math.sin(rad);
+	return {x: x, y: y};
+};
+
+SceneStage.prototype._drawLightCollision = function(){
+	var R1 = 180;
+	var R2 = 60;
+	var map1 = this.calcLightCollisionPosition(336);
+	var map2 = this.calcLightCollisionPosition(100);
+
+
+	var ctx = this.core.ctx;
+	ctx.save();
+
+	ctx.globalCompositeOperation = "overlay";
+
+	ctx.beginPath();
+	ctx.arc(map1.x, map1.y,R1,0,2*Math.PI);
+	ctx.arc(map2.x, map2.y,R2,0,2*Math.PI);
+	ctx.fill();
+
+	ctx.restore();
 };
 SceneStage.prototype._drawLight = function(){
 	var ctx = this.core.ctx;
@@ -308,9 +365,6 @@ SceneStage.prototype._drawLight = function(){
 
 		ctx.translate(this.koishi().x() + 60, this.koishi().y() - 100);
 	}
-
-	// ライトの角度分
-	//rad += 150*Math.PI/180;
 
 	ctx.rotate(rad);
 

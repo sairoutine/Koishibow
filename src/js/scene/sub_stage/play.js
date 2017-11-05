@@ -1,6 +1,8 @@
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
+var LogicCollideWithLight = require('../../logic/collide_with_light');
+var ObjectAnimeImage = require('../../object/object/anime_image');
 
 var SceneSubStagePlay = function(core, stage) {
 	base_scene.apply(this, arguments);
@@ -26,6 +28,22 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 	this.mainStage().eye.beforeDraw();
 
+	// 3rd eye の光の当たり判定チェック
+
+	if (this.mainStage().isUsingEye()) {
+		// フィールドの各種オブジェクトとの当たり判定
+		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
+			var piece = this.mainStage().pieces[i];
+
+			if(piece instanceof ObjectAnimeImage) {
+				if (LogicCollideWithLight.check(piece, this.mainStage())) {
+					piece.onMouseOver();
+				}
+			}
+		}
+	}
+
+	//クリックチェック
 	this._collisionCheck();
 };
 
@@ -55,20 +73,15 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 		if(this.mainStage().eye.checkCollisionWithPosition(x, y)) {
 			return true;
 		}
-	}
 
-
-	// クリックする／しない関わらず当たり判定
-	// フィールドの各種オブジェクトとの当たり判定
-	for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
-		var piece = this.mainStage().pieces[i];
-		if(piece.checkCollisionWithPosition(x, y)) {
-			return true;
+		// フィールドの各種オブジェクトとの当たり判定
+		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
+			var piece = this.mainStage().pieces[i];
+			if(piece.checkCollisionWithPosition(x, y)) {
+				return true;
+			}
 		}
-	}
 
-	// クリックしたときに当たり判定するものたち
-	if(this.core.input_manager.isLeftClickPush()) {
 		// どことも当たり判定しなかったら
 		// こいしを移動
 		// TODO: この関数でやらず、外でやったほうがいい？(この関数は当たり判定したら true or false 返す)

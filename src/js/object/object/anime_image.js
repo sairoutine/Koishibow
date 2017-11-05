@@ -4,6 +4,7 @@ var Util = require('../../hakurei').util;
 var SS = require('../sprite_studio');
 var AnimeMap = require('../../anime');
 var WalkImmovableArea = require('../walk_immovable_area');
+var LogicCollideWithLight = require('../../logic/collide_with_light');
 
 var ObjectAnimeImage = function(core) {
 	base_object.apply(this, arguments);
@@ -104,20 +105,14 @@ ObjectAnimeImage.prototype.addSound = function(sound_name, sound_back_name){
 
 
 ObjectAnimeImage.prototype.onCollision = function(obj){
-	// クリックした場合
-	if(this.core.input_manager.isLeftClickPush()) {
-		// サードアイ使用中なら今のところ何もしない
-		if (this.scene.mainStage().isUsingEye()) return;
+	// サードアイ使用中なら今のところ何もしない
+	if (this.scene.mainStage().isUsingEye()) return;
 
-		if (!this.scene.mainStage().koishi().isMoving()) {
-			this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-		}
+	if (!this.scene.mainStage().koishi().isMoving()) {
+		this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
+		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
 	}
-	// マウスオーバーした場合
-	else {
-		this.onCollisionByMouseOver();
-	}
+
 };
 ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 	var self = this;
@@ -150,7 +145,7 @@ ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
 
 
 // マウスオーバーした場合
-ObjectAnimeImage.prototype.onCollisionByMouseOver = function(){
+ObjectAnimeImage.prototype.onMouseOver = function(){
 	// サードアイを使用してなければ何もしない
 	if (!this.scene.mainStage().isUsingEye()) return;
 
@@ -203,7 +198,7 @@ ObjectAnimeImage.prototype.beforeDraw = function() {
 		var y = this.core.input_manager.mousePositionY();
 
 		// マウスオーバーしてないなら解除
-		if(!this.checkCollisionWithPosition(x, y)) {
+		if (!this.scene.mainStage().isUsingEye() || !LogicCollideWithLight.check(this, this.scene.mainStage())) {
 			var sprite = this.sprite;
 			var anime = this._is_touch ? this.after_anime : this.before_anime;
 
