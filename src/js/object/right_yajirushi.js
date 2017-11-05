@@ -27,7 +27,16 @@ ObjectRightYajirushi.prototype.onCollision = function(obj){
 		this.core.playSound("chapter0-myroom-door_open");
 	}
 
-	this.core.changeScene("stage", this.scene.mainStage().field().right_field, false);
+	// 屋敷の廊下2はイベント再生する
+	if (this.scene.mainStage().field().right_field === "chapter0_mansion_corridor2" &&
+		!this.core.save_manager.isPlayedEvent("chapter0-event-encounter_satori")) {
+
+		this.core.changeScene("event");
+	}
+	// 通常の遷移
+	else {
+		this.core.changeScene("stage", this.scene.mainStage().field().right_field, false);
+	}
 };
 
 ObjectRightYajirushi.prototype.collisionWidth = function(){
