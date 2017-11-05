@@ -29,7 +29,7 @@ ObjectLeftYajirushi.prototype.onCollision = function(obj){
 	}
 	// 通常の遷移
 	else {
-		this.core.changeScene("stage", this.scene.mainStage().field().left_field, false);
+		this.core.changeScene("stage", this.scene.mainStage().field().left_field, true);
 	}
 };
 
