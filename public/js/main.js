@@ -50717,10 +50717,10 @@ module.exports = CONSTANT;
 'use strict';
 var DEBUG = {
 	ON: true,
-	SOUND_OFF: false,
+	SOUND_OFF: true,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_hospital_corridor2"],
-	START_SCENE: ["stage", "chapter0_myroom"],
+	//START_SCENE: ["stage", "chapter0_myroom"],
 	//START_SCENE: ["movie", "./movie/trailer.mp4", "title"],
 };
 
