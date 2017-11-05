@@ -8,6 +8,7 @@ var CONSTANT = require('../constant');
 var SceneSubStagePlay = require('./sub_stage/play');
 var SceneSubStageTalk = require('./sub_stage/talk');
 var SceneSubStageMenu = require('./sub_stage/menu');
+var SceneSubStagePaper = require('./sub_stage/paper');
 
 var Koishi = require('../object/koishi');
 
@@ -63,6 +64,8 @@ var SceneStage = function(core) {
 	this.addSubScene("talk", new SceneSubStageTalk(core));
 	// メニュー
 	this.addSubScene("menu", new SceneSubStageMenu(core));
+	// 文章を読む
+	this.addSubScene("paper", new SceneSubStagePaper(core));
 };
 util.inherit(SceneStage, base_scene);
 
