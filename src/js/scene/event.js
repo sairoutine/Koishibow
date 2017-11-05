@@ -21,7 +21,7 @@ SceneEvent.prototype.init = function(){
 	this.setFadeIn(30, "black");
 
 	// イベント再生後はフェードアウトする
-	this.setFadeOut(30, "black");
+	this.setFadeOut(120, "black");
 
 	// BGM 止める
 	this.core.stopBGM();
@@ -29,11 +29,13 @@ SceneEvent.prototype.init = function(){
 	// アニメ
 	this._event_anime.init(this.width/2, this.height/2, jsonDataOfEvent, 0, {scale: 2/3, loop: 1});
 
-	var self = this;
+	var core = this.core;
 	this._event_anime.sprite.setEndCallBack(function () {
-		self.core.changeScene("stage", "chapter0_mansion_corridor2");
+		core.changeScene("stage", "chapter0_mansion_corridor2");
 
-		self.core.save_manager.setPlayedEvent("chapter0-event-encounter_satori");
+		core.save_manager.setPlayedEvent("chapter0-event-encounter_satori");
+
+		core.audio_loader.fadeOutBGM(2);
 	});
 };
 
