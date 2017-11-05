@@ -21,6 +21,12 @@ ObjectRightYajirushi.prototype.setPosition = function(){
 ObjectRightYajirushi.prototype.onCollision = function(obj){
 	// フィールド遷移
 	this.scene.mainStage().setFadeOut(30, "black");
+
+	// chapter 0 の自室であれば遷移前／遷移先の際に、ドアを開けるおとを鳴らす
+	if (this.scene.mainStage().field().key === "chapter0_myroom" || this.scene.mainStage().field().right_field === "chapter0_myroom") {
+		this.core.playSound("chapter0-myroom-door_open");
+	}
+
 	this.core.changeScene("stage", this.scene.mainStage().field().right_field, false);
 };
 
