@@ -19,7 +19,8 @@ var RightYajirushi = require('../object/right_yajirushi');
 var ItemButton = require('../object/item_button');
 var Eye = require('../object/eye');
 
-var jsonDataOfBlackMist = require('../anime/black-mist_anime_1');
+var jsonDataOfBlackMist = require('../anime/black_mist/eff01_anime_1');
+var jsonDataOfRedMist = require('../anime/black_mist/eff02_anime_1');
 var SS = require('../object/sprite_studio');
 
 var FieldMap = require('../field');
@@ -116,10 +117,14 @@ SceneStage.prototype.isUsingEye = function() {
 SceneStage.prototype.unUseEye = function() {
 	this.koishi().unUseEye();
 	this.is_use_eye = false;
+
+	this.black_mist.changeAnimation(jsonDataOfBlackMist);
 };
 SceneStage.prototype.useEye = function() {
 	this.koishi().useEye();
 	this.is_use_eye = true;
+
+	this.black_mist.changeAnimation(jsonDataOfRedMist);
 };
 
 SceneStage.prototype.beforeDraw = function(){

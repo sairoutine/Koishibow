@@ -2,7 +2,7 @@
 
 var AssetsConfig = {};
 AssetsConfig.images = {
-	"black-mist.png":            "./image/black-mist.png",
+	"black_mist.png":            "./image/black_mist.png",
 	"koishi.png":                "./image/koishi.png",
 
 	// さとり邂逅イベント
