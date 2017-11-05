@@ -4,6 +4,12 @@ var AssetsConfig = {};
 AssetsConfig.images = {
 	"black-mist.png":            "./image/black-mist.png",
 	"koishi.png":                "./image/koishi.png",
+
+	// さとり邂逅イベント
+	"bg01.jpg": "./image/chapter0/event/encounter_satori/bg01.jpg",
+	"bg02.jpg": "./image/chapter0/event/encounter_satori/bg02.jpg",
+	"str.png":  "./image/chapter0/event/encounter_satori/str.png",
+
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
 	"chapter0-myroom-obj-02-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",
@@ -228,6 +234,11 @@ AssetsConfig.bgms = {
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 0.9,
 	},
+	"chapter0-event-encounter_satori": {
+		path: "./bgm/chapter0/event/encounter_satori.ogg",
+		volume: 1.0,
+	},
+
 	"chapter0-mansion_corridor1-wind": {
 		path: "./bgm/chapter0/mansion_corridor1/wind.ogg",
 		loopStart: 0*60 + 0 + 0.000,
