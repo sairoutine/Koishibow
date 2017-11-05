@@ -59,6 +59,10 @@ AssetsConfig.images = {
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
 	fukidashi_arrow:  "./image/ui-common-btn-arrow-brn.png",
 
+	paper:              "./image/chapterall-obj-02-01.png",
+	//paper_close_button: "./image/ui-common-btn-close.png",
+	paper_open:         "./image/ui-common-frame-paper.png",
+
 	// メニュー
 	"ui-common-bg-toolpu-blk":   "./image/menu/ui-common-bg-toolpu-blk.png",
 	"ui-common-btn-toolpu-blu1": "./image/menu/ui-common-btn-toolpu-blu1.png",
