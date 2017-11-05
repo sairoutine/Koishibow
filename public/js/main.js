@@ -71677,6 +71677,7 @@ var ObjectAnimeImage = function(core) {
 
 	this._is_touch = false;
 	this._is_mouseover = false;
+	this._is_animation_once = false;
 };
 Util.inherit(ObjectAnimeImage, base_object);
 
@@ -71703,6 +71704,7 @@ ObjectAnimeImage.prototype.init = function(){
 
 	this._is_touch = false;
 	this._is_mouseover = false;
+	this._is_animation_once = false;
 };
 ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
@@ -71814,20 +71816,24 @@ ObjectAnimeImage.prototype.onCollisionByMouseOver = function(){
 		}
 	}
 
-
-
-	this._is_mouseover = true;
-
-	var sprite = this.sprite;
-	var onmouseover_anime = this.onmouseover_anime;
-	sprite.playAnimationOnce(this.onmouseover_start_anime, function (){
-		sprite.changeAnimation(onmouseover_anime);
-	});
-
-	// 音
-	if (this._sound_back_name) {
-		this.core.playSound(this._sound_back_name);
+	// 1度でもマウスオーバーアニメーションを再生していたら裏⇛表, 表⇛裏の遷移アニメは非表示
+	if (this._is_animation_once) {
+		this.sprite.changeAnimation(this.onmouseover_anime);
 	}
+	else {
+		var sprite = this.sprite;
+		var onmouseover_anime = this.onmouseover_anime;
+		sprite.playAnimationOnce(this.onmouseover_start_anime, function (){
+			sprite.changeAnimation(onmouseover_anime);
+		});
+
+		// 音
+		if (this._sound_back_name) {
+			this.core.playSound(this._sound_back_name);
+		}
+
+	}
+	this._is_mouseover = true;
 };
 
 ObjectAnimeImage.prototype.beforeDraw = function() {
@@ -71843,11 +71849,18 @@ ObjectAnimeImage.prototype.beforeDraw = function() {
 		if(!this.checkCollisionWithPosition(x, y)) {
 			var sprite = this.sprite;
 			var anime = this._is_touch ? this.after_anime : this.before_anime;
-			sprite.playAnimationOnce(this.onmouseover_end_anime, function (){
-				sprite.changeAnimation(anime);
-			});
 
+			// 1度でもマウスオーバーアニメーションを再生していたら裏⇛表, 表⇛裏の遷移アニメは非表示
+			if (this._is_animation_once) {
+				this.sprite.changeAnimation(anime);
+			}
+			else {
+				sprite.playAnimationOnce(this.onmouseover_end_anime, function (){
+					sprite.changeAnimation(anime);
+				});
+			}
 
+			this._is_animation_once = true;
 			this._is_mouseover = false;
 		}
 	}
