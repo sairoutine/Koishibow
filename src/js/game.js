@@ -9,6 +9,7 @@ var SceneTitle = require('./scene/title');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
 var SceneMovie = require('./hakurei').scene.movie;
+var SceneEvent = require('./scene/event');
 
 var Game = function(canvas) {
 	core.apply(this, arguments);
@@ -25,6 +26,7 @@ Game.prototype.init = function () {
 	this.addScene("loading", new SceneLoading(this));
 	this.addScene("title", new SceneTitle(this));
 	this.addScene("stage", new SceneStage(this));
+	this.addScene("event", new SceneEvent(this));
 
 	var scene_movie = new SceneMovie(this);
 	if (CONSTANT.DEBUG.SOUND_OFF) {
