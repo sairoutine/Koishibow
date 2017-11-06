@@ -32,9 +32,11 @@ ObjectAnimeEventImage.prototype.onCollision = function(obj){
 ObjectAnimeEventImage.prototype.onCollisionAfterKoishiWalkOnEvent = function(){
 	var self = this;
 
-	console.log("ok");
+	// フェードアウト
+	this.scene.mainStage().setFadeOut(30, "black");
+
 	// イベント発生
-	//this.core.changeScene(this._action_back_event);
+	this.core.changeScene(this._action_back_event);
 };
 
 

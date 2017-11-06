@@ -10,6 +10,7 @@ var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
 var SceneMovie = require('./hakurei').scene.movie;
 var SceneEvent = require('./scene/event');
+var SceneEventForTrialLast = require('./scene/event_for_trial_last');
 
 var Game = function(canvas) {
 	core.apply(this, arguments);
@@ -27,6 +28,7 @@ Game.prototype.init = function () {
 	this.addScene("title", new SceneTitle(this));
 	this.addScene("stage", new SceneStage(this));
 	this.addScene("event", new SceneEvent(this));
+	this.addScene("event_for_trial_last", new SceneEventForTrialLast(this));
 
 	var scene_movie = new SceneMovie(this);
 	if (CONSTANT.DEBUG.SOUND_OFF) {
