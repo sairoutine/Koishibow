@@ -124,6 +124,10 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter0/myroom/sound_window.ogg",
 		volume: 1.0,
 	},
+	"chapter0-myroom-sound_window_for_kokoro":    {
+		path: "./sound/chapter0/myroom/sound_window_for_kokoro.ogg",
+		volume: 1.0,
+	},
 	"chapter0-hospital_corridor1-sound_aidkit":    {
 		path: "./sound/chapter0/hospital_corridor1/sound_aidkit.ogg",
 		volume: 1.0,
@@ -174,6 +178,14 @@ AssetsConfig.sounds = {
 	},
 	"chapter0-mansion_corridor3-ring_clock_front":    {
 		path: "./sound/chapter0/mansion_corridor3/ring_clock_front.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-sound_vase_back":    {
+		path: "./sound/chapter0/mansion_corridor3/sound_vase_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-smile_kokoro_back":    {
+		path: "./sound/chapter0/mansion_corridor3/smile_kokoro_back.ogg",
 		volume: 1.0,
 	},
 	touch:    {
@@ -243,7 +255,12 @@ AssetsConfig.bgms = {
 		path: "./bgm/chapter0/event/encounter_satori.ogg",
 		volume: 0.6,
 	},
-
+	"chapter0-mansion_corridor1-tricycle": {
+		path: "./bgm/chapter0/mansion_corridor1/tricycle.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
 	"chapter0-mansion_corridor1-wind": {
 		path: "./bgm/chapter0/mansion_corridor1/wind.ogg",
 		loopStart: 0*60 + 0 + 0.000,
