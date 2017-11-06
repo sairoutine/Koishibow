@@ -59777,7 +59777,7 @@ Game.prototype.stopBGM = function () {
 
 module.exports = Game;
 
-},{"./constant":89,"./hakurei":100,"./save_manager":152,"./scene/event":153,"./scene/event_for_get_hat":154,"./scene/event_for_trial_last":155,"./scene/loading":156,"./scene/stage":157,"./scene/title":165}],100:[function(require,module,exports){
+},{"./constant":89,"./hakurei":100,"./save_manager":152,"./scene/event":153,"./scene/event_for_get_hat":154,"./scene/event_for_trial_last":155,"./scene/loading":156,"./scene/stage":157,"./scene/title":164}],100:[function(require,module,exports){
 'use strict';
 
 module.exports = require("./hakureijs/index");
@@ -72494,7 +72494,7 @@ SpriteStudio.prototype.alpha = function() {
 
 module.exports = SpriteStudio;
 
-},{"../hakurei":100,"../logic/create_darker_image":138,"../vendor/SsaPlayer":166}],151:[function(require,module,exports){
+},{"../hakurei":100,"../logic/create_darker_image":138,"../vendor/SsaPlayer":165}],151:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -72611,7 +72611,7 @@ SaveManager.prototype.setCurrentField = function(field_name) {
 	this.set("current_field", field_name);
 };
 
-// 指定のイベントを再生済みかどうか
+// 現在のフィールドを取得
 SaveManager.prototype.isPlayedEvent = function(event_name) {
 	var played_event_map = this.get("played_event_map");
 
@@ -72619,7 +72619,7 @@ SaveManager.prototype.isPlayedEvent = function(event_name) {
 
 	return played_event_map[event_name] ? true : false;
 };
-// 指定のイベントを再生済みにする
+// 現在のフィールドを設定
 SaveManager.prototype.setPlayedEvent = function(event_name) {
 	var played_event_map = this.get("played_event_map");
 
@@ -72946,7 +72946,6 @@ var SceneSubStagePlay = require('./sub_stage/play');
 var SceneSubStageTalk = require('./sub_stage/talk');
 var SceneSubStageMenu = require('./sub_stage/menu');
 var SceneSubStagePaper = require('./sub_stage/paper');
-var SceneSubStageChapter0First = require('./sub_stage/chapter0_first');
 
 var Koishi = require('../object/koishi');
 
@@ -73006,8 +73005,6 @@ var SceneStage = function(core) {
 	this.addSubScene("menu", new SceneSubStageMenu(core));
 	// 文章を読む
 	this.addSubScene("paper", new SceneSubStagePaper(core));
-	// chapter0 最初(帽子をかぶる前)
-	this.addSubScene("chapter0_first", new SceneSubStageChapter0First(core));
 };
 util.inherit(SceneStage, base_scene);
 
@@ -73052,13 +73049,7 @@ SceneStage.prototype.init = function(field_name, is_right){
 
 	this.black_mist.init(this.width/2, this.height/2, jsonDataOfBlackMist, 0, {scale: 2/3});
 
-	// TODO: sub scene であってイベントでないので、別の判定メソッドを save_manager に生やしたい
-	if (this.core.save_manager.isPlayedEvent("event_for_chapter0_first")) {
-		this.changeSubScene("play");
-	}
-	else {
-		this.changeSubScene("chapter0_first");
-	}
+	this.changeSubScene("play");
 };
 
 
@@ -73422,7 +73413,7 @@ SceneStage.prototype._drawImmovableArea = function() {
 
 module.exports = SceneStage;
 
-},{"../anime/black_mist/eff01_anime_1":2,"../anime/black_mist/eff02_anime_1":3,"../constant":89,"../field":91,"../hakurei":100,"../object/eye":140,"../object/item_button":141,"../object/koishi":142,"../object/left_yajirushi":143,"../object/object/anime_event_image":145,"../object/object/anime_image":146,"../object/object/paper":147,"../object/object/static_image":148,"../object/right_yajirushi":149,"../object/sprite_studio":150,"./stage_base":158,"./sub_stage/chapter0_first":160,"./sub_stage/menu":161,"./sub_stage/paper":162,"./sub_stage/play":163,"./sub_stage/talk":164}],158:[function(require,module,exports){
+},{"../anime/black_mist/eff01_anime_1":2,"../anime/black_mist/eff02_anime_1":3,"../constant":89,"../field":91,"../hakurei":100,"../object/eye":140,"../object/item_button":141,"../object/koishi":142,"../object/left_yajirushi":143,"../object/object/anime_event_image":145,"../object/object/anime_image":146,"../object/object/paper":147,"../object/object/static_image":148,"../object/right_yajirushi":149,"../object/sprite_studio":150,"./stage_base":158,"./sub_stage/menu":160,"./sub_stage/paper":161,"./sub_stage/play":162,"./sub_stage/talk":163}],158:[function(require,module,exports){
 'use strict';
 var base_scene = require('../hakurei').scene.base;
 var Util = require('../hakurei').util;
@@ -73470,59 +73461,6 @@ SceneSubStageBase.prototype.mainStage = function(){
 module.exports = SceneSubStageBase;
 
 },{"../../hakurei":100,"../stage_base":158}],160:[function(require,module,exports){
-'use strict';
-var base_scene = require('./base');
-var Util = require('../../hakurei').util;
-
-// TODO: まずこいしにセリフを喋らせる
-// 帽子オブジェクトをサブシーンに持つ
-// このシーンのプレイ中は、歩く・待機・触るは、帽子なしで行う
-// 帽子オブジェクトがタッチされたら、
-// こいしを触るアニメにする
-// かつ、音をならす
-// そして1枚絵シーンに遷移する
-var SceneSubStageChapter0First = function(core, stage) {
-	base_scene.apply(this, arguments);
-};
-Util.inherit(SceneSubStageChapter0First, base_scene);
-
-SceneSubStageChapter0First.prototype.init = function(){
-	base_scene.prototype.init.apply(this, arguments);
-};
-
-
-
-
-SceneSubStageChapter0First.prototype.draw = function(){
-	base_scene.prototype.draw.apply(this, arguments);
-};
-
-SceneSubStageChapter0First.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
-	//クリックチェック
-	this._collisionCheck();
-};
-
-SceneSubStageChapter0First.prototype._collisionCheck = function(){
-	// マウス位置したところを取得
-	var x = this.core.input_manager.mousePositionX();
-	var y = this.core.input_manager.mousePositionY();
-
-	// クリックしたときに当たり判定するものたち
-	if(this.core.input_manager.isLeftClickPush()) {
-		// TODO: この関数でやらず、外でやったほうがいい？(この関数は当たり判定したら true or false 返す)
-		if (!this.mainStage().koishi().isMoving()) {
-			this.koishi().setMoveTarget(x, y);
-		}
-	}
-
-	return false;
-};
-
-
-module.exports = SceneSubStageChapter0First;
-
-},{"../../hakurei":100,"./base":159}],161:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -73797,7 +73735,7 @@ SceneSubStageTalk.prototype._useItem = function(){
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":100,"../../object/menu_item":144,"./base":159}],162:[function(require,module,exports){
+},{"../../hakurei":100,"../../object/menu_item":144,"./base":159}],161:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -73896,7 +73834,7 @@ SceneSubStageTalk.prototype._showMessage = function() {
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":100,"./base":159}],163:[function(require,module,exports){
+},{"../../hakurei":100,"./base":159}],162:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -73995,7 +73933,7 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 
 module.exports = SceneSubStagePlay;
 
-},{"../../hakurei":100,"../../logic/collide_with_light":137,"../../object/object/anime_image":146,"./base":159}],164:[function(require,module,exports){
+},{"../../hakurei":100,"../../logic/collide_with_light":137,"../../object/object/anime_image":146,"./base":159}],163:[function(require,module,exports){
 'use strict';
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
@@ -74167,7 +74105,7 @@ SceneSubStageTalk.prototype._showMessage = function() {
 
 module.exports = SceneSubStageTalk;
 
-},{"../../hakurei":100,"./base":159}],165:[function(require,module,exports){
+},{"../../hakurei":100,"./base":159}],164:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -74311,7 +74249,7 @@ SceneTitle.prototype.draw = function(){
 
 module.exports = SceneTitle;
 
-},{"../constant":89,"../hakurei":100}],166:[function(require,module,exports){
+},{"../constant":89,"../hakurei":100}],165:[function(require,module,exports){
 //-----------------------------------------------------------
 // Ss5ConverterToSSAJSON v1.0.3
 //
