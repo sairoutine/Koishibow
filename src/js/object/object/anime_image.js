@@ -29,6 +29,9 @@ var ObjectAnimeImage = function(core) {
 
 	this._sound_name  = null;
 	this._sound_back_name  = null;
+	this._bgm_name  = null;
+	this._bgm_back_name  = null;
+
 
 	// アニメ
 	this.sprite = new SS(this.scene);
@@ -59,6 +62,9 @@ ObjectAnimeImage.prototype.init = function(){
 
 	this._sound_name  = null;
 	this._sound_back_name  = null;
+	this._bgm_name  = null;
+	this._bgm_back_name  = null;
+
 
 	this._is_touch = false;
 	this._is_mouseover = false;
@@ -93,9 +99,12 @@ ObjectAnimeImage.prototype.addSize = function(width, height){
 ObjectAnimeImage.prototype.addKoishiAction = function(action_name){
 	this._action_name  = action_name;
 };
-ObjectAnimeImage.prototype.addSound = function(sound_name, sound_back_name){
+ObjectAnimeImage.prototype.addSound = function(sound_name, sound_back_name, bgm, bgm_back){
 	this._sound_name  = sound_name;
 	this._sound_back_name  = sound_back_name;
+	this._bgm_name  = bgm;
+	this._bgm_back_name  = bgm_back;
+
 };
 
 
@@ -170,12 +179,20 @@ ObjectAnimeImage.prototype.onMouseOver = function(){
 
 	// 1度でもマウスオーバーアニメーションを再生していたら裏⇛表, 表⇛裏の遷移アニメは非表示
 	if (this._is_animation_once) {
+		if (this._bgm_back_name) {
+			this.core.addBGM(this._bgm_back_name);
+		}
 		this.sprite.changeAnimation(this.onmouseover_anime);
 	}
 	else {
+		var core = this.core;
 		var sprite = this.sprite;
 		var onmouseover_anime = this.onmouseover_anime;
-		sprite.playAnimationOnce(this.onmouseover_start_anime, function (){
+		var bgm_back_name = this._bgm_back_name;
+		sprite.playAnimationOnce(this.onmouseover_start_anime, function () {
+			if (bgm_back_name) {
+				core.addBGM(bgm_back_name);
+			}
 			sprite.changeAnimation(onmouseover_anime);
 		});
 
@@ -204,10 +221,19 @@ ObjectAnimeImage.prototype.beforeDraw = function() {
 
 			// 1度でもマウスオーバーアニメーションを再生していたら裏⇛表, 表⇛裏の遷移アニメは非表示
 			if (this._is_animation_once) {
+
+				if (this._bgm_back_name) {
+					this.core.stopBGM(this._bgm_back_name);
+				}
 				this.sprite.changeAnimation(anime);
 			}
 			else {
+				var core = this.core;
+				var bgm_back_name = this._bgm_back_name;
 				sprite.playAnimationOnce(this.onmouseover_end_anime, function (){
+					if (bgm_back_name) {
+						core.stopBGM(bgm_back_name);
+					}
 					sprite.changeAnimation(anime);
 				});
 			}
