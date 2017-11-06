@@ -11,6 +11,9 @@ AssetsConfig.images = {
 	"str.png":  "./image/chapter0/event/encounter_satori/str.png",
 	"black-mist.png": "./image/chapter0/event/encounter_satori/black-mist.png",
 
+	// 帽子獲得イベント
+	"get_hat":  "./image/chapter0/event/get_hat/bg.png",
+
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
 	"chapter0-myroom-obj-02-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",
