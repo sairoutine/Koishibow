@@ -43,7 +43,8 @@ module.exports = {
 			anime5: "chapter0-mansion_corridor1-obj-02-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-02-01-obj06",
 			action: "touch",
-			sound: "chapter0-mansion_corridor1-move_tricycle"
+			sound: "chapter0-mansion_corridor1-move_tricycle",
+			bgm_back: "chapter0-mansion_corridor1-tricycle",
 		},
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
