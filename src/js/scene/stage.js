@@ -15,6 +15,7 @@ var Koishi = require('../object/koishi');
 var ObjectStaticImage = require('../object/object/static_image');
 var ObjectAnimeImage = require('../object/object/anime_image');
 var ObjectPaper = require('../object/object/paper');
+var ObjectAnimeEventImage = require('../object/object/anime_event_image');
 
 var LeftYajirushi = require('../object/left_yajirushi');
 var RightYajirushi = require('../object/right_yajirushi');
@@ -434,6 +435,21 @@ SceneStage.prototype.setupPiece = function() {
 			object = new ObjectPaper(this);
 			object.init();
 			object.addData(data);
+
+			this.pieces.push(object);
+
+			this.walk_immovable_areas.push(object.getImmovableArea());
+		}
+		else if (data.type === CONSTANT.ANIME_EVENT_IMAGE_TYPE) {
+			object = new ObjectAnimeEventImage(this);
+			object.init();
+			object.addSize(data.width, data.height);
+			object.addSerif(data.serif);
+			object.addSound(data.sound, data.sound_back, data.bgm, data.bgm_back);
+			object.addKoishiAction(data.action);
+			object.addActionBackEvent(data.action_back_event);
+			object.addAnime(data.anime1, data.anime2, data.anime3, data.anime4, data.anime5, data.anime6, data.scale);
+			object.setPosition(data.x, data.y);
 
 			this.pieces.push(object);
 

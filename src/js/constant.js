@@ -5,9 +5,10 @@ var CONSTANT = {
 	DEBUG: {},
 
 	// オブジェクトの種類
-	STATIC_IMAGE_TYPE: 1,
-	ANIME_IMAGE_TYPE:  2,
-	PAPER_TYPE:        3,
+	STATIC_IMAGE_TYPE:      1,
+	ANIME_IMAGE_TYPE:       2,
+	PAPER_TYPE:             3,
+	ANIME_EVENT_IMAGE_TYPE: 4, // chapter0 最後のカーペット
 
 
 	// こいしの歩ける範囲の上 上限(px)

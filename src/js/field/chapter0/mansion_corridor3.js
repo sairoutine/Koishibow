@@ -78,7 +78,7 @@ module.exports = {
 			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
 		},
 		{
-			type: CONSTANT.ANIME_IMAGE_TYPE,
+			type: CONSTANT.ANIME_EVENT_IMAGE_TYPE,
 			name: "カーペット",
 			serif: null,
 			x: 490,
@@ -90,7 +90,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-11-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-11-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-11-01-obj06",
-			action: null
+			action: null,
+			action_back_event: "event_for_trial",
 		},
 	],
 };
