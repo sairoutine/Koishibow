@@ -18,11 +18,17 @@ ObjectEye.prototype.onCollision = function(obj){
 
 
 	if (stage.isUsingEye()) {
+		this.core.audio_loader.stopBGM("using_3rdeye");
+		this.core.audio_loader.unMuteWithFadeInAllBGM(3);
+
 		// サードアイOff
 		stage.unUseEye();
 	}
 	else {
 		this.core.playSound("use_3rdeye");
+
+		this.core.audio_loader.muteAllBGM();
+		this.core.addBGM("using_3rdeye");
 
 		// サードアイOn
 		stage.useEye();
