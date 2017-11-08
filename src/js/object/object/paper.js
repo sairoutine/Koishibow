@@ -60,7 +60,7 @@ ObjectPaper.prototype.onCollisionAfterKoishiWalk = function(){
 	*/
 
 	// 音を再生
-	this.core.playSound("chapter0-myroom-open_book");
+	this.core.playSound("show_journal");
 };
 
 ObjectPaper.prototype.draw = function(){

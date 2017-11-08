@@ -47,6 +47,12 @@ SceneEvent.prototype.beforeDraw = function(){
 	if(this.frame_count === 200) { // 3.3秒後にBGM再生(白黒のところから再生したいので)
 		this.core.changeBGM("chapter0-event-encounter_satori");
 	}
+	else if (this.frame_count === 100) {
+		this.core.playSound("chapter0-mansion_corridor2-event_in");
+	}
+	else if (this.frame_count === 1700) {
+		this.core.playSound("chapter0-mansion_corridor2-event_out");
+	}
 
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 };

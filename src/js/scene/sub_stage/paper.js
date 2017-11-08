@@ -26,7 +26,7 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 
 	// プレイに戻る
 	if(this.core.input_manager.isLeftClickPush()) {
-		this.core.playSound("chapter0-myroom-open_book");
+		this.core.playSound("show_journal");
 		this.mainStage().changeSubScene("play");
 	}
 };

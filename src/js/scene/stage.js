@@ -132,30 +132,37 @@ SceneStage.prototype.useEye = function() {
 	this.black_mist.changeAnimation(jsonDataOfRedMist);
 };
 
+SceneStage.prototype.playBGM = function(){
+	// メインBGM 再生
+	this.core.changeBGM(this.field().bgm);
+
+	// 既に再生していたサブBGMを止める
+	this.core.audio_loader.stopBGMWithout(this.field().bgm);
+
+	// サブBGM再生
+	if (this.field().bgm2) {
+		this.core.addBGM(this.field().bgm2);
+	}
+};
+
 SceneStage.prototype.beforeDraw = function(){
 	// BGM 再生
 	if(this.frame_count === 60) {
-		// メインBGM 再生
-		this.core.changeBGM(this.field().bgm);
-
-		// 既に再生していたサブBGMを止める
-		this.core.audio_loader.stopBGMWithout(this.field().bgm);
-
-		// サブBGM再生
-		if (this.field().bgm2) {
-			this.core.addBGM(this.field().bgm2);
+		if (!this.isUsingEye()) {
+			this.playBGM();
 		}
 	}
 
 	// ランダムノイズ再生
 	// N秒ごとにN%の確率で再生
-	if(this.core.frame_count % CONSTANT.NOISE_SOUND_INTERVAL_COUNT === 0) {
-		if (util.getRandomInt(100) <= CONSTANT.NOISE_SOUND_PROB) {
-			var sound_name = CONSTANT.NOISE_SOUND_LIST[ util.getRandomInt(0, CONSTANT.NOISE_SOUND_LIST.length - 1) ];
-			this.core.playSound(sound_name);
+	if (!this.isUsingEye()) {
+		if(this.core.frame_count % CONSTANT.NOISE_SOUND_INTERVAL_COUNT === 0) {
+			if (util.getRandomInt(100) <= CONSTANT.NOISE_SOUND_PROB) {
+				var sound_name = CONSTANT.NOISE_SOUND_LIST[ util.getRandomInt(0, CONSTANT.NOISE_SOUND_LIST.length - 1) ];
+				this.core.playSound(sound_name);
+			}
 		}
 	}
-
 
 
 	// y 軸(y が大きい方が z軸が大きい)の降順ソート
