@@ -85,6 +85,10 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
+	show_journal:    {
+		path: "./sound/show_journal.ogg",
+		volume: 1.0,
+	},
 	open_menu:    {
 		path: "./sound/open_menu.ogg",
 		volume: 1.0,
@@ -95,6 +99,10 @@ AssetsConfig.sounds = {
 	},
 	select_title:    {
 		path: "./sound/select_title.ogg",
+		volume: 1.0,
+	},
+	focuson_title:    {
+		path: "./sound/focuson_title.ogg",
 		volume: 1.0,
 	},
 	use_3rdeye:    {
@@ -169,6 +177,15 @@ AssetsConfig.sounds = {
 	},
 	"chapter0-mansion_corridor2-open_door":    {
 		path: "./sound/chapter0/mansion_corridor2/open_door.ogg",
+		volume: 1.0,
+	},
+
+	"chapter0-mansion_corridor2-event_out":    {
+		path: "./sound/chapter0/mansion_corridor2/event/event_out.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-event_in":    {
+		path: "./sound/chapter0/mansion_corridor2/event/event_in.ogg",
 		volume: 1.0,
 	},
 	"chapter0-mansion_corridor3-open_door":    {
