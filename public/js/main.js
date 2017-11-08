@@ -59018,6 +59018,10 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
+	show_journal:    {
+		path: "./sound/show_journal.ogg",
+		volume: 1.0,
+	},
 	open_menu:    {
 		path: "./sound/open_menu.ogg",
 		volume: 1.0,
@@ -59028,6 +59032,10 @@ AssetsConfig.sounds = {
 	},
 	select_title:    {
 		path: "./sound/select_title.ogg",
+		volume: 1.0,
+	},
+	focuson_title:    {
+		path: "./sound/focuson_title.ogg",
 		volume: 1.0,
 	},
 	use_3rdeye:    {
@@ -59104,6 +59112,15 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter0/mansion_corridor2/open_door.ogg",
 		volume: 1.0,
 	},
+
+	"chapter0-mansion_corridor2-event_out":    {
+		path: "./sound/chapter0/mansion_corridor2/event/event_out.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-event_in":    {
+		path: "./sound/chapter0/mansion_corridor2/event/event_in.ogg",
+		volume: 1.0,
+	},
 	"chapter0-mansion_corridor3-open_door":    {
 		path: "./sound/chapter0/mansion_corridor3/open_door.ogg",
 		volume: 1.0,
@@ -59168,6 +59185,12 @@ AssetsConfig.sounds = {
 };
 
 AssetsConfig.bgms = {
+	using_3rdeye: {
+		path: "./bgm/using_3rdeye.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
 	title: {
 		path: "./bgm/title1.ogg",
 		loopStart: 0*60 + 0 + 0.000,
@@ -59247,7 +59270,7 @@ module.exports = CONSTANT;
 'use strict';
 var DEBUG = {
 	ON: true,
-	SOUND_OFF: true,
+	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_mansion_corridor3"],
 	//START_SCENE: ["event_for_get_hat"],
@@ -59986,6 +60009,80 @@ AudioLoader.prototype.fadeOutBGM = function (fadeout_time, bgm_name) {
 	var endTime = startTime + fadeout_time;
 	gain.linearRampToValueAtTime(0, endTime);
 };
+
+AudioLoader.prototype.muteAllBGM = function () {
+	for (var bgm_name in this._audio_source_map) {
+		this.muteBGM(bgm_name);
+	}
+};
+
+AudioLoader.prototype.muteBGM = function (bgm_name) {
+	if(typeof bgm_name === "undefined") {
+		return this.muteAllBGM();
+	}
+
+	var map = this._audio_source_map[bgm_name];
+
+	if (!map) return;
+
+	var audio_gain = map.gain_node;
+
+	audio_gain.gain.value = 0;
+};
+AudioLoader.prototype.unMuteAllBGM = function () {
+	for (var bgm_name in this._audio_source_map) {
+		this.unMuteBGM(bgm_name);
+	}
+};
+
+AudioLoader.prototype.unMuteBGM = function (bgm_name) {
+	if(typeof bgm_name === "undefined") {
+		return this.unMuteAllBGM();
+	}
+
+	var map = this._audio_source_map[bgm_name];
+
+	if (!map) return;
+
+	var audio_gain = map.gain_node;
+
+	var data = this.bgms[bgm_name];
+	audio_gain.gain.value = data.volume || 1.0;
+};
+
+AudioLoader.prototype.unMuteWithFadeInAllBGM = function (fadein_time) {
+	for (var bgm_name in this._audio_source_map) {
+		this.unMuteWithFadeInBGM(fadein_time, bgm_name);
+	}
+};
+
+AudioLoader.prototype.unMuteWithFadeInBGM = function (fadein_time, bgm_name) {
+	if(typeof bgm_name === "undefined") {
+		return this.unMuteWithFadeInAllBGM(fadein_time);
+	}
+
+	var map = this._audio_source_map[bgm_name];
+
+	if (!map) return;
+
+	var data = this.bgms[bgm_name];
+
+	var audio_gain = map.gain_node;
+
+	var gain = audio_gain.gain;
+	var startTime = this.audio_context.currentTime;
+	gain.setValueAtTime(gain.value, startTime); // for old browser
+	var endTime = startTime + fadein_time;
+	gain.linearRampToValueAtTime(data.volume, endTime);
+};
+
+
+
+
+
+
+
+
 
 // create AudioBufferSourceNode and GainNode instance
 AudioLoader.prototype._createSourceNodeAndGainNode = function(name) {
@@ -71151,11 +71248,17 @@ ObjectEye.prototype.onCollision = function(obj){
 
 
 	if (stage.isUsingEye()) {
+		this.core.audio_loader.stopBGM("using_3rdeye");
+		this.core.audio_loader.unMuteWithFadeInAllBGM(3);
+
 		// サードアイOff
 		stage.unUseEye();
 	}
 	else {
 		this.core.playSound("use_3rdeye");
+
+		this.core.audio_loader.muteAllBGM();
+		this.core.addBGM("using_3rdeye");
 
 		// サードアイOn
 		stage.useEye();
@@ -72094,7 +72197,7 @@ ObjectPaper.prototype.onCollisionAfterKoishiWalk = function(){
 	*/
 
 	// 音を再生
-	this.core.playSound("chapter0-myroom-open_book");
+	this.core.playSound("show_journal");
 };
 
 ObjectPaper.prototype.draw = function(){
@@ -72690,6 +72793,12 @@ SceneEvent.prototype.beforeDraw = function(){
 	if(this.frame_count === 200) { // 3.3秒後にBGM再生(白黒のところから再生したいので)
 		this.core.changeBGM("chapter0-event-encounter_satori");
 	}
+	else if (this.frame_count === 100) {
+		this.core.playSound("chapter0-mansion_corridor2-event_in");
+	}
+	else if (this.frame_count === 1700) {
+		this.core.playSound("chapter0-mansion_corridor2-event_out");
+	}
 
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 };
@@ -73069,30 +73178,37 @@ SceneStage.prototype.useEye = function() {
 	this.black_mist.changeAnimation(jsonDataOfRedMist);
 };
 
+SceneStage.prototype.playBGM = function(){
+	// メインBGM 再生
+	this.core.changeBGM(this.field().bgm);
+
+	// 既に再生していたサブBGMを止める
+	this.core.audio_loader.stopBGMWithout(this.field().bgm);
+
+	// サブBGM再生
+	if (this.field().bgm2) {
+		this.core.addBGM(this.field().bgm2);
+	}
+};
+
 SceneStage.prototype.beforeDraw = function(){
 	// BGM 再生
 	if(this.frame_count === 60) {
-		// メインBGM 再生
-		this.core.changeBGM(this.field().bgm);
-
-		// 既に再生していたサブBGMを止める
-		this.core.audio_loader.stopBGMWithout(this.field().bgm);
-
-		// サブBGM再生
-		if (this.field().bgm2) {
-			this.core.addBGM(this.field().bgm2);
+		if (!this.isUsingEye()) {
+			this.playBGM();
 		}
 	}
 
 	// ランダムノイズ再生
 	// N秒ごとにN%の確率で再生
-	if(this.core.frame_count % CONSTANT.NOISE_SOUND_INTERVAL_COUNT === 0) {
-		if (util.getRandomInt(100) <= CONSTANT.NOISE_SOUND_PROB) {
-			var sound_name = CONSTANT.NOISE_SOUND_LIST[ util.getRandomInt(0, CONSTANT.NOISE_SOUND_LIST.length - 1) ];
-			this.core.playSound(sound_name);
+	if (!this.isUsingEye()) {
+		if(this.core.frame_count % CONSTANT.NOISE_SOUND_INTERVAL_COUNT === 0) {
+			if (util.getRandomInt(100) <= CONSTANT.NOISE_SOUND_PROB) {
+				var sound_name = CONSTANT.NOISE_SOUND_LIST[ util.getRandomInt(0, CONSTANT.NOISE_SOUND_LIST.length - 1) ];
+				this.core.playSound(sound_name);
+			}
 		}
 	}
-
 
 
 	// y 軸(y が大きい方が z軸が大きい)の降順ソート
@@ -73764,7 +73880,7 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 
 	// プレイに戻る
 	if(this.core.input_manager.isLeftClickPush()) {
-		this.core.playSound("chapter0-myroom-open_book");
+		this.core.playSound("show_journal");
 		this.mainStage().changeSubScene("play");
 	}
 };
@@ -74194,6 +74310,7 @@ SceneTitle.prototype.beforeDraw = function(){
 		this.menu_ui.forEach(function(menu, i) {
 			// クリックしたら
 			if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](self.core)) {
+				self.core.playSound("select_title");
 				MENU[i][2](self.core);
 			}
 		});
@@ -74204,7 +74321,7 @@ SceneTitle.prototype.beforeDraw = function(){
 			if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](self.core)) {
 				// マウスカーソルを乗せた瞬間に音を鳴らす
 				if (!menu.is_big) {
-					self.core.playSound("select_title");
+					self.core.playSound("focuson_title");
 				}
 				menu.setVariable("is_big", true);
 			}
