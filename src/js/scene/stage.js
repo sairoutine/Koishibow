@@ -123,6 +123,12 @@ SceneStage.prototype.unUseEye = function() {
 	this.core.audio_loader.stopBGM("using_3rdeye");
 	this.core.audio_loader.unMuteWithFadeInAllBGM(3);
 
+	// 60フレーム経つ前に3rd eye 使用してた場合、フィールドBGMは鳴らさない
+	// その場合、ここでフィールドBGMを再生する
+	if (!this.core.audio_loader.isPlayingBGM(this.field().bgm)) {
+		this.playBGM();
+	}
+
 	this.koishi().unUseEye();
 	this.is_use_eye = false;
 
