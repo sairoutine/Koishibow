@@ -14,6 +14,11 @@ AssetsConfig.images = {
 	// 帽子獲得イベント
 	"get_hat":  "./image/chapter0/event/get_hat/bg.png",
 
+	// こいしが落ちるイベント
+	"bg01_for_falldown_koishi.jpg":  "./image/chapter0/event/falldown_koishi/bg01_for_falldown_koishi.jpg",
+	"door.png":  "./image/chapter0/event/falldown_koishi/door.png",
+	"shadow.png":  "./image/chapter0/event/falldown_koishi/shadow.png",
+
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
 	"chapter0-myroom-obj-02-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",

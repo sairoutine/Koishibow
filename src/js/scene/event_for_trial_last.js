@@ -2,14 +2,13 @@
 
 // 体験版最終イベント
 // こいしがカーペットから飛び降りる
-// その後にトレーラームービー再生
 
 var base_scene = require('../hakurei').scene.base;
 
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 var SS = require('../object/sprite_studio');
-var jsonDataOfEvent = require('../anime/chapter0/event/encounter_satori/event01_anime_1');
+var jsonDataOfEvent = require('../anime/chapter0/event/falldown_koishi/event01_anime_1');
 
 var SceneEvent = function(core) {
 	base_scene.apply(this, arguments);
@@ -27,8 +26,10 @@ SceneEvent.prototype.init = function(){
 	// イベント再生後はフェードアウトする
 	this.setFadeOut(120, "black");
 
+	/*
 	// BGM 止める
 	this.core.stopBGM();
+	*/
 
 	// アニメ
 	this._event_anime.init(this.width/2, this.height/2, jsonDataOfEvent, 0, {scale: 2/3, loop: 1});
@@ -45,10 +46,12 @@ SceneEvent.prototype.init = function(){
 SceneEvent.prototype.beforeDraw = function(){
 	this._event_anime.beforeDraw();
 
+	/*
 	// BGM 再生
 	if(this.frame_count === 200) { // 3.3秒後にBGM再生(白黒のところから再生したいので)
 		this.core.changeBGM("chapter0-event-encounter_satori");
 	}
+	*/
 
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 };
