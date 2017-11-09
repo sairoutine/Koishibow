@@ -1,3 +1,8 @@
 node_modules/
 .DS_Store
 tmp/
+# 最初の帽子を取るアニメーション用
+public/image/chapter0/myroom/chapter0-myroom-obj-07-01.png
+src/js/anime/koishi/nohat_reaction_touch_anime_1.json
+src/js/anime/koishi/nohat_wait_anime_1.json
+src/js/anime/koishi/nohat_walk_anime_1.json
