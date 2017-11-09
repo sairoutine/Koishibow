@@ -8,7 +8,6 @@ var SaveManager = require('./save_manager');
 var SceneTitle = require('./scene/title');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
-var SceneMovie = require('./hakurei').scene.movie;
 var SceneEvent = require('./scene/event');
 var SceneEventForTrialLast = require('./scene/event_for_trial_last');
 var SceneEventForGetHat = require('./scene/event_for_get_hat');
@@ -31,12 +30,6 @@ Game.prototype.init = function () {
 	this.addScene("event", new SceneEvent(this));
 	this.addScene("event_for_trial_last", new SceneEventForTrialLast(this));
 	this.addScene("event_for_get_hat", new SceneEventForGetHat(this));
-
-	var scene_movie = new SceneMovie(this);
-	if (CONSTANT.DEBUG.SOUND_OFF) {
-		scene_movie.is_mute = true;
-	}
-	this.addScene("movie", scene_movie);
 
 	this.changeScene("loading");
 };
@@ -83,10 +76,6 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.addMenuButton("移動制限範囲非表示", function (game) {
 		game.debug_manager.set("is_show_immovable_area", false);
 	});
-	this.debug_manager.addMenuButton("トレーラー再生", function (game) {
-		game.changeScene("movie", "./movie/trailer.mp4", "title");
-	});
-
 	this.debug_manager.addMenuSelect("ライトの合成方法", [
 		{value: "source-over"},
 		{value: "destination-over"},

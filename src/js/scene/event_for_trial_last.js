@@ -36,7 +36,7 @@ SceneEvent.prototype.init = function(){
 
 	var core = this.core;
 	this._event_anime.sprite.setEndCallBack(function () {
-		core.changeScene("movie", "./movie/trailer.mp4", "title");
+		core.changeScene("title");
 
 		core.audio_loader.fadeOutBGM(2);
 	});
