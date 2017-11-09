@@ -27,8 +27,7 @@ SceneEvent.prototype.init = function(){
 	this.setFadeOut(120, "black");
 
 	// BGM 止める
-	this.core.audio_loader.stopBGM("using_3rdeye");
-	this.core.audio_loader.unMuteWithFadeInAllBGM(3);
+	this.core.audio_loader.stopBGM();
 
 	// アニメ
 	this._event_anime.init(this.width/2, this.height/2, jsonDataOfEvent, 0, {scale: 2/3, loop: 1});
@@ -45,12 +44,10 @@ SceneEvent.prototype.init = function(){
 SceneEvent.prototype.beforeDraw = function(){
 	this._event_anime.beforeDraw();
 
-	/*
 	// BGM 再生
-	if(this.frame_count === 200) { // 3.3秒後にBGM再生(白黒のところから再生したいので)
-		this.core.changeBGM("chapter0-event-encounter_satori");
+	if(this.frame_count === 25) {
+		this.core.playSound("chapter0-mansion_corridor3-open_and_falldown");
 	}
-	*/
 
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 };

@@ -62,6 +62,8 @@ AssetsConfig.images = {
 	"chapter0-mspassage-obj-10-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-10-01.png",
 	"chapter0-mspassage-obj-11-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-11-01.png",
 
+	tobecontinued:  "./image/tobecontinued.png",
+
 	light:  "./image/light.png",
 
 	paper_clip:  "./image/ui-common-frame-paper_clip.png",
@@ -220,6 +222,10 @@ AssetsConfig.sounds = {
 	},
 	"chapter0-mansion_corridor3-smile_kokoro_back":    {
 		path: "./sound/chapter0/mansion_corridor3/smile_kokoro_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-open_and_falldown":    {
+		path: "./sound/chapter0/mansion_corridor3/open_and_falldown.ogg",
 		volume: 1.0,
 	},
 	touch:    {
