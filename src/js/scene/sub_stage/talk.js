@@ -34,6 +34,7 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 
 	if(this.core.input_manager.isLeftClickPush()) {
 		if(this.serif.isEnd()) {
+			this.mainStage().koishi().setWait();
 			// セリフ終わり
 			this.mainStage().changeSubScene("play");
 		}
