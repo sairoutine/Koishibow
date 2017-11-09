@@ -34,7 +34,7 @@ SceneEvent.prototype.init = function(){
 
 	var core = this.core;
 	this._event_anime.sprite.setEndCallBack(function () {
-		core.changeScene("title");
+		core.changeScene("event_for_trial_last2");
 
 		core.audio_loader.fadeOutBGM(2);
 	});

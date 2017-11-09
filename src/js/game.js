@@ -11,6 +11,7 @@ var SceneLoading = require('./scene/loading');
 var SceneEvent = require('./scene/event');
 var SceneEventForTrialLast = require('./scene/event_for_trial_last');
 var SceneEventForGetHat = require('./scene/event_for_get_hat');
+var SceneEventForTrialLast2 = require('./scene/event_for_trial_last2');
 
 var Game = function(canvas) {
 	core.apply(this, arguments);
@@ -30,6 +31,7 @@ Game.prototype.init = function () {
 	this.addScene("event", new SceneEvent(this));
 	this.addScene("event_for_trial_last", new SceneEventForTrialLast(this));
 	this.addScene("event_for_get_hat", new SceneEventForGetHat(this));
+	this.addScene("event_for_trial_last2", new SceneEventForTrialLast2(this));
 
 	this.changeScene("loading");
 };
