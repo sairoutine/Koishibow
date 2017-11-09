@@ -27,10 +27,22 @@ SceneSubStageTalk.prototype.init = function(serif_list){
 	}
 
 	this.serif.init(serif_script);
+
+
+	this._serif_waiting_count = 0;
 };
 
 SceneSubStageTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
+
+	if(this._serif_waiting_count) {
+		this._serif_waiting_count--;
+
+		if (this._serif_waiting_count === 0) {
+			// セリフを送る
+			this.serif.next();
+		}
+	}
 
 	if(this.core.input_manager.isLeftClickPush()) {
 		if(this.serif.isEnd()) {
@@ -39,8 +51,7 @@ SceneSubStageTalk.prototype.beforeDraw = function(){
 			this.mainStage().changeSubScene("play");
 		}
 		else {
-			// セリフを送る
-			this.serif.next();
+			this._serif_waiting_count = 6;
 		}
 	}
 
@@ -52,11 +63,13 @@ SceneSubStageTalk.prototype.draw = function(){
 
 	ctx.save();
 
-	// メッセージウィンドウ表示
-	this._showMessageWindow();
+	if(!this._serif_waiting_count) {
+		// メッセージウィンドウ表示
+		this._showMessageWindow();
 
-	// メッセージ表示
-	this._showMessage();
+		// メッセージ表示
+		this._showMessage();
+	}
 
 	ctx.restore();
 };
@@ -92,6 +105,14 @@ SceneSubStageTalk.prototype._showMessageWindow = function(){
 
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
 
+	var width, height;
+	if (this.serif.getSerifRowsCount() === 2) {
+		height = fukidashi.height * 0.5;
+	}
+	else {
+		height = fukidashi.height * 0.4;
+	}
+
 	if(!this._isShowRight()) {
 		x = -x; // 反転
 		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
@@ -101,7 +122,7 @@ SceneSubStageTalk.prototype._showMessageWindow = function(){
 					x,
 					y,
 					fukidashi.width * 0.4,
-					fukidashi.height * 0.4
+					height
 	);
 	ctx.restore();
 };
