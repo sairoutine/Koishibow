@@ -26,10 +26,9 @@ SceneEvent.prototype.init = function(){
 	// イベント再生後はフェードアウトする
 	this.setFadeOut(120, "black");
 
-	/*
 	// BGM 止める
-	this.core.stopBGM();
-	*/
+	this.core.audio_loader.stopBGM("using_3rdeye");
+	this.core.audio_loader.unMuteWithFadeInAllBGM(3);
 
 	// アニメ
 	this._event_anime.init(this.width/2, this.height/2, jsonDataOfEvent, 0, {scale: 2/3, loop: 1});
