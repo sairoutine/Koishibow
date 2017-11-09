@@ -12,7 +12,7 @@ module.exports = {
 	walk_sound: "walking_bare_default",
 	objects: [
 		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "くつした", serif: ["やだやだ。"], x: 302, y: 443, scale: 0.7, action: "look_bottom"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", serif: ["あしおったらのってもいい？"], x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03", action: "touch", sound: "chapter0-hospital_corridor2-move_wheelchair"},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", serif: ["あしおれたらのってもいい？"], x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03", action: "touch", sound: "chapter0-hospital_corridor2-move_wheelchair"},
 	],
 
 };

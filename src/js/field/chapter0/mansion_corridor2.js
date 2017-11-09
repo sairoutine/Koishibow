@@ -32,7 +32,7 @@ module.exports = {
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "壁かけの斧",
-			serif: ["あれでかぎあけられる！", "でもとどかない......"],
+			serif: ["だれかとって！"],
 			x: 310,
 			y: 102,
 			scale: 0.7,
