@@ -22,6 +22,13 @@ ObjectLeftYajirushi.prototype.onCollision = function(obj){
 		this.core.playSound("chapter0-myroom-door_open");
 	}
 
+	var stage = this.scene.mainStage();
+
+	// サードアイ使用中であれば off にする
+	if (stage.isUsingEye()) {
+		stage.unUseEye();
+	}
+
 	// 屋敷の廊下2はイベント再生する
 	if (this.scene.mainStage().field().left_field === "chapter0_mansion_corridor2" &&
 		!this.core.save_manager.isPlayedEvent("chapter0-event-encounter_satori")) {

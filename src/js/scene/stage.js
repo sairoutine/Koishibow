@@ -120,12 +120,20 @@ SceneStage.prototype.isUsingEye = function() {
 	return this.is_use_eye;
 };
 SceneStage.prototype.unUseEye = function() {
+	this.core.audio_loader.stopBGM("using_3rdeye");
+	this.core.audio_loader.unMuteWithFadeInAllBGM(3);
+
 	this.koishi().unUseEye();
 	this.is_use_eye = false;
 
 	this.black_mist.changeAnimation(jsonDataOfBlackMist);
 };
 SceneStage.prototype.useEye = function() {
+	this.core.playSound("use_3rdeye");
+
+	this.core.audio_loader.muteAllBGM();
+	this.core.addBGM("using_3rdeye");
+
 	this.koishi().useEye();
 	this.is_use_eye = true;
 
