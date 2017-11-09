@@ -19,6 +19,13 @@ AssetsConfig.images = {
 	"door.png":  "./image/chapter0/event/falldown_koishi/door.png",
 	"shadow.png":  "./image/chapter0/event/falldown_koishi/shadow.png",
 
+	// ジャーナル画像
+	"journal001":  "./image/journal/001.png",
+	"journal002":  "./image/journal/002.png",
+	"journal003":  "./image/journal/003.png",
+	"journal004":  "./image/journal/004.png",
+	"journal005":  "./image/journal/005.png",
+
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
 	"chapter0-myroom-obj-02-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",
@@ -56,6 +63,8 @@ AssetsConfig.images = {
 	"chapter0-mspassage-obj-11-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-11-01.png",
 
 	light:  "./image/light.png",
+
+	paper_clip:  "./image/ui-common-frame-paper_clip.png",
 
 	// 画面遷移用やじるし
 	arrow:  "./image/ui-common-btn-arrow-wht.png",
