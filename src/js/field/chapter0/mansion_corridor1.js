@@ -49,7 +49,7 @@ module.exports = {
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "カーテン",
-			serif: ["いまはかくれんぼしてないからあとでね！"],
+			serif: ["いまはかくれんぼしてないから\nあとでね！"],
 			x: 190,
 			y: 135,
 			scale: 0.7,
