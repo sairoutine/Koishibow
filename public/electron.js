@@ -9,6 +9,7 @@ const globalShortcut = electron.globalShortcut;
 let mainWindow;
 
 function createWindow () {
+	/*
 	// dialog 表示
 	var fullscreen_answer = dialog.showMessageBox({
 		type: 'question',
@@ -16,7 +17,8 @@ function createWindow () {
 		title: 'フルスクリーン起動',
 		message: 'フルスクリーンで起動しますか？'
 	});
-
+	*/
+	var fullscreen_answer = 1;
 	// fullscreen
 	if(fullscreen_answer === 0) {
 		mainWindow = new BrowserWindow({
@@ -26,8 +28,8 @@ function createWindow () {
 	// not fullscreen
 	else {
 		mainWindow = new BrowserWindow({
-			"width":          640,
-			"height":         480,
+			"width":          960,
+			"height":         720,
 			"useContentSize": true,  // フレームのサイズをサイズに含まない
 			"resizable":      false, // ウィンドウのリサイズを禁止
 			"alwaysOnTop":    true,  // 常に最前面
