@@ -16,7 +16,9 @@ module.exports = {
 		},
 		{image: "chapter0-hospital_corridor1-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "キャビネット", serif: ["くすりはいらない……"],   x: 279, y: 378, scale: 0.7},
 		{image: "chapter0-hospital_corridor1-obj-03-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "救急箱", serif: ["くーくーばこ！", "けがしてないよ！"], x: 281, y: 280, scale: 0.7, action: "touch", sound: "chapter0-hospital_corridor1-sound_aidkit"},
-		{image: "chapter0-hospital_corridor1-obj-04-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "メス", serif: ["ナイフ"],   x: 853, y: 534, scale: 0.7},
+		{image: "chapter0-hospital_corridor1-obj-04-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "メス", serif: ["ナイフ"],   x: 853, y: 534, scale: 0.7, action: "look_front",
+			position_type: "front",
+		},
 
 
 		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 643, y:425, scale: 2/3, picture: "journal002", text: "　かつて心理的異常行動は悪魔に乗り移られるためだと考えられていた。長らく宗教者が精神疾患者を処置してきたが、1879年にドイツのヴィルヘルム・マクシミリアン・ヴントがライプツィヒ大学に心理学実験室を置き実験科学の手法で人間の意識を研究をはじめた。これが心理学の始まりと考えられている。"},

@@ -11,8 +11,10 @@ module.exports = {
 	background: "chapter0-hospital2-bg-001",
 	walk_sound: "walking_bare_default",
 	objects: [
-		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "くつした", serif: ["やだやだ。"], x: 302, y: 443, scale: 0.7, action: "look_bottom"},
-		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", serif: ["あしおれたらのってもいい？"], x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03", action: "touch", sound: "chapter0-hospital_corridor2-move_wheelchair"},
+		{image: "chapter0-hospital2-obj-02-01", type: CONSTANT.STATIC_IMAGE_TYPE, name: "くつした", serif: ["やだやだ。"], x: 302, y: 443, scale: 0.7, action: "look_bottom",
+			position_type: "lying",
+		},
+		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "車イス", serif: ["あしおれたらのってもいい？"], x: 130, y: 360, scale: 0.7, anime1: "chapter0-hospital_corridor2-obj-01-01-obj01", anime2: "chapter0-hospital_corridor2-obj-01-01-obj02", anime3:"chapter0-hospital_corridor2-obj-01-01-obj03", action: "touch", sound: "chapter0-hospital_corridor2-move_wheelchair", width: 258, height: 280 },
 
 
 		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 627, y: 689, scale: 2/3, picture: "journal003", text: "　あなたは夢を見ながら「これは夢だ」と確信することがあるだろうか。\n　あるいは、現実世界を生きながら「これは現実だ」と確信することがあるだろうか。\n　全くの無根拠に信じることはできよう。\n　しかし次の瞬間あなたは湖上を舞う蝶になっているかもしれないし、あるいは偽物の記憶を埋め込まれた齢一歳のクローンかもしれない。もしくは、悪夢と信じているものが現実かもしれない。"},

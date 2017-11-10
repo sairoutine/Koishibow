@@ -1,6 +1,7 @@
 'use strict';
 var base_object = require('./anime_image');
 var Util = require('../../hakurei').util;
+var WalkImmovableArea = require('../walk_immovable_area');
 
 var ObjectAnimeEventImage = function(core) {
 	base_object.apply(this, arguments);
@@ -37,6 +38,17 @@ ObjectAnimeEventImage.prototype.onCollisionAfterKoishiWalkOnEvent = function(){
 
 	// イベント発生
 	this.core.changeScene(this._action_back_event);
+};
+
+ObjectAnimeEventImage.prototype.getImmovableArea = function() {
+	var area = new WalkImmovableArea(this.scene);
+	area.init();
+	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
+	// カーペットなのでサイズ0
+	area.setSize(0, 0);
+	area.setParentID(this.id);
+
+	return area;
 };
 
 

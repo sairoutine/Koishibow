@@ -95,7 +95,9 @@ ObjectPaper.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);
 	area.init();
 	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
-	area.setSize(this.collisionWidth(), this.collisionHeight()/2);
+	// 床の紙なのでサイズなし
+	area.setSize(0, 0);
+
 	area.setParentID(this.id);
 
 	return area;
