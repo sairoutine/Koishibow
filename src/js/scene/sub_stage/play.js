@@ -74,7 +74,7 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 		}
 
 		// フィールドの各種オブジェクトとの当たり判定
-		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
+		for (var i = this.mainStage().pieces.length - 1; i >= 0; i--) {
 			var piece = this.mainStage().pieces[i];
 			if(piece.checkCollisionWithPosition(x, y)) {
 				return true;
