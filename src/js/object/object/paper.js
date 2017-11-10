@@ -42,10 +42,8 @@ ObjectPaper.prototype.addData = function(data) {
 };
 
 ObjectPaper.prototype.onCollision = function(obj){
-	if (!this.scene.mainStage().koishi().isMoving()) {
-		this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-	}
+	this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
+	this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
 };
 
 ObjectPaper.prototype.onCollisionAfterKoishiWalk = function(){

@@ -116,10 +116,8 @@ ObjectAnimeImage.prototype.onCollision = function(obj){
 	// サードアイ使用中なら今のところ何もしない
 	if (this.scene.mainStage().isUsingEye()) return;
 
-	if (!this.scene.mainStage().koishi().isMoving()) {
-		this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-	}
+	this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
+	this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
 
 };
 ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){

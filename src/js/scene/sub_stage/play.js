@@ -84,9 +84,10 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 		// どことも当たり判定しなかったら
 		// こいしを移動
 		// TODO: この関数でやらず、外でやったほうがいい？(この関数は当たり判定したら true or false 返す)
-		if (!this.mainStage().koishi().isMoving()) {
+		//if (!this.mainStage().koishi().isMoving()) {
 			this.koishi().setMoveTarget(x, y);
-		}
+			this.koishi().setAfterMoveCallback(null);
+		//}
 	}
 
 	return false;
