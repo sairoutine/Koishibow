@@ -1,4 +1,5 @@
 node_modules/
+releases/
 .DS_Store
 tmp/
 # 最初の帽子を取るアニメーション用
