@@ -436,6 +436,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.setPosition(data.x, data.y);
 			object.setZ(i);
 			object.addPositionType(data.position_type);
+			object.addTarget(data.target_x, data.target_y);
 			this.pieces.push(object);
 
 			this.walk_immovable_areas.push(object.getImmovableArea());
@@ -449,6 +450,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.addKoishiAction(data.action);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.anime4, data.anime5, data.anime6, data.scale);
 			object.setPosition(data.x, data.y);
+			object.addTarget(data.target_x, data.target_y);
 			object.setZ(i);
 			object.addPositionType(data.position_type);
 
@@ -462,6 +464,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.addData(data);
 			object.setZ(i);
 			object.addPositionType(data.position_type);
+			object.addTarget(data.target_x, data.target_y);
 
 			this.pieces.push(object);
 
@@ -478,6 +481,7 @@ SceneStage.prototype.setupPiece = function() {
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.anime4, data.anime5, data.anime6, data.scale);
 			object.setPosition(data.x, data.y);
 			object.setZ(i);
+			object.addTarget(data.target_x, data.target_y);
 			object.addPositionType(data.position_type);
 			this.pieces.push(object);
 

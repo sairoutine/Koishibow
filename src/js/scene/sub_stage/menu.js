@@ -1,5 +1,6 @@
 'use strict';
 var base_scene = require('./base');
+var CONSTANT = require('../../constant');
 var Util = require('../../hakurei').util;
 var MenuItem = require('../../object/menu_item');
 var UIParts = require('../../hakurei').object.ui_parts;
@@ -11,16 +12,18 @@ var SceneSubStageTalk = function(core, stage) {
 
 	// テスト用アイテム
 	// TODO: 削除
-	this.core.save_manager.addItem(1);
-	this.core.save_manager.addItem(2);
-	this.core.save_manager.addItem(3);
-	this.core.save_manager.addItem(4);
-	this.core.save_manager.addItem(5);
-	this.core.save_manager.addItem(6);
-	this.core.save_manager.addItem(7);
-	this.core.save_manager.addItem(8);
-	this.core.save_manager.addItem(9);
-	this.core.save_manager.addItem(10);
+	if (CONSTANT.DEBUG.ON) {
+		this.core.save_manager.addItem(1);
+		this.core.save_manager.addItem(2);
+		this.core.save_manager.addItem(3);
+		this.core.save_manager.addItem(4);
+		this.core.save_manager.addItem(5);
+		this.core.save_manager.addItem(6);
+		this.core.save_manager.addItem(7);
+		this.core.save_manager.addItem(8);
+		this.core.save_manager.addItem(9);
+		this.core.save_manager.addItem(10);
+	}
 };
 Util.inherit(SceneSubStageTalk, base_scene);
 

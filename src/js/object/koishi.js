@@ -224,7 +224,19 @@ Koishi.prototype.draw = function(){
 
 Koishi.prototype.setMoveTargetObject = function(point, obj) {
 	this._target_object = obj;
-	return this.setMoveTarget(point.x(), point.y());
+
+	var x = point.x();
+	var y = point.y();
+
+	if(obj._target_pos_x) {
+		x = obj._target_pos_x;
+	}
+	if(obj._target_pos_y) {
+		y = obj._target_pos_y;
+	}
+
+
+	return this.setMoveTarget(x,y);
 };
 Koishi.prototype.setMoveTarget = function(x, y) {
 	base_object.prototype.beforeDraw.apply(this, arguments);

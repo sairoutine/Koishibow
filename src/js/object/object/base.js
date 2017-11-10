@@ -8,6 +8,8 @@ var ObjectBase = function(core) {
 
 	this._z = 0;
 	this._position_type = null;
+	this._target_pos_x = null;
+	this._target_pos_y = null;
 };
 Util.inherit(ObjectBase, base_object);
 
@@ -16,6 +18,8 @@ ObjectBase.prototype.init = function(){
 
 	this._z = 0;
 	this._position_type = null;
+	this._target_pos_x = null;
+	this._target_pos_y = null;
 };
 
 
@@ -35,6 +39,12 @@ ObjectBase.prototype.setZ = function(z) {
 ObjectBase.prototype.addPositionType = function(type) {
 	this._position_type = type;
 };
+ObjectBase.prototype.addTarget = function(target_x, target_y) {
+	this._target_pos_x = target_x;
+	this._target_pos_y = target_y;
+};
+
+
 ObjectBase.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);
 	area.init();
