@@ -278,6 +278,10 @@ Koishi.prototype.collisionHeight = function(){
 	return 1;
 };
 
+Koishi.prototype.z = function(){
+	return 100;
+};
+
 
 
 

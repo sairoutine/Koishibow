@@ -45,6 +45,7 @@ module.exports = {
 			action: "touch",
 			sound: "chapter0-mansion_corridor1-move_tricycle",
 			bgm_back: "chapter0-mansion_corridor1-tricycle",
+			position_type: "front",
 		},
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,

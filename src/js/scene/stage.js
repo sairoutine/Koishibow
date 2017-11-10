@@ -179,12 +179,13 @@ SceneStage.prototype.beforeDraw = function(){
 	}
 
 
-	// y 軸(y が大きい方が z軸が大きい)の降順ソート
+	// z軸の降順ソート
 	this._koishi_and_pieces.sort(function(a,b){
-		if(a.y() < b.y()) return -1;
-		if(a.y() > b.y()) return 1;
+		if(a.z() < b.z()) return -1;
+		if(a.z() > b.z()) return 1;
 		return 0;
 	});
+
 	var obj, i, len;
 	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
 		obj = this._koishi_and_pieces[i];
@@ -433,7 +434,8 @@ SceneStage.prototype.setupPiece = function() {
 			object.addKoishiAction(data.action);
 			object.addImage(data.image, data.scale);
 			object.setPosition(data.x, data.y);
-
+			object.setZ(i);
+			object.addPositionType(data.position_type);
 			this.pieces.push(object);
 
 			this.walk_immovable_areas.push(object.getImmovableArea());
@@ -447,6 +449,8 @@ SceneStage.prototype.setupPiece = function() {
 			object.addKoishiAction(data.action);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.anime4, data.anime5, data.anime6, data.scale);
 			object.setPosition(data.x, data.y);
+			object.setZ(i);
+			object.addPositionType(data.position_type);
 
 			this.pieces.push(object);
 
@@ -456,6 +460,8 @@ SceneStage.prototype.setupPiece = function() {
 			object = new ObjectPaper(this);
 			object.init();
 			object.addData(data);
+			object.setZ(i);
+			object.addPositionType(data.position_type);
 
 			this.pieces.push(object);
 
@@ -471,7 +477,8 @@ SceneStage.prototype.setupPiece = function() {
 			object.addActionBackEvent(data.action_back_event);
 			object.addAnime(data.anime1, data.anime2, data.anime3, data.anime4, data.anime5, data.anime6, data.scale);
 			object.setPosition(data.x, data.y);
-
+			object.setZ(i);
+			object.addPositionType(data.position_type);
 			this.pieces.push(object);
 
 			this.walk_immovable_areas.push(object.getImmovableArea());

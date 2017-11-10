@@ -1,5 +1,5 @@
 'use strict';
-var base_object = require('../../hakurei').object.base;
+var base_object = require('./base');
 var Util = require('../../hakurei').util;
 var WalkImmovableArea = require('../walk_immovable_area');
 
