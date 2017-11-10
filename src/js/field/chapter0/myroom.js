@@ -19,7 +19,7 @@ module.exports = {
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03", action: "look_top", sound: "chapter0-myroom-sound_window_for_kokoro"},
 
 
-		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 258, y: 689, scale: 2/3, picture: "journal001", text: "　 John Bowlbyが提唱した愛着理論によれば、母子の間には生物学的な絆がある。\n　空腹・不眠といった不快・不安状態にある子どもは適切に処置してくれる周囲の人々に対し「肯定的期待」すなわち自分に困ったことがあっても助けてもらえるというを抱くようになる。一方で泣き叫ぶ子どもがいつまでたってもかまってもらえずにいると逆に子供の警戒心や不安感は大きくなっていってしまう。"},
+		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 258, y: 689, scale: 2/3, picture: "journal001", text: "　 John Bowlbyが提唱した愛着理論によれば、母子の間には生物学的な絆がある。\n　空腹・不眠といった不快・不安状態にある子どもは周囲の人々が適切に処置してくれると、自分に困ったことがあっても助けてもらえると考え人を信頼するようになる（肯定的期待感）。一方で泣き叫ぶ子どもがいつまでたってもかまってもらえずにいると逆に子供の警戒心や不安感は大きくなっていってしまう。"},
 	],
 };
 
