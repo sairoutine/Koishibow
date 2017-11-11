@@ -49,7 +49,7 @@ ObjectMenuItem.prototype.draw = function(){
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 0, 0, 0 )';
-	ctx.fillText("ITEM1", this.x() + 5, this.y() + 5);
+	//ctx.fillText("ITEM1", this.x() + 5, this.y() + 5);
 
 	ctx.restore();
 };

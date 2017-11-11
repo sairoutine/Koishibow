@@ -244,11 +244,12 @@ SceneSubStageTalk.prototype._showMessage = function(){
 	ctx.textAlign = 'center';
 	ctx.textBaseAlign = 'middle';
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
+	/*
 	ctx.fillText("ITEM1 だ",
 		MESSAGE_WINDOW_OUTLINE_MARGIN + 160 + 70,
 		this.mainStage().height - 60 + 20
 	);
-
+	*/
 };
 
 SceneSubStageTalk.prototype._useItem = function(){
