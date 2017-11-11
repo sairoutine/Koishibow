@@ -51,7 +51,7 @@ module.exports = {
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ドア",
-			serif: null,
+			serif: ["だれかじゅんびちゅう？"],
 			x: 610,
 			y: 245,
 			width: 210,
