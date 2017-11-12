@@ -8,7 +8,7 @@ var SaveManager = require('./save_manager');
 var SceneTitle = require('./scene/title');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
-var SceneEvent = require('./scene/event');
+var SceneEventForEncounterSatori = require('./scene/event_for_encounter_satori');
 var SceneEventForTrialLast = require('./scene/event_for_trial_last');
 var SceneEventForGetHat = require('./scene/event_for_get_hat');
 var SceneEventForTrialLast2 = require('./scene/event_for_trial_last2');
@@ -28,10 +28,10 @@ Game.prototype.init = function () {
 	this.addScene("loading", new SceneLoading(this));
 	this.addScene("title", new SceneTitle(this));
 	this.addScene("stage", new SceneStage(this));
-	this.addScene("event", new SceneEvent(this));
-	this.addScene("event_for_trial_last", new SceneEventForTrialLast(this));
-	this.addScene("event_for_get_hat", new SceneEventForGetHat(this));
-	this.addScene("event_for_trial_last2", new SceneEventForTrialLast2(this));
+	this.addScene("event_for_encounter_satori", new SceneEventForEncounterSatori(this));
+	this.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
+	this.addScene("event_for_get_hat",          new SceneEventForGetHat(this));
+	this.addScene("event_for_trial_last2",      new SceneEventForTrialLast2(this));
 
 	this.changeScene("loading");
 };
