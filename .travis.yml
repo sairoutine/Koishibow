@@ -7,3 +7,18 @@ branches:
 notifications:
   on_success: change
   on_failure: change
+after_success:
+  - openssl aes-256-cbc -K $encrypted_xxxx_key -iv $encrypted_xxxx_iv -in travis_key.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - git config --global user.email "sairoutine@gmail.com"
+  - git config --global user.name "sairoutine"
+  - git clone git@github.com:example/example.git
+  - cd example
+  - npm install
+  - npm install -g gulp
+  - gulp build
+  - git add --all
+  - git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER)"
+  - git push origin gh-pages
+
