@@ -17,21 +17,15 @@ after_success:
   - git config --global user.name "sairoutine"
   - git clone --branch=gh-pages git@github.com:sairoutine/Koishibow.git
   - cd $TRAVIS_BUILD_DIR/Koishibow/
-  - ls
-  - ls -al
   - npm install -g gulp
   - npm install
   - git submodule update --init --recursive
-  - cd $TRAVIS_BUILD_DIR/Koishibow/src/
-  - cd $TRAVIS_BUILD_DIR/Koishibow/src/js/
   - cd $TRAVIS_BUILD_DIR/Koishibow/src/js/hakureijs/
   - git checkout master
   - npm install
   - cd $TRAVIS_BUILD_DIR/Koishibow/
   - gulp build
-  - git status
   - git add ./public/
-  - git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER)"
-  - ssh -T git@github.com
+  - git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER) [ci skip]"
   - git push origin gh-pages
 
