@@ -16,14 +16,14 @@ after_success:
   - git config --global user.email "sairoutine@gmail.com"
   - git config --global user.name "sairoutine"
   - git clone git@github.com:sairoutine/Koishibow.git
-  - cd Koishibow/
+  - cd $TRAVIS_BUILD_DIR/Koishibow/
   - npm install -g gulp
   - npm install
   - git submodule update --init --recursive
-  - cd ./src/js/hakureijs/
+  - cd $TRAVIS_BUILD_DIR/Koishibow/src/js/hakureijs/
   - git checkout master
   - npm install
-  - cd ../
+  - cd $TRAVIS_BUILD_DIR/Koishibow/
   - gulp build
   - git add ./public/
   - git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER)"
