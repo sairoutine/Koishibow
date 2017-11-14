@@ -28,7 +28,6 @@ SpriteStudio.prototype.init = function(x, y, jsonData, data_index, opt){
 
 	this.is_reflect = false;
 
-	// TODO: preload
 	this.imageList = this._getImageList(jsonData[data_index].images);
 
 	this.animation = new SsAnimation(jsonData[data_index].animation, this.imageList);
