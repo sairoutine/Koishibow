@@ -15,8 +15,7 @@ after_success:
   - echo -e "\n\tStrictHostKeyChecking no"   >> ~/.ssh/config
   - git config --global user.email "sairoutine@gmail.com"
   - git config --global user.name "sairoutine"
-  - git clone git@github.com:sairoutine/Koishibow.git
-  - git checkout gh-pages
+  - git clone --branch=gh-pages git@github.com:sairoutine/Koishibow.git
   - cd $TRAVIS_BUILD_DIR/Koishibow/
   - ls
   - ls -al
