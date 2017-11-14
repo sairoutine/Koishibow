@@ -29,6 +29,7 @@ after_success:
   - npm install
   - cd $TRAVIS_BUILD_DIR/Koishibow/
   - gulp build
+  - git status
   - git add ./public/
   - git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER)"
   - ssh -T git@github.com
