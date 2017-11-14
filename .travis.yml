@@ -20,6 +20,8 @@ after_success:
   - npm install -g gulp
   - npm install
   - git submodule update --init --recursive
+  - cd $TRAVIS_BUILD_DIR/Koishibow/src/
+  - cd $TRAVIS_BUILD_DIR/Koishibow/src/js/
   - cd $TRAVIS_BUILD_DIR/Koishibow/src/js/hakureijs/
   - git checkout master
   - npm install
