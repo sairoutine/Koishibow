@@ -17,6 +17,8 @@ after_success:
   - git config --global user.name "sairoutine"
   - git clone git@github.com:sairoutine/Koishibow.git
   - cd $TRAVIS_BUILD_DIR/Koishibow/
+  - ls
+  - ls -al
   - npm install -g gulp
   - npm install
   - git submodule update --init --recursive
