@@ -2,6 +2,7 @@
 
 var AssetsConfig = {};
 AssetsConfig.images = {
+	"howto.png":            "./image/howto.png",
 	"black_mist.png":            "./image/black_mist.png",
 	"koishi.png":                "./image/koishi.png",
 
