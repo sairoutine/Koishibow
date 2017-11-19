@@ -22,7 +22,7 @@ module.exports = {
 		},
 
 
-		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 643, y:425, scale: 2/3, picture: "journal002", text: "　かつて心理的異常行動は悪魔に乗り移られるためだと考えられていた。長らく宗教者が精神疾患者を処置してきたが、1879年にドイツのヴィルヘルム・マクシミリアン・ヴントがライプツィヒ大学に心理学実験室を置き実験科学の手法で人間の意識を研究をはじめた。これが心理学の始まりと考えられている。"},
+		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 643, y:425, scale: 2/3, picture: "journal002"},
 	],
 };
 

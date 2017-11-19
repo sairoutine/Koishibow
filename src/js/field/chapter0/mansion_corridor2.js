@@ -64,7 +64,7 @@ module.exports = {
 			sound:      "chapter0-mansion_corridor2-open_door",
 		},
 
-		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 177, y: 400, scale: 2/3, picture: "journal005", text: "　生後から三週間ほどが経過すると、音刺激によって微笑が誘発されることが知られている。人のハイピッチな音声に特に反応しやすく、母親の話しかけに対して微笑で応える機能と考えられている。生理的微笑もしくは自発的微笑と呼ばれる。\n　生後一か月後には母親の声や表情によっても引き起こされるようになる。こうした微笑は社会的微笑と呼ばれる。\n　微笑が母親に対して頻繁に発生すると母親は育児の必要性や愛情を感じ、母子間の相互作用が子どもに情緒コミュニケーションを身につけさせていく。"},
+		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 177, y: 400, scale: 2/3, picture: "journal005"},
 	],
 
 

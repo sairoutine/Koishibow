@@ -12,7 +12,6 @@ var ObjectPaper = function(core) {
 	this._height  = null;
 
 	this._picture = null;
-	this._text    = null;
 
 };
 Util.inherit(ObjectPaper, base_object);
@@ -26,7 +25,6 @@ ObjectPaper.prototype.init = function(){
 	this._height  = null;
 
 	this._picture = null;
-	this._text    = null;
 };
 ObjectPaper.prototype.addData = function(data) {
 	this._image = this.core.image_loader.getImage(data.image);
@@ -36,7 +34,6 @@ ObjectPaper.prototype.addData = function(data) {
 
 
 	this._picture = data.picture;
-	this._text = data.text;
 
 	this.setPosition(data.x, data.y);
 };
@@ -48,7 +45,7 @@ ObjectPaper.prototype.onCollision = function(obj){
 
 ObjectPaper.prototype.onCollisionAfterKoishiWalk = function(){
 	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("paper", this._text, this._picture);
+	this.scene.mainStage().changeSubScene("paper", this._picture);
 
 	/*
 	// こいしのアクション
