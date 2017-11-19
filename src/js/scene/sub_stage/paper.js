@@ -58,16 +58,18 @@ SceneSubStageTalk.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 
+	/*
 	// メッセージウィンドウ表示
 	this._showMessageWindow();
+	*/
 
 	// ピクチャ表示
 	this._showPicture();
 
 	// メッセージ表示
-	this._showMessage();
+	//this._showMessage();
 };
-
+/*
 // セリフウィンドウ表示
 SceneSubStageTalk.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
@@ -84,7 +86,7 @@ SceneSubStageTalk.prototype._showMessageWindow = function(){
 	);
 	ctx.restore();
 };
-
+*/
 // ピクチャ表示
 SceneSubStageTalk.prototype._showPicture = function() {
 	if(!this._picture) return;
@@ -92,10 +94,19 @@ SceneSubStageTalk.prototype._showPicture = function() {
 
 	ctx.save();
 
+	var picture = this.core.image_loader.getImage(this._picture);
+
+	ctx.translate(this.mainStage().width/2, this.mainStage().height/2);
+	ctx.drawImage(picture,
+					-picture.width/3,
+					-picture.height/3,
+					picture.width * 2/3,
+					picture.height * 2/3
+	);
+
+	/*
 	var x = this.width/2 - 300/2;
 	var y = 70;
-
-	var picture = this.core.image_loader.getImage(this._picture);
 
 	ctx.drawImage(picture,
 					0,
@@ -106,7 +117,6 @@ SceneSubStageTalk.prototype._showPicture = function() {
 					y,
 					300,
 					picture.height*300/picture.width);
-
 	var clip = this.core.image_loader.getImage("paper_clip");
 
 	ctx.drawImage(clip,
@@ -115,12 +125,12 @@ SceneSubStageTalk.prototype._showPicture = function() {
 					clip.width*2/3,
 					clip.height*2/3
 	);
-
+	*/
 
 
 	ctx.restore();
 };
-
+/*
 // セリフ表示
 SceneSubStageTalk.prototype._showMessage = function() {
 	var ctx = this.core.ctx;
@@ -153,5 +163,5 @@ SceneSubStageTalk.prototype._showMessage = function() {
 
 	ctx.restore();
 };
-
+*/
 module.exports = SceneSubStageTalk;
