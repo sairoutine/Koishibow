@@ -3,6 +3,8 @@
 var AssetsConfig = {};
 AssetsConfig.images = {
 	"howto":            "./image/howto.png",
+	"ui_icon_pointer_01":            "./image/ui_icon_pointer_01.png",
+	"ui_icon_pointer_02":            "./image/ui_icon_pointer_02.png",
 	"black_mist.png":            "./image/black_mist.png",
 	"koishi.png":                "./image/koishi.png",
 
