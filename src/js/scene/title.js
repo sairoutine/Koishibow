@@ -12,7 +12,7 @@ var SHOW_TRANSITION_COUNT = 100;
 var MENU = [
 	["ui-titlepg-btn-ng", function (core) { return true; }, function (core) {
 		core.save_manager.del();
-		core.changeScene("stage", "chapter0_myroom");
+		core.changeScene("howto");
 	}],
 	["ui-titlepg-btn-con", function (core) {
 		return core.save_manager.getCurrentField() ? true : false;

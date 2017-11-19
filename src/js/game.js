@@ -6,6 +6,7 @@ var CONSTANT = require('./constant');
 var SaveManager = require('./save_manager');
 
 var SceneTitle = require('./scene/title');
+var SceneHowto = require('./scene/howto');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
 var SceneEventForEncounterSatori = require('./scene/event_for_encounter_satori');
@@ -27,6 +28,7 @@ Game.prototype.init = function () {
 
 	this.addScene("loading", new SceneLoading(this));
 	this.addScene("title", new SceneTitle(this));
+	this.addScene("howto", new SceneHowto(this));
 	this.addScene("stage", new SceneStage(this));
 	this.addScene("event_for_encounter_satori", new SceneEventForEncounterSatori(this));
 	this.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
