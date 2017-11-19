@@ -139,6 +139,9 @@ Game.prototype.setupDebug = function (dom) {
 };
 
 Game.prototype.run = function () {
+
+	this.changeDefaultCursor();
+
 	core.prototype.run.apply(this, arguments);
 
 	// ローディング中はカーソルを表示しない

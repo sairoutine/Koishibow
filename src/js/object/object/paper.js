@@ -39,8 +39,15 @@ ObjectPaper.prototype.addData = function(data) {
 };
 
 ObjectPaper.prototype.onCollision = function(obj){
-	this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-	this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+	if(this.core.input_manager.isLeftClickPush()) {
+		this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
+		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
+	}
+	else {
+		this.core.changeTouchCursor();
+	}
+
+
 };
 
 ObjectPaper.prototype.onCollisionAfterKoishiWalk = function(){

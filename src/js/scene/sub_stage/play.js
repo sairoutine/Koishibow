@@ -73,14 +73,18 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 			return true;
 		}
 
-		// フィールドの各種オブジェクトとの当たり判定
-		for (var i = this.mainStage().pieces.length - 1; i >= 0; i--) {
-			var piece = this.mainStage().pieces[i];
-			if(piece.checkCollisionWithPosition(x, y)) {
-				return true;
-			}
-		}
+	}
 
+	// フィールドの各種オブジェクトとの当たり判定
+	for (var i = this.mainStage().pieces.length - 1; i >= 0; i--) {
+		var piece = this.mainStage().pieces[i];
+		if(piece.checkCollisionWithPosition(x, y)) {
+			return true;
+		}
+	}
+
+	// クリックしたときに当たり判定するものたち
+	if(this.core.input_manager.isLeftClickPush()) {
 		// どことも当たり判定しなかったら
 		// こいしを移動
 		// TODO: この関数でやらず、外でやったほうがいい？(この関数は当たり判定したら true or false 返す)

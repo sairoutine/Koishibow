@@ -24,11 +24,15 @@ ObjectAnimeEventImage.prototype.onCollision = function(obj){
 	if (!this.scene.mainStage().isUsingEye()) return;
 
 	// 移動中でなければ、対象のオブジェクトに近寄ってアクション
-	if (!this.scene.mainStage().koishi().isMoving()) {
-		this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-		this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalkOnEvent, this));
+	if(this.core.input_manager.isLeftClickPush()) {
+		if (!this.scene.mainStage().koishi().isMoving()) {
+			this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
+			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalkOnEvent, this));
+		}
 	}
-
+	else {
+		this.core.changeTouchCursor();
+	}
 };
 ObjectAnimeEventImage.prototype.onCollisionAfterKoishiWalkOnEvent = function(){
 	var self = this;

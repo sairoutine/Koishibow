@@ -100,6 +100,7 @@ SceneTitle.prototype.beforeDraw = function(){
 					self.core.playSound("focuson_title");
 				}
 				menu.setVariable("is_big", true);
+
 			}
 			else {
 				menu.setVariable("is_big", false);
