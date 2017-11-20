@@ -20,15 +20,20 @@ ObjectAnimeEventImage.prototype.addActionBackEvent = function(event_name) {
 ObjectAnimeEventImage.prototype.onCollision = function(obj){
 	base_object.prototype.onCollision.apply(this, arguments);
 
-	// サードアイ使用中でないなら何もしない
-	if (!this.scene.mainStage().isUsingEye()) return;
-
+	// サードアイ使用中かつ
 	// 移動中でなければ、対象のオブジェクトに近寄ってアクション
-	if(this.core.input_manager.isLeftClickPush()) {
+	if(this.scene.mainStage().isUsingEye() && this.core.input_manager.isLeftClickPush()) {
 		if (!this.scene.mainStage().koishi().isMoving()) {
 			this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
 			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalkOnEvent, this));
 		}
+	}
+	else {
+	}
+
+	if(!this.scene.mainStage().isUsingEye()) {
+		// 3rdeye 使用中なら基底メソッドで touch カーソルにされるので、戻す
+		this.core.changeDefaultCursor();
 	}
 	else {
 		this.core.changeTouchCursor();
