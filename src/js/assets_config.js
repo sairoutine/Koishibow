@@ -1,12 +1,22 @@
 'use strict';
 
 var AssetsConfig = {};
+
 AssetsConfig.images = {
+	// HowTo 画像
 	"howto":            "./image/howto.png",
+
+	// マウスカーソル
 	"ui_icon_pointer_01":            "./image/ui_icon_pointer_01.png",
 	"ui_icon_pointer_02":            "./image/ui_icon_pointer_02.png",
-	"black_mist.png":            "./image/black_mist.png",
+
+	// こいし画像
 	"koishi.png":                "./image/koishi.png",
+
+	// 3rdeye 使用時のもや
+	"black_mist.png":            "./image/black_mist.png",
+	// 3rdeye 使用時の光
+	"light":  "./image/light.png",
 
 	// さとり邂逅イベント
 	"bg01.jpg": "./image/chapter0/event/encounter_satori/bg01.jpg",
@@ -29,6 +39,7 @@ AssetsConfig.images = {
 	"journal004":  "./image/journal/004.png",
 	"journal005":  "./image/journal/005.png",
 
+	// フィールドの画像とオブジェクト
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
 	"chapter0-myroom-obj-02-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",
@@ -47,7 +58,6 @@ AssetsConfig.images = {
 	"chapter0-hospital2-obj-02-01": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-02-01.png",
 	"chapter0-hospital2-obj-03-01.png": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-03-01.png",
 
-
 	"chapter0-mansionpas-001":          "./image/chapter0/mansion_corridor1/chapter0-mansionpas-001.jpg",
 	"chapter0-mspassage-obj-01-01.png": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-01-01.png",
 	"chapter0-mspassage-obj-02-01.png": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-02-01.png",
@@ -65,26 +75,22 @@ AssetsConfig.images = {
 	"chapter0-mspassage-obj-10-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-10-01.png",
 	"chapter0-mspassage-obj-11-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-11-01.png",
 
+	// 体験版時のコンティニュー画像
 	tobecontinued:  "./image/tobecontinued.png",
 
-	light:  "./image/light.png",
-
-	paper_clip:  "./image/ui-common-frame-paper_clip.png",
+	// フィールド上に落ちているジャーナル オブジェクト
+	paper:              "./image/chapterall-obj-02-01.png",
 
 	// 画面遷移用やじるし
 	arrow:  "./image/ui-common-btn-arrow-wht.png",
-
 	// アイテムボタン
 	tool: "./image/ui-common-btn-tool-1.png",
 	// 第三の目
 	eye:  "./image/ui-common-btn-eye-1.png",
 
+	// ふきだし
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
 	fukidashi_arrow:  "./image/ui-common-btn-arrow-brn.png",
-
-	paper:              "./image/chapterall-obj-02-01.png",
-	//paper_close_button: "./image/ui-common-btn-close.png",
-	paper_open:         "./image/ui-common-frame-paper.png",
 
 	// メニュー
 	"ui-common-bg-toolpu-blk":   "./image/menu/ui-common-bg-toolpu-blk.png",
@@ -101,6 +107,11 @@ AssetsConfig.images = {
 	"ui-titlepg-btn-opt-off":  "./image/title/ui-titlepg-btn-opt-off.png",
 	"ui-titlepg-btn-opt-on":   "./image/title/ui-titlepg-btn-opt-on.png",
 	"ui-titlepg-img-logo-1":   "./image/title/ui-titlepg-img-logo-1.png",
+
+	// 不要
+	paper_clip:  "./image/ui-common-frame-paper_clip.png",
+	//paper_close_button: "./image/ui-common-btn-close.png",
+	paper_open:         "./image/ui-common-frame-paper.png",
 };
 
 AssetsConfig.sounds = {
