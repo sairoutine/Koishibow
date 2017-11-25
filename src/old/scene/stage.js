@@ -170,9 +170,9 @@ SceneStage.prototype.beforeDraw = function(){
 	// ランダムノイズ再生
 	// N秒ごとにN%の確率で再生
 	if (!this.isUsingEye()) {
-		if(this.core.frame_count % CONSTANT.NOISE_SOUND_INTERVAL_COUNT === 0) {
-			if (util.getRandomInt(100) <= CONSTANT.NOISE_SOUND_PROB) {
-				var sound_name = CONSTANT.NOISE_SOUND_LIST[ util.getRandomInt(0, CONSTANT.NOISE_SOUND_LIST.length - 1) ];
+		if(this.core.frame_count % CONSTANT.CHAPTER0.NOISE_SOUND_INTERVAL_COUNT === 0) {
+			if (util.getRandomInt(100) <= CONSTANT.CHAPTER0.NOISE_SOUND_PROB) {
+				var sound_name = CONSTANT.CHAPTER0.NOISE_SOUND_LIST[ util.getRandomInt(0, CONSTANT.CHAPTER0.NOISE_SOUND_LIST.length - 1) ];
 				this.core.playSound(sound_name);
 			}
 		}
