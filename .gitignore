@@ -1,6 +1,7 @@
 node_modules/
 releases/
 .DS_Store
+package-lock.json
 tmp/
 # 最初の帽子を取るアニメーション用
 public/image/chapter0/myroom/chapter0-myroom-obj-07-01.png
