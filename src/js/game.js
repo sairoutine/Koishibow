@@ -1,4 +1,7 @@
 'use strict';
+/*
+
+
 var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
@@ -212,5 +215,5 @@ Game.prototype.changeDefaultCursor = function () {
 
 
 
-
 module.exports = Game;
+*/
