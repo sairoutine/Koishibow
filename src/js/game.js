@@ -1,11 +1,18 @@
 'use strict';
-/*
-
 
 var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
 
+var Game = function(canvas) {
+	core.apply(this, arguments);
+
+};
+
+// TODO:
+// implement: cursor
+
+/*
 var SaveManager = require('./save_manager');
 
 var SceneTitle = require('./scene/title');
@@ -17,11 +24,6 @@ var SceneEventForTrialLast = require('./scene/event_for_trial_last');
 var SceneEventForGetHat = require('./scene/event_for_get_hat');
 var SceneEventForTrialLast2 = require('./scene/event_for_trial_last2');
 
-var Game = function(canvas) {
-	core.apply(this, arguments);
-
-	this._current_cursor = "default";
-};
 util.inherit(Game, core);
 
 Game.prototype.init = function () {
