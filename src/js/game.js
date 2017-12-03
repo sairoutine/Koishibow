@@ -145,38 +145,4 @@ Game.prototype.setupDebug = function (dom) {
 
 };
 
-
-/*
-Game.prototype.playSound = function () {
-	if (CONSTANT.DEBUG.SOUND_OFF) return;
-	return this.audio_loader.playSound.apply(this.audio_loader, arguments);
-};
-Game.prototype.playBGM = function () {
-	if (CONSTANT.DEBUG.SOUND_OFF) return;
-	return this.audio_loader.playBGM.apply(this.audio_loader, arguments);
-};
-Game.prototype.addBGM = function () {
-	if (CONSTANT.DEBUG.SOUND_OFF) return;
-	return this.audio_loader.addBGM.apply(this.audio_loader, arguments);
-};
-
-Game.prototype.changeBGM = function () {
-	if (CONSTANT.DEBUG.SOUND_OFF) return;
-	return this.audio_loader.changeBGM.apply(this.audio_loader, arguments);
-};
-Game.prototype.stopBGM = function () {
-	if (CONSTANT.DEBUG.SOUND_OFF) return;
-	return this.audio_loader.stopBGM.apply(this.audio_loader, arguments);
-};
-
-*/
-
-
-
-
-
-
-
-
-
 module.exports = Game;
