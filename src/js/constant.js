@@ -14,6 +14,9 @@ var CONSTANT = {
 	// こいしの歩ける範囲の上 上限(px)
 	WALK_DEPTH_LIMIT: 300,
 
+	// 3rd eye の最大値
+	MAX_3RDEYE_GAUGE: 1000,
+
 	// フィールドでランダムに流れるノイズ
 	CHAPTER0: {
 		NOISE_SOUND_LIST: ["noise1", "noise2", "noise3", "noise4", "noise5"],
