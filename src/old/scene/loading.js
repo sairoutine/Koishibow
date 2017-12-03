@@ -29,13 +29,21 @@ SceneLoading.prototype.init = function() {
 	// ゲームで使用するSE一覧
 	for (var key2 in AssetsConfig.sounds) {
 		var conf2 = AssetsConfig.sounds[key2];
-		this.core.audio_loader.loadSound(key2, conf2.path, conf2.volume);
+
+		// デバッグ用ミュート
+		var volume2 = CONSTANT.DEBUG.SOUND_OFF ? conf2.volume : 0;
+
+		this.core.audio_loader.loadSound(key2, conf2.path, volume2);
 	}
 
 	// ゲームで使用するBGM一覧
 	for (var key3 in AssetsConfig.bgms) {
 		var conf3 = AssetsConfig.bgms[key3];
-		this.core.audio_loader.loadBGM(key3, conf3.path, conf3.volume, conf3.loopStart, conf3.loopEnd);
+		// デバッグ用ミュート
+		var volume3 = CONSTANT.DEBUG.SOUND_OFF ? conf3.volume : 0;
+
+
+		this.core.audio_loader.loadBGM(key3, conf3.path, volume3, conf3.loopStart, conf3.loopEnd);
 	}
 };
 
