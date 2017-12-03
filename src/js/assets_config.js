@@ -7,8 +7,16 @@ AssetsConfig.images = {
 	"howto":            "./image/howto.png",
 
 	// マウスカーソル
-	"ui_icon_pointer_01":            "./image/ui_icon_pointer_01.png",
-	"ui_icon_pointer_02":            "./image/ui_icon_pointer_02.png",
+	"ui_icon_pointer_01":            {
+		image: "./image/ui_icon_pointer_01.png",
+		scale_width: 2/3,
+		scale_height: 2/3,
+	},
+	"ui_icon_pointer_02":            {
+		image: "./image/ui_icon_pointer_02.png",
+		scale_width: 2/3,
+		scale_height: 2/3,
+	},
 
 	// こいし画像
 	"koishi.png":                "./image/koishi.png",
