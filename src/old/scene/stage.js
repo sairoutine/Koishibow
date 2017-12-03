@@ -154,8 +154,10 @@ SceneStage.prototype.playBGM = function(){
 	this.core.audio_loader.stopBGMWithout(this.field().bgm);
 
 	// サブBGM再生
-	if (this.field().bgm2) {
-		this.core.addBGM(this.field().bgm2);
+	if (this.field().sub_bgms) {
+		for (var i = 0, len = this.field().sub_bgms.length; i < len; i++) {
+			this.core.addBGM(this.field().sub_bgms[i]);
+		}
 	}
 };
 
