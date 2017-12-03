@@ -4,6 +4,19 @@ var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
 
+var SaveManager = require('./save_manager');
+
+var SceneTitle = require('./scene/title');
+var SceneHowto = require('./scene/howto');
+var SceneStage = require('./scene/stage');
+var SceneLoading = require('./scene/loading');
+var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
+var SceneEventForChapter0Last            = require('./scene/event/chapter0/last');
+var SceneEventForChapter0GetHat          = require('./scene/event/chapter0/get_hat');
+var SceneEventForChapter0TrialLast       = require('./scene/event/chapter0/trial_last');
+
+
+
 var Game = function(canvas) {
 	core.apply(this, arguments);
 
@@ -14,8 +27,24 @@ util.inherit(Game, core);
 Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
 
-
+	// カーソル設定
 	this.enableCursorImage("ui_icon_pointer_01");
+
+	// セーブデータ
+	this.save_manager = SaveManager.load();
+
+	// シーン一覧
+	this.addScene("loading", new SceneLoading(this));
+	this.addScene("title", new SceneTitle(this));
+	this.addScene("howto", new SceneHowto(this));
+	this.addScene("stage", new SceneStage(this));
+	this.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
+	this.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
+	this.addScene("event_for_chapter0_get_hat",          new SceneEventForChapter0GetHat(this));
+	this.addScene("event_for_chapter0_trial_last",       new SceneEventForChapter0TrialLast(this));
+
+	// シーン遷移
+	this.changeScene("loading");
 };
 
 
@@ -26,38 +55,7 @@ Game.prototype.setupDebug = function () {
 // implement: cursor
 
 /*
-var SaveManager = require('./save_manager');
 
-var SceneTitle = require('./scene/title');
-var SceneHowto = require('./scene/howto');
-var SceneStage = require('./scene/stage');
-var SceneLoading = require('./scene/loading');
-var SceneEventForEncounterSatori = require('./scene/event_for_encounter_satori');
-var SceneEventForTrialLast = require('./scene/event_for_trial_last');
-var SceneEventForGetHat = require('./scene/event_for_get_hat');
-var SceneEventForTrialLast2 = require('./scene/event_for_trial_last2');
-
-
-Game.prototype.init = function () {
-	core.prototype.init.apply(this, arguments);
-
-	// セーブデータ
-	this.save_manager = SaveManager.load();
-
-
-	this.addScene("loading", new SceneLoading(this));
-	this.addScene("title", new SceneTitle(this));
-	this.addScene("howto", new SceneHowto(this));
-	this.addScene("stage", new SceneStage(this));
-	this.addScene("event_for_encounter_satori", new SceneEventForEncounterSatori(this));
-	this.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
-	this.addScene("event_for_get_hat",          new SceneEventForGetHat(this));
-	this.addScene("event_for_trial_last2",      new SceneEventForTrialLast2(this));
-
-	this.changeScene("loading");
-
-	this._current_cursor = "default";
-};
 Game.prototype.setupDebug = function (dom) {
 	if (!CONSTANT.DEBUG.ON) return;
 
