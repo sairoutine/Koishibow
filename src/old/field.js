@@ -1,3 +1,5 @@
+'use strict';
+var CONSTANT = require('../constant');
 var field_list = [
 	require("./field/chapter0/myroom"),
 	require("./field/chapter0/hospital_corridor1"),
@@ -5,9 +7,6 @@ var field_list = [
 	require("./field/chapter0/mansion_corridor1"),
 	require("./field/chapter0/mansion_corridor2"),
 	require("./field/chapter0/mansion_corridor3"),
-	require("./field/chapter0/mansion_gallery1"),
-
-
 ];
 
 var field_map = {};
@@ -15,9 +14,14 @@ var field_map = {};
 for (var i = 0, len = field_list.length; i < len; i++) {
 	var field = field_list[i];
 
-	field_map[field.key] = field;
+	// key 名が被ってたらデバッグではエラー
+	if(CONSTANT.DEBUG.ON) {
+		if(field_map[field.key]) {
+			throw new Error("duplicate field key name: ". field.key);
+		}
+	}
 
-	// TODO: key 名が被ってたらデバッグではエラー
+	field_map[field.key] = field;
 }
 module.exports = field_map;
 
