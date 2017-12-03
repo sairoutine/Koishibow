@@ -8,6 +8,19 @@ var Game = function(canvas) {
 	core.apply(this, arguments);
 
 };
+util.inherit(Game, core);
+
+
+Game.prototype.init = function () {
+	core.prototype.init.apply(this, arguments);
+
+
+	this.enableCursorImage("ui_icon_pointer_01");
+};
+
+
+Game.prototype.setupDebug = function () {
+};
 
 // TODO:
 // implement: cursor
@@ -24,7 +37,6 @@ var SceneEventForTrialLast = require('./scene/event_for_trial_last');
 var SceneEventForGetHat = require('./scene/event_for_get_hat');
 var SceneEventForTrialLast2 = require('./scene/event_for_trial_last2');
 
-util.inherit(Game, core);
 
 Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
@@ -45,7 +57,6 @@ Game.prototype.init = function () {
 	this.changeScene("loading");
 
 	this._current_cursor = "default";
-	this.canvas_dom.style.cursor = "none";
 };
 Game.prototype.setupDebug = function (dom) {
 	if (!CONSTANT.DEBUG.ON) return;
@@ -143,42 +154,6 @@ Game.prototype.setupDebug = function (dom) {
 
 };
 
-Game.prototype.run = function () {
-
-	this.changeDefaultCursor();
-
-	core.prototype.run.apply(this, arguments);
-
-	// ローディング中はカーソルを表示しない
-	if (this.currentScene() instanceof SceneLoading) return;
-
-	// カーソル表示
-
-	var image_name;
-	if (this._current_cursor === "touch") {
-		image_name = "ui_icon_pointer_02";
-	}
-	else {
-		image_name = "ui_icon_pointer_01";
-	}
-
-	var ctx = this.ctx;
-	ctx.save();
-
-	var cursor = this.image_loader.getImage(image_name);
-	var x = this.input_manager.mousePositionX();
-	var y = this.input_manager.mousePositionY();
-
-	ctx.translate(x, y);
-	ctx.drawImage(cursor,
-					0,
-					0,
-					cursor.width*2/3,
-					cursor.height*2/3);
-	ctx.restore();
-
-};
-
 
 Game.prototype.playSound = function () {
 	if (CONSTANT.DEBUG.SOUND_OFF) return;
@@ -208,6 +183,7 @@ Game.prototype.changeTouchCursor = function () {
 Game.prototype.changeDefaultCursor = function () {
 	this._current_cursor = "default";
 };
+*/
 
 
 
@@ -218,4 +194,3 @@ Game.prototype.changeDefaultCursor = function () {
 
 
 module.exports = Game;
-*/
