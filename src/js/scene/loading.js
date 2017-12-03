@@ -31,7 +31,7 @@ SceneLoading.prototype.init = function() {
 		var conf2 = AssetsConfig.sounds[key2];
 
 		// デバッグ用ミュート
-		var volume2 = CONSTANT.DEBUG.SOUND_OFF ? conf2.volume : 0;
+		var volume2 = CONSTANT.DEBUG.SOUND_OFF ? 0 : conf2.volume;
 
 		this.core.audio_loader.loadSound(key2, conf2.path, volume2);
 	}
@@ -40,8 +40,7 @@ SceneLoading.prototype.init = function() {
 	for (var key3 in AssetsConfig.bgms) {
 		var conf3 = AssetsConfig.bgms[key3];
 		// デバッグ用ミュート
-		var volume3 = CONSTANT.DEBUG.SOUND_OFF ? conf3.volume : 0;
-
+		var volume3 = CONSTANT.DEBUG.SOUND_OFF ? 0 : conf3.volume;
 
 		this.core.audio_loader.loadBGM(key3, conf3.path, volume3, conf3.loopStart, conf3.loopEnd);
 	}
