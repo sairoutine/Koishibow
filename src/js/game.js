@@ -48,13 +48,6 @@ Game.prototype.init = function () {
 };
 
 
-Game.prototype.setupDebug = function () {
-};
-
-// TODO:
-// implement: cursor
-
-/*
 
 Game.prototype.setupDebug = function (dom) {
 	if (!CONSTANT.DEBUG.ON) return;
@@ -153,6 +146,7 @@ Game.prototype.setupDebug = function (dom) {
 };
 
 
+/*
 Game.prototype.playSound = function () {
 	if (CONSTANT.DEBUG.SOUND_OFF) return;
 	return this.audio_loader.playSound.apply(this.audio_loader, arguments);
@@ -175,12 +169,6 @@ Game.prototype.stopBGM = function () {
 	return this.audio_loader.stopBGM.apply(this.audio_loader, arguments);
 };
 
-Game.prototype.changeTouchCursor = function () {
-	this._current_cursor = "touch";
-};
-Game.prototype.changeDefaultCursor = function () {
-	this._current_cursor = "default";
-};
 */
 
 
