@@ -4,7 +4,7 @@
 
 var base_scene = require('../hakurei').scene.base;
 var Util = require('../hakurei').util;
-var AssetsConfig = require('../assets_config');
+var AssetsConfig = require('../config/assets');
 var CONSTANT = require('../constant');
 
 var SceneLoading = function(core) {
