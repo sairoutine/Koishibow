@@ -1,12 +1,12 @@
 'use strict';
 var CONSTANT = require('../constant');
 var field_list = [
-	require("./field/chapter0/myroom"),
-	require("./field/chapter0/hospital_corridor1"),
-	require("./field/chapter0/hospital_corridor2"),
-	require("./field/chapter0/mansion_corridor1"),
-	require("./field/chapter0/mansion_corridor2"),
-	require("./field/chapter0/mansion_corridor3"),
+	require("../data/field/chapter0/myroom"),
+	require("../data/field/chapter0/hospital_corridor1"),
+	require("../data/field/chapter0/hospital_corridor2"),
+	require("../data/field/chapter0/mansion_corridor1"),
+	require("../data/field/chapter0/mansion_corridor2"),
+	require("../data/field/chapter0/mansion_corridor3"),
 ];
 
 var field_map = {};
