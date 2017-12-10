@@ -13,12 +13,12 @@ var SsSprite = SsaPlayer.SsSprite;
 // アニメの index は 0 固定
 var DATA_INDEX = 0;
 
-var SsAnime = function(scene) {
+var SsAnimeBase = function(scene) {
 	base_object.apply(this, arguments);
 };
-Util.inherit(SsAnime, base_object);
+Util.inherit(SsAnimeBase, base_object);
 
-SsAnime.prototype.init = function(){
+SsAnimeBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 	this._is_reflect = false;
 
@@ -33,7 +33,7 @@ SsAnime.prototype.init = function(){
 	this.ss = new SsSprite(this.animation);
 };
 
-SsAnime.prototype.changeAnimation = function(name){
+SsAnimeBase.prototype.changeAnimation = function(name){
 	var jsonData = this.getJsonData(name);
 
 	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
@@ -44,7 +44,7 @@ SsAnime.prototype.changeAnimation = function(name){
 	this.ss.setAnimation(this.animation);
 };
 
-SsAnime.prototype.playAnimationOnce = function(name, _callback){
+SsAnimeBase.prototype.playAnimationOnce = function(name, _callback){
 	var ss = this.ss;
 	var max_loop = ss.getLoop();
 
@@ -63,13 +63,13 @@ SsAnime.prototype.playAnimationOnce = function(name, _callback){
 	this.changeAnimation(name);
 };
 
-SsAnime.prototype.playAnimationInfinity = function(name){
+SsAnimeBase.prototype.playAnimationInfinity = function(name){
 	this.ss.setLoop(0);
 	this.changeAnimation(name);
 };
 
 // sprite studio 用の SsImageList 代替オブジェクトを生成
-SsAnime.prototype._getImageList = function (imageFiles) {
+SsAnimeBase.prototype._getImageList = function (imageFiles) {
 	var imageList = new SsImageList([], "");
 
 	for (var i = 0; i < imageFiles.length; i++) {
@@ -86,7 +86,7 @@ SsAnime.prototype._getImageList = function (imageFiles) {
 	return imageList;
 };
 
-SsAnime.prototype.beforeDraw = function(){
+SsAnimeBase.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
 
 	// update ss state
@@ -97,7 +97,7 @@ SsAnime.prototype.beforeDraw = function(){
 };
 
 // 画面更新
-SsAnime.prototype.draw = function(){
+SsAnimeBase.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	if (!this.isShow()) return;
 	var ctx = this.core.ctx;
@@ -129,21 +129,21 @@ SsAnime.prototype.draw = function(){
 	ctx.restore();
 };
 
-SsAnime.prototype.isShow = function(){
+SsAnimeBase.prototype.isShow = function(){
 	return true;
 };
-SsAnime.prototype.isReflect = function(){
+SsAnimeBase.prototype.isReflect = function(){
 	return this._is_reflect;
 };
 
-SsAnime.prototype.setReflect = function(flag){
+SsAnimeBase.prototype.setReflect = function(flag){
 	this._is_reflect = flag;
 };
 
-SsAnime.prototype.darker = function() {
+SsAnimeBase.prototype.darker = function() {
 	return 0.0;
 };
-SsAnime.prototype.getJsonData = function(name) {
+SsAnimeBase.prototype.getJsonData = function(name) {
 	var map = this.jsonAnimeMap();
 
 	if(!map[name]) throw new Error(name + " anime doesn't exists");
@@ -151,8 +151,8 @@ SsAnime.prototype.getJsonData = function(name) {
 	return map[name];
 };
 
-SsAnime.prototype.jsonAnimeMap = function() {
+SsAnimeBase.prototype.jsonAnimeMap = function() {
 	return {};
 };
 
-module.exports = SsAnime;
+module.exports = SsAnimeBase;
