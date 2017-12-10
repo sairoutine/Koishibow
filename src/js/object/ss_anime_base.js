@@ -15,6 +15,8 @@ var DATA_INDEX = 0;
 
 var SsAnimeBase = function(scene) {
 	base_object.apply(this, arguments);
+
+	this.current_anime = null;
 };
 Util.inherit(SsAnimeBase, base_object);
 
@@ -22,7 +24,9 @@ SsAnimeBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 	this._is_reflect = false;
 
-	var jsonData = this.getJsonData("default");
+	this.current_anime = "default";
+
+	var jsonData = this.getJsonData(this.current_anime);
 	this.imageList = this._getImageList(jsonData[DATA_INDEX].images);
 
 	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
@@ -34,6 +38,8 @@ SsAnimeBase.prototype.init = function(){
 };
 
 SsAnimeBase.prototype.changeAnimation = function(name){
+	this.current_anime = name;
+
 	var jsonData = this.getJsonData(name);
 
 	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
