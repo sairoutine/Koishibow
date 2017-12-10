@@ -31,118 +31,29 @@ var FieldMap = require('../field');
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
-	// フィールド一覧
-	this._field_map = FieldMap;
-
-	// 自機
-	this._koishi = new Koishi(this);
-
-	// ステージ上のオブジェクト一覧
-	this.pieces = [];
-
 	// 移動制限範囲
 	this.walk_immovable_areas = [];
 
 	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
 	this._koishi_and_pieces = [];
 
-	this.left_yajirushi  = new LeftYajirushi(this);
-	this.right_yajirushi = new RightYajirushi(this);
-	this.item_button     = new ItemButton(this);
-	this.eye             = new Eye(this);
-
-	this.black_mist = new SS(this);
-
-	this.is_use_eye = false;
-	/* sub scene 一覧
-	調べてるオブジェクト(机の上、窓の外) →そこからさらにアイテム調べられるので、サブシーンのサブシーンができるように、各サブシーンを作っておかねば。
-	アイテムを読んでいるサブシーン(ページ送り等)
-	アニメーションサブシーン(オブジェクトが反応する、その間こいしは動けない)
-	*/
-
-	// 通常
-	this.addSubScene("play", new SceneSubStagePlay(core));
-	// 会話中
-	this.addSubScene("talk", new SceneSubStageTalk(core));
-	// メニュー
-	this.addSubScene("menu", new SceneSubStageMenu(core));
-	// 文章を読む
-	this.addSubScene("paper", new SceneSubStagePaper(core));
 };
 util.inherit(SceneStage, base_scene);
 
 SceneStage.prototype.init = function(field_name, is_right){
 	base_scene.prototype.init.apply(this, arguments);
 
-	// 現在のフィールド
-	this.core.save_manager.setCurrentField(field_name);
-	this.core.save_manager.save();
-
-	this.is_use_eye = false;
-
-	// フィールド移動時にフェードインする
-	this.setFadeIn(30, "black");
-
-
-	this._koishi.init();
-	this.setupPiece();
-	this._initOfMenuObject();
-
-
 	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
 	this._koishi_and_pieces = this.pieces.concat(this._koishi);
 
-	// フィールド開始時の初期位置の決定
-	// 右から来たか、左から来たかでこいしの初期位置が変わる
-	var pos;
-	if (is_right) {
-		pos = this.field().right_start_position;
-		this.koishi().setPosition(pos.x, pos.y);
-		this.koishi().setReflect(true);
-	}
-	else {
-		pos = this.field().left_start_position;
-		this.koishi().setPosition(pos.x, pos.y);
-	}
-
-	// BGM 止める
-	if(!this.core.audio_loader.isPlayingBGM(this.field().bgm)) {
-		this.core.stopBGM();
-	}
-
 	this.black_mist.init(this.width/2, this.height/2, jsonDataOfBlackMist, 0, {scale: 2/3});
-
-	this.changeSubScene("play");
 };
 
 
-SceneStage.prototype.isUsingEye = function() {
-	return this.is_use_eye;
-};
 SceneStage.prototype.unUseEye = function() {
-	this.core.audio_loader.stopBGM("using_3rdeye");
-	this.core.audio_loader.unMuteWithFadeInAllBGM(3);
-
-	// 60フレーム経つ前に3rd eye 使用してた場合、フィールドBGMは鳴らさない
-	// その場合、ここでフィールドBGMを再生する
-	if (!this.core.audio_loader.isPlayingBGM(this.field().bgm)) {
-		this.playBGM();
-	}
-
-	this.koishi().unUseEye();
-	this.is_use_eye = false;
-
 	this.black_mist.changeAnimation(jsonDataOfBlackMist);
 };
 SceneStage.prototype.useEye = function() {
-	this.core.playSound("use_3rdeye");
-
-	this.core.audio_loader.muteAllBGM();
-	this.core.addBGM("using_3rdeye");
-
-	this.koishi().useEye();
-	this.is_use_eye = true;
-
 	this.black_mist.changeAnimation(jsonDataOfRedMist);
 };
 
@@ -169,18 +80,6 @@ SceneStage.prototype.beforeDraw = function(){
 		}
 	}
 
-	// ランダムノイズ再生
-	// N秒ごとにN%の確率で再生
-	if (!this.isUsingEye()) {
-		if(this.core.frame_count % CONSTANT.CHAPTER0.NOISE_SOUND_INTERVAL_COUNT === 0) {
-			if (util.getRandomInt(100) <= CONSTANT.CHAPTER0.NOISE_SOUND_PROB) {
-				var sound_name = CONSTANT.CHAPTER0.NOISE_SOUND_LIST[ util.getRandomInt(0, CONSTANT.CHAPTER0.NOISE_SOUND_LIST.length - 1) ];
-				this.core.playSound(sound_name);
-			}
-		}
-	}
-
-
 	// z軸の降順ソート
 	this._koishi_and_pieces.sort(function(a,b){
 		if(a.z() < b.z()) return -1;
@@ -200,21 +99,6 @@ SceneStage.prototype.beforeDraw = function(){
 
 
 
-	this.black_mist.beforeDraw();
-
-	this._beforeDrawOfMenuObject();
-
-	base_scene.prototype.beforeDraw.apply(this, arguments);
-
-	// クリック位置を出力
-	if (CONSTANT.DEBUG.ON) {
-		if(this.core.input_manager.isRightClickPush()) {
-			var x = this.core.input_manager.mousePositionX();
-			var y = this.core.input_manager.mousePositionY();
-
-			console.log("x: " + x + ", y: " + y);
-		}
-	}
 };
 
 
@@ -255,22 +139,6 @@ SceneStage.prototype._drawOfMenuObject = function(){
 
 // 画面更新
 SceneStage.prototype.draw = function(){
-	var ctx = this.core.ctx;
-
-	// 背景描画
-	var title_bg = this.core.image_loader.getImage(this.field().background);
-	ctx.save();
-	ctx.drawImage(title_bg,
-					0,
-					0,
-					title_bg.width,
-					title_bg.height,
-					0,
-					0,
-					this.core.width,
-					this.core.height);
-	ctx.restore();
-
 	// 移動不可能範囲のデバッグ表示
 	if (this.core.debug_manager.get("is_show_immovable_area")) {
 		this._drawImmovableArea();
@@ -297,11 +165,6 @@ SceneStage.prototype.draw = function(){
 			this._drawLightCollision();
 		}
 	}
-
-	this.black_mist.draw();
-
-	this._drawOfMenuObject();
-
 
 	// サブシーン描画
 	base_scene.prototype.draw.apply(this, arguments);
@@ -403,20 +266,6 @@ SceneStage.prototype._drawLight = function(){
 
 	ctx.restore();
 };
-
-
-SceneStage.prototype.koishi = function(){
-	return this._koishi;
-};
-
-SceneStage.prototype.mainStage = function(){
-	return this;
-};
-
-SceneStage.prototype.field = function(){
-	return this._field_map[this.core.save_manager.getCurrentField()];
-};
-
 
 
 SceneStage.prototype.setupPiece = function() {
