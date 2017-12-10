@@ -2,6 +2,7 @@
 var CONSTANT = require("../../../constant");
 module.exports = {
 	key: "chapter0_myroom",
+	chapter: 0,
 	name: "こいしの部屋",
 	bgm: "field1",
 	right_start_position: {x: 690, y: 540},
