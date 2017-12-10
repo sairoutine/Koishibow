@@ -16,6 +16,7 @@ var LeftNextFieldButton = require('../object/ui/left_next_field_button');
 var ItemMenuButton = require('../object/ui/item_menu_button');
 var EyeButton = require('../object/ui/eye_button');
 
+var BlackMist = require('../object/black_mist');
 /*
 var Koishi = require('../object/koishi');
 
@@ -23,11 +24,6 @@ var ObjectStaticImage = require('../object/object/static_image');
 var ObjectAnimeImage = require('../object/object/anime_image');
 var ObjectPaper = require('../object/object/paper');
 var ObjectAnimeEventImage = require('../object/object/anime_event_image');
-
-var jsonDataOfBlackMist = require('../anime/black_mist/eff01_anime_1');
-var jsonDataOfRedMist = require('../anime/black_mist/eff02_anime_1');
-var SS = require('../object/sprite_studio');
-
 */
 
 var FieldMap = require('../config/field');
