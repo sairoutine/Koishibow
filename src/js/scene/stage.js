@@ -124,8 +124,10 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	}
 
-	// フィールド移動時にフェードインする
-	this.setFadeIn(30, "black");
+	// フィールド移動時にフェードイン／アウトする
+	this.setFadeIn(30,  "black");
+	this.setFadeOut(30, "black");
+
 
 	this.changeSubScene("play");
 };
