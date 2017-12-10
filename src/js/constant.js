@@ -7,7 +7,7 @@ var CONSTANT = {
 	// オブジェクトの種類
 	STATIC_IMAGE_TYPE:      1,
 	ANIME_IMAGE_TYPE:       2,
-	PAPER_TYPE:             3,
+	JOURNAL_TYPE:           3,
 	ANIME_EVENT_IMAGE_TYPE: 4, // chapter0 最後のカーペット
 
 
