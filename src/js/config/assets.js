@@ -19,26 +19,26 @@ AssetsConfig.images = {
 	},
 
 	// こいし画像
-	"koishi.png":                "./image/koishi.png",
+	"koishi":                "./image/koishi.png",
 
 	// 3rdeye 使用時のもや
-	"black_mist.png":            "./image/black_mist.png",
+	"black_mist":            "./image/black_mist.png",
 	// 3rdeye 使用時の光
 	"light":  "./image/light.png",
 
 	// さとり邂逅イベント
 	"bg01.jpg": "./image/chapter0/event/encounter_satori/bg01.jpg",
 	"bg02.jpg": "./image/chapter0/event/encounter_satori/bg02.jpg",
-	"str.png":  "./image/chapter0/event/encounter_satori/str.png",
-	"black-mist.png": "./image/chapter0/event/encounter_satori/black-mist.png",
+	"str":  "./image/chapter0/event/encounter_satori/str.png",
+	"black-mist": "./image/chapter0/event/encounter_satori/black-mist.png",
 
 	// 帽子獲得イベント
 	"get_hat":  "./image/chapter0/event/get_hat/bg.png",
 
 	// こいしが落ちるイベント
 	"bg01_for_falldown_koishi.jpg":  "./image/chapter0/event/falldown_koishi/bg01_for_falldown_koishi.jpg",
-	"door.png":  "./image/chapter0/event/falldown_koishi/door.png",
-	"shadow.png":  "./image/chapter0/event/falldown_koishi/shadow.png",
+	"door":  "./image/chapter0/event/falldown_koishi/door.png",
+	"shadow":  "./image/chapter0/event/falldown_koishi/shadow.png",
 
 	// ジャーナル画像
 	"journal001":  "./image/journal/001.png",
@@ -50,9 +50,9 @@ AssetsConfig.images = {
 	// フィールドの画像とオブジェクト
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
-	"chapter0-myroom-obj-02-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",
-	"chapter0-myroom-obj-03-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-03-01.png",
-	"chapter0-myroom-obj-04-01.png": "./image/chapter0/myroom/chapter0-myroom-obj-04-01.png",
+	"chapter0-myroom-obj-02-01": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",
+	"chapter0-myroom-obj-03-01": "./image/chapter0/myroom/chapter0-myroom-obj-03-01.png",
+	"chapter0-myroom-obj-04-01": "./image/chapter0/myroom/chapter0-myroom-obj-04-01.png",
 	"chapter0-myroom-obj-05-01": "./image/chapter0/myroom/chapter0-myroom-obj-05-01.png",
 
 	"chapter0-hospital_corridor1-bg-001":    "./image/chapter0/hospital_corridor1/chapter0-hospital-bg-001.jpg",
@@ -62,26 +62,26 @@ AssetsConfig.images = {
 	"chapter0-hospital_corridor1-obj-04-01": "./image/chapter0/hospital_corridor1/chapter0-hospital-obj-04-01.png",
 
 	"chapter0-hospital2-bg-001":        "./image/chapter0/hospital_corridor2/chapter0-hospital2-bg-001.jpg",
-	"chapter0-hospital2-obj-01-01.png": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-01-01.png",
+	"chapter0-hospital2-obj-01-01": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-01-01.png",
 	"chapter0-hospital2-obj-02-01": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-02-01.png",
-	"chapter0-hospital2-obj-03-01.png": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-03-01.png",
+	"chapter0-hospital2-obj-03-01": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-03-01.png",
 
 	"chapter0-mansionpas-001":          "./image/chapter0/mansion_corridor1/chapter0-mansionpas-001.jpg",
-	"chapter0-mspassage-obj-01-01.png": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-01-01.png",
-	"chapter0-mspassage-obj-02-01.png": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-02-01.png",
-	"chapter0-mspassage-obj-03-01.png": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-03-01.png",
+	"chapter0-mspassage-obj-01-01": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-01-01.png",
+	"chapter0-mspassage-obj-02-01": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-02-01.png",
+	"chapter0-mspassage-obj-03-01": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-03-01.png",
 
 	"chapter0-mansionpas-002":          "./image/chapter0/mansion_corridor2/chapter0-mspassage-bg-002.jpg",
-	"chapter0-mspassage-obj-04-01.png": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-04-01.png",
-	"chapter0-mspassage-obj-05-01.png": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-05-01.png",
-	"chapter0-mspassage-obj-06-01.png": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-06-01.png",
+	"chapter0-mspassage-obj-04-01": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-04-01.png",
+	"chapter0-mspassage-obj-05-01": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-05-01.png",
+	"chapter0-mspassage-obj-06-01": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-06-01.png",
 
 	"chapter0-mansionpas-003":          "./image/chapter0/mansion_corridor3/chapter0-mspassage-bg-003.jpg",
-	"chapter0-mspassage-obj-07-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-07-01.png",
-	"chapter0-mspassage-obj-08-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-08-01.png",
-	"chapter0-mspassage-obj-09-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-09-01.png",
-	"chapter0-mspassage-obj-10-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-10-01.png",
-	"chapter0-mspassage-obj-11-01.png": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-11-01.png",
+	"chapter0-mspassage-obj-07-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-07-01.png",
+	"chapter0-mspassage-obj-08-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-08-01.png",
+	"chapter0-mspassage-obj-09-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-09-01.png",
+	"chapter0-mspassage-obj-10-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-10-01.png",
+	"chapter0-mspassage-obj-11-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-11-01.png",
 
 	// 体験版時のコンティニュー画像
 	tobecontinued:  "./image/tobecontinued.png",
