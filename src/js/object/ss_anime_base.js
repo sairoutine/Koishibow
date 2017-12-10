@@ -86,6 +86,17 @@ SsAnimeBase.prototype._getImageList = function (imageFiles) {
 	return imageList;
 };
 
+SsAnimeBase.prototype.setReflect = function(flag){
+	this._is_reflect = flag;
+};
+SsAnimeBase.prototype.getJsonData = function(name) {
+	var map = this.jsonAnimeMap();
+
+	if(!map[name]) throw new Error(name + " anime doesn't exists");
+
+	return map[name];
+};
+
 SsAnimeBase.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
 
@@ -136,21 +147,9 @@ SsAnimeBase.prototype.isReflect = function(){
 	return this._is_reflect;
 };
 
-SsAnimeBase.prototype.setReflect = function(flag){
-	this._is_reflect = flag;
-};
-
 SsAnimeBase.prototype.darker = function() {
 	return 0.0;
 };
-SsAnimeBase.prototype.getJsonData = function(name) {
-	var map = this.jsonAnimeMap();
-
-	if(!map[name]) throw new Error(name + " anime doesn't exists");
-
-	return map[name];
-};
-
 SsAnimeBase.prototype.jsonAnimeMap = function() {
 	return {};
 };
