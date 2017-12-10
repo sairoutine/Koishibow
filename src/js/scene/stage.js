@@ -27,13 +27,25 @@ var jsonDataOfBlackMist = require('../anime/black_mist/eff01_anime_1');
 var jsonDataOfRedMist = require('../anime/black_mist/eff02_anime_1');
 var SS = require('../object/sprite_studio');
 
-var FieldMap = require('../field');
 */
+var FieldMap = require('../config/field');
 
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
 };
 Util.inherit(SceneStage, base_scene);
+
+
+SceneStage.prototype.getFieldData = function(){
+	return FieldMap[this.core.save_manager.getCurrentField()];
+};
+
+
+
+
+
+
+
 
 module.exports = SceneStage;

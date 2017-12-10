@@ -1,5 +1,5 @@
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
-var CONSTANT = require("../../constant");
+var CONSTANT = require("../../../constant");
 module.exports = {
 	key: "chapter0_hospital_corridor1",
 	name: "病院の廊下1",

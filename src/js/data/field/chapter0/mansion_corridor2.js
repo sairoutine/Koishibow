@@ -1,5 +1,5 @@
 // 屋敷の廊下2(ドアがある) 最初のフラッシュバックが入る
-var CONSTANT = require("../../constant");
+var CONSTANT = require("../../../constant");
 module.exports = {
 	key: "chapter0_mansion_corridor2",
 	name: "屋敷の廊下2",

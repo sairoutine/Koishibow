@@ -1,5 +1,5 @@
 // こいしの自室(ベッド／帽子／ドア) 帽子はベッドのふちにかけてある
-var CONSTANT = require("../../constant");
+var CONSTANT = require("../../../constant");
 module.exports = {
 	key: "chapter0_myroom",
 	name: "こいしの部屋",

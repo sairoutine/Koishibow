@@ -1,5 +1,5 @@
 // 屋敷の廊下3(家具) 行き止まり (サードアイを使用すると、家具が豹変／床に扉が出現)
-var CONSTANT = require("../../constant");
+var CONSTANT = require("../../../constant");
 module.exports = {
 	key: "chapter0_mansion_corridor3",
 	name: "屋敷の廊下3",
