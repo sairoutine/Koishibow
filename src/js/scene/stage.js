@@ -10,6 +10,12 @@ var SceneSubStageTalk = require('./substage/talk'); // こいし会話中
 var SceneSubStageMenu = require('./substage/menu'); // アイテムメニュー
 var SceneSubStageJournal = require('./substage/journal'); // ジャーナル表示
 //var SceneSubStageObjectDetail = require('./substage/object_detail'); // オブジェクト詳細
+
+var RightNextFieldButton = require('../object/ui/right_next_field_button');
+var LeftNextFieldButton = require('../object/ui/left_next_field_button');
+var ItemMenuButton = require('../object/ui/item_menu_button');
+var EyeButton = require('../object/ui/eye_button');
+
 /*
 var Koishi = require('../object/koishi');
 
@@ -18,16 +24,12 @@ var ObjectAnimeImage = require('../object/object/anime_image');
 var ObjectPaper = require('../object/object/paper');
 var ObjectAnimeEventImage = require('../object/object/anime_event_image');
 
-var LeftYajirushi = require('../object/left_yajirushi');
-var RightYajirushi = require('../object/right_yajirushi');
-var ItemButton = require('../object/item_button');
-var Eye = require('../object/eye');
-
 var jsonDataOfBlackMist = require('../anime/black_mist/eff01_anime_1');
 var jsonDataOfRedMist = require('../anime/black_mist/eff02_anime_1');
 var SS = require('../object/sprite_studio');
 
 */
+
 var FieldMap = require('../config/field');
 
 var SceneStage = function(core) {
