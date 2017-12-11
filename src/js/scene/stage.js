@@ -17,14 +17,13 @@ var ItemMenuButton = require('../object/ui/item_menu_button');
 var EyeButton = require('../object/ui/eye_button');
 
 var BlackMist = require('../object/black_mist');
+
 var Koishi = require('../object/koishi');
 
-/*
-var ObjectStaticImage = require('../object/object/static_image');
-var ObjectAnimeImage = require('../object/object/anime_image');
-var ObjectPaper = require('../object/object/paper');
-var ObjectAnimeEventImage = require('../object/object/anime_event_image');
-*/
+var ObjectStaticImage = require('../object/pieces/static_image');
+var ObjectAnimeImage = require('../object/pieces/anime_image');
+var ObjectJournal = require('../object/pieces/paper');
+var ObjectAnimeEventImage = require('../object/pieces/anime_event_image');
 
 var FieldMap = require('../config/field');
 
