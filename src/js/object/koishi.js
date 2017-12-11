@@ -10,21 +10,21 @@ var CONSTANT = require('../constant');
 
 /* 使用用途	リピート	fps	フレーム	時間 */
 // 	待機	可	30	45	1.5秒
-var jsonDataOfWait = require('../anime/koishi/wait_anime_1');
+var jsonDataOfWait = require('../data/anime/koishi/wait_anime_1');
 //	歩き	可	30	30	1秒
-var jsonDataOfWalk = require('../anime/koishi/walk_anime_1');
+var jsonDataOfWalk = require('../data/anime/koishi/walk_anime_1');
 // 	サードアイ使用	不	30	15	0.5秒
-var jsonDataOfReaction3rdeye = require('../anime/koishi/reaction_3rdeye_anime_1');
+var jsonDataOfReaction3rdeye = require('../data/anime/koishi/reaction_3rdeye_anime_1');
 // 	下を見る	不	30	15	0.5秒
-var jsonDataOfReactionLookBottom = require('../anime/koishi/reaction_look_bottom_anime_1');
+var jsonDataOfReactionLookBottom = require('../data/anime/koishi/reaction_look_bottom_anime_1');
 // 	前を見る	不	30	15	0.5秒
-var jsonDataOfReactionLookFront = require('../anime/koishi/reaction_look_front_anime_1');
+var jsonDataOfReactionLookFront = require('../data/anime/koishi/reaction_look_front_anime_1');
 //	上を見る	不	30	15	0.5秒
-var jsonDataOfReactionLookTop = require('../anime/koishi/reaction_look_top_anime_1');
+var jsonDataOfReactionLookTop = require('../data/anime/koishi/reaction_look_top_anime_1');
 //	触る、物を取る	不	30	15	0.5秒
-var jsonDataOfReactionTouch = require('../anime/koishi/reaction_touch_anime_1');
+var jsonDataOfReactionTouch = require('../data/anime/koishi/reaction_touch_anime_1');
 //	YES、うなずく	不	30	15	0.5秒
-var jsonDataOfReactionYes = require('../anime/koishi/reaction_yes_anime_1');
+var jsonDataOfReactionYes = require('../data/anime/koishi/reaction_yes_anime_1');
 
 var Koishi = function (scene) {
 	base_object.apply(this, arguments);

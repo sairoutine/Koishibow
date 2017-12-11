@@ -17,9 +17,9 @@ var ItemMenuButton = require('../object/ui/item_menu_button');
 var EyeButton = require('../object/ui/eye_button');
 
 var BlackMist = require('../object/black_mist');
-/*
 var Koishi = require('../object/koishi');
 
+/*
 var ObjectStaticImage = require('../object/object/static_image');
 var ObjectAnimeImage = require('../object/object/anime_image');
 var ObjectPaper = require('../object/object/paper');
