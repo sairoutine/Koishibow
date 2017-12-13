@@ -30,11 +30,11 @@ var FieldMap = require('../config/field');
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
-	// 自機
-	this.koishi = new Koishi(this);
-
 	// ステージ上のオブジェクト一覧
 	this.pieces = [];
+
+	// 自機
+	this.koishi = new Koishi(this);
 
 	// UI パーツ
 	this.right_next_field_button = new RightNextFieldButton(this);
@@ -74,11 +74,11 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	// フィールドの情報
 	var field_data = this.getFieldData();
 
-	// 自機
-	this.koishi.init();
-
 	// ステージ上のオブジェクト一覧
 	this._setupPieces();
+
+	// 自機
+	this.koishi.init();
 
 	// UI パーツ
 	this.right_next_field_button.init();
@@ -180,12 +180,12 @@ SceneStage.prototype.beforeDraw = function() {
 		}
 	}
 
-	// 自機
-	this.koishi.beforeDraw();
 	// ステージ上のオブジェクト一覧
 	for (var i = 0, len = this.pieces.length; i < len; i++) {
 		this.pieces[i].beforeDraw();
 	}
+	// 自機
+	this.koishi.beforeDraw();
 	// UI パーツ
 	this.right_next_field_button.beforeDraw();
 	this.left_next_field_button.beforeDraw();
@@ -218,12 +218,13 @@ SceneStage.prototype.draw = function(){
 	);
 	ctx.restore();
 
-	// 自機
-	this.koishi.draw();
 	// ステージ上のオブジェクト一覧
 	for (var i = 0, len = this.pieces.length; i < len; i++) {
 		this.pieces[i].draw();
 	}
+	// 自機
+	this.koishi.draw();
+
 	// UI パーツ
 	this.right_next_field_button.draw();
 	this.left_next_field_button.draw();
