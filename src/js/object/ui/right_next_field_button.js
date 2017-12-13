@@ -1,21 +1,21 @@
 'use strict';
-var base_object = require('../../hakurei').object.sprite;
+var base_object = require('./next_field_button_base');
 var Util = require('../../hakurei').util;
 
-var ObjectLeftNextFieldButton = function(core) {
+var ObjectRightNextFieldButton = function(core) {
 	base_object.apply(this, arguments);
 };
-Util.inherit(ObjectLeftNextFieldButton, base_object);
+Util.inherit(ObjectRightNextFieldButton, base_object);
 
 
-ObjectLeftNextFieldButton.prototype.nextFieldName = function() {
+ObjectRightNextFieldButton.prototype.nextFieldName = function() {
 	var field_data = this.scene.getFieldData();
 	return field_data.right_field;
 };
 
-ObjectLeftNextFieldButton.prototype.setPosition = function(){
+ObjectRightNextFieldButton.prototype.setPosition = function(){
 	this.x(this.scene.width - 48);
 	this.y(this.scene.height/2);
 };
 
-module.exports = ObjectLeftNextFieldButton;
+module.exports = ObjectRightNextFieldButton;
