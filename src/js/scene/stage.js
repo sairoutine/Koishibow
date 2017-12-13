@@ -262,6 +262,9 @@ SceneStage.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.ANIME_EVENT_IMAGE_TYPE) { // イベント発生オブジェクト
 			object = new ObjectAnimeEventImage(this);
 		}
+		else {
+			throw new Error ("Unknown object type error: " + data.type);
+		}
 		object.init();
 		object.setData(data);
 		this.pieces.push(object);
