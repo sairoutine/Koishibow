@@ -115,7 +115,7 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	// BGM 止める
 	if(!this.core.audio_loader.isPlayingBGM(field_data.bgm)) {
 		// 今流れているBGMを止める
-		this.core.stopBGM();
+		this.core.audio_loader.stopBGM();
 		// 指定フレーム数からBGM再生
 		this.setWaitToStartBGM(field_data.bgm, 60);
 
