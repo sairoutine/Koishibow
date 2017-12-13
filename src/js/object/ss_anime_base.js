@@ -160,4 +160,11 @@ SsAnimeBase.prototype.jsonAnimeMap = function() {
 	return {};
 };
 
+SsAnimeBase.prototype.scaleWidth = function(){
+	return 1;
+};
+SsAnimeBase.prototype.scaleHeight = function(){
+	return 1;
+};
+
 module.exports = SsAnimeBase;
