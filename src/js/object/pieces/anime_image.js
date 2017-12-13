@@ -73,8 +73,6 @@ ObjectAnimeImage.prototype.init = function(){
 	this._width  = null;
 	this._height = null;
 
-	this.ss.init();
-
 	// 表オブジェクトで既にクリック済かどうか
 	this._is_clicked_in_front = false;
 
@@ -90,9 +88,6 @@ ObjectAnimeImage.prototype.setPosition = function(x, y) {
 };
 
 ObjectAnimeImage.prototype.setData = function(data) {
-	// 画像
-	this._image = this.core.image_loader.getImage(data.image);
-
 	// 位置
 	this.setPosition(data.x, data.y);
 
@@ -101,6 +96,7 @@ ObjectAnimeImage.prototype.setData = function(data) {
 
 		// クリック前のアニメ
 		front_before_click_anime: AnimeMap[data.anime1],
+		default:                  AnimeMap[data.anime1],
 		// クリック中のアニメーション
 		front_clicking_anime: AnimeMap[data.anime2],
 		// クリック後のアニメーション
@@ -115,6 +111,7 @@ ObjectAnimeImage.prototype.setData = function(data) {
 		// サードアイで照らした際の終了アニメ
 		lighted_end_anime: AnimeMap[data.anime6],
 	});
+	this.ss.init();
 
 	// 表オブジェクト クリック時のセリフ
 	this._front.serif = data.serif;
