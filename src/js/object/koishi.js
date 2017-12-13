@@ -116,7 +116,7 @@ Koishi.prototype.beforeDraw = function(){
 	this._playWalkSound();
 
 	// 向き先へ向かう
-	this._moveToTarget();
+	//this._moveToTarget();
 };
 
 Koishi.prototype._playWalkSound = function(){
