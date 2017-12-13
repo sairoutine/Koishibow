@@ -65,6 +65,8 @@ Util.inherit(SceneStage, base_scene);
 SceneStage.prototype.init = function(field_name, from_field_name){
 	base_scene.prototype.init.apply(this, arguments);
 
+	from_field_name = from_field_name || null; // undefined -> null に変換
+
 	// 現在のフィールド
 	this.core.save_manager.setCurrentField(field_name);
 	this.core.save_manager.save();
@@ -94,16 +96,16 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// フィールド開始時のこいしの初期位置の決定
 	var pos;
-	if (field_data.right_field === from_field_name) {
+	if (field_data.left_field === from_field_name) {
+		// 左のフィールドからきた場合
+		pos = field_data.left_start_position;
+		this.koishi.setPosition(pos.x, pos.y);
+	}
+	else if (field_data.right_field === from_field_name) {
 		// 右のフィールドからきた場合
 		pos = field_data.right_start_position;
 		this.koishi.setPosition(pos.x, pos.y);
 		this.koishi.setReflect(true);
-	}
-	else if (field_data.left_field === from_field_name) {
-		// 左のフィールドからきた場合
-		pos = field_data.left_start_position;
-		this.koishi.setPosition(pos.x, pos.y);
 	}
 	else {
 		// あり得ない想定
