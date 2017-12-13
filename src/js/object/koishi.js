@@ -194,6 +194,17 @@ Koishi.prototype.jsonAnimeMap = function() {
 	};
 };
 
+Koishi.prototype.scaleWidth = function(){
+	return 2/3;
+};
+Koishi.prototype.scaleHeight = function(){
+	return 2/3;
+};
+
+
+
+
+
 /*
 Koishi.prototype.setAfterMoveCallback = function(cb) {
 	this._move_callback = cb;
