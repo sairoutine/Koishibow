@@ -77,8 +77,8 @@ ObjectJournal.prototype.draw = function(){
 	var ctx = this.core.ctx;
 	var image = this._image;
 
-	var width = image.width + this._scale;
-	var height = image.height + this._scale;
+	var width = image.width * this._scale;
+	var height = image.height * this._scale;
 
 	// 背景描画
 	ctx.save();
