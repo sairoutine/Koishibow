@@ -46,4 +46,15 @@ ObjectAnimeObject.prototype.MarginHeight = function(){
 ObjectAnimeObject.prototype.jsonAnimeMap = function() {
 	return this._json_anime_map;
 };
+
+ObjectAnimeObject.prototype.scaleWidth = function(){
+	return 2/3;
+};
+ObjectAnimeObject.prototype.scaleHeight = function(){
+	return 2/3;
+};
+
+
+
+
 module.exports = ObjectAnimeObject;
