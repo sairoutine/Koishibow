@@ -26,8 +26,8 @@ ObjectEye.prototype.onCollision = function(obj){
 
 
 ObjectEye.prototype.setPosition = function(){
-	this.x(this.scene.mainStage().width - 48 - 20);
-	this.y(this.scene.mainStage().height - 70);
+	this.x(this.scene.width - 48 - 20);
+	this.y(this.scene.height - 70);
 };
 
 ObjectEye.prototype.collisionWidth = function(){
