@@ -41,6 +41,11 @@ ObjectNextFieldButtonBase.prototype.onCollision = function(obj){
 	this.core.changeScene("stage", next_field_name, current_field_name);
 };
 
+ObjectNextFieldButtonBase.prototype.isShow = function() {
+	return this.nextFieldName() ? true : false;
+};
+
+
 ObjectNextFieldButtonBase.prototype.setPosition = function(){
 	throw new Error("setPosition method must be implemented");
 };
