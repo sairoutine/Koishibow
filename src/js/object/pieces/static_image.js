@@ -31,6 +31,8 @@ ObjectStaticImage.prototype.init = function(){
 
 // パラメータをオブジェクトに設定する
 ObjectStaticImage.prototype.setData = function(data) {
+	this.setPosition(data.x, data.y);
+
 	this.image = this.core.image_loader.getImage(data.image);
 	// クリックした際のセリフ
 	this._serif = data.serif;
