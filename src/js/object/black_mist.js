@@ -30,8 +30,9 @@ ObjectBlackMist.prototype.beforeDraw = function(){
 };
 
 ObjectBlackMist.prototype.setPosition = function(){
-	this.x(0);
-	this.y(0);
+	// 画面中央が基準位置
+	this.x(this.scene.width/2);
+	this.y(this.scene.height/2);
 };
 
 ObjectBlackMist.prototype.jsonAnimeMap = function() {
@@ -40,4 +41,14 @@ ObjectBlackMist.prototype.jsonAnimeMap = function() {
 		using_eye: jsonDataOfRedMist,
 	};
 };
+ObjectBlackMist.prototype.scaleWidth = function(){
+	return 2/3;
+};
+ObjectBlackMist.prototype.scaleHeight = function(){
+	return 2/3;
+};
+
+
+
+
 module.exports = ObjectBlackMist;
