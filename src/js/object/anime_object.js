@@ -16,7 +16,6 @@ Util.inherit(ObjectAnimeObject, base_object);
 ObjectAnimeObject.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
-	this._json_anime_map = {};
 };
 
 ObjectAnimeObject.prototype.setAnime = function(data) {
