@@ -24,7 +24,7 @@ module.exports = {
 		{ type: CONSTANT.ANIME_IMAGE_TYPE,  name: "まど", serif: ["なにかいる！"], x: 5, y: 180, scale: 0.7, anime1: "chapter0-myroom-obj-04-01-obj01", anime2: "chapter0-myroom-obj-04-01-obj02", anime3: "chapter0-myroom-obj-04-01-obj03", action: "look_top", sound: "chapter0-myroom-sound_window_for_kokoro", target_x: 177, target_y: 531},
 
 
-		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 258, y: 689, scale: 2/3, picture: "journal001"},
+		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 258, y: 689, scale: 2/3, picture: "journal001"},
 	],
 };
 

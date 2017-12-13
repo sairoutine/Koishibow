@@ -70,7 +70,7 @@ module.exports = {
 		},
 
 
-		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 600, y: 530, scale: 2/3, picture: "journal004"},
+		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 600, y: 530, scale: 2/3, picture: "journal004"},
 	],
 
 };

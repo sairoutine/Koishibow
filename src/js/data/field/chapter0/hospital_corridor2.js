@@ -38,7 +38,7 @@ module.exports = {
 			width: 258,
 			height: 280
 		},
-		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 627, y: 689, scale: 2/3, picture: "journal003"},
+		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 627, y: 689, scale: 2/3, picture: "journal003"},
 	],
 
 };

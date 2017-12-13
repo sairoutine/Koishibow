@@ -58,7 +58,7 @@ module.exports = {
 			action: "look_front",
 			position_type: "front",
 		},
-		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 643, y:425, scale: 2/3, picture: "journal002"},
+		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 643, y:425, scale: 2/3, picture: "journal002"},
 	],
 };
 

@@ -65,7 +65,7 @@ module.exports = {
 			sound:      "chapter0-mansion_corridor2-open_door",
 		},
 
-		{image: "paper", type: CONSTANT.PAPER_TYPE, x: 177, y: 400, scale: 2/3, picture: "journal005"},
+		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 177, y: 400, scale: 2/3, picture: "journal005"},
 	],
 
 
