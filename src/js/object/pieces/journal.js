@@ -2,7 +2,7 @@
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
 
-var ObjectPaper = function(core) {
+var ObjectJournal = function(core) {
 	base_object.apply(this, arguments);
 
 	this._image   = null;
@@ -13,9 +13,9 @@ var ObjectPaper = function(core) {
 	this._picture_name = null;
 
 };
-Util.inherit(ObjectPaper, base_object);
+Util.inherit(ObjectJournal, base_object);
 
-ObjectPaper.prototype.init = function(){
+ObjectJournal.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
 	this._image   = null;
@@ -25,7 +25,7 @@ ObjectPaper.prototype.init = function(){
 
 	this._picture_name = null;
 };
-ObjectPaper.prototype.setData = function(data) {
+ObjectJournal.prototype.setData = function(data) {
 	// 画像
 	this._image = this.core.image_loader.getImage(data.image);
 
@@ -48,7 +48,7 @@ ObjectPaper.prototype.setData = function(data) {
 };
 
 // マウスクリック時のイベント
-ObjectPaper.prototype.onCollisionWithClick = function(point) {
+ObjectJournal.prototype.onCollisionWithClick = function(point) {
 	/*
 	this.scene.root().koishi.setMoveTargetObject(obj, this);
 	this.scene.root().koishi.setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
@@ -56,13 +56,13 @@ ObjectPaper.prototype.onCollisionWithClick = function(point) {
 };
 
 // マウスオーバー時のイベント
-ObjectPaper.prototype.onCollisionWithMouseOver = function(obj) {
+ObjectJournal.prototype.onCollisionWithMouseOver = function(obj) {
 	// マウスカーソルを変更
 	this.core.changeCursorImage("ui_icon_pointer_02");
 };
 
 /*
-ObjectPaper.prototype.onCollisionAfterKoishiWalk = function(){
+ObjectJournal.prototype.onCollisionAfterKoishiWalk = function(){
 	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.mainStage().changeSubScene("paper", this._picture_name);
 
@@ -71,7 +71,7 @@ ObjectPaper.prototype.onCollisionAfterKoishiWalk = function(){
 };
 */
 
-ObjectPaper.prototype.draw = function(){
+ObjectJournal.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 
 	var ctx = this.core.ctx;
@@ -94,7 +94,7 @@ ObjectPaper.prototype.draw = function(){
 
 
 
-ObjectPaper.prototype.collisionWidth = function(){
+ObjectJournal.prototype.collisionWidth = function(){
 	if(this._width) {
 		return this._width;
 	}
@@ -103,7 +103,7 @@ ObjectPaper.prototype.collisionWidth = function(){
 	}
 };
 
-ObjectPaper.prototype.collisionHeight = function(){
+ObjectJournal.prototype.collisionHeight = function(){
 	if(this._height) {
 		return this._height;
 	}
@@ -111,4 +111,4 @@ ObjectPaper.prototype.collisionHeight = function(){
 		return this._image.height * this._scale;
 	}
 };
-module.exports = ObjectPaper;
+module.exports = ObjectJournal;

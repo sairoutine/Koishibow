@@ -22,7 +22,7 @@ var Koishi = require('../object/koishi');
 
 var ObjectStaticImage = require('../object/pieces/static_image');
 var ObjectAnimeImage = require('../object/pieces/anime_image');
-var ObjectJournal = require('../object/pieces/paper');
+var ObjectJournal = require('../object/pieces/journal');
 var ObjectAnimeEventImage = require('../object/pieces/anime_event_image');
 
 var FieldMap = require('../config/field');
