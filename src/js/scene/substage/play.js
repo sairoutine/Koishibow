@@ -22,6 +22,11 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 	// 当たり判定チェック
 	this._collisionCheck();
+
+	// マウス右クリックでサードアイ使用
+	if(this.core.input_manager.isRightClickPush()) {
+		this.root().eye_button.onCollision();
+	}
 };
 
 // 当たり判定チェック
