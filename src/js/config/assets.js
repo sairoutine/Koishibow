@@ -27,8 +27,8 @@ AssetsConfig.images = {
 	"light":  "./image/light.png",
 
 	// さとり邂逅イベント
-	"bg01.jpg": "./image/chapter0/event/encounter_satori/bg01.jpg",
-	"bg02.jpg": "./image/chapter0/event/encounter_satori/bg02.jpg",
+	"bg01": "./image/chapter0/event/encounter_satori/bg01.jpg",
+	"bg02": "./image/chapter0/event/encounter_satori/bg02.jpg",
 	"str":  "./image/chapter0/event/encounter_satori/str.png",
 	"black-mist": "./image/chapter0/event/encounter_satori/black-mist.png",
 
@@ -36,7 +36,7 @@ AssetsConfig.images = {
 	"get_hat":  "./image/chapter0/event/get_hat/bg.png",
 
 	// こいしが落ちるイベント
-	"bg01_for_falldown_koishi.jpg":  "./image/chapter0/event/falldown_koishi/bg01_for_falldown_koishi.jpg",
+	"bg01_for_falldown_koishi":  "./image/chapter0/event/falldown_koishi/bg01_for_falldown_koishi.jpg",
 	"door":  "./image/chapter0/event/falldown_koishi/door.png",
 	"shadow":  "./image/chapter0/event/falldown_koishi/shadow.png",
 
