@@ -24,6 +24,12 @@ ObjectEye.prototype.onCollision = function(obj){
 	}
 };
 
+// クリックしてるときしか onCollision を呼ばない
+ObjectEye.prototype.isCollision = function() {
+	return this.core.input_manager.isLeftClickPush() ? true : false;
+};
+
+
 
 ObjectEye.prototype.setPosition = function(){
 	this.x(this.scene.width - 48 - 20);
