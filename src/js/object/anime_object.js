@@ -34,13 +34,13 @@ ObjectAnimeObject.prototype.hasBackOnLightedAnime = function() {
 ObjectAnimeObject.prototype.MarginWidth = function(){
 	if(this._width) return this._width;
 	// index = 0 のみ有効
-	return this._json_anime_map.lighted_start_anime[DATA_INDEX].animation.MarginWidth;
+	return this._json_anime_map.default[DATA_INDEX].animation.MarginWidth;
 };
 
 ObjectAnimeObject.prototype.MarginHeight = function(){
 	if(this._height) return this._height;
 	// index = 0 のみ有効
-	return this._json_anime_map.lighted_start_anime[DATA_INDEX].animation.MarginHeight;
+	return this._json_anime_map.default[DATA_INDEX].animation.MarginHeight;
 };
 
 ObjectAnimeObject.prototype.jsonAnimeMap = function() {
