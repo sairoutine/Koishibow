@@ -45,6 +45,12 @@ ObjectNextFieldButtonBase.prototype.isShow = function() {
 	return this.nextFieldName() ? true : false;
 };
 
+// クリックしてるときしか onCollision を呼ばない
+ObjectNextFieldButtonBase.prototype.isCollision = function() {
+	return this.nextFieldName() && this.core.input_manager.isLeftClickPush() ? true : false;
+};
+
+
 
 ObjectNextFieldButtonBase.prototype.setPosition = function(){
 	throw new Error("setPosition method must be implemented");
