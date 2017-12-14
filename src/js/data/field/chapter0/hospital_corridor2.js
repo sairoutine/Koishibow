@@ -16,7 +16,9 @@ module.exports = {
 			image: "chapter0-hospital2-obj-02-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "くつした",
-			serif: ["やだやだ。"],
+			serif: [
+				{"chara": "koishi","serif":"やだやだ。"},
+			],
 			x: 302,
 			y: 443,
 			scale: 0.7,
@@ -26,7 +28,9 @@ module.exports = {
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "車イス",
-			serif: ["あしおれたらのってもいい？"],
+			serif: [
+				{"chara": "koishi","serif":"あしおれたらのってもいい？"},
+			],
 			x: 130,
 			y: 360,
 			scale: 0.7,

@@ -16,7 +16,9 @@ module.exports = {
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "花瓶",
-			serif: ["かびん！"],
+			serif: [
+				{"chara": "koishi","serif":"かびん！"},
+			],
 			x: 650,
 			y: 285,
 			width: 200,
@@ -35,7 +37,11 @@ module.exports = {
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "みずさし",
-			serif: ["これはかびん……", "おおきいから"],
+			serif: [
+				{"chara": "koishi","serif":"これはかびん……"},
+				{"chara": "koishi","serif": "おおきいから"},
+			],
+
 			x: 715,
 			y: 270,
 			target_x: 526, target_y: 417,
@@ -52,7 +58,9 @@ module.exports = {
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "窓",
-			serif: ["さっきのこいないなー"],
+			serif: [
+				{"chara": "koishi","serif":"さっきのこいないなー"},
+			],
 			x: 900,
 			y: 190,
 			width: 150,
@@ -70,7 +78,9 @@ module.exports = {
 		{
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "振子時計",
-			serif: ["これうるさいからきらい"],
+			serif: [
+				{"chara": "koishi","serif":"これうるさいからきらい"},
+			],
 			x: 145,
 			y: 230,
 			width: 200,
