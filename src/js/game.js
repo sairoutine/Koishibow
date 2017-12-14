@@ -13,7 +13,7 @@ var SceneLoading = require('./scene/loading');
 var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
 var SceneEventForChapter0Last            = require('./scene/event/chapter0/last');
 var SceneEventForChapter0GetHat          = require('./scene/event/chapter0/get_hat');
-var SceneEventForChapter0TrialLast       = require('./scene/event/chapter0/trial_last');
+var SceneEventForTrialLast               = require('./scene/event/trial_last');
 
 
 
@@ -41,7 +41,7 @@ Game.prototype.init = function () {
 	this.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
 	this.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
 	this.addScene("event_for_chapter0_get_hat",          new SceneEventForChapter0GetHat(this));
-	this.addScene("event_for_chapter0_trial_last",       new SceneEventForChapter0TrialLast(this));
+	this.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
 
 	// シーン遷移
 	this.changeScene("loading");
