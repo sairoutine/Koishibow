@@ -5,13 +5,13 @@ var base_scene = require('./base');
 var UIParts = require('../../hakurei').object.ui_parts;
 var Util = require('../../hakurei').util;
 
-var SceneDefault = function(core) {
+var SceneSubStageMenu = function(core) {
 	base_scene.apply(this, arguments);
 
 };
-Util.inherit(SceneDefault, base_scene);
+Util.inherit(SceneSubStageMenu, base_scene);
 
-SceneDefault.prototype.init = function(){
+SceneSubStageMenu.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 	var self = this;
 
@@ -60,7 +60,7 @@ SceneDefault.prototype.init = function(){
 
 };
 
-SceneDefault.prototype.beforeDraw = function(){
+SceneSubStageMenu.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	// マウス座標取得
@@ -82,7 +82,7 @@ SceneDefault.prototype.beforeDraw = function(){
 	}
 };
 
-SceneDefault.prototype.draw = function(){
+SceneSubStageMenu.prototype.draw = function(){
 	var ctx = this.core.ctx;
 
 	ctx.save();
@@ -105,7 +105,7 @@ SceneDefault.prototype.draw = function(){
 	ctx.restore();
 };
 
-SceneDefault.prototype._showWindow = function(){
+SceneSubStageMenu.prototype._showWindow = function(){
 	var ctx = this.core.ctx;
 
 	var window_frame = this.core.image_loader.getImage('ui-common-frame-toolpu');
@@ -118,7 +118,7 @@ SceneDefault.prototype._showWindow = function(){
 
 };
 
-SceneDefault.prototype._showButtons = function(){
+SceneSubStageMenu.prototype._showButtons = function(){
 	var ctx = this.core.ctx;
 
 	var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
@@ -170,7 +170,7 @@ SceneDefault.prototype._showButtons = function(){
 
 };
 
-SceneDefault.prototype._showMessageWindow = function(){
+SceneSubStageMenu.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
 
 	ctx.save();
@@ -187,7 +187,7 @@ SceneDefault.prototype._showMessageWindow = function(){
 
 };
 
-SceneDefault.prototype._showMessage = function(){
+SceneSubStageMenu.prototype._showMessage = function(){
 	var ctx = this.core.ctx;
 
 	// メニュー文字 表示
@@ -203,4 +203,4 @@ SceneDefault.prototype._showMessage = function(){
 	*/
 };
 
-module.exports = SceneDefault;
+module.exports = SceneSubStageMenu;
