@@ -9,7 +9,7 @@ var SceneSubStagePlay = require('./substage/play'); // ゲーム操作可能
 var SceneSubStageTalk = require('./substage/talk'); // こいし会話中
 var SceneSubStageMenu = require('./substage/menu'); // アイテムメニュー
 var SceneSubStageJournal = require('./substage/journal'); // ジャーナル表示
-//var SceneSubStageObjectDetail = require('./substage/object_detail'); // オブジェクト詳細
+var SceneSubStageChapter0BeforeGetHat = require('./substage/chapter0_before_get_hat');
 
 var RightNextFieldButton = require('../object/ui/right_next_field_button');
 var LeftNextFieldButton = require('../object/ui/left_next_field_button');
@@ -57,8 +57,8 @@ var SceneStage = function(core) {
 	this.addSubScene("menu", new SceneSubStageMenu(core));
 	// ジャーナルを読む
 	this.addSubScene("journal", new SceneSubStageJournal(core));
-	// オブジェクト詳細
-	//this.addSubScene("object_detail", new SceneSubStageObjectDetail(core));
+	// chapter0 帽子を取る前
+	this.addSubScene("chapter0_before_get_hat", new SceneSubStageChapter0BeforeGetHat(core));
 };
 Util.inherit(SceneStage, base_scene);
 
