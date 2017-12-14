@@ -52,19 +52,19 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 
 SsAnimeBase.prototype.playAnimationOnce = function(name, _callback){
 	var ss = this.ss;
-	var max_loop = ss.getLoop();
+	//var max_loop = ss.getLoop();
 
 	// アニメーション後のコールバック
 	if (typeof _callback !== "undefined") {
 		var callback = function () {
 			ss.setEndCallBack(null);
-			ss.setLoop(max_loop);
+			// 1 -> 0に戻すと、またアニメが無限ループしちゃうので
+			//ss.setLoop(max_loop);
 			_callback();
 		};
 
 		ss.setEndCallBack(callback);
 	}
-
 	this.ss.setLoop(1);
 	this.changeAnimation(name);
 };
