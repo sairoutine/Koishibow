@@ -31,6 +31,14 @@ ObjectItemMenuButton.prototype.onCollision = function(obj){
 		// メニューを閉じる
 		this.scene.changeSubScene("play");
 	}
+	else {
+		// それ以外のサブシーンならなにもしない
+	}
+};
+
+// クリックしてるときしか onCollision を呼ばない
+ObjectItemMenuButton.prototype.isCollision = function() {
+	return this.core.input_manager.isLeftClickPush() ? true : false;
 };
 
 ObjectItemMenuButton.prototype.collisionWidth = function(){
