@@ -61,10 +61,10 @@ Koishi.prototype._stopMove = function() {
 	// 移動中でなければ何もしない
 	if(!this.isMoving()) return;
 
-	this._target_object = null;
+	this._move_target_object = null;
 	this.setVelocity({magnitude:0, theta:0});
 
-	this.setWait();
+	this.setWaitAnime();
 };
 Koishi.prototype.stopMoveWithoutCallBack = function() {
 	this._stopMove();
@@ -115,8 +115,10 @@ Koishi.prototype.beforeDraw = function(){
 	// 足音
 	this._playWalkSound();
 
-	// 向き先へ向かう
-	//this._moveToTarget();
+	// 移動先
+	if(this.isMoving()) {
+		this._checkToStop();
+	}
 };
 
 Koishi.prototype._playWalkSound = function(){
@@ -150,7 +152,7 @@ Koishi.prototype._playWalkSound = function(){
 
 Koishi.prototype.setMoveTarget = function(obj) {
 	// 移動先のオブジェクト or 座標
-	this._target_object = obj;
+	this._move_target_object = obj;
 
 	// 移動ベクトルを設定
 	var ax = obj.x() - this.x();
@@ -165,10 +167,10 @@ Koishi.prototype.setMoveTarget = function(obj) {
 
 	// 移動方向に合わせて こいしを反転
 	if (obj.x() > this.x()) {
-		this.sprite.setReflect(false);
+		this.setReflect(false);
 	}
 	else {
-		this.sprite.setReflect(true);
+		this.setReflect(true);
 	}
 };
 
@@ -213,36 +215,37 @@ Koishi.prototype.setAfterMoveCallback = function(cb) {
 Koishi.prototype.onCollision = function(obj) {
 	this.moveBack();
 
-	if (this._target_object && this._target_object.id !== obj.__id) {
+	if (this._move_target_object && this._move_target_object.id !== obj.__id) {
 		this._move_callback = null;
 	}
 };
-Koishi.prototype._moveToTarget = function(){
-	// 移動先が設定されていれば移動
-	if (this.isMoving()) {
-		var target_x = this._target_object.x();
-		var target_y = this._target_object.y();
+*/
 
-		if (this.x() + SPEED >= target_x && target_x > this.x() - SPEED) {
-			// end move
-			this.stopMove();
-		}
-		else if (this.y() + SPEED >= target_y && target_y > this.y() - SPEED) {
-			// end move
-			this.stopMove();
-		}
-		// オブジェクトとぶつかったら止まる
-		else if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
-			this.stopMove();
-		}
+// 移動終了判定
+Koishi.prototype._checkToStop = function() {
+	var target_x = this._move_target_object.x();
+	var target_y = this._move_target_object.y();
+
+	if (this.x() + SPEED >= target_x && target_x > this.x() - SPEED) {
+		// end move
+		this.stopMove();
 	}
+	else if (this.y() + SPEED >= target_y && target_y > this.y() - SPEED) {
+		// end move
+		this.stopMove();
+	}
+	/*
+	// オブジェクトとぶつかったら止まる
+	else if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
+		this.stopMove();
+	}
+	*/
 
 	// 一定以上の奥行きには移動できない
 	if (this.y() < this.scene.height - CONSTANT.WALK_DEPTH_LIMIT) {
 		this.y(this.scene.height - CONSTANT.WALK_DEPTH_LIMIT);
 	}
 };
-*/
 
 
 
