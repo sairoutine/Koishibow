@@ -152,7 +152,7 @@ SceneStage.prototype.switchEyeOff = function() {
 	this.core.audio_loader.stopBGM("using_3rdeye");
 	this.core.audio_loader.unMuteWithFadeInAllBGM(3); // N秒かけてフェードイン
 
-	this.koishi().unUseEye();
+	this.koishi.unUseEye();
 };
 
 SceneStage.prototype.beforeDraw = function() {
