@@ -145,7 +145,7 @@ ObjectAnimeImage.prototype.setData = function(data) {
 
 ObjectAnimeImage.prototype.isCollision = function(point) {
 	// サードアイ使用中ならクリックしても調べられないので何もしない
-	return this.scene.root().isUsingEye();
+	return !this.scene.root().isUsingEye();
 };
 // マウスクリック時のイベント
 ObjectAnimeImage.prototype.onCollisionWithClick = function(point) {
@@ -157,9 +157,8 @@ ObjectAnimeImage.prototype.onCollisionWithClick = function(point) {
 
 // マウスオーバー時のイベント
 ObjectAnimeImage.prototype.onCollisionWithMouseOver = function(obj) {
-
 	// すでにクリック済の場合は、再度調べられないので、マウスカーソルを変更しない
-	if (!this._is_clicked_in_front) return;
+	if (this._is_clicked_in_front) return;
 
 	// 調べられるを表すマウスカーソルに変更
 	this.core.changeCursorImage("ui_icon_pointer_02");
