@@ -5,7 +5,7 @@ var Util = require('../../hakurei').util;
 var ObjectStaticImage = function(core) {
 	base_object.apply(this, arguments);
 
-	this.image = null;
+	this._image = null;
 	this._serif = null;
 	this._sound_name  = null;
 	this._action_name = null;
@@ -19,7 +19,7 @@ Util.inherit(ObjectStaticImage, base_object);
 ObjectStaticImage.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
-	this.image = null;
+	this._image = null;
 	this._serif = null;
 	this._sound_name  = null;
 	this._action_name = null;
@@ -33,7 +33,7 @@ ObjectStaticImage.prototype.init = function(){
 ObjectStaticImage.prototype.setData = function(data) {
 	this.setPosition(data.x, data.y);
 
-	this.image = this.core.image_loader.getImage(data.image);
+	this._image = this.core.image_loader.getImage(data.image);
 	// クリックした際のセリフ
 	this._serif = data.serif;
 	// クリックした際のSE
@@ -69,7 +69,7 @@ ObjectStaticImage.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 
 	var ctx = this.core.ctx;
-	var image = this.image;
+	var image = this._image;
 
 	// 背景描画
 	ctx.save();
