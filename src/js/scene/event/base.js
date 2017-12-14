@@ -1,12 +1,16 @@
 'use strict';
 
 var base_scene = require('../../hakurei').scene.base;
-
+var SS = require('../../object/anime_object');
 var Util = require('../../hakurei').util;
 
 var SceneEventBase = function(core) {
 	base_scene.apply(this, arguments);
 
+	this.ss = null;
+	if (this.backgroundSsAnime()) {
+		this.ss = new SS(this.root());
+	}
 };
 Util.inherit(SceneEventBase, base_scene);
 
@@ -21,9 +25,33 @@ SceneEventBase.prototype.init = function(){
 		// イベント再生後はフェードアウトする
 		this.setFadeOut(120, "black");
 	}
+	if (this.isStopBGM()) {
+		this.core.audio_loader.stopBGM();
+	}
+
+	if (this.ss) {
+		// アニメの位置指定
+		this.ss.x(this.width/2);
+		this.ss.y(this.height/2);
+
+		this.ss.setAnime({
+			default: this.backgroundSsAnime(),
+		});
+		this.ss.init();
+		var afterBackgroundSsAnimeFunction = this.afterBackgroundSsAnimeFunction();
+		var core = this.core;
+		this.ss.playAnimationOnce("default", function () {
+			afterBackgroundSsAnimeFunction(core);
+		});
+	}
+
 };
 SceneEventBase.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
+
+	if (this.ss) {
+		this.ss.beforeDraw();
+	}
 
 	// スクリプト実行
 	var script_map = this.scriptMap();
@@ -53,6 +81,11 @@ SceneEventBase.prototype.beforeDraw = function(){
 SceneEventBase.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 
+	if (this.ss) {
+		this.ss.draw();
+	}
+
+
 	var ctx = this.core.ctx;
 
 	// 背景表示
@@ -76,6 +109,14 @@ SceneEventBase.prototype.draw = function(){
 	}
 
 };
+SceneEventBase.prototype.afterDraw = function(){
+	base_scene.prototype.afterDraw.apply(this, arguments);
+
+	if (this.ss) {
+		this.ss.afterDraw();
+	}
+};
+
 
 
 SceneEventBase.prototype.isFadeIn = function(){
@@ -84,9 +125,23 @@ SceneEventBase.prototype.isFadeIn = function(){
 SceneEventBase.prototype.isFadeOut = function(){
 	return false;
 };
+// イベント開始時にBGMを止めるかどうか
+SceneEventBase.prototype.isStopBGM = function(){
+	return false;
+};
+
+
 // 背景画像名
 SceneEventBase.prototype.background = function(){
 	return null;
+};
+// 背景用SSアニメ
+SceneEventBase.prototype.backgroundSsAnime = function(){
+	return null;
+};
+// 背景用SSアニメ再生後のcallback
+SceneEventBase.prototype.afterBackgroundSsAnimeFunction = function(){
+	return function (core) {};
 };
 
 // TODO: クリックで進行に備えて以下のフォーマットに変更したい
