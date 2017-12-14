@@ -103,7 +103,7 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 /*
 ObjectStaticImage.prototype.onCollisionAfterKoishiWalk = function(){
 	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("talk", this._serif);
+	this.scene.mainStage().changeSubScene("talk_object", this._serif, this);
 
 	// こいしのアクション
 	if (this._action_name) {
