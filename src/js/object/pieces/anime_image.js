@@ -147,23 +147,6 @@ ObjectAnimeImage.prototype.isCollision = function(point) {
 	// サードアイ使用中ならクリックしても調べられないので何もしない
 	return !this.scene.root().isUsingEye();
 };
-// マウスクリック時のイベント
-ObjectAnimeImage.prototype.onCollisionWithClick = function(point) {
-	/*
-	this.scene.root().koishi.setMoveTargetObject(obj, this);
-	this.scene.root().koishi.setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-	*/
-};
-
-// マウスオーバー時のイベント
-ObjectAnimeImage.prototype.onCollisionWithMouseOver = function(obj) {
-	// すでにクリック済の場合は、再度調べられないので、マウスカーソルを変更しない
-	if (this._is_clicked_in_front) return;
-
-	// 調べられるを表すマウスカーソルに変更
-	this.core.changeCursorImage("ui_icon_pointer_02");
-};
-
 // サードアイに照らされたとき(サードアイ使用時)
 ObjectAnimeImage.prototype.onCollideWithLightIn3rdEye = function(){
 	// 既に裏オブジェクトになっているなら何もしない
@@ -259,39 +242,40 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 	return this.ss.MarginHeight() * this._scale;
 };
 
-/*
-ObjectAnimeImage.prototype.onCollisionAfterKoishiWalk = function(){
-	var self = this;
+ObjectAnimeImage.prototype.isCollision = function(){
+	// 一度既にクリックしていれば、二度目はクリックできない
+	// マウスオーバーしてもカーソルも変わらない
+	return this._is_clicked_in_front ? false : true;
+};
 
-	if (this._is_clicked_in_front) return;
-	// オブジェクトのアニメーション
-	var sprite = self.sprite;
-	var after_anime = self.after_anime;
-	var click_anime = self.click_anime;
-	sprite.playAnimationOnce(click_anime, function (){
-		sprite.changeAnimation(after_anime);
-	});
-
-	// 会話するオブジェクトなので、クリックしたら会話する
-	if (this.serif) {
-		this.scene.mainStage().changeSubScene("talk_object", this.serif, this);
-	}
-
+// こいし移動後の処理
+ObjectAnimeImage.prototype.onAfterWalkToHere = function() {
 	// こいしのアクション
 	if (this._action_name) {
-		this.scene.mainStage().koishi().actionByName(this._action_name);
+		this.scene.root().koishi.actionByObject(this._action_name);
 	}
 
-	// 音
+	// 音を再生
 	if (this._sound_name) {
-		this.core.playSound(this._sound_name);
+		this.core.audio_loader.playSound(this._sound_name);
 	}
+
+	// 会話するオブジェクトなので、クリックしたら会話する
+	if (this._front.serif) {
+		this.scene.root().changeSubScene("talk_with_object", this._front.serif, this);
+	}
+
+	if (this.ss.hasFrontClickedAnime()) {
+		// クリック中アニメに変更
+		var ss = this.ss;
+		ss.playAnimationOnce("front_clicking_anime", function (){
+			// クリック後アニメに変更
+			ss.playAnimationInfinity("front_after_click_anime");
+		});
+	}
+
+	// クリック済に状態変更
 	this._is_clicked_in_front = true;
 };
-*/
-
-
-
-
 
 module.exports = ObjectAnimeImage;
