@@ -49,10 +49,12 @@ ObjectJournal.prototype.setData = function(data) {
 
 // マウスクリック時のイベント
 ObjectJournal.prototype.onCollisionWithClick = function(point) {
-	/*
-	this.scene.root().koishi.setMoveTargetObject(obj, this);
-	this.scene.root().koishi.setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-	*/
+	var self = this;
+	// こいしを移動
+	self.scene.root().koishi.setMoveTarget(self, function () {
+		// 移動後
+		self.onAfterWalkToHere();
+	});
 };
 
 // マウスオーバー時のイベント
@@ -61,15 +63,14 @@ ObjectJournal.prototype.onCollisionWithMouseOver = function(obj) {
 	this.core.changeCursorImage("ui_icon_pointer_02");
 };
 
-/*
-ObjectJournal.prototype.onCollisionAfterKoishiWalk = function(){
-	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("paper", this._picture_name);
+// 移動後の処理
+ObjectJournal.prototype.onAfterWalkToHere = function(){
+	// ジャーナル画像表示シーンへ遷移
+	this.scene.root().changeSubScene("journal", this._picture_name);
 
 	// 音を再生
-	this.core.playSound("show_journal");
+	this.core.audio_loader.playSound("show_journal");
 };
-*/
 
 ObjectJournal.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
