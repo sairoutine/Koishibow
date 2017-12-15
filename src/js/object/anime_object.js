@@ -31,6 +31,17 @@ ObjectAnimeObject.prototype.hasBackOnLightedAnime = function() {
 	);
 };
 
+// 表オブジェクト時のクリックされたときの アニメがあるかどうか
+ObjectAnimeObject.prototype.hasFrontClickedAnime = function() {
+	return(
+		this._json_anime_map.front_clicking_anime &&
+		this._json_anime_map.front_after_click_anime
+	);
+};
+
+
+
+
 ObjectAnimeObject.prototype.MarginWidth = function(){
 	if(this._width) return this._width;
 	// index = 0 のみ有効
