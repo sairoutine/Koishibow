@@ -62,12 +62,9 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 
 	// UI と 画面上のオブジェクトの どれとも当たり判定しなかったら
 	if(this.core.input_manager.isLeftClickPush()) {
-		// 移動中でなければ
-		if (!this.root().koishi.isMoving()) {
-			var point = this.core.input_manager.mousePositionPoint(this.root());
-			// こいしを移動
-			this.root().koishi.setMoveTarget(point);
-		}
+		var point = this.core.input_manager.mousePositionPoint(this.root());
+		// こいしを移動
+		this.root().koishi.setMoveTarget(point);
 	}
 };
 SceneSubStagePlay.prototype._collisionLightCheck = function(){
