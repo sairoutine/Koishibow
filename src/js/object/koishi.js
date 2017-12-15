@@ -161,11 +161,12 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 	// 移動後に実行する callback
 	this._after_move_callback = callback;
 
-
+	// 移動先位置を取得
+	var move_to_pos = this._getMoveToPos();
 
 	// 移動ベクトルを設定
-	var ax = obj.x() - this.x();
-	var ay = obj.y() - this.y();
+	var ax = move_to_pos.x - this.x();
+	var ay = move_to_pos.y - this.y();
 
 	var theta = Util.radianToTheta(Math.atan2(ay, ax));
 
@@ -214,14 +215,21 @@ Koishi.prototype.scaleHeight = function(){
 
 // 移動終了判定
 Koishi.prototype._checkToStop = function() {
-	var target_x = this._move_target_object.x();
-	var target_y = this._move_target_object.y();
+	// 移動先位置を取得
+	var move_to_pos = this._getMoveToPos();
+	var target_x = move_to_pos.x;
+	var target_y = move_to_pos.y;
 
-	if (this.x() + SPEED >= target_x && target_x > this.x() - SPEED) {
-		// end move
-		this.stopMove();
-	}
-	else if (this.y() + SPEED >= target_y && target_y > this.y() - SPEED) {
+	// "概ね" の範囲
+	var range = SPEED*2;
+
+	// (x,y)座標が概ね target_x と target_y に近づいたら
+	if (
+		this.x() + range >= target_x &&
+		target_x > this.x() - range &&
+		this.y() + range >= target_y &&
+		target_y > this.y() - range
+	) {
 		// end move
 		this.stopMove();
 	}
@@ -232,15 +240,29 @@ Koishi.prototype._checkToStop = function() {
 	}
 	*/
 
-	// 一定以上の奥行きには移動できない
-	if (this.y() < this.scene.height - CONSTANT.WALK_DEPTH_LIMIT) {
-		this.y(this.scene.height - CONSTANT.WALK_DEPTH_LIMIT);
-	}
 };
 
 
+// 移動先を取得
+Koishi.prototype._getMoveToPos = function() {
+	// 移動先オブジェクト
+	var obj = this._move_target_object;
 
+	// このメソッドを呼ぶときは、必ず移動先が設定されていないといけない
+	if(!obj) throw new Error("unable to get _move_target_object");
 
+	var target_x = obj.x();
+	var target_y = obj.y();
 
+	// 一定以上の奥行きには移動できない
+	if (target_y < this.scene.height - CONSTANT.WALK_DEPTH_LIMIT) {
+		target_y = this.scene.height - CONSTANT.WALK_DEPTH_LIMIT;
+	}
+
+	return {
+		x: target_x,
+		y: target_y,
+	};
+};
 
 module.exports = Koishi;
