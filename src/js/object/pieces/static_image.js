@@ -37,9 +37,13 @@ ObjectStaticImage.prototype.setData = function(data) {
 	// クリックした際のセリフ
 	this._serif = data.serif;
 	// クリックした際のSE
-	this._sound_name  = data.sound_name;
+	if (data.sound_name) {
+		this._sound_name  = data.sound_name;
+	}
 	// クリックした際のこいしのアクション
-	this._action_name  = data.action_name;
+	if (data.action_name) {
+		this._action_name  = data.action_name;
+	}
 
 	if (data.width) {
 		this._width  = data.width;
@@ -50,19 +54,6 @@ ObjectStaticImage.prototype.setData = function(data) {
 	if (data.scale) {
 		this._scale = data.scale;
 	}
-};
-// マウスクリック時のイベント
-ObjectStaticImage.prototype.onCollisionWithClick = function(point) {
-	/*
-	this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-	this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalk, this));
-	*/
-};
-
-// マウスオーバー時のイベント
-ObjectStaticImage.prototype.onCollisionWithMouseOver = function(point) {
-	// マウスカーソルを変更
-	this.core.changeCursorImage("ui_icon_pointer_02");
 };
 
 ObjectStaticImage.prototype.draw = function(){
@@ -100,21 +91,20 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 	}
 };
 
-/*
-ObjectStaticImage.prototype.onCollisionAfterKoishiWalk = function(){
-	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.mainStage().changeSubScene("talk_object", this._serif, this);
-
+// こいし移動後の処理
+ObjectStaticImage.prototype.onAfterWalkToHere = function() {
 	// こいしのアクション
 	if (this._action_name) {
-		this.scene.mainStage().koishi().actionByName(this._action_name);
+		this.scene.root().koishi.actionByObject(this._action_name);
 	}
 
 	// 音を再生
 	if (this._sound_name) {
-		this.core.playSound(this._sound_name);
+		this.core.audio_loader.playSound(this._sound_name);
 	}
+
+	// 会話するオブジェクトなので、クリックしたら会話する
+	this.scene.root().changeSubScene("talk_with_object", this._serif, this);
 };
-*/
 
 module.exports = ObjectStaticImage;
