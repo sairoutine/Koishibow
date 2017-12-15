@@ -37,8 +37,9 @@ Koishi.prototype.init = function() {
 
 	// クリックした移動先のオブジェクト
 	this._move_target_object = null;
-	// 歩いて止まった後の callback
-	this._move_callback = null;
+	// 移動後に実行する callback
+	this._after_move_callback = null;
+
 
 	this.setVelocity({magnitude:0, theta:0});
 };
@@ -69,17 +70,17 @@ Koishi.prototype._stopMove = function() {
 Koishi.prototype.stopMoveWithoutCallBack = function() {
 	this._stopMove();
 
-	// callback をリセット
-	this._move_callback = null;
+	// 移動後に実行する callback
+	this._after_move_callback = null;
 };
 
 Koishi.prototype.stopMove = function() {
 	this._stopMove();
 
 	// 歩いたあとのコールバックを実行
-	if (this._move_callback) {
-		var cb = this._move_callback;
-		this._move_callback = null;
+	if (this._after_move_callback) {
+		var cb = this._after_move_callback;
+		this._after_move_callback = null;
 		cb();
 	}
 };
@@ -150,9 +151,17 @@ Koishi.prototype._playWalkSound = function(){
 	}
 };
 
-Koishi.prototype.setMoveTarget = function(obj) {
+Koishi.prototype.setMoveTarget = function(obj, callback) {
+	// 移動中は、再度移動先を設定できない
+	if (this.isMoving()) return;
+
 	// 移動先のオブジェクト or 座標
 	this._move_target_object = obj;
+
+	// 移動後に実行する callback
+	this._after_move_callback = callback;
+
+
 
 	// 移動ベクトルを設定
 	var ax = obj.x() - this.x();
@@ -202,24 +211,6 @@ Koishi.prototype.scaleWidth = function(){
 Koishi.prototype.scaleHeight = function(){
 	return 2/3;
 };
-
-
-
-
-
-/*
-Koishi.prototype.setAfterMoveCallback = function(cb) {
-	this._move_callback = cb;
-};
-
-Koishi.prototype.onCollision = function(obj) {
-	this.moveBack();
-
-	if (this._move_target_object && this._move_target_object.id !== obj.__id) {
-		this._move_callback = null;
-	}
-};
-*/
 
 // 移動終了判定
 Koishi.prototype._checkToStop = function() {
