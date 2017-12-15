@@ -152,8 +152,8 @@ Koishi.prototype._playWalkSound = function(){
 };
 
 Koishi.prototype.setMoveTarget = function(obj, callback) {
-	// 移動中は、再度移動先を設定できない
-	if (this.isMoving()) return;
+	// 移動不可であれば何もしない
+	if (!this.scene.isEnableToMove()) return;
 
 	// 移動先のオブジェクト or 座標
 	this._move_target_object = obj;

@@ -237,6 +237,15 @@ SceneStage.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 };
 
+// 移動可能かどうか
+SceneStage.prototype.isEnableToMove = function(){
+	// こいし移動中は、再度移動先を設定できない
+	return this.koishi.isMoving() ? false : true;
+};
+
+
+
+
 SceneStage.prototype.getFieldData = function(){
 	return FieldMap[this.core.save_manager.getCurrentField()];
 };

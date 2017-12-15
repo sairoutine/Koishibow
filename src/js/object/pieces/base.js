@@ -35,6 +35,10 @@ ObjectBase.prototype.onCollisionWithClick = function(point) {
 
 // マウスオーバー時のイベント
 ObjectBase.prototype.onCollisionWithMouseOver = function(point) {
+	// 移動不可であればクリックできないので
+	// マウスカーソルは変更しない
+	if (!this.scene.root().isEnableToMove()) return;
+
 	// マウスカーソルを変更
 	this.core.changeCursorImage("ui_icon_pointer_02");
 };
