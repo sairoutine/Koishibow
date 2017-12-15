@@ -51,13 +51,13 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 
 		if (this._next_to_serif_waiting_count === 0) {
 			// セリフを送る
-			this.serif.next();
+			this._serif.next();
 		}
 	}
 	else if(this.core.input_manager.isLeftClickPush()) { // セリフ送り待機中はクリックできない
-		if(this.serif.isEnd()) {
+		if(this._serif.isEnd()) {
 			// セリフ終わり
-			this.mainStage().changeSubScene("play");
+			this.root().changeSubScene("play");
 		}
 		else {
 			// 次のセリフへ
@@ -69,9 +69,6 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 
 SceneSubStageObjectTalk.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
-	var ctx = this.core.ctx;
-
-	ctx.save();
 
 	// セリフ送り待機中は表示しない
 	if(!this._next_to_serif_waiting_count) {
@@ -81,13 +78,12 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 		// メッセージ表示
 		this._showMessage();
 	}
-
-	ctx.restore();
 };
 
 // セリフウィンドウ表示
 SceneSubStageObjectTalk.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
+	ctx.save();
 
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
 
@@ -109,13 +105,21 @@ SceneSubStageObjectTalk.prototype._showMessageWindow = function(){
 		x,
 		y,
 		fukidashi.width * scale,
-		fukidashi.width * scale
+		fukidashi.height * scale
 	);
+	ctx.restore();
 };
 
 // セリフ表示
 SceneSubStageObjectTalk.prototype._showMessage = function() {
 	var ctx = this.core.ctx;
+
+	// セリフ表示
+	var lines = this._serif.lines();
+
+	if (!lines.length) return;
+
+	ctx.save();
 
 	// セリフの色
 	var font_color = Util.hexToRGBString("#d4c9aa");
@@ -129,18 +133,13 @@ SceneSubStageObjectTalk.prototype._showMessage = function() {
 	var x = message_text_pos.x;
 	var y = message_text_pos.y;
 
-	// セリフ表示
-	var lines = this.serif.lines();
-
-	if (!lines.length) return;
-
 	for(var i = 0, len = lines.length; i < len; i++) {
 		y+= 30;
 		ctx.fillText(lines[i], x, y); // 1行表示
 
 	}
 	// クリック待ちカーソル表示
-	if (this.serif.isWaitingNext()) {
+	if (this._serif.isWaitingNext()) {
 
 		// カーソルを上下に移動させる
 		if (this._cursor_reverse) {
@@ -165,11 +164,13 @@ SceneSubStageObjectTalk.prototype._showMessage = function() {
 			cursor.height*2/3
 		);
 	}
+
+	ctx.restore();
 };
 
 // セリフ表示を右に表示させるかどうか
 SceneSubStageObjectTalk.prototype._isShowRight = function(){
-	var chara_name = this.serif.getChara();
+	var chara_name = this._serif.getChara();
 	if (chara_name === "koishi") {
 		var x = this.root().koishi.x();
 
@@ -194,7 +195,7 @@ SceneSubStageObjectTalk.prototype._isShowRight = function(){
 
 // メッセージウィンドウの位置を取得
 SceneSubStageObjectTalk.prototype._getMessageWindowPos = function(){
-	var chara_name = this.serif.getChara();
+	var chara_name = this._serif.getChara();
 
 	var is_reflect = !this._isShowRight();
 
@@ -229,7 +230,7 @@ SceneSubStageObjectTalk.prototype._getMessageWindowPos = function(){
 // ウィンドウの大きさ
 SceneSubStageObjectTalk.prototype._getMessageWindowScale = function(){
 	var scale;
-	if (this.serif.getSerifRowsCount() === 2) {
+	if (this._serif.getSerifRowsCount() === 2) {
 		scale = 0.5;
 	}
 	else {
@@ -240,7 +241,7 @@ SceneSubStageObjectTalk.prototype._getMessageWindowScale = function(){
 
 // メッセージテキストの開始位置を取得
 SceneSubStageObjectTalk.prototype._getMessageTextPos = function(){
-	var chara_name = this.serif.getChara();
+	var chara_name = this._serif.getChara();
 
 	var is_reflect = !this._isShowRight();
 
