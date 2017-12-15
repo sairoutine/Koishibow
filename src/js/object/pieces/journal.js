@@ -47,24 +47,8 @@ ObjectJournal.prototype.setData = function(data) {
 	}
 };
 
-// マウスクリック時のイベント
-ObjectJournal.prototype.onCollisionWithClick = function(point) {
-	var self = this;
-	// こいしを移動
-	self.scene.root().koishi.setMoveTarget(self, function () {
-		// 移動後
-		self.onAfterWalkToHere();
-	});
-};
-
-// マウスオーバー時のイベント
-ObjectJournal.prototype.onCollisionWithMouseOver = function(obj) {
-	// マウスカーソルを変更
-	this.core.changeCursorImage("ui_icon_pointer_02");
-};
-
 // 移動後の処理
-ObjectJournal.prototype.onAfterWalkToHere = function(){
+ObjectJournal.prototype.onAfterWalkToHere = function() {
 	// ジャーナル画像表示シーンへ遷移
 	this.scene.root().changeSubScene("journal", this._picture_name);
 

@@ -25,10 +25,27 @@ ObjectBase.prototype.setData = function(data) {
 };
 // マウスクリック時のイベント
 ObjectBase.prototype.onCollisionWithClick = function(point) {
+	var self = this;
+	// こいしを移動
+	self.scene.root().koishi.setMoveTarget(self, function () {
+		// 移動後
+		self.onAfterWalkToHere();
+	});
 };
 
 // マウスオーバー時のイベント
 ObjectBase.prototype.onCollisionWithMouseOver = function(point) {
+	// マウスカーソルを変更
+	this.core.changeCursorImage("ui_icon_pointer_02");
 };
+
+// こいし移動後の処理
+ObjectBase.prototype.onAfterWalkToHere = function() {
+};
+
+
+
+
+
 
 module.exports = ObjectBase;
