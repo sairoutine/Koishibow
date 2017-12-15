@@ -6,7 +6,7 @@ var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 
 var SceneSubStagePlay = require('./substage/play'); // ゲーム操作可能
-var SceneSubStageTalkObject = require('./substage/talk_object'); // こいし会話中
+var SceneSubStageTalkWithObject = require('./substage/talk_with_object'); // こいし会話中
 var SceneSubStageMenu = require('./substage/menu'); // アイテムメニュー
 var SceneSubStageJournal = require('./substage/journal'); // ジャーナル表示
 var SceneSubStageChapter0BeforeGetHat = require('./substage/chapter0_before_get_hat');
@@ -52,7 +52,7 @@ var SceneStage = function(core) {
 	// 通常
 	this.addSubScene("play", new SceneSubStagePlay(core));
 	// 会話中
-	this.addSubScene("talk_object", new SceneSubStageTalkObject(core));
+	this.addSubScene("talk_with_object", new SceneSubStageTalkWithObject(core));
 	// アイテムメニュー
 	this.addSubScene("menu", new SceneSubStageMenu(core));
 	// ジャーナルを読む
