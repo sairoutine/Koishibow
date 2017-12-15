@@ -34,8 +34,12 @@ ObjectStaticImage.prototype.setData = function(data) {
 	this.setPosition(data.x, data.y);
 
 	this._image = this.core.image_loader.getImage(data.image);
+
 	// クリックした際のセリフ
-	this._serif = data.serif;
+	if (data.serif) {
+		this._serif = data.serif;
+	}
+
 	// クリックした際のSE
 	if (data.sound_name) {
 		this._sound_name  = data.sound_name;
@@ -104,7 +108,9 @@ ObjectStaticImage.prototype.onAfterWalkToHere = function() {
 	}
 
 	// 会話するオブジェクトなので、クリックしたら会話する
-	this.scene.root().changeSubScene("talk_with_object", this._serif, this);
+	if (this._serif) {
+		this.scene.root().changeSubScene("talk_with_object", this._serif, this);
+	}
 };
 
 module.exports = ObjectStaticImage;
