@@ -9,6 +9,15 @@ var LIGHT_ANCHOR_Y = -336;
 var PIVOT_LIGHT_X_FROM_KOISHI = 70;
 var PIVOT_LIGHT_Y_FROM_KOISHI = -110;
 
+// 当たり判定のこいしからの距離
+var CIRCLE1_POS_DISTANCE_FROM_KOISHI = 336;
+var CIRCLE2_POS_DISTANCE_FROM_KOISHI = 100;
+
+// 光の当たり判定サイズ(円の半径)
+var CIRCLE1_RADIUS = 180;
+var CIRCLE2_RADIUS = 60;
+
+
 
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -38,7 +47,7 @@ ObjectLight3rdeye.prototype.draw = function(){
 
 	// デバッグモードだとライトの当たり判定を表示する
 	if (this.core.debug_manager.isShowingCollisionArea()) {
-		//this._drawLightCollision();
+		this._drawLightCollision();
 	}
 };
 
@@ -60,32 +69,16 @@ ObjectLight3rdeye.prototype._drawLight = function(){
 	var light = this.core.image_loader.getImage("light");
 	ctx.save();
 
-	// こいしからマウスまでの角度(radian)
-	var rad = this._calcRadianFromKoishiToMouse();
+	// ライトの角度、位置
+	var pos = this._calcLightPositionFromKoishi();
 
-	//console.log(rad / Math.PI);
-
-	// ライトの稼働角度には制限がある
-	if (this.scene.koishi.isReflect()) {
-		if (-Math.PI*7/9 < rad && rad < 0) { rad = -Math.PI*7/9; }
-		else if(0 <= rad && rad < Math.PI*6/9) { rad = Math.PI*6/9; }
-	}
-	else {
-		if (rad < -Math.PI*2/9) rad = -Math.PI*2/9;
-		else if (Math.PI*3/9 < rad) rad = Math.PI*3/9;
-
-	}
+	//console.log(pos.radian / Math.PI);
 
 	// ライトの回転基準位置
-	if (this.scene.koishi.isReflect()) {
-		ctx.translate(this.scene.koishi.x() - PIVOT_LIGHT_X_FROM_KOISHI, this.scene.koishi.y() +PIVOT_LIGHT_Y_FROM_KOISHI);
-	}
-	else {
-		ctx.translate(this.scene.koishi.x() + PIVOT_LIGHT_X_FROM_KOISHI, this.scene.koishi.y() +PIVOT_LIGHT_Y_FROM_KOISHI);
-	}
+	ctx.translate(pos.x, pos.y);
 
 	// 回転
-	ctx.rotate(rad);
+	ctx.rotate(pos.radian);
 
 	// 合成方法
 	ctx.globalCompositeOperation = "overlay";
@@ -106,12 +99,38 @@ ObjectLight3rdeye.prototype._drawLight = function(){
 	ctx.restore();
 };
 
+// ライトの角度、位置
+ObjectLight3rdeye.prototype._calcLightPositionFromKoishi = function(){
+	// こいしからマウスまでの角度(radian)
+	var rad = this._calcRadianFromKoishiToMouse();
 
+	// ライトの稼働角度には制限がある
+	if (this.scene.koishi.isReflect()) {
+		if (-Math.PI*7/9 < rad && rad < 0) { rad = -Math.PI*7/9; }
+		else if(0 <= rad && rad < Math.PI*6/9) { rad = Math.PI*6/9; }
+	}
+	else {
+		if (rad < -Math.PI*2/9) rad = -Math.PI*2/9;
+		else if (Math.PI*3/9 < rad) rad = Math.PI*3/9;
 
+	}
 
+	// ライトの回転基準位置
+	var x,y;
+	if (this.scene.koishi.isReflect()) {
+		x = this.scene.koishi.x() - PIVOT_LIGHT_X_FROM_KOISHI;
+		y = this.scene.koishi.y() +PIVOT_LIGHT_Y_FROM_KOISHI;
+	}
+	else {
+		x = this.scene.koishi.x() + PIVOT_LIGHT_X_FROM_KOISHI;
+		y = this.scene.koishi.y() +PIVOT_LIGHT_Y_FROM_KOISHI;
+	}
 
-ObjectLight3rdeye.prototype.onCollision = function(obj) {
-
+	return {
+		radian: rad,
+		x: x,
+		y: y,
+	};
 };
 
 // こいしからマウスまでの角度(radian)
@@ -126,53 +145,18 @@ ObjectLight3rdeye.prototype._calcRadianFromKoishiToMouse = function(){
 	return rad;
 };
 
+ObjectLight3rdeye.prototype._drawLightCollision = function(){
+	// ライトの角度、位置
+	var pos = this._calcLightPositionFromKoishi();
 
-
-
-module.exports = ObjectLight3rdeye;
-
-
-
-
-
-/*
-SceneStage.prototype.calcLightCollisionPosition = function(pos){
-	var mouse_x = this.core.input_manager.mousePositionX();
-	var mouse_y = this.core.input_manager.mousePositionY();
-
-	var ax = mouse_x - this.koishi().x();
-	var ay = mouse_y - this.koishi().y();
-	var rad = Math.atan2(ay, ax);
-
-	var x,y;
-	if (this.koishi().isReflect()) {
-		// ライトの稼働角度には制限がある
-		if (-Math.PI*5/6 < rad && rad < 0) { rad = -Math.PI*5/6; }
-		else if(0 <= rad && rad < Math.PI*4/6) { rad = Math.PI*4/6; }
-
-		x = this.koishi().x() - 60;
-		y = this.koishi().y() - 100;
-	}
-	else {
-		// ライトの稼働角度には制限がある
-		if (rad < -Math.PI*2/6) rad = -Math.PI*2/6;
-		else if (Math.PI*1/6 < rad) rad = Math.PI*1/6;
-
-		x = this.koishi().x() + 60;
-		y = this.koishi().y() - 100;
-	}
-
-	x += pos*Math.cos(rad);
-	y += pos*Math.sin(rad);
-	return {x: x, y: y};
-};
-
-SceneStage.prototype._drawLightCollision = function(){
-	var R1 = 180;
-	var R2 = 60;
-	var map1 = this.calcLightCollisionPosition(336);
-	var map2 = this.calcLightCollisionPosition(100);
-
+	var map1 = {
+		x: pos.x + CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.cos(pos.radian),
+		y: pos.y + CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.sin(pos.radian),
+	};
+	var map2 = {
+		x: pos.x + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.cos(pos.radian),
+		y: pos.y + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.sin(pos.radian),
+	};
 
 	var ctx = this.core.ctx;
 	ctx.save();
@@ -180,13 +164,23 @@ SceneStage.prototype._drawLightCollision = function(){
 	ctx.globalCompositeOperation = "overlay";
 
 	ctx.beginPath();
-	ctx.arc(map1.x, map1.y,R1,0,2*Math.PI);
-	ctx.arc(map2.x, map2.y,R2,0,2*Math.PI);
+	ctx.arc(map1.x, map1.y,CIRCLE1_RADIUS,0,2*Math.PI);
+	ctx.arc(map2.x, map2.y,CIRCLE2_RADIUS,0,2*Math.PI);
 	ctx.fill();
 
 	ctx.restore();
 };
-*/
+
+
+
+ObjectLight3rdeye.prototype.onCollision = function(obj) {
+
+};
+
+
+
+
+module.exports = ObjectLight3rdeye;
 
 
 
