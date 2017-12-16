@@ -145,7 +145,13 @@ ObjectAnimeImage.prototype.setData = function(data) {
 
 ObjectAnimeImage.prototype.isCollision = function(point) {
 	// サードアイ使用中ならクリックしても調べられないので何もしない
-	return !this.scene.root().isUsingEye();
+	// 一度既にクリックしていれば、二度目はクリックできない
+	return !this.scene.root().isUsingEye() && !this._is_clicked_in_front;
+};
+
+// 3rd eye の光と当たり判定する
+ObjectAnimeImage.prototype.isCollisionWithLightIn3rdEye = function() {
+	return true;
 };
 // サードアイに照らされたとき(サードアイ使用時)
 ObjectAnimeImage.prototype.onCollideWithLightIn3rdEye = function(){
@@ -159,8 +165,8 @@ ObjectAnimeImage.prototype.onCollideWithLightIn3rdEye = function(){
 	this._is_in_back = true;
 
 	// 裏オブジェクトになったときの SE 再生
-	if (this.back.lighted_sound_name) {
-		this.core.playSound(this.back._sound_back_name);
+	if (this._back.lighted_sound_name) {
+		this.core.playSound(this._back._sound_back_name);
 	}
 
 	var ss = this.ss;
@@ -240,12 +246,6 @@ ObjectAnimeImage.prototype.collisionWidth = function(){
 ObjectAnimeImage.prototype.collisionHeight = function(){
 	if(this._height) return this._height;
 	return this.ss.MarginHeight() * this._scale;
-};
-
-ObjectAnimeImage.prototype.isCollision = function(){
-	// 一度既にクリックしていれば、二度目はクリックできない
-	// マウスオーバーしてもカーソルも変わらない
-	return this._is_clicked_in_front ? false : true;
 };
 
 // こいし移動後の処理
