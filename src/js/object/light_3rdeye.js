@@ -24,20 +24,77 @@ var Util = require('../hakurei').util;
 
 var ObjectLight3rdeye = function(core) {
 	base_object.apply(this, arguments);
+
+	this._radian = null;
+	this._pivot_x = null;
+	this._pivot_y = null;
 };
 Util.inherit(ObjectLight3rdeye, base_object);
 
 ObjectLight3rdeye.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
+
+	this._radian = null;
+	this._pivot_x = null;
+	this._pivot_y = null;
 };
 
 ObjectLight3rdeye.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
-
 };
+
+// ライトの角度、位置
+ObjectLight3rdeye.prototype._updateLightPosition = function(){
+	// ライトの角度、位置
+	var pos = this._calcLightPositionFromKoishi();
+
+	this._radian = pos.radian;
+	this._pivot_x = pos.x;
+	this._pivot_y = pos.y;
+};
+
+// ライトの角度、位置
+ObjectLight3rdeye.prototype._calcLightPositionFromKoishi = function(){
+	// こいしからマウスまでの角度(radian)
+	var rad = this._calcRadianFromKoishiToMouse();
+
+	// ライトの稼働角度には制限がある
+	if (this.scene.koishi.isReflect()) {
+		if (-Math.PI*7/9 < rad && rad < 0) { rad = -Math.PI*7/9; }
+		else if(0 <= rad && rad < Math.PI*6/9) { rad = Math.PI*6/9; }
+	}
+	else {
+		if (rad < -Math.PI*2/9) rad = -Math.PI*2/9;
+		else if (Math.PI*3/9 < rad) rad = Math.PI*3/9;
+
+	}
+
+	// ライトの回転基準位置
+	var x,y;
+	if (this.scene.koishi.isReflect()) {
+		x = this.scene.koishi.x() - PIVOT_LIGHT_X_FROM_KOISHI;
+		y = this.scene.koishi.y() + PIVOT_LIGHT_Y_FROM_KOISHI;
+	}
+	else {
+		x = this.scene.koishi.x() + PIVOT_LIGHT_X_FROM_KOISHI;
+		y = this.scene.koishi.y() + PIVOT_LIGHT_Y_FROM_KOISHI;
+	}
+
+	return {
+		radian: rad,
+		x: x,
+		y: y,
+	};
+};
+
+
 
 ObjectLight3rdeye.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+
+	// ライトの角度、位置 更新
+	// (beforeDraw に置くと、最初1フレームだけ_updateLightPosition が呼ばれないまま draw されるから)
+	this._updateLightPosition();
 
 	// 画面全体を少し暗くする
 	this._drawDarker();
@@ -69,16 +126,13 @@ ObjectLight3rdeye.prototype._drawLight = function(){
 	var light = this.core.image_loader.getImage("light");
 	ctx.save();
 
-	// ライトの角度、位置
-	var pos = this._calcLightPositionFromKoishi();
-
-	//console.log(pos.radian / Math.PI);
+	//console.log(this._radian / Math.PI);
 
 	// ライトの回転基準位置
-	ctx.translate(pos.x, pos.y);
+	ctx.translate(this._pivot_x, this._pivot_y);
 
 	// 回転
-	ctx.rotate(pos.radian);
+	ctx.rotate(this._radian);
 
 	// 合成方法
 	ctx.globalCompositeOperation = "overlay";
@@ -99,40 +153,6 @@ ObjectLight3rdeye.prototype._drawLight = function(){
 	ctx.restore();
 };
 
-// ライトの角度、位置
-ObjectLight3rdeye.prototype._calcLightPositionFromKoishi = function(){
-	// こいしからマウスまでの角度(radian)
-	var rad = this._calcRadianFromKoishiToMouse();
-
-	// ライトの稼働角度には制限がある
-	if (this.scene.koishi.isReflect()) {
-		if (-Math.PI*7/9 < rad && rad < 0) { rad = -Math.PI*7/9; }
-		else if(0 <= rad && rad < Math.PI*6/9) { rad = Math.PI*6/9; }
-	}
-	else {
-		if (rad < -Math.PI*2/9) rad = -Math.PI*2/9;
-		else if (Math.PI*3/9 < rad) rad = Math.PI*3/9;
-
-	}
-
-	// ライトの回転基準位置
-	var x,y;
-	if (this.scene.koishi.isReflect()) {
-		x = this.scene.koishi.x() - PIVOT_LIGHT_X_FROM_KOISHI;
-		y = this.scene.koishi.y() +PIVOT_LIGHT_Y_FROM_KOISHI;
-	}
-	else {
-		x = this.scene.koishi.x() + PIVOT_LIGHT_X_FROM_KOISHI;
-		y = this.scene.koishi.y() +PIVOT_LIGHT_Y_FROM_KOISHI;
-	}
-
-	return {
-		radian: rad,
-		x: x,
-		y: y,
-	};
-};
-
 // こいしからマウスまでの角度(radian)
 ObjectLight3rdeye.prototype._calcRadianFromKoishiToMouse = function(){
 	var x = this.core.input_manager.mousePositionX();
@@ -146,16 +166,13 @@ ObjectLight3rdeye.prototype._calcRadianFromKoishiToMouse = function(){
 };
 
 ObjectLight3rdeye.prototype._drawLightCollision = function(){
-	// ライトの角度、位置
-	var pos = this._calcLightPositionFromKoishi();
-
 	var map1 = {
-		x: pos.x + CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.cos(pos.radian),
-		y: pos.y + CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.sin(pos.radian),
+		x: this._pivot_x + CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.cos(this._radian),
+		y: this._pivot_y+ CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.sin(this._radian),
 	};
 	var map2 = {
-		x: pos.x + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.cos(pos.radian),
-		y: pos.y + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.sin(pos.radian),
+		x: this._pivot_x + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.cos(this._radian),
+		y: this._pivot_y + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.sin(this._radian),
 	};
 
 	var ctx = this.core.ctx;
@@ -190,16 +207,13 @@ ObjectLight3rdeye.prototype.checkCollisionWithPieces = function(pieces){
 };
 
 ObjectLight3rdeye.prototype.intersectWithPiece = function (piece) {
-	// ライトの角度、位置
-	var pos = this._calcLightPositionFromKoishi();
-
 	var map1 = {
-		x: pos.x + CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.cos(pos.radian),
-		y: pos.y + CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.sin(pos.radian),
+		x: this._pivot_x + CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.cos(this._radian),
+		y: this._pivot_y+ CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.sin(this._radian),
 	};
 	var map2 = {
-		x: pos.x + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.cos(pos.radian),
-		y: pos.y + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.sin(pos.radian),
+		x: this._pivot_x + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.cos(this._radian),
+		y: this._pivot_y + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.sin(this._radian),
 	};
 
 	// 1つ目の円
