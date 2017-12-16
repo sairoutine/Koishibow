@@ -20,9 +20,6 @@ ObjectBase.prototype.onCollision = function(point) {
 	}
 };
 
-// パラメータをオブジェクトに設定する
-ObjectBase.prototype.setData = function(data) {
-};
 // マウスクリック時のイベント
 ObjectBase.prototype.onCollisionWithClick = function(point) {
 	var self = this;
@@ -43,13 +40,24 @@ ObjectBase.prototype.onCollisionWithMouseOver = function(point) {
 	this.core.changeCursorImage("ui_icon_pointer_02");
 };
 
+// パラメータをオブジェクトに設定する
+ObjectBase.prototype.setData = function(data) {
+};
+
 // こいし移動後の処理
 ObjectBase.prototype.onAfterWalkToHere = function() {
 };
 
+// 3rd eye の光と当たり判定する
+ObjectBase.prototype.isCollisionWithLightIn3rdEye = function(point) {
+	return false;
+};
+// サードアイに照らされたとき(サードアイ使用時)
+ObjectBase.prototype.onCollideWithLightIn3rdEye = function(){
+};
 
-
-
-
+// サードアイに照らされてないとき(サードアイ使用時)
+ObjectBase.prototype.onNotCollideWithLightIn3rdEye = function(){
+};
 
 module.exports = ObjectBase;
