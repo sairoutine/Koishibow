@@ -16,6 +16,9 @@ var LeftNextFieldButton = require('../object/ui/left_next_field_button');
 var ItemMenuButton = require('../object/ui/item_menu_button');
 var EyeButton = require('../object/ui/eye_button');
 
+// 3rd eye の光
+var Light3rdeye = require('../object/light_3rdeye');
+
 var BlackMist = require('../object/black_mist');
 
 var Koishi = require('../object/koishi');
@@ -35,6 +38,9 @@ var SceneStage = function(core) {
 
 	// 自機
 	this.koishi = new Koishi(this);
+
+	// 3rd eye の光
+	this.light_3rdeye = new Light3rdeye(this);
 
 	// UI パーツ
 	this.right_next_field_button = new RightNextFieldButton(this);
@@ -80,6 +86,9 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	// 自機
 	this.koishi.init();
 
+	// 3rd eye の光
+	this.light_3rdeye.init();
+
 	// UI パーツ
 	this.right_next_field_button.init();
 	this.left_next_field_button.init();
@@ -91,8 +100,6 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// 3rd eye 使用中か否か
 	this._is_using_eye = false;
-
-	// こいしの初期位置
 
 	// フィールド開始時のこいしの初期位置の決定
 	var pos;
@@ -186,11 +193,16 @@ SceneStage.prototype.beforeDraw = function() {
 	}
 	// 自機
 	this.koishi.beforeDraw();
+	// 3rd eye の光
+	if (this.isUsingEye()) {
+		this.light_3rdeye.beforeDraw();
+	}
 	// UI パーツ
 	this.right_next_field_button.beforeDraw();
 	this.left_next_field_button.beforeDraw();
 	this.item_menu_button.beforeDraw();
 	this.eye_button.beforeDraw();
+
 	// 画面の枠
 	this.black_mist.beforeDraw();
 
@@ -225,11 +237,17 @@ SceneStage.prototype.draw = function(){
 	// 自機
 	this.koishi.draw();
 
+	// 3rd eye の光
+	if (this.isUsingEye()) {
+		this.light_3rdeye.draw();
+	}
+
 	// UI パーツ
 	this.right_next_field_button.draw();
 	this.left_next_field_button.draw();
 	this.item_menu_button.draw();
 	this.eye_button.draw();
+
 	// 画面の枠
 	this.black_mist.draw();
 
