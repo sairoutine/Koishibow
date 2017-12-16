@@ -103,7 +103,7 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// フィールド開始時のこいしの初期位置の決定
 	var pos;
-	if (field_data.left_field === from_field_name) {
+	if (!from_field_name || field_data.left_field === from_field_name) {
 		// 左のフィールドからきた場合
 		pos = field_data.left_start_position;
 		this.koishi.setPosition(pos.x, pos.y);
