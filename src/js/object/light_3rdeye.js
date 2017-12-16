@@ -172,49 +172,53 @@ ObjectLight3rdeye.prototype._drawLightCollision = function(){
 };
 
 
+ObjectLight3rdeye.prototype.checkCollisionWithPieces = function(pieces){
+	// フィールドの各種オブジェクトとサードアイの光の当たり判定
+	for (var i = pieces.length - 1; i >= 0; i--) { // i の大きい方が手前なので
+		var piece = pieces[i];
+		if (piece.isCollisionWithLightIn3rdEye()) {
+			if(this.intersectWithPiece(piece)) {
+				piece.onCollideWithLightIn3rdEye();
+			}
+			else {
+				piece.onNotCollideWithLightIn3rdEye();
+			}
+		}
+	}
 
-ObjectLight3rdeye.prototype.onCollision = function(obj) {
-
+	return false;
 };
 
+ObjectLight3rdeye.prototype.intersectWithPiece = function (piece) {
+	// ライトの角度、位置
+	var pos = this._calcLightPositionFromKoishi();
 
-
-
-module.exports = ObjectLight3rdeye;
-
-
-
-
-/*
-// 静的クラス
-var CreateDarkerImage = function() {};
-
-CreateDarkerImage.check = function (piece, main_stage) {
-	// 光の当たり判定の円の位置と大きさ(2つある)
-	var R1 = 180;
-	var R2 = 60;
-	var map1 = main_stage.calcLightCollisionPosition(336);
-	var map2 = main_stage.calcLightCollisionPosition(100);
+	var map1 = {
+		x: pos.x + CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.cos(pos.radian),
+		y: pos.y + CIRCLE1_POS_DISTANCE_FROM_KOISHI * Math.sin(pos.radian),
+	};
+	var map2 = {
+		x: pos.x + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.cos(pos.radian),
+		y: pos.y + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.sin(pos.radian),
+	};
 
 	// 1つ目の円
-	if(Math.pow(map1.x-piece.getCollisionLeftX(), 2)  + Math.pow(map1.y-piece.getCollisionUpY(), 2) <= Math.pow(R1, 2) ||
-	   Math.pow(map1.x-piece.getCollisionLeftX(), 2)  + Math.pow(map1.y-piece.getCollisionDownY(), 2) <= Math.pow(R1, 2) ||
-	   Math.pow(map1.x-piece.getCollisionRightX(), 2) + Math.pow(map1.y-piece.getCollisionUpY(), 2) <= Math.pow(R1, 2) ||
-	   Math.pow(map1.x-piece.getCollisionRightX(), 2) + Math.pow(map1.y-piece.getCollisionDownY(), 2) <= Math.pow(R1, 2)) {
+	if(Math.pow(map1.x-piece.getCollisionLeftX(), 2)  + Math.pow(map1.y-piece.getCollisionUpY(), 2) <= Math.pow(CIRCLE1_RADIUS, 2) ||
+	   Math.pow(map1.x-piece.getCollisionLeftX(), 2)  + Math.pow(map1.y-piece.getCollisionDownY(), 2) <= Math.pow(CIRCLE1_RADIUS, 2) ||
+	   Math.pow(map1.x-piece.getCollisionRightX(), 2) + Math.pow(map1.y-piece.getCollisionUpY(), 2) <= Math.pow(CIRCLE1_RADIUS, 2) ||
+	   Math.pow(map1.x-piece.getCollisionRightX(), 2) + Math.pow(map1.y-piece.getCollisionDownY(), 2) <= Math.pow(CIRCLE1_RADIUS, 2)) {
 		return true;
 	}
 
 	// 2つ目の円
-	if(Math.pow(map2.x-piece.getCollisionLeftX(), 2)  + Math.pow(map2.y-piece.getCollisionUpY(), 2) <= Math.pow(R2, 2) ||
-	   Math.pow(map2.x-piece.getCollisionLeftX(), 2)  + Math.pow(map2.y-piece.getCollisionDownY(), 2) <= Math.pow(R2, 2) ||
-	   Math.pow(map2.x-piece.getCollisionRightX(), 2) + Math.pow(map2.y-piece.getCollisionUpY(), 2) <= Math.pow(R2, 2) ||
-	   Math.pow(map2.x-piece.getCollisionRightX(), 2) + Math.pow(map2.y-piece.getCollisionDownY(), 2) <= Math.pow(R2, 2)) {
+	if(Math.pow(map2.x-piece.getCollisionLeftX(), 2)  + Math.pow(map2.y-piece.getCollisionUpY(), 2) <= Math.pow(CIRCLE2_RADIUS, 2) ||
+	   Math.pow(map2.x-piece.getCollisionLeftX(), 2)  + Math.pow(map2.y-piece.getCollisionDownY(), 2) <= Math.pow(CIRCLE2_RADIUS, 2) ||
+	   Math.pow(map2.x-piece.getCollisionRightX(), 2) + Math.pow(map2.y-piece.getCollisionUpY(), 2) <= Math.pow(CIRCLE2_RADIUS, 2) ||
+	   Math.pow(map2.x-piece.getCollisionRightX(), 2) + Math.pow(map2.y-piece.getCollisionDownY(), 2) <= Math.pow(CIRCLE2_RADIUS, 2)) {
 		return true;
 	}
 
 	return false;
 };
 
-
-module.exports = CreateDarkerImage;
-*/
+module.exports = ObjectLight3rdeye;
