@@ -34,5 +34,3 @@ window.changeFullScreen = function () {
 if(window.require) {
 	window.require('electron').webFrame.setVisualZoomLevelLimits(1,1); //zoomさせない
 }
-
-
