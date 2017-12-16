@@ -3,6 +3,7 @@
 // セーブデータ
 var base_class = require('./hakurei').storage.save;
 var util = require('./hakurei').util;
+var CONSTANT = require('./constant');
 
 var SaveManager = function(scene) {
 	base_class.apply(this, arguments);
@@ -46,8 +47,9 @@ SaveManager.prototype.increase3rdeyeGauge = function(num){
 
 	gauge += num;
 
-	// TODO: 定数化
-	if (gauge > 1000) gauge = 1000;
+	if (gauge > CONSTANT.MAX_3RDEYE_GAUGE) {
+		gauge = CONSTANT.MAX_3RDEYE_GAUGE;
+	}
 
 	this.set("3rdeye_gauge", gauge);
 };
@@ -63,7 +65,7 @@ SaveManager.prototype.setCurrentField = function(field_name) {
 	this.set("current_field", field_name);
 };
 
-// 現在のフィールドを取得
+// イベントを再生済か取得
 SaveManager.prototype.isPlayedEvent = function(event_name) {
 	var played_event_map = this.get("played_event_map");
 
@@ -71,7 +73,7 @@ SaveManager.prototype.isPlayedEvent = function(event_name) {
 
 	return played_event_map[event_name] ? true : false;
 };
-// 現在のフィールドを設定
+// イベントを再生済に設定
 SaveManager.prototype.setPlayedEvent = function(event_name) {
 	var played_event_map = this.get("played_event_map");
 
@@ -83,11 +85,5 @@ SaveManager.prototype.setPlayedEvent = function(event_name) {
 
 	this.set("played_event_map", played_event_map);
 };
-
-
-
-
-
-
 
 module.exports = SaveManager;

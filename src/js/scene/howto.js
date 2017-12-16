@@ -5,6 +5,8 @@ var base_scene = require('../hakurei').scene.base;
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 
+var HOWTO_IMAGE_RATIO = 3/4;
+
 var SceneHowto = function(core) {
 	base_scene.apply(this, arguments);
 
@@ -26,7 +28,7 @@ SceneHowto.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if(this.core.input_manager.isLeftClickPush()) {
-		this.core.playSound("show_journal");
+		this.core.audio_loader.playSound("show_journal");
 		this.core.changeScene("stage", "chapter0_myroom");
 	}
 };
@@ -47,10 +49,10 @@ SceneHowto.prototype.draw = function(){
 
 	ctx.translate(this.width/2, this.height/2);
 	ctx.drawImage(howto,
-					-howto.width*3/8,
-					-howto.height*3/8,
-					howto.width*3/4,
-					howto.height*3/4);
+		-howto.width*HOWTO_IMAGE_RATIO/2,
+		-howto.height*HOWTO_IMAGE_RATIO/2,
+		howto.width*HOWTO_IMAGE_RATIO,
+		howto.height*HOWTO_IMAGE_RATIO);
 
 	ctx.restore();
 };

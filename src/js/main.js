@@ -26,16 +26,6 @@ window.onload = function() {
 	// for phantomjs headless test
 	window.game = game;
 };
-window.onerror = function (msg, file, line, column, err) {
-	/*
-	msg: error message
-	file: file path
-	line: row number
-	column: column number
-	err: error object
-	*/ 
-	//window.alert(msg + "\n" + line + ":" + column);
-};
 window.changeFullScreen = function () {
 	game.fullscreen();
 };

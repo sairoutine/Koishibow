@@ -1,6 +1,6 @@
 'use strict';
 
-/* 画像を暗くするロジック */
+/* 画像を暗く変換する */
 
 // 静的クラス
 var CreateDarkerImage = function() {};

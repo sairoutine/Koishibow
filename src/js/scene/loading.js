@@ -4,7 +4,7 @@
 
 var base_scene = require('../hakurei').scene.base;
 var Util = require('../hakurei').util;
-var AssetsConfig = require('../assets_config');
+var AssetsConfig = require('../config/assets');
 var CONSTANT = require('../constant');
 
 var SceneLoading = function(core) {
@@ -17,19 +17,32 @@ SceneLoading.prototype.init = function() {
 
 	// ゲームで使用する画像一覧
 	for (var key in AssetsConfig.images) {
-		this.core.image_loader.loadImage(key, AssetsConfig.images[key]);
+		var image_conf = AssetsConfig.images[key];
+		if (typeof image_conf === "string") {
+			this.core.image_loader.loadImage(key, image_conf);
+		}
+		else {
+			this.core.image_loader.loadImage(key, image_conf.image, image_conf.scale_width, image_conf.scale_height);
+		}
 	}
 
 	// ゲームで使用するSE一覧
 	for (var key2 in AssetsConfig.sounds) {
 		var conf2 = AssetsConfig.sounds[key2];
-		this.core.audio_loader.loadSound(key2, conf2.path, conf2.volume);
+
+		// デバッグ用ミュート
+		var volume2 = CONSTANT.DEBUG.SOUND_OFF ? 0 : conf2.volume;
+
+		this.core.audio_loader.loadSound(key2, conf2.path, volume2);
 	}
 
 	// ゲームで使用するBGM一覧
 	for (var key3 in AssetsConfig.bgms) {
 		var conf3 = AssetsConfig.bgms[key3];
-		this.core.audio_loader.loadBGM(key3, conf3.path, conf3.volume, conf3.loopStart, conf3.loopEnd);
+		// デバッグ用ミュート
+		var volume3 = CONSTANT.DEBUG.SOUND_OFF ? 0 : conf3.volume;
+
+		this.core.audio_loader.loadBGM(key3, conf3.path, volume3, conf3.loopStart, conf3.loopEnd);
 	}
 };
 
@@ -50,8 +63,6 @@ SceneLoading.prototype.beforeDraw = function() {
 SceneLoading.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
-
-	if(!ctx) return; // 2D context has been depricated in this game
 
 	// 背景
 	ctx.save();

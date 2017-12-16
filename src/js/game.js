@@ -1,4 +1,5 @@
 'use strict';
+
 var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
@@ -9,39 +10,45 @@ var SceneTitle = require('./scene/title');
 var SceneHowto = require('./scene/howto');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
-var SceneEventForEncounterSatori = require('./scene/event_for_encounter_satori');
-var SceneEventForTrialLast = require('./scene/event_for_trial_last');
-var SceneEventForGetHat = require('./scene/event_for_get_hat');
-var SceneEventForTrialLast2 = require('./scene/event_for_trial_last2');
+var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
+var SceneEventForChapter0Last            = require('./scene/event/chapter0/last');
+var SceneEventForChapter0GetHat          = require('./scene/event/chapter0/get_hat');
+var SceneEventForTrialLast               = require('./scene/event/trial_last');
+
+
 
 var Game = function(canvas) {
 	core.apply(this, arguments);
 
-	this._current_cursor = "default";
 };
 util.inherit(Game, core);
+
 
 Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
 
+	// カーソル設定
+	this.enableCursorImage("ui_icon_pointer_01");
+
 	// セーブデータ
 	this.save_manager = SaveManager.load();
 
-
+	// シーン一覧
 	this.addScene("loading", new SceneLoading(this));
 	this.addScene("title", new SceneTitle(this));
 	this.addScene("howto", new SceneHowto(this));
 	this.addScene("stage", new SceneStage(this));
-	this.addScene("event_for_encounter_satori", new SceneEventForEncounterSatori(this));
+	this.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
+	this.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
+	this.addScene("event_for_chapter0_get_hat",          new SceneEventForChapter0GetHat(this));
 	this.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
-	this.addScene("event_for_get_hat",          new SceneEventForGetHat(this));
-	this.addScene("event_for_trial_last2",      new SceneEventForTrialLast2(this));
 
+	// シーン遷移
 	this.changeScene("loading");
-
-	this._current_cursor = "default";
-	this.canvas_dom.style.cursor = "none";
 };
+
+
+
 Game.prototype.setupDebug = function (dom) {
 	if (!CONSTANT.DEBUG.ON) return;
 
@@ -85,6 +92,7 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.addMenuButton("移動制限範囲非表示", function (game) {
 		game.debug_manager.set("is_show_immovable_area", false);
 	});
+	/*
 	this.debug_manager.addMenuSelect("ライトの合成方法", [
 		{value: "source-over"},
 		{value: "destination-over"},
@@ -116,7 +124,7 @@ Game.prototype.setupDebug = function (dom) {
 	], function (game, value) {
 		game.debug_manager.set("light_global_composite", value);
 	});
-
+	*/
 	this.debug_manager.addMenuSelect("こいし暗度", [
 		{value: "0.0"},
 		{value: "0.1"},
@@ -137,80 +145,5 @@ Game.prototype.setupDebug = function (dom) {
 
 
 };
-
-Game.prototype.run = function () {
-
-	this.changeDefaultCursor();
-
-	core.prototype.run.apply(this, arguments);
-
-	// ローディング中はカーソルを表示しない
-	if (this.currentScene() instanceof SceneLoading) return;
-
-	// カーソル表示
-
-	var image_name;
-	if (this._current_cursor === "touch") {
-		image_name = "ui_icon_pointer_02";
-	}
-	else {
-		image_name = "ui_icon_pointer_01";
-	}
-
-	var ctx = this.ctx;
-	ctx.save();
-
-	var cursor = this.image_loader.getImage(image_name);
-	var x = this.input_manager.mousePositionX();
-	var y = this.input_manager.mousePositionY();
-
-	ctx.translate(x, y);
-	ctx.drawImage(cursor,
-					0,
-					0,
-					cursor.width*2/3,
-					cursor.height*2/3);
-	ctx.restore();
-
-};
-
-
-Game.prototype.playSound = function () {
-	if (CONSTANT.DEBUG.SOUND_OFF) return;
-	return this.audio_loader.playSound.apply(this.audio_loader, arguments);
-};
-Game.prototype.playBGM = function () {
-	if (CONSTANT.DEBUG.SOUND_OFF) return;
-	return this.audio_loader.playBGM.apply(this.audio_loader, arguments);
-};
-Game.prototype.addBGM = function () {
-	if (CONSTANT.DEBUG.SOUND_OFF) return;
-	return this.audio_loader.addBGM.apply(this.audio_loader, arguments);
-};
-
-Game.prototype.changeBGM = function () {
-	if (CONSTANT.DEBUG.SOUND_OFF) return;
-	return this.audio_loader.changeBGM.apply(this.audio_loader, arguments);
-};
-Game.prototype.stopBGM = function () {
-	if (CONSTANT.DEBUG.SOUND_OFF) return;
-	return this.audio_loader.stopBGM.apply(this.audio_loader, arguments);
-};
-
-Game.prototype.changeTouchCursor = function () {
-	this._current_cursor = "touch";
-};
-Game.prototype.changeDefaultCursor = function () {
-	this._current_cursor = "default";
-};
-
-
-
-
-
-
-
-
-
 
 module.exports = Game;
