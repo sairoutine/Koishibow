@@ -18,7 +18,9 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	// サードアイの光の当たり判定
-	this._collisionLightCheck();
+	if (this.root().isUsingEye()) {
+		this.root().light_3rdeye.checkCollisionWithPieces(this.root().pieces);
+	}
 
 	// 当たり判定チェック
 	this._collisionCheck();
@@ -66,26 +68,6 @@ SceneSubStagePlay.prototype._collisionCheck = function(){
 		// こいしを移動
 		this.root().koishi.setMoveTarget(point);
 	}
-};
-SceneSubStagePlay.prototype._collisionLightCheck = function(){
-	/*
-	// 3rd eye の光の当たり判定チェック
-
-	if (this.mainStage().isUsingEye()) {
-		// フィールドの各種オブジェクトとの当たり判定
-		for (var i = 0, len = this.mainStage().pieces.length; i < len; i++) {
-			var piece = this.mainStage().pieces[i];
-
-			if(piece instanceof ObjectAnimeImage) {
-				if (LogicCollideWithLight.check(piece, this.mainStage())) {
-					piece.onMouseOver();
-				}
-			}
-		}
-	}
-	*/
-
-	return false;
 };
 
 SceneSubStagePlay.prototype.draw = function(){
