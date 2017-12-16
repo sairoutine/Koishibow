@@ -49,13 +49,13 @@ Koishi.prototype.isMoving = function() {
 	return this._move_target_object ? true : false;
 };
 
-// 移動アニメーションに変更
+// 待機アニメーションに変更
 Koishi.prototype.setWaitAnime = function() {
-	this.changeAnimation("default");
+	this.playAnimationInfinity("default");
 };
 // 歩きアニメーションに変更
 Koishi.prototype.setWalkAnime = function() {
-	this.changeAnimation("walk");
+	this.playAnimationInfinity("walk");
 };
 
 Koishi.prototype._stopMove = function() {
