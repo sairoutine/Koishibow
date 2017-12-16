@@ -221,7 +221,7 @@ Koishi.prototype._checkToStop = function() {
 	var target_y = move_to_pos.y;
 
 	// "概ね" の範囲
-	var range = SPEED*2;
+	var range = SPEED*3;
 
 	// (x,y)座標が概ね target_x と target_y に近づいたら
 	if (
