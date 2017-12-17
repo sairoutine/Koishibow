@@ -235,16 +235,21 @@ SceneSubStageMenu.prototype._useItem = function(){
 	if(!this.focus_item_id) return;
 
 	var focus_item_id = this.focus_item_id;
-	this.focus_item_id = null;
+
 
 	for(var i = 0, len = this.menu_item_list.length; i < len; i++) {
 		var menu_item = this.menu_item_list[i];
 		if(menu_item.item_id() === focus_item_id) {
+			// 選択中から解除
+			this.focus_item_id = null;
+
+			// メニューの表示から削除
 			this.removeObject(menu_item);
 			this.menu_item_list.splice(i, 1);
+
+			// アイテム使用
 			menu_item.use();
 
-			// TODO: save_manager からも削除
 			break;
 		}
 	}
