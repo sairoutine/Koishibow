@@ -1,5 +1,6 @@
 // 屋敷の廊下3(家具) 行き止まり (サードアイを使用すると、家具が豹変／床に扉が出現)
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_mansion_corridor3",
 	chapter: 0,
@@ -14,6 +15,7 @@ module.exports = {
 	walk_sound: "walking_bare_wood",
 	objects: [
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "花瓶",
 			serif: [
@@ -35,6 +37,7 @@ module.exports = {
 			sound: "touch",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "みずさし",
 			serif: [
@@ -56,6 +59,7 @@ module.exports = {
 			sound_back: "chapter0-mansion_corridor3-sound_vase_back",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "窓",
 			serif: [
@@ -76,6 +80,7 @@ module.exports = {
 			sound_back: "chapter0-mansion_corridor3-smile_kokoro_back",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "振子時計",
 			serif: [
@@ -97,6 +102,7 @@ module.exports = {
 			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_EVENT_IMAGE_TYPE,
 			name: "カーペット",
 			serif: null,
@@ -113,6 +119,7 @@ module.exports = {
 			action_back_event: "event_for_trial_last", // 体験版最終
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ITEM_TYPE,
 			name: "目薬",
 			image: "eyedrop",

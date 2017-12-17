@@ -1,5 +1,6 @@
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_hospital_corridor1",
 	chapter: 0,
@@ -13,6 +14,7 @@ module.exports = {
 	walk_sound: "walking_bare_default",
 	objects: [
 		{
+			no: ++I,
 			image: "chapter0-hospital_corridor1-obj-01-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ストレッチャー",
@@ -29,6 +31,7 @@ module.exports = {
 			target_y: 616,
 		},
 		{
+			no: ++I,
 			image: "chapter0-hospital_corridor1-obj-02-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
@@ -40,6 +43,7 @@ module.exports = {
 			scale: 0.7
 		},
 		{
+			no: ++I,
 			image: "chapter0-hospital_corridor1-obj-03-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "救急箱",
@@ -55,6 +59,7 @@ module.exports = {
 			target_y: 465
 		},
 		{
+			no: ++I,
 			image: "chapter0-hospital_corridor1-obj-04-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "メス",
@@ -67,7 +72,9 @@ module.exports = {
 			action: "look_front",
 			position_type: "front",
 		},
-		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 643, y:425, scale: 2/3, picture: "journal002"},
+		{
+			no: ++I,
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 643, y:425, scale: 2/3, picture: "journal002"},
 	],
 };
 

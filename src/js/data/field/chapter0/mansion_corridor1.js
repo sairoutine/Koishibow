@@ -1,5 +1,6 @@
 // 屋敷の廊下1
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_mansion_corridor1",
 	chapter: 0,
@@ -14,6 +15,7 @@ module.exports = {
 	walk_sound: "walking_bare_wood",
 	objects: [
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ランプ",
 			serif: [
@@ -33,6 +35,7 @@ module.exports = {
 			sound_back: "chapter0-mansion_corridor1-lamp_back"
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "三輪車",
 			serif: [
@@ -55,6 +58,7 @@ module.exports = {
 			position_type: "front",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "カーテン",
 			serif: [
@@ -76,7 +80,9 @@ module.exports = {
 		},
 
 
-		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 600, y: 530, scale: 2/3, picture: "journal004"},
+		{
+			no: ++I,
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 600, y: 530, scale: 2/3, picture: "journal004"},
 	],
 
 };

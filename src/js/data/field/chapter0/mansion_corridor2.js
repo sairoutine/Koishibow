@@ -1,5 +1,6 @@
 // 屋敷の廊下2(ドアがある) 最初のフラッシュバックが入る
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_mansion_corridor2",
 	chapter: 0,
@@ -13,6 +14,7 @@ module.exports = {
 	walk_sound: "walking_bare_wood",
 	objects: [
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ほこりの積もった観葉植物",
 			serif: [
@@ -35,6 +37,7 @@ module.exports = {
 
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "壁かけの斧",
 			serif: [
@@ -54,6 +57,7 @@ module.exports = {
 			action: "look_top"
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ドア",
 			serif: [
@@ -71,7 +75,9 @@ module.exports = {
 			sound:      "chapter0-mansion_corridor2-open_door",
 		},
 
-		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 177, y: 400, scale: 2/3, picture: "journal005"},
+		{
+			no: ++I,
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 177, y: 400, scale: 2/3, picture: "journal005"},
 	],
 
 

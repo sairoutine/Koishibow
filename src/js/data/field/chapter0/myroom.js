@@ -1,5 +1,6 @@
 // こいしの自室(ベッド／帽子／ドア) 帽子はベッドのふちにかけてある
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_myroom",
 	chapter: 0,
@@ -13,6 +14,7 @@ module.exports = {
 	walk_sound: "walking_bare_default",
 	objects: [
 		{
+			no: ++I,
 			image: "chapter0-myroom-obj-01-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ベッド",
@@ -25,6 +27,7 @@ module.exports = {
 			sound: "touch"
 		},
 		{
+			no: ++I,
 			image: "chapter0-myroom-obj-05-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
@@ -38,6 +41,7 @@ module.exports = {
 			target_x: 167, target_y: 531
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "本",
 			serif: [
@@ -55,6 +59,7 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "クレヨン",
 			serif: [
@@ -72,6 +77,7 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "まど",
 			serif: [
@@ -87,7 +93,9 @@ module.exports = {
 			target_x: 177, target_y: 531
 		},
 
-		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 258, y: 689, scale: 2/3, picture: "journal001"},
+		{
+			no: ++I,
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 258, y: 689, scale: 2/3, picture: "journal001"},
 	],
 };
 

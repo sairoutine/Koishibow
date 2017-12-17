@@ -1,5 +1,6 @@
 // 病院の廊下2(こころ)
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_hospital_corridor2",
 	chapter: 0,
@@ -13,6 +14,7 @@ module.exports = {
 	walk_sound: "walking_bare_default",
 	objects: [
 		{
+			no: ++I,
 			image: "chapter0-hospital2-obj-02-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "くつした",
@@ -26,6 +28,7 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "車イス",
 			serif: [
@@ -42,7 +45,9 @@ module.exports = {
 			width: 258,
 			height: 280
 		},
-		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 627, y: 689, scale: 2/3, picture: "journal003"},
+		{
+			no: ++I,
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 627, y: 689, scale: 2/3, picture: "journal003"},
 	],
 
 };
