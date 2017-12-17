@@ -14,6 +14,14 @@ ObjectItemMenuButton.prototype.init = function(){
 	this.setPosition();
 };
 
+ObjectItemMenuButton.prototype.isShow = function(){
+	// play or menu scene のみ メニューアイコンを表示
+	return this.scene.current_scene === "play" || this.scene.current_scene === "menu" ? true : false;
+};
+
+
+
+
 ObjectItemMenuButton.prototype.setPosition = function(){
 	this.x(120 * 2/3);
 	this.y(980 * 2/3);

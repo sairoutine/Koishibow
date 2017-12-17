@@ -13,6 +13,12 @@ ObjectEye.prototype.init = function(){
 	this.setPosition();
 };
 
+
+ObjectEye.prototype.isShow = function(){
+	// play scene のみ 3rd eye アイコンを表示
+	return this.scene.current_scene === "play" ? true : false;
+};
+
 ObjectEye.prototype.onCollision = function(obj){
 	if (this.scene.isUsingEye()) {
 		// サードアイOff
