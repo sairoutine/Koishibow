@@ -15,8 +15,8 @@ ObjectItemMenuButton.prototype.init = function(){
 };
 
 ObjectItemMenuButton.prototype.setPosition = function(){
-	this.x(48 + 32);
-	this.y(this.scene.height - 75);
+	this.x(120 * 2/3);
+	this.y(980 * 2/3);
 };
 
 ObjectItemMenuButton.prototype.onCollision = function(obj){
