@@ -122,11 +122,11 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ITEM_TYPE,
 			name: "目薬",
-			image: "eyedrop",
+			image: "eyedrops",
 			x: 590,
 			y: 290,
 			scale: 2/3,
-			item_id: CONSTANT.ITEM.EYEDROP
+			item_id: CONSTANT.ITEM.EYEDROPS
 		},
 
 	],

@@ -1,9 +1,12 @@
 'use strict';
 
 // アイテム獲得
+// TODO: 持ち物がいっぱいだったら、このクラスで持ち物がいっぱいか判定して、
+// それ専用の表示をだす
 
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
+var ItemConfig = require('../../config/item');
 
 // アニメまでの待機時間
 var WAIT_COUNT_TO_ANIMATION = 60;
@@ -38,6 +41,9 @@ SceneSubStageGotItem.prototype.beforeDraw = function(){
 
 		// フィールドから該当のオブジェクトを削除
 		this._piece.deleteFromField();
+
+		// アイテム獲得
+		this.core.save_manager.addItem(this._piece.getItemId());
 	}
 };
 
@@ -73,7 +79,7 @@ SceneSubStageGotItem.prototype._showItem = function() {
 
 	ctx.save();
 
-	var picture = this.core.image_loader.getImage("item_" + this._piece.getItemId());
+	var picture = this.core.image_loader.getImage(ItemConfig[this._piece.getItemId()].image_name);
 
 	var width = picture.width * 2/3;
 	var height = picture.height * 2/3;

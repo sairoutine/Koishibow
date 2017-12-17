@@ -92,7 +92,7 @@ AssetsConfig.images = {
 	// フィールド上に落ちているジャーナル オブジェクト
 	paper:              "./image/chapterall-obj-02-01.png",
 	// フィールド上に落ちている目薬 オブジェクト
-	eyedrop:            "./image/chapterall-obj-01-01.png",
+	eyedrops:           "./image/chapterall-obj-01-01.png",
 
 	// 画面遷移用やじるし
 	arrow:  "./image/ui-common-btn-arrow-wht.png",
@@ -124,10 +124,13 @@ AssetsConfig.images = {
 	"ui-titlepg-btn-opt-on":   "./image/title/ui-titlepg-btn-opt-on.png",
 	"ui-titlepg-img-logo-1":   "./image/title/ui-titlepg-img-logo-1.png",
 
+	// 1枚絵
+	"picture_use_eyedrops":   "./image/picture/illust_02.png",
+
 	// 不要
-	paper_clip:  "./image/ui-common-frame-paper_clip.png",
+	//paper_clip:  "./image/ui-common-frame-paper_clip.png",
 	//paper_close_button: "./image/ui-common-btn-close.png",
-	paper_open:         "./image/ui-common-frame-paper.png",
+	//paper_open:         "./image/ui-common-frame-paper.png",
 };
 
 AssetsConfig.sounds = {

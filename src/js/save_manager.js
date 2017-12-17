@@ -34,6 +34,24 @@ SaveManager.prototype.addItem = function(item_id){
 	this.set("item_list", list);
 	return list.length - 1;
 };
+// アイテムを削除
+SaveManager.prototype.deleteItem = function(target_item_id) {
+	var list = this.getItemList();
+
+	for (var i = 0, len = list.length; i < len; i++) {
+		var item_id = list[i];
+
+		if (item_id === target_item_id) {
+			list.splice(i, 1);
+			break;
+		}
+	}
+
+	this.set("item_list", list);
+};
+
+
+
 
 SaveManager.prototype.getPieceDataMap = function() {
 	var map = this.get("piece_data_map");
