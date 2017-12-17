@@ -9,6 +9,7 @@ var SceneSubStagePlay = require('./substage/play'); // ゲーム操作可能
 var SceneSubStageTalkWithObject = require('./substage/talk_with_object'); // こいし会話中
 var SceneSubStageMenu = require('./substage/menu'); // アイテムメニュー
 var SceneSubStageJournal = require('./substage/journal'); // ジャーナル表示
+var SceneSubStageGotItem = require('./substage/got_item'); // アイテム獲得
 var SceneSubStageChapter0BeforeGetHat = require('./substage/chapter0_before_get_hat');
 
 var RightNextFieldButton = require('../object/ui/right_next_field_button');
@@ -64,6 +65,8 @@ var SceneStage = function(core) {
 	this.addSubScene("menu", new SceneSubStageMenu(core));
 	// ジャーナルを読む
 	this.addSubScene("journal", new SceneSubStageJournal(core));
+	// アイテム獲得
+	this.addSubScene("got_item", new SceneSubStageGotItem(core));
 	// chapter0 帽子を取る前
 	this.addSubScene("chapter0_before_get_hat", new SceneSubStageChapter0BeforeGetHat(core));
 };

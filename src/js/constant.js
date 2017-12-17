@@ -13,7 +13,7 @@ var CONSTANT = {
 
 	// アイテムの種類
 	ITEM: {
-		EYEDROP: 1,
+		EYEDROP: "01",
 
 	},
 

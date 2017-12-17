@@ -83,6 +83,9 @@ AssetsConfig.images = {
 	"chapter0-mspassage-obj-10-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-10-01.png",
 	"chapter0-mspassage-obj-11-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-11-01.png",
 
+	// アイテム 目薬
+	item_01:            "./image/item/icon_item_eyedrops01.png",
+
 	// 体験版時のコンティニュー画像
 	tobecontinued:  "./image/tobecontinued.png",
 
