@@ -13,15 +13,6 @@ Util.inherit(ObjectMenuItemBase, base_object);
 ObjectMenuItemBase.prototype.item_id = function() {
 	throw new Error("item_id method must be implemented");
 };
-ObjectMenuItemBase.prototype.onCollision = function(obj) {
-
-	// アイテム選択 音
-	this.core.audio_loader.playSound("select_item");
-
-	// 選択中を自分に
-	this.scene.focus_item_id = this.item_id();
-};
-
 ObjectMenuItemBase.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;

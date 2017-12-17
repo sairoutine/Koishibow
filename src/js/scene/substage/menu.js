@@ -105,6 +105,12 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 			for (var i = 0, len = this.menu_item_list.length; i < len; i++) {
 				var menu_item = this.menu_item_list[i];
 				if(menu_item.checkCollisionWithPosition(x, y)) {
+					// アイテム選択 音
+					this.core.audio_loader.playSound("select_item");
+
+					// 選択中を自分に
+					this.focus_item_id = menu_item.item_id();
+
 					is_selected = true;
 				}
 			}
