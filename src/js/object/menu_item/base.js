@@ -37,7 +37,7 @@ ObjectMenuItemBase.prototype.draw = function(){
 	ctx.save();
 
 	// 選択しているアイテムなら選択中 表示
-	if (this.scene.focus_item_id === this.item_id()) {
+	if (this.scene.isFocusItem(this.item_id())) {
 		ctx.strokeStyle = "rgb(200, 0, 0)";
 		ctx.lineWidth = 10;
 		ctx.strokeRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());

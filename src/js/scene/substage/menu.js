@@ -279,5 +279,8 @@ SceneSubStageMenu.prototype._useItem = function(){
 
 };
 
+SceneSubStageMenu.prototype.isFocusItem = function(item_id){
+	return this.focus_item_id === item_id;
+};
 
 module.exports = SceneSubStageMenu;
