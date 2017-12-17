@@ -94,7 +94,10 @@ AssetsConfig.images = {
 	// アイテムボタン
 	tool: "./image/ui-common-btn-tool-1.png",
 	// 第三の目
-	eye:  "./image/ui-common-btn-eye-1.png",
+	eye1:  "./image/ui-common-btn-eye-1.png",
+	eye2:  "./image/ui-common-btn-eye-2.png",
+	eye3:  "./image/ui-common-btn-eye-3.png",
+	eye4:  "./image/ui-common-btn-eye-4.png",
 
 	// ふきだし
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
