@@ -17,9 +17,12 @@ SceneSubStagePlay.prototype.init = function(){
 SceneSubStagePlay.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	// サードアイの光の当たり判定
 	if (this.root().isUsingEye()) {
+		// サードアイの光の当たり判定
 		this.root().light_3rdeye.checkCollisionWithPieces(this.root().pieces);
+
+		// サードアイの消耗
+		this.root().koishi.abrasion3rdeye();
 	}
 
 	// 当たり判定チェック

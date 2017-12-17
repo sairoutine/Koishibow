@@ -37,12 +37,18 @@ SaveManager.prototype.addItem = function(item_id){
 
 // 3rd eye ゲージの取得
 SaveManager.prototype.get3rdeyeGauge = function(){
-	var gauge = this.get("3rdeye_gauge") || 0;
+	var gauge;
+	if (this.exists("3rdeye_gauge")) {
+		gauge = this.get("3rdeye_gauge");
+	}
+	else {
+		gauge = CONSTANT.MAX_3RDEYE_GAUGE;
+	}
 
 	return gauge;
 };
 // 3rd eye ゲージの上昇
-SaveManager.prototype.increase3rdeyeGauge = function(num){
+SaveManager.prototype.gain3rdeyeGauge = function(num){
 	var gauge = this.get3rdeyeGauge();
 
 	gauge += num;
@@ -53,6 +59,21 @@ SaveManager.prototype.increase3rdeyeGauge = function(num){
 
 	this.set("3rdeye_gauge", gauge);
 };
+
+// 3rd eye ゲージの消費
+SaveManager.prototype.reduce3rdeyeGauge = function(num){
+	var gauge = this.get3rdeyeGauge();
+
+	gauge -= num;
+
+	if (gauge < 0) {
+		gauge = 0;
+	}
+
+	this.set("3rdeye_gauge", gauge);
+};
+
+
 
 // 現在のフィールドを取得
 SaveManager.prototype.getCurrentField = function() {
