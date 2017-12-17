@@ -1,6 +1,8 @@
 'use strict';
 
 // アイテム獲得
+// TODO: 持ち物がいっぱいだったら、このクラスで持ち物がいっぱいか判定して、
+// それ専用の表示をだす
 
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
