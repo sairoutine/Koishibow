@@ -23,7 +23,7 @@ SceneSubStageJournal.prototype.beforeDraw = function(){
 	if(this.frame_count > 120) {
 		this.root().changeSubScene("play");
 	}
-	else if(this.frame_count === 30) {
+	else if(this.frame_count === 60) {
 		// 目薬SE
 		this.core.audio_loader.playSound("use_eyedrops");
 	}
