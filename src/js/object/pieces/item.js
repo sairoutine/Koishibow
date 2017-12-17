@@ -11,7 +11,7 @@ var ObjectItem = function(core) {
 	this._height  = null;
 
 	this._item_id = null;
-
+	this.no = null;
 };
 Util.inherit(ObjectItem, base_object);
 
@@ -24,8 +24,12 @@ ObjectItem.prototype.init = function(){
 	this._height  = null;
 
 	this._item_id = null;
+	this.no = null;
 };
 ObjectItem.prototype.setData = function(data) {
+	// オブジェクトID
+	this.no = data.no;
+
 	// 画像
 	this._image = this.core.image_loader.getImage(data.image);
 
@@ -50,11 +54,13 @@ ObjectItem.prototype.setData = function(data) {
 // 移動後の処理
 ObjectItem.prototype.onAfterWalkToHere = function() {
 	// アイテム獲得 表示シーンへ遷移
-	this.scene.root().changeSubScene("got_item", this._item_id);
+	this.scene.root().changeSubScene("got_item", this);
 };
 
 ObjectItem.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+
+	if (!this.isShow()) return;
 
 	var ctx = this.core.ctx;
 	var image = this._image;
@@ -72,6 +78,35 @@ ObjectItem.prototype.draw = function(){
 		height
 	);
 	ctx.restore();
+};
+
+ObjectItem.prototype.getItemId = function(){
+	return this._item_id;
+};
+
+ObjectItem.prototype.deleteFromField = function() {
+	this.core.save_manager.setPieceData(
+		this.scene.root().getFieldData().key,
+		this.no,
+		"is_delete",
+		true
+	);
+};
+
+ObjectItem.prototype.isDeleted = function() {
+	return this.core.save_manager.getPieceData(
+		this.scene.root().getFieldData().key,
+		this.no,
+		"is_delete"
+	);
+};
+
+ObjectItem.prototype.isShow = function() {
+	return !this.isDeleted();
+};
+
+ObjectItem.prototype.isCollision = function() {
+	return !this.isDeleted();
 };
 
 
