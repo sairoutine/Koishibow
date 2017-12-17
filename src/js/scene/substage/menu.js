@@ -75,50 +75,42 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	// マウス座標取得
-	var x = this.core.input_manager.mousePositionX();
-	var y = this.core.input_manager.mousePositionY();
+	var mouse_point = this.core.input_manager.mousePositionPoint(this);
 
 	// アイテムメニューを閉じる
-	if(this.parent.root().item_menu_button.checkCollisionWithPosition(x, y)) {
+	if(this.parent.root().item_menu_button.checkCollisionWithObject(mouse_point)) {
 		return true;
 	}
-	else {
+	// アイテムとマウスの当たり判定
+	else if(mouse_point.checkCollisionWithObjects(this.menu_item_list)) {
+		return true;
+	}
+	// 使用ボタンとマウスの当たり判定
+	else if(this.use_button.checkCollisionWithObject(mouse_point)) {
+		// 使用ボタン押下時
 		if (this.core.input_manager.isLeftClickPush()) {
-			var is_selected = false;
-			// アイテム選択
-			for (var i = 0, len = this.menu_item_list.length; i < len; i++) {
-				var menu_item = this.menu_item_list[i];
-				if(menu_item.checkCollisionWithPosition(x, y)) {
-					// アイテム選択 音
-					this.core.audio_loader.playSound("select_item");
-
-					// 選択中を自分に
-					this.focus_item_id = menu_item.item_id();
-
-					is_selected = true;
-				}
-			}
-
-			// 使用ボタン
-			if(this.use_button.checkCollisionWithPosition(x, y)) {
-				this._useItem();
-			}
-
-			// どのアイテムも選択されない場所をクリックしたら、選択を外す
-			if (!is_selected) {
-				this.focus_item_id = null;
-			}
+			// アイテム使用
+			this._useItem();
 		}
+		// 使用ボタン マウスオーバー時
 		else {
-			// マウスカーソルが当たったら
-			if(this.use_button.checkCollisionWithPosition(x, y)) {
+			// アイテムを選択してないと使用できないので、onfocus 画像は反応させない
+			if (this.focus_item_id) {
 				this.use_button.setVariable("onfocus", true);
-			}
-			else {
-				this.use_button.setVariable("onfocus", false);
 			}
 		}
 	}
+	else {
+		// アイテム画像と別の場所をクリックしたら、アイテム選択解除
+		if (this.core.input_manager.isLeftClickPush()) {
+			this.focus_item_id = null;
+		}
+
+		// 使用ボタン マウスオーバー時 解除
+		this.use_button.setVariable("onfocus", false);
+	}
+
+	return false;
 };
 
 SceneSubStageMenu.prototype.draw = function(){
@@ -262,6 +254,10 @@ SceneSubStageMenu.prototype._useItem = function(){
 SceneSubStageMenu.prototype.isFocusItem = function(item_id){
 	return this.focus_item_id === item_id;
 };
+SceneSubStageMenu.prototype.setFocusItem = function(item_id){
+	this.focus_item_id = item_id;
+};
+
 
 SceneSubStageMenu.prototype._setupMenuItems = function() {
 	var item_list = this.core.save_manager.getItemList();
