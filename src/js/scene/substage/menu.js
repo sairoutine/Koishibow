@@ -156,14 +156,14 @@ SceneSubStageMenu.prototype._showWindow = function(){
 	);
 
 };
-
+/*
 SceneSubStageMenu.prototype._showButtons = function(){
 	var ctx = this.core.ctx;
 
 	var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
 	ctx.save();
 
-	/* combine */
+	// combine
 	ctx.drawImage(button_window,
 		160*2 + 16*1,
 		this.mainStage().height - 150,
@@ -181,7 +181,7 @@ SceneSubStageMenu.prototype._showButtons = function(){
 		this.mainStage().height - 150 + 40
 	);
 
-	/* examine */
+	// examine
 
 	// 四角形
 	ctx.drawImage(button_window,
@@ -201,13 +201,9 @@ SceneSubStageMenu.prototype._showButtons = function(){
 		this.mainStage().height - 150 + 40
 	);
 
-
-
 	ctx.restore();
-
-
-
 };
+*/
 
 SceneSubStageMenu.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
