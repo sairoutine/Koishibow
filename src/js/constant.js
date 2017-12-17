@@ -9,7 +9,13 @@ var CONSTANT = {
 	ANIME_IMAGE_TYPE:       2,
 	JOURNAL_TYPE:           3,
 	ANIME_EVENT_IMAGE_TYPE: 4, // chapter0 最後のカーペット
+	ITEM_TYPE:              5,
 
+	// アイテムの種類
+	ITEM: {
+		EYEDROP: 1,
+
+	},
 
 	// こいしの歩ける範囲の上 上限(px)
 	WALK_DEPTH_LIMIT: 300,

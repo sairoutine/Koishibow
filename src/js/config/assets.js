@@ -88,6 +88,8 @@ AssetsConfig.images = {
 
 	// フィールド上に落ちているジャーナル オブジェクト
 	paper:              "./image/chapterall-obj-02-01.png",
+	// フィールド上に落ちている目薬 オブジェクト
+	eyedrop:            "./image/chapterall-obj-01-01.png",
 
 	// 画面遷移用やじるし
 	arrow:  "./image/ui-common-btn-arrow-wht.png",

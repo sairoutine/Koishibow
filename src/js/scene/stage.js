@@ -27,6 +27,7 @@ var ObjectStaticImage = require('../object/pieces/static_image');
 var ObjectAnimeImage = require('../object/pieces/anime_image');
 var ObjectJournal = require('../object/pieces/journal');
 var ObjectAnimeEventImage = require('../object/pieces/anime_event_image');
+var ObjectItem = require('../object/pieces/item');
 
 var FieldMap = require('../config/field');
 
@@ -290,6 +291,10 @@ SceneStage.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.ANIME_EVENT_IMAGE_TYPE) { // イベント発生オブジェクト
 			object = new ObjectAnimeEventImage(this);
 		}
+		else if (data.type === CONSTANT.ITEM_TYPE) { // アイテム
+			object = new ObjectItem(this);
+		}
+
 		else {
 			throw new Error ("Unknown object type error: " + data.type);
 		}

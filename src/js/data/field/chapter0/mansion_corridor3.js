@@ -112,6 +112,16 @@ module.exports = {
 			action: null,
 			action_back_event: "event_for_trial_last", // 体験版最終
 		},
+		{
+			type: CONSTANT.ITEM_TYPE,
+			name: "目薬",
+			image: "eyedrop",
+			x: 590,
+			y: 290,
+			scale: 2/3,
+			item_id: CONSTANT.ITEM.EYEDROP
+		},
+
 	],
 };
 
