@@ -3,7 +3,7 @@ var CONSTANT = require('../constant');
 
 var Item = {};
 
-Item[CONSTANT.ITEM.EYEDROP] = {
+Item[CONSTANT.ITEM.EYEDROPS] = {
 	name: "目薬",
 	image_name: "item_01",
 	description: "使うと目の充血がやわらぐ",

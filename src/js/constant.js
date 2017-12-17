@@ -13,7 +13,7 @@ var CONSTANT = {
 
 	// アイテムの種類
 	ITEM: {
-		EYEDROP: "01",
+		EYEDROPS: "01",
 
 	},
 
@@ -23,7 +23,7 @@ var CONSTANT = {
 	// 3rd eye の最大値
 	MAX_3RDEYE_GAUGE: 3600,
 	// 目薬 1回での3rd eye の回復値
-	EYEDROP_RECOVER_3RDEYE_GAUGE: 3600,
+	EYEDROPS_RECOVER_3RDEYE_GAUGE: 3600,
 	// 3rd eye の自然消耗値(1フレームごと)
 	ABRASION_3RDEYE_GAUGE: 1,
 

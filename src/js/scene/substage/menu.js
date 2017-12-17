@@ -8,7 +8,7 @@ var CONSTANT = require('../../constant');
 var ItemConfig = require('../../config/item');
 
 
-var ObjectMenuItemEyeDrop = require('../../object/menu_item/eyedrops');
+var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
 
 var SceneSubStageMenu = function(core) {
 	base_scene.apply(this, arguments);
@@ -30,8 +30,8 @@ SceneSubStageMenu.prototype.init = function(){
 		var item_id = item_list[i];
 
 		var menu_item;
-		if (item_id === CONSTANT.ITEM.EYEDROP) { // 目薬
-			menu_item = new ObjectMenuItemEyeDrop(this);
+		if (item_id === CONSTANT.ITEM.EYEDROPS) { // 目薬
+			menu_item = new ObjectMenuItemEyeDrops(this);
 		}
 		else {
 			throw new Error ("Unknown item_id error: " + item_id);
