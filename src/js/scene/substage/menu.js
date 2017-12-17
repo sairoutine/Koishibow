@@ -21,7 +21,7 @@ SceneSubStageMenu.prototype.init = function(){
 	this.use_button = new UIParts(
 		self,
 		self.root().width - 200 + 250/3,
-		self.root().height - 150 + 105/3,
+		self.root().height - 180 + 105/3,
 		250*2/3,
 		105*2/3,
 		function() {
@@ -178,8 +178,8 @@ SceneSubStageMenu.prototype._showMessageWindow = function(){
 	var message_window = this.core.image_loader.getImage('ui-common-bg-toolpu-blk');
 
 	ctx.drawImage(message_window,
-		150,
-		this.root().height - 80,
+		130,
+		this.root().height - 100,
 		message_window.width*2/3,
 		message_window.height*2/3
 	);
