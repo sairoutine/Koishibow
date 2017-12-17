@@ -36,6 +36,7 @@ var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
 	// ステージ上のオブジェクト一覧
+	// TODO: 管理がしんどくなってきたら、piece_manager を用意する
 	this.pieces = [];
 
 	// 自機

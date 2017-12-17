@@ -28,6 +28,7 @@ ObjectItem.prototype.init = function(){
 };
 ObjectItem.prototype.setData = function(data) {
 	// オブジェクトID
+	// TODO: 他の piece もオブジェクトIDを使うよ
 	this.no = data.no;
 
 	// 画像
