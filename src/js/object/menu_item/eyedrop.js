@@ -73,6 +73,8 @@ ObjectMenuItemEyeDrops.prototype.collisionHeight = function(){
 ObjectMenuItemEyeDrops.prototype.use = function(){
 	this.core.save_manager.gain3rdeyeGauge(CONSTANT.EYEDROP_RECOVER_3RDEYE_GAUGE);
 
+	this.core.save_manager.deleteItem(this.item_id());
+
 	this.scene.root().changeSubScene("picture_use_eyedrops");
 };
 
