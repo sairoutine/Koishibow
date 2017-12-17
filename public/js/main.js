@@ -23359,6 +23359,7 @@ module.exports=[
 },{}],91:[function(require,module,exports){
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_hospital_corridor1",
 	chapter: 0,
@@ -23372,6 +23373,7 @@ module.exports = {
 	walk_sound: "walking_bare_default",
 	objects: [
 		{
+			no: ++I,
 			image: "chapter0-hospital_corridor1-obj-01-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ストレッチャー",
@@ -23388,6 +23390,7 @@ module.exports = {
 			target_y: 616,
 		},
 		{
+			no: ++I,
 			image: "chapter0-hospital_corridor1-obj-02-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
@@ -23399,6 +23402,7 @@ module.exports = {
 			scale: 0.7
 		},
 		{
+			no: ++I,
 			image: "chapter0-hospital_corridor1-obj-03-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "救急箱",
@@ -23414,6 +23418,7 @@ module.exports = {
 			target_y: 465
 		},
 		{
+			no: ++I,
 			image: "chapter0-hospital_corridor1-obj-04-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "メス",
@@ -23426,7 +23431,9 @@ module.exports = {
 			action: "look_front",
 			position_type: "front",
 		},
-		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 643, y:425, scale: 2/3, picture: "journal002"},
+		{
+			no: ++I,
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 643, y:425, scale: 2/3, picture: "journal002"},
 	],
 };
 
@@ -23435,6 +23442,7 @@ module.exports = {
 },{"../../../constant":4}],92:[function(require,module,exports){
 // 病院の廊下2(こころ)
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_hospital_corridor2",
 	chapter: 0,
@@ -23448,6 +23456,7 @@ module.exports = {
 	walk_sound: "walking_bare_default",
 	objects: [
 		{
+			no: ++I,
 			image: "chapter0-hospital2-obj-02-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "くつした",
@@ -23461,6 +23470,7 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "車イス",
 			serif: [
@@ -23477,7 +23487,9 @@ module.exports = {
 			width: 258,
 			height: 280
 		},
-		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 627, y: 689, scale: 2/3, picture: "journal003"},
+		{
+			no: ++I,
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 627, y: 689, scale: 2/3, picture: "journal003"},
 	],
 
 };
@@ -23486,6 +23498,7 @@ module.exports = {
 },{"../../../constant":4}],93:[function(require,module,exports){
 // 屋敷の廊下1
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_mansion_corridor1",
 	chapter: 0,
@@ -23500,6 +23513,7 @@ module.exports = {
 	walk_sound: "walking_bare_wood",
 	objects: [
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ランプ",
 			serif: [
@@ -23519,6 +23533,7 @@ module.exports = {
 			sound_back: "chapter0-mansion_corridor1-lamp_back"
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "三輪車",
 			serif: [
@@ -23541,6 +23556,7 @@ module.exports = {
 			position_type: "front",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "カーテン",
 			serif: [
@@ -23562,7 +23578,9 @@ module.exports = {
 		},
 
 
-		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 600, y: 530, scale: 2/3, picture: "journal004"},
+		{
+			no: ++I,
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 600, y: 530, scale: 2/3, picture: "journal004"},
 	],
 
 };
@@ -23570,6 +23588,7 @@ module.exports = {
 },{"../../../constant":4}],94:[function(require,module,exports){
 // 屋敷の廊下2(ドアがある) 最初のフラッシュバックが入る
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_mansion_corridor2",
 	chapter: 0,
@@ -23583,6 +23602,7 @@ module.exports = {
 	walk_sound: "walking_bare_wood",
 	objects: [
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ほこりの積もった観葉植物",
 			serif: [
@@ -23605,6 +23625,7 @@ module.exports = {
 
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "壁かけの斧",
 			serif: [
@@ -23624,6 +23645,7 @@ module.exports = {
 			action: "look_top"
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ドア",
 			serif: [
@@ -23641,7 +23663,9 @@ module.exports = {
 			sound:      "chapter0-mansion_corridor2-open_door",
 		},
 
-		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 177, y: 400, scale: 2/3, picture: "journal005"},
+		{
+			no: ++I,
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 177, y: 400, scale: 2/3, picture: "journal005"},
 	],
 
 
@@ -23651,6 +23675,7 @@ module.exports = {
 },{"../../../constant":4}],95:[function(require,module,exports){
 // 屋敷の廊下3(家具) 行き止まり (サードアイを使用すると、家具が豹変／床に扉が出現)
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_mansion_corridor3",
 	chapter: 0,
@@ -23665,6 +23690,7 @@ module.exports = {
 	walk_sound: "walking_bare_wood",
 	objects: [
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "花瓶",
 			serif: [
@@ -23686,6 +23712,7 @@ module.exports = {
 			sound: "touch",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "みずさし",
 			serif: [
@@ -23707,6 +23734,7 @@ module.exports = {
 			sound_back: "chapter0-mansion_corridor3-sound_vase_back",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "窓",
 			serif: [
@@ -23727,6 +23755,7 @@ module.exports = {
 			sound_back: "chapter0-mansion_corridor3-smile_kokoro_back",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "振子時計",
 			serif: [
@@ -23748,6 +23777,7 @@ module.exports = {
 			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_EVENT_IMAGE_TYPE,
 			name: "カーペット",
 			serif: null,
@@ -23764,6 +23794,7 @@ module.exports = {
 			action_back_event: "event_for_trial_last", // 体験版最終
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ITEM_TYPE,
 			name: "目薬",
 			image: "eyedrop",
@@ -23780,6 +23811,7 @@ module.exports = {
 },{"../../../constant":4}],96:[function(require,module,exports){
 // こいしの自室(ベッド／帽子／ドア) 帽子はベッドのふちにかけてある
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter0_myroom",
 	chapter: 0,
@@ -23793,6 +23825,7 @@ module.exports = {
 	walk_sound: "walking_bare_default",
 	objects: [
 		{
+			no: ++I,
 			image: "chapter0-myroom-obj-01-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ベッド",
@@ -23805,6 +23838,7 @@ module.exports = {
 			sound: "touch"
 		},
 		{
+			no: ++I,
 			image: "chapter0-myroom-obj-05-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
@@ -23818,6 +23852,7 @@ module.exports = {
 			target_x: 167, target_y: 531
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "本",
 			serif: [
@@ -23835,6 +23870,7 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "クレヨン",
 			serif: [
@@ -23852,6 +23888,7 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "まど",
 			serif: [
@@ -23867,7 +23904,9 @@ module.exports = {
 			target_x: 177, target_y: 531
 		},
 
-		{image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 258, y: 689, scale: 2/3, picture: "journal001"},
+		{
+			no: ++I,
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 258, y: 689, scale: 2/3, picture: "journal001"},
 	],
 };
 
@@ -36744,7 +36783,7 @@ var ObjectItem = function(core) {
 	this._height  = null;
 
 	this._item_id = null;
-
+	this.no = null;
 };
 Util.inherit(ObjectItem, base_object);
 
@@ -36757,8 +36796,13 @@ ObjectItem.prototype.init = function(){
 	this._height  = null;
 
 	this._item_id = null;
+	this.no = null;
 };
 ObjectItem.prototype.setData = function(data) {
+	// オブジェクトID
+	// TODO: 他の piece もオブジェクトIDを使うよ
+	this.no = data.no;
+
 	// 画像
 	this._image = this.core.image_loader.getImage(data.image);
 
@@ -36783,11 +36827,13 @@ ObjectItem.prototype.setData = function(data) {
 // 移動後の処理
 ObjectItem.prototype.onAfterWalkToHere = function() {
 	// アイテム獲得 表示シーンへ遷移
-	this.scene.root().changeSubScene("got_item", this._item_id);
+	this.scene.root().changeSubScene("got_item", this);
 };
 
 ObjectItem.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+
+	if (!this.isShow()) return;
 
 	var ctx = this.core.ctx;
 	var image = this._image;
@@ -36805,6 +36851,35 @@ ObjectItem.prototype.draw = function(){
 		height
 	);
 	ctx.restore();
+};
+
+ObjectItem.prototype.getItemId = function(){
+	return this._item_id;
+};
+
+ObjectItem.prototype.deleteFromField = function() {
+	this.core.save_manager.setPieceData(
+		this.scene.root().getFieldData().key,
+		this.no,
+		"is_delete",
+		true
+	);
+};
+
+ObjectItem.prototype.isDeleted = function() {
+	return this.core.save_manager.getPieceData(
+		this.scene.root().getFieldData().key,
+		this.no,
+		"is_delete"
+	);
+};
+
+ObjectItem.prototype.isShow = function() {
+	return !this.isDeleted();
+};
+
+ObjectItem.prototype.isCollision = function() {
+	return !this.isDeleted();
 };
 
 
@@ -37574,6 +37649,37 @@ SaveManager.prototype.addItem = function(item_id){
 	return list.length - 1;
 };
 
+SaveManager.prototype.getPieceDataMap = function() {
+	var map = this.get("piece_data_map");
+
+	if(!map) map = {};
+
+	return map;
+};
+
+SaveManager.prototype.getPieceData = function(field_name, piece_no, key) {
+	var map = this.getPieceDataMap();
+
+	var data = map[field_name + "_" + piece_no];
+
+	if(!data) data = {};
+
+	return data[key];
+};
+
+SaveManager.prototype.setPieceData = function(field_name, piece_no, key, value) {
+	var map = this.getPieceDataMap();
+
+	var data = map[field_name + "_" + piece_no];
+
+	if(!data) data = {};
+
+	data[key] = value;
+	map[field_name + "_" + piece_no] = data;
+
+	this.set("piece_data_map", map);
+};
+
 // 3rd eye ゲージの取得
 SaveManager.prototype.get3rdeyeGauge = function(){
 	var gauge;
@@ -38161,6 +38267,7 @@ var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
 	// ステージ上のオブジェクト一覧
+	// TODO: 管理がしんどくなってきたら、piece_manager を用意する
 	this.pieces = [];
 
 	// 自機
@@ -38521,23 +38628,28 @@ var WAIT_COUNT_TO_NEXT_SCENE = 60 + WAIT_COUNT_TO_ANIMATION;
 var SceneSubStageGotItem = function(core) {
 	base_scene.apply(this, arguments);
 
-	// 獲得したアイテムID
-	this._item_id = null;
+	// 獲得したアイテム オブジェクト
+	this._piece = null;
 };
 Util.inherit(SceneSubStageGotItem, base_scene);
 
-SceneSubStageGotItem.prototype.init = function(item_id){
+SceneSubStageGotItem.prototype.init = function(item_piece){
 	base_scene.prototype.init.apply(this, arguments);
 
-	// 獲得したアイテムID
-	this._item_id = item_id;
+	// 獲得したアイテム オブジェクト
+	this._piece = item_piece;
 };
 
 SceneSubStageGotItem.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if (this.frame_count > WAIT_COUNT_TO_NEXT_SCENE) {
+
+		// 通常のサブシーンへ戻る
 		this.root().changeSubScene("play");
+
+		// フィールドから該当のオブジェクトを削除
+		this._piece.deleteFromField();
 	}
 };
 
@@ -38573,7 +38685,7 @@ SceneSubStageGotItem.prototype._showItem = function() {
 
 	ctx.save();
 
-	var picture = this.core.image_loader.getImage("item_" + this._item_id);
+	var picture = this.core.image_loader.getImage("item_" + this._piece.getItemId());
 
 	var width = picture.width * 2/3;
 	var height = picture.height * 2/3;
