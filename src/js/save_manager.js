@@ -35,6 +35,37 @@ SaveManager.prototype.addItem = function(item_id){
 	return list.length - 1;
 };
 
+SaveManager.prototype.getPieceDataMap = function() {
+	var map = this.get("piece_data_map");
+
+	if(!map) map = {};
+
+	return map;
+};
+
+SaveManager.prototype.getPieceData = function(field_name, piece_no, key) {
+	var map = this.getPieceDataMap();
+
+	var data = map[field_name + "_" + piece_no];
+
+	if(!data) data = {};
+
+	return data[key];
+};
+
+SaveManager.prototype.setPieceData = function(field_name, piece_no, key, value) {
+	var map = this.getPieceDataMap();
+
+	var data = map[field_name + "_" + piece_no];
+
+	if(!data) data = {};
+
+	data[key] = value;
+	map[field_name + "_" + piece_no] = data;
+
+	this.set("piece_data_map", map);
+};
+
 // 3rd eye ゲージの取得
 SaveManager.prototype.get3rdeyeGauge = function(){
 	var gauge;
