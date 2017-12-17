@@ -23,23 +23,7 @@ SceneSubStageMenu.prototype.init = function(){
 	// 現在カーソルを合わせているアイテム
 	this.focus_item_id = null;
 
-	// TODO: _setupMenuItem にまとめる
-	this.menu_item_list = [];
-	var item_list = this.core.save_manager.getItemList();
-	for (var i = 0, len = item_list; i < len; i++) {
-		var item_id = item_list[i];
-
-		var menu_item;
-		if (item_id === CONSTANT.ITEM.EYEDROPS) { // 目薬
-			menu_item = new ObjectMenuItemEyeDrops(this);
-		}
-		else {
-			throw new Error ("Unknown item_id error: " + item_id);
-		}
-		menu_item.init();
-		menu_item.setPosition(180 + (i%5)*160, 180 + 160*(Math.floor(i/5)));
-		this.menu_item_list.push(menu_item);
-	}
+	this._setupMenuItems();
 	this.addObjects(this.menu_item_list);
 
 	// 使用ボタン
@@ -282,5 +266,33 @@ SceneSubStageMenu.prototype._useItem = function(){
 SceneSubStageMenu.prototype.isFocusItem = function(item_id){
 	return this.focus_item_id === item_id;
 };
+
+SceneSubStageMenu.prototype._setupMenuItems = function() {
+	var item_list = this.core.save_manager.getItemList();
+
+	this.menu_item_list = [];
+	for (var i = 0, len = item_list.length; i < len; i++) {
+		var item_id = item_list[i];
+
+		var menu_item;
+		if (item_id === CONSTANT.ITEM.EYEDROPS) { // 目薬
+			menu_item = new ObjectMenuItemEyeDrops(this);
+		}
+		else {
+			throw new Error ("Unknown item_id error: " + item_id);
+		}
+		menu_item.init();
+		menu_item.setPosition(
+			180 + (i%5)*160,
+			180 + 160*(Math.floor(i/5))
+		);
+		this.menu_item_list.push(menu_item);
+	}
+};
+
+
+
+
+
 
 module.exports = SceneSubStageMenu;
