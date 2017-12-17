@@ -16,23 +16,28 @@ var WAIT_COUNT_TO_NEXT_SCENE = 60 + WAIT_COUNT_TO_ANIMATION;
 var SceneSubStageGotItem = function(core) {
 	base_scene.apply(this, arguments);
 
-	// 獲得したアイテムID
-	this._item_id = null;
+	// 獲得したアイテム オブジェクト
+	this._piece = null;
 };
 Util.inherit(SceneSubStageGotItem, base_scene);
 
-SceneSubStageGotItem.prototype.init = function(item_id){
+SceneSubStageGotItem.prototype.init = function(item_piece){
 	base_scene.prototype.init.apply(this, arguments);
 
-	// 獲得したアイテムID
-	this._item_id = item_id;
+	// 獲得したアイテム オブジェクト
+	this._piece = item_piece;
 };
 
 SceneSubStageGotItem.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if (this.frame_count > WAIT_COUNT_TO_NEXT_SCENE) {
+
+		// 通常のサブシーンへ戻る
 		this.root().changeSubScene("play");
+
+		// フィールドから該当のオブジェクトを削除
+		this._piece.deleteFromField();
 	}
 };
 
@@ -68,7 +73,7 @@ SceneSubStageGotItem.prototype._showItem = function() {
 
 	ctx.save();
 
-	var picture = this.core.image_loader.getImage("item_" + this._item_id);
+	var picture = this.core.image_loader.getImage("item_" + this._piece.getItemId());
 
 	var width = picture.width * 2/3;
 	var height = picture.height * 2/3;
