@@ -21,7 +21,7 @@ SceneSubStageJournal.prototype.beforeDraw = function(){
 
 	// プレイに戻る
 	if(this.frame_count > 120) {
-		this.core.playSound("use_eyedrops");
+		this.core.audio_loader.playSound("use_eyedrops");
 		this.root().changeSubScene("play");
 	}
 };
@@ -41,10 +41,10 @@ SceneSubStageJournal.prototype.draw = function(){
 	var width = picture.width * 2/3 * scale;
 	var height = picture.height * 2/3 * scale;
 
-	ctx.translate(this.root().width/2, this.root().height/2);
+	ctx.translate(43, 731);
 	ctx.drawImage(picture,
-		-width/2,
-		-height/2,
+		0,
+		-height,
 		width,
 		height
 	);
