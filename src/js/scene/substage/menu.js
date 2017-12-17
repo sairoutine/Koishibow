@@ -8,7 +8,7 @@ var CONSTANT = require('../../constant');
 var ItemConfig = require('../../config/item');
 
 
-var ObjectMenuItemEyeDrop = require('../../object/menu_item/eyedrop');
+var ObjectMenuItemEyeDrop = require('../../object/menu_item/eyedrops');
 
 var SceneSubStageMenu = function(core) {
 	base_scene.apply(this, arguments);
