@@ -124,10 +124,13 @@ AssetsConfig.images = {
 	"ui-titlepg-btn-opt-on":   "./image/title/ui-titlepg-btn-opt-on.png",
 	"ui-titlepg-img-logo-1":   "./image/title/ui-titlepg-img-logo-1.png",
 
+	// 1枚絵
+	"picture_use_eyedrops":   "./image/picture/illust_02.png",
+
 	// 不要
-	paper_clip:  "./image/ui-common-frame-paper_clip.png",
+	//paper_clip:  "./image/ui-common-frame-paper_clip.png",
 	//paper_close_button: "./image/ui-common-btn-close.png",
-	paper_open:         "./image/ui-common-frame-paper.png",
+	//paper_open:         "./image/ui-common-frame-paper.png",
 };
 
 AssetsConfig.sounds = {
