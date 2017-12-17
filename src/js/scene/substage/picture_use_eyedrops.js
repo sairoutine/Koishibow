@@ -14,26 +14,18 @@ Util.inherit(SceneSubStageJournal, base_scene);
 
 SceneSubStageJournal.prototype.init = function(picture_name){
 	base_scene.prototype.init.apply(this, arguments);
-
-	this._pos_x = -this.root().width;
 };
 
 SceneSubStageJournal.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	if(this.frame_count < 30) {
-		this._pos_x += this.root().width/30;
-	}
-	else if(this.frame_count < 90) {
-		// 何もしない
-	}
-	else if(this.frame_count < 120) {
-		this._pos_x += this.root().width/30;
-	}
 	// プレイに戻る
-	else if(this.frame_count > 120) {
-		this.core.audio_loader.playSound("use_eyedrops");
+	if(this.frame_count > 120) {
 		this.root().changeSubScene("play");
+	}
+	else if(this.frame_count === 30) {
+		// 目薬SE
+		this.core.audio_loader.playSound("use_eyedrops");
 	}
 };
 
@@ -43,12 +35,15 @@ SceneSubStageJournal.prototype.draw = function(){
 
 	ctx.save();
 
+	var scale = this.frame_count/30;
+	if (scale > 1) scale = 1;
+
 	var picture = this.core.image_loader.getImage("picture_use_eyedrops");
 
-	var width = picture.width * 2/3;
-	var height = picture.height * 2/3;
+	var width = picture.width * 2/3 * scale;
+	var height = picture.height * 2/3 * scale;
 
-	ctx.translate(this.root().width/2 + this._pos_x, this.root().height/2);
+	ctx.translate(this.root().width/2, this.root().height/2);
 	ctx.drawImage(picture,
 		-width/2,
 		-height/2,
