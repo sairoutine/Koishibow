@@ -123,6 +123,12 @@ AssetsConfig.images = {
 	"ui-titlepg-btn-opt-on":   "./image/title/ui-titlepg-btn-opt-on.png",
 	"ui-titlepg-img-logo-1":   "./image/title/ui-titlepg-img-logo-1.png",
 
+	// タイトル画面アニメ
+	"mask":  "./image/title/mask.png",
+	"noize":  "./image/title/noize.jpg",
+	"stain":  "./image/title/stain.png",
+	"title":  "./image/title/title.jpg",
+
 	// 1枚絵
 	"picture_use_eyedrops":   "./image/picture/illust_02.png",
 
