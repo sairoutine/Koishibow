@@ -2,8 +2,11 @@
 
 var base_scene = require('../hakurei').scene.base;
 var util = require('../hakurei').util;
-var H_CONSTANT = require('../hakurei').constant;
 var CONSTANT = require('../constant');
+var SS = require('../object/anime_object');
+var StartAnimeJson = require('../data/anime/title/title01_anime_1');
+var IngAnimeJson = require('../data/anime/title/title02_anime_1');
+var EndAnimeJson = require('../data/anime/title/title03_anime_1');
 
 var UIParts = require('../hakurei').object.ui_parts;
 
@@ -33,10 +36,15 @@ var MENU = [
 var SceneTitle = function(core) {
 	base_scene.apply(this, arguments);
 
-	var self = this;
+	// UI
+	this.menu_ui = this._generateMenuUI();
+	this.addObjects(this.menu_ui);
 
-	self.menu_ui = this._generateMenuUI();
-	self.addObjects(self.menu_ui);
+	// 背景アニメ
+	this.ss = new SS(this);
+	this.ss.x(this.width/2);
+	this.ss.y(this.height/2);
+
 };
 util.inherit(SceneTitle, base_scene);
 
@@ -45,12 +53,21 @@ SceneTitle.prototype.init = function(){
 
 	this.core.audio_loader.stopBGM();
 
-	// フェードインする
-	this.setFadeIn(100, "black");
-	// フェードアウトする
-	this.setFadeOut(30, "black");
 	// 指定フレーム数からBGM再生
 	this.setWaitToStartBGM("title", 60);
+
+	// 背景アニメ
+	this.ss.setAnime({
+		default: StartAnimeJson,
+		ing: IngAnimeJson,
+		end: EndAnimeJson,
+	});
+	this.ss.init();
+	var ss = this.ss;
+	this.ss.playAnimationOnce("default", function () {
+		ss.playAnimationInfinity("ing");
+	});
+	this.is_click_start_count = null;
 };
 
 // メニューUI一覧
@@ -75,6 +92,7 @@ SceneTitle.prototype._generateMenuUI = function(){
 				else {
 					logo = this.core.image_loader.getImage(menu[0] + "-off");
 				}
+				ctx.globalAlpha = this.scene.getAlpha();
 				ctx.drawImage(logo, this.getCollisionLeftX(), this.getCollisionUpY(), logo.width*2/3, logo.height*2/3);
 				ctx.restore();
 			}));
@@ -87,6 +105,8 @@ SceneTitle.prototype._generateMenuUI = function(){
 SceneTitle.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
+	this.ss.beforeDraw();
+
 	// マウスの位置を取得
 	var x = this.core.input_manager.mousePositionX();
 	var y = this.core.input_manager.mousePositionY();
@@ -98,7 +118,14 @@ SceneTitle.prototype.beforeDraw = function(){
 			// クリックしたら
 			if(this.core.input_manager.isLeftClickPush()) {
 				this.core.audio_loader.playSound("select_title");
-				MENU[i][2](this.core);
+
+				var core = this.core;
+				var func = MENU[i][2];
+				this.ss.playAnimationOnce("end", function () {
+					func(core);
+				});
+
+				this.is_click_start_count = this.frame_count;
 			}
 			// マウスカーソルを乗せたら
 			else {
@@ -123,19 +150,11 @@ SceneTitle.prototype.draw = function(){
 	ctx.save();
 
 	// 背景画像表示
-	var title_bg = this.core.image_loader.getImage("ui-titlepg-bg-1");
-	ctx.drawImage(title_bg,
-					0,
-					0,
-					title_bg.width,
-					title_bg.height,
-					0,
-					0,
-					this.core.width,
-					this.core.height);
+	this.ss.draw();
 
 	// ロゴ画像表示
 	var logo = this.core.image_loader.getImage("ui-titlepg-img-logo-1");
+	ctx.globalAlpha = this.getAlpha();
 	ctx.drawImage(logo,
 	(this.width - logo.width*2/3)/2,
 	455,
@@ -146,5 +165,17 @@ SceneTitle.prototype.draw = function(){
 	// UI パーツ表示
 	base_scene.prototype.draw.apply(this, arguments);
 };
+SceneTitle.prototype.getAlpha = function(){
 
+	if(this.is_click_start_count) {
+		var count = (60 - (this.frame_count - this.is_click_start_count));
+		if (count < 0) count = 0;
+
+		return count/60;
+	}
+	else {
+		if(this.frame_count > 60) return 1.0;
+		return this.frame_count/60;
+	}
+};
 module.exports = SceneTitle;
