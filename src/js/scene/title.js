@@ -36,15 +36,17 @@ var MENU = [
 var SceneTitle = function(core) {
 	base_scene.apply(this, arguments);
 
-	// UI
-	this.menu_ui = this._generateMenuUI();
-	this.addObjects(this.menu_ui);
-
 	// 背景アニメ
 	this.ss = new SS(this);
 	this.ss.x(this.width/2);
 	this.ss.y(this.height/2);
 
+	// UI
+	this.menu_ui = this._generateMenuUI();
+	this.addObjects(this.menu_ui);
+
+	// メニューボタンがクリックされたときのフレーム数
+	this._menu_clicked_frame_count = null;
 };
 util.inherit(SceneTitle, base_scene);
 
@@ -57,17 +59,20 @@ SceneTitle.prototype.init = function(){
 	this.setWaitToStartBGM("title", 60);
 
 	// 背景アニメ
-	this.ss.setAnime({
+	var ss = this.ss;
+	ss.setAnime({
 		default: StartAnimeJson,
 		ing: IngAnimeJson,
 		end: EndAnimeJson,
 	});
-	this.ss.init();
-	var ss = this.ss;
-	this.ss.playAnimationOnce("default", function () {
+	ss.init();
+	// フェードインアニメ再生
+	ss.playAnimationOnce("default", function () {
 		ss.playAnimationInfinity("ing");
 	});
-	this.is_click_start_count = null;
+
+	// メニューボタンがクリックされたときのフレーム数
+	this._menu_clicked_frame_count = null;
 };
 
 // メニューUI一覧
@@ -117,15 +122,19 @@ SceneTitle.prototype.beforeDraw = function(){
 		if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](this.core)) {
 			// クリックしたら
 			if(this.core.input_manager.isLeftClickPush()) {
+
+				// SE 再生
 				this.core.audio_loader.playSound("select_title");
 
 				var core = this.core;
 				var func = MENU[i][2];
+				// フェードアウト
 				this.ss.playAnimationOnce("end", function () {
 					func(core);
 				});
 
-				this.is_click_start_count = this.frame_count;
+				// メニューボタンがクリックされたときのフレーム数
+				this._menu_clicked_frame_count = this.frame_count;
 			}
 			// マウスカーソルを乗せたら
 			else {
@@ -167,14 +176,16 @@ SceneTitle.prototype.draw = function(){
 };
 SceneTitle.prototype.getAlpha = function(){
 
-	if(this.is_click_start_count) {
-		var count = (60 - (this.frame_count - this.is_click_start_count));
+	// フェードアウト時
+	if(this._menu_clicked_frame_count) {
+		var count = (60 - (this.frame_count - this._menu_clicked_frame_count));
 		if (count < 0) count = 0;
 
 		return count/60;
 	}
+	// フェードイン時
 	else {
-		if(this.frame_count > 60) return 1.0;
+		if(this.frame_count > 60) return 1.0; // フェードイン終了したらずっと 1.0
 		return this.frame_count/60;
 	}
 };
