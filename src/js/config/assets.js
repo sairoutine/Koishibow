@@ -115,7 +115,6 @@ AssetsConfig.images = {
 	"ui-common-frame-toolpu":    "./image/menu/ui-common-frame-toolpu.png",
 
 	// タイトル画面
-	"ui-titlepg-bg-1":         "./image/title/ui-titlepg-bg-1.jpg",
 	"ui-titlepg-btn-con-off":  "./image/title/ui-titlepg-btn-con-off.png",
 	"ui-titlepg-btn-con-on":   "./image/title/ui-titlepg-btn-con-on.png",
 	"ui-titlepg-btn-ng-off":   "./image/title/ui-titlepg-btn-ng-off.png",
