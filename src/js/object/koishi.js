@@ -275,6 +275,9 @@ Koishi.prototype.get3rdeyeGauge = function() {
 	return this.core.save_manager.get3rdeyeGauge();
 };
 
+Koishi.prototype.darker = function() {
+	return this.core.debug_manager.get("koishi_alpha");
+};
 
 
 

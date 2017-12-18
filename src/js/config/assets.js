@@ -115,7 +115,6 @@ AssetsConfig.images = {
 	"ui-common-frame-toolpu":    "./image/menu/ui-common-frame-toolpu.png",
 
 	// タイトル画面
-	"ui-titlepg-bg-1":         "./image/title/ui-titlepg-bg-1.jpg",
 	"ui-titlepg-btn-con-off":  "./image/title/ui-titlepg-btn-con-off.png",
 	"ui-titlepg-btn-con-on":   "./image/title/ui-titlepg-btn-con-on.png",
 	"ui-titlepg-btn-ng-off":   "./image/title/ui-titlepg-btn-ng-off.png",
@@ -123,6 +122,12 @@ AssetsConfig.images = {
 	"ui-titlepg-btn-opt-off":  "./image/title/ui-titlepg-btn-opt-off.png",
 	"ui-titlepg-btn-opt-on":   "./image/title/ui-titlepg-btn-opt-on.png",
 	"ui-titlepg-img-logo-1":   "./image/title/ui-titlepg-img-logo-1.png",
+
+	// タイトル画面アニメ
+	"mask":  "./image/title/mask.png",
+	"noize":  "./image/title/noize.jpg",
+	"stain":  "./image/title/stain.png",
+	"title":  "./image/title/title.jpg",
 
 	// 1枚絵
 	"picture_use_eyedrops":   "./image/picture/illust_02.png",

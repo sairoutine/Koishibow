@@ -69,6 +69,9 @@ Game.prototype.setupDebug = function (dom) {
 		game.stopRun();
 	});
 
+	// キャプチャボタン
+	this.debug_manager.addCaputureImageButton("画面キャプチャ");
+
 	// フルスクリーン ボタン
 	this.debug_manager.addMenuButton("最大化", function (game) {
 		game.fullscreen();
