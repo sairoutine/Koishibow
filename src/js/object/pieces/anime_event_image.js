@@ -19,40 +19,19 @@ ObjectAnimeEventImage.prototype.init = function(){
 ObjectAnimeEventImage.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
 
-	this._back.click_event   = data.action_back_event;
+	this._back.click_event = data.action_back_event;
 };
-/*
-ObjectAnimeEventImage.prototype.onCollision = function(obj){
-	base_object.prototype.onCollision.apply(this, arguments);
 
-	// サードアイ使用中かつ
-	// 移動中でなければ、対象のオブジェクトに近寄ってアクション
-	if(this.scene.mainStage().isUsingEye() && this.core.input_manager.isLeftClickPush()) {
-		if (!this.scene.mainStage().koishi().isMoving()) {
-			this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalkOnEvent, this));
-		}
-	}
-	else {
-	}
 
-	if(!this.scene.mainStage().isUsingEye()) {
-		// 3rdeye 使用中なら基底メソッドで touch カーソルにされるので、戻す
-		// 通常時はクリックしても何も起こらないので default カーソルのままでないといけないので
-		this.core.changeDefaultCursor();
-	}
-	else {
-		this.core.changeTouchCursor();
-	}
+// 3rd eye 使用時のみ当たり判定を行う
+ObjectAnimeEventImage.prototype.isCollision = function(point) {
+	return this.scene.root().isUsingEye();
 };
-ObjectAnimeEventImage.prototype.onCollisionAfterKoishiWalkOnEvent = function(){
-	var self = this;
 
-	// フェードアウト
-	this.scene.mainStage().setFadeOut(30, "black");
-
+// こいし移動後の処理
+ObjectAnimeEventImage.prototype.onAfterWalkToHere = function() {
 	// イベント発生
-	this.core.changeScene(this._action_back_event);
+	this.core.changeScene(this._back.click_event);
 };
-*/
+
 module.exports = ObjectAnimeEventImage;

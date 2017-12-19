@@ -116,7 +116,7 @@ module.exports = {
 			anime5: "chapter0-mansion_corridor3-obj-11-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-11-01-obj06",
 			action_name: null,
-			action_back_event: "event_for_trial_last", // 体験版最終
+			action_back_event: "event_for_chapter0_last", // こいし飛び降り
 		},
 		{
 			no: ++I,
