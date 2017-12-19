@@ -56,6 +56,11 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	}
 	else if(this.core.input_manager.isLeftClickPush()) { // セリフ送り待機中はクリックできない
 		if(this._serif.isEnd()) {
+
+			// オブジェクトに触れた際の会話だった場合、
+			// 触れた際のモーションにこいしがなっているため
+			this.root().koishi.setWaitAnime();
+
 			// セリフ終わり
 			this.root().changeSubScene("play");
 		}
