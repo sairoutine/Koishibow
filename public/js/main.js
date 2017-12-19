@@ -25469,6 +25469,8 @@ Game.prototype.setupDebug = function (dom) {
 	// テキスト追加
 	this.debug_manager.addMenuText("マウスクリックで移動／調べる");
 
+	this.debug_manager.addMenuImage("https://api.travis-ci.org/sairoutine/Koishibow.svg?branch=gh-pages");
+
 	this.debug_manager.addGitLatestCommitInfo("sairoutine", "Koishibow", "gh-pages");
 
 	// ゲームスタート ボタン
@@ -25555,10 +25557,6 @@ Game.prototype.setupDebug = function (dom) {
 	], function (game, value) {
 		game.debug_manager.set("koishi_alpha", value);
 	});
-
-
-
-
 };
 
 module.exports = Game;
@@ -26484,6 +26482,18 @@ DebugManager.prototype.addMenuText = function (text) {
 	// add element
 	this.dom.appendChild(dom);
 };
+// add image
+DebugManager.prototype.addMenuImage = function (image_path) {
+	if(!this.is_debug_mode) return;
+
+	// create element
+	var dom = window.document.createElement('img');
+	dom.src = image_path;
+
+	// add element
+	this.dom.appendChild(dom);
+};
+
 
 // add button menu
 DebugManager.prototype.addMenuButton = function (button_value, func) {
