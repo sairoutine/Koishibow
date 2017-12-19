@@ -52,6 +52,11 @@ ObjectItem.prototype.setData = function(data) {
 	}
 };
 
+ObjectItem.prototype.isCollision = function(point) {
+	// サードアイ使用中ならクリックしても調べられないので何もしない
+	return !this.scene.root().isUsingEye();
+};
+
 // 移動後の処理
 ObjectItem.prototype.onAfterWalkToHere = function() {
 	// アイテム獲得 表示シーンへ遷移

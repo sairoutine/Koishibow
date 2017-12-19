@@ -25,6 +25,14 @@ ObjectJournal.prototype.init = function(){
 
 	this._picture_name = null;
 };
+
+ObjectJournal.prototype.isCollision = function(point) {
+	// サードアイ使用中ならクリックしても調べられないので何もしない
+	return !this.scene.root().isUsingEye();
+};
+
+
+
 ObjectJournal.prototype.setData = function(data) {
 	// 画像
 	this._image = this.core.image_loader.getImage(data.image);

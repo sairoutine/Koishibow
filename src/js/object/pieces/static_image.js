@@ -16,6 +16,14 @@ var ObjectStaticImage = function(core) {
 };
 Util.inherit(ObjectStaticImage, base_object);
 
+ObjectStaticImage.prototype.isCollision = function(point) {
+	// サードアイ使用中ならクリックしても調べられないので何もしない
+	return !this.scene.root().isUsingEye();
+};
+
+
+
+
 ObjectStaticImage.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
