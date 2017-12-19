@@ -21,6 +21,11 @@ ObjectNextFieldButtonBase.prototype.onCollision = function(obj){
 	var current_field_name = field_data.key;
 	var next_field_name = this.nextFieldName();
 
+	// 3rd eye 使用中であれば解除
+	if (this.scene.isUsingEye()) {
+		this.scene.switchEyeOff();
+	}
+
 	// chapter 0 の自室であれば遷移前／遷移先の際に、ドアを開ける音を鳴らす
 	if (current_field_name === "chapter0_myroom" || next_field_name === "chapter0_myroom") {
 		this.core.audio_loader.playSound("chapter0-myroom-door_open");

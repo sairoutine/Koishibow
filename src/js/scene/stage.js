@@ -128,12 +128,6 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 		throw new Error("illegal field data.");
 	}
 
-	// TODO:
-	// オブジェクトを照らして、裏オブジェクト用BGM流しつつ、サードアイBGM流しつつ、シーン遷移すると、
-	// それが継続してしまう
-	//
-	// 上記に加えて、同じBGMの別のシーンへ遷移してしまうと、BGMが 0 のままになる
-
 	// SUB BGM どうするか？
 
 	// やりたいこと
