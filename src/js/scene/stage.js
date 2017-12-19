@@ -128,36 +128,17 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 		throw new Error("illegal field data.");
 	}
 
-	// SUB BGM どうするか？
 
-	// やりたいこと
+	if(this.core.audio_loader.isPlayingBGM(field_data.bgm)) {
+		var sub_bgms = field_data.sub_bgms;
+		if (!sub_bgms) sub_bgms = [];
 
-	// フィールドに遷移したらBGMを60秒後に再生する
-	// + SUB BGMを60秒後に再生する
-	// ただし、前のフィールドとBGMが同じなら、再生しない
-	// + SUB BGM に違いがあれば、それは止める or 再生する
-
-	// サードアイを使用すると
-	// 3rd eye 用のBGMだけ再生する
-	//
-	// サードアイの使用を解除すると
-	// 3rd eye 用のBGMを削除し、
-	// 既存のBGMと SUB BGM(あれば) を途中からフェードインする
-
-	// 3rd eye 中に、BGMが追加されることがある(裏オブジェクト用に)
-	// ⇛ どうする？
-
-	// BGM 止める
-	if(!this.core.audio_loader.isPlayingBGM(field_data.bgm)) {
-		// 今流れているBGMを止める
-		this.core.audio_loader.stopBGM();
-		// 指定フレーム数からBGM再生
-		this.setWaitToStartBGM(field_data.bgm, 60);
-	}
-	else {
 		this.core.audio_loader.stopBGMWithout(field_data.bgm);
 	}
-
+	else {
+		// BGM 止める
+		this.core.audio_loader.stopBGM();
+	}
 
 	// フィールド移動時にフェードイン／アウトする
 	this.setFadeIn(30,  "black");
@@ -205,6 +186,28 @@ SceneStage.prototype.switchEyeOff = function() {
 
 SceneStage.prototype.beforeDraw = function() {
 	var field_data = this.getFieldData();
+	var i, len;
+
+	// BGM 再生
+	if(!this.isUsingEye() && this.frame_count >= 60) {
+		if(!this.core.audio_loader.isPlayingBGM(field_data.bgm)) {
+			// メインBGM 再生
+			this.core.audio_loader.changeBGM(field_data.bgm);
+		}
+
+		var sub_bgms = field_data.sub_bgms;
+		if (!sub_bgms) sub_bgms = [];
+
+		// サブBGM
+		for (i = 0, len = sub_bgms.length; i < len; i++) {
+			var sub_bgm = sub_bgms[i];
+
+			if(!this.core.audio_loader.isPlayingBGM(sub_bgm)) {
+				this.core.audio_loader.addBGM(sub_bgm);
+			}
+		}
+	}
+
 
 	// chapter 0 で3rd eye を使用していないときのみ
 	// ランダムノイズ再生
@@ -229,7 +232,7 @@ SceneStage.prototype.beforeDraw = function() {
 	}
 
 	// ステージ上のオブジェクト一覧
-	for (var i = 0, len = this.pieces.length; i < len; i++) {
+	for (i = 0, len = this.pieces.length; i < len; i++) {
 		this.pieces[i].beforeDraw();
 	}
 	// 自機
