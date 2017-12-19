@@ -23,8 +23,8 @@ module.exports = {
 			],
 			x: 258, y: 389,
 			scale: 0.7,
-			action: "touch",
-			sound: "touch"
+			action_name: "touch",
+			sound_name: "touch"
 		},
 		{
 			no: ++I,
@@ -36,8 +36,8 @@ module.exports = {
 			],
 			x: 59, y: 496,
 			scale: 0.7,
-			action: "touch",
-			sound: "touch",
+			action_name: "touch",
+			sound_name: "touch",
 			target_x: 167, target_y: 531
 		},
 		{
@@ -54,8 +54,8 @@ module.exports = {
 			anime2: "chapter0-myroom-obj-02-01-obj02",
 			anime3: "chapter0-myroom-obj-02-01-obj03",
 			width: 80, height: 80,
-			action: "look_bottom",
-			sound: "chapter0-myroom-open_book",
+			action_name: "look_bottom",
+			sound_name: "chapter0-myroom-open_book",
 			position_type: "lying",
 		},
 		{
@@ -72,8 +72,8 @@ module.exports = {
 			anime2: "chapter0-myroom-obj-03-01-obj02",
 			anime3: "chapter0-myroom-obj-03-01-obj03",
 			width: 80, height: 80,
-			action: "look_bottom",
-			sound: "chapter0-myroom-move_crayon",
+			action_name: "look_bottom",
+			sound_name: "chapter0-myroom-move_crayon",
 			position_type: "lying",
 		},
 		{
@@ -88,8 +88,8 @@ module.exports = {
 			anime1: "chapter0-myroom-obj-04-01-obj01",
 			anime2: "chapter0-myroom-obj-04-01-obj02",
 			anime3: "chapter0-myroom-obj-04-01-obj03",
-			action: "look_top",
-			sound: "chapter0-myroom-sound_window_for_kokoro",
+			action_name: "look_top",
+			sound_name: "chapter0-myroom-sound_window_for_kokoro",
 			target_x: 177, target_y: 531
 		},
 

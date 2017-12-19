@@ -33,8 +33,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-08-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-08-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-08-01-obj06",
-			action: "touch",
-			sound: "touch",
+			action_name: "touch",
+			sound_name: "touch",
 		},
 		{
 			no: ++I,
@@ -55,7 +55,7 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-07-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-07-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-07-01-obj06",
-			action: "touch",
+			action_name: "touch",
 			sound_back: "chapter0-mansion_corridor3-sound_vase_back",
 		},
 		{
@@ -76,7 +76,7 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-09-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-09-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-09-01-obj06",
-			action: "look_front",
+			action_name: "look_front",
 			sound_back: "chapter0-mansion_corridor3-smile_kokoro_back",
 		},
 		{
@@ -97,8 +97,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-10-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-10-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-10-01-obj06",
-			action: "look_top",
-			sound:      "chapter0-mansion_corridor3-ring_clock_front",
+			action_name: "look_top",
+			sound_name:      "chapter0-mansion_corridor3-ring_clock_front",
 			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
 		},
 		{
@@ -115,7 +115,7 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-11-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-11-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-11-01-obj06",
-			action: null,
+			action_name: null,
 			action_back_event: "event_for_trial_last", // 体験版最終
 		},
 		{

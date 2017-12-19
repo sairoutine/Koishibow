@@ -24,8 +24,8 @@ module.exports = {
 			x: 814,
 			y: 608,
 			scale: 0.7,
-			action: "touch",
-			sound: "chapter0-hospital_corridor1-sound_strecher",
+			action_name: "touch",
+			sound_name: "chapter0-hospital_corridor1-sound_strecher",
 			position_type: "front",
 			target_x: 650,
 			target_y: 616,
@@ -54,7 +54,7 @@ module.exports = {
 			x: 281,
 			y: 280,
 			scale: 0.7,
-			sound: "chapter0-hospital_corridor1-sound_aidkit",
+			sound_name: "chapter0-hospital_corridor1-sound_aidkit",
 			target_x: 278,
 			target_y: 465
 		},
@@ -69,7 +69,7 @@ module.exports = {
 			x: 853,
 			y: 534,
 			scale: 0.7,
-			action: "look_front",
+			action_name: "look_front",
 			position_type: "front",
 		},
 		{

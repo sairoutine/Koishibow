@@ -24,7 +24,7 @@ module.exports = {
 			x: 302,
 			y: 443,
 			scale: 0.7,
-			action: "look_bottom",
+			action_name: "look_bottom",
 			position_type: "lying",
 		},
 		{
@@ -40,8 +40,8 @@ module.exports = {
 			anime1: "chapter0-hospital_corridor2-obj-01-01-obj01",
 			anime2: "chapter0-hospital_corridor2-obj-01-01-obj02",
 			anime3:"chapter0-hospital_corridor2-obj-01-01-obj03",
-			action: "touch",
-			sound: "chapter0-hospital_corridor2-move_wheelchair",
+			action_name: "touch",
+			sound_name: "chapter0-hospital_corridor2-move_wheelchair",
 			width: 258,
 			height: 280
 		},
