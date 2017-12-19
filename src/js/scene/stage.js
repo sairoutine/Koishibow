@@ -135,6 +135,7 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 		// 指定フレーム数からBGM再生
 		this.setWaitToStartBGM(field_data.bgm, 60);
 
+
 	}
 
 	// フィールド移動時にフェードイン／アウトする
