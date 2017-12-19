@@ -57,6 +57,8 @@ Game.prototype.setupDebug = function (dom) {
 	// テキスト追加
 	this.debug_manager.addMenuText("マウスクリックで移動／調べる");
 
+	this.debug_manager.addMenuImage("https://api.travis-ci.org/sairoutine/Koishibow.svg?branch=gh-pages");
+
 	this.debug_manager.addGitLatestCommitInfo("sairoutine", "Koishibow", "gh-pages");
 
 	// ゲームスタート ボタン
@@ -143,10 +145,6 @@ Game.prototype.setupDebug = function (dom) {
 	], function (game, value) {
 		game.debug_manager.set("koishi_alpha", value);
 	});
-
-
-
-
 };
 
 module.exports = Game;
