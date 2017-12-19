@@ -24870,8 +24870,8 @@ module.exports = {
 			x: 814,
 			y: 608,
 			scale: 0.7,
-			action: "touch",
-			sound: "chapter0-hospital_corridor1-sound_strecher",
+			action_name: "touch",
+			sound_name: "chapter0-hospital_corridor1-sound_strecher",
 			position_type: "front",
 			target_x: 650,
 			target_y: 616,
@@ -24900,7 +24900,7 @@ module.exports = {
 			x: 281,
 			y: 280,
 			scale: 0.7,
-			sound: "chapter0-hospital_corridor1-sound_aidkit",
+			sound_name: "chapter0-hospital_corridor1-sound_aidkit",
 			target_x: 278,
 			target_y: 465
 		},
@@ -24915,7 +24915,7 @@ module.exports = {
 			x: 853,
 			y: 534,
 			scale: 0.7,
-			action: "look_front",
+			action_name: "look_front",
 			position_type: "front",
 		},
 		{
@@ -24953,7 +24953,7 @@ module.exports = {
 			x: 302,
 			y: 443,
 			scale: 0.7,
-			action: "look_bottom",
+			action_name: "look_bottom",
 			position_type: "lying",
 		},
 		{
@@ -24969,8 +24969,8 @@ module.exports = {
 			anime1: "chapter0-hospital_corridor2-obj-01-01-obj01",
 			anime2: "chapter0-hospital_corridor2-obj-01-01-obj02",
 			anime3:"chapter0-hospital_corridor2-obj-01-01-obj03",
-			action: "touch",
-			sound: "chapter0-hospital_corridor2-move_wheelchair",
+			action_name: "touch",
+			sound_name: "chapter0-hospital_corridor2-move_wheelchair",
 			width: 258,
 			height: 280
 		},
@@ -25015,8 +25015,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor1-obj-01-01-obj04",
 			anime5: "chapter0-mansion_corridor1-obj-01-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-01-01-obj06",
-			action: "look_top",
-			sound:      "chapter0-mansion_corridor1-lamp_front",
+			action_name: "look_top",
+			sound_name:      "chapter0-mansion_corridor1-lamp_front",
 			sound_back: "chapter0-mansion_corridor1-lamp_back"
 		},
 		{
@@ -25037,8 +25037,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor1-obj-02-01-obj04",
 			anime5: "chapter0-mansion_corridor1-obj-02-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-02-01-obj06",
-			action: "touch",
-			sound: "chapter0-mansion_corridor1-move_tricycle",
+			action_name: "touch",
+			sound_name: "chapter0-mansion_corridor1-move_tricycle",
 			bgm_back: "chapter0-mansion_corridor1-tricycle",
 			position_type: "front",
 		},
@@ -25060,7 +25060,7 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor1-obj-03-01-obj04",
 			anime5: "chapter0-mansion_corridor1-obj-03-01-obj05",
 			anime6: "chapter0-mansion_corridor1-obj-03-01-obj06",
-			action: "look_top",
+			action_name: "look_top",
 			sound_back: "chapter0-mansion_corridor1-open_curtain"
 		},
 
@@ -25106,8 +25106,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor2-obj-04-01-obj04",
 			anime5: "chapter0-mansion_corridor2-obj-04-01-obj05",
 			anime6: "chapter0-mansion_corridor2-obj-04-01-obj06",
-			action: "touch",
-			sound:      "chapter0-mansion_corridor2-flower_front",
+			action_name: "touch",
+			sound_name:      "chapter0-mansion_corridor2-flower_front",
 			sound_back: "chapter0-mansion_corridor2-flower_back"
 
 		},
@@ -25129,7 +25129,7 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor2-obj-05-01-obj04",
 			anime5: "chapter0-mansion_corridor2-obj-05-01-obj05",
 			anime6: "chapter0-mansion_corridor2-obj-05-01-obj06",
-			action: "look_top"
+			action_name: "look_top"
 		},
 		{
 			no: ++I,
@@ -25146,8 +25146,8 @@ module.exports = {
 			anime1: "chapter0-mansion_corridor2-obj-06-01-obj01",
 			anime2: "chapter0-mansion_corridor2-obj-06-01-obj02",
 			anime3: "chapter0-mansion_corridor2-obj-06-01-obj03",
-			action: null,
-			sound:      "chapter0-mansion_corridor2-open_door",
+			action_name: null,
+			sound_name:      "chapter0-mansion_corridor2-open_door",
 		},
 
 		{
@@ -25195,8 +25195,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-08-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-08-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-08-01-obj06",
-			action: "touch",
-			sound: "touch",
+			action_name: "touch",
+			sound_name: "touch",
 		},
 		{
 			no: ++I,
@@ -25217,7 +25217,7 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-07-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-07-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-07-01-obj06",
-			action: "touch",
+			action_name: "touch",
 			sound_back: "chapter0-mansion_corridor3-sound_vase_back",
 		},
 		{
@@ -25238,7 +25238,7 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-09-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-09-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-09-01-obj06",
-			action: "look_front",
+			action_name: "look_front",
 			sound_back: "chapter0-mansion_corridor3-smile_kokoro_back",
 		},
 		{
@@ -25259,8 +25259,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-10-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-10-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-10-01-obj06",
-			action: "look_top",
-			sound:      "chapter0-mansion_corridor3-ring_clock_front",
+			action_name: "look_top",
+			sound_name:      "chapter0-mansion_corridor3-ring_clock_front",
 			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
 		},
 		{
@@ -25277,8 +25277,8 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-11-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-11-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-11-01-obj06",
-			action: null,
-			action_back_event: "event_for_trial_last", // 体験版最終
+			action_name: null,
+			action_back_event: "event_for_chapter0_last", // こいし飛び降り
 		},
 		{
 			no: ++I,
@@ -25321,8 +25321,8 @@ module.exports = {
 			],
 			x: 258, y: 389,
 			scale: 0.7,
-			action: "touch",
-			sound: "touch"
+			action_name: "touch",
+			sound_name: "touch"
 		},
 		{
 			no: ++I,
@@ -25334,8 +25334,8 @@ module.exports = {
 			],
 			x: 59, y: 496,
 			scale: 0.7,
-			action: "touch",
-			sound: "touch",
+			action_name: "touch",
+			sound_name: "touch",
 			target_x: 167, target_y: 531
 		},
 		{
@@ -25352,8 +25352,8 @@ module.exports = {
 			anime2: "chapter0-myroom-obj-02-01-obj02",
 			anime3: "chapter0-myroom-obj-02-01-obj03",
 			width: 80, height: 80,
-			action: "look_bottom",
-			sound: "chapter0-myroom-open_book",
+			action_name: "look_bottom",
+			sound_name: "chapter0-myroom-open_book",
 			position_type: "lying",
 		},
 		{
@@ -25370,8 +25370,8 @@ module.exports = {
 			anime2: "chapter0-myroom-obj-03-01-obj02",
 			anime3: "chapter0-myroom-obj-03-01-obj03",
 			width: 80, height: 80,
-			action: "look_bottom",
-			sound: "chapter0-myroom-move_crayon",
+			action_name: "look_bottom",
+			sound_name: "chapter0-myroom-move_crayon",
 			position_type: "lying",
 		},
 		{
@@ -25386,8 +25386,8 @@ module.exports = {
 			anime1: "chapter0-myroom-obj-04-01-obj01",
 			anime2: "chapter0-myroom-obj-04-01-obj02",
 			anime3: "chapter0-myroom-obj-04-01-obj03",
-			action: "look_top",
-			sound: "chapter0-myroom-sound_window_for_kokoro",
+			action_name: "look_top",
+			sound_name: "chapter0-myroom-sound_window_for_kokoro",
 			target_x: 177, target_y: 531
 		},
 
@@ -37572,8 +37572,11 @@ Koishi.prototype.jsonAnimeMap = function() {
 		wait:        jsonDataOfWait,
 		// 歩く
 		walk:        jsonDataOfWalk,
+
 		// サードアイ使用
 		use_eye:     jsonDataOfReaction3rdeye,
+		// 触る
+		touch:        jsonDataOfReactionTouch,
 		// 下を見る
 		look_bottom: jsonDataOfReactionLookBottom,
 		// 前を見る
@@ -38037,42 +38040,21 @@ ObjectAnimeEventImage.prototype.init = function(){
 ObjectAnimeEventImage.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
 
-	this._back.click_event   = data.action_back_event;
+	this._back.click_event = data.action_back_event;
 };
-/*
-ObjectAnimeEventImage.prototype.onCollision = function(obj){
-	base_object.prototype.onCollision.apply(this, arguments);
 
-	// サードアイ使用中かつ
-	// 移動中でなければ、対象のオブジェクトに近寄ってアクション
-	if(this.scene.mainStage().isUsingEye() && this.core.input_manager.isLeftClickPush()) {
-		if (!this.scene.mainStage().koishi().isMoving()) {
-			this.scene.mainStage().koishi().setMoveTargetObject(obj, this);
-			this.scene.mainStage().koishi().setAfterMoveCallback(Util.bind(this.onCollisionAfterKoishiWalkOnEvent, this));
-		}
-	}
-	else {
-	}
 
-	if(!this.scene.mainStage().isUsingEye()) {
-		// 3rdeye 使用中なら基底メソッドで touch カーソルにされるので、戻す
-		// 通常時はクリックしても何も起こらないので default カーソルのままでないといけないので
-		this.core.changeDefaultCursor();
-	}
-	else {
-		this.core.changeTouchCursor();
-	}
+// 3rd eye 使用時のみ当たり判定を行う
+ObjectAnimeEventImage.prototype.isCollision = function(point) {
+	return this.scene.root().isUsingEye();
 };
-ObjectAnimeEventImage.prototype.onCollisionAfterKoishiWalkOnEvent = function(){
-	var self = this;
 
-	// フェードアウト
-	this.scene.mainStage().setFadeOut(30, "black");
-
+// こいし移動後の処理
+ObjectAnimeEventImage.prototype.onAfterWalkToHere = function() {
 	// イベント発生
-	this.core.changeScene(this._action_back_event);
+	this.core.changeScene(this._back.click_event);
 };
-*/
+
 module.exports = ObjectAnimeEventImage;
 
 },{"../../hakurei":103,"./anime_image":152}],152:[function(require,module,exports){
@@ -38204,8 +38186,8 @@ ObjectAnimeImage.prototype.setData = function(data) {
 	this._back.bgm_name  = data.bgm_back;
 
 	// 裏オブジェクト サードアイに照らされた際のSE
-	if (data.sound_back_name) {
-		this._back.lighted_sound_name  = data.sound_back_name;
+	if (data.sound_back) {
+		this._back.lighted_sound_name  = data.sound_back;
 	}
 
 	// サイズ
@@ -38244,7 +38226,7 @@ ObjectAnimeImage.prototype.onCollideWithLightIn3rdEye = function(){
 
 	// 裏オブジェクトになったときの SE 再生
 	if (this._back.lighted_sound_name) {
-		this.core.playSound(this._back._sound_back_name);
+		this.core.audio_loader.playSound(this._back.lighted_sound_name);
 	}
 
 	var ss = this.ss;
@@ -38262,6 +38244,14 @@ ObjectAnimeImage.prototype.onCollideWithLightIn3rdEye = function(){
 	});
 
 };
+
+// 3rd eye を使用解除した場合に呼ばれる
+ObjectAnimeImage.prototype.onUnUse3rdEye = function(){
+	// 裏オブジェクト -> 表オブジェクトに変更
+	this.onNotCollideWithLightIn3rdEye();
+};
+
+
 
 // サードアイに照らされてないとき(サードアイ使用時)
 ObjectAnimeImage.prototype.onNotCollideWithLightIn3rdEye = function(){
@@ -38329,13 +38319,13 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 // こいし移動後の処理
 ObjectAnimeImage.prototype.onAfterWalkToHere = function() {
 	// こいしのアクション
-	if (this._action_name) {
-		this.scene.root().koishi.actionByObject(this._action_name);
+	if (this._front.action_name) {
+		this.scene.root().koishi.actionByObject(this._front.action_name);
 	}
 
 	// 音を再生
-	if (this._sound_name) {
-		this.core.audio_loader.playSound(this._sound_name);
+	if (this._front.sound_name) {
+		this.core.audio_loader.playSound(this._front.sound_name);
 	}
 
 	// 会話するオブジェクトなので、クリックしたら会話する
@@ -38421,6 +38411,21 @@ ObjectBase.prototype.onCollideWithLightIn3rdEye = function(){
 ObjectBase.prototype.onNotCollideWithLightIn3rdEye = function(){
 };
 
+// 3rd eye を使用した場合に呼ばれる
+ObjectBase.prototype.onUse3rdEye = function(){
+};
+
+// 3rd eye を使用解除した場合に呼ばれる
+ObjectBase.prototype.onUnUse3rdEye = function(){
+};
+
+
+
+
+
+
+
+
 module.exports = ObjectBase;
 
 },{"../../hakurei":103}],154:[function(require,module,exports){
@@ -38476,6 +38481,11 @@ ObjectItem.prototype.setData = function(data) {
 	if (data.height) {
 		this._height = data.height;
 	}
+};
+
+ObjectItem.prototype.isCollision = function(point) {
+	// サードアイ使用中ならクリックしても調べられないので何もしない
+	return !this.scene.root().isUsingEye();
 };
 
 // 移動後の処理
@@ -38585,6 +38595,14 @@ ObjectJournal.prototype.init = function(){
 
 	this._picture_name = null;
 };
+
+ObjectJournal.prototype.isCollision = function(point) {
+	// サードアイ使用中ならクリックしても調べられないので何もしない
+	return !this.scene.root().isUsingEye();
+};
+
+
+
 ObjectJournal.prototype.setData = function(data) {
 	// 画像
 	this._image = this.core.image_loader.getImage(data.image);
@@ -38676,6 +38694,14 @@ var ObjectStaticImage = function(core) {
 	this._height = null;
 };
 Util.inherit(ObjectStaticImage, base_object);
+
+ObjectStaticImage.prototype.isCollision = function(point) {
+	// サードアイ使用中ならクリックしても調べられないので何もしない
+	return !this.scene.root().isUsingEye();
+};
+
+
+
 
 ObjectStaticImage.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
@@ -40031,15 +40057,42 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 		throw new Error("illegal field data.");
 	}
 
+	// TODO:
+	// オブジェクトを照らして、裏オブジェクト用BGM流しつつ、サードアイBGM流しつつ、シーン遷移すると、
+	// それが継続してしまう
+	//
+	// 上記に加えて、同じBGMの別のシーンへ遷移してしまうと、BGMが 0 のままになる
+
+	// SUB BGM どうするか？
+
+	// やりたいこと
+
+	// フィールドに遷移したらBGMを60秒後に再生する
+	// + SUB BGMを60秒後に再生する
+	// ただし、前のフィールドとBGMが同じなら、再生しない
+	// + SUB BGM に違いがあれば、それは止める or 再生する
+
+	// サードアイを使用すると
+	// 3rd eye 用のBGMだけ再生する
+	//
+	// サードアイの使用を解除すると
+	// 3rd eye 用のBGMを削除し、
+	// 既存のBGMと SUB BGM(あれば) を途中からフェードインする
+
+	// 3rd eye 中に、BGMが追加されることがある(裏オブジェクト用に)
+	// ⇛ どうする？
+
 	// BGM 止める
 	if(!this.core.audio_loader.isPlayingBGM(field_data.bgm)) {
 		// 今流れているBGMを止める
 		this.core.audio_loader.stopBGM();
 		// 指定フレーム数からBGM再生
 		this.setWaitToStartBGM(field_data.bgm, 60);
-
-
 	}
+	else {
+		this.core.audio_loader.stopBGMWithout(field_data.bgm);
+	}
+
 
 	// フィールド移動時にフェードイン／アウトする
 	this.setFadeIn(30,  "black");
@@ -40063,6 +40116,11 @@ SceneStage.prototype.switchEyeOn = function() {
 	this.core.audio_loader.muteAllBGM();
 	this.core.audio_loader.addBGM("using_3rdeye");
 
+	// ステージ上のオブジェクトに 3rd eye を使用したことを通知
+	for (var i = 0, len = this.pieces.length; i < len; i++) {
+		this.pieces[i].onUse3rdEye();
+	}
+
 	this.koishi.useEye();
 };
 SceneStage.prototype.switchEyeOff = function() {
@@ -40071,6 +40129,11 @@ SceneStage.prototype.switchEyeOff = function() {
 	// BGM を通常に戻す
 	this.core.audio_loader.stopBGM("using_3rdeye");
 	this.core.audio_loader.unMuteWithFadeInAllBGM(3); // N秒かけてフェードイン
+
+	// ステージ上のオブジェクトに 3rd eye を使用解除したことを通知
+	for (var i = 0, len = this.pieces.length; i < len; i++) {
+		this.pieces[i].onUnUse3rdEye();
+	}
 
 	this.koishi.unUseEye();
 };
@@ -40980,6 +41043,11 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	}
 	else if(this.core.input_manager.isLeftClickPush()) { // セリフ送り待機中はクリックできない
 		if(this._serif.isEnd()) {
+
+			// オブジェクトに触れた際の会話だった場合、
+			// 触れた際のモーションにこいしがなっているため
+			this.root().koishi.setWaitAnime();
+
 			// セリフ終わり
 			this.root().changeSubScene("play");
 		}
