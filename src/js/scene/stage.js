@@ -128,15 +128,42 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 		throw new Error("illegal field data.");
 	}
 
+	// TODO:
+	// オブジェクトを照らして、裏オブジェクト用BGM流しつつ、サードアイBGM流しつつ、シーン遷移すると、
+	// それが継続してしまう
+	//
+	// 上記に加えて、同じBGMの別のシーンへ遷移してしまうと、BGMが 0 のままになる
+
+	// SUB BGM どうするか？
+
+	// やりたいこと
+
+	// フィールドに遷移したらBGMを60秒後に再生する
+	// + SUB BGMを60秒後に再生する
+	// ただし、前のフィールドとBGMが同じなら、再生しない
+	// + SUB BGM に違いがあれば、それは止める or 再生する
+
+	// サードアイを使用すると
+	// 3rd eye 用のBGMだけ再生する
+	//
+	// サードアイの使用を解除すると
+	// 3rd eye 用のBGMを削除し、
+	// 既存のBGMと SUB BGM(あれば) を途中からフェードインする
+
+	// 3rd eye 中に、BGMが追加されることがある(裏オブジェクト用に)
+	// ⇛ どうする？
+
 	// BGM 止める
 	if(!this.core.audio_loader.isPlayingBGM(field_data.bgm)) {
 		// 今流れているBGMを止める
 		this.core.audio_loader.stopBGM();
 		// 指定フレーム数からBGM再生
 		this.setWaitToStartBGM(field_data.bgm, 60);
-
-
 	}
+	else {
+		this.core.audio_loader.stopBGMWithout(field_data.bgm);
+	}
+
 
 	// フィールド移動時にフェードイン／アウトする
 	this.setFadeIn(30,  "black");
