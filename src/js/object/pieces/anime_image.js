@@ -185,6 +185,14 @@ ObjectAnimeImage.prototype.onCollideWithLightIn3rdEye = function(){
 
 };
 
+// 3rd eye を使用解除した場合に呼ばれる
+ObjectAnimeImage.prototype.onUnUse3rdEye = function(){
+	// 裏オブジェクト -> 表オブジェクトに変更
+	this.onNotCollideWithLightIn3rdEye();
+};
+
+
+
 // サードアイに照らされてないとき(サードアイ使用時)
 ObjectAnimeImage.prototype.onNotCollideWithLightIn3rdEye = function(){
 	// 裏オブジェクトになってないなら何もしない

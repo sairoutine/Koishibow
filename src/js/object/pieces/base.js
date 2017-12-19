@@ -60,4 +60,19 @@ ObjectBase.prototype.onCollideWithLightIn3rdEye = function(){
 ObjectBase.prototype.onNotCollideWithLightIn3rdEye = function(){
 };
 
+// 3rd eye を使用した場合に呼ばれる
+ObjectBase.prototype.onUse3rdEye = function(){
+};
+
+// 3rd eye を使用解除した場合に呼ばれる
+ObjectBase.prototype.onUnUse3rdEye = function(){
+};
+
+
+
+
+
+
+
+
 module.exports = ObjectBase;

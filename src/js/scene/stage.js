@@ -160,6 +160,11 @@ SceneStage.prototype.switchEyeOn = function() {
 	this.core.audio_loader.muteAllBGM();
 	this.core.audio_loader.addBGM("using_3rdeye");
 
+	// ステージ上のオブジェクトに 3rd eye を使用したことを通知
+	for (var i = 0, len = this.pieces.length; i < len; i++) {
+		this.pieces[i].onUse3rdEye();
+	}
+
 	this.koishi.useEye();
 };
 SceneStage.prototype.switchEyeOff = function() {
@@ -168,6 +173,11 @@ SceneStage.prototype.switchEyeOff = function() {
 	// BGM を通常に戻す
 	this.core.audio_loader.stopBGM("using_3rdeye");
 	this.core.audio_loader.unMuteWithFadeInAllBGM(3); // N秒かけてフェードイン
+
+	// ステージ上のオブジェクトに 3rd eye を使用解除したことを通知
+	for (var i = 0, len = this.pieces.length; i < len; i++) {
+		this.pieces[i].onUnUse3rdEye();
+	}
 
 	this.koishi.unUseEye();
 };
