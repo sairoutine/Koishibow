@@ -126,8 +126,8 @@ ObjectAnimeImage.prototype.setData = function(data) {
 	this._back.bgm_name  = data.bgm_back;
 
 	// 裏オブジェクト サードアイに照らされた際のSE
-	if (data.sound_back_name) {
-		this._back.lighted_sound_name  = data.sound_back_name;
+	if (data.sound_back) {
+		this._back.lighted_sound_name  = data.sound_back;
 	}
 
 	// サイズ
@@ -166,7 +166,7 @@ ObjectAnimeImage.prototype.onCollideWithLightIn3rdEye = function(){
 
 	// 裏オブジェクトになったときの SE 再生
 	if (this._back.lighted_sound_name) {
-		this.core.playSound(this._back._sound_back_name);
+		this.core.audio_loader.playSound(this._back.lighted_sound_name);
 	}
 
 	var ss = this.ss;
@@ -259,13 +259,13 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 // こいし移動後の処理
 ObjectAnimeImage.prototype.onAfterWalkToHere = function() {
 	// こいしのアクション
-	if (this._action_name) {
-		this.scene.root().koishi.actionByObject(this._action_name);
+	if (this._front.action_name) {
+		this.scene.root().koishi.actionByObject(this._front.action_name);
 	}
 
 	// 音を再生
-	if (this._sound_name) {
-		this.core.audio_loader.playSound(this._sound_name);
+	if (this._front.sound_name) {
+		this.core.audio_loader.playSound(this._front.sound_name);
 	}
 
 	// 会話するオブジェクトなので、クリックしたら会話する
