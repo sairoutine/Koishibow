@@ -191,8 +191,11 @@ Koishi.prototype.jsonAnimeMap = function() {
 		wait:        jsonDataOfWait,
 		// 歩く
 		walk:        jsonDataOfWalk,
+
 		// サードアイ使用
 		use_eye:     jsonDataOfReaction3rdeye,
+		// 触る
+		touch:        jsonDataOfReactionTouch,
 		// 下を見る
 		look_bottom: jsonDataOfReactionLookBottom,
 		// 前を見る
