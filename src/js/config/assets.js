@@ -54,6 +54,10 @@ AssetsConfig.images = {
 	"chapter0-myroom-obj-03-01": "./image/chapter0/myroom/chapter0-myroom-obj-03-01.png",
 	"chapter0-myroom-obj-04-01": "./image/chapter0/myroom/chapter0-myroom-obj-04-01.png",
 	"chapter0-myroom-obj-05-01": "./image/chapter0/myroom/chapter0-myroom-obj-05-01.png",
+	"chapter0-myroom-obj-07-01": "./image/chapter0/myroom/chapter0-myroom-obj-07-01.png",
+
+
+
 
 	"chapter0-hospital_corridor1-bg-001":    "./image/chapter0/hospital_corridor1/chapter0-hospital-bg-001.jpg",
 	"chapter0-hospital_corridor1-obj-01-01": "./image/chapter0/hospital_corridor1/chapter0-hospital-obj-01-01.png",
@@ -130,6 +134,7 @@ AssetsConfig.images = {
 	"title":  "./image/title/title.jpg",
 
 	// 1枚絵
+	"picture_get_hat":   "./image/picture/illust_01.png",
 	"picture_use_eyedrops":   "./image/picture/illust_02.png",
 
 	// 不要
