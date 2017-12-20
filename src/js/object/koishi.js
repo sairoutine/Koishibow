@@ -25,6 +25,12 @@ var jsonDataOfReactionLookTop = require('../data/anime/koishi/reaction_look_top_
 var jsonDataOfReactionTouch = require('../data/anime/koishi/reaction_touch_anime_1');
 //	YES、うなずく	不	30	15	0.5秒
 var jsonDataOfReactionYes = require('../data/anime/koishi/reaction_yes_anime_1');
+//	(帽子なし) 触る、物を取る	不	30	15	0.5秒
+var jsonDataOfReactionTouchInNoHat = require('../data/anime/koishi/nohat_reaction_touch_anime_1');
+// 	(帽子なし) 待機	可	30	45	1.5秒
+var jsonDataOfWaitInNoHat = require('../data/anime/koishi/nohat_wait_anime_1');
+//	(帽子なし) 歩き	可	30	30	1秒
+var jsonDataOfWalkInNoHat = require('../data/anime/koishi/nohat_walk_anime_1');
 
 var Koishi = function (scene) {
 	base_object.apply(this, arguments);
@@ -191,6 +197,13 @@ Koishi.prototype.jsonAnimeMap = function() {
 		wait:        jsonDataOfWait,
 		// 歩く
 		walk:        jsonDataOfWalk,
+
+		// 静止(帽子なし)
+		wait_nohat:        jsonDataOfReactionTouchInNoHat,
+		// 歩く(帽子なし)
+		walk_nohat:        jsonDataOfWalkInNoHat,
+		// 触る(帽子なし)
+		touch_nohat:        jsonDataOfWaitInNoHat,
 
 		// サードアイ使用
 		use_eye:     jsonDataOfReaction3rdeye,
