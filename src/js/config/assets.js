@@ -89,6 +89,7 @@ AssetsConfig.images = {
 
 	// アイテム 目薬
 	item_01:            "./image/item/icon_item_eyedrops01.png",
+	item_01_selected:   "./image/item/icon_item_eyedrops02.png",
 
 	// 体験版時のコンティニュー画像
 	tobecontinued:  "./image/tobecontinued.png",
