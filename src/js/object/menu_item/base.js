@@ -28,8 +28,16 @@ ObjectMenuItemBase.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 	var item_config = ItemConfig[this.item_id()];
-	var image = this.core.image_loader.getImage(item_config.image_name);
+	var image;
 
+	if (this.scene.isFocusItem(this.item_id())) {
+		// 選択中でない画像
+		image = this.core.image_loader.getImage(item_config.selected_image_name);
+	}
+	else {
+		// 選択中 画像
+		image = this.core.image_loader.getImage(item_config.image_name);
+	}
 	var width = image.width * 2/3;
 	var height = image.height * 2/3;
 
@@ -45,16 +53,6 @@ ObjectMenuItemBase.prototype.draw = function(){
 	);
 	ctx.restore();
 
-	ctx.save();
-
-	// 選択しているアイテムなら選択中 表示
-	if (this.scene.isFocusItem(this.item_id())) {
-		ctx.strokeStyle = "rgb(200, 0, 0)";
-		ctx.lineWidth = 10;
-		ctx.strokeRect(this.getCollisionLeftX(), this.getCollisionUpY(), this.collisionWidth(), this.collisionHeight());
-	}
-
-	ctx.restore();
 };
 
 ObjectMenuItemBase.prototype.collisionWidth = function(){
