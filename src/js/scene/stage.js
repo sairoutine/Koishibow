@@ -46,14 +46,14 @@ var SceneStage = function(core) {
 	// 3rd eye の光
 	this.light_3rdeye = new Light3rdeye(this);
 
+	// 画面の枠
+	this.black_mist = new BlackMist(this);
+
 	// UI パーツ
 	this.right_next_field_button = new RightNextFieldButton(this);
 	this.left_next_field_button  = new LeftNextFieldButton(this);
 	this.item_menu_button        = new ItemMenuButton(this);
 	this.eye_button              = new EyeButton(this);
-
-	// 画面の枠
-	this.black_mist = new BlackMist(this);
 
 	// 3rd eye 使用中か否か
 	this._is_using_eye = false;
@@ -98,14 +98,14 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	// 3rd eye の光
 	this.light_3rdeye.init();
 
+	// 画面の枠
+	this.black_mist.init();
+
 	// UI パーツ
 	this.right_next_field_button.init();
 	this.left_next_field_button.init();
 	this.item_menu_button.init();
 	this.eye_button.init();
-
-	// 画面の枠
-	this.black_mist.init();
 
 	// 3rd eye 使用中か否か
 	this._is_using_eye = false;
@@ -241,14 +241,13 @@ SceneStage.prototype.beforeDraw = function() {
 	if (this.isUsingEye()) {
 		this.light_3rdeye.beforeDraw();
 	}
+	// 画面の枠
+	this.black_mist.beforeDraw();
 	// UI パーツ
 	this.right_next_field_button.beforeDraw();
 	this.left_next_field_button.beforeDraw();
 	this.item_menu_button.beforeDraw();
 	this.eye_button.beforeDraw();
-
-	// 画面の枠
-	this.black_mist.beforeDraw();
 
 	// サブシーン
 	base_scene.prototype.beforeDraw.apply(this, arguments);
@@ -285,15 +284,13 @@ SceneStage.prototype.draw = function(){
 	if (this.isUsingEye()) {
 		this.light_3rdeye.draw();
 	}
-
+	// 画面の枠
+	this.black_mist.draw();
 	// UI パーツ
 	this.right_next_field_button.draw();
 	this.left_next_field_button.draw();
 	this.item_menu_button.draw();
 	this.eye_button.draw();
-
-	// 画面の枠
-	this.black_mist.draw();
 
 	// サブシーン描画
 	base_scene.prototype.draw.apply(this, arguments);
