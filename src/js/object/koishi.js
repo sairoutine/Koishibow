@@ -48,6 +48,7 @@ Koishi.prototype.init = function() {
 
 
 	this.setVelocity({magnitude:0, theta:0});
+	this.setWaitAnime();
 };
 
 // 移動中かどうか
@@ -57,11 +58,22 @@ Koishi.prototype.isMoving = function() {
 
 // 待機アニメーションに変更
 Koishi.prototype.setWaitAnime = function() {
-	this.playAnimationInfinity("default");
+	if (this.scene.isNoHat()) {
+		this.playAnimationInfinity("wait_nohat");
+	}
+	else {
+		this.playAnimationInfinity("wait");
+	}
 };
 // 歩きアニメーションに変更
 Koishi.prototype.setWalkAnime = function() {
-	this.playAnimationInfinity("walk");
+	if (this.scene.isNoHat()) {
+		this.playAnimationInfinity("walk_nohat");
+	}
+	else {
+		this.playAnimationInfinity("walk");
+	}
+
 };
 
 Koishi.prototype._stopMove = function() {
@@ -199,11 +211,11 @@ Koishi.prototype.jsonAnimeMap = function() {
 		walk:        jsonDataOfWalk,
 
 		// 静止(帽子なし)
-		wait_nohat:        jsonDataOfReactionTouchInNoHat,
+		wait_nohat:        jsonDataOfWaitInNoHat,
 		// 歩く(帽子なし)
 		walk_nohat:        jsonDataOfWalkInNoHat,
 		// 触る(帽子なし)
-		touch_nohat:        jsonDataOfWaitInNoHat,
+		touch_nohat:        jsonDataOfReactionTouchInNoHat,
 
 		// サードアイ使用
 		use_eye:     jsonDataOfReaction3rdeye,
