@@ -11,7 +11,6 @@ var SceneSubStageMenu = require('./substage/menu'); // アイテムメニュー
 var SceneSubStageJournal = require('./substage/journal'); // ジャーナル表示
 var SceneSubStageGotItem = require('./substage/got_item'); // アイテム獲得
 var SceneSubStagePictureUseEyedrops = require('./substage/picture_use_eyedrops'); // 目薬使用1枚絵
-var SceneSubStageChapter0BeforeGetHat = require('./substage/chapter0_before_get_hat');
 
 var RightNextFieldButton = require('../object/ui/right_next_field_button');
 var LeftNextFieldButton = require('../object/ui/left_next_field_button');
@@ -71,9 +70,6 @@ var SceneStage = function(core) {
 	this.addSubScene("got_item", new SceneSubStageGotItem(core));
 	// 目薬使用 1枚絵
 	this.addSubScene("picture_use_eyedrops", new SceneSubStagePictureUseEyedrops(core));
-
-	// chapter0 帽子を取る前
-	this.addSubScene("chapter0_before_get_hat", new SceneSubStageChapter0BeforeGetHat(core));
 };
 Util.inherit(SceneStage, base_scene);
 
@@ -343,5 +339,9 @@ SceneStage.prototype._setupPieces = function() {
 		this.pieces.push(object);
 	}
 };
+SceneStage.prototype.isNoHat = function() {
+	return false;
+};
+
 
 module.exports = SceneStage;
