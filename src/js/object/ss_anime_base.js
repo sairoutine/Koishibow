@@ -102,6 +102,9 @@ SsAnimeBase.prototype.getJsonData = function(name) {
 
 	return map[name];
 };
+SsAnimeBase.prototype.getFrameNo = function(){
+	return this.ss.getFrameNo();
+};
 
 SsAnimeBase.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
