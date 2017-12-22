@@ -21,6 +21,9 @@ AssetsConfig.images = {
 	// こいし画像
 	"koishi":                "./image/koishi.png",
 
+	// こころ画像
+	"kokoro":                "./image/kokoro.png",
+
 	// 3rdeye 使用時のもや
 	"black_mist":            "./image/black_mist.png",
 	// 3rdeye 使用時の光
