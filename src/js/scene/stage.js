@@ -11,6 +11,7 @@ var SceneSubStageMenu = require('./substage/menu'); // アイテムメニュー
 var SceneSubStageJournal = require('./substage/journal'); // ジャーナル表示
 var SceneSubStageGotItem = require('./substage/got_item'); // アイテム獲得
 var SceneSubStagePictureUseEyedrops = require('./substage/picture_use_eyedrops'); // 目薬使用1枚絵
+var SceneSubStageEventChapter0KokoroEncounter = require('./substage/event/chapter0/kokoro_encounter');
 
 var RightNextFieldButton = require('../object/ui/right_next_field_button');
 var LeftNextFieldButton = require('../object/ui/left_next_field_button');
@@ -70,6 +71,8 @@ var SceneStage = function(core) {
 	this.addSubScene("got_item", new SceneSubStageGotItem(core));
 	// 目薬使用 1枚絵
 	this.addSubScene("picture_use_eyedrops", new SceneSubStagePictureUseEyedrops(core));
+	// 通常
+	this.addSubScene("event_chapter0_kokoro_encounter", new SceneSubStageEventChapter0KokoroEncounter(core));
 };
 Util.inherit(SceneStage, base_scene);
 
@@ -140,8 +143,24 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	this.setFadeIn(30,  "black");
 	this.setFadeOut(30, "black");
 
+	this.changeInitialSubScene();
+};
 
-	this.changeSubScene("play");
+SceneStage.prototype.changeInitialSubScene = function() {
+	// フィールドの情報
+	var field_data = this.getFieldData();
+
+	// subscene が設定されていて、未再生ならばそれを使う
+	// そうでなければ通常の play シーン
+
+	var subscene = field_data.event;
+	if (!subscene || this.core.save_manager.isPlayedEvent(subscene)) {
+		this.changeSubScene("play");
+	}
+	else {
+		this.core.save_manager.setPlayedEvent(subscene);
+		this.changeSubScene(subscene);
+	}
 };
 
 SceneStage.prototype.isUsingEye = function() {
