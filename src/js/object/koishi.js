@@ -295,7 +295,21 @@ Koishi.prototype._getMoveToPos = function() {
 
 // サードアイの自然消耗
 Koishi.prototype.abrasion3rdeye = function() {
+	// 消耗前のレベル
+	var before_level = this.get3rdeyeBloodShotLevel();
+
 	this.core.save_manager.reduce3rdeyeGauge(CONSTANT.ABRASION_3RDEYE_GAUGE);
+
+	// 消耗後のレベル
+	var after_level = this.get3rdeyeBloodShotLevel();
+
+	// 最後の消耗だけ違う音にする
+	if (after_level === 4 && before_level !== after_level) {
+		this.core.audio_loader.playSound("progress_bloodshot_last");
+	}
+	else if (before_level !== after_level) {
+		this.core.audio_loader.playSound("progress_bloodshot");
+	}
 };
 
 Koishi.prototype.get3rdeyeBloodShotLevel = function() {
