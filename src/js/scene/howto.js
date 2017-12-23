@@ -29,7 +29,7 @@ SceneHowto.prototype.beforeDraw = function(){
 
 	if(this.core.input_manager.isLeftClickPush()) {
 		this.core.audio_loader.playSound("show_journal");
-		this.core.changeScene("event_for_chapter0_get_hat");
+		this.core.changeScene("stage", "chapter0_myroom");
 	}
 };
 

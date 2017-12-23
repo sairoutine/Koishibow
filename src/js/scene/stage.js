@@ -11,6 +11,8 @@ var SceneSubStageMenu = require('./substage/menu'); // アイテムメニュー
 var SceneSubStageJournal = require('./substage/journal'); // ジャーナル表示
 var SceneSubStageGotItem = require('./substage/got_item'); // アイテム獲得
 var SceneSubStagePictureUseEyedrops = require('./substage/picture_use_eyedrops'); // 目薬使用1枚絵
+var SceneSubStageEventChapter0GetHat = require('./substage/event/chapter0/get_hat');
+var SceneSubStagePictureGetHat = require('./substage/picture_get_hat');
 var SceneSubStageEventChapter0KokoroEncounter = require('./substage/event/chapter0/kokoro_encounter');
 
 var RightNextFieldButton = require('../object/ui/right_next_field_button');
@@ -71,7 +73,9 @@ var SceneStage = function(core) {
 	this.addSubScene("got_item", new SceneSubStageGotItem(core));
 	// 目薬使用 1枚絵
 	this.addSubScene("picture_use_eyedrops", new SceneSubStagePictureUseEyedrops(core));
-	// 通常
+
+	this.addSubScene("event_chapter0_get_hat", new SceneSubStageEventChapter0GetHat(core));
+	this.addSubScene("picture_get_hat", new SceneSubStagePictureGetHat(core));
 	this.addSubScene("event_chapter0_kokoro_encounter", new SceneSubStageEventChapter0KokoroEncounter(core));
 };
 Util.inherit(SceneStage, base_scene);
@@ -87,6 +91,9 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// フィールドの情報
 	var field_data = this.getFieldData();
+
+	// サブシーン設定
+	this.changeInitialSubScene();
 
 	// ステージ上のオブジェクト一覧
 	this._setupPieces();
@@ -143,7 +150,6 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	this.setFadeIn(30,  "black");
 	this.setFadeOut(30, "black");
 
-	this.changeInitialSubScene();
 };
 
 SceneStage.prototype.changeInitialSubScene = function() {
@@ -320,8 +326,9 @@ SceneStage.prototype.isEnableToMove = function(){
 };
 
 
-
-
+SceneStage.prototype.isNoHat = function(){
+	return this.currentSubScene() instanceof SceneSubStageEventChapter0GetHat;
+};
 SceneStage.prototype.getFieldData = function(){
 	return FieldMap[this.core.save_manager.getCurrentField()];
 };
@@ -360,9 +367,4 @@ SceneStage.prototype._setupPieces = function() {
 		this.pieces.push(object);
 	}
 };
-SceneStage.prototype.isNoHat = function() {
-	return false;
-};
-
-
 module.exports = SceneStage;
