@@ -116,6 +116,9 @@ AssetsConfig.images = {
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
 	fukidashi_arrow:  "./image/ui-common-btn-arrow-brn.png",
 
+	// ここを選択せよ、的な矢印
+	target_arrow:  "./image/ui-common-btn-arrow-gry.png",
+
 	// メニュー
 	"ui-common-bg-toolpu-blk":   "./image/menu/ui-common-bg-toolpu-blk.png",
 	"ui-common-btn-toolpu-blu1": "./image/menu/ui-common-btn-toolpu-blu1.png",
