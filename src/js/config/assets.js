@@ -179,6 +179,14 @@ AssetsConfig.sounds = {
 		path: "./sound/use_3rdeye.ogg",
 		volume: 1.0,
 	},
+	progress_bloodshot:    {
+		path: "./sound/progress_bloodshot.ogg",
+		volume: 1.0,
+	},
+	progress_bloodshot_last:    {
+		path: "./sound/progress_bloodshot_last.ogg",
+		volume: 1.0,
+	},
 	use_eyedrops:    {
 		path: "./sound/use_eyedrops.ogg",
 		volume: 1.0,
