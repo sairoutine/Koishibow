@@ -28797,6 +28797,8 @@ var DEBUG = {
 	SOUND_OFF: false,
 	// 第一引数: scene name, 第二引数以降: 引数
 	//START_SCENE: ["stage", "chapter0_mansion_corridor3"],
+	//START_SCENE: ["event_for_chapter0_last"],
+	//START_SCENE: ["event_for_chapter0_get_hat", "chapter0_myroom"],
 };
 
 module.exports = DEBUG;
@@ -29559,10 +29561,10 @@ Core.prototype.run = function(){
 
 		current_scene.draw();
 
+		current_scene.afterDraw();
+
 		// overwrite cursor image on scene
 		this._renderCursorImage();
-
-		current_scene.afterDraw();
 	}
 
 	/*
@@ -29596,6 +29598,11 @@ Core.prototype.addScene = function(name, scene) {
 Core.prototype.changeScene = function() {
 	var args = Array.prototype.slice.call(arguments); // to convert array object
 	this._reserved_next_scene = args;
+
+	// immediately if no scene is set
+	if (!this.current_scene) {
+		this.changeNextSceneIfReserved();
+	}
 };
 Core.prototype.changeNextSceneIfReserved = function() {
 	if(this._reserved_next_scene) {
@@ -39558,6 +39565,10 @@ SceneBase.prototype.changeSubScene = function() {
 	var args = Array.prototype.slice.call(arguments); // to convert array object
 	this._reserved_next_scene = args;
 
+	// immediately if no sub scene is set
+	if (!this.current_scene) {
+		this.changeNextSubSceneIfReserved();
+	}
 };
 SceneBase.prototype.changeNextSubSceneIfReserved = function() {
 	if(this._reserved_next_scene) {
