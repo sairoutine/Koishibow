@@ -153,6 +153,10 @@ AssetsConfig.sounds = {
 		path: "./sound/show_journal.ogg",
 		volume: 1.0,
 	},
+	got_item:    {
+		path: "./sound/got_item.ogg",
+		volume: 1.0,
+	},
 	open_menu:    {
 		path: "./sound/open_menu.ogg",
 		volume: 1.0,
@@ -44162,6 +44166,8 @@ SceneSubStageGotItem.prototype.init = function(item_piece){
 
 	// 獲得したアイテム オブジェクト
 	this._piece = item_piece;
+
+	this.core.audio_loader.playSound("got_item");
 };
 
 SceneSubStageGotItem.prototype.beforeDraw = function(){
