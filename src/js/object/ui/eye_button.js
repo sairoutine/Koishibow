@@ -50,24 +50,9 @@ ObjectEye.prototype.collisionHeight = function(){
 };
 
 ObjectEye.prototype.spriteName = function(){
-	var gauge = this.scene.koishi.get3rdeyeGauge();
+	var level = this.scene.koishi.get3rdeyeBloodShotLevel();
 
-	if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 3 / 4) {
-		return "eye1";
-	}
-	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 2 / 4) {
-		return "eye2";
-	}
-	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 1 / 4) {
-		return "eye3";
-	}
-	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 0 / 4) {
-		return "eye4";
-	}
-	else {
-		// NOTE: ゲームオーバーなのでここにはこないはず
-		return "eye4";
-	}
+	return "eye" + level;
 };
 ObjectEye.prototype.spriteIndices = function(){
 	return [{x: 0, y: 0}];

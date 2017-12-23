@@ -122,7 +122,26 @@ SaveManager.prototype.reduce3rdeyeGauge = function(num){
 	this.set("3rdeye_gauge", gauge);
 };
 
-
+// 充血の進行度(レベル)
+SaveManager.prototype.get3rdeyeBloodShotLevel = function() {
+	var gauge = this.get3rdeyeGauge();
+	if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 3 / 4) {
+		return 1;
+	}
+	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 2 / 4) {
+		return 2;
+	}
+	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 1 / 4) {
+		return 3;
+	}
+	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 0 / 4) {
+		return 4;
+	}
+	else {
+		// NOTE: ゲームオーバーなのでここにはこないはず
+		return 4;
+	}
+};
 
 // 現在のフィールドを取得
 SaveManager.prototype.getCurrentField = function() {

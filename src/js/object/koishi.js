@@ -298,9 +298,8 @@ Koishi.prototype.abrasion3rdeye = function() {
 	this.core.save_manager.reduce3rdeyeGauge(CONSTANT.ABRASION_3RDEYE_GAUGE);
 };
 
-// サードアイの自然消耗
-Koishi.prototype.get3rdeyeGauge = function() {
-	return this.core.save_manager.get3rdeyeGauge();
+Koishi.prototype.get3rdeyeBloodShotLevel = function() {
+	return this.core.save_manager.get3rdeyeBloodShotLevel();
 };
 
 Koishi.prototype.darker = function() {
