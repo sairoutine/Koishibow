@@ -256,6 +256,10 @@ SceneStage.prototype.beforeDraw = function() {
 	if (this.isUsingEye()) {
 		this.light_3rdeye.beforeDraw();
 	}
+
+	// サブシーン
+	base_scene.prototype.beforeDraw.apply(this, arguments);
+
 	// 画面の枠
 	this.black_mist.beforeDraw();
 	// UI パーツ
@@ -263,9 +267,6 @@ SceneStage.prototype.beforeDraw = function() {
 	this.left_next_field_button.beforeDraw();
 	this.item_menu_button.beforeDraw();
 	this.eye_button.beforeDraw();
-
-	// サブシーン
-	base_scene.prototype.beforeDraw.apply(this, arguments);
 };
 
 // 画面更新
@@ -299,6 +300,10 @@ SceneStage.prototype.draw = function(){
 	if (this.isUsingEye()) {
 		this.light_3rdeye.draw();
 	}
+
+	// サブシーン描画
+	base_scene.prototype.draw.apply(this, arguments);
+
 	// 画面の枠
 	this.black_mist.draw();
 	// UI パーツ
@@ -306,9 +311,6 @@ SceneStage.prototype.draw = function(){
 	this.left_next_field_button.draw();
 	this.item_menu_button.draw();
 	this.eye_button.draw();
-
-	// サブシーン描画
-	base_scene.prototype.draw.apply(this, arguments);
 };
 
 // 移動可能かどうか

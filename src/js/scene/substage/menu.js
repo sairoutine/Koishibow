@@ -114,6 +114,9 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 };
 
 SceneSubStageMenu.prototype.draw = function(){
+
+};
+SceneSubStageMenu.prototype.afterDraw = function(){
 	var ctx = this.core.ctx;
 
 	ctx.save();

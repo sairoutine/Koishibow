@@ -38,7 +38,7 @@ SceneSubStageJournal.prototype.beforeDraw = function(){
 	}
 };
 
-SceneSubStageJournal.prototype.draw = function(){
+SceneSubStageJournal.prototype.afterDraw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 

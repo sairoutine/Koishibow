@@ -57,7 +57,7 @@ SceneSubStageGotItem.prototype.frameCountFromAnimationStart = function() {
 };
 
 
-SceneSubStageGotItem.prototype.draw = function() {
+SceneSubStageGotItem.prototype.afterDraw = function() {
 	base_scene.prototype.draw.apply(this, arguments);
 
 	this._drawDarker();
