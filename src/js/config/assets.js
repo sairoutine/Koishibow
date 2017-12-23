@@ -152,6 +152,10 @@ AssetsConfig.sounds = {
 		path: "./sound/show_journal.ogg",
 		volume: 1.0,
 	},
+	got_item:    {
+		path: "./sound/got_item.ogg",
+		volume: 1.0,
+	},
 	open_menu:    {
 		path: "./sound/open_menu.ogg",
 		volume: 1.0,

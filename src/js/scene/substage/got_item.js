@@ -29,6 +29,8 @@ SceneSubStageGotItem.prototype.init = function(item_piece){
 
 	// 獲得したアイテム オブジェクト
 	this._piece = item_piece;
+
+	this.core.audio_loader.playSound("got_item");
 };
 
 SceneSubStageGotItem.prototype.beforeDraw = function(){
