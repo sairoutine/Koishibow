@@ -29,12 +29,6 @@ AssetsConfig.images = {
 	// 3rdeye 使用時の光
 	"light":  "./image/light.png",
 
-	// さとり邂逅イベント
-	"bg01": "./image/chapter0/event/encounter_satori/bg01.jpg",
-	"bg02": "./image/chapter0/event/encounter_satori/bg02.jpg",
-	"str":  "./image/chapter0/event/encounter_satori/str.png",
-	"black-mist": "./image/chapter0/event/encounter_satori/black-mist.png",
-
 	// 帽子獲得イベント
 	"get_hat_bg":  "./image/chapter0/event/get_hat/bg.png",
 
