@@ -24,7 +24,7 @@ var SceneSubStageObjectTalk = function(core) {
 };
 Util.inherit(SceneSubStageObjectTalk, base_scene);
 
-SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
+SceneSubStageObjectTalk.prototype.init = function(serif_list, obj, auto_start_flag){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// クリック待ちカーソルの状態
@@ -36,7 +36,7 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 
 	// セリフデータの生成
 	var serif_script = serif_list;
-	this._serif.init(serif_script);
+	this._serif.init(serif_script, auto_start_flag);
 
 	// 会話対象のオブジェクト
 	this._target_object = obj;
@@ -97,6 +97,8 @@ SceneSubStageObjectTalk.prototype._showMessageWindow = function(){
 	var x = message_window_pos.x;
 	var y = message_window_pos.y;
 	var is_reflect = message_window_pos.is_reflect;
+
+	if (!x && !y) return;
 
 	// ウィンドウの大きさ
 	var scale = this._getMessageWindowScale();
@@ -194,7 +196,7 @@ SceneSubStageObjectTalk.prototype._isShowRight = function(){
 		throw new Error("TODO:");
 	}
 	else {
-		throw new Error("Unrecognized chara name: " . chara_name);
+		return false;
 	}
 };
 
@@ -222,7 +224,8 @@ SceneSubStageObjectTalk.prototype._getMessageWindowPos = function(){
 		throw new Error("TODO:");
 	}
 	else {
-		throw new Error("Unrecognized chara name: " . chara_name);
+		x = 0;
+		y = 0;
 	}
 
 	return {
