@@ -25,9 +25,19 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 		this.root().koishi.playAnimationOnce("look_front");
 	}
 	else if (this.frame_count === 60) {
+		this.root().setFadeOut(120, "black");
 		this.core.changeScene("event_for_chapter0_encounter_satori");
 	}
 };
+
+
+SceneSubStageObjectTalk.prototype.afterDraw = function(){
+};
+SceneSubStageObjectTalk.prototype.draw = function(){
+	base_scene.prototype.afterDraw.apply(this, arguments);
+};
+
+
 
 SceneSubStageObjectTalk.prototype.onSerifEnd = function(){
 	this.root().changeSubScene("play");
