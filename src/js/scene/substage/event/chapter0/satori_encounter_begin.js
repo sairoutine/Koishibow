@@ -24,6 +24,9 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 		// 前に注目するアクション
 		this.root().koishi.playAnimationOnce("look_front");
 	}
+	else if (this.frame_count === 60) {
+		this.core.changeScene("event_for_chapter0_encounter_satori");
+	}
 };
 
 SceneSubStageObjectTalk.prototype.onSerifEnd = function(){
