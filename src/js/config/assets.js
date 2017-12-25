@@ -37,6 +37,11 @@ AssetsConfig.images = {
 	"door":  "./image/chapter0/event/falldown_koishi/door.png",
 	"shadow":  "./image/chapter0/event/falldown_koishi/shadow.png",
 
+	// さとり邂逅イベント
+	"chapter0-mspassage-bg-002_event":  "./image/chapter0/event/encounter_satori/chapter0-mspassage-bg-002_event.jpg",
+	"eye":  "./image/chapter0/event/encounter_satori/eye.png",
+	"str":  "./image/chapter0/event/encounter_satori/str.png",
+
 	// ジャーナル画像
 	"journal001":  "./image/journal/001.png",
 	"journal002":  "./image/journal/002.png",
@@ -108,6 +113,7 @@ AssetsConfig.images = {
 
 	// ふきだし
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
+	fukidashi_gray:  "./image/ui-common-frame-talk1-gry.png",
 	fukidashi_arrow:  "./image/ui-common-btn-arrow-brn.png",
 
 	// ここを選択せよ、的な矢印
