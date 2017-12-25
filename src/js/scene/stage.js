@@ -14,6 +14,7 @@ var SceneSubStagePictureUseEyedrops = require('./substage/picture_use_eyedrops')
 var SceneSubStageEventChapter0GetHat = require('./substage/event/chapter0/get_hat');
 var SceneSubStagePictureGetHat = require('./substage/picture_get_hat');
 var SceneSubStageEventChapter0KokoroEncounter = require('./substage/event/chapter0/kokoro_encounter');
+var SceneSubStageEventChapter0SatoriEncounterBegin = require('./substage/event/chapter0/satori_encounter_begin');
 
 var RightNextFieldButton = require('../object/ui/right_next_field_button');
 var LeftNextFieldButton = require('../object/ui/left_next_field_button');
@@ -77,6 +78,7 @@ var SceneStage = function(core) {
 	this.addSubScene("event_chapter0_get_hat", new SceneSubStageEventChapter0GetHat(core));
 	this.addSubScene("picture_get_hat", new SceneSubStagePictureGetHat(core));
 	this.addSubScene("event_chapter0_kokoro_encounter", new SceneSubStageEventChapter0KokoroEncounter(core));
+	this.addSubScene("event_chapter0_satori_encounter_begin", new SceneSubStageEventChapter0SatoriEncounterBegin(core));
 };
 Util.inherit(SceneStage, base_scene);
 

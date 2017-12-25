@@ -2,6 +2,10 @@
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
 
+// TODO: フィールドのアニメオブジェクトで使うのは anime_object
+// それ以外のアニメ用途で使う場合は、ss_anime と名付ける方がよい？
+// 具体的には(hasBackOnLightedAnime, hasFrontClickedAnime)がここにあるのが不適切なので
+
 // アニメの index は 0 固定
 // TODO: 基底の ss_anime_base にも同じ定数が存在する
 var DATA_INDEX = 0;

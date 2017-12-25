@@ -29,12 +29,6 @@ AssetsConfig.images = {
 	// 3rdeye 使用時の光
 	"light":  "./image/light.png",
 
-	// さとり邂逅イベント
-	"bg01": "./image/chapter0/event/encounter_satori/bg01.jpg",
-	"bg02": "./image/chapter0/event/encounter_satori/bg02.jpg",
-	"str":  "./image/chapter0/event/encounter_satori/str.png",
-	"black-mist": "./image/chapter0/event/encounter_satori/black-mist.png",
-
 	// 帽子獲得イベント
 	"get_hat_bg":  "./image/chapter0/event/get_hat/bg.png",
 
@@ -42,6 +36,11 @@ AssetsConfig.images = {
 	"bg01_for_falldown_koishi":  "./image/chapter0/event/falldown_koishi/bg01_for_falldown_koishi.jpg",
 	"door":  "./image/chapter0/event/falldown_koishi/door.png",
 	"shadow":  "./image/chapter0/event/falldown_koishi/shadow.png",
+
+	// さとり邂逅イベント
+	"chapter0-mspassage-bg-002_event":  "./image/chapter0/event/encounter_satori/chapter0-mspassage-bg-002_event.jpg",
+	"eye":  "./image/chapter0/event/encounter_satori/eye.png",
+	"str":  "./image/chapter0/event/encounter_satori/str.png",
 
 	// ジャーナル画像
 	"journal001":  "./image/journal/001.png",
@@ -114,6 +113,7 @@ AssetsConfig.images = {
 
 	// ふきだし
 	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
+	fukidashi_gray:  "./image/ui-common-frame-talk1-gry.png",
 	fukidashi_arrow:  "./image/ui-common-btn-arrow-brn.png",
 
 	// ここを選択せよ、的な矢印
