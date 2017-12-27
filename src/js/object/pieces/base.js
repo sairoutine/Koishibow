@@ -4,11 +4,19 @@ var Util = require('../../hakurei').util;
 
 var ObjectBase = function(core) {
 	base_object.apply(this, arguments);
+
+	// こいしがオブジェクトに向かう先
+	this._target_x = null;
+	this._target_y = null;
 };
 Util.inherit(ObjectBase, base_object);
 
 ObjectBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
+
+	// こいしがオブジェクトに向かう先
+	this._target_x = null;
+	this._target_y = null;
 };
 
 ObjectBase.prototype.onCollision = function(point) {
@@ -42,6 +50,10 @@ ObjectBase.prototype.onCollisionWithMouseOver = function(point) {
 
 // パラメータをオブジェクトに設定する
 ObjectBase.prototype.setData = function(data) {
+	console.log(data.target_x, data.target_y);
+	// こいしがオブジェクトに向かう先
+	this._target_x = data.target_x || data.x;
+	this._target_y = data.target_y || data.y;
 };
 
 // こいし移動後の処理

@@ -30,6 +30,7 @@ ObjectChapter0Hat.prototype.init = function(){
 
 // パラメータをオブジェクトに設定する
 ObjectChapter0Hat.prototype.setData = function(data) {
+	base_object.prototype.setData.apply(this, arguments);
 	this.setPosition(data.x, data.y);
 
 	this._image = this.core.image_loader.getImage(data.image);
