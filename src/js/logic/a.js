@@ -15,9 +15,8 @@ function backtrack_search (path, goal){
 
 	if (point === goal) {
 		//ゴールに到着
-		var route = path.reverse();
-
-		console.log("found: " + route.join("=>"));
+		// 最初に発見したルートを返す(ちょっと遠回りでも構わない)
+		return path.reverse();
 	}
 	else {
 		var next_point = [];
@@ -32,9 +31,15 @@ function backtrack_search (path, goal){
 		}
 		for (i = 0, len = next_point.length; i < len; i++) {
 			var _ = next_point[i];
-			backtrack_search([_].concat(path), goal);
+			var route = backtrack_search([_].concat(path), goal);
+
+			if (route) {
+				return route;
+			}
 		}
 	}
+
+	return null;
 }
 
-backtrack_search(['A'], 'G');
+console.log(backtrack_search(['A'], 'G'));
