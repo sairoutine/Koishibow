@@ -191,8 +191,6 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 
 	var from_pos_x = Math.floor(this.x() / (this.scene.width/8));
 	var from_pos_y = Math.floor(this.y() / (this.scene.width/8));
-	console.log(this.x(), this.y(), from_pos_x, from_pos_y);
-	console.log(target_x, target_y,  target_pos_x, target_pos_y);
 
 
 	var graph = new Graph([
@@ -217,11 +215,9 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 	var self = this;
 	var _cb = function () {
 		if (self._astar_node_list.length > 0) {
-			console.log("cb is done (ing)");
 			self.setMoveTarget2(self._astar_node_list.shift(), _cb);
 		}
 		else {
-			console.log("cb is done (done)");
 			self.setMoveTarget2(self._move_last_target_object, self._after_last_move_callback);
 		}
 	};
@@ -337,14 +333,13 @@ Koishi.prototype._getMoveToPos = function() {
 	if(!obj) throw new Error("unable to get _move_target_object");
 
 	var target_x, target_y;
-	if (typeof obj.x === "function") {
-		target_x = obj.x();
-		target_y = obj.y();
+	if (obj._target_x || obj._target_y) {
+		target_x = obj._target_x;
+		target_y = obj._target_y;
 	}
 	else {
 		target_x = obj.x*this.scene.width/8;
 		target_y = obj.y*this.scene.height/8;
-		console.log(target_x, target_y);
 	}
 
 
