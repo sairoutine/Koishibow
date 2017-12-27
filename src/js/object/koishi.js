@@ -337,6 +337,10 @@ Koishi.prototype._getMoveToPos = function() {
 		target_x = obj._target_x;
 		target_y = obj._target_y;
 	}
+	else if (typeof obj.x === "function") {
+		target_x = obj.x();
+		target_y = obj.y();
+	}
 	else {
 		target_x = obj.x*this.scene.width/8;
 		target_y = obj.y*this.scene.height/8;
