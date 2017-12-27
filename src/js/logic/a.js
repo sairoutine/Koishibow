@@ -6,14 +6,9 @@ var map = [
 	[0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0],
 ];
 
 var adjacent = create_adjacent_by_map(map);
-console.log(adjacent);
 function create_adjacent_by_map (map) {
 	var adjacent = {};
 	for (var i = 0, i_len=map.length; i<i_len; i++) {
@@ -41,7 +36,6 @@ function open (i, j, map) {
 }
 
 
-
 /*
 var adjacent = {
 	'A': ['B', 'C'],
@@ -53,14 +47,13 @@ var adjacent = {
 	'G': ['E'],
 };
 */
-
 function backtrack_search (path, goal){
 	var point = path[0];
 
 	if (point === goal) {
 		//ゴールに到着
 		// 最初に発見したルートを返す(ちょっと遠回りでも構わない)
-		return path.reverse();
+		console.log(path.reverse());
 	}
 	else {
 		var next_point = [];
@@ -75,15 +68,10 @@ function backtrack_search (path, goal){
 		}
 		for (i = 0, len = next_point.length; i < len; i++) {
 			var _ = next_point[i];
-			var route = backtrack_search([_].concat(path), goal);
-
-			if (route) {
-				return route;
-			}
+			backtrack_search([_].concat(path), goal);
 		}
 	}
-
-	return null;
 }
 
-console.log(backtrack_search(['A'], 'G'));
+backtrack_search(['0_0'], '1_1');
+//backtrack_search(['A'], 'G');
