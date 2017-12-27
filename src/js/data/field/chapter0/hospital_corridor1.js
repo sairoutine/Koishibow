@@ -41,6 +41,8 @@ module.exports = {
 			],
 			x: 279,
 			y: 378,
+			target_x: 278,
+			target_y: 465,
 			scale: 0.7
 		},
 		{
@@ -72,6 +74,8 @@ module.exports = {
 			scale: 0.7,
 			action_name: "look_front",
 			position_type: "front",
+			target_x: 650,
+			target_y: 616,
 		},
 		{
 			no: ++I,

@@ -43,7 +43,10 @@ module.exports = {
 			action_name: "touch",
 			sound_name: "chapter0-hospital_corridor2-move_wheelchair",
 			width: 258,
-			height: 280
+			height: 280,
+			target_x: 296,
+			target_y: 422,
+
 		},
 		{
 			no: ++I,

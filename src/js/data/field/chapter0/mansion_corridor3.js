@@ -78,6 +78,8 @@ module.exports = {
 			anime6: "chapter0-mansion_corridor3-obj-09-01-obj06",
 			action_name: "look_front",
 			sound_back: "chapter0-mansion_corridor3-smile_kokoro_back",
+			target_x: 777, target_y: 451,
+
 		},
 		{
 			no: ++I,
@@ -99,7 +101,9 @@ module.exports = {
 			anime6: "chapter0-mansion_corridor3-obj-10-01-obj06",
 			action_name: "look_top",
 			sound_name:      "chapter0-mansion_corridor3-ring_clock_front",
-			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
+			sound_back: "chapter0-mansion_corridor3-ring_clock_back",
+
+			target_x: 157, target_y: 460,
 		},
 		{
 			no: ++I,
@@ -126,7 +130,8 @@ module.exports = {
 			x: 590,
 			y: 290,
 			scale: 2/3,
-			item_id: CONSTANT.ITEM.EYEDROPS
+			item_id: CONSTANT.ITEM.EYEDROPS,
+			target_x: 526, target_y: 417,
 		},
 
 	],

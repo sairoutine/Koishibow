@@ -25,7 +25,10 @@ module.exports = {
 			x: 258, y: 389,
 			scale: 0.7,
 			action_name: "touch",
-			sound_name: "touch"
+			sound_name: "touch",
+			target_x: 479,
+			target_y: 418
+
 		},
 		{
 			no: ++I,

@@ -56,6 +56,9 @@ module.exports = {
 			sound_name: "chapter0-mansion_corridor1-move_tricycle",
 			bgm_back: "chapter0-mansion_corridor1-tricycle",
 			position_type: "front",
+			target_x: 641,
+			target_y: 586
+
 		},
 		{
 			no: ++I,

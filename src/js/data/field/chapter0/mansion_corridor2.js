@@ -34,7 +34,8 @@ module.exports = {
 			anime6: "chapter0-mansion_corridor2-obj-04-01-obj06",
 			action_name: "touch",
 			sound_name:      "chapter0-mansion_corridor2-flower_front",
-			sound_back: "chapter0-mansion_corridor2-flower_back"
+			sound_back: "chapter0-mansion_corridor2-flower_back",
+			target_x: 745, target_y: 430,
 
 		},
 		{
