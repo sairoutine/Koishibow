@@ -50,7 +50,6 @@ ObjectBase.prototype.onCollisionWithMouseOver = function(point) {
 
 // パラメータをオブジェクトに設定する
 ObjectBase.prototype.setData = function(data) {
-	console.log(data.target_x, data.target_y);
 	// こいしがオブジェクトに向かう先
 	this._target_x = data.target_x || data.x;
 	this._target_y = data.target_y || data.y;
