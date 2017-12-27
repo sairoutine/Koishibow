@@ -6,6 +6,10 @@ var SPEED = 2;
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
+var RouteSearch = require("../vendor/astar");
+var Graph = RouteSearch.Graph;
+var astar = RouteSearch.astar;
+
 
 
 /* 使用用途	リピート	fps	フレーム	時間 */
@@ -173,11 +177,64 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 	// 移動不可であれば何もしない
 	if (!this.scene.isEnableToMove()) return;
 
-	// 移動先のオブジェクト or 座標
-	this._move_target_object = obj;
+	// 移動後に実行する callback
+	this._after_last_move_callback = callback;
 
+	// 移動先のオブジェクト or 座標
+	this._move_last_target_object = obj;
+
+	var target_x = obj.x();
+	var target_y = obj.y();
+
+	var target_pos_x = Math.floor(target_x / (this.scene.width/8));
+	var target_pos_y = Math.floor(target_y / (this.scene.width/8));
+
+	var from_pos_x = Math.floor(this.x() / (this.scene.width/8));
+	var from_pos_y = Math.floor(this.y() / (this.scene.width/8));
+	console.log(this.x(), this.y(), from_pos_x, from_pos_y);
+	console.log(target_x, target_y,  target_pos_x, target_pos_y);
+
+
+	var graph = new Graph([
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+	]);
+
+	var start   = graph.grid[from_pos_x][from_pos_y];
+	var end     = graph.grid[target_pos_x][target_pos_y];
+	var options = {};
+	var result  = astar.search(graph, start, end, options);
+
+	console.log(result.join("=>"));
+	this._astar_node_list = result;
+
+	var self = this;
+	var _cb = function () {
+		if (self._astar_node_list.length > 0) {
+			console.log("cb is done (ing)");
+			self.setMoveTarget2(self._astar_node_list.shift(), _cb);
+		}
+		else {
+			console.log("cb is done (done)");
+			self.setMoveTarget2(self._move_last_target_object, self._after_last_move_callback);
+		}
+	};
+
+	_cb();
+};
+
+Koishi.prototype.setMoveTarget2 = function(obj, callback) {
 	// 移動後に実行する callback
 	this._after_move_callback = callback;
+
+	// 移動先のオブジェクト or 座標
+	this._move_target_object = obj;
 
 	// 移動先位置を取得
 	var move_to_pos = this._getMoveToPos();
@@ -194,7 +251,7 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 	this.setWalkAnime();
 
 	// 移動方向に合わせて こいしを反転
-	if (obj.x() > this.x()) {
+	if (move_to_pos.x > this.x()) {
 		this.setReflect(false);
 	}
 	else {
@@ -279,8 +336,17 @@ Koishi.prototype._getMoveToPos = function() {
 	// このメソッドを呼ぶときは、必ず移動先が設定されていないといけない
 	if(!obj) throw new Error("unable to get _move_target_object");
 
-	var target_x = obj.x();
-	var target_y = obj.y();
+	var target_x, target_y;
+	if (typeof obj.x === "function") {
+		target_x = obj.x();
+		target_y = obj.y();
+	}
+	else {
+		target_x = obj.x*this.scene.width/8;
+		target_y = obj.y*this.scene.height/8;
+		console.log(target_x, target_y);
+	}
+
 
 	// 一定以上の奥行きには移動できない
 	if (target_y < this.scene.height - CONSTANT.WALK_DEPTH_LIMIT) {
