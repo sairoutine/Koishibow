@@ -1,11 +1,13 @@
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
+var WalkImmovableArea = require('../walk_immovable_area');
 
 var ObjectBase = function(core) {
 	base_object.apply(this, arguments);
 
 	this._z = 0;
+	this._position_type = null;
 };
 Util.inherit(ObjectBase, base_object);
 
@@ -13,6 +15,7 @@ ObjectBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
 	this._z = 0;
+	this._position_type = null;
 };
 
 ObjectBase.prototype.onCollision = function(point) {
@@ -53,6 +56,9 @@ ObjectBase.prototype.setData = function(data) {
 	if (data.position_type === "front") {
 		this._z = 10000; // TODO: 固定値やめる
 	}
+	else if (data.position_type === "lying") {
+		this._position_type = "lying";
+	}
 };
 
 // こいし移動後の処理
@@ -78,8 +84,20 @@ ObjectBase.prototype.onUse3rdEye = function(){
 // 3rd eye を使用解除した場合に呼ばれる
 ObjectBase.prototype.onUnUse3rdEye = function(){
 };
+ObjectBase.prototype.getImmovableArea = function() {
+	var area = new WalkImmovableArea(this.scene);
+	area.init();
+	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
+	if (this._position_type === "lying") {
+		area.setSize(0, 0);
+	}
+	else {
+		area.setSize(this.collisionWidth(), this.collisionHeight()/2);
+	}
+	area.setParentID(this.id);
 
-
+	return area;
+};
 
 
 

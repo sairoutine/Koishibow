@@ -249,7 +249,7 @@ Koishi.prototype._checkToStop = function() {
 	var target_y = move_to_pos.y;
 
 	// "概ね" の範囲
-	var range = SPEED*3;
+	var range = SPEED*4;
 
 	// (x,y)座標が概ね target_x と target_y に近づいたら
 	if (
@@ -261,13 +261,10 @@ Koishi.prototype._checkToStop = function() {
 		// end move
 		this.stopMove();
 	}
-	/*
 	// オブジェクトとぶつかったら止まる
 	else if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
 		this.stopMove();
 	}
-	*/
-
 };
 
 

@@ -64,6 +64,8 @@ var SceneStage = function(core) {
 	// 3rd eye 使用中か否か
 	this._is_using_eye = false;
 
+	// 移動制限範囲
+	this.walk_immovable_areas = [];
 
 	// 通常
 	this.addSubScene("play", new SceneSubStagePlay(core));
@@ -287,6 +289,11 @@ SceneStage.prototype.beforeDraw = function() {
 	this.left_next_field_button.beforeDraw();
 	this.item_menu_button.beforeDraw();
 	this.eye_button.beforeDraw();
+
+	for (i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
+		var obj = this.walk_immovable_areas[i];
+		obj.beforeDraw();
+	}
 };
 
 // 画面更新
@@ -338,6 +345,12 @@ SceneStage.prototype.draw = function(){
 	this.left_next_field_button.draw();
 	this.item_menu_button.draw();
 	this.eye_button.draw();
+
+	for (i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
+		obj = this.walk_immovable_areas[i];
+		obj.draw();
+	}
+
 };
 
 // 移動可能かどうか
@@ -358,6 +371,7 @@ SceneStage.prototype._setupPieces = function() {
 	var field_data = this.getFieldData();
 
 	this.pieces = [];
+	this.walk_immovable_areas = [];
 
 	var object_data_list = field_data.objects;
 
@@ -386,6 +400,8 @@ SceneStage.prototype._setupPieces = function() {
 		object.init();
 		object.setData(data);
 		this.pieces.push(object);
+
+		this.walk_immovable_areas.push(object.getImmovableArea());
 	}
 };
 module.exports = SceneStage;

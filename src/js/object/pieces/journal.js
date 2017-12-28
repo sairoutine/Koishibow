@@ -1,6 +1,7 @@
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
+var WalkImmovableArea = require('../walk_immovable_area');
 
 var ObjectJournal = function(core) {
 	base_object.apply(this, arguments);
@@ -105,4 +106,22 @@ ObjectJournal.prototype.collisionHeight = function(){
 		return this._image.height * this._scale;
 	}
 };
+ObjectJournal.prototype.getImmovableArea = function() {
+	var area = new WalkImmovableArea(this.scene);
+	area.init();
+	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
+	// 床の紙なのでサイズなし
+	area.setSize(0, 0);
+
+	area.setParentID(this.id);
+
+	return area;
+};
+
+
+
+
+
+
+
 module.exports = ObjectJournal;
