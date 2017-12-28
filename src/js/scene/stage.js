@@ -46,6 +46,9 @@ var SceneStage = function(core) {
 	// 自機
 	this.koishi = new Koishi(this);
 
+	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
+	this._koishi_and_pieces = [];
+
 	// 3rd eye の光
 	this.light_3rdeye = new Light3rdeye(this);
 
@@ -102,6 +105,15 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// 自機
 	this.koishi.init();
+
+	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
+	this._koishi_and_pieces = this.pieces.concat(this.koishi);
+	// z軸の降順ソート
+	this._koishi_and_pieces.sort(function(a,b){
+		if(a.z() < b.z()) return -1;
+		if(a.z() > b.z()) return 1;
+		return 0;
+	});
 
 	// 3rd eye の光
 	this.light_3rdeye.init();
@@ -299,11 +311,18 @@ SceneStage.prototype.draw = function(){
 	ctx.restore();
 
 	// ステージ上のオブジェクト一覧
+	// 自機
+	var obj, i, len;
+	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
+		obj = this._koishi_and_pieces[i];
+		obj.draw();
+	}
+	/*
 	for (var i = 0, len = this.pieces.length; i < len; i++) {
 		this.pieces[i].draw();
 	}
-	// 自機
 	this.koishi.draw();
+	*/
 
 	// 3rd eye の光
 	if (this.isUsingEye()) {

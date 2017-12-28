@@ -66,11 +66,11 @@ ObjectNextFieldButtonBase.prototype.nextFieldName = function(){
 };
 
 ObjectNextFieldButtonBase.prototype.collisionWidth = function(){
-	return 128;
+	return 64;
 };
 
 ObjectNextFieldButtonBase.prototype.collisionHeight = function(){
-	return 128;
+	return 64;
 };
 
 ObjectNextFieldButtonBase.prototype.spriteName = function(){

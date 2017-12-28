@@ -30,7 +30,7 @@ SsAnimeBase.prototype.init = function(){
 	this.imageList = this._getImageList(jsonData[DATA_INDEX].images);
 
 	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
-	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight;
+	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
 
 	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
 
@@ -43,7 +43,7 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 	var jsonData = this.getJsonData(name);
 
 	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
-	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight;
+	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
 
 	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
 

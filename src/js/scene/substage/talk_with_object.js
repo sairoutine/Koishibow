@@ -111,8 +111,8 @@ SceneSubStageObjectTalk.prototype._showMessageWindow = function(){
 	ctx.drawImage(fukidashi,
 		x,
 		y,
-		fukidashi.width * scale,
-		fukidashi.height * scale
+		fukidashi.width * scale.width,
+		fukidashi.height * scale.height
 	);
 	ctx.restore();
 };
@@ -227,7 +227,6 @@ SceneSubStageObjectTalk.prototype._getMessageWindowPos = function(){
 		x = 0;
 		y = 0;
 	}
-
 	return {
 		is_reflect: is_reflect,
 		x: x,
@@ -237,14 +236,16 @@ SceneSubStageObjectTalk.prototype._getMessageWindowPos = function(){
 
 // ウィンドウの大きさ
 SceneSubStageObjectTalk.prototype._getMessageWindowScale = function(){
-	var scale;
+	var scale_width, scale_height;
 	if (this._serif.getSerifRowsCount() === 2) {
-		scale = 0.5;
+		scale_width = 0.4;
+		scale_height = 0.5;
 	}
 	else {
-		scale = 0.4;
+		scale_width = 0.4;
+		scale_height = 0.4;
 	}
-	return scale;
+	return {width: scale_width, height: scale_height};
 };
 
 // メッセージテキストの開始位置を取得

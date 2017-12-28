@@ -42,11 +42,11 @@ ObjectEye.prototype.setPosition = function(){
 };
 
 ObjectEye.prototype.collisionWidth = function(){
-	return 150;
+	return 96;
 };
 
 ObjectEye.prototype.collisionHeight = function(){
-	return 100;
+	return 96;
 };
 
 ObjectEye.prototype.spriteName = function(){
