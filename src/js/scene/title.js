@@ -149,6 +149,11 @@ SceneTitle.prototype.beforeDraw = function(){
 			menu.setVariable("is_big", false);
 		}
 	}
+
+	// タイトル放置演出
+	if (this.frame_count === 14400) { // 4分後
+		this.core.changeScene("leaving_title");
+	}
 };
 
 // 画面更新
