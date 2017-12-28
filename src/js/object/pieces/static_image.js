@@ -39,6 +39,7 @@ ObjectStaticImage.prototype.init = function(){
 
 // パラメータをオブジェクトに設定する
 ObjectStaticImage.prototype.setData = function(data) {
+	base_object.prototype.setData.apply(this, arguments);
 	this.setPosition(data.x, data.y);
 
 	if (data.image) {

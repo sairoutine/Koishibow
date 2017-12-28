@@ -88,6 +88,7 @@ ObjectAnimeImage.prototype.setPosition = function(x, y) {
 };
 
 ObjectAnimeImage.prototype.setData = function(data) {
+	base_object.prototype.setData.apply(this, arguments);
 	// 位置
 	this.setPosition(data.x, data.y);
 
