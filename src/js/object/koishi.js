@@ -320,6 +320,9 @@ Koishi.prototype.darker = function() {
 	return this.core.debug_manager.get("koishi_alpha");
 };
 
+Koishi.prototype.z = function(){
+	return 100; //TODO: 固定値やめる
+};
 
 
 
