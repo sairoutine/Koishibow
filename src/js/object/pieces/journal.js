@@ -34,6 +34,7 @@ ObjectJournal.prototype.isCollision = function(point) {
 
 
 ObjectJournal.prototype.setData = function(data) {
+	base_object.prototype.setData.apply(this, arguments);
 	// 画像
 	this._image = this.core.image_loader.getImage(data.image);
 

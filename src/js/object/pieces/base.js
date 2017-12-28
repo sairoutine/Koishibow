@@ -4,11 +4,15 @@ var Util = require('../../hakurei').util;
 
 var ObjectBase = function(core) {
 	base_object.apply(this, arguments);
+
+	this._z = 0;
 };
 Util.inherit(ObjectBase, base_object);
 
 ObjectBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
+
+	this._z = 0;
 };
 
 ObjectBase.prototype.onCollision = function(point) {
@@ -40,8 +44,15 @@ ObjectBase.prototype.onCollisionWithMouseOver = function(point) {
 	this.core.changeCursorImage("ui_icon_pointer_02");
 };
 
+ObjectBase.prototype.z = function(){
+	return this._z;
+};
+
 // パラメータをオブジェクトに設定する
 ObjectBase.prototype.setData = function(data) {
+	if (data.position_type === "front") {
+		this._z = 10000; // TODO: 固定値やめる
+	}
 };
 
 // こいし移動後の処理

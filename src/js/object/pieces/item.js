@@ -27,6 +27,7 @@ ObjectItem.prototype.init = function(){
 	this.no = null;
 };
 ObjectItem.prototype.setData = function(data) {
+	base_object.prototype.setData.apply(this, arguments);
 	// オブジェクトID
 	// TODO: 他の piece もオブジェクトIDを使うよ
 	this.no = data.no;
