@@ -187,22 +187,14 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 	var target_y = obj.y();
 
 	var target_pos_x = Math.floor(target_x / (this.scene.width/8));
-	var target_pos_y = Math.floor(target_y / (this.scene.width/8));
+	var target_pos_y = Math.floor(target_y / (this.scene.height/8));
 
 	var from_pos_x = Math.floor(this.x() / (this.scene.width/8));
-	var from_pos_y = Math.floor(this.y() / (this.scene.width/8));
+	var from_pos_y = Math.floor(this.y() / (this.scene.height/8));
 
 
-	var graph = new Graph([
-		[1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1],
-	]);
+	var field_data = this.scene.getFieldData();
+	var graph = new Graph(field_data.map);
 
 	var start   = graph.grid[from_pos_x][from_pos_y];
 	var end     = graph.grid[target_pos_x][target_pos_y];
@@ -210,6 +202,7 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 	var result  = astar.search(graph, start, end, options);
 
 	console.log(result.join("=>"));
+
 	this._astar_node_list = result;
 
 	var self = this;
@@ -342,8 +335,9 @@ Koishi.prototype._getMoveToPos = function() {
 		target_y = obj.y();
 	}
 	else {
-		target_x = obj.x*this.scene.width/8;
-		target_y = obj.y*this.scene.height/8;
+		// graph node
+		target_x = obj.x*this.scene.width/8 + this.scene.width/16;
+		target_y = obj.y*this.scene.height/8 + this.scene.height/16;
 	}
 
 
