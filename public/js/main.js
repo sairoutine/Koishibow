@@ -30679,7 +30679,6 @@ module.exports = {
 	left_field: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
 	walk_sound: "walking_bare_default",
-	event: "event_chapter0_kokoro_encounter",
 	objects: [
 		{
 			no: ++I,
@@ -30763,6 +30762,7 @@ module.exports = {
 	left_field: "chapter0_hospital_corridor1",
 	background: "chapter0-hospital2-bg-001",
 	walk_sound: "walking_bare_default",
+	event: "event_chapter0_kokoro_encounter",
 	objects: [
 		{
 			no: ++I,
@@ -31214,7 +31214,21 @@ module.exports = {
 			sound_name: "chapter0-myroom-sound_window_for_kokoro",
 			target_x: 177, target_y: 531
 		},
-
+		{
+			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "部屋の隅",
+			serif: [
+				{"chara": "koishi","serif":"ここジョンのばしょ！"},
+				{"chara": "koishi","serif":"いいこいいこ！"},
+				{"chara": "koishi","serif":"ばいばい"},
+			],
+			width: 150, height: 150,
+			x: 670, y: 300,
+			scale: 2/3,
+			target_x: 532, target_y: 418
+		},
 		{
 			no: ++I,
 			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 258, y: 689, scale: 2/3, picture: "journal001"},
@@ -44691,7 +44705,9 @@ ObjectStaticImage.prototype.init = function(){
 ObjectStaticImage.prototype.setData = function(data) {
 	this.setPosition(data.x, data.y);
 
-	this._image = this.core.image_loader.getImage(data.image);
+	if (data.image) {
+		this._image = this.core.image_loader.getImage(data.image);
+	}
 
 	// クリックした際のセリフ
 	if (data.serif) {
@@ -44724,15 +44740,17 @@ ObjectStaticImage.prototype.draw = function(){
 	var ctx = this.core.ctx;
 	var image = this._image;
 
-	// 背景描画
-	ctx.save();
-	ctx.translate(this.x(), this.y());
-	ctx.drawImage(image,
-					-image.width*this._scale/2,
-					-image.height*this._scale/2,
-					image.width * this._scale,
-					image.height * this._scale);
-	ctx.restore();
+	if (image) {
+		// 描画
+		ctx.save();
+		ctx.translate(this.x(), this.y());
+		ctx.drawImage(image,
+						-image.width*this._scale/2,
+						-image.height*this._scale/2,
+						image.width * this._scale,
+						image.height * this._scale);
+		ctx.restore();
+	}
 };
 
 ObjectStaticImage.prototype.collisionWidth = function(){
@@ -44806,7 +44824,7 @@ SsAnimeBase.prototype.init = function(){
 	this.imageList = this._getImageList(jsonData[DATA_INDEX].images);
 
 	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
-	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight;
+	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
 
 	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
 
@@ -44819,7 +44837,7 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 	var jsonData = this.getJsonData(name);
 
 	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
-	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight;
+	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
 
 	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
 
@@ -44993,11 +45011,11 @@ ObjectEye.prototype.setPosition = function(){
 };
 
 ObjectEye.prototype.collisionWidth = function(){
-	return 150;
+	return 96;
 };
 
 ObjectEye.prototype.collisionHeight = function(){
-	return 100;
+	return 96;
 };
 
 ObjectEye.prototype.spriteName = function(){
@@ -45084,7 +45102,7 @@ ObjectItemMenuButton.prototype.collisionWidth = function(){
 };
 
 ObjectItemMenuButton.prototype.collisionHeight = function(){
-	return 128;
+	return 96;
 };
 
 ObjectItemMenuButton.prototype.spriteName = function(){
@@ -45204,11 +45222,11 @@ ObjectNextFieldButtonBase.prototype.nextFieldName = function(){
 };
 
 ObjectNextFieldButtonBase.prototype.collisionWidth = function(){
-	return 128;
+	return 64;
 };
 
 ObjectNextFieldButtonBase.prototype.collisionHeight = function(){
-	return 128;
+	return 64;
 };
 
 ObjectNextFieldButtonBase.prototype.spriteName = function(){
@@ -47583,8 +47601,8 @@ SceneSubStageObjectTalk.prototype._showMessageWindow = function(){
 	ctx.drawImage(fukidashi,
 		x,
 		y,
-		fukidashi.width * scale,
-		fukidashi.height * scale
+		fukidashi.width * scale.width,
+		fukidashi.height * scale.height
 	);
 	ctx.restore();
 };
@@ -47699,7 +47717,6 @@ SceneSubStageObjectTalk.prototype._getMessageWindowPos = function(){
 		x = 0;
 		y = 0;
 	}
-
 	return {
 		is_reflect: is_reflect,
 		x: x,
@@ -47709,14 +47726,16 @@ SceneSubStageObjectTalk.prototype._getMessageWindowPos = function(){
 
 // ウィンドウの大きさ
 SceneSubStageObjectTalk.prototype._getMessageWindowScale = function(){
-	var scale;
+	var scale_width, scale_height;
 	if (this._serif.getSerifRowsCount() === 2) {
-		scale = 0.5;
+		scale_width = 0.4;
+		scale_height = 0.5;
 	}
 	else {
-		scale = 0.4;
+		scale_width = 0.4;
+		scale_height = 0.4;
 	}
-	return scale;
+	return {width: scale_width, height: scale_height};
 };
 
 // メッセージテキストの開始位置を取得
