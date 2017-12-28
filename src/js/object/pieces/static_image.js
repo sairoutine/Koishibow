@@ -41,7 +41,9 @@ ObjectStaticImage.prototype.init = function(){
 ObjectStaticImage.prototype.setData = function(data) {
 	this.setPosition(data.x, data.y);
 
-	this._image = this.core.image_loader.getImage(data.image);
+	if (data.image) {
+		this._image = this.core.image_loader.getImage(data.image);
+	}
 
 	// クリックした際のセリフ
 	if (data.serif) {
@@ -74,15 +76,17 @@ ObjectStaticImage.prototype.draw = function(){
 	var ctx = this.core.ctx;
 	var image = this._image;
 
-	// 背景描画
-	ctx.save();
-	ctx.translate(this.x(), this.y());
-	ctx.drawImage(image,
-					-image.width*this._scale/2,
-					-image.height*this._scale/2,
-					image.width * this._scale,
-					image.height * this._scale);
-	ctx.restore();
+	if (image) {
+		// 描画
+		ctx.save();
+		ctx.translate(this.x(), this.y());
+		ctx.drawImage(image,
+						-image.width*this._scale/2,
+						-image.height*this._scale/2,
+						image.width * this._scale,
+						image.height * this._scale);
+		ctx.restore();
+	}
 };
 
 ObjectStaticImage.prototype.collisionWidth = function(){

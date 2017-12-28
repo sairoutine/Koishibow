@@ -93,7 +93,21 @@ module.exports = {
 			sound_name: "chapter0-myroom-sound_window_for_kokoro",
 			target_x: 177, target_y: 531
 		},
-
+		{
+			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "部屋の隅",
+			serif: [
+				{"chara": "koishi","serif":"ここジョンのばしょ！"},
+				{"chara": "koishi","serif":"いいこいいこ！"},
+				{"chara": "koishi","serif":"ばいばい"},
+			],
+			width: 150, height: 150,
+			x: 670, y: 300,
+			scale: 2/3,
+			target_x: 532, target_y: 418
+		},
 		{
 			no: ++I,
 			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 258, y: 689, scale: 2/3, picture: "journal001"},
