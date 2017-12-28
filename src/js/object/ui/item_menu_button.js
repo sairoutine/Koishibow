@@ -59,7 +59,7 @@ ObjectItemMenuButton.prototype.collisionWidth = function(){
 };
 
 ObjectItemMenuButton.prototype.collisionHeight = function(){
-	return 128;
+	return 96;
 };
 
 ObjectItemMenuButton.prototype.spriteName = function(){
