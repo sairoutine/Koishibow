@@ -173,6 +173,15 @@ Koishi.prototype._playWalkSound = function(){
 	}
 };
 
+function transpose(a) {
+  return Object.keys(a[0]).map(function (c) {
+    return a.map(function (r) {
+      return r[c];
+    });
+  });
+}   
+
+
 Koishi.prototype.setMoveTarget = function(obj, callback) {
 	// 移動不可であれば何もしない
 	if (!this.scene.isEnableToMove()) return;
@@ -194,7 +203,7 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 
 
 	var field_data = this.scene.getFieldData();
-	var graph = new Graph(field_data.map);
+	var graph = new Graph(transpose(field_data.map));
 
 	var start   = graph.grid[from_pos_x][from_pos_y];
 	var end     = graph.grid[target_pos_x][target_pos_y];
@@ -202,6 +211,10 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 	var result  = astar.search(graph, start, end, options);
 
 	console.log(result.join("=>"));
+
+	// 探索ルートが見つからなかった
+	// TODO: オブジェクトを直接クリックしたときも探索ルートなしになるのでその場合はそのままアクションしてよさそう
+	if (result.length === 0) return;
 
 	this._astar_node_list = result;
 
