@@ -13,6 +13,16 @@ module.exports = {
 	background: "chapter0-myroom-bg-001",
 	walk_sound: "walking_bare_default",
 	event: "event_chapter0_get_hat",
+	map: [
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[0,0,0,0,1,1,1,1],
+		[0,0,0,0,1,1,1,1],
+		[0,0,1,1,1,1,1,1],
+		[0,0,1,1,1,1,1,1],
+	],
 	objects: [
 		{
 			no: ++I,
