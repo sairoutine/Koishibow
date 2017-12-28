@@ -46053,6 +46053,7 @@ Util.inherit(SceneHowto, base_scene);
 SceneHowto.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
+	this.core.audio_loader.stopBGM();
 	this.core.audio_loader.playSound("leaving_title");
 };
 
