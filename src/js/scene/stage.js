@@ -251,6 +251,7 @@ SceneStage.prototype.beforeDraw = function() {
 			var y = this.core.input_manager.mousePositionY();
 
 			console.log("x: " + x + ", y: " + y);
+
 		}
 	}
 
@@ -319,6 +320,26 @@ SceneStage.prototype.draw = function(){
 	this.left_next_field_button.draw();
 	this.item_menu_button.draw();
 	this.eye_button.draw();
+
+	if (CONSTANT.DEBUG.ON) {
+		ctx.strokeStyle = '#666';
+		ctx.lineWidth = 1;
+		for (i = 0; i < 8; i++) {
+			ctx.beginPath();
+			ctx.moveTo(0, i * this.height/8);
+			ctx.lineTo(this.width, i * this.height/8);
+			ctx.closePath();
+			ctx.stroke();
+		}
+		for (i = 0; i < 8; i++) {
+			ctx.beginPath();
+			ctx.moveTo(i * this.width/8, 0);
+			ctx.lineTo(i* this.width/8, i * this.height);
+			ctx.closePath();
+			ctx.stroke();
+		}
+
+	}
 };
 
 // 移動可能かどうか
