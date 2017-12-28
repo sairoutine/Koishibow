@@ -13,6 +13,16 @@ module.exports = {
 	background: "chapter0-hospital2-bg-001",
 	walk_sound: "walking_bare_default",
 	event: "event_chapter0_kokoro_encounter",
+	map: [
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+	],
 	objects: [
 		{
 			no: ++I,

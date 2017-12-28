@@ -13,6 +13,16 @@ module.exports = {
 	background: "chapter0-mansionpas-002",
 	walk_sound: "walking_bare_wood",
 	event: "event_chapter0_satori_encounter_begin",
+	map: [
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+	],
 	objects: [
 		{
 			no: ++I,

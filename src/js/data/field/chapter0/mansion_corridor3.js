@@ -13,6 +13,16 @@ module.exports = {
 	left_field: "chapter0_mansion_corridor2",
 	background: "chapter0-mansionpas-003",
 	walk_sound: "walking_bare_wood",
+	map: [
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1],
+	],
 	objects: [
 		{
 			no: ++I,
