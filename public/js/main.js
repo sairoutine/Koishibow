@@ -43563,6 +43563,9 @@ Koishi.prototype.darker = function() {
 	return this.core.debug_manager.get("koishi_alpha");
 };
 
+Koishi.prototype.z = function(){
+	return 100; //TODO: 固定値やめる
+};
 
 
 
@@ -44046,6 +44049,7 @@ ObjectAnimeImage.prototype.setPosition = function(x, y) {
 };
 
 ObjectAnimeImage.prototype.setData = function(data) {
+	base_object.prototype.setData.apply(this, arguments);
 	// 位置
 	this.setPosition(data.x, data.y);
 
@@ -44253,11 +44257,15 @@ var Util = require('../../hakurei').util;
 
 var ObjectBase = function(core) {
 	base_object.apply(this, arguments);
+
+	this._z = 0;
 };
 Util.inherit(ObjectBase, base_object);
 
 ObjectBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
+
+	this._z = 0;
 };
 
 ObjectBase.prototype.onCollision = function(point) {
@@ -44289,8 +44297,15 @@ ObjectBase.prototype.onCollisionWithMouseOver = function(point) {
 	this.core.changeCursorImage("ui_icon_pointer_02");
 };
 
+ObjectBase.prototype.z = function(){
+	return this._z;
+};
+
 // パラメータをオブジェクトに設定する
 ObjectBase.prototype.setData = function(data) {
+	if (data.position_type === "front") {
+		this._z = 10000; // TODO: 固定値やめる
+	}
 };
 
 // こいし移動後の処理
@@ -44359,6 +44374,7 @@ ObjectChapter0Hat.prototype.init = function(){
 
 // パラメータをオブジェクトに設定する
 ObjectChapter0Hat.prototype.setData = function(data) {
+	base_object.prototype.setData.apply(this, arguments);
 	this.setPosition(data.x, data.y);
 
 	this._image = this.core.image_loader.getImage(data.image);
@@ -44451,6 +44467,7 @@ ObjectItem.prototype.init = function(){
 	this.no = null;
 };
 ObjectItem.prototype.setData = function(data) {
+	base_object.prototype.setData.apply(this, arguments);
 	// オブジェクトID
 	// TODO: 他の piece もオブジェクトIDを使うよ
 	this.no = data.no;
@@ -44597,6 +44614,7 @@ ObjectJournal.prototype.isCollision = function(point) {
 
 
 ObjectJournal.prototype.setData = function(data) {
+	base_object.prototype.setData.apply(this, arguments);
 	// 画像
 	this._image = this.core.image_loader.getImage(data.image);
 
@@ -44711,6 +44729,7 @@ ObjectStaticImage.prototype.init = function(){
 
 // パラメータをオブジェクトに設定する
 ObjectStaticImage.prototype.setData = function(data) {
+	base_object.prototype.setData.apply(this, arguments);
 	this.setPosition(data.x, data.y);
 
 	if (data.image) {
@@ -46253,6 +46272,9 @@ var SceneStage = function(core) {
 	// 自機
 	this.koishi = new Koishi(this);
 
+	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
+	this._koishi_and_pieces = [];
+
 	// 3rd eye の光
 	this.light_3rdeye = new Light3rdeye(this);
 
@@ -46309,6 +46331,15 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// 自機
 	this.koishi.init();
+
+	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
+	this._koishi_and_pieces = this.pieces.concat(this.koishi);
+	// z軸の降順ソート
+	this._koishi_and_pieces.sort(function(a,b){
+		if(a.z() < b.z()) return -1;
+		if(a.z() > b.z()) return 1;
+		return 0;
+	});
 
 	// 3rd eye の光
 	this.light_3rdeye.init();
@@ -46505,11 +46536,18 @@ SceneStage.prototype.draw = function(){
 	ctx.restore();
 
 	// ステージ上のオブジェクト一覧
+	// 自機
+	var obj, i, len;
+	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
+		obj = this._koishi_and_pieces[i];
+		obj.draw();
+	}
+	/*
 	for (var i = 0, len = this.pieces.length; i < len; i++) {
 		this.pieces[i].draw();
 	}
-	// 自機
 	this.koishi.draw();
+	*/
 
 	// 3rd eye の光
 	if (this.isUsingEye()) {
