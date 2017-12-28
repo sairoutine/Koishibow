@@ -227,7 +227,6 @@ SceneSubStageObjectTalk.prototype._getMessageWindowPos = function(){
 		x = 0;
 		y = 0;
 	}
-console.log(x, y);
 	return {
 		is_reflect: is_reflect,
 		x: x,
