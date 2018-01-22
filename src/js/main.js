@@ -9,11 +9,10 @@ window.onload = function() {
 	var mainCanvas = document.getElementById('mainCanvas');
 	// Game オブジェクト
 	game = new Game(mainCanvas);
-	// 初期化
-	game.init();
 	// イベントハンドラの設定
 	game.setupEvents();
-
+	// 初期化
+	game.init();
 	// デバッグ設定
 	if (CONSTANT.DEBUG.ON) {
 		var debugDOM = document.getElementById('debug');
