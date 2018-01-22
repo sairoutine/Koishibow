@@ -55,7 +55,7 @@ SceneLoading.prototype.init = function() {
 SceneLoading.prototype.beforeDraw = function() {
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	if (this.core.image_loader.isAllLoaded() && this.core.audio_loader.isAllLoaded() && this.core.font_loader.isAllLoaded()) {
+	if (this.core.isAllLoaded()) {
 		if (CONSTANT.DEBUG.START_SCENE) {
 			// デバッグ用
 			this.core.changeScene.apply(this.core, CONSTANT.DEBUG.START_SCENE);
