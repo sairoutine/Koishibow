@@ -31251,9 +31251,12 @@ module.exports = {
 'use strict';
 var DEBUG = {
 	ON: true,
-	SOUND_OFF: false,
+	SOUND_OFF: true,
 	// 第一引数: scene name, 第二引数以降: 引数
-	//START_SCENE: ["stage", "chapter0_mansion_corridor3"],
+	START_SCENE: ["stage", "chapter0_myroom"],
+	//START_SCENE: ["event_for_chapter0_encounter_satori"],
+
+	//START_SCENE: ["event_for_chapter0_get_hat", "chapter0_myroom"],
 };
 
 module.exports = DEBUG;
