@@ -391,7 +391,12 @@ AssetsConfig.bgms = {
 
 };
 
-
+AssetsConfig.fonts = {
+	"OradanoGSRR": {
+		path: "OradanoGSRR.ttf",
+		format: "truetype",
+	},
+};
 module.exports = AssetsConfig;
 
 },{}],2:[function(require,module,exports){
@@ -31521,6 +31526,7 @@ AudioLoader.prototype.isAllLoaded = function() {
 };
 
 AudioLoader.prototype.playSound = function(name) {
+	if (!this.audio_context) return;
 	if (!(name in this.sounds)) throw new Error("Can't find sound '" + name + "'.");
 
 	this._reserved_play_sound_name_map[name] = true;
@@ -31544,6 +31550,7 @@ AudioLoader.prototype.playBGM = function(name) {
 	this.addBGM(name);
 };
 AudioLoader.prototype.addBGM = function(name) {
+	if (!this.audio_context) return;
 	if (this.isPlayingBGM(name)) {
 		this.stopBGM(name);
 	}
@@ -31600,6 +31607,7 @@ AudioLoader.prototype.fadeOutAllBGM = function (fadeout_time) {
 };
 
 AudioLoader.prototype.fadeOutBGM = function (fadeout_time, bgm_name) {
+	if (!this.audio_context) return;
 	if(typeof bgm_name === "undefined") {
 		return this.fadeOutAllBGM(fadeout_time);
 	}
@@ -31664,6 +31672,7 @@ AudioLoader.prototype.unMuteWithFadeInAllBGM = function (fadein_time) {
 };
 
 AudioLoader.prototype.unMuteWithFadeInBGM = function (fadein_time, bgm_name) {
+	if (!this.audio_context) return;
 	if(typeof bgm_name === "undefined") {
 		return this.unMuteWithFadeInAllBGM(fadein_time);
 	}
@@ -31693,6 +31702,7 @@ AudioLoader.prototype.unMuteWithFadeInBGM = function (fadein_time, bgm_name) {
 
 // create AudioBufferSourceNode and GainNode instance
 AudioLoader.prototype._createSourceNodeAndGainNode = function(name) {
+	if (!this.audio_context) return;
 	var self = this;
 	var data = self.bgms[name];
 
@@ -31728,23 +31738,166 @@ module.exports = AudioLoader;
 },{}],116:[function(require,module,exports){
 'use strict';
 
+// TODO:
+// for travis-ci test
+// for safari
+// test for 0 font
+// source code reviewing
+// for old browser
+// Backward compatibility
+
 var FontLoader = function() {
-	this.is_done = false;
+	this._isLoadedDone = false;
+	this._loadedFonts  = null;
+	this._fontStatues  = {};
+	this._hiddenCanvas = null;
 };
 FontLoader.prototype.init = function() {
-	this.is_done = false;
+	this._isLoadedDone = false;
+	this._loadedFonts  = null;
+	this._fontStatues  = {};
 };
 FontLoader.prototype.isAllLoaded = function() {
-	return this.is_done;
-};
+	for (var name in this._fontStatues) {
+		if(!this.isLoaded(name)) return false;
+	}
 
-FontLoader.prototype.notifyLoadingDone = function() {
-	this.is_done = true;
+	return true;
 };
 
 FontLoader.prototype.progress = function() {
-	return this.is_done ? 1 : 0;
+	var all_font_num    = 0;
+	var loaded_font_num = 0;
+	for (var name in this._fontStatues) {
+		all_font_num++;
+
+		if(this.isLoaded(name)) loaded_font_num++;
+	}
+	return loaded_font_num / all_font_num;
 };
+
+FontLoader.prototype.setupEvents = function() {
+	var self = this;
+	if(self.canUseCssFontLoading()) {
+        window.document.fonts.ready.then(function(fonts){
+			self._isLoadedDone = true;
+			self._loadedFonts = fonts;
+        }).catch(function(error){
+			throw new Error("Can't load font.");
+		});
+	}
+	else if(self.canUseCssFont()) {
+		window.document.fonts.addEventListener('loadingdone', function() {
+			self._isLoadedDone = true;
+			self._loadedFonts  = null;
+		});
+	}
+	else {
+		self._isLoadedDone = true;
+		self._loadedFonts  = null;
+	}
+};
+
+// check if it's enable to use document.fonts.ready
+var _canUseCssFontLoading = window.document && window.document.fonts && window.document.fonts.ready;
+FontLoader.prototype.canUseCssFontLoading = function(){
+	return _canUseCssFontLoading;
+};
+
+// check if it's enable to use document.fonts's loadingdone event
+// Note: safari 10.0 has document.fonts but not occur loadingdone event
+FontLoader.prototype.canUseCssFont = function(){
+	return window.document && window.document.fonts && !navigator.userAgent.toLowerCase().indexOf("safari");
+};
+
+FontLoader.prototype.isLoaded = function(name) {
+	if (!(name in this._fontStatues)) return false;
+
+	var status = this._fontStatues[name];
+
+	if (status.is_loaded) return true;
+
+	var is_loaded = this.checkFontLoaded(name);
+
+	if (is_loaded) {
+		status.is_loaded = true;
+	}
+
+	return is_loaded;
+};
+
+FontLoader.prototype.checkFontLoaded = function(name) {
+    if (this.canUseCssFontLoading()) {
+        if(this._loadedFonts){
+            return this._loadedFonts.check('10px "'+name+'"');
+        }
+
+        return false;
+    } else {
+        if (!this._hiddenCanvas) {
+            this._hiddenCanvas = window.document.createElement('canvas');
+        }
+        var context = this._hiddenCanvas.getContext('2d');
+        var text = 'abcdefghijklmnopqrstuvwxyz';
+        var width1, width2;
+        context.font = '40px ' + name + ', sans-serif';
+        width1 = context.measureText(text).width;
+        context.font = '40px sans-serif';
+        width2 = context.measureText(text).width;
+        return width1 !== width2;
+    }
+};
+
+FontLoader.prototype.loadFont = function(name, url, format) {
+	if (!window.document) return false;
+
+	this._fontStatues[name] = {
+		is_loaded: false,
+	};
+
+	this._createFontFaceStyle(name, url, format);
+	this._createFontLoadingDOM(name);
+
+	return true;
+};
+
+FontLoader.prototype._createFontFaceStyle = function(name, url, format) {
+    var head = window.document.getElementsByTagName('head');
+
+	if (!head) {
+		throw new Error ("Fontloader class needs head tag in html file.");
+	}
+
+    var rule;
+	if (typeof format !== "undefined") {
+		rule = '@font-face { font-family: "' + name + '"; src: url("' + url + '") format("' + format + '"); }';
+	}
+	else {
+		rule = '@font-face { font-family: "' + name + '"; src: url("' + url + '"); }';
+	}
+
+    var style = window.document.createElement('style');
+    style.type = 'text/css';
+    head.item(0).appendChild(style);
+    style.sheet.insertRule(rule, 0);
+};
+
+FontLoader.prototype._createFontLoadingDOM = function(name) {
+    var div = window.document.createElement('div');
+    var text = window.document.createTextNode('.');
+    div.style.fontFamily = name;
+    div.style.fontSize = '0px';
+    div.style.color = 'transparent';
+    div.style.position = 'absolute';
+    div.style.margin = 'auto';
+    div.style.top = '0px';
+    div.style.left = '0px';
+    div.style.width = '1px';
+    div.style.height = '1px';
+    div.appendChild(text);
+    window.document.body.appendChild(div);
+};
+
 
 
 
@@ -31882,7 +32035,6 @@ module.exports = CONSTANT;
 /* TODO: create input_manager class */
 
 var WebGLDebugUtils = require("webgl-debug");
-var CONSTANT = require("./constant/button");
 var Util = require("./util");
 var DebugManager = require("./debug_manager");
 var InputManager = require("./input_manager");
@@ -32163,11 +32315,6 @@ Core.prototype.fullscreen = function() {
 	}
 };
 
-// it is done to load fonts
-Core.prototype.fontLoadingDone = function() {
-	this.font_loader.notifyLoadingDone();
-};
-
 Core.prototype.isAllLoaded = function() {
 	if (this.image_loader.isAllLoaded() && this.audio_loader.isAllLoaded() && this.font_loader.isAllLoaded()) {
 		return true;
@@ -32180,8 +32327,6 @@ Core.prototype.isAllLoaded = function() {
 
 Core.prototype.setupEvents = function() {
 	if(!window) return;
-
-	var self = this;
 
 	// setup WebAudio
 	window.AudioContext = (function(){
@@ -32196,15 +32341,7 @@ Core.prototype.setupEvents = function() {
 			function(callback) { window.setTimeout(callback, 1000 / 60); };
 	})();
 
-
-	// If the browser has `document.fonts`, wait font loading.
-	// Note: safari 10.0 has document.fonts but not occur loadingdone event
-	if(window.document && window.document.fonts && !navigator.userAgent.toLowerCase().indexOf("safari")) {
-		window.document.fonts.addEventListener('loadingdone', function() { self.fontLoadingDone(); });
-	}
-	else {
-		self.fontLoadingDone();
-	}
+	this.font_loader.setupEvents();
 
 	this.input_manager.setupEvents(this.canvas_dom);
 };
@@ -32284,7 +32421,7 @@ Core.prototype._renderCursorImage = function () {
 
 module.exports = Core;
 
-},{"./asset_loader/audio":115,"./asset_loader/font":116,"./asset_loader/image":117,"./constant/button":118,"./debug_manager":121,"./input_manager":123,"./scene/loading":145,"./shader/main.fs":148,"./shader/main.vs":149,"./shader_program":150,"./util":153,"webgl-debug":134}],121:[function(require,module,exports){
+},{"./asset_loader/audio":115,"./asset_loader/font":116,"./asset_loader/image":117,"./debug_manager":121,"./input_manager":123,"./scene/loading":145,"./shader/main.fs":148,"./shader/main.vs":149,"./shader_program":150,"./util":153,"webgl-debug":134}],121:[function(require,module,exports){
 'use strict';
 var Util = require("./util");
 
@@ -42137,6 +42274,7 @@ SceneLoading.prototype.init = function(assets, next_scene_name) {
 	var images = assets.images || [];
 	var sounds = assets.sounds || [];
 	var bgms   = assets.bgms   || [];
+	var fonts  = assets.fonts   || [];
 
 	// go if the all assets loading is done.
 	this.next_scene_name = next_scene_name;
@@ -42152,16 +42290,21 @@ SceneLoading.prototype.init = function(assets, next_scene_name) {
 
 	for (var key3 in bgms) {
 		var conf3 = bgms[key3];
-		this.core.audio_loader.loadBGM(key3, conf3.path, 1.0, conf3.loopStart, conf3.loopEnd);
+		var volume = "volume" in conf3 ? conf3.volume : 1.0;
+		this.core.audio_loader.loadBGM(key3, conf3.path, volume, conf3.loopStart, conf3.loopEnd);
 	}
+
+	for (var key4 in fonts) {
+		var conf4 = fonts[key4];
+		this.core.font_loader.loadFont(key4, conf4.path, conf4.format);
+	}
+
 };
 
 SceneLoading.prototype.beforeDraw = function() {
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	// TODO: not wait font loading if no font is ready to load
-	//if (this.core.image_loader.isAllLoaded() && this.core.audio_loader.isAllLoaded() && this.core.font_loader.isAllLoaded()) {
-	if (this.core.image_loader.isAllLoaded() && this.core.audio_loader.isAllLoaded()) {
+	if (this.core.isAllLoaded()) {
 		this.notifyAllLoaded();
 	}
 };
@@ -46274,12 +46417,18 @@ SceneLoading.prototype.init = function() {
 
 		this.core.audio_loader.loadBGM(key3, conf3.path, volume3, conf3.loopStart, conf3.loopEnd);
 	}
+
+	// ゲームで使用するフォント
+	for (var key4 in AssetsConfig.fonts) {
+		var conf4 = AssetsConfig.fonts[key4];
+		this.core.font_loader.loadFont(key4, conf4.path, conf4.format);
+	}
 };
 
 SceneLoading.prototype.beforeDraw = function() {
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	if (this.core.image_loader.isAllLoaded() && this.core.audio_loader.isAllLoaded() && this.core.font_loader.isAllLoaded()) {
+	if (this.core.isAllLoaded()) {
 		if (CONSTANT.DEBUG.START_SCENE) {
 			// デバッグ用
 			this.core.changeScene.apply(this.core, CONSTANT.DEBUG.START_SCENE);
