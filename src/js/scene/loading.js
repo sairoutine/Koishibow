@@ -44,6 +44,12 @@ SceneLoading.prototype.init = function() {
 
 		this.core.audio_loader.loadBGM(key3, conf3.path, volume3, conf3.loopStart, conf3.loopEnd);
 	}
+
+	// ゲームで使用するフォント
+	for (var key4 in AssetsConfig.fonts) {
+		var conf4 = AssetsConfig.fonts[key4];
+		this.core.font_loader.loadFont(key4, conf4.path, conf4.format);
+	}
 };
 
 SceneLoading.prototype.beforeDraw = function() {

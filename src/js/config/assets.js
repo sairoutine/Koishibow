@@ -390,5 +390,10 @@ AssetsConfig.bgms = {
 
 };
 
-
+AssetsConfig.fonts = {
+	"OradanoGSRR": {
+		path: "OradanoGSRR.ttf",
+		format: "truetype",
+	},
+};
 module.exports = AssetsConfig;
