@@ -31471,6 +31471,9 @@ AudioLoader.prototype.loadSound = function(name, path, volume) {
 	var audio = new window.Audio(path);
 	audio.volume = volume;
 	audio.addEventListener('canplay', onload_function);
+	audio.addEventListener("error", function () {
+		throw new Error("Audio Element error. code: " + audio.error.code + ", message: " + audio.error.message);
+	});
 	audio.load();
 	self.sounds[name] = {
 		audio: audio,
@@ -31729,6 +31732,9 @@ AudioLoader.prototype._createSourceNodeAndGainNode = function(name) {
 };
 
 AudioLoader.prototype.progress = function() {
+	// avoid division by zero
+	if (this.loading_audio_num === 0) return 1;
+
 	return this.loaded_audio_num / this.loading_audio_num;
 };
 
@@ -31738,13 +31744,11 @@ module.exports = AudioLoader;
 },{}],116:[function(require,module,exports){
 'use strict';
 
-// TODO:
-// for travis-ci test
-// for safari
-// test for 0 font
-// source code reviewing
-// for old browser
-// Backward compatibility
+// TODO: refactor
+// - change private property name
+// - _isLoadedDone and fontStatuses's is_loaded are duplicated?
+// - isAllLoaded and progress method is a little slow
+// - add comment
 
 var FontLoader = function() {
 	this._isLoadedDone = false;
@@ -31773,16 +31777,21 @@ FontLoader.prototype.progress = function() {
 
 		if(this.isLoaded(name)) loaded_font_num++;
 	}
+
+	// avoid division by zero
+	if (all_font_num === 0) return 1;
+
 	return loaded_font_num / all_font_num;
 };
 
 FontLoader.prototype.setupEvents = function() {
 	var self = this;
 	if(self.canUseCssFontLoading()) {
-        window.document.fonts.ready.then(function(fonts){
+		// TODO: after all font loading, calling init method and adding same font loading can't fire ready event
+		window.document.fonts.ready.then(function(fonts){
 			self._isLoadedDone = true;
 			self._loadedFonts = fonts;
-        }).catch(function(error){
+		}).catch(function(error){
 			throw new Error("Can't load font.");
 		});
 	}
@@ -31796,7 +31805,7 @@ FontLoader.prototype.setupEvents = function() {
 		self._isLoadedDone = true;
 		self._loadedFonts  = null;
 	}
-};
+	};
 
 // check if it's enable to use document.fonts.ready
 var _canUseCssFontLoading = window.document && window.document.fonts && window.document.fonts.ready;
@@ -31807,7 +31816,11 @@ FontLoader.prototype.canUseCssFontLoading = function(){
 // check if it's enable to use document.fonts's loadingdone event
 // Note: safari 10.0 has document.fonts but not occur loadingdone event
 FontLoader.prototype.canUseCssFont = function(){
-	return window.document && window.document.fonts && !navigator.userAgent.toLowerCase().indexOf("safari");
+	return window.document && window.document.fonts && !this.isSafari10();
+};
+
+FontLoader.prototype.isSafari10 = function() {
+	return navigator.userAgent.toLowerCase().indexOf("safari") && navigator.userAgent.toLowerCase().indexOf("version/10.0");
 };
 
 FontLoader.prototype.isLoaded = function(name) {
@@ -31882,6 +31895,7 @@ FontLoader.prototype._createFontFaceStyle = function(name, url, format) {
     style.sheet.insertRule(rule, 0);
 };
 
+// fonts set by @font-face is loaded by while using it.
 FontLoader.prototype._createFontLoadingDOM = function(name) {
     var div = window.document.createElement('div');
     var text = window.document.createTextNode('.');
@@ -31972,6 +31986,9 @@ ImageLoader.prototype.getScaleHeight = function(name) {
 
 
 ImageLoader.prototype.progress = function() {
+	// avoid division by zero
+	if (this.loading_image_num === 0) return 1;
+
 	return this.loaded_image_num / this.loading_image_num;
 };
 
@@ -32324,7 +32341,7 @@ Core.prototype.isAllLoaded = function() {
 
 
 
-
+// TODO: If destroy core instance, delete event handler, if do not, memory leak
 Core.prototype.setupEvents = function() {
 	if(!window) return;
 
@@ -32341,10 +32358,87 @@ Core.prototype.setupEvents = function() {
 			function(callback) { window.setTimeout(callback, 1000 / 60); };
 	})();
 
+	this._setupError();
+
 	this.font_loader.setupEvents();
 
 	this.input_manager.setupEvents(this.canvas_dom);
 };
+
+
+Core.prototype._setupError = function() {
+	/*
+	 * msg: error message
+	 * file: file path
+	 * line: row number
+	 * column: column number
+	 * err: error object
+	 */
+
+	var self = this;
+	window.onerror = function (msg, file, line, column, err) {
+		self.showError(msg, file, line, column, err);
+
+		// restart game at error point
+		//self.request_id = requestAnimationFrame(Util.bind(self.run, self));
+
+		// or
+
+		// restart game at first point
+		//self.init();
+		//self.startRun();
+	};
+};
+
+
+Core.prototype.showError = function(msg, file, line, column, err) {
+	this.clearCanvas();
+
+	if (this.is2D()) {
+		// TODO: create html dom and overlay it on canvas
+		var ctx = this.ctx;
+		var x = 30;
+		var y = 100;
+
+		ctx.save();
+		ctx.fillStyle = 'black';
+		ctx.fillRect(0, 0, this.width, this.height);
+		ctx.restore();
+
+		ctx.save();
+		ctx.fillStyle = "red";
+		ctx.font = "60px 'sans-serif'";
+		ctx.fillText('Error', x, y);
+
+		y+= 60;
+
+		ctx.fillStyle = "white";
+		ctx.font = "30px 'sans-serif'";
+
+		ctx.fillText(msg, x, y);
+		y+= 30 + 5;
+		ctx.fillText("File: " + file, x, y);
+		y+= 30 + 5;
+		ctx.fillText("Line: " + line + ":" + column, x, y);
+		y+= 30 + 5;
+		ctx.fillText("Stack Trace: ", x, y);
+		y+= 30 + 5;
+		x+= 30 + 5;
+		var stack = err.stack.split("\n");
+		for (var i = 0, len = stack.length; i < len; i++) {
+			var text = stack[i];
+			ctx.fillText(text, x, y);
+			y += 30 + 5;
+		}
+		ctx.restore();
+	}
+	else if (this.is3D()) {
+		// TODO: render canvas by WebGL
+		window.alert(msg + "\n" + line + ":" + column);
+	}
+};
+
+
 
 Core.prototype.createWebGLContext = function(canvas) {
 	var gl;
@@ -43239,11 +43333,10 @@ window.onload = function() {
 	var mainCanvas = document.getElementById('mainCanvas');
 	// Game オブジェクト
 	game = new Game(mainCanvas);
-	// 初期化
-	game.init();
 	// イベントハンドラの設定
 	game.setupEvents();
-
+	// 初期化
+	game.init();
 	// デバッグ設定
 	if (CONSTANT.DEBUG.ON) {
 		var debugDOM = document.getElementById('debug');
