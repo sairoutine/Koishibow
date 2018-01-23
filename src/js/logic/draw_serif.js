@@ -2,6 +2,8 @@
 
 /* セリフを描画する */
 
+var Util = require('../hakurei').util;
+
 // 静的クラス
 var DrawSerif = function() {};
 
@@ -26,6 +28,27 @@ DrawSerif.drawWindow = function (ctx, fukidashi, x, y, is_reflect, lines) {
 	);
 	ctx.restore();
 
+};
+
+DrawSerif.drawText = function (ctx, x, y, lines) {
+	if (!lines.length) return;
+
+	ctx.save();
+
+	// セリフの色
+	var font_color = Util.hexToRGBString("#d4c9aa");
+
+	ctx.fillStyle = font_color;
+	ctx.font = "18px 'OradanoGSRR'";
+	ctx.textAlign = 'left';
+	ctx.textBaseAlign = 'middle';
+
+	for(var i = 0, len = lines.length; i < len; i++) {
+		y+= 30;
+		ctx.fillText(lines[i], x, y); // 1行表示
+
+	}
+	ctx.restore();
 };
 
 // ウィンドウの大きさ

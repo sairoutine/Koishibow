@@ -348,29 +348,11 @@ Koishi.prototype._showMessageWindow = function(lines){
 
 Koishi.prototype._showText = function(lines) {
 	var ctx = this.core.ctx;
-
-	if (!lines.length) return;
-
-	ctx.save();
-
-	// セリフの色
-	var font_color = Util.hexToRGBString("#d4c9aa");
-
-	ctx.fillStyle = font_color;
-	ctx.font = "18px 'OradanoGSRR'";
-	ctx.textAlign = 'left';
-	ctx.textBaseAlign = 'middle';
-
 	var message_text_pos = this._getMessageTextPos();
 	var x = message_text_pos.x;
 	var y = message_text_pos.y;
 
-	for(var i = 0, len = lines.length; i < len; i++) {
-		y+= 30;
-		ctx.fillText(lines[i], x, y); // 1行表示
-
-	}
-	ctx.restore();
+	DrawSerif.drawText(ctx, x, y, lines);
 };
 
 // セリフ表示を右に表示させるかどうか
