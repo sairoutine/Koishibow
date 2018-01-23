@@ -322,9 +322,6 @@ Koishi.prototype.z = function(){
 	return 100; //TODO: 固定値やめる
 };
 
-
-// TODO: logic に逃がす
-// object base の実装
 Koishi.prototype.showMessage = function(text_lines){
 	// メッセージウィンドウ表示
 	this._showMessageWindow(text_lines);
@@ -337,90 +334,12 @@ Koishi.prototype.showMessage = function(text_lines){
 Koishi.prototype._showMessageWindow = function(lines){
 	var ctx = this.core.ctx;
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
-	// ウィンドウの位置
-	var message_window_pos = this._getMessageWindowPos();
-	var x = message_window_pos.x;
-	var y = message_window_pos.y;
-	var is_reflect = message_window_pos.is_reflect;
-
-	DrawSerif.drawWindow(ctx, fukidashi, x, y, is_reflect, lines);
+	DrawSerif.drawWindow(this, ctx, fukidashi, lines);
 };
 
 Koishi.prototype._showText = function(lines) {
 	var ctx = this.core.ctx;
-	var message_text_pos = this._getMessageTextPos();
-	var x = message_text_pos.x;
-	var y = message_text_pos.y;
-
-	DrawSerif.drawText(ctx, x, y, lines);
+	DrawSerif.drawText(this, ctx, lines);
 };
-
-// セリフ表示を右に表示させるかどうか
-Koishi.prototype._isShowRight = function(){
-	var x = this.x();
-
-	var scene_center_x = this.scene.width / 2;
-
-	if (x > scene_center_x) {
-		return true;
-	}
-	else {
-		return false;
-	}
-};
-
-// メッセージウィンドウの位置を取得
-Koishi.prototype._getMessageWindowPos = function(){
-	var is_reflect = !this._isShowRight();
-
-	var x,y;
-
-	if(is_reflect) {
-		x = this.x() - 550;
-		y = this.y() - 330;
-	}
-	else {
-		x = this.x() - 300;
-		y = this.y() - 330;
-	}
-
-	return {
-		is_reflect: is_reflect,
-		x: x,
-		y: y,
-	};
-};
-
-// メッセージテキストの開始位置を取得
-Koishi.prototype._getMessageTextPos = function(){
-	var is_reflect = !this._isShowRight();
-
-	var x,y;
-
-	if(is_reflect) {
-		x = this.x() + 80;
-		y = this.y() - 290;
-	}
-	else {
-		x = this.x() - 220;
-		y = this.y() - 290;
-	}
-
-
-	return {
-		is_reflect: is_reflect,
-		x: x,
-		y: y,
-	};
-};
-
-
-
-
-
-
-
-
-
 
 module.exports = Koishi;

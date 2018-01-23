@@ -1,6 +1,7 @@
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
+var DrawSerif = require('../../logic/draw_serif');
 var WalkImmovableArea = require('../walk_immovable_area');
 
 var ObjectBase = function(core) {
@@ -109,11 +110,25 @@ ObjectBase.prototype.getImmovableArea = function() {
 
 
 
+ObjectBase.prototype.showMessage = function(text_lines){
+	// メッセージウィンドウ表示
+	this._showMessageWindow(text_lines);
 
+	// メッセージ表示
+	this._showText(text_lines);
+};
 
+// セリフウィンドウ表示
+ObjectBase.prototype._showMessageWindow = function(lines){
+	var ctx = this.core.ctx;
+	var fukidashi = this.core.image_loader.getImage('fukidashi');
 
-
-
-
+	DrawSerif.drawWindow(this, ctx, fukidashi, lines);
+};
+// セリフテキスト表示
+ObjectBase.prototype._showText = function(lines) {
+	var ctx = this.core.ctx;
+	DrawSerif.drawText(this, ctx, lines);
+};
 
 module.exports = ObjectBase;
