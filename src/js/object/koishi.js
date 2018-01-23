@@ -322,5 +322,155 @@ Koishi.prototype.z = function(){
 };
 
 
+// TODO: logic に逃がす
+// object base の実装
+Koishi.prototype.showMessage = function(text_lines){
+	// メッセージウィンドウ表示
+	this._showMessageWindow(text_lines);
+
+	// メッセージ表示
+	this._showText(text_lines);
+};
+
+// セリフウィンドウ表示
+Koishi.prototype._showMessageWindow = function(lines){
+	var ctx = this.core.ctx;
+	ctx.save();
+
+	var fukidashi = this.core.image_loader.getImage('fukidashi');
+
+	// ウィンドウの位置
+	var message_window_pos = this._getMessageWindowPos();
+	var x = message_window_pos.x;
+	var y = message_window_pos.y;
+	var is_reflect = message_window_pos.is_reflect;
+
+	if (!x && !y) return;
+
+	// ウィンドウの大きさ
+	var scale = this._getMessageWindowScale(lines);
+
+	if(is_reflect) {
+		x = -x; // 反転
+		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
+	}
+
+	ctx.drawImage(fukidashi,
+		x,
+		y,
+		fukidashi.width * scale.width,
+		fukidashi.height * scale.height
+	);
+	ctx.restore();
+};
+
+Koishi.prototype._showText = function(lines) {
+	var ctx = this.core.ctx;
+
+	if (!lines.length) return;
+
+	ctx.save();
+
+	// セリフの色
+	var font_color = Util.hexToRGBString("#d4c9aa");
+
+	ctx.fillStyle = font_color;
+	ctx.font = "18px 'OradanoGSRR'";
+	ctx.textAlign = 'left';
+	ctx.textBaseAlign = 'middle';
+
+	var message_text_pos = this._getMessageTextPos();
+	var x = message_text_pos.x;
+	var y = message_text_pos.y;
+
+	for(var i = 0, len = lines.length; i < len; i++) {
+		y+= 30;
+		ctx.fillText(lines[i], x, y); // 1行表示
+
+	}
+	ctx.restore();
+};
+
+// セリフ表示を右に表示させるかどうか
+Koishi.prototype._isShowRight = function(){
+	var x = this.x();
+
+	var scene_center_x = this.scene.width / 2;
+
+	if (x > scene_center_x) {
+		return true;
+	}
+	else {
+		return false;
+	}
+};
+
+// メッセージウィンドウの位置を取得
+Koishi.prototype._getMessageWindowPos = function(){
+	var is_reflect = !this._isShowRight();
+
+	var x,y;
+
+	if(is_reflect) {
+		x = this.x() - 550;
+		y = this.y() - 330;
+	}
+	else {
+		x = this.x() - 300;
+		y = this.y() - 330;
+	}
+
+	return {
+		is_reflect: is_reflect,
+		x: x,
+		y: y,
+	};
+};
+
+// ウィンドウの大きさ
+Koishi.prototype._getMessageWindowScale = function(lines){
+	var scale_width, scale_height;
+	if (lines.length === 2) {
+		scale_width = 0.4;
+		scale_height = 0.5;
+	}
+	else {
+		scale_width = 0.4;
+		scale_height = 0.4;
+	}
+	return {width: scale_width, height: scale_height};
+};
+
+// メッセージテキストの開始位置を取得
+Koishi.prototype._getMessageTextPos = function(){
+	var is_reflect = !this._isShowRight();
+
+	var x,y;
+
+	if(is_reflect) {
+		x = this.x() + 80;
+		y = this.y() - 290;
+	}
+	else {
+		x = this.x() - 220;
+		y = this.y() - 290;
+	}
+
+
+	return {
+		is_reflect: is_reflect,
+		x: x,
+		y: y,
+	};
+};
+
+
+
+
+
+
+
+
+
 
 module.exports = Koishi;
