@@ -6,6 +6,7 @@ var SPEED = 2;
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
+var DrawSerif = require('../logic/draw_serif');
 
 
 /* 使用用途	リピート	fps	フレーム	時間 */
@@ -335,33 +336,14 @@ Koishi.prototype.showMessage = function(text_lines){
 // セリフウィンドウ表示
 Koishi.prototype._showMessageWindow = function(lines){
 	var ctx = this.core.ctx;
-	ctx.save();
-
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
-
 	// ウィンドウの位置
 	var message_window_pos = this._getMessageWindowPos();
 	var x = message_window_pos.x;
 	var y = message_window_pos.y;
 	var is_reflect = message_window_pos.is_reflect;
 
-	if (!x && !y) return;
-
-	// ウィンドウの大きさ
-	var scale = this._getMessageWindowScale(lines);
-
-	if(is_reflect) {
-		x = -x; // 反転
-		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
-	}
-
-	ctx.drawImage(fukidashi,
-		x,
-		y,
-		fukidashi.width * scale.width,
-		fukidashi.height * scale.height
-	);
-	ctx.restore();
+	DrawSerif.drawWindow(ctx, fukidashi, x, y, is_reflect, lines);
 };
 
 Koishi.prototype._showText = function(lines) {
@@ -425,20 +407,6 @@ Koishi.prototype._getMessageWindowPos = function(){
 		x: x,
 		y: y,
 	};
-};
-
-// ウィンドウの大きさ
-Koishi.prototype._getMessageWindowScale = function(lines){
-	var scale_width, scale_height;
-	if (lines.length === 2) {
-		scale_width = 0.4;
-		scale_height = 0.5;
-	}
-	else {
-		scale_width = 0.4;
-		scale_height = 0.4;
-	}
-	return {width: scale_width, height: scale_height};
 };
 
 // メッセージテキストの開始位置を取得
