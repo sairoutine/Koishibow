@@ -1,3 +1,4 @@
+'use strict';
 // こいしの自室(ベッド／帽子／ドア) 帽子はベッドのふちにかけてある
 var CONSTANT = require("../../../constant");
 var I = 0;

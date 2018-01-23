@@ -1,3 +1,4 @@
+'use strict';
 // 屋敷の廊下3(家具) 行き止まり (サードアイを使用すると、家具が豹変／床に扉が出現)
 var CONSTANT = require("../../../constant");
 var I = 0;

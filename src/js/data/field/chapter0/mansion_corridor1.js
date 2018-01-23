@@ -1,3 +1,4 @@
+'use strict';
 // 屋敷の廊下1
 var CONSTANT = require("../../../constant");
 var I = 0;
