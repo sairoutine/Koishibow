@@ -11,7 +11,6 @@ var ObjectItem = function(core) {
 	this._height  = null;
 
 	this._item_id = null;
-	this.no = null;
 };
 Util.inherit(ObjectItem, base_object);
 
@@ -24,14 +23,9 @@ ObjectItem.prototype.init = function(){
 	this._height  = null;
 
 	this._item_id = null;
-	this.no = null;
 };
 ObjectItem.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
-	// オブジェクトID
-	// TODO: 他の piece もオブジェクトIDを使うよ
-	this.no = data.no;
-
 	// 画像
 	this._image = this.core.image_loader.getImage(data.image);
 

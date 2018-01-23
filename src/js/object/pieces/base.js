@@ -8,6 +8,7 @@ var ObjectBase = function(core) {
 
 	this._z = 0;
 	this._position_type = null;
+	this.no = null;
 };
 Util.inherit(ObjectBase, base_object);
 
@@ -16,6 +17,7 @@ ObjectBase.prototype.init = function(){
 
 	this._z = 0;
 	this._position_type = null;
+	this.no = null;
 };
 
 ObjectBase.prototype.onCollision = function(point) {
@@ -53,6 +55,9 @@ ObjectBase.prototype.z = function(){
 
 // パラメータをオブジェクトに設定する
 ObjectBase.prototype.setData = function(data) {
+	// オブジェクトID(フィールド内で一意)
+	this.no = data.no;
+
 	if (data.position_type === "front") {
 		this._z = 10000; // TODO: 固定値やめる
 	}
@@ -98,6 +103,13 @@ ObjectBase.prototype.getImmovableArea = function() {
 
 	return area;
 };
+
+
+
+
+
+
+
 
 
 
