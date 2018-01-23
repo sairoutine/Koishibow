@@ -366,6 +366,25 @@ SceneStage.prototype.isNoHat = function(){
 SceneStage.prototype.getFieldData = function(){
 	return FieldMap[this.core.save_manager.getCurrentField()];
 };
+// ステージ上のオブジェクト or 自機を取得
+SceneStage.prototype.getPiece = function(name) {
+	if (name === "koishi") return this.koishi;
+
+	// 自機
+	var obj, i, len;
+	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
+		obj = this._koishi_and_pieces[i];
+		// TODO: O(1)
+		if(obj.no === name) {
+			return obj;
+		}
+	}
+
+	return null;
+};
+
+
+
 
 SceneStage.prototype._setupPieces = function() {
 	var field_data = this.getFieldData();
