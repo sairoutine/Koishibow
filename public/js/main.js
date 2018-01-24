@@ -30676,6 +30676,7 @@ module.exports=[
 ]
 
 },{}],106:[function(require,module,exports){
+'use strict';
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
 var CONSTANT = require("../../../constant");
 var I = 0;
@@ -30759,6 +30760,7 @@ module.exports = {
 
 
 },{"../../../constant":5}],107:[function(require,module,exports){
+'use strict';
 // 病院の廊下2(こころ)
 var CONSTANT = require("../../../constant");
 var I = 0;
@@ -30816,6 +30818,7 @@ module.exports = {
 
 
 },{"../../../constant":5}],108:[function(require,module,exports){
+'use strict';
 // 屋敷の廊下1
 var CONSTANT = require("../../../constant");
 var I = 0;
@@ -30906,6 +30909,7 @@ module.exports = {
 };
 
 },{"../../../constant":5}],109:[function(require,module,exports){
+'use strict';
 // 屋敷の廊下2(ドアがある) 最初のフラッシュバックが入る
 var CONSTANT = require("../../../constant");
 var I = 0;
@@ -30994,6 +30998,7 @@ module.exports = {
 
 
 },{"../../../constant":5}],110:[function(require,module,exports){
+'use strict';
 // 屋敷の廊下3(家具) 行き止まり (サードアイを使用すると、家具が豹変／床に扉が出現)
 var CONSTANT = require("../../../constant");
 var I = 0;
@@ -31130,6 +31135,7 @@ module.exports = {
 
 
 },{"../../../constant":5}],111:[function(require,module,exports){
+'use strict';
 // こいしの自室(ベッド／帽子／ドア) 帽子はベッドのふちにかけてある
 var CONSTANT = require("../../../constant");
 var I = 0;
@@ -31410,7 +31416,7 @@ Game.prototype.setupDebug = function (dom) {
 
 module.exports = Game;
 
-},{"./constant":5,"./hakurei":114,"./save_manager":176,"./scene/event/chapter0/encounter_satori":178,"./scene/event/chapter0/last":179,"./scene/event/trial_last":180,"./scene/howto":181,"./scene/leaving_title":182,"./scene/loading":183,"./scene/stage":184,"./scene/title":196}],114:[function(require,module,exports){
+},{"./constant":5,"./hakurei":114,"./save_manager":177,"./scene/event/chapter0/encounter_satori":179,"./scene/event/chapter0/last":180,"./scene/event/trial_last":181,"./scene/howto":182,"./scene/leaving_title":183,"./scene/loading":184,"./scene/stage":185,"./scene/title":197}],114:[function(require,module,exports){
 'use strict';
 
 module.exports = require("./hakureijs/index");
@@ -43323,6 +43329,149 @@ module.exports = CreateDarkerImage;
 
 },{}],155:[function(require,module,exports){
 'use strict';
+
+/* セリフを描画する */
+
+var Util = require('../hakurei').util;
+
+// 静的クラス
+var DrawSerif = function() {};
+
+DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines) {
+	// ウィンドウの位置
+	var message_window_pos = this._getMessageWindowPos(obj);
+	var x = message_window_pos.x;
+	var y = message_window_pos.y;
+	var is_reflect = message_window_pos.is_reflect;
+
+
+	ctx.save();
+
+	if (!x && !y) return;
+
+	// ウィンドウの大きさ
+	var scale = this._getMessageWindowScale(lines);
+
+	if(is_reflect) {
+		x = -x; // 反転
+		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
+	}
+
+	ctx.drawImage(fukidashi,
+		x,
+		y,
+		fukidashi.width * scale.width,
+		fukidashi.height * scale.height
+	);
+	ctx.restore();
+
+};
+
+DrawSerif.drawText = function (obj, ctx, lines) {
+	if (!lines.length) return;
+
+	var message_text_pos = this._getMessageTextPos(obj);
+	var x = message_text_pos.x;
+	var y = message_text_pos.y;
+
+
+	ctx.save();
+
+	// セリフの色
+	var font_color = Util.hexToRGBString("#d4c9aa");
+
+	ctx.fillStyle = font_color;
+	ctx.font = "18px 'OradanoGSRR'";
+	ctx.textAlign = 'left';
+	ctx.textBaseAlign = 'middle';
+
+	for(var i = 0, len = lines.length; i < len; i++) {
+		y+= 30;
+		ctx.fillText(lines[i], x, y); // 1行表示
+
+	}
+	ctx.restore();
+};
+
+// ウィンドウの大きさ
+DrawSerif._getMessageWindowScale = function(lines){
+	var scale_width, scale_height;
+	if (lines.length === 2) {
+		scale_width = 0.4;
+		scale_height = 0.5;
+	}
+	else {
+		scale_width = 0.4;
+		scale_height = 0.4;
+	}
+	return {width: scale_width, height: scale_height};
+};
+
+// メッセージウィンドウの位置を取得
+DrawSerif._getMessageWindowPos = function(obj){
+	var is_reflect = !this._isShowRight(obj);
+
+	var x,y;
+
+	if(is_reflect) {
+		x = obj.x() - 550;
+		y = obj.y() - 330;
+	}
+	else {
+		x = obj.x() - 300;
+		y = obj.y() - 330;
+	}
+
+	return {
+		is_reflect: is_reflect,
+		x: x,
+		y: y,
+	};
+};
+
+// メッセージテキストの開始位置を取得
+DrawSerif._getMessageTextPos = function(obj){
+	var is_reflect = !this._isShowRight(obj);
+
+	var x,y;
+
+	if(is_reflect) {
+		x = obj.x() + 80;
+		y = obj.y() - 290;
+	}
+	else {
+		x = obj.x() - 220;
+		y = obj.y() - 290;
+	}
+
+
+	return {
+		is_reflect: is_reflect,
+		x: x,
+		y: y,
+	};
+};
+
+// セリフ表示を右に表示させるかどうか
+DrawSerif._isShowRight = function(obj){
+	var x = obj.x();
+
+	var scene_center_x = obj.scene.width / 2;
+
+	if (x > scene_center_x) {
+		return true;
+	}
+	else {
+		return false;
+	}
+};
+
+
+
+module.exports = DrawSerif;
+
+},{"../hakurei":114}],156:[function(require,module,exports){
+'use strict';
 var Game = require('./game');
 var CONSTANT = require('./constant');
 
@@ -43358,7 +43507,7 @@ if(window.require) {
 	window.require('electron').webFrame.setVisualZoomLevelLimits(1,1); //zoomさせない
 }
 
-},{"./constant":5,"./game":113}],156:[function(require,module,exports){
+},{"./constant":5,"./game":113}],157:[function(require,module,exports){
 'use strict';
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
@@ -43435,7 +43584,7 @@ ObjectAnimeObject.prototype.scaleHeight = function(){
 
 module.exports = ObjectAnimeObject;
 
-},{"../hakurei":114,"./ss_anime_base":169}],157:[function(require,module,exports){
+},{"../hakurei":114,"./ss_anime_base":170}],158:[function(require,module,exports){
 'use strict';
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
@@ -43491,7 +43640,7 @@ ObjectBlackMist.prototype.scaleHeight = function(){
 
 module.exports = ObjectBlackMist;
 
-},{"../data/anime/black_mist/eff01_anime_1":6,"../data/anime/black_mist/eff02_anime_1":7,"../hakurei":114,"./ss_anime_base":169}],158:[function(require,module,exports){
+},{"../data/anime/black_mist/eff01_anime_1":6,"../data/anime/black_mist/eff02_anime_1":7,"../hakurei":114,"./ss_anime_base":170}],159:[function(require,module,exports){
 'use strict';
 
 // こいしの歩く速度
@@ -43500,6 +43649,7 @@ var SPEED = 2;
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
+var DrawSerif = require('../logic/draw_serif');
 
 
 /* 使用用途	リピート	fps	フレーム	時間 */
@@ -43815,11 +43965,29 @@ Koishi.prototype.z = function(){
 	return 100; //TODO: 固定値やめる
 };
 
+Koishi.prototype.showMessage = function(text_lines){
+	// メッセージウィンドウ表示
+	this._showMessageWindow(text_lines);
 
+	// メッセージ表示
+	this._showText(text_lines);
+};
+
+// セリフウィンドウ表示
+Koishi.prototype._showMessageWindow = function(lines){
+	var ctx = this.core.ctx;
+	var fukidashi = this.core.image_loader.getImage('fukidashi');
+	DrawSerif.drawWindow(this, ctx, fukidashi, lines);
+};
+
+Koishi.prototype._showText = function(lines) {
+	var ctx = this.core.ctx;
+	DrawSerif.drawText(this, ctx, lines);
+};
 
 module.exports = Koishi;
 
-},{"../constant":5,"../data/anime/koishi/nohat_reaction_touch_anime_1":90,"../data/anime/koishi/nohat_wait_anime_1":91,"../data/anime/koishi/nohat_walk_anime_1":92,"../data/anime/koishi/reaction_3rdeye_anime_1":93,"../data/anime/koishi/reaction_look_bottom_anime_1":94,"../data/anime/koishi/reaction_look_front_anime_1":95,"../data/anime/koishi/reaction_look_top_anime_1":96,"../data/anime/koishi/reaction_touch_anime_1":97,"../data/anime/koishi/reaction_yes_anime_1":98,"../data/anime/koishi/wait_anime_1":99,"../data/anime/koishi/walk_anime_1":100,"../hakurei":114,"./ss_anime_base":169}],159:[function(require,module,exports){
+},{"../constant":5,"../data/anime/koishi/nohat_reaction_touch_anime_1":90,"../data/anime/koishi/nohat_wait_anime_1":91,"../data/anime/koishi/nohat_walk_anime_1":92,"../data/anime/koishi/reaction_3rdeye_anime_1":93,"../data/anime/koishi/reaction_look_bottom_anime_1":94,"../data/anime/koishi/reaction_look_front_anime_1":95,"../data/anime/koishi/reaction_look_top_anime_1":96,"../data/anime/koishi/reaction_touch_anime_1":97,"../data/anime/koishi/reaction_yes_anime_1":98,"../data/anime/koishi/wait_anime_1":99,"../data/anime/koishi/walk_anime_1":100,"../hakurei":114,"../logic/draw_serif":155,"./ss_anime_base":170}],160:[function(require,module,exports){
 'use strict';
 
 // anchor (画像上でのライトの出力位置)
@@ -44059,7 +44227,7 @@ ObjectLight3rdeye.prototype.intersectWithPiece = function (piece) {
 
 module.exports = ObjectLight3rdeye;
 
-},{"../hakurei":114}],160:[function(require,module,exports){
+},{"../hakurei":114}],161:[function(require,module,exports){
 'use strict';
 
 var base_object = require('../../hakurei').object.base;
@@ -44137,7 +44305,7 @@ ObjectMenuItemBase.prototype.use = function(){
 
 module.exports = ObjectMenuItemBase;
 
-},{"../../config/item":3,"../../constant":5,"../../hakurei":114}],161:[function(require,module,exports){
+},{"../../config/item":3,"../../constant":5,"../../hakurei":114}],162:[function(require,module,exports){
 'use strict';
 
 /* メニューのアイテムの目薬 */
@@ -44167,7 +44335,7 @@ ObjectMenuItemEyeDrops.prototype.use = function(){
 
 module.exports = ObjectMenuItemEyeDrops;
 
-},{"../../constant":5,"../../hakurei":114,"./base":160}],162:[function(require,module,exports){
+},{"../../constant":5,"../../hakurei":114,"./base":161}],163:[function(require,module,exports){
 'use strict';
 var base_object = require('./anime_image');
 var Util = require('../../hakurei').util;
@@ -44224,7 +44392,7 @@ ObjectAnimeEventImage.prototype.getImmovableArea = function() {
 
 module.exports = ObjectAnimeEventImage;
 
-},{"../../hakurei":114,"../walk_immovable_area":175,"./anime_image":163}],163:[function(require,module,exports){
+},{"../../hakurei":114,"../walk_immovable_area":176,"./anime_image":164}],164:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
@@ -44516,10 +44684,11 @@ ObjectAnimeImage.prototype.onAfterWalkToHere = function() {
 
 module.exports = ObjectAnimeImage;
 
-},{"../../config/object_anime":4,"../../hakurei":114,"../anime_object":156,"./base":164}],164:[function(require,module,exports){
+},{"../../config/object_anime":4,"../../hakurei":114,"../anime_object":157,"./base":165}],165:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
+var DrawSerif = require('../../logic/draw_serif');
 var WalkImmovableArea = require('../walk_immovable_area');
 
 var ObjectBase = function(core) {
@@ -44527,6 +44696,7 @@ var ObjectBase = function(core) {
 
 	this._z = 0;
 	this._position_type = null;
+	this.no = null;
 };
 Util.inherit(ObjectBase, base_object);
 
@@ -44535,6 +44705,7 @@ ObjectBase.prototype.init = function(){
 
 	this._z = 0;
 	this._position_type = null;
+	this.no = null;
 };
 
 ObjectBase.prototype.onCollision = function(point) {
@@ -44572,6 +44743,9 @@ ObjectBase.prototype.z = function(){
 
 // パラメータをオブジェクトに設定する
 ObjectBase.prototype.setData = function(data) {
+	// オブジェクトID(フィールド内で一意)
+	this.no = data.no;
+
 	if (data.position_type === "front") {
 		this._z = 10000; // TODO: 固定値やめる
 	}
@@ -44623,9 +44797,30 @@ ObjectBase.prototype.getImmovableArea = function() {
 
 
 
+ObjectBase.prototype.showMessage = function(text_lines){
+	// メッセージウィンドウ表示
+	this._showMessageWindow(text_lines);
+
+	// メッセージ表示
+	this._showText(text_lines);
+};
+
+// セリフウィンドウ表示
+ObjectBase.prototype._showMessageWindow = function(lines){
+	var ctx = this.core.ctx;
+	var fukidashi = this.core.image_loader.getImage('fukidashi');
+
+	DrawSerif.drawWindow(this, ctx, fukidashi, lines);
+};
+// セリフテキスト表示
+ObjectBase.prototype._showText = function(lines) {
+	var ctx = this.core.ctx;
+	DrawSerif.drawText(this, ctx, lines);
+};
+
 module.exports = ObjectBase;
 
-},{"../../hakurei":114,"../walk_immovable_area":175}],165:[function(require,module,exports){
+},{"../../hakurei":114,"../../logic/draw_serif":155,"../walk_immovable_area":176}],166:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
@@ -44721,7 +44916,7 @@ ObjectChapter0Hat.prototype.onAfterWalkToHere = function() {
 
 module.exports = ObjectChapter0Hat;
 
-},{"../../hakurei":114,"./base":164}],166:[function(require,module,exports){
+},{"../../hakurei":114,"./base":165}],167:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
@@ -44735,7 +44930,6 @@ var ObjectItem = function(core) {
 	this._height  = null;
 
 	this._item_id = null;
-	this.no = null;
 };
 Util.inherit(ObjectItem, base_object);
 
@@ -44748,14 +44942,9 @@ ObjectItem.prototype.init = function(){
 	this._height  = null;
 
 	this._item_id = null;
-	this.no = null;
 };
 ObjectItem.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
-	// オブジェクトID
-	// TODO: 他の piece もオブジェクトIDを使うよ
-	this.no = data.no;
-
 	// 画像
 	this._image = this.core.image_loader.getImage(data.image);
 
@@ -44861,7 +45050,7 @@ ObjectItem.prototype.collisionHeight = function(){
 };
 module.exports = ObjectItem;
 
-},{"../../hakurei":114,"./base":164}],167:[function(require,module,exports){
+},{"../../hakurei":114,"./base":165}],168:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
@@ -44990,7 +45179,7 @@ ObjectJournal.prototype.getImmovableArea = function() {
 
 module.exports = ObjectJournal;
 
-},{"../../hakurei":114,"../walk_immovable_area":175,"./base":164}],168:[function(require,module,exports){
+},{"../../hakurei":114,"../walk_immovable_area":176,"./base":165}],169:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
@@ -45121,7 +45310,7 @@ ObjectStaticImage.prototype.onAfterWalkToHere = function() {
 
 module.exports = ObjectStaticImage;
 
-},{"../../hakurei":114,"./base":164}],169:[function(require,module,exports){
+},{"../../hakurei":114,"./base":165}],170:[function(require,module,exports){
 'use strict';
 
 var base_object = require('../hakurei').object.base;
@@ -45296,7 +45485,7 @@ SsAnimeBase.prototype.scaleHeight = function(){
 
 module.exports = SsAnimeBase;
 
-},{"../hakurei":114,"../logic/create_darker_image":154,"../vendor/SsaPlayer":197}],170:[function(require,module,exports){
+},{"../hakurei":114,"../logic/create_darker_image":154,"../vendor/SsaPlayer":198}],171:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
@@ -45370,7 +45559,7 @@ ObjectEye.prototype.scaleWidth = function(){
 };
 module.exports = ObjectEye;
 
-},{"../../constant":5,"../../hakurei":114}],171:[function(require,module,exports){
+},{"../../constant":5,"../../hakurei":114}],172:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
@@ -45455,7 +45644,7 @@ ObjectItemMenuButton.prototype.scaleWidth = function(){
 };
 module.exports = ObjectItemMenuButton;
 
-},{"../../constant":5,"../../hakurei":114}],172:[function(require,module,exports){
+},{"../../constant":5,"../../hakurei":114}],173:[function(require,module,exports){
 'use strict';
 var base_object = require('./next_field_button_base');
 var Util = require('../../hakurei').util;
@@ -45483,7 +45672,7 @@ ObjectLeftNextFieldButton.prototype.rotateAdjust = function(){
 
 module.exports = ObjectLeftNextFieldButton;
 
-},{"../../hakurei":114,"./next_field_button_base":173}],173:[function(require,module,exports){
+},{"../../hakurei":114,"./next_field_button_base":174}],174:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
@@ -45580,7 +45769,7 @@ ObjectNextFieldButtonBase.prototype.scaleWidth = function(){
 
 module.exports = ObjectNextFieldButtonBase;
 
-},{"../../constant":5,"../../hakurei":114}],174:[function(require,module,exports){
+},{"../../constant":5,"../../hakurei":114}],175:[function(require,module,exports){
 'use strict';
 var base_object = require('./next_field_button_base');
 var Util = require('../../hakurei').util;
@@ -45603,7 +45792,7 @@ ObjectRightNextFieldButton.prototype.setPosition = function(){
 
 module.exports = ObjectRightNextFieldButton;
 
-},{"../../hakurei":114,"./next_field_button_base":173}],175:[function(require,module,exports){
+},{"../../hakurei":114,"./next_field_button_base":174}],176:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -45654,7 +45843,7 @@ WalkImmovableArea.prototype.draw = function() {
 
 module.exports = WalkImmovableArea;
 
-},{"../constant":5,"../hakurei":114}],176:[function(require,module,exports){
+},{"../constant":5,"../hakurei":114}],177:[function(require,module,exports){
 'use strict';
 
 // セーブデータ
@@ -45834,7 +46023,7 @@ SaveManager.prototype.setPlayedEvent = function(event_name) {
 
 module.exports = SaveManager;
 
-},{"./constant":5,"./hakurei":114}],177:[function(require,module,exports){
+},{"./constant":5,"./hakurei":114}],178:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../../hakurei').scene.base;
@@ -46016,7 +46205,7 @@ SceneEventBase.prototype.scriptMap = function(){
 
 module.exports = SceneEventBase;
 
-},{"../../hakurei":114,"../../object/anime_object":156}],178:[function(require,module,exports){
+},{"../../hakurei":114,"../../object/anime_object":157}],179:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../../../hakurei').scene.base;
@@ -46248,7 +46437,7 @@ SceneDefault.prototype._showMessage = function() {
 
 module.exports = SceneDefault;
 
-},{"../../../constant":5,"../../../data/anime/chapter0/event/encounter_satori/eye/obj01_anime_1":8,"../../../data/anime/chapter0/event/encounter_satori/eye/obj02_anime_1":9,"../../../data/anime/chapter0/event/encounter_satori/eye/obj03_anime_1":10,"../../../data/anime/chapter0/event/encounter_satori/satori/obj01_anime_1":11,"../../../data/anime/chapter0/event/encounter_satori/satori/obj02_anime_1":12,"../../../data/anime/chapter0/event/encounter_satori/satori/obj03_anime_1":13,"../../../data/anime/koishi/wait_anime_1":99,"../../../hakurei":114,"../../../object/anime_object":156,"../../../object/black_mist":157}],179:[function(require,module,exports){
+},{"../../../constant":5,"../../../data/anime/chapter0/event/encounter_satori/eye/obj01_anime_1":8,"../../../data/anime/chapter0/event/encounter_satori/eye/obj02_anime_1":9,"../../../data/anime/chapter0/event/encounter_satori/eye/obj03_anime_1":10,"../../../data/anime/chapter0/event/encounter_satori/satori/obj01_anime_1":11,"../../../data/anime/chapter0/event/encounter_satori/satori/obj02_anime_1":12,"../../../data/anime/chapter0/event/encounter_satori/satori/obj03_anime_1":13,"../../../data/anime/koishi/wait_anime_1":99,"../../../hakurei":114,"../../../object/anime_object":157,"../../../object/black_mist":158}],180:[function(require,module,exports){
 'use strict';
 
 // chapter0 最終イベント
@@ -46308,7 +46497,7 @@ SceneDefault.prototype.scriptMap = function(){
 
 module.exports = SceneDefault;
 
-},{"../../../data/anime/chapter0/event/falldown_koishi/event01_anime_1":14,"../../../hakurei":114,"../base":177}],180:[function(require,module,exports){
+},{"../../../data/anime/chapter0/event/falldown_koishi/event01_anime_1":14,"../../../hakurei":114,"../base":178}],181:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./base');
@@ -46348,7 +46537,7 @@ SceneEventTrialLast.prototype.scriptMap = function(){
 
 module.exports = SceneEventTrialLast;
 
-},{"../../hakurei":114,"./base":177}],181:[function(require,module,exports){
+},{"../../hakurei":114,"./base":178}],182:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -46409,7 +46598,7 @@ SceneHowto.prototype.draw = function(){
 };
 module.exports = SceneHowto;
 
-},{"../constant":5,"../hakurei":114}],182:[function(require,module,exports){
+},{"../constant":5,"../hakurei":114}],183:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -46463,7 +46652,7 @@ SceneHowto.prototype.draw = function(){
 };
 module.exports = SceneHowto;
 
-},{"../constant":5,"../hakurei":114}],183:[function(require,module,exports){
+},{"../constant":5,"../hakurei":114}],184:[function(require,module,exports){
 'use strict';
 
 // ローディングシーン
@@ -46583,7 +46772,7 @@ SceneLoading.prototype.progress = function(){
 
 module.exports = SceneLoading;
 
-},{"../config/assets":1,"../constant":5,"../hakurei":114}],184:[function(require,module,exports){
+},{"../config/assets":1,"../constant":5,"../hakurei":114}],185:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -46952,6 +47141,25 @@ SceneStage.prototype.isNoHat = function(){
 SceneStage.prototype.getFieldData = function(){
 	return FieldMap[this.core.save_manager.getCurrentField()];
 };
+// ステージ上のオブジェクト or 自機を取得
+SceneStage.prototype.getPiece = function(name) {
+	if (name === "koishi") return this.koishi;
+
+	// 自機
+	var obj, i, len;
+	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
+		obj = this._koishi_and_pieces[i];
+		// TODO: O(1)
+		if(obj.no === name) {
+			return obj;
+		}
+	}
+
+	return null;
+};
+
+
+
 
 SceneStage.prototype._setupPieces = function() {
 	var field_data = this.getFieldData();
@@ -46992,7 +47200,7 @@ SceneStage.prototype._setupPieces = function() {
 };
 module.exports = SceneStage;
 
-},{"../config/field":2,"../constant":5,"../hakurei":114,"../object/black_mist":157,"../object/koishi":158,"../object/light_3rdeye":159,"../object/pieces/anime_event_image":162,"../object/pieces/anime_image":163,"../object/pieces/item":166,"../object/pieces/journal":167,"../object/pieces/static_image":168,"../object/ui/eye_button":170,"../object/ui/item_menu_button":171,"../object/ui/left_next_field_button":172,"../object/ui/right_next_field_button":174,"./substage/event/chapter0/get_hat":186,"./substage/event/chapter0/kokoro_encounter":187,"./substage/event/chapter0/satori_encounter_begin":188,"./substage/got_item":189,"./substage/journal":190,"./substage/menu":191,"./substage/picture_get_hat":192,"./substage/picture_use_eyedrops":193,"./substage/play":194,"./substage/talk_with_object":195}],185:[function(require,module,exports){
+},{"../config/field":2,"../constant":5,"../hakurei":114,"../object/black_mist":158,"../object/koishi":159,"../object/light_3rdeye":160,"../object/pieces/anime_event_image":163,"../object/pieces/anime_image":164,"../object/pieces/item":167,"../object/pieces/journal":168,"../object/pieces/static_image":169,"../object/ui/eye_button":171,"../object/ui/item_menu_button":172,"../object/ui/left_next_field_button":173,"../object/ui/right_next_field_button":175,"./substage/event/chapter0/get_hat":187,"./substage/event/chapter0/kokoro_encounter":188,"./substage/event/chapter0/satori_encounter_begin":189,"./substage/got_item":190,"./substage/journal":191,"./substage/menu":192,"./substage/picture_get_hat":193,"./substage/picture_use_eyedrops":194,"./substage/play":195,"./substage/talk_with_object":196}],186:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../../hakurei').scene.base;
@@ -47007,7 +47215,7 @@ Util.inherit(SceneSceneSubStageBase, base_scene);
 
 module.exports = SceneSceneSubStageBase;
 
-},{"../../hakurei":114}],186:[function(require,module,exports){
+},{"../../hakurei":114}],187:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../../base');
@@ -47111,7 +47319,7 @@ SceneEventChapter0GetHat.prototype.draw = function(){
 
 module.exports = SceneEventChapter0GetHat;
 
-},{"../../../../constant":5,"../../../../hakurei":114,"../../../../object/pieces/chapter0_hat":165,"../../base":185}],187:[function(require,module,exports){
+},{"../../../../constant":5,"../../../../hakurei":114,"../../../../object/pieces/chapter0_hat":166,"../../base":186}],188:[function(require,module,exports){
 'use strict';
 
 var SPEED = 4;
@@ -47211,7 +47419,7 @@ SceneSubStageJournal.prototype.afterDraw = function(){
 
 module.exports = SceneSubStageJournal;
 
-},{"../../../../data/anime/kokoro/run_anime_1":101,"../../../../data/anime/kokoro/wait_anime_1":102,"../../../../hakurei":114,"../../../../object/anime_object":156,"../../base":185}],188:[function(require,module,exports){
+},{"../../../../data/anime/kokoro/run_anime_1":101,"../../../../data/anime/kokoro/wait_anime_1":102,"../../../../hakurei":114,"../../../../object/anime_object":157,"../../base":186}],189:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../../talk_with_object');
@@ -47259,7 +47467,7 @@ SceneSubStageObjectTalk.prototype.onSerifEnd = function(){
 };
 module.exports = SceneSubStageObjectTalk;
 
-},{"../../../../hakurei":114,"../../talk_with_object":195}],189:[function(require,module,exports){
+},{"../../../../hakurei":114,"../../talk_with_object":196}],190:[function(require,module,exports){
 'use strict';
 
 // アイテム獲得
@@ -47381,7 +47589,7 @@ SceneSubStageGotItem.prototype._showItem = function() {
 
 module.exports = SceneSubStageGotItem;
 
-},{"../../config/item":3,"../../hakurei":114,"./base":185}],190:[function(require,module,exports){
+},{"../../config/item":3,"../../hakurei":114,"./base":186}],191:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./base');
@@ -47448,7 +47656,7 @@ SceneSubStageJournal.prototype._showPicture = function() {
 
 module.exports = SceneSubStageJournal;
 
-},{"../../hakurei":114,"./base":185}],191:[function(require,module,exports){
+},{"../../hakurei":114,"./base":186}],192:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./base');
@@ -47748,7 +47956,7 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 
 module.exports = SceneSubStageMenu;
 
-},{"../../config/item":3,"../../constant":5,"../../hakurei":114,"../../object/menu_item/eyedrops":161,"./base":185}],192:[function(require,module,exports){
+},{"../../config/item":3,"../../constant":5,"../../hakurei":114,"../../object/menu_item/eyedrops":162,"./base":186}],193:[function(require,module,exports){
 'use strict';
 
 // TODO: use_eyedrops だけでなく、picture クラス(指定の1枚絵を表示する)
@@ -47812,7 +48020,7 @@ SceneSubStageGetHat.prototype.draw = function(){
 };
 module.exports = SceneSubStageGetHat;
 
-},{"../../hakurei":114,"./base":185}],193:[function(require,module,exports){
+},{"../../hakurei":114,"./base":186}],194:[function(require,module,exports){
 'use strict';
 
 // TODO: use_eyedrops だけでなく、picture クラス(指定の1枚絵を表示する)
@@ -47877,7 +48085,7 @@ SceneSubStageJournal.prototype.afterDraw = function(){
 };
 module.exports = SceneSubStageJournal;
 
-},{"../../hakurei":114,"./base":185}],194:[function(require,module,exports){
+},{"../../hakurei":114,"./base":186}],195:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./base');
@@ -47963,7 +48171,7 @@ SceneSubStagePlay.prototype.afterDraw = function(){
 
 module.exports = SceneSubStagePlay;
 
-},{"../../hakurei":114,"./base":185}],195:[function(require,module,exports){
+},{"../../hakurei":114,"./base":186}],196:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./base');
@@ -48043,74 +48251,11 @@ SceneSubStageObjectTalk.prototype.afterDraw = function(){
 
 	// セリフ送り待機中は表示しない
 	if(!this._next_to_serif_waiting_count) {
-		// メッセージウィンドウ表示
-		this._showMessageWindow();
-
-		// メッセージ表示
+		// セリフ表示
 		this._showMessage();
-	}
-};
 
-// セリフウィンドウ表示
-SceneSubStageObjectTalk.prototype._showMessageWindow = function(){
-	var ctx = this.core.ctx;
-	ctx.save();
-
-	var fukidashi = this.core.image_loader.getImage('fukidashi');
-
-	// ウィンドウの位置
-	var message_window_pos = this._getMessageWindowPos();
-	var x = message_window_pos.x;
-	var y = message_window_pos.y;
-	var is_reflect = message_window_pos.is_reflect;
-
-	if (!x && !y) return;
-
-	// ウィンドウの大きさ
-	var scale = this._getMessageWindowScale();
-
-	if(is_reflect) {
-		x = -x; // 反転
-		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
-	}
-
-	ctx.drawImage(fukidashi,
-		x,
-		y,
-		fukidashi.width * scale.width,
-		fukidashi.height * scale.height
-	);
-	ctx.restore();
-};
-
-// セリフ表示
-SceneSubStageObjectTalk.prototype._showMessage = function() {
-	var ctx = this.core.ctx;
-
-	// セリフ表示
-	var lines = this._serif.lines();
-
-	if (!lines.length) return;
-
-	ctx.save();
-
-	// セリフの色
-	var font_color = Util.hexToRGBString("#d4c9aa");
-
-	ctx.fillStyle = font_color;
-	ctx.font = "18px 'OradanoGSRR'";
-	ctx.textAlign = 'left';
-	ctx.textBaseAlign = 'middle';
-
-	var message_text_pos = this._getMessageTextPos();
-	var x = message_text_pos.x;
-	var y = message_text_pos.y;
-
-	for(var i = 0, len = lines.length; i < len; i++) {
-		y+= 30;
-		ctx.fillText(lines[i], x, y); // 1行表示
-
-	}
+		// TODO:
+	/*
 	// クリック待ちカーソル表示
 	if (this._serif.isWaitingNext()) {
 
@@ -48137,124 +48282,24 @@ SceneSubStageObjectTalk.prototype._showMessage = function() {
 			cursor.height*2/3
 		);
 	}
+	*/
 
-	ctx.restore();
-};
 
-// セリフ表示を右に表示させるかどうか
-SceneSubStageObjectTalk.prototype._isShowRight = function(){
-	var chara_name = this._serif.getChara();
-	if (chara_name === "koishi") {
-		var x = this.root().koishi.x();
-
-		var scene_center_x = this.root().width / 2;
-
-		if (x > scene_center_x) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	else if (chara_name === "me") {
-		// オブジェクトが会話する場合
-		// TODO:
-		throw new Error("TODO:");
-	}
-	else {
-		return false;
 	}
 };
 
-// メッセージウィンドウの位置を取得
-SceneSubStageObjectTalk.prototype._getMessageWindowPos = function(){
+// セリフ表示
+SceneSubStageObjectTalk.prototype._showMessage = function() {
 	var chara_name = this._serif.getChara();
 
-	var is_reflect = !this._isShowRight();
+	var obj = this.root().getPiece(chara_name);
 
-	var x,y;
-
-	if (chara_name === "koishi") {
-		if(is_reflect) {
-			x = this.root().koishi.x() - 550;
-			y = this.root().koishi.y() - 330;
-		}
-		else {
-			x = this.root().koishi.x() - 300;
-			y = this.root().koishi.y() - 330;
-		}
-	}
-	else if (chara_name === "me") {
-		// オブジェクトが会話する場合
-		// TODO:
-		throw new Error("TODO:");
-	}
-	else {
-		x = 0;
-		y = 0;
-	}
-	return {
-		is_reflect: is_reflect,
-		x: x,
-		y: y,
-	};
+	obj.showMessage(this._serif.lines(), this._serif.isWaitingNext());
 };
-
-// ウィンドウの大きさ
-SceneSubStageObjectTalk.prototype._getMessageWindowScale = function(){
-	var scale_width, scale_height;
-	if (this._serif.getSerifRowsCount() === 2) {
-		scale_width = 0.4;
-		scale_height = 0.5;
-	}
-	else {
-		scale_width = 0.4;
-		scale_height = 0.4;
-	}
-	return {width: scale_width, height: scale_height};
-};
-
-// メッセージテキストの開始位置を取得
-SceneSubStageObjectTalk.prototype._getMessageTextPos = function(){
-	var chara_name = this._serif.getChara();
-
-	var is_reflect = !this._isShowRight();
-
-	var x,y;
-
-	if (chara_name === "koishi") {
-		if(is_reflect) {
-			x = this.root().koishi.x() + 80;
-			y = this.root().koishi.y() - 290;
-		}
-		else {
-			x = this.root().koishi.x() - 220;
-			y = this.root().koishi.y() - 290;
-		}
-
-	}
-	else if (chara_name === "me") {
-		// オブジェクトが会話する場合
-		// TODO:
-		throw new Error("TODO:");
-	}
-	else {
-		throw new Error("Unrecognized chara name: " . chara_name);
-	}
-
-	return {
-		is_reflect: is_reflect,
-		x: x,
-		y: y,
-	};
-};
-
-
-
 
 module.exports = SceneSubStageObjectTalk;
 
-},{"../../hakurei":114,"./base":185}],196:[function(require,module,exports){
+},{"../../hakurei":114,"./base":186}],197:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -48453,7 +48498,7 @@ SceneTitle.prototype.getAlpha = function(){
 };
 module.exports = SceneTitle;
 
-},{"../constant":5,"../data/anime/title/title01_anime_1":103,"../data/anime/title/title02_anime_1":104,"../data/anime/title/title03_anime_1":105,"../hakurei":114,"../object/anime_object":156}],197:[function(require,module,exports){
+},{"../constant":5,"../data/anime/title/title01_anime_1":103,"../data/anime/title/title02_anime_1":104,"../data/anime/title/title03_anime_1":105,"../hakurei":114,"../object/anime_object":157}],198:[function(require,module,exports){
 //-----------------------------------------------------------
 // Ss5ConverterToSSAJSON v1.0.3
 //
@@ -48895,4 +48940,4 @@ module.exports = {
 
 
 
-},{}]},{},[155]);
+},{}]},{},[156]);
