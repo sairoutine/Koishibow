@@ -118,6 +118,11 @@ SceneSubStageObjectTalk.prototype.afterDraw = function(){
 SceneSubStageObjectTalk.prototype._showMessage = function() {
 	var chara_name = this._serif.getChara();
 
+	// まだ会話が始まってない場合があるので
+	// その場合は、chara_name = null となる
+	// (satori_encounter_begin scene で。なぜならクリックして会話が始まるから)
+	if(!chara_name) return;
+
 	var obj = this.root().getPiece(chara_name);
 
 	obj.showMessage(this._serif.lines(), this._serif.isWaitingNext());
