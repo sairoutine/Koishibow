@@ -47423,7 +47423,6 @@ module.exports = SceneSubStageJournal;
 'use strict';
 
 var base_scene = require('../../talk_with_object');
-var SerifManager = require('../../../../hakurei').serif_manager;
 var Util = require('../../../../hakurei').util;
 
 var SceneSubStageObjectTalk = function(core) {
@@ -48291,6 +48290,11 @@ SceneSubStageObjectTalk.prototype.afterDraw = function(){
 // セリフ表示
 SceneSubStageObjectTalk.prototype._showMessage = function() {
 	var chara_name = this._serif.getChara();
+
+	// まだ会話が始まってない場合があるので
+	// その場合は、chara_name = null となる
+	// (satori_encounter_begin scene で。なぜならクリックして会話が始まるから)
+	if(!chara_name) return;
 
 	var obj = this.root().getPiece(chara_name);
 
