@@ -1,7 +1,6 @@
 'use strict';
 
 var base_scene = require('../../talk_with_object');
-var SerifManager = require('../../../../hakurei').serif_manager;
 var Util = require('../../../../hakurei').util;
 
 var SceneSubStageObjectTalk = function(core) {
