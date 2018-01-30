@@ -1,7 +1,6 @@
 'use strict';
 
 var base_scene = require('../../../hakurei').scene.base;
-var CONSTANT = require('../../../constant');
 var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
 var SerifManager = require('../../../hakurei').serif_manager;
