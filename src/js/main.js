@@ -33,3 +33,46 @@ window.changeFullScreen = function () {
 if(window.require) {
 	window.require('electron').webFrame.setVisualZoomLevelLimits(1,1); //zoomさせない
 }
+
+/* global JSZipUtils */
+var JSZip = require("jszip");
+JSZipUtils.getBinaryContent('./image.zip', function(err, data) {
+    if(err) {
+        throw err; // or handle err
+    }
+
+    JSZip.loadAsync(data).then(function (zip) {
+    	zip.file("image/black_mist.png").async("arraybuffer").then(function(data) {
+			var img = document.createElement("IMG");
+			var blob = new Blob( [ data ]);
+			var url = window.URL || window.webkitURL;
+			img.src = url.createObjectURL(blob);
+			var element = document.getElementById("debug");
+			element.appendChild(img);
+		});
+    });
+});
+
+JSZipUtils.getBinaryContent('./sound.zip', function(err, data) {
+    if(err) {
+        throw err; // or handle err
+    }
+
+    JSZip.loadAsync(data).then(function (zip) {
+    	zip.file("sound/show_journal.ogg").async("arraybuffer").then(function(data) {
+			var blob = new Blob( [ data ]);
+			var url = window.URL || window.webkitURL;
+
+			var audio = new window.Audio();
+			audio.src = url.createObjectURL(blob);
+			audio.addEventListener('canplay', function() {
+				audio.play();
+			});
+			audio.load();
+
+		});
+    });
+});
+
+
+
