@@ -25,7 +25,7 @@ var SceneDefault = function(core) {
 	this.satori = new SS(this);
 	this.koishi = new SS(this);
 
-	this._serif = new SerifManager();
+	this._serif = new SerifManager({auto_start: false});
 
 	this.black_mist = new BlackMist(this);
 };
@@ -55,7 +55,7 @@ SceneDefault.prototype.init = function(){
 	this._serif.init([
 		{"chara": "satori","serif":"おいで"},
 		{"chara": "satori","serif":"あなたはいい子にならなきゃだめよ"},
-	], false);
+	]);
 
 	this.black_mist.init();
 };

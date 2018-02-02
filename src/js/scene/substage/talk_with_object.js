@@ -24,7 +24,7 @@ var SceneSubStageObjectTalk = function(core) {
 };
 Util.inherit(SceneSubStageObjectTalk, base_scene);
 
-SceneSubStageObjectTalk.prototype.init = function(serif_list, obj, auto_start_flag){
+SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// クリック待ちカーソルの状態
@@ -36,7 +36,7 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj, auto_start_fl
 
 	// セリフデータの生成
 	var serif_script = serif_list;
-	this._serif.init(serif_script, auto_start_flag);
+	this._serif.init(serif_script);
 
 	// 会話対象のオブジェクト
 	this._target_object = obj;
