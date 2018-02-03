@@ -82,6 +82,7 @@ Game.prototype.setupDebug = function (dom) {
 	// ゲームデータ消去ボタン
 	this.debug_manager.addMenuButton("セーブクリア", function (game) {
 		game.save_manager.del();
+		game.reload();
 	});
 
 	this.debug_manager.addMenuButton("当たり判定表示", function (game) {
