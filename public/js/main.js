@@ -46240,7 +46240,7 @@ var SceneDefault = function(core) {
 	this.satori = new SS(this);
 	this.koishi = new SS(this);
 
-	this._serif = new SerifManager();
+	this._serif = new SerifManager({auto_start: false});
 
 	this.black_mist = new BlackMist(this);
 };
@@ -46270,7 +46270,7 @@ SceneDefault.prototype.init = function(){
 	this._serif.init([
 		{"chara": "satori","serif":"おいで"},
 		{"chara": "satori","serif":"あなたはいい子にならなきゃだめよ"},
-	], false);
+	]);
 
 	this.black_mist.init();
 };
@@ -47437,10 +47437,16 @@ var SceneSubStageObjectTalk = function(core) {
 Util.inherit(SceneSubStageObjectTalk, base_scene);
 
 SceneSubStageObjectTalk.prototype.init = function(){
+
+	// N秒経ってから beforeDraw 内で再生するため
+	this._serif.setAutoStart(false);
+
 	var serif_list = [
 		{"chara": "koishi","serif":"あっ"},
 	];
-	base_scene.prototype.init.apply(this, [serif_list, null, false]);
+	var obj = null;
+
+	base_scene.prototype.init.apply(this, [serif_list, obj]);
 };
 
 SceneSubStageObjectTalk.prototype.beforeDraw = function(){
@@ -48203,7 +48209,7 @@ var SceneSubStageObjectTalk = function(core) {
 };
 Util.inherit(SceneSubStageObjectTalk, base_scene);
 
-SceneSubStageObjectTalk.prototype.init = function(serif_list, obj, auto_start_flag){
+SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// クリック待ちカーソルの状態
@@ -48215,7 +48221,7 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj, auto_start_fl
 
 	// セリフデータの生成
 	var serif_script = serif_list;
-	this._serif.init(serif_script, auto_start_flag);
+	this._serif.init(serif_script);
 
 	// 会話対象のオブジェクト
 	this._target_object = obj;
