@@ -36,15 +36,6 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	}
 };
 
-
-SceneSubStageObjectTalk.prototype.afterDraw = function(){
-};
-SceneSubStageObjectTalk.prototype.draw = function(){
-	base_scene.prototype.afterDraw.apply(this, arguments);
-};
-
-
-
 SceneSubStageObjectTalk.prototype.onSerifEnd = function(){
 	this.root().changeSubScene("play");
 };

@@ -72,7 +72,7 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 
 };
 
-SceneSubStageObjectTalk.prototype.afterDraw = function(){
+SceneSubStageObjectTalk.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 
 	// セリフ送り待機中は表示しない
