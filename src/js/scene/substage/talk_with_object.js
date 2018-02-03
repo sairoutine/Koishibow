@@ -1,5 +1,10 @@
 'use strict';
 
+// オブジェクトとの会話サブシーン
+// NOTE: encounter_satori scene が継承しており、SerifManager の auto start が false の場合がある
+//       this._serif を使う場合は isStart 判定をすること
+
+
 var base_scene = require('./base');
 var SerifManager = require('../../hakurei').serif_manager;
 var Util = require('../../hakurei').util;
@@ -65,8 +70,10 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 			this.root().changeSubScene("play");
 		}
 		else {
-			// 次のセリフへ
-			this._next_to_serif_waiting_count = NEXT_TO_SERIF_WAITING_COUNT;
+			if(this._serif.isStart()) {
+				// 次のセリフへ
+				this._next_to_serif_waiting_count = NEXT_TO_SERIF_WAITING_COUNT;
+			}
 		}
 	}
 
@@ -116,12 +123,10 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 
 // セリフ表示
 SceneSubStageObjectTalk.prototype._showMessage = function() {
+	if(!this._serif.isStart()) return;
+
 	var chara_name = this._serif.getChara();
 
-	// まだ会話が始まってない場合があるので
-	// その場合は、chara_name = null となる
-	// (satori_encounter_begin scene で。なぜならクリックして会話が始まるから)
-	if(!chara_name) return;
 
 	var obj = this.root().getPiece(chara_name);
 
