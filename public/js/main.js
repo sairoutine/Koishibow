@@ -31349,6 +31349,7 @@ Game.prototype.setupDebug = function (dom) {
 	// ゲームデータ消去ボタン
 	this.debug_manager.addMenuButton("セーブクリア", function (game) {
 		game.save_manager.del();
+		game.reload();
 	});
 
 	this.debug_manager.addMenuButton("当たり判定表示", function (game) {
@@ -31447,6 +31448,10 @@ var AudioLoader = function() {
 	this._audio_source_map = {};
 };
 AudioLoader.prototype.init = function() {
+	// cancel already playing bgms if init method is called by re-init
+	this.stopAllBGM();
+
+	// TODO: cancel already playing sound?
 	// TODO: cancel already loading bgms and sounds
 
 	this.sounds = {};
@@ -31847,11 +31852,7 @@ FontLoader.prototype.isLoaded = function(name) {
 
 FontLoader.prototype.checkFontLoaded = function(name) {
     if (this.canUseCssFontLoading()) {
-        if(this._loadedFonts){
-            return this._loadedFonts.check('10px "'+name+'"');
-        }
-
-        return false;
+		return window.document.fonts.check('10px "'+name+'"');
     } else {
         if (!this._hiddenCanvas) {
             this._hiddenCanvas = window.document.createElement('canvas');
@@ -32148,6 +32149,11 @@ Core.prototype.init = function () {
 
 	this.addScene("loading", new SceneLoading(this));
 };
+
+Core.prototype.reload = function () {
+	this.init();
+};
+
 Core.prototype.isRunning = function () {
 	return this.request_id ? true : false;
 };
@@ -42639,6 +42645,9 @@ SerifManager.prototype.setAutoStart = function (flag) {
 SerifManager.prototype.isEnd = function () {
 	return this._progress === this._script.length - 1;
 };
+SerifManager.prototype.isStart = function () {
+	return this._progress > -1;
+};
 
 SerifManager.prototype.next = function () {
 	this._progress++;
@@ -47464,15 +47473,6 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	}
 };
 
-
-SceneSubStageObjectTalk.prototype.afterDraw = function(){
-};
-SceneSubStageObjectTalk.prototype.draw = function(){
-	base_scene.prototype.afterDraw.apply(this, arguments);
-};
-
-
-
 SceneSubStageObjectTalk.prototype.onSerifEnd = function(){
 	this.root().changeSubScene("play");
 };
@@ -48185,6 +48185,11 @@ module.exports = SceneSubStagePlay;
 },{"../../hakurei":114,"./base":186}],196:[function(require,module,exports){
 'use strict';
 
+// オブジェクトとの会話サブシーン
+// NOTE: encounter_satori scene が継承しており、SerifManager の auto start が false の場合がある
+//       this._serif を使う場合は isStart 判定をすること
+
+
 var base_scene = require('./base');
 var SerifManager = require('../../hakurei').serif_manager;
 var Util = require('../../hakurei').util;
@@ -48250,14 +48255,16 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 			this.root().changeSubScene("play");
 		}
 		else {
-			// 次のセリフへ
-			this._next_to_serif_waiting_count = NEXT_TO_SERIF_WAITING_COUNT;
+			if(this._serif.isStart()) {
+				// 次のセリフへ
+				this._next_to_serif_waiting_count = NEXT_TO_SERIF_WAITING_COUNT;
+			}
 		}
 	}
 
 };
 
-SceneSubStageObjectTalk.prototype.afterDraw = function(){
+SceneSubStageObjectTalk.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 
 	// セリフ送り待機中は表示しない
@@ -48301,12 +48308,10 @@ SceneSubStageObjectTalk.prototype.afterDraw = function(){
 
 // セリフ表示
 SceneSubStageObjectTalk.prototype._showMessage = function() {
+	if(!this._serif.isStart()) return;
+
 	var chara_name = this._serif.getChara();
 
-	// まだ会話が始まってない場合があるので
-	// その場合は、chara_name = null となる
-	// (satori_encounter_begin scene で。なぜならクリックして会話が始まるから)
-	if(!chara_name) return;
 
 	var obj = this.root().getPiece(chara_name);
 
