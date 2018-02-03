@@ -7,13 +7,13 @@ var Util = require('../hakurei').util;
 // 静的クラス
 var DrawSerif = function() {};
 
+// @param: {ObjectBase} obj
 DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines) {
 	// ウィンドウの位置
 	var message_window_pos = this._getMessageWindowPos(obj);
 	var x = message_window_pos.x;
 	var y = message_window_pos.y;
 	var is_reflect = message_window_pos.is_reflect;
-
 
 	ctx.save();
 
@@ -22,14 +22,14 @@ DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines) {
 	// ウィンドウの大きさ
 	var scale = this._getMessageWindowScale(lines);
 
+	ctx.translate(x, y);
 	if(is_reflect) {
-		x = -x; // 反転
+		//x = -x; // 反転
 		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
 	}
-
 	ctx.drawImage(fukidashi,
-		x,
-		y,
+		-fukidashi.width * scale.width,
+		-fukidashi.height * scale.height,
 		fukidashi.width * scale.width,
 		fukidashi.height * scale.height
 	);
@@ -74,6 +74,12 @@ DrawSerif._getMessageWindowScale = function(lines){
 		scale_width = 0.4;
 		scale_height = 0.4;
 	}
+
+	for (var i = 0, len = lines.length; i < len; i++) {
+		var line = lines[i];
+		if(line.length > 12) scale_width *= line.length/12;
+	}
+
 	return {width: scale_width, height: scale_height};
 };
 
@@ -82,14 +88,13 @@ DrawSerif._getMessageWindowPos = function(obj){
 	var is_reflect = !this._isShowRight(obj);
 
 	var x,y;
-
 	if(is_reflect) {
 		x = obj.x() - 550;
 		y = obj.y() - 330;
 	}
 	else {
-		x = obj.x() - 300;
-		y = obj.y() - 330;
+		x = obj.x() +  50;
+		y = obj.y() - 200;
 	}
 
 	return {

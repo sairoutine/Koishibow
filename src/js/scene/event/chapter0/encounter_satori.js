@@ -1,10 +1,12 @@
 'use strict';
 
 var base_scene = require('../../../hakurei').scene.base;
+var ObjectPoint = require('../../../hakurei').object.point;
 var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
 var SerifManager = require('../../../hakurei').serif_manager;
 var BlackMist = require('../../../object/black_mist');
+var DrawSerif = require('../../../logic/draw_serif');
 
 
 var jsonDataOfEye1 = require('../../../data/anime/chapter0/event/encounter_satori/eye/obj01_anime_1');
@@ -28,6 +30,9 @@ var SceneDefault = function(core) {
 	this._serif = new SerifManager({auto_start: false});
 
 	this.black_mist = new BlackMist(this);
+
+	this.serif_position = new ObjectPoint(this);
+	this.serif_position.setPosition(this.width - 120, 400);
 };
 Util.inherit(SceneDefault, base_scene);
 
@@ -148,7 +153,6 @@ SceneDefault.prototype.draw = function(){
 	this._showBackground();
 	// キャラのアニメの表示
 	base_scene.prototype.draw.apply(this, arguments);
-	this._showMessageWindow();
 	this._showMessage();
 	this.black_mist.draw();
 };
@@ -173,64 +177,31 @@ SceneDefault.prototype._showBackground = function(){
 	ctx.restore();
 };
 
-
-
-
-// セリフウィンドウ表示
-SceneDefault.prototype._showMessageWindow = function(){
+SceneDefault.prototype._showMessage = function(){
 	if(!this._serif.isStart()) return;
-	var ctx = this.core.ctx;
-	ctx.save();
 
-	var fukidashi = this.core.image_loader.getImage('fukidashi_gray');
-
-	// ウィンドウの位置
-	var x = 500;
-	var y = 80;
-
-	// ウィンドウの大きさ
-	var scale = 2/3;
-
-	ctx.drawImage(fukidashi,
-		x,
-		y,
-		fukidashi.width * scale,
-		fukidashi.height * scale
-	);
-	ctx.restore();
-};
-
-// セリフ表示
-SceneDefault.prototype._showMessage = function() {
-	if(!this._serif.isStart()) return;
-	var ctx = this.core.ctx;
-
-	// セリフ表示
+	// セリフ取得
 	var lines = this._serif.lines();
-
 	if (!lines.length) return;
 
-	ctx.save();
+	// メッセージウィンドウ表示
+	this._showMessageWindow(lines);
 
-	// セリフの色
-	var font_color = "white";
-	var fukidashi = this.core.image_loader.getImage('fukidashi_gray');
-
-	ctx.fillStyle = font_color;
-	ctx.font = "18px 'OradanoGSRR'";
-	var x = 400 + fukidashi.width/4;
-	var y = 80 + fukidashi.height/4;
-
-
-	for(var i = 0, len = lines.length; i < len; i++) {
-		y+= 30;
-		ctx.fillText(lines[i], x, y); // 1行表示
-
-	}
-
-	ctx.restore();
+	// メッセージ表示
+	this._showText(lines);
 };
 
+// セリフウィンドウ表示
+SceneDefault.prototype._showMessageWindow = function(lines){
+	var ctx = this.core.ctx;
+	var fukidashi = this.core.image_loader.getImage('fukidashi_gray');
+	DrawSerif.drawWindow(this.serif_position, ctx, fukidashi, lines);
+};
+
+SceneDefault.prototype._showText = function(lines) {
+	var ctx = this.core.ctx;
+	DrawSerif.drawText(this.serif_position, ctx, lines);
+};
 
 
 module.exports = SceneDefault;
