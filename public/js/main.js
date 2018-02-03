@@ -42565,7 +42565,10 @@ var TYPOGRAPHY_SPEED = 10;
 
 var Util = require("./util");
 
-var SerifManager = function () {
+var SerifManager = function (option) {
+	option = option || {};
+	this._is_auto_start = "auto_start" in option ? option.auto_start : true;
+
 	this._timeoutID = null;
 
 	// serif scenario
@@ -42594,10 +42597,8 @@ var SerifManager = function () {
 	this._printing_lines = [];
 };
 
-SerifManager.prototype.init = function (script, auto_start_flag) {
+SerifManager.prototype.init = function (script) {
 	if(!script) console.error("set script arguments to use serif_manager class");
-
-	auto_start_flag = typeof auto_start_flag === "undefined" ? true : false;
 
 	// serif scenario
 	this._script = script;
@@ -42624,10 +42625,16 @@ SerifManager.prototype.init = function (script, auto_start_flag) {
 	this._line_num = 0;
 	this._printing_lines = [];
 
-	if(auto_start_flag && !this.isEnd()) {
+	if(this._is_auto_start && !this.isEnd()) {
 		this.next(); // start
 	}
 };
+
+SerifManager.prototype.setAutoStart = function (flag) {
+	this._is_auto_start = flag;
+};
+
+
 
 SerifManager.prototype.isEnd = function () {
 	return this._progress === this._script.length - 1;
@@ -46209,7 +46216,6 @@ module.exports = SceneEventBase;
 'use strict';
 
 var base_scene = require('../../../hakurei').scene.base;
-var CONSTANT = require('../../../constant');
 var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
 var SerifManager = require('../../../hakurei').serif_manager;
@@ -46437,7 +46443,7 @@ SceneDefault.prototype._showMessage = function() {
 
 module.exports = SceneDefault;
 
-},{"../../../constant":5,"../../../data/anime/chapter0/event/encounter_satori/eye/obj01_anime_1":8,"../../../data/anime/chapter0/event/encounter_satori/eye/obj02_anime_1":9,"../../../data/anime/chapter0/event/encounter_satori/eye/obj03_anime_1":10,"../../../data/anime/chapter0/event/encounter_satori/satori/obj01_anime_1":11,"../../../data/anime/chapter0/event/encounter_satori/satori/obj02_anime_1":12,"../../../data/anime/chapter0/event/encounter_satori/satori/obj03_anime_1":13,"../../../data/anime/koishi/wait_anime_1":99,"../../../hakurei":114,"../../../object/anime_object":157,"../../../object/black_mist":158}],180:[function(require,module,exports){
+},{"../../../data/anime/chapter0/event/encounter_satori/eye/obj01_anime_1":8,"../../../data/anime/chapter0/event/encounter_satori/eye/obj02_anime_1":9,"../../../data/anime/chapter0/event/encounter_satori/eye/obj03_anime_1":10,"../../../data/anime/chapter0/event/encounter_satori/satori/obj01_anime_1":11,"../../../data/anime/chapter0/event/encounter_satori/satori/obj02_anime_1":12,"../../../data/anime/chapter0/event/encounter_satori/satori/obj03_anime_1":13,"../../../data/anime/koishi/wait_anime_1":99,"../../../hakurei":114,"../../../object/anime_object":157,"../../../object/black_mist":158}],180:[function(require,module,exports){
 'use strict';
 
 // chapter0 最終イベント
