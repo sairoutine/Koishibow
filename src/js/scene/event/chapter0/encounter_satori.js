@@ -144,8 +144,17 @@ SceneDefault.prototype.beforeDraw = function(){
 	this.black_mist.beforeDraw();
 };
 SceneDefault.prototype.draw = function(){
-	var ctx = this.core.ctx;
 
+	this._showBackground();
+	// キャラのアニメの表示
+	base_scene.prototype.draw.apply(this, arguments);
+	this._showMessageWindow();
+	this._showMessage();
+	this.black_mist.draw();
+};
+
+SceneDefault.prototype._showBackground = function(){
+	var ctx = this.core.ctx;
 	ctx.save();
 
 	var background = this.core.image_loader.getImage("chapter0-mspassage-bg-002_event");
@@ -162,17 +171,14 @@ SceneDefault.prototype.draw = function(){
 	);
 
 	ctx.restore();
-
-	base_scene.prototype.draw.apply(this, arguments);
-
-	this._showMessageWindow();
-	this._showMessage();
-	this.black_mist.draw();
 };
+
+
+
 
 // セリフウィンドウ表示
 SceneDefault.prototype._showMessageWindow = function(){
-	if(!this._serif.getChara()) return;
+	if(!this._serif.isStart()) return;
 	var ctx = this.core.ctx;
 	ctx.save();
 
@@ -196,6 +202,7 @@ SceneDefault.prototype._showMessageWindow = function(){
 
 // セリフ表示
 SceneDefault.prototype._showMessage = function() {
+	if(!this._serif.isStart()) return;
 	var ctx = this.core.ctx;
 
 	// セリフ表示
