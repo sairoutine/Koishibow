@@ -1,8 +1,8 @@
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
-var CONSTANT = require('../../constant');
 
+// TODO: ジャーナルメニュー追加したときに大変だったので、なんとかしたい...
 
 var ObjectItemMenuButton = function(core) {
 	base_object.apply(this, arguments);
@@ -19,6 +19,7 @@ ObjectItemMenuButton.prototype.isShow = function(){
 	return(
 		this.scene.current_scene === "play" ||
 		this.scene.current_scene === "menu" ||
+		this.scene.current_scene === "journal_menu" ||
 		this.scene.current_scene === "got_item" ?
 		true : false
 	);
@@ -41,6 +42,10 @@ ObjectItemMenuButton.prototype.onCollision = function(obj){
 		this.scene.changeSubScene("menu");
 	}
 	else if (scene_name === "menu") {
+		// メニューを閉じる
+		this.scene.changeSubScene("play");
+	}
+	else if (scene_name === "journal_menu") {
 		// メニューを閉じる
 		this.scene.changeSubScene("play");
 	}
