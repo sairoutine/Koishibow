@@ -66,7 +66,8 @@ SceneSubStageJournalMenu.prototype.init = function(){
 SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 
 	var self = this;
-	var journal_list = this.core.save_manager.getJournalList();
+	// TODO: 獲得していないジャーナルは未表示
+	//var journal_list = this.core.save_manager.getJournalList();
 
 	this.menu_journal_list = [];
 
@@ -84,7 +85,7 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 		var conf = journal_config[id];
 
 		(function(conf) {
-			self.menu_journal_list.push(new UIParts(
+			var ui = new UIParts(
 				self,
 				basePosX,
 				basePosY + margin * i,
@@ -103,21 +104,21 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 					);
 					ctx.restore();
 				}
-			));
+			)
+
+			// TODO: 戻り先をちゃんとする
+			// クリックされたら
+			ui.setCollisionCallback(function () {
+				if (this.core.input_manager.isLeftClickPush()) {
+					this.scene.root().changeSubScene("journal", conf.id);
+				}
+			});
+
+			self.menu_journal_list.push(ui);
 		})(conf);
 
 	}
 };
-
-
-
-
-
-
-
-
-
-
 
 SceneSubStageJournalMenu.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
@@ -127,6 +128,10 @@ SceneSubStageJournalMenu.prototype.beforeDraw = function(){
 
 	// アイテムメニューを閉じる
 	if(this.root().item_menu_button.checkCollisionWithObject(mouse_point)) {
+		return true;
+	}
+	// ジャーナルタイトルとの当たり判定
+	else if(mouse_point.checkCollisionWithObjects(this.menu_journal_list)) {
 		return true;
 	}
 	// アイテムメニューへ
