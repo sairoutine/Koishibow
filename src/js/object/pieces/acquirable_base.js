@@ -7,7 +7,7 @@
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
 
-var ObjectDisappearBase = function(core) {
+var ObjectAcquirableBase = function(core) {
 	base_object.apply(this, arguments);
 
 	this._image   = null;
@@ -17,9 +17,9 @@ var ObjectDisappearBase = function(core) {
 
 	this._item_id = null;
 };
-Util.inherit(ObjectDisappearBase, base_object);
+Util.inherit(ObjectAcquirableBase, base_object);
 
-ObjectDisappearBase.prototype.init = function(){
+ObjectAcquirableBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
 	this._image   = null;
@@ -29,7 +29,7 @@ ObjectDisappearBase.prototype.init = function(){
 
 	this._item_id = null;
 };
-ObjectDisappearBase.prototype.setData = function(data) {
+ObjectAcquirableBase.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
 	// 画像
 	this._image = this.core.image_loader.getImage(data.image);
@@ -49,13 +49,13 @@ ObjectDisappearBase.prototype.setData = function(data) {
 	}
 };
 
-ObjectDisappearBase.prototype.isCollision = function(point) {
+ObjectAcquirableBase.prototype.isCollision = function(point) {
 	// サードアイ使用中ならクリックしても調べられないので何もしない
 	return !this.scene.root().isUsingEye();
 };
 
 // 移動後の処理
-ObjectDisappearBase.prototype.onAfterWalkToHere = function() {
+ObjectAcquirableBase.prototype.onAfterWalkToHere = function() {
 	// フィールドから該当のオブジェクトを削除
 	this._deleteFromField();
 
@@ -63,7 +63,7 @@ ObjectDisappearBase.prototype.onAfterWalkToHere = function() {
 	this.acquire();
 };
 
-ObjectDisappearBase.prototype.draw = function(){
+ObjectAcquirableBase.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 
 	if (!this.isShow()) return;
@@ -86,7 +86,7 @@ ObjectDisappearBase.prototype.draw = function(){
 	ctx.restore();
 };
 
-ObjectDisappearBase.prototype._deleteFromField = function() {
+ObjectAcquirableBase.prototype._deleteFromField = function() {
 	this.core.save_manager.setPieceData(
 		this.scene.root().getFieldData().key,
 		this.no,
@@ -95,7 +95,7 @@ ObjectDisappearBase.prototype._deleteFromField = function() {
 	);
 };
 
-ObjectDisappearBase.prototype._isDeleted = function() {
+ObjectAcquirableBase.prototype._isDeleted = function() {
 	return this.core.save_manager.getPieceData(
 		this.scene.root().getFieldData().key,
 		this.no,
@@ -103,17 +103,17 @@ ObjectDisappearBase.prototype._isDeleted = function() {
 	);
 };
 
-ObjectDisappearBase.prototype.isShow = function() {
+ObjectAcquirableBase.prototype.isShow = function() {
 	return !this._isDeleted();
 };
 
-ObjectDisappearBase.prototype.isCollision = function() {
+ObjectAcquirableBase.prototype.isCollision = function() {
 	return !this._isDeleted();
 };
 
 
 
-ObjectDisappearBase.prototype.collisionWidth = function(){
+ObjectAcquirableBase.prototype.collisionWidth = function(){
 	if(this._width) {
 		return this._width;
 	}
@@ -122,7 +122,7 @@ ObjectDisappearBase.prototype.collisionWidth = function(){
 	}
 };
 
-ObjectDisappearBase.prototype.collisionHeight = function(){
+ObjectAcquirableBase.prototype.collisionHeight = function(){
 	if(this._height) {
 		return this._height;
 	}
@@ -131,8 +131,8 @@ ObjectDisappearBase.prototype.collisionHeight = function(){
 	}
 };
 
-ObjectDisappearBase.prototype.acquire = function(){
+ObjectAcquirableBase.prototype.acquire = function(){
 	throw new Error("acquire must be implemented");
 };
 
-module.exports = ObjectDisappearBase;
+module.exports = ObjectAcquirableBase;
