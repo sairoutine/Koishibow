@@ -37,15 +37,8 @@ SceneSubStageGotItem.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if (this.frame_count > WAIT_COUNT_TO_NEXT_SCENE) {
-
 		// 通常のサブシーンへ戻る
 		this.root().changeSubScene("play");
-
-		// フィールドから該当のオブジェクトを削除
-		this._piece.deleteFromField();
-
-		// アイテム獲得
-		this.core.save_manager.addItem(this._piece.getItemId());
 	}
 };
 
