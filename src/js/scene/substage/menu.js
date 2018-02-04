@@ -59,7 +59,7 @@ SceneSubStageMenu.prototype.init = function(){
 			ctx.textAlign = 'center';
 			ctx.textBaseAlign = 'middle';
 			ctx.fillStyle = 'rgb( 255, 255, 255 )';
-			ctx.fillText("ジャーナル",
+			ctx.fillText("ジャーナル→",
 				this.getCollisionLeftX() + 85,
 				this.getCollisionUpY()   + 40
 			);

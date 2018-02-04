@@ -5,7 +5,7 @@ var base_scene = require('./base');
 var UIParts = require('../../hakurei').object.ui_parts;
 var Util = require('../../hakurei').util;
 //var CONSTANT = require('../../constant');
-//var JournalConfig = require('../../config/item');
+var JournalConfig = require('../../config/journal');
 
 
 
@@ -49,7 +49,7 @@ SceneSubStageJournalMenu.prototype.init = function(){
 			ctx.textAlign = 'center';
 			ctx.textBaseAlign = 'middle';
 			ctx.fillStyle = 'rgb( 255, 255, 255 )';
-			ctx.fillText("アイテム",
+			ctx.fillText("アイテム→",
 				this.getCollisionLeftX() + 85,
 				this.getCollisionUpY()   + 40
 			);
@@ -77,24 +77,23 @@ SceneSubStageJournalMenu.prototype.beforeDraw = function(){
 			this._goToItemMenu();
 		}
 	}
-
-
 };
 
 SceneSubStageJournalMenu.prototype.draw = function(){
 };
 SceneSubStageJournalMenu.prototype.afterDraw = function(){
+	// アイテム表示
+	base_scene.prototype.draw.apply(this, arguments);
+
 	var ctx = this.core.ctx;
 
 	ctx.save();
 
-	/*
 	// ウィンドウ表示
 	this._showWindow();
-	*/
 
-	// アイテム表示
-	base_scene.prototype.draw.apply(this, arguments);
+	// メニューのテキスト表示
+	this._showText();
 
 	/*
 	// メッセージウィンドウ表示
@@ -105,6 +104,50 @@ SceneSubStageJournalMenu.prototype.afterDraw = function(){
 	*/
 	ctx.restore();
 };
+
+SceneSubStageJournalMenu.prototype._showWindow = function() {
+	var ctx = this.core.ctx;
+	ctx.save();
+	ctx.fillStyle = 'black';
+	ctx.globalAlpha = 0.5;
+	ctx.fillRect(230, 20, 500, this.height - 20*2);
+	ctx.restore();
+};
+
+SceneSubStageJournalMenu.prototype._showText = function() {
+	var ctx = this.core.ctx;
+	ctx.save();
+
+	var journal_config = JournalConfig;
+
+	ctx.font = "28px 'OradanoGSRR'";
+	ctx.fillStyle = 'rgb( 255, 255, 255 )';
+
+	var i = 0;
+	for(var id in journal_config) {
+		console.log(id);
+		i++;
+		var conf = journal_config[id];
+
+		ctx.fillText(conf.title, 270, 80 + i*56);
+	}
+
+	ctx.font = "24px 'OradanoGSRR'";
+	// TODO:
+	ctx.fillText("◀", 300, 50);
+	ctx.fillText("▶", 600, 50);
+	ctx.fillText("1/5", 450, 50);
+
+	ctx.restore();
+};
+
+
+
+
+
+
+
+
 SceneSubStageJournalMenu.prototype._goToItemMenu = function() {
 	this.root().changeSubScene("menu");
 };
