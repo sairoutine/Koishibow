@@ -1,7 +1,6 @@
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
-var CONSTANT = require('../../constant');
 
 var ObjectEye = function(core) {
 	base_object.apply(this, arguments);

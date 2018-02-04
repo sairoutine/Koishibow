@@ -23,6 +23,11 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 		// サードアイの消耗
 		this.root().koishi.abrasion3rdeye();
+
+		if (this.root().koishi.isDead()) {
+			this.root().setFadeOut(0);
+			this.core.changeScene("gameover");
+		}
 	}
 
 	// 当たり判定チェック

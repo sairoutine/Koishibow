@@ -9,6 +9,7 @@ var SaveManager = require('./save_manager');
 var SceneTitle = require('./scene/title');
 var SceneLeavingTitle = require('./scene/leaving_title');
 var SceneHowto = require('./scene/howto');
+var SceneGameover = require('./scene/gameover');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
 var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
@@ -38,6 +39,7 @@ Game.prototype.init = function () {
 	this.addScene("title", new SceneTitle(this));
 	this.addScene("leaving_title", new SceneLeavingTitle(this));
 	this.addScene("howto", new SceneHowto(this));
+	this.addScene("gameover", new SceneGameover(this));
 	this.addScene("stage", new SceneStage(this));
 	this.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
 	this.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
