@@ -17,6 +17,13 @@ var CONSTANT = {
 
 	},
 
+	// ジャーナルの種類
+	JOURNAL: {
+		IMAGE: 1,
+
+	},
+
+
 	// こいしの歩ける範囲の上 上限(px)
 	WALK_DEPTH_LIMIT: 300,
 

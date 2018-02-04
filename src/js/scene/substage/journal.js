@@ -3,6 +3,7 @@
 var base_scene = require('./base');
 
 var Util = require('../../hakurei').util;
+var JournalConfig = require('../../config/journal');
 
 var SceneSubStageJournal = function(core) {
 	base_scene.apply(this, arguments);
@@ -16,8 +17,7 @@ SceneSubStageJournal.prototype.init = function(journal_id){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// 表示するジャーナル画像名
-	// NOTE: 画像名 = ジャーナルID
-	this._picture_name = journal_id;
+	this._picture_name = JournalConfig[journal_id].image;
 };
 
 SceneSubStageJournal.prototype.beforeDraw = function(){
