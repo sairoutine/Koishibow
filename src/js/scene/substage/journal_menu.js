@@ -18,6 +18,9 @@ Util.inherit(SceneSubStageJournalMenu, base_scene);
 SceneSubStageJournalMenu.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
+	this._setupMenuTitle();
+	this.addObjects(this.menu_journal_list);
+
 	// アイテムメニューへ
 	var basePosX = 300;
 	var basePosY = this.root().height - 165 + 105/3;
@@ -60,6 +63,61 @@ SceneSubStageJournalMenu.prototype.init = function(){
 	this.addObject(this.goto_item_button);
 
 };
+SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
+
+	var self = this;
+	var journal_list = this.core.save_manager.getJournalList();
+
+	this.menu_journal_list = [];
+
+	var journal_config = JournalConfig;
+
+	var basePosX = 270 + 200;
+	var basePosY = 80;
+	var margin = 56;
+	var buttonWidth = 400;
+	var buttonHeight = 30;
+
+	var i = 0;
+	for(var id in journal_config) {
+		i++;
+		var conf = journal_config[id];
+
+		(function(conf) {
+			self.menu_journal_list.push(new UIParts(
+				self,
+				basePosX,
+				basePosY + margin * i,
+				buttonWidth,
+				buttonHeight,
+				function() {
+					var ctx = this.core.ctx;
+
+					ctx.save();
+					ctx.textBaseAlign = 'middle';
+					ctx.font = "28px 'OradanoGSRR'";
+					ctx.fillStyle = 'rgb( 255, 255, 255 )';
+					ctx.fillText(conf.title,
+						this.getCollisionLeftX(),
+						this.getCollisionUpY() + 28
+					);
+					ctx.restore();
+				}
+			));
+		})(conf);
+
+	}
+};
+
+
+
+
+
+
+
+
+
+
 
 SceneSubStageJournalMenu.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
@@ -82,9 +140,6 @@ SceneSubStageJournalMenu.prototype.beforeDraw = function(){
 SceneSubStageJournalMenu.prototype.draw = function(){
 };
 SceneSubStageJournalMenu.prototype.afterDraw = function(){
-	// アイテム表示
-	base_scene.prototype.draw.apply(this, arguments);
-
 	var ctx = this.core.ctx;
 
 	ctx.save();
@@ -92,8 +147,11 @@ SceneSubStageJournalMenu.prototype.afterDraw = function(){
 	// ウィンドウ表示
 	this._showWindow();
 
-	// メニューのテキスト表示
+	//
 	this._showText();
+
+	// メニューのテキスト表示
+	base_scene.prototype.draw.apply(this, arguments);
 
 	/*
 	// メッセージウィンドウ表示
@@ -118,20 +176,7 @@ SceneSubStageJournalMenu.prototype._showText = function() {
 	var ctx = this.core.ctx;
 	ctx.save();
 
-	var journal_config = JournalConfig;
-
-	ctx.font = "28px 'OradanoGSRR'";
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-
-	var i = 0;
-	for(var id in journal_config) {
-		console.log(id);
-		i++;
-		var conf = journal_config[id];
-
-		ctx.fillText(conf.title, 270, 80 + i*56);
-	}
-
 	ctx.font = "24px 'OradanoGSRR'";
 	// TODO:
 	ctx.fillText("◀", 300, 50);
