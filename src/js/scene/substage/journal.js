@@ -12,11 +12,12 @@ var SceneSubStageJournal = function(core) {
 };
 Util.inherit(SceneSubStageJournal, base_scene);
 
-SceneSubStageJournal.prototype.init = function(picture_name){
+SceneSubStageJournal.prototype.init = function(journal_id){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// 表示するジャーナル画像名
-	this._picture_name = picture_name;
+	// NOTE: 画像名 = ジャーナルID
+	this._picture_name = journal_id;
 };
 
 SceneSubStageJournal.prototype.beforeDraw = function(){
@@ -31,7 +32,6 @@ SceneSubStageJournal.prototype.beforeDraw = function(){
 
 SceneSubStageJournal.prototype.afterDraw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
-	var ctx = this.core.ctx;
 
 	// ジャーナル画像 表示
 	this._showPicture();
