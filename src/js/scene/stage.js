@@ -357,6 +357,28 @@ SceneStage.prototype.draw = function(){
 		obj.draw();
 	}
 
+	// 3rd eye の使用状況に応じて赤いマスク
+	this._draw3rdEyeEmergencyMask();
+};
+
+// 3rd eye の使用状況に応じて赤いマスク
+SceneStage.prototype._draw3rdEyeEmergencyMask = function() {
+	// 充血レベルが最大のときのみ
+	if (this.koishi.get3rdeyeBloodShotLevel() !== 4) return;
+
+	var max = CONSTANT.MAX_3RDEYE_GAUGE * 1 / 4;
+
+
+	var alpha = (max - this.koishi.get3rdeyeGauge()) / max;
+	var ctx = this.core.ctx;
+
+	ctx.save();
+
+	ctx.fillStyle = 'red';
+	ctx.globalAlpha = alpha * 0.5;
+	ctx.fillRect(0, 0, this.width, this.height);
+
+	ctx.restore();
 };
 
 // 移動可能かどうか
