@@ -18,7 +18,6 @@ Util.inherit(SceneSubStageMenu, base_scene);
 
 SceneSubStageMenu.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
-	var self = this;
 
 	// 現在カーソルを合わせているアイテム
 	this.focus_item_id = null;
@@ -26,49 +25,78 @@ SceneSubStageMenu.prototype.init = function(){
 	this._setupMenuItems();
 	this.addObjects(this.menu_item_list);
 
-	// 使用ボタン
-	// TODO: 調べる・組み合わせるの後に戻す
-	//this.use_button = new UIParts(self, 160 + 250/3, self.mainStage().height - 150 + 105/3, 250*2/3, 105*2/3, function draw () {
-	this.use_button = new UIParts(
-		self,
-		self.root().width - 200 + 250/3,
-		self.root().height - 180 + 105/3,
-		250*2/3,
-		105*2/3,
-		function() {
-			var ctx = this.core.ctx;
+	this._setupMenuButtons();
+	this.addObjects([this.use_button, this.examine_button, this.combine_button]);
+};
 
-			var button_window;
-			if (this.onfocus) {
-				button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu2');
-			}
-			else {
-				button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
-			}
-
-			ctx.save();
-			ctx.drawImage(button_window,
-				this.getCollisionLeftX(),
-				this.getCollisionUpY(),
-				button_window.width*2/3,
-				button_window.height*2/3
-			);
-
-			// メニュー文字 表示
-			ctx.font = "24px 'OradanoGSRR'";
-			ctx.textAlign = 'center';
-			ctx.textBaseAlign = 'middle';
-			ctx.fillStyle = 'rgb( 255, 255, 255 )';
-			ctx.fillText("使用",
-				this.getCollisionLeftX() + 80,
-				this.getCollisionUpY()   + 40
-			);
-
-			ctx.restore();
+SceneSubStageMenu.prototype._setupMenuButtons = function() {
+	var menu_buttons = [
+		{
+			property: "use_button",
+			value: "使用",
+		},
+		{
+			property: "examine_button",
+			value: "調べる",
+		},
+		{
+			property: "combine_button",
+			value: "組み合わせる",
 		}
-	);
-	self.addObject(this.use_button);
+	];
 
+	var basePosX = 300;
+	var basePosY = this.root().height - 165 + 105/3;
+	var buttonWidth  = 250*2/3;
+	var buttonHeight = 105*2/3;
+	var buttonMarginWidth  = 15;
+
+	var self = this;
+	for (var i = 0, len = menu_buttons.length; i < len; i++) {
+		var conf = menu_buttons[i];
+
+		(function(conf) {
+			self[conf.property] = new UIParts(
+				self,
+				basePosX + (buttonWidth + buttonMarginWidth) * i,
+				basePosY,
+				buttonWidth,
+				buttonHeight,
+				function() {
+					var ctx = this.core.ctx;
+
+					// フォーカスを当てると明るくなる
+					var button_window;
+					if (this.onfocus) {
+						button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu2');
+					}
+					else {
+						button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
+					}
+
+					ctx.save();
+					ctx.drawImage(button_window,
+						this.getCollisionLeftX(),
+						this.getCollisionUpY(),
+						button_window.width*2/3,
+						button_window.height*2/3
+					);
+
+					// メニュー文字 表示
+					ctx.font = "24px 'OradanoGSRR'";
+					ctx.textAlign = 'center';
+					ctx.textBaseAlign = 'middle';
+					ctx.fillStyle = 'rgb( 255, 255, 255 )';
+					ctx.fillText(conf.value,
+						this.getCollisionLeftX() + 85,
+						this.getCollisionUpY()   + 40
+					);
+
+					ctx.restore();
+				}
+			);
+		})(conf);
+	}
 };
 
 SceneSubStageMenu.prototype.beforeDraw = function(){
@@ -100,14 +128,46 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 			}
 		}
 	}
+	// 調べるボタンとマウスの当たり判定
+	else if(this.examine_button.checkCollisionWithObject(mouse_point)) {
+		// 調べるボタン押下時
+		if (this.core.input_manager.isLeftClickPush()) {
+			// アイテム調べる
+			this._examineItem();
+		}
+		// 調べるボタン マウスオーバー時
+		else {
+			// アイテムを選択してないと使用できないので、onfocus 画像は反応させない
+			if (this.focus_item_id) {
+				this.examine_button.setVariable("onfocus", true);
+			}
+		}
+	}
+	// 組み合わせるボタンとマウスの当たり判定
+	else if(this.combine_button.checkCollisionWithObject(mouse_point)) {
+		// 組み合わせるボタン押下時
+		if (this.core.input_manager.isLeftClickPush()) {
+			// アイテム組み合わせる
+			this._combineItem();
+		}
+		// 組み合わせるボタン マウスオーバー時
+		else {
+			// アイテムを選択してないと使用できないので、onfocus 画像は反応させない
+			if (this.focus_item_id) {
+				this.combine_button.setVariable("onfocus", true);
+			}
+		}
+	}
 	else {
 		// アイテム画像と別の場所をクリックしたら、アイテム選択解除
 		if (this.core.input_manager.isLeftClickPush()) {
 			this.focus_item_id = null;
 		}
 
-		// 使用ボタン マウスオーバー時 解除
+		// 各種ボタン マウスオーバー時 解除
 		this.use_button.setVariable("onfocus", false);
+		this.examine_button.setVariable("onfocus", false);
+		this.combine_button.setVariable("onfocus", false);
 	}
 
 	return false;
@@ -126,9 +186,6 @@ SceneSubStageMenu.prototype.afterDraw = function(){
 
 	// アイテム表示
 	base_scene.prototype.draw.apply(this, arguments);
-
-	// ボタン表示
-	//this._showButtons();
 
 	// メッセージウィンドウ表示
 	this._showMessageWindow();
@@ -151,55 +208,6 @@ SceneSubStageMenu.prototype._showWindow = function(){
 	);
 
 };
-/*
-SceneSubStageMenu.prototype._showButtons = function(){
-	var ctx = this.core.ctx;
-
-	var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
-	ctx.save();
-
-	// combine
-	ctx.drawImage(button_window,
-		160*2 + 16*1,
-		this.mainStage().height - 150,
-		button_window.width*2/3,
-		button_window.height*2/3
-	);
-
-	// メニュー文字 表示
-	ctx.font = "24px 'OradanoGSRR'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-	ctx.fillText("合成",
-		160*2 + 16*1 + 80,
-		this.mainStage().height - 150 + 40
-	);
-
-	// examine
-
-	// 四角形
-	ctx.drawImage(button_window,
-		160*3 + 16*2,
-		this.mainStage().height - 150,
-		button_window.width*2/3,
-		button_window.height*2/3
-	);
-
-	// メニュー文字 表示
-	ctx.font = "24px 'OradanoGSRR'";
-	ctx.textAlign = 'center';
-	ctx.textBaseAlign = 'middle';
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
-	ctx.fillText("調べる",
-		160*3 + 16*2 + 80,
-		this.mainStage().height - 150 + 40
-	);
-
-	ctx.restore();
-};
-*/
-
 SceneSubStageMenu.prototype._showMessageWindow = function(){
 	var ctx = this.core.ctx;
 
@@ -209,7 +217,7 @@ SceneSubStageMenu.prototype._showMessageWindow = function(){
 
 	ctx.drawImage(message_window,
 		130,
-		this.root().height - 100,
+		this.root().height - 90,
 		message_window.width*2/3,
 		message_window.height*2/3
 	);
@@ -229,10 +237,11 @@ SceneSubStageMenu.prototype._showMessage = function(){
 
 	ctx.fillText(item_config.description,
 		235,
-		670
+		680
 	);
 };
 
+// アイテムを使用
 SceneSubStageMenu.prototype._useItem = function(){
 	// アイテムを選択してなければ何もしない
 	if(!this.focus_item_id) return;
@@ -258,6 +267,31 @@ SceneSubStageMenu.prototype._useItem = function(){
 	}
 
 };
+
+// アイテムを調べる
+SceneSubStageMenu.prototype._examineItem = function(){
+	// アイテムを選択してなければ何もしない
+	if(!this.focus_item_id) return;
+
+	//var focus_item_id = this.focus_item_id;
+
+	// TODO:
+};
+
+// アイテムを組み合わせる
+SceneSubStageMenu.prototype._combineItem = function(){
+	// アイテムを選択してなければ何もしない
+	if(!this.focus_item_id) return;
+
+	//var focus_item_id = this.focus_item_id;
+
+	// TODO:
+};
+
+
+
+
+
 
 SceneSubStageMenu.prototype.isFocusItem = function(item_id){
 	return this.focus_item_id === item_id;
