@@ -147,7 +147,7 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 	var mouse_point = this.core.input_manager.mousePositionPoint(this);
 
 	// アイテムメニューを閉じる
-	if(this.parent.root().item_menu_button.checkCollisionWithObject(mouse_point)) {
+	if(this.root().item_menu_button.checkCollisionWithObject(mouse_point)) {
 		return true;
 	}
 	// アイテムとマウスの当たり判定
