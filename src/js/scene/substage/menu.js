@@ -27,6 +27,47 @@ SceneSubStageMenu.prototype.init = function(){
 
 	this._setupMenuButtons();
 	this.addObjects([this.use_button, this.examine_button, this.combine_button]);
+
+	// ジャーナルへ
+	var basePosX = 300;
+	var basePosY = this.root().height - 165 + 105/3;
+	var buttonWidth  = 250*2/3;
+	var buttonHeight = 105*2/3;
+	var buttonMarginWidth  = 15;
+	this.goto_journal_button = new UIParts(
+		this,
+		basePosX + (buttonWidth + buttonMarginWidth) * 3,
+		basePosY,
+		buttonWidth,
+		buttonHeight,
+		function() {
+			var ctx = this.core.ctx;
+
+			// フォーカスを当てると明るくなる
+			var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu2');
+
+			ctx.save();
+			ctx.drawImage(button_window,
+				this.getCollisionLeftX(),
+				this.getCollisionUpY(),
+				button_window.width*2/3,
+				button_window.height*2/3
+			);
+
+			// メニュー文字 表示
+			ctx.font = "24px 'OradanoGSRR'";
+			ctx.textAlign = 'center';
+			ctx.textBaseAlign = 'middle';
+			ctx.fillStyle = 'rgb( 255, 255, 255 )';
+			ctx.fillText("ジャーナル",
+				this.getCollisionLeftX() + 85,
+				this.getCollisionUpY()   + 40
+			);
+
+			ctx.restore();
+		}
+	);
+	this.addObject(this.goto_journal_button);
 };
 
 SceneSubStageMenu.prototype._setupMenuButtons = function() {
@@ -156,6 +197,12 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 			if (this.focus_item_id) {
 				this.combine_button.setVariable("onfocus", true);
 			}
+		}
+	}
+	// ジャーナルへ
+	else if(this.goto_journal_button.checkCollisionWithObject(mouse_point)) {
+		if (this.core.input_manager.isLeftClickPush()) {
+			this._goToJounarlMenu();
 		}
 	}
 	else {
@@ -325,8 +372,8 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 };
 
 
-
-
-
+SceneSubStageMenu.prototype._goToJounarlMenu = function() {
+	this.root().changeSubScene("journal_menu");
+};
 
 module.exports = SceneSubStageMenu;
