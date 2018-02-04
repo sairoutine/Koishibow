@@ -51,6 +51,37 @@ SaveManager.prototype.deleteItem = function(target_item_id) {
 };
 
 
+// 取得しているジャーナル一覧を取得
+SaveManager.prototype.getJournalList = function() {
+	var list = this.get("journal_list");
+
+	if(!list) list = [];
+
+	return list;
+};
+
+// 取得しているジャーナル一覧を取得
+SaveManager.prototype.getJournal = function(index){
+	var list = this.getJournalList();
+
+	return list[index];
+};
+
+// ジャーナルを追加(追加したジャーナルのindexを返す)
+SaveManager.prototype.addJournal = function(journal_id){
+	var list = this.getJournalList();
+
+	list.push(journal_id);
+	this.set("journal_list", list);
+	return list.length - 1;
+};
+
+
+
+
+
+
+
 
 
 SaveManager.prototype.getPieceDataMap = function() {
