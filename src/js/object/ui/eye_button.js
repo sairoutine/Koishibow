@@ -12,6 +12,23 @@ ObjectEye.prototype.init = function(){
 	this.setPosition();
 };
 
+ObjectEye.prototype.draw = function() {
+	base_object.prototype.draw.apply(this, arguments);
+
+	// デバッグ用の 3rd eye ゲージ表示
+	if(!this.core.debug_manager.get("is_show_3rdeye_gauge")) return;
+
+	var ctx = this.core.ctx;
+	var gauge = this.scene.koishi.get3rdeyeGauge();
+
+	ctx.save();
+	ctx.fillStyle = "white";
+	ctx.font = "24px 'OradanoGSRR'";
+	ctx.fillText(gauge, this.x(), this.globalDownY());
+	ctx.restore();
+};
+
+
 
 ObjectEye.prototype.isShow = function(){
 	// play scene のみ 3rd eye アイコンを表示

@@ -148,6 +148,29 @@ Game.prototype.setupDebug = function (dom) {
 	], function (game, value) {
 		game.debug_manager.set("koishi_alpha", value);
 	});
+
+	this.debug_manager.addNewLine();
+
+	var amount = Math.floor(CONSTANT.MAX_3RDEYE_GAUGE/4);
+	this.debug_manager.addMenuButton("SAN値+" + amount, function (game) {
+		game.save_manager.gain3rdeyeGauge(amount);
+	});
+	this.debug_manager.addMenuButton("SAN値-" + amount, function (game) {
+		game.save_manager.reduce3rdeyeGauge(amount);
+	});
+	this.debug_manager.addMenuButton("SAN値 全回復", function (game) {
+		game.save_manager.gain3rdeyeGauge(CONSTANT.MAX_3RDEYE_GAUGE);
+	});
+	this.debug_manager.addMenuButton("SAN値 表示", function (game) {
+		game.debug_manager.set("is_show_3rdeye_gauge", true);
+	});
+	this.debug_manager.addMenuButton("SAN値 非表示", function (game) {
+		game.debug_manager.set("is_show_3rdeye_gauge", false);
+	});
+
+
+
+
 };
 
 module.exports = Game;
