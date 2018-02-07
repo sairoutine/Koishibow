@@ -361,6 +361,11 @@ SceneStage.prototype.draw = function(){
 	this._draw3rdEyeEmergencyMask();
 };
 
+
+var POW = 1.2;
+var POW_MAX = Math.pow(POW, 100);
+var COE = 9;
+var COE_MAX = 9 * 100;
 // 3rd eye の使用状況に応じて赤いマスク
 SceneStage.prototype._draw3rdEyeEmergencyMask = function() {
 	// 充血レベルが最大のときのみ
@@ -369,13 +374,14 @@ SceneStage.prototype._draw3rdEyeEmergencyMask = function() {
 	var max = CONSTANT.MAX_3RDEYE_GAUGE * 1 / 4;
 
 
-	var alpha = (max - this.koishi.get3rdeyeGauge()) / max;
-	var ctx = this.core.ctx;
+	var alpha = (max - this.koishi.get3rdeyeGauge()) / max * 100;
+	alpha = (Math.pow(POW, alpha) + alpha*COE) / (POW_MAX+COE_MAX);
 
+	var ctx = this.core.ctx;
 	ctx.save();
 
 	ctx.fillStyle = 'red';
-	ctx.globalAlpha = alpha * 0.5;
+	ctx.globalAlpha = alpha * 0.8;
 	ctx.fillRect(0, 0, this.width, this.height);
 
 	ctx.restore();
