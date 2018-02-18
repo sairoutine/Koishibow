@@ -6,6 +6,7 @@ var UIParts = require('../../hakurei').object.ui_parts;
 var Util = require('../../hakurei').util;
 //var CONSTANT = require('../../constant');
 var JournalConfig = require('../../config/journal');
+var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
 
 
@@ -20,48 +21,6 @@ SceneSubStageJournalMenu.prototype.init = function(){
 
 	this._setupMenuTitle();
 	this.addObjects(this.menu_journal_list);
-
-	// アイテムメニューへ
-	var basePosX = 300;
-	var basePosY = this.root().height - 165 + 105/3;
-	var buttonWidth  = 250*2/3;
-	var buttonHeight = 105*2/3;
-	var buttonMarginWidth  = 15;
-	this.goto_item_button = new UIParts(
-		this,
-		basePosX + (buttonWidth + buttonMarginWidth) * 3,
-		basePosY,
-		buttonWidth,
-		buttonHeight,
-		function() {
-			var ctx = this.core.ctx;
-
-			// フォーカスを当てると明るくなる
-			var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu2');
-
-			ctx.save();
-			ctx.drawImage(button_window,
-				this.getCollisionLeftX(),
-				this.getCollisionUpY(),
-				button_window.width*2/3,
-				button_window.height*2/3
-			);
-
-			// メニュー文字 表示
-			ctx.font = "24px 'OradanoGSRR'";
-			ctx.textAlign = 'center';
-			ctx.textBaseAlign = 'middle';
-			ctx.fillStyle = 'rgb( 255, 255, 255 )';
-			ctx.fillText("アイテム→",
-				this.getCollisionLeftX() + 85,
-				this.getCollisionUpY()   + 40
-			);
-
-			ctx.restore();
-		}
-	);
-	this.addObject(this.goto_item_button);
-
 };
 SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 
@@ -109,9 +68,7 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 			// TODO: 戻り先をちゃんとする
 			// クリックされたら
 			ui.setCollisionCallback(function () {
-				if (this.core.input_manager.isLeftClickPush()) {
-					this.scene.root().changeSubScene("journal", conf.id);
-				}
+				this.scene.root().changeSubScene("journal", conf.id);
 			});
 
 			self.menu_journal_list.push(ui);
@@ -123,22 +80,25 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 SceneSubStageJournalMenu.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	// マウス座標取得
-	var mouse_point = this.core.input_manager.mousePositionPoint(this);
+	// 選択
+	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);
+	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN);
 
 	// アイテムメニューを閉じる
-	if(this.root().item_menu_button.checkCollisionWithObject(mouse_point)) {
-		return true;
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_SPACE)) {
+		this.root().item_menu_button.onCollision();
 	}
-	// ジャーナルタイトルとの当たり判定
-	else if(mouse_point.checkCollisionWithObjects(this.menu_journal_list)) {
-		return true;
+	// ジャーナルタイトル 決定
+	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		this.menu_journal_list[this._index].onCollision();
+	}
+	// ジャーナルタイトル 選択
+	else if(is_up_push || is_down_push) {
+		// TODO:
 	}
 	// アイテムメニューへ
-	else if(this.goto_item_button.checkCollisionWithObject(mouse_point)) {
-		if (this.core.input_manager.isLeftClickPush()) {
-			this._goToItemMenu();
-		}
+	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+		this._goToItemMenu();
 	}
 };
 
