@@ -21,6 +21,24 @@ ObjectBase.prototype.init = function(){
 	this.no = null;
 };
 
+var TOUCH_AREA = 50;
+ObjectBase.prototype.checkIsInTouchArea = function(obj) {
+	if (!this.isCollision(obj) || !obj.isCollision(this)) return false;
+
+	var this_collsion_width  = this.collisionWidth(obj)  + TOUCH_AREA;
+	var this_collsion_height = this.collisionHeight(obj) + TOUCH_AREA;
+
+	if(Math.abs(this.x() - obj.x()) < this_collsion_width/2 + obj.collisionWidth(this)/2 &&
+		Math.abs(this.y() - obj.y()) < this_collsion_height/2 + obj.collisionHeight(this)/2) {
+		return true;
+	}
+
+	return false;
+};
+
+
+
+
 ObjectBase.prototype.onCollision = function(point) {
 	if(this.core.input_manager.isLeftClickPush()) {
 		this.onCollisionWithClick(point);
