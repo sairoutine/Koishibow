@@ -36,6 +36,9 @@ SsAnimeBase.prototype.init = function(){
 
 	this.ss = new SsSprite(this.animation);
 };
+SsAnimeBase.prototype.isPlaying = function(name){
+	return this.current_anime === name ? true : false;
+};
 
 SsAnimeBase.prototype.changeAnimation = function(name){
 	this.current_anime = name;

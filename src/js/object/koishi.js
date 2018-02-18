@@ -7,6 +7,7 @@ var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 var DrawSerif = require('../logic/draw_serif');
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 
 
 /* 使用用途	リピート	fps	フレーム	時間 */
@@ -202,6 +203,56 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 		this.setReflect(true);
 	}
 };
+
+Koishi.prototype.moveByInput = function() {
+	// 移動不可であれば何もしない
+	if (!this.scene.isEnableToMove()) return;
+
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
+		this.x(this.x() - SPEED);
+		this.setReflect(true);
+		// 歩きモーションに変更
+		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
+			this.setWalkAnime();
+		}
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
+		this.x(this.x() + SPEED);
+		this.setReflect(false);
+		// 歩きモーションに変更
+		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
+			this.setWalkAnime();
+		}
+
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
+		this.y(this.y() - SPEED);
+		// 歩きモーションに変更
+		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
+			this.setWalkAnime();
+		}
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
+		this.y(this.y() + SPEED);
+		// 歩きモーションに変更
+		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
+			this.setWalkAnime();
+		}
+	}
+	else {
+		// 歩いてないので待機モーションに変更
+		if(!this.isPlaying("wait_nohat") && !this.isPlaying("wait")) {
+			this.setWaitAnime();
+		}
+	}
+};
+
+
+
+
+
+
+
 
 Koishi.prototype.jsonAnimeMap = function() {
 	return {
