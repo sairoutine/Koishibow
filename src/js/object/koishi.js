@@ -208,42 +208,37 @@ Koishi.prototype.moveByInput = function() {
 	// 移動不可であれば何もしない
 	if (!this.scene.isEnableToMove()) return;
 
-	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
-		this.x(this.x() - SPEED);
-		this.setReflect(true);
-		// 歩きモーションに変更
-		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
-			this.setWalkAnime();
-		}
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
-		this.x(this.x() + SPEED);
-		this.setReflect(false);
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) ||
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) ||
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP) ||
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
+	) {
 		// 歩きモーションに変更
 		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
 			this.setWalkAnime();
 		}
 
 	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
-		this.y(this.y() - SPEED);
-		// 歩きモーションに変更
-		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
-			this.setWalkAnime();
-		}
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
-		this.y(this.y() + SPEED);
-		// 歩きモーションに変更
-		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
-			this.setWalkAnime();
-		}
-	}
 	else {
 		// 歩いてないので待機モーションに変更
 		if(!this.isPlaying("wait_nohat") && !this.isPlaying("wait")) {
 			this.setWaitAnime();
 		}
+	}
+
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
+		this.x(this.x() - SPEED);
+		this.setReflect(true);
+	}
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
+		this.x(this.x() + SPEED);
+		this.setReflect(false);
+	}
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
+		this.y(this.y() - SPEED);
+	}
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
+		this.y(this.y() + SPEED);
 	}
 };
 
