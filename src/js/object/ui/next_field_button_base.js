@@ -1,7 +1,6 @@
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
-var CONSTANT = require('../../constant');
 
 
 
@@ -52,7 +51,7 @@ ObjectNextFieldButtonBase.prototype.isShow = function() {
 
 // クリックしてるときしか onCollision を呼ばない
 ObjectNextFieldButtonBase.prototype.isCollision = function() {
-	return this.nextFieldName() && this.core.input_manager.isLeftClickPush() ? true : false;
+	return this.nextFieldName() ? true : false;
 };
 
 

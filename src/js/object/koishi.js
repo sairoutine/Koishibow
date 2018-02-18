@@ -398,4 +398,15 @@ Koishi.prototype._showText = function(lines) {
 	DrawSerif.drawText(this, ctx, lines);
 };
 
+
+Koishi.prototype.collisionWidth = function(){
+	return 100;
+};
+
+Koishi.prototype.collisionHeight = function(){
+	return 100;
+};
+
+
+
 module.exports = Koishi;
