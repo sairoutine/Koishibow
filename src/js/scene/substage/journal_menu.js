@@ -13,6 +13,8 @@ var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 var SceneSubStageJournalMenu = function(core) {
 	base_scene.apply(this, arguments);
 
+	// どのジャーナルを選択しているか
+	this._index = 0;
 };
 Util.inherit(SceneSubStageJournalMenu, base_scene);
 
@@ -21,6 +23,9 @@ SceneSubStageJournalMenu.prototype.init = function(){
 
 	this._setupMenuTitle();
 	this.addObjects(this.menu_journal_list);
+
+	// どのジャーナルを選択しているか
+	this._index = 0;
 };
 SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 
@@ -57,13 +62,16 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 					ctx.textBaseAlign = 'middle';
 					ctx.font = "28px 'OradanoGSRR'";
 					ctx.fillStyle = 'rgb( 255, 255, 255 )';
-					ctx.fillText(conf.title,
+
+					var prefix = this.no === self._index ? "▶" : "";
+					ctx.fillText(prefix + conf.title,
 						this.getCollisionLeftX(),
 						this.getCollisionUpY() + 28
 					);
 					ctx.restore();
 				}
 			)
+			ui.setVariable("no", i-1);
 
 			// TODO: 戻り先をちゃんとする
 			// クリックされたら
@@ -94,7 +102,20 @@ SceneSubStageJournalMenu.prototype.beforeDraw = function(){
 	}
 	// ジャーナルタイトル 選択
 	else if(is_up_push || is_down_push) {
-		// TODO:
+		// 上
+		if (is_up_push) {
+			this._index--;
+			if (this._index < 0) {
+				this._index = 0;
+			}
+		}
+		// 下
+		else if (is_down_push) {
+			this._index++;
+			if (this._index > this.menu_journal_list.length - 1) {
+				this._index = this.menu_journal_list.length - 1;
+			}
+		}
 	}
 	// アイテムメニューへ
 	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
