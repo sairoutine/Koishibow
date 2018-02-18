@@ -39,15 +39,6 @@ ObjectBase.prototype.checkIsInTouchArea = function(obj) {
 
 
 
-ObjectBase.prototype.onCollision = function(point) {
-	if(this.core.input_manager.isLeftClickPush()) {
-		this.onCollisionWithClick(point);
-	}
-	else {
-		this.onCollisionWithMouseOver(point);
-	}
-};
-
 // マウスクリック時のイベント
 ObjectBase.prototype.onCollisionWithClick = function(point) {
 	var self = this;

@@ -54,9 +54,9 @@ ObjectItemMenuButton.prototype.onCollision = function(obj){
 	}
 };
 
-// クリックしてるときしか onCollision を呼ばない
+// 現状、表示UIとしてしか使ってないので、当たり判定不要
 ObjectItemMenuButton.prototype.isCollision = function() {
-	return this.core.input_manager.isLeftClickPush() ? true : false;
+	return false;
 };
 
 ObjectItemMenuButton.prototype.collisionWidth = function(){
