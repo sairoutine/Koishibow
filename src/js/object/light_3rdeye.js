@@ -155,12 +155,8 @@ ObjectLight3rdeye.prototype._drawLight = function(){
 
 // こいしからマウスまでの角度(radian)
 ObjectLight3rdeye.prototype._calcRadianFromKoishiToMouse = function(){
-	var x = this.core.input_manager.mousePositionX();
-	var y = this.core.input_manager.mousePositionY();
-
-	var ax = x - this.scene.koishi.x();
-	var ay = y - this.scene.koishi.y();
-	var rad = Math.atan2(ay, ax);
+	// TODO:
+	var rad = Math.atan2(0, 0);
 
 	return rad;
 };
