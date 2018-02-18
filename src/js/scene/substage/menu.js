@@ -287,9 +287,7 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 	/*
 	// ジャーナルへ
 	else if(this.goto_journal_button.checkCollisionWithObject(mouse_point)) {
-		if (this.core.input_manager.isLeftClickPush()) {
 			this._goToJounarlMenu();
-		}
 	}
 	*/
 };
