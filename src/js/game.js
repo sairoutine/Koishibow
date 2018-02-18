@@ -4,11 +4,11 @@ var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
 
-var StorageEvent   = require('./save_manager');
-var StorageItem    = require('./save_manager');
-var StorageJournal = require('./save_manager');
-var StoragePiece   = require('./save_manager');
-var StoragePlayer  = require('./save_manager');
+var StorageEvent   = require('./storage/event');
+var StorageItem    = require('./storage/item');
+var StorageJournal = require('./storage/journal');
+var StoragePiece   = require('./storage/piece');
+var StoragePlayer  = require('./storage/player');
 
 var SceneTitle = require('./scene/title');
 var SceneLeavingTitle = require('./scene/leaving_title');
@@ -25,24 +25,6 @@ var SceneEventForTrialLast               = require('./scene/event/trial_last');
 var Game = function(canvas) {
 	core.apply(this, arguments);
 
-};
-util.inherit(Game, core);
-
-
-Game.prototype.init = function () {
-	core.prototype.init.apply(this, arguments);
-
-	// カーソル設定
-	this.enableCursorImage("ui_icon_pointer_01");
-
-	// セーブデータ
-	this.save_manager.addClass("event",   StorageEvent);
-	this.save_manager.addClass("item",    StorageItem);
-	this.save_manager.addClass("journal", StorageJournal);
-	this.save_manager.addClass("piece",   StoragePiece);
-	this.save_manager.addClass("player",  StoragePlayer);
-	this.save_manager.initialLoad();
-
 	// シーン一覧
 	this.addScene("loading", new SceneLoading(this));
 	this.addScene("title", new SceneTitle(this));
@@ -53,6 +35,22 @@ Game.prototype.init = function () {
 	this.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
 	this.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
 	this.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
+
+	// セーブデータ
+	this.save_manager.addClass("event",   StorageEvent);
+	this.save_manager.addClass("item",    StorageItem);
+	this.save_manager.addClass("journal", StorageJournal);
+	this.save_manager.addClass("piece",   StoragePiece);
+	this.save_manager.addClass("player",  StoragePlayer);
+};
+util.inherit(Game, core);
+
+
+Game.prototype.init = function () {
+	core.prototype.init.apply(this, arguments);
+
+	// カーソル設定
+	this.enableCursorImage("ui_icon_pointer_01");
 
 	// シーン遷移
 	this.changeScene("loading");
