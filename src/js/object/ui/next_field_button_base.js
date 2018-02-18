@@ -35,7 +35,7 @@ ObjectNextFieldButtonBase.prototype.onCollision = function(obj){
 	 * TODO:
 	// 屋敷の廊下2はイベント再生する
 	if (this.scene.mainStage().field().left_field === "chapter0_mansion_corridor2" &&
-		!this.core.save_manager.isPlayedEvent("chapter0-event-encounter_satori")) {
+		!this.core.save_manager.event.isPlayedEvent("chapter0-event-encounter_satori")) {
 		this.core.changeScene("event_for_encounter_satori");
 	}
 	// 通常の遷移

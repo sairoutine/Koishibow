@@ -67,7 +67,7 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 
 	var self = this;
 	// TODO: 獲得していないジャーナルは未表示
-	//var journal_list = this.core.save_manager.getJournalList();
+	//var journal_list = this.core.save_manager.journal.getJournalList();
 
 	this.menu_journal_list = [];
 

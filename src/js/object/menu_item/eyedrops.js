@@ -19,7 +19,7 @@ ObjectMenuItemEyeDrops.prototype.use = function(){
 	base_object.prototype.use.apply(this, arguments);
 
 	// 3rd eye ゲージの回復
-	this.core.save_manager.gain3rdeyeGauge(CONSTANT.EYEDROPS_RECOVER_3RDEYE_GAUGE);
+	this.core.save_manager.player.gain3rdeyeGauge(CONSTANT.EYEDROPS_RECOVER_3RDEYE_GAUGE);
 
 	// 3rd eye 使用 1枚絵へ
 	this.scene.root().changeSubScene("picture_use_eyedrops");

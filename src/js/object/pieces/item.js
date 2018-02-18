@@ -27,7 +27,7 @@ ObjectItem.prototype.getItemId = function(data) {
 
 ObjectItem.prototype.acquire = function(){
 	// アイテム獲得
-	this.core.save_manager.addItem(this._item_id);
+	this.core.save_manager.item.addItem(this._item_id);
 
 	// アイテム獲得画面へ遷移
 	this.scene.root().changeSubScene("got_item", this);

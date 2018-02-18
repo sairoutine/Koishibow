@@ -24,7 +24,7 @@ ObjectJournal.prototype.setData = function(data) {
 
 ObjectJournal.prototype.acquire = function() {
 	// ジャーナル獲得
-	this.core.save_manager.addJournal(this._journal_id);
+	this.core.save_manager.journal.addJournal(this._journal_id);
 
 	// ジャーナル画像表示シーンへ遷移
 	this.scene.root().changeSubScene("journal", this._journal_id);

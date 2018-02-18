@@ -4,7 +4,11 @@ var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
 
-var SaveManager = require('./save_manager');
+var StorageEvent   = require('./save_manager');
+var StorageItem    = require('./save_manager');
+var StorageJournal = require('./save_manager');
+var StoragePiece   = require('./save_manager');
+var StoragePlayer  = require('./save_manager');
 
 var SceneTitle = require('./scene/title');
 var SceneLeavingTitle = require('./scene/leaving_title');
@@ -32,7 +36,12 @@ Game.prototype.init = function () {
 	this.enableCursorImage("ui_icon_pointer_01");
 
 	// セーブデータ
-	this.save_manager = SaveManager.load();
+	this.save_manager.addClass("event",   StorageEvent);
+	this.save_manager.addClass("item",    StorageItem);
+	this.save_manager.addClass("journal", StorageJournal);
+	this.save_manager.addClass("piece",   StoragePiece);
+	this.save_manager.addClass("player",  StoragePlayer);
+	this.save_manager.initialLoad();
 
 	// シーン一覧
 	this.addScene("loading", new SceneLoading(this));
@@ -153,13 +162,13 @@ Game.prototype.setupDebug = function (dom) {
 
 	var amount = Math.floor(CONSTANT.MAX_3RDEYE_GAUGE/4);
 	this.debug_manager.addMenuButton("SAN値+" + amount, function (game) {
-		game.save_manager.gain3rdeyeGauge(amount);
+		game.save_manager.player.gain3rdeyeGauge(amount);
 	});
 	this.debug_manager.addMenuButton("SAN値-" + amount, function (game) {
-		game.save_manager.reduce3rdeyeGauge(amount);
+		game.save_manager.player.reduce3rdeyeGauge(amount);
 	});
 	this.debug_manager.addMenuButton("SAN値 全回復", function (game) {
-		game.save_manager.gain3rdeyeGauge(CONSTANT.MAX_3RDEYE_GAUGE);
+		game.save_manager.player.gain3rdeyeGauge(CONSTANT.MAX_3RDEYE_GAUGE);
 	});
 	this.debug_manager.addMenuButton("SAN値 表示", function (game) {
 		game.debug_manager.set("is_show_3rdeye_gauge", true);

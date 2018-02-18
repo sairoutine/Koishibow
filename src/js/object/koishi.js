@@ -296,7 +296,7 @@ Koishi.prototype.abrasion3rdeye = function() {
 	// 消耗前のレベル
 	var before_level = this.get3rdeyeBloodShotLevel();
 
-	this.core.save_manager.reduce3rdeyeGauge(CONSTANT.ABRASION_3RDEYE_GAUGE);
+	this.core.save_manager.player.reduce3rdeyeGauge(CONSTANT.ABRASION_3RDEYE_GAUGE);
 
 	// 消耗後のレベル
 	var after_level = this.get3rdeyeBloodShotLevel();
@@ -311,13 +311,13 @@ Koishi.prototype.abrasion3rdeye = function() {
 };
 
 Koishi.prototype.get3rdeyeBloodShotLevel = function() {
-	return this.core.save_manager.get3rdeyeBloodShotLevel();
+	return this.core.save_manager.player.get3rdeyeBloodShotLevel();
 };
 Koishi.prototype.get3rdeyeGauge = function() {
-	return this.core.save_manager.get3rdeyeGauge();
+	return this.core.save_manager.player.get3rdeyeGauge();
 };
 Koishi.prototype.isDead = function() {
-	return this.core.save_manager.get3rdeyeGauge() === 0;
+	return this.core.save_manager.player.get3rdeyeGauge() === 0;
 };
 
 

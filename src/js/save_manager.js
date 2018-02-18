@@ -1,14 +1,19 @@
 'use strict';
 
 // セーブデータ
-var base_class = require('./hakurei').storage.save;
+var base_class = require('./hakurei').storage.base;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
 
-var SaveManager = function(scene) {
+var SaveManager = function() {
 	base_class.apply(this, arguments);
 };
 util.inherit(SaveManager, base_class);
+
+// セーブファイル名
+SaveManager.KEY = function() {
+	return "3rdeye";
+};
 
 // 取得しているアイテム一覧を取得
 SaveManager.prototype.getItemList = function() {

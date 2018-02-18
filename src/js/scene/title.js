@@ -2,7 +2,6 @@
 
 var base_scene = require('../hakurei').scene.base;
 var util = require('../hakurei').util;
-var CONSTANT = require('../constant');
 var SS = require('../object/anime_object');
 var StartAnimeJson = require('../data/anime/title/title01_anime_1');
 var IngAnimeJson = require('../data/anime/title/title02_anime_1');
@@ -21,9 +20,9 @@ var MENU = [
 	// continue
 	["ui-titlepg-btn-con", function (core) {
 		// セーブデータがあれば
-		return core.save_manager.getCurrentField() ? true : false;
+		return core.save_manager.player.getCurrentField() ? true : false;
 	}, function (core) {
-		core.changeScene("stage", core.save_manager.getCurrentField());
+		core.changeScene("stage", core.save_manager.player.getCurrentField());
 	}],
 	// config
 	/*

@@ -349,7 +349,7 @@ SceneSubStageMenu.prototype.setFocusItem = function(item_id){
 
 
 SceneSubStageMenu.prototype._setupMenuItems = function() {
-	var item_list = this.core.save_manager.getItemList();
+	var item_list = this.core.save_manager.item.getItemList();
 
 	this.menu_item_list = [];
 	for (var i = 0, len = item_list.length; i < len; i++) {

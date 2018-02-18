@@ -87,7 +87,7 @@ ObjectAcquirableBase.prototype.draw = function(){
 };
 
 ObjectAcquirableBase.prototype._deleteFromField = function() {
-	this.core.save_manager.setPieceData(
+	this.core.save_manager.piece.setPieceData(
 		this.scene.root().getFieldData().key,
 		this.no,
 		"is_delete",
@@ -96,7 +96,7 @@ ObjectAcquirableBase.prototype._deleteFromField = function() {
 };
 
 ObjectAcquirableBase.prototype._isDeleted = function() {
-	return this.core.save_manager.getPieceData(
+	return this.core.save_manager.piece.getPieceData(
 		this.scene.root().getFieldData().key,
 		this.no,
 		"is_delete"

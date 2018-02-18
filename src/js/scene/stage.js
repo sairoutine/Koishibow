@@ -99,8 +99,8 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	from_field_name = from_field_name || null; // undefined -> null に変換
 
 	// 現在のフィールド
-	this.core.save_manager.setCurrentField(field_name);
-	this.core.save_manager.save();
+	this.core.save_manager.player.setCurrentField(field_name);
+	this.core.save_manager.save(); // シーン遷移時に全てのセーブデータを保存する
 
 	// フィールドの情報
 	var field_data = this.getFieldData();
@@ -182,11 +182,11 @@ SceneStage.prototype.changeInitialSubScene = function() {
 	// そうでなければ通常の play シーン
 
 	var subscene = field_data.event;
-	if (!subscene || this.core.save_manager.isPlayedEvent(subscene)) {
+	if (!subscene || this.core.save_manager.event.isPlayedEvent(subscene)) {
 		this.changeSubScene("play");
 	}
 	else {
-		this.core.save_manager.setPlayedEvent(subscene);
+		this.core.save_manager.event.setPlayedEvent(subscene);
 		this.changeSubScene(subscene);
 	}
 };
@@ -398,7 +398,7 @@ SceneStage.prototype.isNoHat = function(){
 	return this.currentSubScene() instanceof SceneSubStageEventChapter0GetHat;
 };
 SceneStage.prototype.getFieldData = function(){
-	return FieldMap[this.core.save_manager.getCurrentField()];
+	return FieldMap[this.core.save_manager.player.getCurrentField()];
 };
 // ステージ上のオブジェクト or 自機を取得
 SceneStage.prototype.getPiece = function(name) {

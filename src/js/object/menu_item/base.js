@@ -2,7 +2,6 @@
 
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
-var CONSTANT = require('../../constant');
 var ItemConfig = require('../../config/item');
 
 var ObjectMenuItemBase = function(scene) {
@@ -70,7 +69,7 @@ ObjectMenuItemBase.prototype.item_id = function() {
 // アイテムが使用されたとき
 ObjectMenuItemBase.prototype.use = function(){
 	// 持ち物から削除
-	this.core.save_manager.deleteItem(this.item_id());
+	this.core.save_manager.item.deleteItem(this.item_id());
 };
 
 module.exports = ObjectMenuItemBase;
