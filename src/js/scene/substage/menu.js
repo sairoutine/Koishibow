@@ -1,11 +1,13 @@
 'use strict';
 
+// TODO: ジャーナルに行くボタン
 var base_scene = require('./base');
 
 var UIParts = require('../../hakurei').object.ui_parts;
 var Util = require('../../hakurei').util;
 var CONSTANT = require('../../constant');
 var ItemConfig = require('../../config/item');
+var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
 
 var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
@@ -13,6 +15,13 @@ var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
 var SceneSubStageMenu = function(core) {
 	base_scene.apply(this, arguments);
 
+	this._index_item_vertical = 0;
+	this._index_item_horizontal = 0;
+
+	this.menu_ui = [];
+	this._index_ui = 0;
+
+	this._is_select_item = false;
 };
 Util.inherit(SceneSubStageMenu, base_scene);
 
@@ -22,11 +31,20 @@ SceneSubStageMenu.prototype.init = function(){
 	// 現在カーソルを合わせているアイテム
 	this.focus_item_id = null;
 
+	this._index_item_vertical = 0;
+	this._index_item_horizontal = 0;
+
+	this.menu_ui = [];
+	this._index_ui = 0;
+
+	this._is_select_item = false;
+
 	this._setupMenuItems();
-	this.addObjects(this.menu_item_list);
+	this.addObjects(flatten(this.menu_item_list));
 
 	this._setupMenuButtons();
-	this.addObjects([this.use_button, this.examine_button, this.combine_button]);
+	this.menu_ui = [this.use_button, this.examine_button, this.combine_button];
+	this.addObjects(this.menu_ui);
 
 	// ジャーナルへ
 	var basePosX = 300;
@@ -142,82 +160,138 @@ SceneSubStageMenu.prototype._setupMenuButtons = function() {
 
 SceneSubStageMenu.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
+	// 選択
+	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);
+	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN);
+	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_LEFT);
+	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_RIGHT);
 
-	// マウス座標取得
-	var mouse_point = this.core.input_manager.mousePositionPoint(this);
+	// アイテムメニューを閉じる(共通)
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_SPACE)) {
+		this.root().item_menu_button.onCollision();
+		return;
+	}
 
-	// アイテムメニューを閉じる
-	if(this.root().item_menu_button.checkCollisionWithObject(mouse_point)) {
-		return true;
-	}
-	// アイテムとマウスの当たり判定
-	else if(mouse_point.checkCollisionWithObjects(this.menu_item_list)) {
-		return true;
-	}
-	// 使用ボタンとマウスの当たり判定
-	else if(this.use_button.checkCollisionWithObject(mouse_point)) {
-		// 使用ボタン押下時
-		if (this.core.input_manager.isLeftClickPush()) {
-			// アイテム使用
-			this._useItem();
+
+	// アイテム未選択時
+	if (!this._is_select_item) {
+		// アイテムを選択
+		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+			this.core.audio_loader.playSound("select_item");
+			this._is_select_item = true;
+			return;
 		}
-		// 使用ボタン マウスオーバー時
-		else {
-			// アイテムを選択してないと使用できないので、onfocus 画像は反応させない
-			if (this.focus_item_id) {
-				this.use_button.setVariable("onfocus", true);
+		// 選択するアイテムを移動
+		else if (is_left_push || is_right_push || is_up_push || is_down_push) {
+			// 上
+			if (is_up_push) {
+				this._index_item_vertical--;
+				if (this._index_item_vertical < 0) {
+					this._index_item_vertical = 0;
+				}
+			}
+			// 下
+			else if (is_down_push) {
+				this._index_item_vertical++;
+				if (this._index_item_vertical > this.menu_item_list.length - 1) {
+					this._index_item_vertical = this.menu_item_list.length - 1;
+				}
+			}
+			// 左
+			if (is_left_push) {
+				this._index_item_horizontal--;
+				if (this._index_item_horizontal < 0) {
+					this._index_item_horizontal = 0;
+				}
+			}
+			// 右
+			else if (is_right_push) {
+				this._index_item_horizontal++;
+				if (this._index_item_horizontal > this.menu_item_list[this._index_item_vertical].length - 1) {
+					this._index_item_horizontal = this.menu_item_list[this._index_item_vertical].length - 1;
+				}
+			}
+
+		}
+
+		// アイテムを何も所持していないとき、存在しない可能性がある
+		if(this.menu_item_list[this._index_item_vertical][this._index_item_horizontal]) {
+			var item = this.menu_item_list[this._index_item_vertical][this._index_item_horizontal];
+			if(!this.isFocusItem(item.item_id)) {
+				// アイテム選択 音
+				this.core.audio_loader.playSound("select_item");
+
+				this.setFocusItem(item.item_id());
+			}
+		}
+
+	}
+	// アイテム選択時
+	else {
+		// アイテムを使用／調べる／組み合わせる
+		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+			var ui = this.menu_ui[this._index_ui];
+
+			if (ui === this.use_button) {
+				// アイテム使用
+				this._useItem();
+			}
+			else if (ui === this.examine_button) {
+				// アイテム調べる
+				this._examineItem();
+			}
+			else if (ui === this.combine_button) {
+				// アイテム組み合わせる
+				this._combineItem();
+			}
+			return;
+		}
+		// アイテム選択を解除
+		else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+			this._is_select_item = false;
+			// 各種ボタン マウスオーバー時 解除
+			this.use_button.setVariable("onfocus", false);
+			this.examine_button.setVariable("onfocus", false);
+			this.combine_button.setVariable("onfocus", false);
+		}
+		else if (is_left_push || is_right_push) {
+			// 左
+			if (is_left_push) {
+				this._index_ui--;
+				if (this._index_ui < 0) {
+					this._index_ui = 0;
+				}
+			}
+			// 右
+			else if (is_right_push) {
+				this._index_ui++;
+				if (this._index_ui > this.menu_ui.length - 1) {
+					this._index_ui = this.menu_ui.length - 1;
+				}
+			}
+		}
+
+		if (this._is_select_item) { // Xキーでキャンセルした場合があるので再度チェック
+			// カーソルのせたときにボタンを明るくする
+			for (var i = 0, len = this.menu_ui.length; i < len; i++) {
+				var menu = this.menu_ui[i];
+				if (i === this._index_ui) {
+					menu.setVariable("onfocus", true);
+				}
+				else {
+					menu.setVariable("onfocus", false);
+				}
 			}
 		}
 	}
-	// 調べるボタンとマウスの当たり判定
-	else if(this.examine_button.checkCollisionWithObject(mouse_point)) {
-		// 調べるボタン押下時
-		if (this.core.input_manager.isLeftClickPush()) {
-			// アイテム調べる
-			this._examineItem();
-		}
-		// 調べるボタン マウスオーバー時
-		else {
-			// アイテムを選択してないと使用できないので、onfocus 画像は反応させない
-			if (this.focus_item_id) {
-				this.examine_button.setVariable("onfocus", true);
-			}
-		}
-	}
-	// 組み合わせるボタンとマウスの当たり判定
-	else if(this.combine_button.checkCollisionWithObject(mouse_point)) {
-		// 組み合わせるボタン押下時
-		if (this.core.input_manager.isLeftClickPush()) {
-			// アイテム組み合わせる
-			this._combineItem();
-		}
-		// 組み合わせるボタン マウスオーバー時
-		else {
-			// アイテムを選択してないと使用できないので、onfocus 画像は反応させない
-			if (this.focus_item_id) {
-				this.combine_button.setVariable("onfocus", true);
-			}
-		}
-	}
+	/*
 	// ジャーナルへ
 	else if(this.goto_journal_button.checkCollisionWithObject(mouse_point)) {
 		if (this.core.input_manager.isLeftClickPush()) {
 			this._goToJounarlMenu();
 		}
 	}
-	else {
-		// アイテム画像と別の場所をクリックしたら、アイテム選択解除
-		if (this.core.input_manager.isLeftClickPush()) {
-			this.focus_item_id = null;
-		}
-
-		// 各種ボタン マウスオーバー時 解除
-		this.use_button.setVariable("onfocus", false);
-		this.examine_button.setVariable("onfocus", false);
-		this.combine_button.setVariable("onfocus", false);
-	}
-
-	return false;
+	*/
 };
 
 SceneSubStageMenu.prototype.draw = function(){
@@ -296,18 +370,19 @@ SceneSubStageMenu.prototype._useItem = function(){
 	var focus_item_id = this.focus_item_id;
 
 
-	for(var i = 0, len = this.menu_item_list.length; i < len; i++) {
-		var menu_item = this.menu_item_list[i];
+	var menu_item_list = flatten(this.menu_item_list);
+	for(var i = 0, len = menu_item_list.length; i < len; i++) {
+		var menu_item = menu_item_list[i];
 		if(menu_item.item_id() === focus_item_id) {
 			// 選択中から解除
 			this.focus_item_id = null;
 
-			// メニューの表示から削除
-			this.removeObject(menu_item);
-			this.menu_item_list.splice(i, 1);
-
 			// アイテム使用
 			menu_item.use();
+
+			// メニューの表示から削除
+			this.removeObject(menu_item);
+			this._setupMenuItems();
 
 			break;
 		}
@@ -347,7 +422,7 @@ SceneSubStageMenu.prototype.setFocusItem = function(item_id){
 	this.focus_item_id = item_id;
 };
 
-
+var TURN_NUM = 5;
 SceneSubStageMenu.prototype._setupMenuItems = function() {
 	var item_list = this.core.save_manager.item.getItemList();
 
@@ -362,18 +437,40 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 		else {
 			throw new Error ("Unknown item_id error: " + item_id);
 		}
+
+		var index_horizontal = i % TURN_NUM;
+		var index_vertical = Math.floor(i / TURN_NUM);
+
 		menu_item.init();
 		menu_item.setPosition(
-			180 + (i%5)*160,
-			180 + 160*(Math.floor(i/5))
+			180 + index_horizontal*160,
+			180 + 160 * index_vertical
 		);
-		this.menu_item_list.push(menu_item);
+
+		// 初期化
+		if(!this.menu_item_list[index_horizontal]) {
+			this.menu_item_list[index_horizontal] = [];
+		}
+
+		this.menu_item_list[index_horizontal][index_vertical] = menu_item;
 	}
+
+	// 初期化
+	// this.menu_item_list.length - 1 を参照することがあるので
+	if(!this.menu_item_list[0]) {
+		this.menu_item_list[0] = [];
+	}
+
+
 };
 
 
 SceneSubStageMenu.prototype._goToJounarlMenu = function() {
 	this.root().changeSubScene("journal_menu");
 };
+
+function flatten (nested_array) {
+	return Array.prototype.concat.apply([], nested_array);
+}
 
 module.exports = SceneSubStageMenu;

@@ -9,20 +9,6 @@ var ObjectMenuItemBase = function(scene) {
 };
 Util.inherit(ObjectMenuItemBase, base_object);
 
-ObjectMenuItemBase.prototype.onCollision = function() {
-	if (this.core.input_manager.isLeftClickPush()) {
-		// アイテム選択 音
-		this.core.audio_loader.playSound("select_item");
-
-		// 選択中を自分に
-		this.scene.setFocusItem(this.item_id());
-	}
-	else {
-		// クリック可能を表すマウスカーソルに
-		//this.core.changeCursorImage("ui_icon_pointer_02");
-	}
-};
-
 ObjectMenuItemBase.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
