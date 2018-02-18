@@ -7,6 +7,7 @@ var StartAnimeJson = require('../data/anime/title/title01_anime_1');
 var IngAnimeJson = require('../data/anime/title/title02_anime_1');
 var EndAnimeJson = require('../data/anime/title/title03_anime_1');
 
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 var UIParts = require('../hakurei').object.ui_parts;
 
 var MENU = [
@@ -46,6 +47,9 @@ var SceneTitle = function(core) {
 
 	// メニューボタンがクリックされたときのフレーム数
 	this._menu_clicked_frame_count = null;
+
+	// 現在どのUIを選択しているか
+	this._index = 0;
 };
 util.inherit(SceneTitle, base_scene);
 
@@ -72,6 +76,8 @@ SceneTitle.prototype.init = function(){
 
 	// メニューボタンがクリックされたときのフレーム数
 	this._menu_clicked_frame_count = null;
+
+	this._index = 0;
 };
 
 // メニューUI一覧
@@ -108,45 +114,58 @@ SceneTitle.prototype._generateMenuUI = function(){
 
 SceneTitle.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
-
 	this.ss.beforeDraw();
 
-	// マウスの位置を取得
-	var x = this.core.input_manager.mousePositionX();
-	var y = this.core.input_manager.mousePositionY();
+	// 選択
+	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_LEFT);
+	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_RIGHT);
+	if (is_left_push || is_right_push) {
+		// 左
+		if (is_left_push) {
+			this._index--;
+			if (this._index < 0) {
+				this._index = 0;
+			}
+		}
+		// 右
+		else if (is_right_push) {
+			this._index++;
+			if (this._index > MENU.length - 1) {
+				this._index = MENU.length - 1;
+			}
+		}
+	}
 
 	for (var i = 0, len = this.menu_ui.length; i < len; i++) {
 		var menu = this.menu_ui[i];
-
-		if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](this.core)) {
-			// クリックしたら
-			if(this.core.input_manager.isLeftClickPush()) {
-
-				// SE 再生
-				this.core.audio_loader.playSound("select_title");
-
-				var core = this.core;
-				var func = MENU[i][2];
-				// フェードアウト
-				this.ss.playAnimationOnce("end", function () {
-					func(core);
-				});
-
-				// メニューボタンがクリックされたときのフレーム数
-				this._menu_clicked_frame_count = this.frame_count;
-			}
-			// マウスカーソルを乗せたら
-			else {
-				// マウスカーソルを乗せた瞬間に音を鳴らす
-				if (!menu.is_big) {
-					this.core.audio_loader.playSound("focuson_title");
-				}
+		if (i === this._index) {
+			// マウスカーソルを乗せた瞬間に音を鳴らす
+			if (!menu.is_big) {
+				this.core.audio_loader.playSound("focuson_title");
 				menu.setVariable("is_big", true);
 			}
 		}
 		else {
 			menu.setVariable("is_big", false);
 		}
+	}
+
+	// 決定
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		// SE 再生
+		this.core.audio_loader.playSound("select_title");
+
+		var core = this.core;
+		var func = MENU[this._index][2];
+
+		// フェードアウト
+		this.ss.playAnimationOnce("end", function () {
+			// フェードアウト後に実行
+			func(core);
+		});
+
+		// メニューボタンがクリックされたときのフレーム数
+		this._menu_clicked_frame_count = this.frame_count;
 	}
 
 	// タイトル放置演出
