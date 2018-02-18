@@ -8,6 +8,7 @@
 var base_scene = require('./base');
 var SerifManager = require('../../hakurei').serif_manager;
 var Util = require('../../hakurei').util;
+var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
 // クリックしてから次のセリフに移るまでの待機カウント
 var NEXT_TO_SERIF_WAITING_COUNT = 6;
@@ -59,7 +60,7 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 			this._serif.next();
 		}
 	}
-	else if(this.core.input_manager.isLeftClickPush()) { // セリフ送り待機中はクリックできない
+	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		if(this._serif.isEnd()) {
 
 			// オブジェクトに触れた際の会話だった場合、
