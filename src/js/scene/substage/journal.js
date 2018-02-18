@@ -4,6 +4,7 @@ var base_scene = require('./base');
 
 var Util = require('../../hakurei').util;
 var JournalConfig = require('../../config/journal');
+var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
 var SceneSubStageJournal = function(core) {
 	base_scene.apply(this, arguments);
@@ -24,7 +25,7 @@ SceneSubStageJournal.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	// プレイに戻る
-	if(this.core.input_manager.isLeftClickPush()) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
 		this.core.audio_loader.playSound("show_journal");
 		this.root().changeSubScene("play");
 	}
