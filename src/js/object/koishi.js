@@ -222,7 +222,7 @@ Koishi.prototype.moveByInput = function() {
 	}
 	else {
 		// 歩いてないので待機モーションに変更
-		if(!this.isPlaying("wait_nohat") && !this.isPlaying("wait")) {
+		if(this.isPlaying("walk_nohat") || this.isPlaying("walk")) {
 			this.setWaitAnime();
 		}
 	}
