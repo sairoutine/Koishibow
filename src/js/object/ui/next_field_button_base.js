@@ -25,11 +25,14 @@ ObjectNextFieldButtonBase.prototype.onCollision = function(obj){
 		this.scene.switchEyeOff();
 	}
 
+	// 歩きモーション解除
+	this.scene.koishi.setWaitAnime();
+
+
 	// chapter 0 の自室であれば遷移前／遷移先の際に、ドアを開ける音を鳴らす
 	if (current_field_name === "chapter0_myroom" || next_field_name === "chapter0_myroom") {
 		this.core.audio_loader.playSound("chapter0-myroom-door_open");
 	}
-
 	/*
 	 * TODO:
 	// 屋敷の廊下2はイベント再生する
@@ -46,7 +49,7 @@ ObjectNextFieldButtonBase.prototype.onCollision = function(obj){
 };
 
 ObjectNextFieldButtonBase.prototype.isShow = function() {
-	return this.nextFieldName() ? true : false;
+	return false;
 };
 
 // クリックしてるときしか onCollision を呼ばない
@@ -69,7 +72,7 @@ ObjectNextFieldButtonBase.prototype.collisionWidth = function(){
 };
 
 ObjectNextFieldButtonBase.prototype.collisionHeight = function(){
-	return 64;
+	return this.scene.height;
 };
 
 ObjectNextFieldButtonBase.prototype.spriteName = function(){
