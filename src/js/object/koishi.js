@@ -2,6 +2,7 @@
 
 // こいしの歩く速度
 var SPEED = 2;
+var SPEED_NANAME = SPEED / Math.sqrt(2);
 
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
@@ -226,18 +227,46 @@ Koishi.prototype.moveByInput = function() {
 		}
 	}
 
-	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
+	) {
+		this.x(this.x() - SPEED_NANAME);
+		this.y(this.y() - SPEED_NANAME);
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
+	) {
+		this.x(this.x() - SPEED_NANAME);
+		this.y(this.y() + SPEED_NANAME);
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
+	) {
+		this.x(this.x() + SPEED_NANAME);
+		this.y(this.y() - SPEED_NANAME);
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
+	) {
+		this.x(this.x() + SPEED_NANAME);
+		this.y(this.y() + SPEED_NANAME);
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
 		this.x(this.x() - SPEED);
 		this.setReflect(true);
 	}
-	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
 		this.x(this.x() + SPEED);
 		this.setReflect(false);
 	}
-	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
 		this.y(this.y() - SPEED);
 	}
-	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
 		this.y(this.y() + SPEED);
 	}
 };
