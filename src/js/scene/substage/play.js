@@ -7,12 +7,16 @@ var Util = require('../../hakurei').util;
 
 var SceneSubStagePlay = function(core) {
 	base_scene.apply(this, arguments);
-
+	this._key_down_count_of_button_x = 0;
+	this._is_player_use_3rdeye = false;
 };
 Util.inherit(SceneSubStagePlay, base_scene);
 
 SceneSubStagePlay.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
+
+	this._key_down_count_of_button_x = 0;
+	this._is_player_use_3rdeye = false;
 };
 
 SceneSubStagePlay.prototype.beforeDraw = function(){
@@ -56,8 +60,9 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 		}
 	}
 
+	this._durationButtonXDownCount();
 	// サードアイ使用／使用解除
-	if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+	if (this._isPlayerUse3rdEye()) {
 		this.root().eye_button.onCollision();
 	}
 	// メニュー開く
@@ -66,6 +71,28 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 	}
 
 };
+
+// プレイヤーが3rdeye使用を押下したかどうか
+SceneSubStagePlay.prototype._isPlayerUse3rdEye = function(){
+	return this._is_player_use_3rdeye;
+};
+// TODO: リファクタ
+SceneSubStagePlay.prototype._durationButtonXDownCount = function(){
+	this._is_player_use_3rdeye = false;
+	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
+		this._key_down_count_of_button_x++;
+	}
+	else {
+		if(0 < this._key_down_count_of_button_x && this._key_down_count_of_button_x < 10) { //10フレーム長押し
+			this._is_player_use_3rdeye = true;
+		}
+
+		this._key_down_count_of_button_x = 0;
+	}
+};
+
+
+
 
 SceneSubStagePlay.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
