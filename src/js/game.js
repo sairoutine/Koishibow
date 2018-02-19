@@ -49,9 +49,6 @@ util.inherit(Game, core);
 Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
 
-	// カーソル設定
-	this.enableCursorImage("ui_icon_pointer_01");
-
 	// シーン遷移
 	this.changeScene("loading");
 };
