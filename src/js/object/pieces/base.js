@@ -102,12 +102,12 @@ ObjectBase.prototype.onUnUse3rdEye = function(){
 ObjectBase.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);
 	area.init();
-	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
+	area.setPosition(this.x(), this.y());
 	if (this._position_type === "lying") {
 		area.setSize(0, 0);
 	}
 	else {
-		area.setSize(this.collisionWidth(), this.collisionHeight()/2);
+		area.setSize(this.collisionWidth(), this.collisionHeight());
 	}
 	area.setParentID(this.id);
 
