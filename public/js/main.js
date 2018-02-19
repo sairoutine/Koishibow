@@ -31356,7 +31356,11 @@ var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
 
-var SaveManager = require('./save_manager');
+var StorageEvent   = require('./storage/event');
+var StorageItem    = require('./storage/item');
+var StorageJournal = require('./storage/journal');
+var StoragePiece   = require('./storage/piece');
+var StoragePlayer  = require('./storage/player');
 
 var SceneTitle = require('./scene/title');
 var SceneLeavingTitle = require('./scene/leaving_title');
@@ -31373,19 +31377,6 @@ var SceneEventForTrialLast               = require('./scene/event/trial_last');
 var Game = function(canvas) {
 	core.apply(this, arguments);
 
-};
-util.inherit(Game, core);
-
-
-Game.prototype.init = function () {
-	core.prototype.init.apply(this, arguments);
-
-	// カーソル設定
-	this.enableCursorImage("ui_icon_pointer_01");
-
-	// セーブデータ
-	this.save_manager = SaveManager.load();
-
 	// シーン一覧
 	this.addScene("loading", new SceneLoading(this));
 	this.addScene("title", new SceneTitle(this));
@@ -31396,6 +31387,22 @@ Game.prototype.init = function () {
 	this.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
 	this.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
 	this.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
+
+	// セーブデータ
+	this.save_manager.addClass("event",   StorageEvent);
+	this.save_manager.addClass("item",    StorageItem);
+	this.save_manager.addClass("journal", StorageJournal);
+	this.save_manager.addClass("piece",   StoragePiece);
+	this.save_manager.addClass("player",  StoragePlayer);
+};
+util.inherit(Game, core);
+
+
+Game.prototype.init = function () {
+	core.prototype.init.apply(this, arguments);
+
+	// カーソル設定
+	this.enableCursorImage("ui_icon_pointer_01");
 
 	// シーン遷移
 	this.changeScene("loading");
@@ -31505,13 +31512,13 @@ Game.prototype.setupDebug = function (dom) {
 
 	var amount = Math.floor(CONSTANT.MAX_3RDEYE_GAUGE/4);
 	this.debug_manager.addMenuButton("SAN値+" + amount, function (game) {
-		game.save_manager.gain3rdeyeGauge(amount);
+		game.save_manager.player.gain3rdeyeGauge(amount);
 	});
 	this.debug_manager.addMenuButton("SAN値-" + amount, function (game) {
-		game.save_manager.reduce3rdeyeGauge(amount);
+		game.save_manager.player.reduce3rdeyeGauge(amount);
 	});
 	this.debug_manager.addMenuButton("SAN値 全回復", function (game) {
-		game.save_manager.gain3rdeyeGauge(CONSTANT.MAX_3RDEYE_GAUGE);
+		game.save_manager.player.gain3rdeyeGauge(CONSTANT.MAX_3RDEYE_GAUGE);
 	});
 	this.debug_manager.addMenuButton("SAN値 表示", function (game) {
 		game.debug_manager.set("is_show_3rdeye_gauge", true);
@@ -31527,12 +31534,12 @@ Game.prototype.setupDebug = function (dom) {
 
 module.exports = Game;
 
-},{"./constant":6,"./hakurei":115,"./save_manager":181,"./scene/event/chapter0/encounter_satori":183,"./scene/event/chapter0/last":184,"./scene/event/trial_last":185,"./scene/gameover":186,"./scene/howto":187,"./scene/leaving_title":188,"./scene/loading":189,"./scene/stage":190,"./scene/title":203}],115:[function(require,module,exports){
+},{"./constant":6,"./hakurei":115,"./scene/event/chapter0/encounter_satori":184,"./scene/event/chapter0/last":185,"./scene/event/trial_last":186,"./scene/gameover":187,"./scene/howto":188,"./scene/leaving_title":189,"./scene/loading":190,"./scene/stage":191,"./scene/title":204,"./storage/event":205,"./storage/item":206,"./storage/journal":207,"./storage/piece":208,"./storage/player":209}],115:[function(require,module,exports){
 'use strict';
 
 module.exports = require("./hakureijs/index");
 
-},{"./hakureijs/index":123}],116:[function(require,module,exports){
+},{"./hakureijs/index":122}],116:[function(require,module,exports){
 'use strict';
 
 var AudioLoader = function() {
@@ -31929,7 +31936,7 @@ FontLoader.prototype.setupEvents = function() {
 	};
 
 // check if it's enable to use document.fonts.ready
-var _canUseCssFontLoading = window.document && window.document.fonts && window.document.fonts.ready;
+var _canUseCssFontLoading = window.document && window.document.fonts && window.document.fonts.ready && document.fonts.ready.then;
 FontLoader.prototype.canUseCssFontLoading = function(){
 	return _canUseCssFontLoading;
 };
@@ -32166,17 +32173,19 @@ module.exports = CONSTANT;
 },{}],121:[function(require,module,exports){
 'use strict';
 
-/* TODO: create input_manager class */
+/* TODO: create scene_manager class */
 
 var WebGLDebugUtils = require("webgl-debug");
 var Util = require("./util");
-var DebugManager = require("./debug_manager");
-var TimeManager = require("./time_manager");
-var InputManager = require("./input_manager");
+var DebugManager = require("./manager/debug");
+var TimeManager = require("./manager/time");
+var SaveManager = require("./manager/save");
+var InputManager = require("./manager/input");
 var ImageLoader = require("./asset_loader/image");
 var AudioLoader = require("./asset_loader/audio");
 var FontLoader = require("./asset_loader/font");
 var SceneLoading = require('./scene/loading');
+var StorageScenario = require('./storage/scenario');
 
 var ShaderProgram = require('./shader_program');
 var VS = require("./shader/main.vs");
@@ -32224,6 +32233,8 @@ var Core = function(canvas, options) {
 
 	this.time_manager = new TimeManager(this);
 
+	this.save_manager = new SaveManager();
+
 	this.input_manager = new InputManager();
 
 	this.width = Number(canvas.getAttribute('width'));
@@ -32243,6 +32254,12 @@ var Core = function(canvas, options) {
 	this.image_loader = new ImageLoader();
 	this.audio_loader = new AudioLoader();
 	this.font_loader = new FontLoader();
+
+	// add default scene
+	this.addScene("loading", new SceneLoading(this));
+
+	// add default save
+	this.save_manager.addClass("scenario", StorageScenario);
 };
 Core.prototype.init = function () {
 	this.current_scene = null;
@@ -32261,7 +32278,7 @@ Core.prototype.init = function () {
 	this.audio_loader.init();
 	this.font_loader.init();
 
-	this.addScene("loading", new SceneLoading(this));
+	this.save_manager.initialLoad();
 };
 
 Core.prototype.reload = function () {
@@ -32646,9 +32663,48 @@ Core.prototype.setTimeout = function (callback, frame_count) {
 
 module.exports = Core;
 
-},{"./asset_loader/audio":116,"./asset_loader/font":117,"./asset_loader/image":118,"./debug_manager":122,"./input_manager":124,"./scene/loading":146,"./shader/main.fs":150,"./shader/main.vs":151,"./shader_program":152,"./time_manager":155,"./util":156,"webgl-debug":135}],122:[function(require,module,exports){
+},{"./asset_loader/audio":116,"./asset_loader/font":117,"./asset_loader/image":118,"./manager/debug":123,"./manager/input":124,"./manager/save":125,"./manager/time":128,"./scene/loading":150,"./shader/main.fs":152,"./shader/main.vs":153,"./shader_program":154,"./storage/scenario":157,"./util":158,"webgl-debug":139}],122:[function(require,module,exports){
 'use strict';
-var Util = require("./util");
+module.exports = {
+	util: require("./util"),
+	core: require("./core"),
+	// constant.BUTTON_NAME is deprecated.
+	constant: require("./util").assign(require("./constant/button"), {
+		button: require("./constant/button"),
+	}),
+	serif_manager: require("./manager/serif"),
+	save_manager: require("./manager/save"),
+	shader_program: require("./shader_program"),
+	scene: {
+		base:    require("./scene/base"),
+		loading: require("./scene/loading"),
+		movie:   require("./scene/movie"),
+	},
+	object: {
+		base: require("./object/base"),
+		point: require("./object/point"),
+		sprite: require("./object/sprite"),
+		window: require("./object/window"),
+		sprite3d: require("./object/sprite3d"),
+		pool_manager: require("./object/pool_manager"),
+		pool_manager3d: require("./object/pool_manager3d"),
+		ui_parts: require("./object/ui_parts"),
+	},
+	asset_loader: {
+		image: require("./asset_loader/image"),
+		audio: require("./asset_loader/audio"),
+		font:  require("./asset_loader/font"),
+	},
+	storage: {
+		base: require("./storage/base"),
+		save: require("./storage/save"),
+	},
+
+};
+
+},{"./asset_loader/audio":116,"./asset_loader/font":117,"./asset_loader/image":118,"./constant/button":119,"./core":121,"./manager/save":125,"./manager/serif":126,"./object/base":141,"./object/point":142,"./object/pool_manager":143,"./object/pool_manager3d":144,"./object/sprite":145,"./object/sprite3d":146,"./object/ui_parts":147,"./object/window":148,"./scene/base":149,"./scene/loading":150,"./scene/movie":151,"./shader_program":154,"./storage/base":155,"./storage/save":156,"./util":158}],123:[function(require,module,exports){
+'use strict';
+var Util = require("../util");
 
 var DebugManager = function (core) {
 	this.core = core;
@@ -32870,50 +32926,12 @@ DebugManager.prototype.isShowingCollisionArea = function () {
 
 module.exports = DebugManager;
 
-},{"./util":156}],123:[function(require,module,exports){
-'use strict';
-module.exports = {
-	util: require("./util"),
-	core: require("./core"),
-	// constant.BUTTON_NAME is deprecated.
-	constant: require("./util").assign(require("./constant/button"), {
-		button: require("./constant/button"),
-	}),
-	serif_manager: require("./serif_manager"),
-	shader_program: require("./shader_program"),
-	scene: {
-		base:    require("./scene/base"),
-		loading: require("./scene/loading"),
-		movie:   require("./scene/movie"),
-	},
-	object: {
-		base: require("./object/base"),
-		point: require("./object/point"),
-		sprite: require("./object/sprite"),
-		window: require("./object/window"),
-		sprite3d: require("./object/sprite3d"),
-		pool_manager: require("./object/pool_manager"),
-		pool_manager3d: require("./object/pool_manager3d"),
-		ui_parts: require("./object/ui_parts"),
-	},
-	asset_loader: {
-		image: require("./asset_loader/image"),
-		audio: require("./asset_loader/audio"),
-		font:  require("./asset_loader/font"),
-	},
-	storage: {
-		base: require("./storage/base"),
-		save: require("./storage/save"),
-	},
-
-};
-
-},{"./asset_loader/audio":116,"./asset_loader/font":117,"./asset_loader/image":118,"./constant/button":119,"./core":121,"./object/base":137,"./object/point":138,"./object/pool_manager":139,"./object/pool_manager3d":140,"./object/sprite":141,"./object/sprite3d":142,"./object/ui_parts":143,"./object/window":144,"./scene/base":145,"./scene/loading":146,"./scene/movie":147,"./serif_manager":148,"./shader_program":152,"./storage/base":153,"./storage/save":154,"./util":156}],124:[function(require,module,exports){
+},{"../util":158}],124:[function(require,module,exports){
 'use strict';
 
-var CONSTANT = require("./constant/button");
-var Util = require("./util");
-var ObjectPoint = require("./object/point");
+var CONSTANT = require("../constant/button");
+var Util = require("../util");
+var ObjectPoint = require("../object/point");
 
 // const
 var DEFAULT_BUTTON_ID_TO_BIT_CODE = {
@@ -33327,7 +33345,500 @@ InputManager.prototype.dumpGamePadKey = function() {
 
 module.exports = InputManager;
 
-},{"./constant/button":119,"./object/point":138,"./util":156}],125:[function(require,module,exports){
+},{"../constant/button":119,"../object/point":142,"../util":158}],125:[function(require,module,exports){
+'use strict';
+// repository for storage save class
+
+//var Util = require("../util");
+var SaveManager = function () {
+	this._name_to_class = {};
+};
+
+// klass must inherited save/base class
+SaveManager.prototype.addClass = function(name, klass){
+	if(typeof this[name] !== "undefined") throw new Error(name + " is reserved word.");
+
+	this._name_to_class[name] = klass;
+};
+
+SaveManager.prototype.initialLoad = function(){
+	for (var name in this._name_to_class) {
+		var Klass = this._name_to_class[name];
+
+		if(!this[name]) {
+			this[name] = Klass.load();
+		}
+	}
+};
+
+
+
+SaveManager.prototype.load = function(){
+	for (var name in this._name_to_class) {
+		var Klass = this._name_to_class[name];
+		this[name] = Klass.load();
+	}
+};
+
+SaveManager.prototype.save = function(){
+	for (var name in this._name_to_class) {
+		this[name].save();
+	}
+};
+
+
+
+SaveManager.prototype.del = function(){
+	for (var name in this._name_to_class) {
+		this[name].del();
+	}
+};
+
+module.exports = SaveManager;
+
+},{}],126:[function(require,module,exports){
+'use strict';
+
+// typography speed
+var TYPOGRAPHY_SPEED = 10;
+
+var Util = require("../util");
+var BaseClass = require("./serif_abolished_notifier_base");
+
+var SerifManager = function (option) {
+	option = option || {};
+	this._is_auto_start = "auto_start" in option ? option.auto_start : true;
+
+	this._timeoutID = null;
+
+	// serif scenario
+	this._script = null;
+
+	// where serif has progressed
+	this._progress = null;
+
+	this._chara_id_list  = [];
+	this._exp_id_list    = [];
+	this._option = {};
+
+	// which chara is talking, left or right
+	this._pos = null;
+
+	this._is_background_changed = false;
+	this._background_image_name = null;
+
+	this._char_list = "";
+	this._char_idx = 0;
+
+	this._is_enable_printing_message = true;
+
+	// now printing message
+	this._line_num = 0;
+	this._printing_lines = [];
+};
+Util.inherit(SerifManager, BaseClass);
+
+SerifManager.prototype.init = function (script) {
+	if(!script) console.error("set script arguments to use serif_manager class");
+
+	// serif scenario
+	this._script = script;
+
+	this._chara_id_list  = [];
+	this._exp_id_list    = [];
+	this._option = {};
+
+
+
+	this._progress = -1;
+	this._timeoutID = null;
+	this._pos  = null;
+
+	this._is_background_changed = false;
+	this._background_image_name = null;
+
+
+	this._char_list = "";
+	this._char_idx = 0;
+
+	this._is_enable_printing_message = true;
+
+	this._line_num = 0;
+	this._printing_lines = [];
+
+	if(this._is_auto_start && !this.isEnd()) {
+		this.next(); // start
+	}
+};
+
+SerifManager.prototype.setAutoStart = function (flag) {
+	this._is_auto_start = flag;
+};
+
+
+
+SerifManager.prototype.isEnd = function () {
+	return this._progress === this._script.length - 1;
+};
+SerifManager.prototype.isStart = function () {
+	return this._progress > -1;
+};
+
+SerifManager.prototype.next = function () {
+	this._progress++;
+
+	var script = this._script[this._progress];
+
+	this._showChara(script);
+
+	this._showBackground(script);
+
+	this._setOption(script);
+
+	if(script.serif) {
+		this._printMessage(script.serif);
+	}
+	else {
+		// If serif is empty, show chara without talking and next
+		if(!this.isEnd()) {
+			this.next();
+		}
+	}
+};
+
+SerifManager.prototype._showBackground = function(script) {
+	this._is_background_changed = false;
+	if(script.background && this._background_image_name !== script.background) {
+		this._is_background_changed = true;
+		this._background_image_name  = script.background;
+	}
+};
+
+SerifManager.prototype._showChara = function(script) {
+	var pos = script.pos;
+
+	// NOTE: for deprecated pos setting
+	if (pos === "left")  pos = 0;
+	if (pos === "right") pos = 1;
+
+	if (!pos) pos = 0;
+
+	this._pos  = pos;
+
+	this._chara_id_list[pos] = script.chara;
+	this._exp_id_list[pos]   = script.exp;
+};
+
+SerifManager.prototype._setOption = function(script) {
+	this._option = script.option || {};
+
+	// for deprecated script "font_color"
+	if (script.font_color) {
+		this._option = Util.shallowCopyHash(this.option);
+		this._option.font_color = script.font_color;
+	}
+};
+
+SerifManager.prototype._printMessage = function (message) {
+	// cancel already started message
+	this._cancelPrintMessage();
+
+	// setup to show message
+	this._char_list = message.split("");
+	this._char_idx = 0;
+
+	// clear showing message
+	this._line_num = 0;
+	this._printing_lines = [];
+
+	this._startPrintMessage();
+};
+// is waiting to be called next?
+SerifManager.prototype.isWaitingNext = function () {
+	return this.isEndPrinting() && !this.isEnd();
+};
+
+SerifManager.prototype.isEndPrinting = function () {
+	var char_length = this._char_list.length;
+	return this._char_idx >= char_length ? true : false;
+};
+
+SerifManager.prototype._startPrintMessage = function () {
+	var char_length = this._char_list.length;
+	if (this._char_idx >= char_length) return;
+
+	if(this._is_enable_printing_message) {
+		var ch = this._char_list[this._char_idx];
+		this._char_idx++;
+
+		if (ch === "\n") {
+			this._line_num++;
+		}
+		else {
+			// initialize
+			if(!this._printing_lines[this._line_num]) {
+				this._printing_lines[this._line_num] = "";
+			}
+
+			// show A word
+			this._printing_lines[this._line_num] = this._printing_lines[this._line_num] + ch;
+		}
+	}
+
+	this._timeoutID = setTimeout(Util.bind(this._startPrintMessage, this), TYPOGRAPHY_SPEED);
+};
+
+SerifManager.prototype._cancelPrintMessage = function () {
+	if(this._timeoutID !== null) {
+		clearTimeout(this._timeoutID);
+		this._timeoutID = null;
+	}
+};
+
+SerifManager.prototype.startPrintMessage = function () {
+	this._is_enable_printing_message = true;
+};
+SerifManager.prototype.cancelPrintMessage = function () {
+	this._is_enable_printing_message = false;
+};
+
+SerifManager.prototype.isBackgroundChanged = function () {
+	return this._is_background_changed;
+};
+SerifManager.prototype.getBackgroundImageName = function () {
+	return this._background_image_name;
+};
+
+SerifManager.prototype.getImageName = function (pos) {
+	pos = pos || 0;
+	return(this._chara_id_list[pos] ? this.getChara(pos) + "_" + this._exp_id_list[pos] : null);
+};
+SerifManager.prototype.getChara = function (pos) {
+	pos = pos || 0;
+	return(this._chara_id_list[pos] ? this._chara_id_list[pos] : null);
+};
+
+SerifManager.prototype.isTalking = function (pos) {
+	return this._pos === pos ? true : false;
+};
+SerifManager.prototype.getOption = function () {
+	return this._option;
+};
+SerifManager.prototype.lines = function () {
+	return this._printing_lines;
+};
+SerifManager.prototype.getSerifRowsCount = function () {
+	// TODO: only calculate once
+	var script = this._script[this._progress];
+	if (!script) return 0;
+
+	var serif = script.serif;
+	return( (serif.match(new RegExp("\n", "g")) || []).length + 1 );
+};
+
+
+
+
+// NOTE: deprecated
+SerifManager.prototype.right_image = function () {
+	console.error("right_image method is deprecated. you should use getImageName method");
+
+	var pos = 1; // means right
+
+	return this.getImageName(pos);
+};
+// NOTE: deprecated
+SerifManager.prototype.left_image = function () {
+	console.error("left_image method is deprecated. you should use getImageName method");
+
+	var pos = 0; // means left
+
+	return this.getImageName(pos);
+};
+// NOTE: deprecated
+SerifManager.prototype.is_right_talking = function () {
+	console.error("is_right_talking method is deprecated. you should use isTalking method");
+
+	var pos = 1; // means right
+
+	return this.isTalking(pos);
+};
+// NOTE: deprecated
+SerifManager.prototype.is_left_talking = function () {
+	console.error("is_left_talking method is deprecated. you should use isTalking method");
+	var pos = 0; // means left
+
+	return this.isTalking(pos);
+};
+// NOTE: deprecated
+SerifManager.prototype.font_color = function () {
+	console.error("font_color method is deprecated. you should use getOption().font_color method");
+	return this._option.font_color;
+};
+// NOTE: deprecated
+SerifManager.prototype.is_end = function () {
+	console.error("is_end method is deprecated. you should use isEnd method");
+	return this.isEnd();
+};
+// NOTE: deprecated
+SerifManager.prototype.is_background_changed = function () {
+	console.error("is_background_changed method is deprecated. you should use isBackgroundChanged method");
+	return this.isBackgroundChanged();
+};
+// NOTE: deprecated
+SerifManager.prototype.background_image = function () {
+	console.error("background_image method is deprecated. you should use getBackgroundImageName method");
+	return this.getBackgroundImageName();
+};
+
+module.exports = SerifManager;
+
+},{"../util":158,"./serif_abolished_notifier_base":127}],127:[function(require,module,exports){
+'use strict';
+
+
+var SerifManager = function (option) {
+};
+
+SerifManager.prototype.init = function (script) {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.setAutoStart = function (flag) {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.isEnd = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.isStart = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.next = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype._showBackground = function(script) {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype._showChara = function(script) {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype._setOption = function(script) {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype._printMessage = function (message) {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.isWaitingNext = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.isEndPrinting = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype._startPrintMessage = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype._cancelPrintMessage = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.startPrintMessage = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.cancelPrintMessage = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.isBackgroundChanged = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.getBackgroundImageName = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.getImageName = function (pos) {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.getChara = function (pos) {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.isTalking = function (pos) {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.getOption = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.lines = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.getSerifRowsCount = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.right_image = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.left_image = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.is_right_talking = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.is_left_talking = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.font_color = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.is_end = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.is_background_changed = function () {
+	return console.error("this method is abolished.");
+};
+SerifManager.prototype.background_image = function () {
+	return console.error("this method is abolished.");
+};
+
+module.exports = SerifManager;
+
+},{}],128:[function(require,module,exports){
+'use strict';
+
+var TimeManager = function (core) {
+	this.core = core;
+
+	this.events = {};
+};
+TimeManager.prototype.init = function () {
+	this.events = {};
+};
+
+TimeManager.prototype.setTimeout = function (callback, frame_count) {
+	var current_frame_count = this.core.frame_count;
+	var execute_timing = current_frame_count + frame_count;
+
+	if(!this.events[execute_timing]) {
+		this.events[execute_timing] = [];
+	}
+
+	this.events[execute_timing].push({
+		callback: callback,
+	});
+};
+
+TimeManager.prototype.executeEvents = function () {
+	var current_frame_count = this.core.frame_count;
+	var current_events = this.events[current_frame_count];
+
+	if(!current_events) return;
+
+	for (var i = 0, len = current_events.length; i < len; i++) {
+		var event = current_events[i];
+		event.callback();
+	}
+
+	delete this.events[current_frame_count];
+};
+
+
+module.exports = TimeManager;
+
+},{}],129:[function(require,module,exports){
 /**
  * @fileoverview gl-matrix - High performance matrix and vector operations
  * @author Brandon Jones
@@ -33365,7 +33876,7 @@ exports.quat = require("./gl-matrix/quat.js");
 exports.vec2 = require("./gl-matrix/vec2.js");
 exports.vec3 = require("./gl-matrix/vec3.js");
 exports.vec4 = require("./gl-matrix/vec4.js");
-},{"./gl-matrix/common.js":126,"./gl-matrix/mat2.js":127,"./gl-matrix/mat2d.js":128,"./gl-matrix/mat3.js":129,"./gl-matrix/mat4.js":130,"./gl-matrix/quat.js":131,"./gl-matrix/vec2.js":132,"./gl-matrix/vec3.js":133,"./gl-matrix/vec4.js":134}],126:[function(require,module,exports){
+},{"./gl-matrix/common.js":130,"./gl-matrix/mat2.js":131,"./gl-matrix/mat2d.js":132,"./gl-matrix/mat3.js":133,"./gl-matrix/mat4.js":134,"./gl-matrix/quat.js":135,"./gl-matrix/vec2.js":136,"./gl-matrix/vec3.js":137,"./gl-matrix/vec4.js":138}],130:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33437,7 +33948,7 @@ glMatrix.equals = function(a, b) {
 
 module.exports = glMatrix;
 
-},{}],127:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33875,7 +34386,7 @@ mat2.multiplyScalarAndAdd = function(out, a, b, scale) {
 
 module.exports = mat2;
 
-},{"./common.js":126}],128:[function(require,module,exports){
+},{"./common.js":130}],132:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34346,7 +34857,7 @@ mat2d.equals = function (a, b) {
 
 module.exports = mat2d;
 
-},{"./common.js":126}],129:[function(require,module,exports){
+},{"./common.js":130}],133:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35094,7 +35605,7 @@ mat3.equals = function (a, b) {
 
 module.exports = mat3;
 
-},{"./common.js":126}],130:[function(require,module,exports){
+},{"./common.js":130}],134:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37232,7 +37743,7 @@ mat4.equals = function (a, b) {
 
 module.exports = mat4;
 
-},{"./common.js":126}],131:[function(require,module,exports){
+},{"./common.js":130}],135:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37834,7 +38345,7 @@ quat.equals = vec4.equals;
 
 module.exports = quat;
 
-},{"./common.js":126,"./mat3.js":129,"./vec3.js":133,"./vec4.js":134}],132:[function(require,module,exports){
+},{"./common.js":130,"./mat3.js":133,"./vec3.js":137,"./vec4.js":138}],136:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38423,7 +38934,7 @@ vec2.equals = function (a, b) {
 
 module.exports = vec2;
 
-},{"./common.js":126}],133:[function(require,module,exports){
+},{"./common.js":130}],137:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39202,7 +39713,7 @@ vec3.equals = function (a, b) {
 
 module.exports = vec3;
 
-},{"./common.js":126}],134:[function(require,module,exports){
+},{"./common.js":130}],138:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39813,7 +40324,7 @@ vec4.equals = function (a, b) {
 
 module.exports = vec4;
 
-},{"./common.js":126}],135:[function(require,module,exports){
+},{"./common.js":130}],139:[function(require,module,exports){
 (function (global){
 /*
 ** Copyright (c) 2012 The Khronos Group Inc.
@@ -40771,7 +41282,7 @@ return {
 module.exports = WebGLDebugUtils;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],136:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 'use strict';
 
 // internal class
@@ -41215,21 +41726,21 @@ module.exports = {
 	object_point: ObjectPoint,
 };
 
-},{"../util":156}],137:[function(require,module,exports){
+},{"../util":158}],141:[function(require,module,exports){
 'use strict';
 
 var _base_and_point_classes = require('./_base_and_point_classes');
 
 module.exports = _base_and_point_classes.object_base;
 
-},{"./_base_and_point_classes":136}],138:[function(require,module,exports){
+},{"./_base_and_point_classes":140}],142:[function(require,module,exports){
 'use strict';
 
 var _base_and_point_classes = require('./_base_and_point_classes');
 
 module.exports = _base_and_point_classes.object_point;
 
-},{"./_base_and_point_classes":136}],139:[function(require,module,exports){
+},{"./_base_and_point_classes":140}],143:[function(require,module,exports){
 'use strict';
 
 // TODO: add pooling logic
@@ -41327,7 +41838,7 @@ PoolManager.prototype.removeOutOfStageObjects = function() {
 
 module.exports = PoolManager;
 
-},{"../util":156,"./base":137}],140:[function(require,module,exports){
+},{"../util":158,"./base":141}],144:[function(require,module,exports){
 'use strict';
 
 // TODO: add pooling logic
@@ -41568,7 +42079,7 @@ PoolManager3D.prototype.shader = function(){
 
 module.exports = PoolManager3D;
 
-},{"../constant/webgl":120,"../util":156,"./base":137,"gl-matrix":125}],141:[function(require,module,exports){
+},{"../constant/webgl":120,"../util":158,"./base":141,"gl-matrix":129}],145:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var util = require('../util');
@@ -41711,7 +42222,7 @@ Sprite.prototype.alpha = function() {
 
 module.exports = Sprite;
 
-},{"../util":156,"./base":137}],142:[function(require,module,exports){
+},{"../util":158,"./base":141}],146:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var util = require('../util');
@@ -42056,7 +42567,7 @@ Sprite3d.prototype.isReflect = function(){
 
 module.exports = Sprite3d;
 
-},{"../constant/webgl":120,"../util":156,"./base":137,"gl-matrix":125}],143:[function(require,module,exports){
+},{"../constant/webgl":120,"../util":158,"./base":141,"gl-matrix":129}],147:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../util');
@@ -42130,7 +42641,7 @@ ObjectUIParts.prototype.draw = function(){
 
 module.exports = ObjectUIParts;
 
-},{"../util":156,"./base":137}],144:[function(require,module,exports){
+},{"../util":158,"./base":141}],148:[function(require,module,exports){
 'use strict';
 
 var base_object = require('./base');
@@ -42183,7 +42694,7 @@ Window.prototype.height = function() {
 
 module.exports = Window;
 
-},{"../util":156,"./base":137}],145:[function(require,module,exports){
+},{"../util":158,"./base":141}],149:[function(require,module,exports){
 'use strict';
 
 var SceneBase = function(core) {
@@ -42493,7 +43004,7 @@ SceneBase.prototype.root = function() {
 module.exports = SceneBase;
 
 
-},{}],146:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 'use strict';
 
 // loading scene
@@ -42568,7 +43079,7 @@ SceneLoading.prototype.notifyAllLoaded = function(){
 
 module.exports = SceneLoading;
 
-},{"../util":156,"./base":145}],147:[function(require,module,exports){
+},{"../util":158,"./base":149}],151:[function(require,module,exports){
 'use strict';
 
 // movie scene
@@ -42699,413 +43210,13 @@ SceneMovie.prototype.notifyEnd = function(){
 
 module.exports = SceneMovie;
 
-},{"../util":156,"./base":145}],148:[function(require,module,exports){
-'use strict';
-
-// typography speed
-var TYPOGRAPHY_SPEED = 10;
-
-var Util = require("./util");
-var BaseClass = require("./serif_manager_abolished_notifier_base");
-
-var SerifManager = function (option) {
-	option = option || {};
-	this._is_auto_start = "auto_start" in option ? option.auto_start : true;
-
-	this._timeoutID = null;
-
-	// serif scenario
-	this._script = null;
-
-	// where serif has progressed
-	this._progress = null;
-
-	this._chara_id_list  = [];
-	this._exp_id_list    = [];
-	this._option = {};
-
-	// which chara is talking, left or right
-	this._pos = null;
-
-	this._is_background_changed = false;
-	this._background_image_name = null;
-
-	this._char_list = "";
-	this._char_idx = 0;
-
-	this._is_enable_printing_message = true;
-
-	// now printing message
-	this._line_num = 0;
-	this._printing_lines = [];
-};
-Util.inherit(SerifManager, BaseClass);
-
-SerifManager.prototype.init = function (script) {
-	if(!script) console.error("set script arguments to use serif_manager class");
-
-	// serif scenario
-	this._script = script;
-
-	this._chara_id_list  = [];
-	this._exp_id_list    = [];
-	this._option = {};
-
-
-
-	this._progress = -1;
-	this._timeoutID = null;
-	this._pos  = null;
-
-	this._is_background_changed = false;
-	this._background_image_name = null;
-
-
-	this._char_list = "";
-	this._char_idx = 0;
-
-	this._is_enable_printing_message = true;
-
-	this._line_num = 0;
-	this._printing_lines = [];
-
-	if(this._is_auto_start && !this.isEnd()) {
-		this.next(); // start
-	}
-};
-
-SerifManager.prototype.setAutoStart = function (flag) {
-	this._is_auto_start = flag;
-};
-
-
-
-SerifManager.prototype.isEnd = function () {
-	return this._progress === this._script.length - 1;
-};
-SerifManager.prototype.isStart = function () {
-	return this._progress > -1;
-};
-
-SerifManager.prototype.next = function () {
-	this._progress++;
-
-	var script = this._script[this._progress];
-
-	this._showChara(script);
-
-	this._showBackground(script);
-
-	this._setOption(script);
-
-	if(script.serif) {
-		this._printMessage(script.serif);
-	}
-	else {
-		// If serif is empty, show chara without talking and next
-		if(!this.isEnd()) {
-			this.next();
-		}
-	}
-};
-
-SerifManager.prototype._showBackground = function(script) {
-	this._is_background_changed = false;
-	if(script.background && this._background_image_name !== script.background) {
-		this._is_background_changed = true;
-		this._background_image_name  = script.background;
-	}
-};
-
-SerifManager.prototype._showChara = function(script) {
-	var pos = script.pos;
-
-	// NOTE: for deprecated pos setting
-	if (pos === "left")  pos = 0;
-	if (pos === "right") pos = 1;
-
-	if (!pos) pos = 0;
-
-	this._pos  = pos;
-
-	this._chara_id_list[pos] = script.chara;
-	this._exp_id_list[pos]   = script.exp;
-};
-
-SerifManager.prototype._setOption = function(script) {
-	this._option = script.option || {};
-
-	// for deprecated script "font_color"
-	if (script.font_color) {
-		this._option = Util.shallowCopyHash(this.option);
-		this._option.font_color = script.font_color;
-	}
-};
-
-SerifManager.prototype._printMessage = function (message) {
-	// cancel already started message
-	this._cancelPrintMessage();
-
-	// setup to show message
-	this._char_list = message.split("");
-	this._char_idx = 0;
-
-	// clear showing message
-	this._line_num = 0;
-	this._printing_lines = [];
-
-	this._startPrintMessage();
-};
-// is waiting to be called next?
-SerifManager.prototype.isWaitingNext = function () {
-	return this.isEndPrinting() && !this.isEnd();
-};
-
-SerifManager.prototype.isEndPrinting = function () {
-	var char_length = this._char_list.length;
-	return this._char_idx >= char_length ? true : false;
-};
-
-SerifManager.prototype._startPrintMessage = function () {
-	var char_length = this._char_list.length;
-	if (this._char_idx >= char_length) return;
-
-	if(this._is_enable_printing_message) {
-		var ch = this._char_list[this._char_idx];
-		this._char_idx++;
-
-		if (ch === "\n") {
-			this._line_num++;
-		}
-		else {
-			// initialize
-			if(!this._printing_lines[this._line_num]) {
-				this._printing_lines[this._line_num] = "";
-			}
-
-			// show A word
-			this._printing_lines[this._line_num] = this._printing_lines[this._line_num] + ch;
-		}
-	}
-
-	this._timeoutID = setTimeout(Util.bind(this._startPrintMessage, this), TYPOGRAPHY_SPEED);
-};
-
-SerifManager.prototype._cancelPrintMessage = function () {
-	if(this._timeoutID !== null) {
-		clearTimeout(this._timeoutID);
-		this._timeoutID = null;
-	}
-};
-
-SerifManager.prototype.startPrintMessage = function () {
-	this._is_enable_printing_message = true;
-};
-SerifManager.prototype.cancelPrintMessage = function () {
-	this._is_enable_printing_message = false;
-};
-
-SerifManager.prototype.isBackgroundChanged = function () {
-	return this._is_background_changed;
-};
-SerifManager.prototype.getBackgroundImageName = function () {
-	return this._background_image_name;
-};
-
-SerifManager.prototype.getImageName = function (pos) {
-	pos = pos || 0;
-	return(this._chara_id_list[pos] ? this.getChara(pos) + "_" + this._exp_id_list[pos] : null);
-};
-SerifManager.prototype.getChara = function (pos) {
-	pos = pos || 0;
-	return(this._chara_id_list[pos] ? this._chara_id_list[pos] : null);
-};
-
-SerifManager.prototype.isTalking = function (pos) {
-	return this._pos === pos ? true : false;
-};
-SerifManager.prototype.getOption = function () {
-	return this._option;
-};
-SerifManager.prototype.lines = function () {
-	return this._printing_lines;
-};
-SerifManager.prototype.getSerifRowsCount = function () {
-	// TODO: only calculate once
-	var script = this._script[this._progress];
-	if (!script) return 0;
-
-	var serif = script.serif;
-	return( (serif.match(new RegExp("\n", "g")) || []).length + 1 );
-};
-
-
-
-
-// NOTE: deprecated
-SerifManager.prototype.right_image = function () {
-	console.error("right_image method is deprecated. you should use getImageName method");
-
-	var pos = 1; // means right
-
-	return this.getImageName(pos);
-};
-// NOTE: deprecated
-SerifManager.prototype.left_image = function () {
-	console.error("left_image method is deprecated. you should use getImageName method");
-
-	var pos = 0; // means left
-
-	return this.getImageName(pos);
-};
-// NOTE: deprecated
-SerifManager.prototype.is_right_talking = function () {
-	console.error("is_right_talking method is deprecated. you should use isTalking method");
-
-	var pos = 1; // means right
-
-	return this.isTalking(pos);
-};
-// NOTE: deprecated
-SerifManager.prototype.is_left_talking = function () {
-	console.error("is_left_talking method is deprecated. you should use isTalking method");
-	var pos = 0; // means left
-
-	return this.isTalking(pos);
-};
-// NOTE: deprecated
-SerifManager.prototype.font_color = function () {
-	console.error("font_color method is deprecated. you should use getOption().font_color method");
-	return this._option.font_color;
-};
-// NOTE: deprecated
-SerifManager.prototype.is_end = function () {
-	console.error("is_end method is deprecated. you should use isEnd method");
-	return this.isEnd();
-};
-// NOTE: deprecated
-SerifManager.prototype.is_background_changed = function () {
-	console.error("is_background_changed method is deprecated. you should use isBackgroundChanged method");
-	return this.isBackgroundChanged();
-};
-// NOTE: deprecated
-SerifManager.prototype.background_image = function () {
-	console.error("background_image method is deprecated. you should use getBackgroundImageName method");
-	return this.getBackgroundImageName();
-};
-
-module.exports = SerifManager;
-
-},{"./serif_manager_abolished_notifier_base":149,"./util":156}],149:[function(require,module,exports){
-'use strict';
-
-
-var SerifManager = function (option) {
-};
-
-SerifManager.prototype.init = function (script) {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.setAutoStart = function (flag) {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.isEnd = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.isStart = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.next = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype._showBackground = function(script) {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype._showChara = function(script) {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype._setOption = function(script) {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype._printMessage = function (message) {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.isWaitingNext = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.isEndPrinting = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype._startPrintMessage = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype._cancelPrintMessage = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.startPrintMessage = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.cancelPrintMessage = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.isBackgroundChanged = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.getBackgroundImageName = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.getImageName = function (pos) {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.getChara = function (pos) {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.isTalking = function (pos) {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.getOption = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.lines = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.getSerifRowsCount = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.right_image = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.left_image = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.is_right_talking = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.is_left_talking = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.font_color = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.is_end = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.is_background_changed = function () {
-	return console.error("this method is abolished.");
-};
-SerifManager.prototype.background_image = function () {
-	return console.error("this method is abolished.");
-};
-
-module.exports = SerifManager;
-
-},{}],150:[function(require,module,exports){
+},{"../util":158,"./base":149}],152:[function(require,module,exports){
 module.exports = "precision mediump float;\nuniform sampler2D uSampler;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tvec4 textureColor = texture2D(uSampler, vTextureCoordinates);\n\tgl_FragColor = textureColor * vColor;\n}\n\n";
 
-},{}],151:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 module.exports = "attribute vec3 aVertexPosition;\nattribute vec2 aTextureCoordinates;\nattribute vec4 aColor;\n\nuniform mat4 uMVMatrix;\nuniform mat4 uPMatrix;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tgl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);\n\tvTextureCoordinates = aTextureCoordinates;\n\tvColor = aColor;\n}\n\n";
 
-},{}],152:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 'use strict';
 var glmat = require("gl-matrix");
 
@@ -43176,8 +43287,9 @@ ShaderProgram.prototype.createShaderProgram = function(gl, vertex_shader, fragme
 
 module.exports = ShaderProgram;
 
-},{"gl-matrix":125}],153:[function(require,module,exports){
+},{"gl-matrix":129}],155:[function(require,module,exports){
 'use strict';
+/* eslint-disable new-cap */
 
 /*
  * TODO: split load and save method by sync and async
@@ -43187,17 +43299,24 @@ module.exports = ShaderProgram;
 
 var Util = require("../util");
 
-var DEFAULT_KEY = "hakurei_engine:default";
-
 var StorageBase = function (data) {
 	if(!data) data = {};
 	this._data = data;
 };
 
 // save file unique key
+//
+// for browser: local storage key name
+// for electron or node-webkit: file name
+//
 // this constant must be overridden!
 StorageBase.KEY = function() {
-	return DEFAULT_KEY;
+	throw new Error("KEY method must be overridden.");
+};
+
+// save file directory for Electron or NW.js
+StorageBase.localFileDirectory = function() {
+	return "save";
 };
 
 StorageBase.prototype.set = function(key, value) {
@@ -43265,7 +43384,7 @@ StorageBase._localFileDirectoryPath = function() {
 	var app  = window.require('electron').remote.app;
 	var base = app.getPath("appData");
 	var app_name = app.getName();
-	return path.join(base, app_name, 'save/');
+	return path.join(base, app_name, this.localFileDirectory());
 };
 
 StorageBase._localFileName = function(key) {
@@ -43285,6 +43404,7 @@ StorageBase.prototype._saveToWebStorage = function() {
 		window.localStorage.setItem(key, data);
 	}
 	catch (e) {
+		// nothing to do
 	}
 };
 
@@ -43317,7 +43437,6 @@ StorageBase._loadFromLocalFile = function() {
 
 	var data = fs.readFileSync(file_path, { encoding: 'utf8' });
 
-	var Klass = this;
 	if (data) {
 		return JSON.parse(data);
 	}
@@ -43333,9 +43452,9 @@ StorageBase._loadFromWebStorage = function() {
 		data = window.localStorage.getItem(key);
 	}
 	catch (e) {
+		// nothing to do
 	}
 
-	var Klass = this;
 	if (data) {
 		return JSON.parse(data);
 	}
@@ -43375,12 +43494,13 @@ StorageBase.prototype._removeWebStorage = function() {
 		window.localStorage.removeItem(key);
 	}
 	catch (e) {
+		// nothing to do
 	}
 };
 
 module.exports = StorageBase;
 
-},{"../util":156}],154:[function(require,module,exports){
+},{"../util":158}],156:[function(require,module,exports){
 'use strict';
 var base_class = require('./base');
 var util = require('../util');
@@ -43390,61 +43510,49 @@ var StorageSave = function(scene) {
 };
 util.inherit(StorageSave, base_class);
 
+var PREFIX = "hakurei_engine";
+var KEY = "save";
+
 StorageSave.KEY = function(){
-	var key = "hakurei_engine:save";
 	if (!this.isLocalMode() && window && window.location) {
-		return(key + ":" + window.location.pathname);
+		// localstorage key for browser
+		return([PREFIX, KEY, window.location.pathname].join(":"));
 	}
 	else {
-		return "save";
+		// file name for electron or node-webkit
+		return KEY;
 	}
 };
 
 module.exports = StorageSave;
 
-},{"../util":156,"./base":153}],155:[function(require,module,exports){
+},{"../util":158,"./base":155}],157:[function(require,module,exports){
 'use strict';
+var base_class = require('./base');
+var util = require('../util');
 
-var TimeManager = function (core) {
-	this.core = core;
-
-	this.events = {};
+var StorageScenario = function(scene) {
+	base_class.apply(this, arguments);
 };
-TimeManager.prototype.init = function () {
-	this.events = {};
-};
+util.inherit(StorageScenario, base_class);
 
-TimeManager.prototype.setTimeout = function (callback, frame_count) {
-	var current_frame_count = this.core.frame_count;
-	var execute_timing = current_frame_count + frame_count;
+var PREFIX = "hakurei_engine";
+var KEY = "scenario";
 
-	if(!this.events[execute_timing]) {
-		this.events[execute_timing] = [];
+StorageScenario.KEY = function(){
+	if (!this.isLocalMode() && window && window.location) {
+		// localstorage key for browser
+		return([PREFIX, KEY, window.location.pathname].join(":"));
 	}
-
-	this.events[execute_timing].push({
-		callback: callback,
-	});
-};
-
-TimeManager.prototype.executeEvents = function () {
-	var current_frame_count = this.core.frame_count;
-	var current_events = this.events[current_frame_count];
-
-	if(!current_events) return;
-
-	for (var i = 0, len = current_events.length; i < len; i++) {
-		var event = current_events[i];
-		event.callback();
+	else {
+		// file name for electron or node-webkit
+		return KEY;
 	}
-
-	delete this.events[current_frame_count];
 };
 
+module.exports = StorageScenario;
 
-module.exports = TimeManager;
-
-},{}],156:[function(require,module,exports){
+},{"../util":158,"./base":155}],158:[function(require,module,exports){
 'use strict';
 var Util = {
 	inherit: function( child, parent ) {
@@ -43584,7 +43692,7 @@ var Util = {
 
 module.exports = Util;
 
-},{}],157:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 'use strict';
 
 /* 画像を暗く変換する */
@@ -43626,7 +43734,7 @@ CreateDarkerImage.exec = function (image, alpha) {
 
 module.exports = CreateDarkerImage;
 
-},{}],158:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 'use strict';
 
 /* セリフを描画する */
@@ -43774,7 +43882,7 @@ DrawSerif._isShowRight = function(obj){
 
 module.exports = DrawSerif;
 
-},{"../hakurei":115}],159:[function(require,module,exports){
+},{"../hakurei":115}],161:[function(require,module,exports){
 'use strict';
 var Game = require('./game');
 var CONSTANT = require('./constant');
@@ -43811,7 +43919,7 @@ if(window.require) {
 	window.require('electron').webFrame.setVisualZoomLevelLimits(1,1); //zoomさせない
 }
 
-},{"./constant":6,"./game":114}],160:[function(require,module,exports){
+},{"./constant":6,"./game":114}],162:[function(require,module,exports){
 'use strict';
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
@@ -43888,7 +43996,7 @@ ObjectAnimeObject.prototype.scaleHeight = function(){
 
 module.exports = ObjectAnimeObject;
 
-},{"../hakurei":115,"./ss_anime_base":174}],161:[function(require,module,exports){
+},{"../hakurei":115,"./ss_anime_base":176}],163:[function(require,module,exports){
 'use strict';
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
@@ -43944,7 +44052,7 @@ ObjectBlackMist.prototype.scaleHeight = function(){
 
 module.exports = ObjectBlackMist;
 
-},{"../data/anime/black_mist/eff01_anime_1":7,"../data/anime/black_mist/eff02_anime_1":8,"../hakurei":115,"./ss_anime_base":174}],162:[function(require,module,exports){
+},{"../data/anime/black_mist/eff01_anime_1":7,"../data/anime/black_mist/eff02_anime_1":8,"../hakurei":115,"./ss_anime_base":176}],164:[function(require,module,exports){
 'use strict';
 
 // こいしの歩く速度
@@ -44243,7 +44351,7 @@ Koishi.prototype.abrasion3rdeye = function() {
 	// 消耗前のレベル
 	var before_level = this.get3rdeyeBloodShotLevel();
 
-	this.core.save_manager.reduce3rdeyeGauge(CONSTANT.ABRASION_3RDEYE_GAUGE);
+	this.core.save_manager.player.reduce3rdeyeGauge(CONSTANT.ABRASION_3RDEYE_GAUGE);
 
 	// 消耗後のレベル
 	var after_level = this.get3rdeyeBloodShotLevel();
@@ -44258,13 +44366,13 @@ Koishi.prototype.abrasion3rdeye = function() {
 };
 
 Koishi.prototype.get3rdeyeBloodShotLevel = function() {
-	return this.core.save_manager.get3rdeyeBloodShotLevel();
+	return this.core.save_manager.player.get3rdeyeBloodShotLevel();
 };
 Koishi.prototype.get3rdeyeGauge = function() {
-	return this.core.save_manager.get3rdeyeGauge();
+	return this.core.save_manager.player.get3rdeyeGauge();
 };
 Koishi.prototype.isDead = function() {
-	return this.core.save_manager.get3rdeyeGauge() === 0;
+	return this.core.save_manager.player.get3rdeyeGauge() === 0;
 };
 
 
@@ -44301,7 +44409,7 @@ Koishi.prototype._showText = function(lines) {
 
 module.exports = Koishi;
 
-},{"../constant":6,"../data/anime/koishi/nohat_reaction_touch_anime_1":91,"../data/anime/koishi/nohat_wait_anime_1":92,"../data/anime/koishi/nohat_walk_anime_1":93,"../data/anime/koishi/reaction_3rdeye_anime_1":94,"../data/anime/koishi/reaction_look_bottom_anime_1":95,"../data/anime/koishi/reaction_look_front_anime_1":96,"../data/anime/koishi/reaction_look_top_anime_1":97,"../data/anime/koishi/reaction_touch_anime_1":98,"../data/anime/koishi/reaction_yes_anime_1":99,"../data/anime/koishi/wait_anime_1":100,"../data/anime/koishi/walk_anime_1":101,"../hakurei":115,"../logic/draw_serif":158,"./ss_anime_base":174}],163:[function(require,module,exports){
+},{"../constant":6,"../data/anime/koishi/nohat_reaction_touch_anime_1":91,"../data/anime/koishi/nohat_wait_anime_1":92,"../data/anime/koishi/nohat_walk_anime_1":93,"../data/anime/koishi/reaction_3rdeye_anime_1":94,"../data/anime/koishi/reaction_look_bottom_anime_1":95,"../data/anime/koishi/reaction_look_front_anime_1":96,"../data/anime/koishi/reaction_look_top_anime_1":97,"../data/anime/koishi/reaction_touch_anime_1":98,"../data/anime/koishi/reaction_yes_anime_1":99,"../data/anime/koishi/wait_anime_1":100,"../data/anime/koishi/walk_anime_1":101,"../hakurei":115,"../logic/draw_serif":160,"./ss_anime_base":176}],165:[function(require,module,exports){
 'use strict';
 
 // anchor (画像上でのライトの出力位置)
@@ -44541,12 +44649,11 @@ ObjectLight3rdeye.prototype.intersectWithPiece = function (piece) {
 
 module.exports = ObjectLight3rdeye;
 
-},{"../hakurei":115}],164:[function(require,module,exports){
+},{"../hakurei":115}],166:[function(require,module,exports){
 'use strict';
 
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
-var CONSTANT = require('../../constant');
 var ItemConfig = require('../../config/item');
 
 var ObjectMenuItemBase = function(scene) {
@@ -44614,12 +44721,12 @@ ObjectMenuItemBase.prototype.item_id = function() {
 // アイテムが使用されたとき
 ObjectMenuItemBase.prototype.use = function(){
 	// 持ち物から削除
-	this.core.save_manager.deleteItem(this.item_id());
+	this.core.save_manager.item.deleteItem(this.item_id());
 };
 
 module.exports = ObjectMenuItemBase;
 
-},{"../../config/item":3,"../../constant":6,"../../hakurei":115}],165:[function(require,module,exports){
+},{"../../config/item":3,"../../hakurei":115}],167:[function(require,module,exports){
 'use strict';
 
 /* メニューのアイテムの目薬 */
@@ -44641,7 +44748,7 @@ ObjectMenuItemEyeDrops.prototype.use = function(){
 	base_object.prototype.use.apply(this, arguments);
 
 	// 3rd eye ゲージの回復
-	this.core.save_manager.gain3rdeyeGauge(CONSTANT.EYEDROPS_RECOVER_3RDEYE_GAUGE);
+	this.core.save_manager.player.gain3rdeyeGauge(CONSTANT.EYEDROPS_RECOVER_3RDEYE_GAUGE);
 
 	// 3rd eye 使用 1枚絵へ
 	this.scene.root().changeSubScene("picture_use_eyedrops");
@@ -44649,7 +44756,7 @@ ObjectMenuItemEyeDrops.prototype.use = function(){
 
 module.exports = ObjectMenuItemEyeDrops;
 
-},{"../../constant":6,"../../hakurei":115,"./base":164}],166:[function(require,module,exports){
+},{"../../constant":6,"../../hakurei":115,"./base":166}],168:[function(require,module,exports){
 'use strict';
 
 // 獲得可能なオブジェクト
@@ -44739,7 +44846,7 @@ ObjectAcquirableBase.prototype.draw = function(){
 };
 
 ObjectAcquirableBase.prototype._deleteFromField = function() {
-	this.core.save_manager.setPieceData(
+	this.core.save_manager.piece.setPieceData(
 		this.scene.root().getFieldData().key,
 		this.no,
 		"is_delete",
@@ -44748,7 +44855,7 @@ ObjectAcquirableBase.prototype._deleteFromField = function() {
 };
 
 ObjectAcquirableBase.prototype._isDeleted = function() {
-	return this.core.save_manager.getPieceData(
+	return this.core.save_manager.piece.getPieceData(
 		this.scene.root().getFieldData().key,
 		this.no,
 		"is_delete"
@@ -44789,7 +44896,7 @@ ObjectAcquirableBase.prototype.acquire = function(){
 
 module.exports = ObjectAcquirableBase;
 
-},{"../../hakurei":115,"./base":169}],167:[function(require,module,exports){
+},{"../../hakurei":115,"./base":171}],169:[function(require,module,exports){
 'use strict';
 var base_object = require('./anime_image');
 var Util = require('../../hakurei').util;
@@ -44846,7 +44953,7 @@ ObjectAnimeEventImage.prototype.getImmovableArea = function() {
 
 module.exports = ObjectAnimeEventImage;
 
-},{"../../hakurei":115,"../walk_immovable_area":180,"./anime_image":168}],168:[function(require,module,exports){
+},{"../../hakurei":115,"../walk_immovable_area":182,"./anime_image":170}],170:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
@@ -45138,7 +45245,7 @@ ObjectAnimeImage.prototype.onAfterWalkToHere = function() {
 
 module.exports = ObjectAnimeImage;
 
-},{"../../config/object_anime":5,"../../hakurei":115,"../anime_object":160,"./base":169}],169:[function(require,module,exports){
+},{"../../config/object_anime":5,"../../hakurei":115,"../anime_object":162,"./base":171}],171:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
@@ -45274,7 +45381,7 @@ ObjectBase.prototype._showText = function(lines) {
 
 module.exports = ObjectBase;
 
-},{"../../hakurei":115,"../../logic/draw_serif":158,"../walk_immovable_area":180}],170:[function(require,module,exports){
+},{"../../hakurei":115,"../../logic/draw_serif":160,"../walk_immovable_area":182}],172:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
@@ -45370,7 +45477,7 @@ ObjectChapter0Hat.prototype.onAfterWalkToHere = function() {
 
 module.exports = ObjectChapter0Hat;
 
-},{"../../hakurei":115,"./base":169}],171:[function(require,module,exports){
+},{"../../hakurei":115,"./base":171}],173:[function(require,module,exports){
 'use strict';
 var base_object = require('./acquirable_base');
 var Util = require('../../hakurei').util;
@@ -45400,7 +45507,7 @@ ObjectItem.prototype.getItemId = function(data) {
 
 ObjectItem.prototype.acquire = function(){
 	// アイテム獲得
-	this.core.save_manager.addItem(this._item_id);
+	this.core.save_manager.item.addItem(this._item_id);
 
 	// アイテム獲得画面へ遷移
 	this.scene.root().changeSubScene("got_item", this);
@@ -45408,7 +45515,7 @@ ObjectItem.prototype.acquire = function(){
 
 module.exports = ObjectItem;
 
-},{"../../hakurei":115,"./acquirable_base":166}],172:[function(require,module,exports){
+},{"../../hakurei":115,"./acquirable_base":168}],174:[function(require,module,exports){
 'use strict';
 var base_object = require('./acquirable_base');
 var Util = require('../../hakurei').util;
@@ -45435,7 +45542,7 @@ ObjectJournal.prototype.setData = function(data) {
 
 ObjectJournal.prototype.acquire = function() {
 	// ジャーナル獲得
-	this.core.save_manager.addJournal(this._journal_id);
+	this.core.save_manager.journal.addJournal(this._journal_id);
 
 	// ジャーナル画像表示シーンへ遷移
 	this.scene.root().changeSubScene("journal", this._journal_id);
@@ -45446,7 +45553,7 @@ ObjectJournal.prototype.acquire = function() {
 
 module.exports = ObjectJournal;
 
-},{"../../hakurei":115,"./acquirable_base":166}],173:[function(require,module,exports){
+},{"../../hakurei":115,"./acquirable_base":168}],175:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
@@ -45577,7 +45684,7 @@ ObjectStaticImage.prototype.onAfterWalkToHere = function() {
 
 module.exports = ObjectStaticImage;
 
-},{"../../hakurei":115,"./base":169}],174:[function(require,module,exports){
+},{"../../hakurei":115,"./base":171}],176:[function(require,module,exports){
 'use strict';
 
 var base_object = require('../hakurei').object.base;
@@ -45752,7 +45859,7 @@ SsAnimeBase.prototype.scaleHeight = function(){
 
 module.exports = SsAnimeBase;
 
-},{"../hakurei":115,"../logic/create_darker_image":157,"../vendor/SsaPlayer":204}],175:[function(require,module,exports){
+},{"../hakurei":115,"../logic/create_darker_image":159,"../vendor/SsaPlayer":210}],177:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
@@ -45842,7 +45949,7 @@ ObjectEye.prototype.scaleWidth = function(){
 };
 module.exports = ObjectEye;
 
-},{"../../hakurei":115}],176:[function(require,module,exports){
+},{"../../hakurei":115}],178:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
@@ -45932,7 +46039,7 @@ ObjectItemMenuButton.prototype.scaleWidth = function(){
 };
 module.exports = ObjectItemMenuButton;
 
-},{"../../hakurei":115}],177:[function(require,module,exports){
+},{"../../hakurei":115}],179:[function(require,module,exports){
 'use strict';
 var base_object = require('./next_field_button_base');
 var Util = require('../../hakurei').util;
@@ -45960,7 +46067,7 @@ ObjectLeftNextFieldButton.prototype.rotateAdjust = function(){
 
 module.exports = ObjectLeftNextFieldButton;
 
-},{"../../hakurei":115,"./next_field_button_base":178}],178:[function(require,module,exports){
+},{"../../hakurei":115,"./next_field_button_base":180}],180:[function(require,module,exports){
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
@@ -45998,7 +46105,7 @@ ObjectNextFieldButtonBase.prototype.onCollision = function(obj){
 	 * TODO:
 	// 屋敷の廊下2はイベント再生する
 	if (this.scene.mainStage().field().left_field === "chapter0_mansion_corridor2" &&
-		!this.core.save_manager.isPlayedEvent("chapter0-event-encounter_satori")) {
+		!this.core.save_manager.event.isPlayedEvent("chapter0-event-encounter_satori")) {
 		this.core.changeScene("event_for_encounter_satori");
 	}
 	// 通常の遷移
@@ -46057,7 +46164,7 @@ ObjectNextFieldButtonBase.prototype.scaleWidth = function(){
 
 module.exports = ObjectNextFieldButtonBase;
 
-},{"../../constant":6,"../../hakurei":115}],179:[function(require,module,exports){
+},{"../../constant":6,"../../hakurei":115}],181:[function(require,module,exports){
 'use strict';
 var base_object = require('./next_field_button_base');
 var Util = require('../../hakurei').util;
@@ -46080,7 +46187,7 @@ ObjectRightNextFieldButton.prototype.setPosition = function(){
 
 module.exports = ObjectRightNextFieldButton;
 
-},{"../../hakurei":115,"./next_field_button_base":178}],180:[function(require,module,exports){
+},{"../../hakurei":115,"./next_field_button_base":180}],182:[function(require,module,exports){
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
@@ -46131,218 +46238,7 @@ WalkImmovableArea.prototype.draw = function() {
 
 module.exports = WalkImmovableArea;
 
-},{"../constant":6,"../hakurei":115}],181:[function(require,module,exports){
-'use strict';
-
-// セーブデータ
-var base_class = require('./hakurei').storage.save;
-var util = require('./hakurei').util;
-var CONSTANT = require('./constant');
-
-var SaveManager = function(scene) {
-	base_class.apply(this, arguments);
-};
-util.inherit(SaveManager, base_class);
-
-// 取得しているアイテム一覧を取得
-SaveManager.prototype.getItemList = function() {
-	var list = this.get("item_list");
-
-	if(!list) list = [];
-
-	return list;
-};
-
-// 取得しているアイテム一覧を取得
-SaveManager.prototype.getItem = function(index){
-	var list = this.getItemList();
-
-	return list[index];
-};
-
-// アイテムを追加(追加したアイテムのindexを返す)
-SaveManager.prototype.addItem = function(item_id){
-	var list = this.getItemList();
-
-	list.push(item_id);
-	this.set("item_list", list);
-	return list.length - 1;
-};
-// アイテムを削除
-SaveManager.prototype.deleteItem = function(target_item_id) {
-	var list = this.getItemList();
-
-	for (var i = 0, len = list.length; i < len; i++) {
-		var item_id = list[i];
-
-		if (item_id === target_item_id) {
-			list.splice(i, 1);
-			break;
-		}
-	}
-
-	this.set("item_list", list);
-};
-
-
-// 取得しているジャーナル一覧を取得
-SaveManager.prototype.getJournalList = function() {
-	var list = this.get("journal_list");
-
-	if(!list) list = [];
-
-	return list;
-};
-
-// 取得しているジャーナル一覧を取得
-SaveManager.prototype.getJournal = function(index){
-	var list = this.getJournalList();
-
-	return list[index];
-};
-
-// ジャーナルを追加(追加したジャーナルのindexを返す)
-SaveManager.prototype.addJournal = function(journal_id){
-	var list = this.getJournalList();
-
-	list.push(journal_id);
-	this.set("journal_list", list);
-	return list.length - 1;
-};
-
-
-
-
-
-
-
-
-
-SaveManager.prototype.getPieceDataMap = function() {
-	var map = this.get("piece_data_map");
-
-	if(!map) map = {};
-
-	return map;
-};
-
-SaveManager.prototype.getPieceData = function(field_name, piece_no, key) {
-	var map = this.getPieceDataMap();
-
-	var data = map[field_name + "_" + piece_no];
-
-	if(!data) data = {};
-
-	return data[key];
-};
-
-SaveManager.prototype.setPieceData = function(field_name, piece_no, key, value) {
-	var map = this.getPieceDataMap();
-
-	var data = map[field_name + "_" + piece_no];
-
-	if(!data) data = {};
-
-	data[key] = value;
-	map[field_name + "_" + piece_no] = data;
-
-	this.set("piece_data_map", map);
-};
-
-// 3rd eye ゲージの取得
-SaveManager.prototype.get3rdeyeGauge = function(){
-	var gauge;
-	if (this.exists("3rdeye_gauge")) {
-		gauge = this.get("3rdeye_gauge");
-	}
-	else {
-		gauge = CONSTANT.MAX_3RDEYE_GAUGE;
-	}
-
-	return gauge;
-};
-// 3rd eye ゲージの上昇
-SaveManager.prototype.gain3rdeyeGauge = function(num){
-	var gauge = this.get3rdeyeGauge();
-
-	gauge += num;
-
-	if (gauge > CONSTANT.MAX_3RDEYE_GAUGE) {
-		gauge = CONSTANT.MAX_3RDEYE_GAUGE;
-	}
-
-	this.set("3rdeye_gauge", gauge);
-};
-
-// 3rd eye ゲージの消費
-SaveManager.prototype.reduce3rdeyeGauge = function(num){
-	var gauge = this.get3rdeyeGauge();
-
-	gauge -= num;
-
-	if (gauge < 0) {
-		gauge = 0;
-	}
-
-	this.set("3rdeye_gauge", gauge);
-};
-
-// 充血の進行度(レベル)
-SaveManager.prototype.get3rdeyeBloodShotLevel = function() {
-	var gauge = this.get3rdeyeGauge();
-	if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 3 / 4) {
-		return 1;
-	}
-	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 2 / 4) {
-		return 2;
-	}
-	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 1 / 4) {
-		return 3;
-	}
-	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 0 / 4) {
-		return 4;
-	}
-	else {
-		// NOTE: ゲームオーバーなのでここにはこないはず
-		return 4;
-	}
-};
-
-// 現在のフィールドを取得
-SaveManager.prototype.getCurrentField = function() {
-	var field_name = this.get("current_field");
-
-	return field_name;
-};
-// 現在のフィールドを設定
-SaveManager.prototype.setCurrentField = function(field_name) {
-	this.set("current_field", field_name);
-};
-
-// イベントを再生済か取得
-SaveManager.prototype.isPlayedEvent = function(event_name) {
-	var played_event_map = this.get("played_event_map");
-
-	if(!played_event_map) return false;
-
-	return played_event_map[event_name] ? true : false;
-};
-// イベントを再生済に設定
-SaveManager.prototype.setPlayedEvent = function(event_name) {
-	var played_event_map = this.get("played_event_map");
-
-	if(!played_event_map) {
-		played_event_map = {};
-	}
-
-	played_event_map[event_name] = true;
-
-	this.set("played_event_map", played_event_map);
-};
-
-module.exports = SaveManager;
-
-},{"./constant":6,"./hakurei":115}],182:[function(require,module,exports){
+},{"../constant":6,"../hakurei":115}],183:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../../hakurei').scene.base;
@@ -46524,7 +46420,7 @@ SceneEventBase.prototype.scriptMap = function(){
 
 module.exports = SceneEventBase;
 
-},{"../../hakurei":115,"../../object/anime_object":160}],183:[function(require,module,exports){
+},{"../../hakurei":115,"../../object/anime_object":162}],184:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../../../hakurei').scene.base;
@@ -46763,7 +46659,7 @@ SceneSceneEventEncounterSatori.prototype._showText = function(lines) {
 
 module.exports = SceneSceneEventEncounterSatori;
 
-},{"../../../data/anime/chapter0/event/encounter_satori/eye/obj01_anime_1":9,"../../../data/anime/chapter0/event/encounter_satori/eye/obj02_anime_1":10,"../../../data/anime/chapter0/event/encounter_satori/eye/obj03_anime_1":11,"../../../data/anime/chapter0/event/encounter_satori/satori/obj01_anime_1":12,"../../../data/anime/chapter0/event/encounter_satori/satori/obj02_anime_1":13,"../../../data/anime/chapter0/event/encounter_satori/satori/obj03_anime_1":14,"../../../data/anime/koishi/wait_anime_1":100,"../../../hakurei":115,"../../../logic/draw_serif":158,"../../../object/anime_object":160,"../../../object/black_mist":161}],184:[function(require,module,exports){
+},{"../../../data/anime/chapter0/event/encounter_satori/eye/obj01_anime_1":9,"../../../data/anime/chapter0/event/encounter_satori/eye/obj02_anime_1":10,"../../../data/anime/chapter0/event/encounter_satori/eye/obj03_anime_1":11,"../../../data/anime/chapter0/event/encounter_satori/satori/obj01_anime_1":12,"../../../data/anime/chapter0/event/encounter_satori/satori/obj02_anime_1":13,"../../../data/anime/chapter0/event/encounter_satori/satori/obj03_anime_1":14,"../../../data/anime/koishi/wait_anime_1":100,"../../../hakurei":115,"../../../logic/draw_serif":160,"../../../object/anime_object":162,"../../../object/black_mist":163}],185:[function(require,module,exports){
 'use strict';
 
 // chapter0 最終イベント
@@ -46823,7 +46719,7 @@ SceneDefault.prototype.scriptMap = function(){
 
 module.exports = SceneDefault;
 
-},{"../../../data/anime/chapter0/event/falldown_koishi/event01_anime_1":15,"../../../hakurei":115,"../base":182}],185:[function(require,module,exports){
+},{"../../../data/anime/chapter0/event/falldown_koishi/event01_anime_1":15,"../../../hakurei":115,"../base":183}],186:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./base');
@@ -46863,7 +46759,7 @@ SceneEventTrialLast.prototype.scriptMap = function(){
 
 module.exports = SceneEventTrialLast;
 
-},{"../../hakurei":115,"./base":182}],186:[function(require,module,exports){
+},{"../../hakurei":115,"./base":183}],187:[function(require,module,exports){
 'use strict';
 
 // 3rd eye の使いすぎによるゲームオーバー
@@ -46906,7 +46802,7 @@ SceneGameover.prototype.draw = function(){
 };
 module.exports = SceneGameover;
 
-},{"../hakurei":115}],187:[function(require,module,exports){
+},{"../hakurei":115}],188:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -46967,7 +46863,7 @@ SceneHowto.prototype.draw = function(){
 };
 module.exports = SceneHowto;
 
-},{"../constant":6,"../hakurei":115}],188:[function(require,module,exports){
+},{"../constant":6,"../hakurei":115}],189:[function(require,module,exports){
 'use strict';
 
 // タイトル画面の放置演出
@@ -47022,7 +46918,7 @@ SceneHowto.prototype.draw = function(){
 };
 module.exports = SceneHowto;
 
-},{"../hakurei":115}],189:[function(require,module,exports){
+},{"../hakurei":115}],190:[function(require,module,exports){
 'use strict';
 
 // ローディングシーン
@@ -47142,7 +47038,7 @@ SceneLoading.prototype.progress = function(){
 
 module.exports = SceneLoading;
 
-},{"../config/assets":1,"../constant":6,"../hakurei":115}],190:[function(require,module,exports){
+},{"../config/assets":1,"../constant":6,"../hakurei":115}],191:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
@@ -47244,8 +47140,8 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	from_field_name = from_field_name || null; // undefined -> null に変換
 
 	// 現在のフィールド
-	this.core.save_manager.setCurrentField(field_name);
-	this.core.save_manager.save();
+	this.core.save_manager.player.setCurrentField(field_name);
+	this.core.save_manager.save(); // シーン遷移時に全てのセーブデータを保存する
 
 	// フィールドの情報
 	var field_data = this.getFieldData();
@@ -47327,11 +47223,11 @@ SceneStage.prototype.changeInitialSubScene = function() {
 	// そうでなければ通常の play シーン
 
 	var subscene = field_data.event;
-	if (!subscene || this.core.save_manager.isPlayedEvent(subscene)) {
+	if (!subscene || this.core.save_manager.event.isPlayedEvent(subscene)) {
 		this.changeSubScene("play");
 	}
 	else {
-		this.core.save_manager.setPlayedEvent(subscene);
+		this.core.save_manager.event.setPlayedEvent(subscene);
 		this.changeSubScene(subscene);
 	}
 };
@@ -47543,7 +47439,7 @@ SceneStage.prototype.isNoHat = function(){
 	return this.currentSubScene() instanceof SceneSubStageEventChapter0GetHat;
 };
 SceneStage.prototype.getFieldData = function(){
-	return FieldMap[this.core.save_manager.getCurrentField()];
+	return FieldMap[this.core.save_manager.player.getCurrentField()];
 };
 // ステージ上のオブジェクト or 自機を取得
 SceneStage.prototype.getPiece = function(name) {
@@ -47604,7 +47500,7 @@ SceneStage.prototype._setupPieces = function() {
 };
 module.exports = SceneStage;
 
-},{"../config/field":2,"../constant":6,"../hakurei":115,"../object/black_mist":161,"../object/koishi":162,"../object/light_3rdeye":163,"../object/pieces/anime_event_image":167,"../object/pieces/anime_image":168,"../object/pieces/item":171,"../object/pieces/journal":172,"../object/pieces/static_image":173,"../object/ui/eye_button":175,"../object/ui/item_menu_button":176,"../object/ui/left_next_field_button":177,"../object/ui/right_next_field_button":179,"./substage/event/chapter0/get_hat":192,"./substage/event/chapter0/kokoro_encounter":193,"./substage/event/chapter0/satori_encounter_begin":194,"./substage/got_item":195,"./substage/journal":196,"./substage/journal_menu":197,"./substage/menu":198,"./substage/picture_get_hat":199,"./substage/picture_use_eyedrops":200,"./substage/play":201,"./substage/talk_with_object":202}],191:[function(require,module,exports){
+},{"../config/field":2,"../constant":6,"../hakurei":115,"../object/black_mist":163,"../object/koishi":164,"../object/light_3rdeye":165,"../object/pieces/anime_event_image":169,"../object/pieces/anime_image":170,"../object/pieces/item":173,"../object/pieces/journal":174,"../object/pieces/static_image":175,"../object/ui/eye_button":177,"../object/ui/item_menu_button":178,"../object/ui/left_next_field_button":179,"../object/ui/right_next_field_button":181,"./substage/event/chapter0/get_hat":193,"./substage/event/chapter0/kokoro_encounter":194,"./substage/event/chapter0/satori_encounter_begin":195,"./substage/got_item":196,"./substage/journal":197,"./substage/journal_menu":198,"./substage/menu":199,"./substage/picture_get_hat":200,"./substage/picture_use_eyedrops":201,"./substage/play":202,"./substage/talk_with_object":203}],192:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../../hakurei').scene.base;
@@ -47619,7 +47515,7 @@ Util.inherit(SceneSceneSubStageBase, base_scene);
 
 module.exports = SceneSceneSubStageBase;
 
-},{"../../hakurei":115}],192:[function(require,module,exports){
+},{"../../hakurei":115}],193:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../../base');
@@ -47723,7 +47619,7 @@ SceneEventChapter0GetHat.prototype.draw = function(){
 
 module.exports = SceneEventChapter0GetHat;
 
-},{"../../../../constant":6,"../../../../hakurei":115,"../../../../object/pieces/chapter0_hat":170,"../../base":191}],193:[function(require,module,exports){
+},{"../../../../constant":6,"../../../../hakurei":115,"../../../../object/pieces/chapter0_hat":172,"../../base":192}],194:[function(require,module,exports){
 'use strict';
 
 var SPEED = 4;
@@ -47823,7 +47719,7 @@ SceneSubStageJournal.prototype.afterDraw = function(){
 
 module.exports = SceneSubStageJournal;
 
-},{"../../../../data/anime/kokoro/run_anime_1":102,"../../../../data/anime/kokoro/wait_anime_1":103,"../../../../hakurei":115,"../../../../object/anime_object":160,"../../base":191}],194:[function(require,module,exports){
+},{"../../../../data/anime/kokoro/run_anime_1":102,"../../../../data/anime/kokoro/wait_anime_1":103,"../../../../hakurei":115,"../../../../object/anime_object":162,"../../base":192}],195:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../../talk_with_object');
@@ -47867,7 +47763,7 @@ SceneSubStageObjectTalk.prototype.onSerifEnd = function(){
 };
 module.exports = SceneSubStageObjectTalk;
 
-},{"../../../../hakurei":115,"../../talk_with_object":202}],195:[function(require,module,exports){
+},{"../../../../hakurei":115,"../../talk_with_object":203}],196:[function(require,module,exports){
 'use strict';
 
 // アイテム獲得
@@ -47982,7 +47878,7 @@ SceneSubStageGotItem.prototype._showItem = function() {
 
 module.exports = SceneSubStageGotItem;
 
-},{"../../config/item":3,"../../hakurei":115,"./base":191}],196:[function(require,module,exports){
+},{"../../config/item":3,"../../hakurei":115,"./base":192}],197:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./base');
@@ -48049,7 +47945,7 @@ SceneSubStageJournal.prototype._showPicture = function() {
 
 module.exports = SceneSubStageJournal;
 
-},{"../../config/journal":4,"../../hakurei":115,"./base":191}],197:[function(require,module,exports){
+},{"../../config/journal":4,"../../hakurei":115,"./base":192}],198:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./base');
@@ -48119,7 +48015,7 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 
 	var self = this;
 	// TODO: 獲得していないジャーナルは未表示
-	//var journal_list = this.core.save_manager.getJournalList();
+	//var journal_list = this.core.save_manager.journal.getJournalList();
 
 	this.menu_journal_list = [];
 
@@ -48257,7 +48153,7 @@ SceneSubStageJournalMenu.prototype._goToItemMenu = function() {
 
 module.exports = SceneSubStageJournalMenu;
 
-},{"../../config/journal":4,"../../hakurei":115,"./base":191}],198:[function(require,module,exports){
+},{"../../config/journal":4,"../../hakurei":115,"./base":192}],199:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./base');
@@ -48609,7 +48505,7 @@ SceneSubStageMenu.prototype.setFocusItem = function(item_id){
 
 
 SceneSubStageMenu.prototype._setupMenuItems = function() {
-	var item_list = this.core.save_manager.getItemList();
+	var item_list = this.core.save_manager.item.getItemList();
 
 	this.menu_item_list = [];
 	for (var i = 0, len = item_list.length; i < len; i++) {
@@ -48638,7 +48534,7 @@ SceneSubStageMenu.prototype._goToJounarlMenu = function() {
 
 module.exports = SceneSubStageMenu;
 
-},{"../../config/item":3,"../../constant":6,"../../hakurei":115,"../../object/menu_item/eyedrops":165,"./base":191}],199:[function(require,module,exports){
+},{"../../config/item":3,"../../constant":6,"../../hakurei":115,"../../object/menu_item/eyedrops":167,"./base":192}],200:[function(require,module,exports){
 'use strict';
 
 // TODO: use_eyedrops だけでなく、picture クラス(指定の1枚絵を表示する)
@@ -48702,7 +48598,7 @@ SceneSubStageGetHat.prototype.draw = function(){
 };
 module.exports = SceneSubStageGetHat;
 
-},{"../../hakurei":115,"./base":191}],200:[function(require,module,exports){
+},{"../../hakurei":115,"./base":192}],201:[function(require,module,exports){
 'use strict';
 
 // TODO: use_eyedrops だけでなく、picture クラス(指定の1枚絵を表示する)
@@ -48767,7 +48663,7 @@ SceneSubStageJournal.prototype.afterDraw = function(){
 };
 module.exports = SceneSubStageJournal;
 
-},{"../../hakurei":115,"./base":191}],201:[function(require,module,exports){
+},{"../../hakurei":115,"./base":192}],202:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('./base');
@@ -48858,7 +48754,7 @@ SceneSubStagePlay.prototype.afterDraw = function(){
 
 module.exports = SceneSubStagePlay;
 
-},{"../../hakurei":115,"./base":191}],202:[function(require,module,exports){
+},{"../../hakurei":115,"./base":192}],203:[function(require,module,exports){
 'use strict';
 
 // オブジェクトとの会話サブシーン
@@ -48996,12 +48892,11 @@ SceneSubStageObjectTalk.prototype._showMessage = function() {
 
 module.exports = SceneSubStageObjectTalk;
 
-},{"../../hakurei":115,"./base":191}],203:[function(require,module,exports){
+},{"../../hakurei":115,"./base":192}],204:[function(require,module,exports){
 'use strict';
 
 var base_scene = require('../hakurei').scene.base;
 var util = require('../hakurei').util;
-var CONSTANT = require('../constant');
 var SS = require('../object/anime_object');
 var StartAnimeJson = require('../data/anime/title/title01_anime_1');
 var IngAnimeJson = require('../data/anime/title/title02_anime_1');
@@ -49020,9 +48915,9 @@ var MENU = [
 	// continue
 	["ui-titlepg-btn-con", function (core) {
 		// セーブデータがあれば
-		return core.save_manager.getCurrentField() ? true : false;
+		return core.save_manager.player.getCurrentField() ? true : false;
 	}, function (core) {
-		core.changeScene("stage", core.save_manager.getCurrentField());
+		core.changeScene("stage", core.save_manager.player.getCurrentField());
 	}],
 	// config
 	/*
@@ -49195,7 +49090,288 @@ SceneTitle.prototype.getAlpha = function(){
 };
 module.exports = SceneTitle;
 
-},{"../constant":6,"../data/anime/title/title01_anime_1":104,"../data/anime/title/title02_anime_1":105,"../data/anime/title/title03_anime_1":106,"../hakurei":115,"../object/anime_object":160}],204:[function(require,module,exports){
+},{"../data/anime/title/title01_anime_1":104,"../data/anime/title/title02_anime_1":105,"../data/anime/title/title03_anime_1":106,"../hakurei":115,"../object/anime_object":162}],205:[function(require,module,exports){
+'use strict';
+
+var base_class = require('../hakurei').storage.base;
+var Util = require('../hakurei').util;
+
+var StorageEvent = function() {
+	base_class.apply(this, arguments);
+};
+Util.inherit(StorageEvent, base_class);
+
+// セーブファイル名
+StorageEvent.KEY = function() {
+	return "3rdeye_event";
+};
+
+// イベントを再生済か取得
+StorageEvent.prototype.isPlayedEvent = function(event_name) {
+	var played_event_map = this.get("played_event_map");
+
+	if(!played_event_map) return false;
+
+	return played_event_map[event_name] ? true : false;
+};
+// イベントを再生済に設定
+StorageEvent.prototype.setPlayedEvent = function(event_name) {
+	var played_event_map = this.get("played_event_map");
+
+	if(!played_event_map) {
+		played_event_map = {};
+	}
+
+	played_event_map[event_name] = true;
+
+	this.set("played_event_map", played_event_map);
+};
+
+module.exports = StorageEvent;
+
+},{"../hakurei":115}],206:[function(require,module,exports){
+'use strict';
+
+// セーブデータ
+var base_class = require('../hakurei').storage.base;
+var Util = require('../hakurei').util;
+
+var StorageItem = function() {
+	base_class.apply(this, arguments);
+};
+Util.inherit(StorageItem, base_class);
+
+// セーブファイル名
+StorageItem.KEY = function() {
+	return "3rdeye_item";
+};
+
+// 取得しているアイテム一覧を取得
+StorageItem.prototype.getItemList = function() {
+	var list = this.get("item_list");
+
+	if(!list) list = [];
+
+	return list;
+};
+
+// 取得しているアイテム一覧を取得
+StorageItem.prototype.getItem = function(index){
+	var list = this.getItemList();
+
+	return list[index];
+};
+
+// アイテムを追加(追加したアイテムのindexを返す)
+StorageItem.prototype.addItem = function(item_id){
+	var list = this.getItemList();
+
+	list.push(item_id);
+	this.set("item_list", list);
+	return list.length - 1;
+};
+// アイテムを削除
+StorageItem.prototype.deleteItem = function(target_item_id) {
+	var list = this.getItemList();
+
+	for (var i = 0, len = list.length; i < len; i++) {
+		var item_id = list[i];
+
+		if (item_id === target_item_id) {
+			list.splice(i, 1);
+			break;
+		}
+	}
+
+	this.set("item_list", list);
+};
+
+module.exports = StorageItem;
+
+},{"../hakurei":115}],207:[function(require,module,exports){
+'use strict';
+
+// セーブデータ
+var base_class = require('../hakurei').storage.base;
+var Util = require('../hakurei').util;
+
+var StorageJournal = function() {
+	base_class.apply(this, arguments);
+};
+Util.inherit(StorageJournal, base_class);
+
+// セーブファイル名
+StorageJournal.KEY = function() {
+	return "3rdeye_journal";
+};
+
+// 取得しているジャーナル一覧を取得
+StorageJournal.prototype.getJournalList = function() {
+	var list = this.get("journal_list");
+
+	if(!list) list = [];
+
+	return list;
+};
+
+// 取得しているジャーナル一覧を取得
+StorageJournal.prototype.getJournal = function(index){
+	var list = this.getJournalList();
+
+	return list[index];
+};
+
+// ジャーナルを追加(追加したジャーナルのindexを返す)
+StorageJournal.prototype.addJournal = function(journal_id){
+	var list = this.getJournalList();
+
+	list.push(journal_id);
+	this.set("journal_list", list);
+	return list.length - 1;
+};
+module.exports = StorageJournal;
+
+},{"../hakurei":115}],208:[function(require,module,exports){
+'use strict';
+
+// セーブデータ
+var base_class = require('../hakurei').storage.base;
+var Util = require('../hakurei').util;
+
+var StoragePiece = function() {
+	base_class.apply(this, arguments);
+};
+Util.inherit(StoragePiece, base_class);
+
+// セーブファイル名
+StoragePiece.KEY = function() {
+	return "3rdeye_piece";
+};
+
+StoragePiece.prototype.getPieceDataMap = function() {
+	var map = this.get("piece_data_map");
+
+	if(!map) map = {};
+
+	return map;
+};
+
+StoragePiece.prototype.getPieceData = function(field_name, piece_no, key) {
+	var map = this.getPieceDataMap();
+
+	var data = map[field_name + "_" + piece_no];
+
+	if(!data) data = {};
+
+	return data[key];
+};
+
+StoragePiece.prototype.setPieceData = function(field_name, piece_no, key, value) {
+	var map = this.getPieceDataMap();
+
+	var data = map[field_name + "_" + piece_no];
+
+	if(!data) data = {};
+
+	data[key] = value;
+	map[field_name + "_" + piece_no] = data;
+
+	this.set("piece_data_map", map);
+};
+
+module.exports = StoragePiece;
+
+},{"../hakurei":115}],209:[function(require,module,exports){
+'use strict';
+
+// セーブデータ
+var base_class = require('../hakurei').storage.base;
+var Util = require('../hakurei').util;
+var CONSTANT = require('../constant');
+
+var StoragePlayer = function() {
+	base_class.apply(this, arguments);
+};
+Util.inherit(StoragePlayer, base_class);
+
+// セーブファイル名
+StoragePlayer.KEY = function() {
+	return "3rdeye_player";
+};
+
+// 3rd eye ゲージの取得
+StoragePlayer.prototype.get3rdeyeGauge = function(){
+	var gauge;
+	if (this.exists("3rdeye_gauge")) {
+		gauge = this.get("3rdeye_gauge");
+	}
+	else {
+		gauge = CONSTANT.MAX_3RDEYE_GAUGE;
+	}
+
+	return gauge;
+};
+// 3rd eye ゲージの上昇
+StoragePlayer.prototype.gain3rdeyeGauge = function(num){
+	var gauge = this.get3rdeyeGauge();
+
+	gauge += num;
+
+	if (gauge > CONSTANT.MAX_3RDEYE_GAUGE) {
+		gauge = CONSTANT.MAX_3RDEYE_GAUGE;
+	}
+
+	this.set("3rdeye_gauge", gauge);
+};
+
+// 3rd eye ゲージの消費
+StoragePlayer.prototype.reduce3rdeyeGauge = function(num){
+	var gauge = this.get3rdeyeGauge();
+
+	gauge -= num;
+
+	if (gauge < 0) {
+		gauge = 0;
+	}
+
+	this.set("3rdeye_gauge", gauge);
+};
+
+// 充血の進行度(レベル)
+StoragePlayer.prototype.get3rdeyeBloodShotLevel = function() {
+	var gauge = this.get3rdeyeGauge();
+	if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 3 / 4) {
+		return 1;
+	}
+	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 2 / 4) {
+		return 2;
+	}
+	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 1 / 4) {
+		return 3;
+	}
+	else if (gauge > CONSTANT.MAX_3RDEYE_GAUGE * 0 / 4) {
+		return 4;
+	}
+	else {
+		// NOTE: ゲームオーバーなのでここにはこないはず
+		return 4;
+	}
+};
+
+// 現在のフィールドを取得
+StoragePlayer.prototype.getCurrentField = function() {
+	var field_name = this.get("current_field");
+
+	return field_name;
+};
+// 現在のフィールドを設定
+StoragePlayer.prototype.setCurrentField = function(field_name) {
+	this.set("current_field", field_name);
+};
+
+module.exports = StoragePlayer;
+
+},{"../constant":6,"../hakurei":115}],210:[function(require,module,exports){
 //-----------------------------------------------------------
 // Ss5ConverterToSSAJSON v1.0.3
 //
@@ -49637,4 +49813,4 @@ module.exports = {
 
 
 
-},{}]},{},[159]);
+},{}]},{},[161]);
