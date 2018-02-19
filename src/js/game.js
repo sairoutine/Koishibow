@@ -62,7 +62,7 @@ Game.prototype.setupDebug = function (dom) {
 
 	// テキスト追加
 	this.debug_manager.addMenuText("Zキー：決定、調べる");
-	this.debug_manager.addMenuText("Xキー：キャンセル、サードアイ使用／解除");
+	this.debug_manager.addMenuText("Xキー：キャンセル、サードアイ使用／解除、押しっぱなしでライトの移動");
 	this.debug_manager.addMenuText("SPACEキー：メニュー開く／閉じる");
 
 	this.debug_manager.addMenuImage("https://api.travis-ci.org/sairoutine/Koishibow.svg?branch=gh-pages");
