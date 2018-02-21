@@ -83,7 +83,7 @@ SceneSubStagePlay.prototype._durationButtonXDownCount = function(){
 		this._key_down_count_of_button_x++;
 	}
 	else {
-		if(0 < this._key_down_count_of_button_x && this._key_down_count_of_button_x < 10) { //10フレーム長押し
+		if(0 < this._key_down_count_of_button_x && this._key_down_count_of_button_x < 15) { //15フレーム長押し
 			this._is_player_use_3rdeye = true;
 		}
 
