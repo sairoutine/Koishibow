@@ -30791,8 +30791,8 @@ module.exports = {
 			action_name: "touch",
 			sound_name: "chapter0-hospital_corridor1-sound_strecher",
 			position_type: "front",
-			target_x: 650,
-			target_y: 616,
+			width: 400,
+			height: 200,
 		},
 		{
 			no: ++I,
@@ -30949,8 +30949,8 @@ module.exports = {
 			],
 			x: 815,
 			y: 515,
-			width: 250,
-			height: 250,
+			width: 200,
+			height: 200,
 			scale: 0.7,
 			anime1: "chapter0-mansion_corridor1-obj-02-01-obj01",
 			anime2: "chapter0-mansion_corridor1-obj-02-01-obj02",
@@ -31109,7 +31109,7 @@ module.exports = {
 			],
 			x: 650,
 			y: 285,
-			width: 200,
+			width: 100,
 			height: 330,
 			target_x: 526, target_y: 417,
 			scale: 2/3,
@@ -31133,7 +31133,9 @@ module.exports = {
 
 			x: 715,
 			y: 270,
-			target_x: 526, target_y: 417,
+			width: 100,
+			height: 330,
+
 			scale: 2/3,
 			anime1: "chapter0-mansion_corridor3-obj-07-01-obj01",
 			anime2: "chapter0-mansion_corridor3-obj-07-01-obj02",
@@ -31211,6 +31213,7 @@ module.exports = {
 			image: "eyedrops",
 			x: 590,
 			y: 290,
+			height: 330,
 			scale: 2/3,
 			item_id: CONSTANT.ITEM.EYEDROPS
 		},
@@ -31401,9 +31404,6 @@ util.inherit(Game, core);
 Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
 
-	// カーソル設定
-	this.enableCursorImage("ui_icon_pointer_01");
-
 	// シーン遷移
 	this.changeScene("loading");
 };
@@ -31416,7 +31416,9 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.setOn(dom);
 
 	// テキスト追加
-	this.debug_manager.addMenuText("マウスクリックで移動／調べる");
+	this.debug_manager.addMenuText("Zキー：決定、調べる");
+	this.debug_manager.addMenuText("Xキー：キャンセル、サードアイ使用／解除、押しっぱなしでライトの移動");
+	this.debug_manager.addMenuText("SPACEキー：メニュー開く／閉じる");
 
 	this.debug_manager.addMenuImage("https://api.travis-ci.org/sairoutine/Koishibow.svg?branch=gh-pages");
 
@@ -44060,11 +44062,13 @@ module.exports = ObjectBlackMist;
 
 // こいしの歩く速度
 var SPEED = 2;
+var SPEED_NANAME = SPEED / Math.sqrt(2);
 
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 var DrawSerif = require('../logic/draw_serif');
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 
 
 /* 使用用途	リピート	fps	フレーム	時間 */
@@ -44261,6 +44265,100 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 	}
 };
 
+Koishi.prototype.moveByInput = function() {
+	// 移動不可であれば何もしない
+	if (!this.scene.isEnableToMove()) return;
+
+	var is_move = false;
+	var add_x = 0;
+	var add_y = 0;
+
+	/* 移動量計算 */
+
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
+	) {
+		add_x = -SPEED_NANAME;
+		add_y = -SPEED_NANAME;
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
+	) {
+		add_x = -SPEED_NANAME;
+		add_y = +SPEED_NANAME;
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
+	) {
+		add_x = +SPEED_NANAME;
+		add_y = -SPEED_NANAME;
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
+	) {
+		add_x = +SPEED_NANAME;
+		add_y = +SPEED_NANAME;
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
+		add_x = -SPEED;
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
+		add_x = +SPEED;
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
+		add_y = -SPEED;
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
+		add_y = +SPEED;
+	}
+
+	/* 移動したフラグ */
+
+	if(add_x || add_y) {
+		is_move = true;
+	}
+
+	/* 移動 */
+	this.x(this.x() + add_x);
+	this.y(this.y() + add_y);
+
+	/* オブジェクトとの衝突したら戻す */
+	if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
+		this.x(this.x() - add_x);
+		this.y(this.y() - add_y);
+		is_move = false;
+	}
+
+	/* モーション変更 */
+	if (is_move) {
+		// 歩きモーションに変更
+		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
+			this.setWalkAnime();
+		}
+	}
+	else {
+		// 歩いてないので待機モーションに変更
+		if(this.isPlaying("walk_nohat") || this.isPlaying("walk")) {
+			this.setWaitAnime();
+		}
+	}
+
+
+};
+
+
+
+
+
+
+
+
 Koishi.prototype.jsonAnimeMap = function() {
 	return {
 		// 静止
@@ -44410,6 +44508,17 @@ Koishi.prototype._showText = function(lines) {
 	DrawSerif.drawText(this, ctx, lines);
 };
 
+
+Koishi.prototype.collisionWidth = function(){
+	return 100;
+};
+
+Koishi.prototype.collisionHeight = function(){
+	return 1;
+};
+
+
+
 module.exports = Koishi;
 
 },{"../constant":6,"../data/anime/koishi/nohat_reaction_touch_anime_1":91,"../data/anime/koishi/nohat_wait_anime_1":92,"../data/anime/koishi/nohat_walk_anime_1":93,"../data/anime/koishi/reaction_3rdeye_anime_1":94,"../data/anime/koishi/reaction_look_bottom_anime_1":95,"../data/anime/koishi/reaction_look_front_anime_1":96,"../data/anime/koishi/reaction_look_top_anime_1":97,"../data/anime/koishi/reaction_touch_anime_1":98,"../data/anime/koishi/reaction_yes_anime_1":99,"../data/anime/koishi/wait_anime_1":100,"../data/anime/koishi/walk_anime_1":101,"../hakurei":115,"../logic/draw_serif":160,"./ss_anime_base":176}],165:[function(require,module,exports){
@@ -44436,6 +44545,7 @@ var CIRCLE2_RADIUS = 60;
 
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 
 var ObjectLight3rdeye = function(core) {
 	base_object.apply(this, arguments);
@@ -44443,6 +44553,8 @@ var ObjectLight3rdeye = function(core) {
 	this._radian = null;
 	this._pivot_x = null;
 	this._pivot_y = null;
+
+	this._light_y = 0;
 };
 Util.inherit(ObjectLight3rdeye, base_object);
 
@@ -44452,10 +44564,21 @@ ObjectLight3rdeye.prototype.init = function(){
 	this._radian = null;
 	this._pivot_x = null;
 	this._pivot_y = null;
+
+	this._light_y = 0;
 };
 
 ObjectLight3rdeye.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
+
+	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
+		if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
+			this._light_y-=10;
+		}
+		else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
+			this._light_y+=10;
+		}
+	}
 };
 
 // ライトの角度、位置
@@ -44570,13 +44693,9 @@ ObjectLight3rdeye.prototype._drawLight = function(){
 
 // こいしからマウスまでの角度(radian)
 ObjectLight3rdeye.prototype._calcRadianFromKoishiToMouse = function(){
-	var x = this.core.input_manager.mousePositionX();
-	var y = this.core.input_manager.mousePositionY();
-
-	var ax = x - this.scene.koishi.x();
-	var ay = y - this.scene.koishi.y();
+	var ax = this.scene.koishi.isReflect() ? -200 : 200;
+	var ay = this._light_y;
 	var rad = Math.atan2(ay, ax);
-
 	return rad;
 };
 
@@ -44663,20 +44782,6 @@ var ObjectMenuItemBase = function(scene) {
 	base_object.apply(this, arguments);
 };
 Util.inherit(ObjectMenuItemBase, base_object);
-
-ObjectMenuItemBase.prototype.onCollision = function() {
-	if (this.core.input_manager.isLeftClickPush()) {
-		// アイテム選択 音
-		this.core.audio_loader.playSound("select_item");
-
-		// 選択中を自分に
-		this.scene.setFocusItem(this.item_id());
-	}
-	else {
-		// クリック可能を表すマウスカーソルに
-		//this.core.changeCursorImage("ui_icon_pointer_02");
-	}
-};
 
 ObjectMenuItemBase.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
@@ -45272,14 +45377,23 @@ ObjectBase.prototype.init = function(){
 	this.no = null;
 };
 
-ObjectBase.prototype.onCollision = function(point) {
-	if(this.core.input_manager.isLeftClickPush()) {
-		this.onCollisionWithClick(point);
+var TOUCH_AREA = 50;
+ObjectBase.prototype.checkIsInTouchArea = function(obj) {
+	if (!this.isCollision(obj) || !obj.isCollision(this)) return false;
+
+	var this_collsion_width  = this.collisionWidth(obj)  + TOUCH_AREA;
+	var this_collsion_height = this.collisionHeight(obj) + TOUCH_AREA;
+
+	if(Math.abs(this.x() - obj.x()) < this_collsion_width/2 + obj.collisionWidth(this)/2 &&
+		Math.abs(this.y() - obj.y()) < this_collsion_height/2 + obj.collisionHeight(this)/2) {
+		return true;
 	}
-	else {
-		this.onCollisionWithMouseOver(point);
-	}
+
+	return false;
 };
+
+
+
 
 // マウスクリック時のイベント
 ObjectBase.prototype.onCollisionWithClick = function(point) {
@@ -45344,12 +45458,12 @@ ObjectBase.prototype.onUnUse3rdEye = function(){
 ObjectBase.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);
 	area.init();
-	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
+	area.setPosition(this.x(), this.y());
 	if (this._position_type === "lying") {
 		area.setSize(0, 0);
 	}
 	else {
-		area.setSize(this.collisionWidth(), this.collisionHeight()/2);
+		area.setSize(this.collisionWidth(), this.collisionHeight());
 	}
 	area.setParentID(this.id);
 
@@ -45522,6 +45636,7 @@ module.exports = ObjectItem;
 'use strict';
 var base_object = require('./acquirable_base');
 var Util = require('../../hakurei').util;
+var WalkImmovableArea = require('../walk_immovable_area');
 
 var ObjectJournal = function(core) {
 	base_object.apply(this, arguments);
@@ -45554,9 +45669,21 @@ ObjectJournal.prototype.acquire = function() {
 	this.core.audio_loader.playSound("show_journal");
 };
 
+ObjectJournal.prototype.getImmovableArea = function() {
+	var area = new WalkImmovableArea(this.scene);
+	area.init();
+	area.setPosition(this.x(), this.y());
+	area.setSize(0, 0);
+	area.setParentID(this.id);
+
+	return area;
+};
+
+
+
 module.exports = ObjectJournal;
 
-},{"../../hakurei":115,"./acquirable_base":168}],175:[function(require,module,exports){
+},{"../../hakurei":115,"../walk_immovable_area":182,"./acquirable_base":168}],175:[function(require,module,exports){
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
@@ -45725,6 +45852,9 @@ SsAnimeBase.prototype.init = function(){
 	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
 
 	this.ss = new SsSprite(this.animation);
+};
+SsAnimeBase.prototype.isPlaying = function(name){
+	return this.current_anime === name ? true : false;
 };
 
 SsAnimeBase.prototype.changeAnimation = function(name){
@@ -45911,10 +46041,12 @@ ObjectEye.prototype.onCollision = function(obj){
 	}
 };
 
-// クリックしてるときしか onCollision を呼ばない
+
+// 現状、表示UIとしてしか使ってないので、当たり判定不要
 ObjectEye.prototype.isCollision = function() {
-	return this.core.input_manager.isLeftClickPush() ? true : false;
+	return false;
 };
+
 
 ObjectEye.prototype.setPosition = function(){
 	this.x(1320 * 2/3);
@@ -46009,9 +46141,9 @@ ObjectItemMenuButton.prototype.onCollision = function(obj){
 	}
 };
 
-// クリックしてるときしか onCollision を呼ばない
+// 現状、表示UIとしてしか使ってないので、当たり判定不要
 ObjectItemMenuButton.prototype.isCollision = function() {
-	return this.core.input_manager.isLeftClickPush() ? true : false;
+	return false;
 };
 
 ObjectItemMenuButton.prototype.collisionWidth = function(){
@@ -46074,7 +46206,6 @@ module.exports = ObjectLeftNextFieldButton;
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
-var CONSTANT = require('../../constant');
 
 
 
@@ -46099,11 +46230,14 @@ ObjectNextFieldButtonBase.prototype.onCollision = function(obj){
 		this.scene.switchEyeOff();
 	}
 
+	// 歩きモーション解除
+	this.scene.koishi.setWaitAnime();
+
+
 	// chapter 0 の自室であれば遷移前／遷移先の際に、ドアを開ける音を鳴らす
 	if (current_field_name === "chapter0_myroom" || next_field_name === "chapter0_myroom") {
 		this.core.audio_loader.playSound("chapter0-myroom-door_open");
 	}
-
 	/*
 	 * TODO:
 	// 屋敷の廊下2はイベント再生する
@@ -46120,12 +46254,12 @@ ObjectNextFieldButtonBase.prototype.onCollision = function(obj){
 };
 
 ObjectNextFieldButtonBase.prototype.isShow = function() {
-	return this.nextFieldName() ? true : false;
+	return false;
 };
 
 // クリックしてるときしか onCollision を呼ばない
 ObjectNextFieldButtonBase.prototype.isCollision = function() {
-	return this.nextFieldName() && this.core.input_manager.isLeftClickPush() ? true : false;
+	return this.nextFieldName() ? true : false;
 };
 
 
@@ -46143,7 +46277,7 @@ ObjectNextFieldButtonBase.prototype.collisionWidth = function(){
 };
 
 ObjectNextFieldButtonBase.prototype.collisionHeight = function(){
-	return 64;
+	return this.scene.height;
 };
 
 ObjectNextFieldButtonBase.prototype.spriteName = function(){
@@ -46167,7 +46301,7 @@ ObjectNextFieldButtonBase.prototype.scaleWidth = function(){
 
 module.exports = ObjectNextFieldButtonBase;
 
-},{"../../constant":6,"../../hakurei":115}],181:[function(require,module,exports){
+},{"../../hakurei":115}],181:[function(require,module,exports){
 'use strict';
 var base_object = require('./next_field_button_base');
 var Util = require('../../hakurei').util;
@@ -46430,6 +46564,7 @@ var base_scene = require('../../../hakurei').scene.base;
 var ObjectPoint = require('../../../hakurei').object.point;
 var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
+var CONSTANT_BUTTON = require('../../../hakurei').constant.button;
 var SerifManager = require('../../../hakurei').serif_manager;
 var BlackMist = require('../../../object/black_mist');
 var DrawSerif = require('../../../logic/draw_serif');
@@ -46575,7 +46710,7 @@ SceneSceneEventEncounterSatori.prototype.beforeDraw = function(){
 
 
 
-	if(this.core.input_manager.isLeftClickPush()) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
 		if (this.eye.current_anime === EYE_WAITING_ANIME && this.satori.current_anime === SATORI_WAITING_ANIME) {
 			// 目はさとりの方を見る
 			this.eye.playAnimationOnce(EYE_SEE_RIGHT_AND_BLINK_ANIME);
@@ -46811,7 +46946,7 @@ module.exports = SceneGameover;
 var base_scene = require('../hakurei').scene.base;
 
 var Util = require('../hakurei').util;
-var CONSTANT = require('../constant');
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 
 var HOWTO_IMAGE_RATIO = 3/4;
 
@@ -46835,7 +46970,7 @@ SceneHowto.prototype.init = function(){
 SceneHowto.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	if(this.core.input_manager.isLeftClickPush()) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
 		this.core.audio_loader.playSound("show_journal");
 		this.core.changeScene("stage", "chapter0_myroom");
 	}
@@ -46866,7 +47001,7 @@ SceneHowto.prototype.draw = function(){
 };
 module.exports = SceneHowto;
 
-},{"../constant":6,"../hakurei":115}],189:[function(require,module,exports){
+},{"../hakurei":115}],189:[function(require,module,exports){
 'use strict';
 
 // タイトル画面の放置演出
@@ -47524,8 +47659,7 @@ module.exports = SceneSceneSubStageBase;
 var base_scene = require('../../base');
 var Util = require('../../../../hakurei').util;
 
-var CONSTANT = require('../../../../constant');
-
+var CONSTANT_BUTTON = require('../../../../hakurei').constant.button;
 var ObjectChapter0Hat = require('../../../../object/pieces/chapter0_hat');
 
 var SceneEventChapter0GetHat = function(core) {
@@ -47560,31 +47694,18 @@ SceneEventChapter0GetHat.prototype.init = function(){
 SceneEventChapter0GetHat.prototype.beforeDraw = function() {
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	// 当たり判定チェック
-	this._collisionCheck();
-};
+	// こいしの移動
+	this.root().koishi.moveByInput();
 
-// 当たり判定チェック
-SceneEventChapter0GetHat.prototype._collisionCheck = function(){
-	// マウス座標取得
-	var x = this.core.input_manager.mousePositionX();
-	var y = this.core.input_manager.mousePositionY();
-
-	// フィールドの各種オブジェクトとの当たり判定
-	if(this.hat.checkCollisionWithPosition(x, y)) {
-		return true;
-	}
-
-	// UI と 画面上のオブジェクトの どれとも当たり判定しなかったら
-	if(this.core.input_manager.isLeftClickPush()) {
-		var point = this.core.input_manager.mousePositionPoint(this.root());
-		// こいしを移動
-		this.root().koishi.setMoveTarget(point);
+	if (this.hat.checkIsInTouchArea(this.root().koishi)) {
+		if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+			this.hat.onAfterWalkToHere();
+		}
+		else {
+			// TODO: 調べられるよカーソルを表示
+		}
 	}
 };
-
-
-
 
 // 画面更新
 SceneEventChapter0GetHat.prototype.draw = function(){
@@ -47622,7 +47743,7 @@ SceneEventChapter0GetHat.prototype.draw = function(){
 
 module.exports = SceneEventChapter0GetHat;
 
-},{"../../../../constant":6,"../../../../hakurei":115,"../../../../object/pieces/chapter0_hat":172,"../../base":192}],194:[function(require,module,exports){
+},{"../../../../hakurei":115,"../../../../object/pieces/chapter0_hat":172,"../../base":192}],194:[function(require,module,exports){
 'use strict';
 
 var SPEED = 4;
@@ -47888,6 +48009,7 @@ var base_scene = require('./base');
 
 var Util = require('../../hakurei').util;
 var JournalConfig = require('../../config/journal');
+var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
 var SceneSubStageJournal = function(core) {
 	base_scene.apply(this, arguments);
@@ -47908,7 +48030,7 @@ SceneSubStageJournal.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	// プレイに戻る
-	if(this.core.input_manager.isLeftClickPush()) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
 		this.core.audio_loader.playSound("show_journal");
 		this.root().changeSubScene("play");
 	}
@@ -47957,12 +48079,15 @@ var UIParts = require('../../hakurei').object.ui_parts;
 var Util = require('../../hakurei').util;
 //var CONSTANT = require('../../constant');
 var JournalConfig = require('../../config/journal');
+var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
 
 
 var SceneSubStageJournalMenu = function(core) {
 	base_scene.apply(this, arguments);
 
+	// どのジャーナルを選択しているか
+	this._index = 0;
 };
 Util.inherit(SceneSubStageJournalMenu, base_scene);
 
@@ -47972,47 +48097,8 @@ SceneSubStageJournalMenu.prototype.init = function(){
 	this._setupMenuTitle();
 	this.addObjects(this.menu_journal_list);
 
-	// アイテムメニューへ
-	var basePosX = 300;
-	var basePosY = this.root().height - 165 + 105/3;
-	var buttonWidth  = 250*2/3;
-	var buttonHeight = 105*2/3;
-	var buttonMarginWidth  = 15;
-	this.goto_item_button = new UIParts(
-		this,
-		basePosX + (buttonWidth + buttonMarginWidth) * 3,
-		basePosY,
-		buttonWidth,
-		buttonHeight,
-		function() {
-			var ctx = this.core.ctx;
-
-			// フォーカスを当てると明るくなる
-			var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu2');
-
-			ctx.save();
-			ctx.drawImage(button_window,
-				this.getCollisionLeftX(),
-				this.getCollisionUpY(),
-				button_window.width*2/3,
-				button_window.height*2/3
-			);
-
-			// メニュー文字 表示
-			ctx.font = "24px 'OradanoGSRR'";
-			ctx.textAlign = 'center';
-			ctx.textBaseAlign = 'middle';
-			ctx.fillStyle = 'rgb( 255, 255, 255 )';
-			ctx.fillText("アイテム→",
-				this.getCollisionLeftX() + 85,
-				this.getCollisionUpY()   + 40
-			);
-
-			ctx.restore();
-		}
-	);
-	this.addObject(this.goto_item_button);
-
+	// どのジャーナルを選択しているか
+	this._index = 0;
 };
 SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 
@@ -48049,20 +48135,21 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 					ctx.textBaseAlign = 'middle';
 					ctx.font = "28px 'OradanoGSRR'";
 					ctx.fillStyle = 'rgb( 255, 255, 255 )';
-					ctx.fillText(conf.title,
+
+					var prefix = this.no === self._index ? "▶" : "";
+					ctx.fillText(prefix + conf.title,
 						this.getCollisionLeftX(),
 						this.getCollisionUpY() + 28
 					);
 					ctx.restore();
 				}
 			)
+			ui.setVariable("no", i-1);
 
 			// TODO: 戻り先をちゃんとする
 			// クリックされたら
 			ui.setCollisionCallback(function () {
-				if (this.core.input_manager.isLeftClickPush()) {
-					this.scene.root().changeSubScene("journal", conf.id);
-				}
+				this.scene.root().changeSubScene("journal", conf.id);
 			});
 
 			self.menu_journal_list.push(ui);
@@ -48074,22 +48161,38 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 SceneSubStageJournalMenu.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	// マウス座標取得
-	var mouse_point = this.core.input_manager.mousePositionPoint(this);
+	// 選択
+	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);
+	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN);
 
 	// アイテムメニューを閉じる
-	if(this.root().item_menu_button.checkCollisionWithObject(mouse_point)) {
-		return true;
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_SPACE)) {
+		this.root().item_menu_button.onCollision();
 	}
-	// ジャーナルタイトルとの当たり判定
-	else if(mouse_point.checkCollisionWithObjects(this.menu_journal_list)) {
-		return true;
+	// ジャーナルタイトル 決定
+	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		this.menu_journal_list[this._index].onCollision();
+	}
+	// ジャーナルタイトル 選択
+	else if(is_up_push || is_down_push) {
+		// 上
+		if (is_up_push) {
+			this._index--;
+			if (this._index < 0) {
+				this._index = 0;
+			}
+		}
+		// 下
+		else if (is_down_push) {
+			this._index++;
+			if (this._index > this.menu_journal_list.length - 1) {
+				this._index = this.menu_journal_list.length - 1;
+			}
+		}
 	}
 	// アイテムメニューへ
-	else if(this.goto_item_button.checkCollisionWithObject(mouse_point)) {
-		if (this.core.input_manager.isLeftClickPush()) {
-			this._goToItemMenu();
-		}
+	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+		this._goToItemMenu();
 	}
 };
 
@@ -48159,12 +48262,14 @@ module.exports = SceneSubStageJournalMenu;
 },{"../../config/journal":4,"../../hakurei":115,"./base":192}],199:[function(require,module,exports){
 'use strict';
 
+// TODO: ジャーナルに行くボタン
 var base_scene = require('./base');
 
 var UIParts = require('../../hakurei').object.ui_parts;
 var Util = require('../../hakurei').util;
 var CONSTANT = require('../../constant');
 var ItemConfig = require('../../config/item');
+var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
 
 var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
@@ -48172,6 +48277,13 @@ var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
 var SceneSubStageMenu = function(core) {
 	base_scene.apply(this, arguments);
 
+	this._index_item_vertical = 0;
+	this._index_item_horizontal = 0;
+
+	this.menu_ui = [];
+	this._index_ui = 0;
+
+	this._is_select_item = false;
 };
 Util.inherit(SceneSubStageMenu, base_scene);
 
@@ -48181,11 +48293,20 @@ SceneSubStageMenu.prototype.init = function(){
 	// 現在カーソルを合わせているアイテム
 	this.focus_item_id = null;
 
+	this._index_item_vertical = 0;
+	this._index_item_horizontal = 0;
+
+	this.menu_ui = [];
+	this._index_ui = 0;
+
+	this._is_select_item = false;
+
 	this._setupMenuItems();
-	this.addObjects(this.menu_item_list);
+	this.addObjects(flatten(this.menu_item_list));
 
 	this._setupMenuButtons();
-	this.addObjects([this.use_button, this.examine_button, this.combine_button]);
+	this.menu_ui = [this.use_button, this.examine_button, this.combine_button];
+	this.addObjects(this.menu_ui);
 
 	// ジャーナルへ
 	var basePosX = 300;
@@ -48301,82 +48422,136 @@ SceneSubStageMenu.prototype._setupMenuButtons = function() {
 
 SceneSubStageMenu.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
+	// 選択
+	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);
+	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN);
+	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_LEFT);
+	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_RIGHT);
 
-	// マウス座標取得
-	var mouse_point = this.core.input_manager.mousePositionPoint(this);
+	// アイテムメニューを閉じる(共通)
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_SPACE)) {
+		this.root().item_menu_button.onCollision();
+		return;
+	}
 
-	// アイテムメニューを閉じる
-	if(this.root().item_menu_button.checkCollisionWithObject(mouse_point)) {
-		return true;
-	}
-	// アイテムとマウスの当たり判定
-	else if(mouse_point.checkCollisionWithObjects(this.menu_item_list)) {
-		return true;
-	}
-	// 使用ボタンとマウスの当たり判定
-	else if(this.use_button.checkCollisionWithObject(mouse_point)) {
-		// 使用ボタン押下時
-		if (this.core.input_manager.isLeftClickPush()) {
-			// アイテム使用
-			this._useItem();
+
+	// アイテム未選択時
+	if (!this._is_select_item) {
+		// アイテムを選択
+		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+			this.core.audio_loader.playSound("select_item");
+			this._is_select_item = true;
+			return;
 		}
-		// 使用ボタン マウスオーバー時
-		else {
-			// アイテムを選択してないと使用できないので、onfocus 画像は反応させない
-			if (this.focus_item_id) {
-				this.use_button.setVariable("onfocus", true);
+		// 選択するアイテムを移動
+		else if (is_left_push || is_right_push || is_up_push || is_down_push) {
+			// 上
+			if (is_up_push) {
+				this._index_item_vertical--;
+				if (this._index_item_vertical < 0) {
+					this._index_item_vertical = 0;
+				}
+			}
+			// 下
+			else if (is_down_push) {
+				this._index_item_vertical++;
+				if (this._index_item_vertical > this.menu_item_list.length - 1) {
+					this._index_item_vertical = this.menu_item_list.length - 1;
+				}
+			}
+			// 左
+			if (is_left_push) {
+				this._index_item_horizontal--;
+				if (this._index_item_horizontal < 0) {
+					this._index_item_horizontal = 0;
+				}
+			}
+			// 右
+			else if (is_right_push) {
+				this._index_item_horizontal++;
+				if (this._index_item_horizontal > this.menu_item_list[this._index_item_vertical].length - 1) {
+					this._index_item_horizontal = this.menu_item_list[this._index_item_vertical].length - 1;
+				}
+			}
+
+		}
+
+		// アイテムを何も所持していないとき、存在しない可能性がある
+		if(this.menu_item_list[this._index_item_vertical][this._index_item_horizontal]) {
+			var item = this.menu_item_list[this._index_item_vertical][this._index_item_horizontal];
+			if(!this.isFocusItem(item.item_id)) {
+				// アイテム選択 音
+				this.core.audio_loader.playSound("select_item");
+
+				this.setFocusItem(item.item_id());
+			}
+		}
+
+	}
+	// アイテム選択時
+	else {
+		// アイテムを使用／調べる／組み合わせる
+		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+			var ui = this.menu_ui[this._index_ui];
+
+			if (ui === this.use_button) {
+				// アイテム使用
+				this._useItem();
+			}
+			else if (ui === this.examine_button) {
+				// アイテム調べる
+				this._examineItem();
+			}
+			else if (ui === this.combine_button) {
+				// アイテム組み合わせる
+				this._combineItem();
+			}
+			return;
+		}
+		// アイテム選択を解除
+		else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+			this._is_select_item = false;
+			// 各種ボタン マウスオーバー時 解除
+			this.use_button.setVariable("onfocus", false);
+			this.examine_button.setVariable("onfocus", false);
+			this.combine_button.setVariable("onfocus", false);
+		}
+		else if (is_left_push || is_right_push) {
+			// 左
+			if (is_left_push) {
+				this._index_ui--;
+				if (this._index_ui < 0) {
+					this._index_ui = 0;
+				}
+			}
+			// 右
+			else if (is_right_push) {
+				this._index_ui++;
+				if (this._index_ui > this.menu_ui.length - 1) {
+					this._index_ui = this.menu_ui.length - 1;
+				}
+			}
+		}
+
+		if (this._is_select_item) { // Xキーでキャンセルした場合があるので再度チェック
+			// カーソルのせたときにボタンを明るくする
+			for (var i = 0, len = this.menu_ui.length; i < len; i++) {
+				var menu = this.menu_ui[i];
+				if (i === this._index_ui) {
+					menu.setVariable("onfocus", true);
+				}
+				else {
+					menu.setVariable("onfocus", false);
+				}
 			}
 		}
 	}
-	// 調べるボタンとマウスの当たり判定
-	else if(this.examine_button.checkCollisionWithObject(mouse_point)) {
-		// 調べるボタン押下時
-		if (this.core.input_manager.isLeftClickPush()) {
-			// アイテム調べる
-			this._examineItem();
-		}
-		// 調べるボタン マウスオーバー時
-		else {
-			// アイテムを選択してないと使用できないので、onfocus 画像は反応させない
-			if (this.focus_item_id) {
-				this.examine_button.setVariable("onfocus", true);
-			}
-		}
-	}
-	// 組み合わせるボタンとマウスの当たり判定
-	else if(this.combine_button.checkCollisionWithObject(mouse_point)) {
-		// 組み合わせるボタン押下時
-		if (this.core.input_manager.isLeftClickPush()) {
-			// アイテム組み合わせる
-			this._combineItem();
-		}
-		// 組み合わせるボタン マウスオーバー時
-		else {
-			// アイテムを選択してないと使用できないので、onfocus 画像は反応させない
-			if (this.focus_item_id) {
-				this.combine_button.setVariable("onfocus", true);
-			}
-		}
-	}
+	/*
 	// ジャーナルへ
 	else if(this.goto_journal_button.checkCollisionWithObject(mouse_point)) {
-		if (this.core.input_manager.isLeftClickPush()) {
 			this._goToJounarlMenu();
-		}
 	}
-	else {
-		// アイテム画像と別の場所をクリックしたら、アイテム選択解除
-		if (this.core.input_manager.isLeftClickPush()) {
-			this.focus_item_id = null;
-		}
-
-		// 各種ボタン マウスオーバー時 解除
-		this.use_button.setVariable("onfocus", false);
-		this.examine_button.setVariable("onfocus", false);
-		this.combine_button.setVariable("onfocus", false);
-	}
-
-	return false;
+	*/
 };
 
 SceneSubStageMenu.prototype.draw = function(){
@@ -48455,18 +48630,19 @@ SceneSubStageMenu.prototype._useItem = function(){
 	var focus_item_id = this.focus_item_id;
 
 
-	for(var i = 0, len = this.menu_item_list.length; i < len; i++) {
-		var menu_item = this.menu_item_list[i];
+	var menu_item_list = flatten(this.menu_item_list);
+	for(var i = 0, len = menu_item_list.length; i < len; i++) {
+		var menu_item = menu_item_list[i];
 		if(menu_item.item_id() === focus_item_id) {
 			// 選択中から解除
 			this.focus_item_id = null;
 
-			// メニューの表示から削除
-			this.removeObject(menu_item);
-			this.menu_item_list.splice(i, 1);
-
 			// アイテム使用
 			menu_item.use();
+
+			// メニューの表示から削除
+			this.removeObject(menu_item);
+			this._setupMenuItems();
 
 			break;
 		}
@@ -48506,7 +48682,7 @@ SceneSubStageMenu.prototype.setFocusItem = function(item_id){
 	this.focus_item_id = item_id;
 };
 
-
+var TURN_NUM = 5;
 SceneSubStageMenu.prototype._setupMenuItems = function() {
 	var item_list = this.core.save_manager.item.getItemList();
 
@@ -48521,19 +48697,41 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 		else {
 			throw new Error ("Unknown item_id error: " + item_id);
 		}
+
+		var index_horizontal = i % TURN_NUM;
+		var index_vertical = Math.floor(i / TURN_NUM);
+
 		menu_item.init();
 		menu_item.setPosition(
-			180 + (i%5)*160,
-			180 + 160*(Math.floor(i/5))
+			180 + index_horizontal*160,
+			180 + 160 * index_vertical
 		);
-		this.menu_item_list.push(menu_item);
+
+		// 初期化
+		if(!this.menu_item_list[index_horizontal]) {
+			this.menu_item_list[index_horizontal] = [];
+		}
+
+		this.menu_item_list[index_horizontal][index_vertical] = menu_item;
 	}
+
+	// 初期化
+	// this.menu_item_list.length - 1 を参照することがあるので
+	if(!this.menu_item_list[0]) {
+		this.menu_item_list[0] = [];
+	}
+
+
 };
 
 
 SceneSubStageMenu.prototype._goToJounarlMenu = function() {
 	this.root().changeSubScene("journal_menu");
 };
+
+function flatten (nested_array) {
+	return Array.prototype.concat.apply([], nested_array);
+}
 
 module.exports = SceneSubStageMenu;
 
@@ -48670,17 +48868,22 @@ module.exports = SceneSubStageJournal;
 'use strict';
 
 var base_scene = require('./base');
+var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
 var Util = require('../../hakurei').util;
 
 var SceneSubStagePlay = function(core) {
 	base_scene.apply(this, arguments);
-
+	this._key_down_count_of_button_x = 0;
+	this._is_player_use_3rdeye = false;
 };
 Util.inherit(SceneSubStagePlay, base_scene);
 
 SceneSubStagePlay.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
+
+	this._key_down_count_of_button_x = 0;
+	this._is_player_use_3rdeye = false;
 };
 
 SceneSubStagePlay.prototype.beforeDraw = function(){
@@ -48699,53 +48902,64 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 		}
 	}
 
-	// 当たり判定チェック
-	this._collisionCheck();
-
-	// マウス右クリックでサードアイ使用
-	if(this.core.input_manager.isRightClickPush()) {
-		this.root().eye_button.onCollision();
-	}
-};
-
-// 当たり判定チェック
-SceneSubStagePlay.prototype._collisionCheck = function(){
-	// マウス座標取得
-	var x = this.core.input_manager.mousePositionX();
-	var y = this.core.input_manager.mousePositionY();
-
 	// シーン遷移
-	if(this.root().right_next_field_button.checkCollisionWithPosition(x, y)) {
+	if(this.root().right_next_field_button.checkCollisionWithObject(this.root().koishi)) {
 		return true;
 	}
-	// シーン遷移
-	else if(this.root().left_next_field_button.checkCollisionWithPosition(x, y)) {
+	else if(this.root().left_next_field_button.checkCollisionWithObject(this.root().koishi)) {
 		return true;
 	}
-	// アイテムメニュー
-	else if(this.root().item_menu_button.checkCollisionWithPosition(x, y)) {
-		return true;
-	}
-	// サードアイ使用
-	else if(this.root().eye_button.checkCollisionWithPosition(x, y)) {
-		return true;
-	}
+
+	// こいしの移動
+	this.root().koishi.moveByInput();
 
 	// フィールドの各種オブジェクトとの当たり判定
 	for (var i = this.root().pieces.length - 1; i >= 0; i--) { // i の大きい方が手前なので
 		var piece = this.root().pieces[i];
-		if(piece.checkCollisionWithPosition(x, y)) {
-			return true;
+		if (piece.checkIsInTouchArea(this.root().koishi)) {
+			if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+				piece.onAfterWalkToHere();
+			}
+			else {
+				// TODO: 調べられるよカーソルを表示
+			}
+			break;
 		}
 	}
 
-	// UI と 画面上のオブジェクトの どれとも当たり判定しなかったら
-	if(this.core.input_manager.isLeftClickPush()) {
-		var point = this.core.input_manager.mousePositionPoint(this.root());
-		// こいしを移動
-		this.root().koishi.setMoveTarget(point);
+	this._durationButtonXDownCount();
+	// サードアイ使用／使用解除
+	if (this._isPlayerUse3rdEye()) {
+		this.root().eye_button.onCollision();
+	}
+	// メニュー開く
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_SPACE)) {
+		this.root().item_menu_button.onCollision();
+	}
+
+};
+
+// プレイヤーが3rdeye使用を押下したかどうか
+SceneSubStagePlay.prototype._isPlayerUse3rdEye = function(){
+	return this._is_player_use_3rdeye;
+};
+// TODO: リファクタ
+SceneSubStagePlay.prototype._durationButtonXDownCount = function(){
+	this._is_player_use_3rdeye = false;
+	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
+		this._key_down_count_of_button_x++;
+	}
+	else {
+		if(0 < this._key_down_count_of_button_x && this._key_down_count_of_button_x < 10) { //10フレーム長押し
+			this._is_player_use_3rdeye = true;
+		}
+
+		this._key_down_count_of_button_x = 0;
 	}
 };
+
+
+
 
 SceneSubStagePlay.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
@@ -48768,6 +48982,7 @@ module.exports = SceneSubStagePlay;
 var base_scene = require('./base');
 var SerifManager = require('../../hakurei').serif_manager;
 var Util = require('../../hakurei').util;
+var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
 // クリックしてから次のセリフに移るまでの待機カウント
 var NEXT_TO_SERIF_WAITING_COUNT = 6;
@@ -48819,7 +49034,7 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 			this._serif.next();
 		}
 	}
-	else if(this.core.input_manager.isLeftClickPush()) { // セリフ送り待機中はクリックできない
+	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		if(this._serif.isEnd()) {
 
 			// オブジェクトに触れた際の会話だった場合、
@@ -48905,6 +49120,7 @@ var StartAnimeJson = require('../data/anime/title/title01_anime_1');
 var IngAnimeJson = require('../data/anime/title/title02_anime_1');
 var EndAnimeJson = require('../data/anime/title/title03_anime_1');
 
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 var UIParts = require('../hakurei').object.ui_parts;
 
 var MENU = [
@@ -48944,6 +49160,9 @@ var SceneTitle = function(core) {
 
 	// メニューボタンがクリックされたときのフレーム数
 	this._menu_clicked_frame_count = null;
+
+	// 現在どのUIを選択しているか
+	this._index = 0;
 };
 util.inherit(SceneTitle, base_scene);
 
@@ -48970,6 +49189,8 @@ SceneTitle.prototype.init = function(){
 
 	// メニューボタンがクリックされたときのフレーム数
 	this._menu_clicked_frame_count = null;
+
+	this._index = 0;
 };
 
 // メニューUI一覧
@@ -49006,45 +49227,58 @@ SceneTitle.prototype._generateMenuUI = function(){
 
 SceneTitle.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
-
 	this.ss.beforeDraw();
 
-	// マウスの位置を取得
-	var x = this.core.input_manager.mousePositionX();
-	var y = this.core.input_manager.mousePositionY();
+	// 選択
+	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_LEFT);
+	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_RIGHT);
+	if (is_left_push || is_right_push) {
+		// 左
+		if (is_left_push) {
+			this._index--;
+			if (this._index < 0) {
+				this._index = 0;
+			}
+		}
+		// 右
+		else if (is_right_push) {
+			this._index++;
+			if (this._index > MENU.length - 1) {
+				this._index = MENU.length - 1;
+			}
+		}
+	}
 
 	for (var i = 0, len = this.menu_ui.length; i < len; i++) {
 		var menu = this.menu_ui[i];
-
-		if(menu.checkCollisionWithPosition(x, y) && MENU[i][1](this.core)) {
-			// クリックしたら
-			if(this.core.input_manager.isLeftClickPush()) {
-
-				// SE 再生
-				this.core.audio_loader.playSound("select_title");
-
-				var core = this.core;
-				var func = MENU[i][2];
-				// フェードアウト
-				this.ss.playAnimationOnce("end", function () {
-					func(core);
-				});
-
-				// メニューボタンがクリックされたときのフレーム数
-				this._menu_clicked_frame_count = this.frame_count;
-			}
-			// マウスカーソルを乗せたら
-			else {
-				// マウスカーソルを乗せた瞬間に音を鳴らす
-				if (!menu.is_big) {
-					this.core.audio_loader.playSound("focuson_title");
-				}
+		if (i === this._index) {
+			// マウスカーソルを乗せた瞬間に音を鳴らす
+			if (!menu.is_big) {
+				this.core.audio_loader.playSound("focuson_title");
 				menu.setVariable("is_big", true);
 			}
 		}
 		else {
 			menu.setVariable("is_big", false);
 		}
+	}
+
+	// 決定
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		// SE 再生
+		this.core.audio_loader.playSound("select_title");
+
+		var core = this.core;
+		var func = MENU[this._index][2];
+
+		// フェードアウト
+		this.ss.playAnimationOnce("end", function () {
+			// フェードアウト後に実行
+			func(core);
+		});
+
+		// メニューボタンがクリックされたときのフレーム数
+		this._menu_clicked_frame_count = this.frame_count;
 	}
 
 	// タイトル放置演出
