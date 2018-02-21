@@ -209,16 +209,78 @@ Koishi.prototype.moveByInput = function() {
 	// 移動不可であれば何もしない
 	if (!this.scene.isEnableToMove()) return;
 
-	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) ||
-		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) ||
-		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP) ||
+	var is_move = false;
+	var add_x = 0;
+	var add_y = 0;
+
+	/* 移動量計算 */
+
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
+	) {
+		add_x = -SPEED_NANAME;
+		add_y = -SPEED_NANAME;
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
 		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
 	) {
+		add_x = -SPEED_NANAME;
+		add_y = +SPEED_NANAME;
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
+	) {
+		add_x = +SPEED_NANAME;
+		add_y = -SPEED_NANAME;
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
+	) {
+		add_x = +SPEED_NANAME;
+		add_y = +SPEED_NANAME;
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
+		add_x = -SPEED;
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
+		add_x = +SPEED;
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
+		add_y = -SPEED;
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
+		add_y = +SPEED;
+	}
+
+	/* 移動したフラグ */
+
+	if(add_x || add_y) {
+		is_move = true;
+	}
+
+	/* 移動 */
+	this.x(this.x() + add_x);
+	this.y(this.y() + add_y);
+
+	/* オブジェクトとの衝突したら戻す */
+	if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
+		this.x(this.x() - add_x);
+		this.y(this.y() - add_y);
+		is_move = false;
+	}
+
+	/* モーション変更 */
+	if (is_move) {
 		// 歩きモーションに変更
 		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
 			this.setWalkAnime();
 		}
-
 	}
 	else {
 		// 歩いてないので待機モーションに変更
@@ -227,48 +289,7 @@ Koishi.prototype.moveByInput = function() {
 		}
 	}
 
-	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
-		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
-	) {
-		this.x(this.x() - SPEED_NANAME);
-		this.y(this.y() - SPEED_NANAME);
-		this.setReflect(true);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
-		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
-	) {
-		this.x(this.x() - SPEED_NANAME);
-		this.y(this.y() + SPEED_NANAME);
-		this.setReflect(true);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
-		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
-	) {
-		this.x(this.x() + SPEED_NANAME);
-		this.y(this.y() - SPEED_NANAME);
-		this.setReflect(false);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
-		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
-	) {
-		this.x(this.x() + SPEED_NANAME);
-		this.y(this.y() + SPEED_NANAME);
-		this.setReflect(false);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
-		this.x(this.x() - SPEED);
-		this.setReflect(true);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
-		this.x(this.x() + SPEED);
-		this.setReflect(false);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
-		this.y(this.y() - SPEED);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
-		this.y(this.y() + SPEED);
-	}
+
 };
 
 
@@ -433,7 +454,7 @@ Koishi.prototype.collisionWidth = function(){
 };
 
 Koishi.prototype.collisionHeight = function(){
-	return 100;
+	return 1;
 };
 
 
