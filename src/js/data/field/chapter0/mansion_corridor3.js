@@ -24,7 +24,7 @@ module.exports = {
 			],
 			x: 650,
 			y: 285,
-			width: 200,
+			width: 100,
 			height: 330,
 			target_x: 526, target_y: 417,
 			scale: 2/3,
@@ -48,7 +48,9 @@ module.exports = {
 
 			x: 715,
 			y: 270,
-			target_x: 526, target_y: 417,
+			width: 100,
+			height: 330,
+
 			scale: 2/3,
 			anime1: "chapter0-mansion_corridor3-obj-07-01-obj01",
 			anime2: "chapter0-mansion_corridor3-obj-07-01-obj02",
@@ -126,6 +128,7 @@ module.exports = {
 			image: "eyedrops",
 			x: 590,
 			y: 290,
+			height: 330,
 			scale: 2/3,
 			item_id: CONSTANT.ITEM.EYEDROPS
 		},

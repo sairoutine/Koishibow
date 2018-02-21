@@ -3,7 +3,7 @@
 var base_scene = require('../hakurei').scene.base;
 
 var Util = require('../hakurei').util;
-var CONSTANT = require('../constant');
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 
 var HOWTO_IMAGE_RATIO = 3/4;
 
@@ -27,7 +27,7 @@ SceneHowto.prototype.init = function(){
 SceneHowto.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	if(this.core.input_manager.isLeftClickPush()) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
 		this.core.audio_loader.playSound("show_journal");
 		this.core.changeScene("stage", "chapter0_myroom");
 	}

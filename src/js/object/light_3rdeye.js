@@ -21,6 +21,7 @@ var CIRCLE2_RADIUS = 60;
 
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 
 var ObjectLight3rdeye = function(core) {
 	base_object.apply(this, arguments);
@@ -28,6 +29,8 @@ var ObjectLight3rdeye = function(core) {
 	this._radian = null;
 	this._pivot_x = null;
 	this._pivot_y = null;
+
+	this._light_y = 0;
 };
 Util.inherit(ObjectLight3rdeye, base_object);
 
@@ -37,10 +40,21 @@ ObjectLight3rdeye.prototype.init = function(){
 	this._radian = null;
 	this._pivot_x = null;
 	this._pivot_y = null;
+
+	this._light_y = 0;
 };
 
 ObjectLight3rdeye.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
+
+	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
+		if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
+			this._light_y-=10;
+		}
+		else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
+			this._light_y+=10;
+		}
+	}
 };
 
 // ライトの角度、位置
@@ -155,13 +169,9 @@ ObjectLight3rdeye.prototype._drawLight = function(){
 
 // こいしからマウスまでの角度(radian)
 ObjectLight3rdeye.prototype._calcRadianFromKoishiToMouse = function(){
-	var x = this.core.input_manager.mousePositionX();
-	var y = this.core.input_manager.mousePositionY();
-
-	var ax = x - this.scene.koishi.x();
-	var ay = y - this.scene.koishi.y();
+	var ax = this.scene.koishi.isReflect() ? -200 : 200;
+	var ay = this._light_y;
 	var rad = Math.atan2(ay, ax);
-
 	return rad;
 };
 

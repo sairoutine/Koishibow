@@ -28,8 +28,8 @@ module.exports = {
 			action_name: "touch",
 			sound_name: "chapter0-hospital_corridor1-sound_strecher",
 			position_type: "front",
-			target_x: 650,
-			target_y: 616,
+			width: 400,
+			height: 200,
 		},
 		{
 			no: ++I,

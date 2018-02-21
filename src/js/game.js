@@ -49,9 +49,6 @@ util.inherit(Game, core);
 Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
 
-	// カーソル設定
-	this.enableCursorImage("ui_icon_pointer_01");
-
 	// シーン遷移
 	this.changeScene("loading");
 };
@@ -64,7 +61,9 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.setOn(dom);
 
 	// テキスト追加
-	this.debug_manager.addMenuText("マウスクリックで移動／調べる");
+	this.debug_manager.addMenuText("Zキー：決定、調べる");
+	this.debug_manager.addMenuText("Xキー：キャンセル、サードアイ使用／解除、押しっぱなしでライトの移動");
+	this.debug_manager.addMenuText("SPACEキー：メニュー開く／閉じる");
 
 	this.debug_manager.addMenuImage("https://api.travis-ci.org/sairoutine/Koishibow.svg?branch=gh-pages");
 

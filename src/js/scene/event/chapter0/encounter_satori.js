@@ -4,6 +4,7 @@ var base_scene = require('../../../hakurei').scene.base;
 var ObjectPoint = require('../../../hakurei').object.point;
 var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
+var CONSTANT_BUTTON = require('../../../hakurei').constant.button;
 var SerifManager = require('../../../hakurei').serif_manager;
 var BlackMist = require('../../../object/black_mist');
 var DrawSerif = require('../../../logic/draw_serif');
@@ -149,7 +150,7 @@ SceneSceneEventEncounterSatori.prototype.beforeDraw = function(){
 
 
 
-	if(this.core.input_manager.isLeftClickPush()) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
 		if (this.eye.current_anime === EYE_WAITING_ANIME && this.satori.current_anime === SATORI_WAITING_ANIME) {
 			// 目はさとりの方を見る
 			this.eye.playAnimationOnce(EYE_SEE_RIGHT_AND_BLINK_ANIME);

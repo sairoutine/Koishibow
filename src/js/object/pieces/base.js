@@ -21,14 +21,23 @@ ObjectBase.prototype.init = function(){
 	this.no = null;
 };
 
-ObjectBase.prototype.onCollision = function(point) {
-	if(this.core.input_manager.isLeftClickPush()) {
-		this.onCollisionWithClick(point);
+var TOUCH_AREA = 50;
+ObjectBase.prototype.checkIsInTouchArea = function(obj) {
+	if (!this.isCollision(obj) || !obj.isCollision(this)) return false;
+
+	var this_collsion_width  = this.collisionWidth(obj)  + TOUCH_AREA;
+	var this_collsion_height = this.collisionHeight(obj) + TOUCH_AREA;
+
+	if(Math.abs(this.x() - obj.x()) < this_collsion_width/2 + obj.collisionWidth(this)/2 &&
+		Math.abs(this.y() - obj.y()) < this_collsion_height/2 + obj.collisionHeight(this)/2) {
+		return true;
 	}
-	else {
-		this.onCollisionWithMouseOver(point);
-	}
+
+	return false;
 };
+
+
+
 
 // マウスクリック時のイベント
 ObjectBase.prototype.onCollisionWithClick = function(point) {
@@ -93,12 +102,12 @@ ObjectBase.prototype.onUnUse3rdEye = function(){
 ObjectBase.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);
 	area.init();
-	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
+	area.setPosition(this.x(), this.y());
 	if (this._position_type === "lying") {
 		area.setSize(0, 0);
 	}
 	else {
-		area.setSize(this.collisionWidth(), this.collisionHeight()/2);
+		area.setSize(this.collisionWidth(), this.collisionHeight());
 	}
 	area.setParentID(this.id);
 

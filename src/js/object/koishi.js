@@ -2,11 +2,13 @@
 
 // こいしの歩く速度
 var SPEED = 2;
+var SPEED_NANAME = SPEED / Math.sqrt(2);
 
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 var DrawSerif = require('../logic/draw_serif');
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 
 
 /* 使用用途	リピート	fps	フレーム	時間 */
@@ -203,6 +205,100 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 	}
 };
 
+Koishi.prototype.moveByInput = function() {
+	// 移動不可であれば何もしない
+	if (!this.scene.isEnableToMove()) return;
+
+	var is_move = false;
+	var add_x = 0;
+	var add_y = 0;
+
+	/* 移動量計算 */
+
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
+	) {
+		add_x = -SPEED_NANAME;
+		add_y = -SPEED_NANAME;
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
+	) {
+		add_x = -SPEED_NANAME;
+		add_y = +SPEED_NANAME;
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
+	) {
+		add_x = +SPEED_NANAME;
+		add_y = -SPEED_NANAME;
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
+	) {
+		add_x = +SPEED_NANAME;
+		add_y = +SPEED_NANAME;
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
+		add_x = -SPEED;
+		this.setReflect(true);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
+		add_x = +SPEED;
+		this.setReflect(false);
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
+		add_y = -SPEED;
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
+		add_y = +SPEED;
+	}
+
+	/* 移動したフラグ */
+
+	if(add_x || add_y) {
+		is_move = true;
+	}
+
+	/* 移動 */
+	this.x(this.x() + add_x);
+	this.y(this.y() + add_y);
+
+	/* オブジェクトとの衝突したら戻す */
+	if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
+		this.x(this.x() - add_x);
+		this.y(this.y() - add_y);
+		is_move = false;
+	}
+
+	/* モーション変更 */
+	if (is_move) {
+		// 歩きモーションに変更
+		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
+			this.setWalkAnime();
+		}
+	}
+	else {
+		// 歩いてないので待機モーションに変更
+		if(this.isPlaying("walk_nohat") || this.isPlaying("walk")) {
+			this.setWaitAnime();
+		}
+	}
+
+
+};
+
+
+
+
+
+
+
+
 Koishi.prototype.jsonAnimeMap = function() {
 	return {
 		// 静止
@@ -351,5 +447,16 @@ Koishi.prototype._showText = function(lines) {
 	var ctx = this.core.ctx;
 	DrawSerif.drawText(this, ctx, lines);
 };
+
+
+Koishi.prototype.collisionWidth = function(){
+	return 100;
+};
+
+Koishi.prototype.collisionHeight = function(){
+	return 1;
+};
+
+
 
 module.exports = Koishi;

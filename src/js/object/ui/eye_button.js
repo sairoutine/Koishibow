@@ -46,10 +46,12 @@ ObjectEye.prototype.onCollision = function(obj){
 	}
 };
 
-// クリックしてるときしか onCollision を呼ばない
+
+// 現状、表示UIとしてしか使ってないので、当たり判定不要
 ObjectEye.prototype.isCollision = function() {
-	return this.core.input_manager.isLeftClickPush() ? true : false;
+	return false;
 };
+
 
 ObjectEye.prototype.setPosition = function(){
 	this.x(1320 * 2/3);
