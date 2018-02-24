@@ -1,12 +1,8 @@
 'use strict';
 
 // オブジェクトとの会話サブシーン
-// NOTE: encounter_satori scene が継承しており、SerifManager の auto start が false の場合がある
-//       this._serif を使う場合は isStart 判定をすること
-
-
 var base_scene = require('./base');
-var SerifManager = require('../../hakurei').serif_manager;
+var ScenarioManager = require('../../hakurei').manager.scenario;
 var Util = require('../../hakurei').util;
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
@@ -16,7 +12,7 @@ var NEXT_TO_SERIF_WAITING_COUNT = 6;
 var SceneSubStageObjectTalk = function(core) {
 	base_scene.apply(this, arguments);
 
-	this._serif = new SerifManager();
+	this._serif = new ScenarioManager();
 
 	// クリック待ちカーソルの状態
 	this._cursor_y = 0; // カーソル位置
@@ -43,6 +39,10 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 	// セリフデータの生成
 	var serif_script = serif_list;
 	this._serif.init(serif_script);
+
+	if (this.isSerifAutoStart()) {
+		this._serif.start();
+	}
 
 	// 会話対象のオブジェクト
 	this._target_object = obj;
@@ -91,7 +91,7 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 		// TODO:
 	/*
 	// クリック待ちカーソル表示
-	if (this._serif.isWaitingNext()) {
+	if (!this._serif.isEnd() && this._serif.isPrintLetterEnd()) {
 
 		// カーソルを上下に移動させる
 		if (this._cursor_reverse) {
@@ -121,17 +121,19 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 
 	}
 };
-
 // セリフ表示
 SceneSubStageObjectTalk.prototype._showMessage = function() {
 	if(!this._serif.isStart()) return;
 
-	var chara_name = this._serif.getChara();
-
+	var chara_name = this._serif.getCurrentCharaNameByPosition();
 
 	var obj = this.root().getPiece(chara_name);
 
-	obj.showMessage(this._serif.lines(), this._serif.isWaitingNext());
+	obj.showMessage(this._serif.getCurrentPrintedSentences(), !this._serif.isEnd() && this._serif.isPrintLetterEnd());
+};
+
+SceneSubStageObjectTalk.prototype.isSerifAutoStart = function() {
+	return true;
 };
 
 module.exports = SceneSubStageObjectTalk;

@@ -10,9 +10,6 @@ Util.inherit(SceneSubStageObjectTalk, base_scene);
 
 SceneSubStageObjectTalk.prototype.init = function(){
 
-	// N秒経ってから beforeDraw 内で再生するため
-	this._serif.setAutoStart(false);
-
 	var serif_list = [
 		{"chara": "koishi","serif":"あっ"},
 	];
@@ -39,4 +36,11 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 SceneSubStageObjectTalk.prototype.onSerifEnd = function(){
 	this.root().changeSubScene("play");
 };
+
+SceneSubStageObjectTalk.prototype.isSerifAutoStart = function() {
+	return false;
+};
+
+
+
 module.exports = SceneSubStageObjectTalk;

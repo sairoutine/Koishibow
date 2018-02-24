@@ -5,7 +5,7 @@ var ObjectPoint = require('../../../hakurei').object.point;
 var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
 var CONSTANT_BUTTON = require('../../../hakurei').constant.button;
-var SerifManager = require('../../../hakurei').serif_manager;
+var ScenarioManager = require('../../../hakurei').manager.scenario;
 var BlackMist = require('../../../object/black_mist');
 var DrawSerif = require('../../../logic/draw_serif');
 
@@ -26,7 +26,7 @@ var EYE_APPEAR_AND_BLINK_ANIME    = 1;
 var EYE_WAITING_ANIME             = 2;
 var EYE_SEE_RIGHT_AND_BLINK_ANIME = 3;
 
-var SceneSceneEventEncounterSatori = function(core) {
+var SceneEventEncounterSatori = function(core) {
 	base_scene.apply(this, arguments);
 
 	// シーンの各種キャラ
@@ -38,18 +38,18 @@ var SceneSceneEventEncounterSatori = function(core) {
 	this.black_mist = new BlackMist(this);
 
 	// セリフ
-	this._serif = new SerifManager({auto_start: false});
+	this._serif = new ScenarioManager();
 
 	// セリフの位置
 	this.serif_position = new ObjectPoint(this);
 	this.serif_position.setPosition(this.width - 120, 400);
 };
-Util.inherit(SceneSceneEventEncounterSatori, base_scene);
+Util.inherit(SceneEventEncounterSatori, base_scene);
 
-SceneSceneEventEncounterSatori.prototype.isUsingEye = function(){
+SceneEventEncounterSatori.prototype.isUsingEye = function(){
 	return false;
 };
-SceneSceneEventEncounterSatori.prototype.init = function(){
+SceneEventEncounterSatori.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// フェードインする
@@ -75,7 +75,7 @@ SceneSceneEventEncounterSatori.prototype.init = function(){
 	]);
 };
 
-SceneSceneEventEncounterSatori.prototype.initSatori = function(){
+SceneEventEncounterSatori.prototype.initSatori = function(){
 	this.satori.x(this.width/2);
 	this.satori.y(this.height/2);
 
@@ -101,7 +101,7 @@ SceneSceneEventEncounterSatori.prototype.initSatori = function(){
 	});
 
 };
-SceneSceneEventEncounterSatori.prototype.initEye = function(){
+SceneEventEncounterSatori.prototype.initEye = function(){
 	this.eye.x(this.width/2);
 	this.eye.y(this.height/2);
 
@@ -124,7 +124,7 @@ SceneSceneEventEncounterSatori.prototype.initEye = function(){
 	});
 
 };
-SceneSceneEventEncounterSatori.prototype.initKoishi = function(){
+SceneEventEncounterSatori.prototype.initKoishi = function(){
 	this.koishi.x(180);
 	this.koishi.y(540);
 
@@ -139,7 +139,7 @@ SceneSceneEventEncounterSatori.prototype.initKoishi = function(){
 
 
 
-SceneSceneEventEncounterSatori.prototype.beforeDraw = function(){
+SceneEventEncounterSatori.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	// BGM 再生
@@ -179,7 +179,7 @@ SceneSceneEventEncounterSatori.prototype.beforeDraw = function(){
 	}
 
 };
-SceneSceneEventEncounterSatori.prototype.draw = function(){
+SceneEventEncounterSatori.prototype.draw = function(){
 
 	this._showBackground();
 	// キャラのアニメの表示
@@ -188,7 +188,7 @@ SceneSceneEventEncounterSatori.prototype.draw = function(){
 	this.black_mist.draw();
 };
 
-SceneSceneEventEncounterSatori.prototype._showBackground = function(){
+SceneEventEncounterSatori.prototype._showBackground = function(){
 	var ctx = this.core.ctx;
 	ctx.save();
 
@@ -208,11 +208,11 @@ SceneSceneEventEncounterSatori.prototype._showBackground = function(){
 	ctx.restore();
 };
 
-SceneSceneEventEncounterSatori.prototype._showMessage = function(){
+SceneEventEncounterSatori.prototype._showMessage = function(){
 	if(!this._serif.isStart()) return;
 
 	// セリフ取得
-	var lines = this._serif.lines();
+	var lines = this._serif.getCurrentPrintedSentences();
 	if (!lines.length) return;
 
 	// メッセージウィンドウ表示
@@ -223,16 +223,20 @@ SceneSceneEventEncounterSatori.prototype._showMessage = function(){
 };
 
 // セリフウィンドウ表示
-SceneSceneEventEncounterSatori.prototype._showMessageWindow = function(lines){
+SceneEventEncounterSatori.prototype._showMessageWindow = function(lines){
 	var ctx = this.core.ctx;
 	var fukidashi = this.core.image_loader.getImage('fukidashi_gray');
 	DrawSerif.drawWindow(this.serif_position, ctx, fukidashi, lines);
 };
 
-SceneSceneEventEncounterSatori.prototype._showText = function(lines) {
+SceneEventEncounterSatori.prototype._showText = function(lines) {
 	var ctx = this.core.ctx;
 	DrawSerif.drawText(this.serif_position, ctx, lines);
 };
 
+SceneEventEncounterSatori.prototype.isSerifAutoStart = function() {
+	return false;
+};
 
-module.exports = SceneSceneEventEncounterSatori;
+
+module.exports = SceneEventEncounterSatori;
