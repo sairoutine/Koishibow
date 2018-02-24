@@ -32673,13 +32673,19 @@ module.exports = Core;
 module.exports = {
 	util: require("./util"),
 	core: require("./core"),
+	shader_program: require("./shader_program"),
 	// constant.BUTTON_NAME is deprecated.
 	constant: require("./util").assign(require("./constant/button"), {
 		button: require("./constant/button"),
 	}),
-	serif_manager: require("./manager/serif"),
+	// deprecated namespaces.
+	serif_manager: require("./manager/scenario"),
+	// deprecated namespaces.
 	save_manager: require("./manager/save"),
-	shader_program: require("./shader_program"),
+	manager: {
+		save: require("./manager/save"),
+		scenario: require("./manager/scenario"),
+	},
 	scene: {
 		base:    require("./scene/base"),
 		loading: require("./scene/loading"),
@@ -32707,7 +32713,7 @@ module.exports = {
 
 };
 
-},{"./asset_loader/audio":116,"./asset_loader/font":117,"./asset_loader/image":118,"./constant/button":119,"./core":121,"./manager/save":125,"./manager/serif":126,"./object/base":141,"./object/point":142,"./object/pool_manager":143,"./object/pool_manager3d":144,"./object/sprite":145,"./object/sprite3d":146,"./object/ui_parts":147,"./object/window":148,"./scene/base":149,"./scene/loading":150,"./scene/movie":151,"./shader_program":154,"./storage/base":155,"./storage/save":156,"./util":158}],123:[function(require,module,exports){
+},{"./asset_loader/audio":116,"./asset_loader/font":117,"./asset_loader/image":118,"./constant/button":119,"./core":121,"./manager/save":125,"./manager/scenario":126,"./object/base":141,"./object/point":142,"./object/pool_manager":143,"./object/pool_manager3d":144,"./object/sprite":145,"./object/sprite3d":146,"./object/ui_parts":147,"./object/window":148,"./scene/base":149,"./scene/loading":150,"./scene/movie":151,"./shader_program":154,"./storage/base":155,"./storage/save":156,"./util":158}],123:[function(require,module,exports){
 'use strict';
 var Util = require("../util");
 
@@ -33404,16 +33410,31 @@ module.exports = SaveManager;
 },{}],126:[function(require,module,exports){
 'use strict';
 
-// typography speed
+// TODO: add _isStartPrintLetter, isPausePrintLetter method
+
+// default typography speed
 var TYPOGRAPHY_SPEED = 10;
+// default chara position
+var POSITION = 0;
 
 var Util = require("../util");
 var BaseClass = require("./serif_abolished_notifier_base");
 
-var SerifManager = function (option) {
-	option = option || {};
-	this._is_auto_start = "auto_start" in option ? option.auto_start : true;
+var ScenarioManager = function (core, option) {
+	this.core = core;
 
+	option = option || {};
+	this._typography_speed      = "typography_speed" in option ? option.typography_speed : TYPOGRAPHY_SPEED;
+	this._criteria_function_map = "criteria"         in option ? option.criteria : {};
+
+	// event handler
+	this._event_to_callback = {
+		printend: function () {},
+	};
+
+	// if scenario is not started, _timeoutID is null.
+	// so that, if scenario is started, _timeoutID always have ID.
+	// NOTE: pausePrintLetter method does not clear _timeoutID.
 	this._timeoutID = null;
 
 	// serif scenario
@@ -33422,86 +33443,171 @@ var SerifManager = function (option) {
 	// where serif has progressed
 	this._progress = null;
 
-	this._chara_id_list  = [];
-	this._exp_id_list    = [];
-	this._option = {};
+	// chara
+	this._current_talking_pos  = null; // which chara is talking
+	this._pos_to_chara_id_map = {};
+	this._pos_to_exp_id_map = {};
 
-	// which chara is talking, left or right
-	this._pos = null;
-
+	// background
 	this._is_background_changed = false;
-	this._background_image_name = null;
+	this._current_bg_image_name  = null;
 
-	this._char_list = "";
-	this._char_idx = 0;
+	// junction
+	this._current_junction_list = [];
 
-	this._is_enable_printing_message = true;
+	// option
+	this._current_option = {};
 
-	// now printing message
-	this._line_num = 0;
-	this._printing_lines = [];
+	// letter data to print
+	this._current_message_letter_list = [];
+	this._current_message_sentenses_num = null;
+
+	// current printed sentences
+	this._letter_idx = 0;
+	this._sentences_line_num = 0;
+	this._current_printed_sentences = [];
+
+	// If true, _printLetter method does nothing
+	this._is_pause_print_letter = false;
 };
-Util.inherit(SerifManager, BaseClass);
+Util.inherit(ScenarioManager, BaseClass);
 
-SerifManager.prototype.init = function (script) {
-	if(!script) console.error("set script arguments to use serif_manager class");
+ScenarioManager.prototype.init = function (script) {
+	if(!script) throw new Error("set script arguments to use scenario_manager class");
 
-	// serif scenario
-	this._script = script;
+	if (this._timeoutID) this._stopPrintLetter();
 
-	this._chara_id_list  = [];
-	this._exp_id_list    = [];
-	this._option = {};
-
-
+	this._script = script.slice(); // shallow copy
 
 	this._progress = -1;
-	this._timeoutID = null;
-	this._pos  = null;
 
+	// chara
+	this._current_talking_pos  = null;
+	this._pos_to_chara_id_map = {};
+	this._pos_to_exp_id_map = {};
+
+	// background
 	this._is_background_changed = false;
-	this._background_image_name = null;
+	this._current_bg_image_name  = null;
+
+	// junction
+	this._current_junction_list = [];
+
+	// option
+	this._current_option = {};
+
+	// letter data to print
+	this._current_message_letter_list = [];
+	this._current_message_sentenses_num = null;
+
+	// current printed sentences
+	this._letter_idx = 0;
+	this._sentences_line_num = 0;
+	this._current_printed_sentences = [];
+
+	this._is_pause_print_letter = false;
+};
+ScenarioManager.prototype.on = function (event, callback) {
+	this._event_to_callback[event] = callback;
+};
+ScenarioManager.prototype.removeEvent = function (event) {
+	this._event_to_callback[event] = function(){};
+};
 
 
-	this._char_list = "";
-	this._char_idx = 0;
 
-	this._is_enable_printing_message = true;
 
-	this._line_num = 0;
-	this._printing_lines = [];
+ScenarioManager.prototype.start = function (progress) {
+	if(!this._script) throw new Error("start method must be called after instance was initialized.");
 
-	if(this._is_auto_start && !this.isEnd()) {
-		this.next(); // start
+	this._progress = progress || 0;
+
+	this._setupCurrentSerifScript();
+};
+
+
+ScenarioManager.prototype.next = function (choice) {
+	// chosen serif junction
+	choice = choice || 0;
+
+	if (this.isEnd()) return false;
+
+	this._progress++;
+
+	this._chooseNextSerifScript(choice);
+
+	this._setupCurrentSerifScript();
+
+	return true;
+};
+ScenarioManager.prototype._chooseNextSerifScript = function (choice) {
+	var script = this._script[this._progress];
+
+	var type = script.type || "serif";
+
+	var chosen_serifs;
+	if (type === "serif") {
+		// do nothing
+	}
+	else if (type === "junction_serif") {
+		chosen_serifs = script.serifs[choice];
+		// delete current script and insert new chosen serif list
+		Array.prototype.splice.apply(this._script, [this._progress, 1].concat(chosen_serifs));
+	}
+	else if (type === "criteria_serif") {
+		var criteria_name = script.criteria;
+		var argument_list = script.arguments;
+		choice = this._execCriteriaFunction(criteria_name, argument_list);
+		chosen_serifs = script.serifs[choice];
+
+		// delete current script and insert new chosen serif list
+		Array.prototype.splice.apply(this._script, [this._progress, 1].concat(chosen_serifs));
+
+		// check criteria recursively
+		this._chooseNextSerifScript();
+	}
+	else {
+		throw new Error("Unknown serif script type: " + type);
 	}
 };
 
-SerifManager.prototype.setAutoStart = function (flag) {
-	this._is_auto_start = flag;
+ScenarioManager.prototype._execCriteriaFunction = function (criteria_name, argument_list) {
+	var criteria_function = this._criteria_function_map[criteria_name];
+
+	if(!criteria_function) throw new Error(criteria_name + " criteria does not exists");
+
+	return criteria_function.apply({}, [this.core].concat(argument_list));
 };
 
 
 
-SerifManager.prototype.isEnd = function () {
-	return this._progress === this._script.length - 1;
-};
-SerifManager.prototype.isStart = function () {
+ScenarioManager.prototype.isStart = function () {
 	return this._progress > -1;
 };
+ScenarioManager.prototype.isEnd = function () {
+	return this._progress === this._script.length - 1;
+};
 
-SerifManager.prototype.next = function () {
-	this._progress++;
 
+
+ScenarioManager.prototype.isPrintLetterEnd = function () {
+	var letter_length = this._current_message_letter_list.length;
+	return this._letter_idx >= letter_length ? true : false;
+};
+
+
+ScenarioManager.prototype._setupCurrentSerifScript = function () {
 	var script = this._script[this._progress];
 
-	this._showChara(script);
+	this._setupChara(script);
+	this._setupBackground(script);
+	this._setupJunction(script);
+	this._setupOption(script);
 
-	this._showBackground(script);
-
-	this._setOption(script);
+	this._saveSerifPlayed(script);
 
 	if(script.serif) {
-		this._printMessage(script.serif);
+		this._setupSerif(script);
 	}
 	else {
 		// If serif is empty, show chara without talking and next
@@ -33510,193 +33616,168 @@ SerifManager.prototype.next = function () {
 		}
 	}
 };
+ScenarioManager.prototype._setupChara = function(script) {
+	var pos   = script.pos;
+	var chara = script.chara;
+	var exp   = script.exp;
 
-SerifManager.prototype._showBackground = function(script) {
+	if (!pos) pos = POSITION;
+
+	this._current_talking_pos  = pos;
+	this._pos_to_chara_id_map[this._current_talking_pos] = chara;
+	this._pos_to_exp_id_map[this._current_talking_pos]   = exp;
+};
+
+ScenarioManager.prototype._setupBackground = function(script) {
+	var background = script.background;
+
 	this._is_background_changed = false;
-	if(script.background && this._background_image_name !== script.background) {
+
+	if(background && this._current_bg_image_name !== background) {
 		this._is_background_changed = true;
-		this._background_image_name  = script.background;
+		this._current_bg_image_name  = background;
 	}
 };
 
-SerifManager.prototype._showChara = function(script) {
-	var pos = script.pos;
-
-	// NOTE: for deprecated pos setting
-	if (pos === "left")  pos = 0;
-	if (pos === "right") pos = 1;
-
-	if (!pos) pos = 0;
-
-	this._pos  = pos;
-
-	this._chara_id_list[pos] = script.chara;
-	this._exp_id_list[pos]   = script.exp;
+ScenarioManager.prototype._setupJunction = function(script) {
+	var junction_list = script.junction;
+	this._current_junction_list = junction_list || [];
 };
 
-SerifManager.prototype._setOption = function(script) {
-	this._option = script.option || {};
-
-	// for deprecated script "font_color"
-	if (script.font_color) {
-		this._option = Util.shallowCopyHash(this.option);
-		this._option.font_color = script.font_color;
-	}
+ScenarioManager.prototype._setupOption = function(script) {
+	this._current_option = script.option || {};
 };
 
-SerifManager.prototype._printMessage = function (message) {
+ScenarioManager.prototype._saveSerifPlayed = function(script) {
+	var id = script.id;
+	var is_save = script.save;
+
+	if (!is_save) return;
+
+	if (typeof id === "undefined") throw new Error("script save property needs id property");
+
+	this.core.save_manager.scenario.incrementPlayedCount(id);
+};
+
+
+ScenarioManager.prototype._setupSerif = function (script) {
+	var message = script.serif;
+
 	// cancel already started message
-	this._cancelPrintMessage();
+	this._stopPrintLetter();
 
-	// setup to show message
-	this._char_list = message.split("");
-	this._char_idx = 0;
+	// setup letter data to print
+	this._current_message_letter_list = message.split("");
 
-	// clear showing message
-	this._line_num = 0;
-	this._printing_lines = [];
-
-	this._startPrintMessage();
-};
-// is waiting to be called next?
-SerifManager.prototype.isWaitingNext = function () {
-	return this.isEndPrinting() && !this.isEnd();
-};
-
-SerifManager.prototype.isEndPrinting = function () {
-	var char_length = this._char_list.length;
-	return this._char_idx >= char_length ? true : false;
-};
-
-SerifManager.prototype._startPrintMessage = function () {
-	var char_length = this._char_list.length;
-	if (this._char_idx >= char_length) return;
-
-	if(this._is_enable_printing_message) {
-		var ch = this._char_list[this._char_idx];
-		this._char_idx++;
-
-		if (ch === "\n") {
-			this._line_num++;
-		}
-		else {
-			// initialize
-			if(!this._printing_lines[this._line_num]) {
-				this._printing_lines[this._line_num] = "";
-			}
-
-			// show A word
-			this._printing_lines[this._line_num] = this._printing_lines[this._line_num] + ch;
-		}
+	// count newline of current message
+	this._current_message_sentenses_num = 1;
+	for (var i = 0, len = this._current_message_letter_list.length; i < len; i++) {
+		if (this._current_message_letter_list[i] === "\n") this._current_message_sentenses_num++;
 	}
 
-	this._timeoutID = setTimeout(Util.bind(this._startPrintMessage, this), TYPOGRAPHY_SPEED);
+	// clear current printed sentences
+	this._letter_idx = 0;
+	this._sentences_line_num = 0;
+	this._current_printed_sentences = [];
+
+	// start message
+	this._startPrintLetter();
 };
 
-SerifManager.prototype._cancelPrintMessage = function () {
+ScenarioManager.prototype._startPrintLetter = function () {
+	this._printLetter();
+
+	this._timeoutID = setTimeout(Util.bind(this._startPrintLetter, this), this._typography_speed);
+};
+
+ScenarioManager.prototype._stopPrintLetter = function () {
 	if(this._timeoutID !== null) {
 		clearTimeout(this._timeoutID);
 		this._timeoutID = null;
 	}
 };
 
-SerifManager.prototype.startPrintMessage = function () {
-	this._is_enable_printing_message = true;
-};
-SerifManager.prototype.cancelPrintMessage = function () {
-	this._is_enable_printing_message = false;
+ScenarioManager.prototype._printLetter = function () {
+	if (this.isPrintLetterEnd()) return;
+
+	if(this._is_pause_print_letter) return;
+
+	var current_message_letter_list = this._current_message_letter_list;
+
+	// get A letter to add
+	var letter = current_message_letter_list[this._letter_idx++];
+
+	if (letter === "\n") {
+		this._sentences_line_num++;
+	}
+	else {
+		// initialize if needed
+		if(!this._current_printed_sentences[this._sentences_line_num]) {
+			this._current_printed_sentences[this._sentences_line_num] = "";
+		}
+
+		// print A letter
+		this._current_printed_sentences[this._sentences_line_num] += letter;
+	}
+	// If printing has finished, call printend callback.
+	if (this.isPrintLetterEnd()) {
+		this._event_to_callback.printend();
+	}
 };
 
-SerifManager.prototype.isBackgroundChanged = function () {
+ScenarioManager.prototype.resumePrintLetter = function () {
+	this._is_pause_print_letter = false;
+};
+ScenarioManager.prototype.pausePrintLetter = function () {
+	this._is_pause_print_letter = true;
+};
+
+ScenarioManager.prototype.getCurrentPrintedSentences = function () {
+	return this._current_printed_sentences;
+};
+
+ScenarioManager.prototype.getCurrentSentenceNum = function () {
+	return this._current_message_sentenses_num;
+};
+
+ScenarioManager.prototype.isBackgroundChanged = function () {
 	return this._is_background_changed;
 };
-SerifManager.prototype.getBackgroundImageName = function () {
-	return this._background_image_name;
+
+ScenarioManager.prototype.getCurrentBackgroundImageName = function () {
+	return this._current_bg_image_name;
 };
 
-SerifManager.prototype.getImageName = function (pos) {
-	pos = pos || 0;
-	return(this._chara_id_list[pos] ? this.getChara(pos) + "_" + this._exp_id_list[pos] : null);
-};
-SerifManager.prototype.getChara = function (pos) {
-	pos = pos || 0;
-	return(this._chara_id_list[pos] ? this._chara_id_list[pos] : null);
+ScenarioManager.prototype.getCurrentOption = function () {
+	return this._current_option;
 };
 
-SerifManager.prototype.isTalking = function (pos) {
-	return this._pos === pos ? true : false;
-};
-SerifManager.prototype.getOption = function () {
-	return this._option;
-};
-SerifManager.prototype.lines = function () {
-	return this._printing_lines;
-};
-SerifManager.prototype.getSerifRowsCount = function () {
-	// TODO: only calculate once
-	var script = this._script[this._progress];
-	if (!script) return 0;
-
-	var serif = script.serif;
-	return( (serif.match(new RegExp("\n", "g")) || []).length + 1 );
+ScenarioManager.prototype.getCurrentCharaNameByPosition = function (pos) {
+	pos = pos || POSITION;
+	return this._pos_to_chara_id_map[pos];
 };
 
+ScenarioManager.prototype.getCurrentCharaExpressionByPosition = function (pos) {
+	pos = pos || POSITION;
+	return this._pos_to_exp_id_map[pos];
+};
+
+ScenarioManager.prototype.isCurrentTalkingByPosition = function (pos) {
+	return this._current_talking_pos === pos;
+};
+
+ScenarioManager.prototype.isCurrentSerifExistsJunction = function () {
+	return this._current_junction_list.length > 0;
+};
+
+ScenarioManager.prototype.getCurrentJunctionList = function () {
+	return this._current_junction_list;
+};
 
 
 
-// NOTE: deprecated
-SerifManager.prototype.right_image = function () {
-	console.error("right_image method is deprecated. you should use getImageName method");
 
-	var pos = 1; // means right
-
-	return this.getImageName(pos);
-};
-// NOTE: deprecated
-SerifManager.prototype.left_image = function () {
-	console.error("left_image method is deprecated. you should use getImageName method");
-
-	var pos = 0; // means left
-
-	return this.getImageName(pos);
-};
-// NOTE: deprecated
-SerifManager.prototype.is_right_talking = function () {
-	console.error("is_right_talking method is deprecated. you should use isTalking method");
-
-	var pos = 1; // means right
-
-	return this.isTalking(pos);
-};
-// NOTE: deprecated
-SerifManager.prototype.is_left_talking = function () {
-	console.error("is_left_talking method is deprecated. you should use isTalking method");
-	var pos = 0; // means left
-
-	return this.isTalking(pos);
-};
-// NOTE: deprecated
-SerifManager.prototype.font_color = function () {
-	console.error("font_color method is deprecated. you should use getOption().font_color method");
-	return this._option.font_color;
-};
-// NOTE: deprecated
-SerifManager.prototype.is_end = function () {
-	console.error("is_end method is deprecated. you should use isEnd method");
-	return this.isEnd();
-};
-// NOTE: deprecated
-SerifManager.prototype.is_background_changed = function () {
-	console.error("is_background_changed method is deprecated. you should use isBackgroundChanged method");
-	return this.isBackgroundChanged();
-};
-// NOTE: deprecated
-SerifManager.prototype.background_image = function () {
-	console.error("background_image method is deprecated. you should use getBackgroundImageName method");
-	return this.getBackgroundImageName();
-};
-
-module.exports = SerifManager;
+module.exports = ScenarioManager;
 
 },{"../util":158,"./serif_abolished_notifier_base":127}],127:[function(require,module,exports){
 'use strict';
@@ -43216,10 +43297,12 @@ SceneMovie.prototype.notifyEnd = function(){
 module.exports = SceneMovie;
 
 },{"../util":158,"./base":149}],152:[function(require,module,exports){
-module.exports = "precision mediump float;\nuniform sampler2D uSampler;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tvec4 textureColor = texture2D(uSampler, vTextureCoordinates);\n\tgl_FragColor = textureColor * vColor;\n}\n\n";
+
+module.exports = "attribute vec3 aVertexPosition;\nattribute vec2 aTextureCoordinates;\nattribute vec4 aColor;\n\nuniform mat4 uMVMatrix;\nuniform mat4 uPMatrix;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tgl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);\n\tvTextureCoordinates = aTextureCoordinates;\n\tvColor = aColor;\n}\n\n";
 
 },{}],153:[function(require,module,exports){
-module.exports = "attribute vec3 aVertexPosition;\nattribute vec2 aTextureCoordinates;\nattribute vec4 aColor;\n\nuniform mat4 uMVMatrix;\nuniform mat4 uPMatrix;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tgl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);\n\tvTextureCoordinates = aTextureCoordinates;\n\tvColor = aColor;\n}\n\n";
+
+module.exports = "precision mediump float;\nuniform sampler2D uSampler;\nvarying vec2 vTextureCoordinates;\nvarying vec4 vColor;\n\nvoid main() {\n\tvec4 textureColor = texture2D(uSampler, vTextureCoordinates);\n\tgl_FragColor = textureColor * vColor;\n}\n\n";
 
 },{}],154:[function(require,module,exports){
 'use strict';
@@ -43553,6 +43636,28 @@ StorageScenario.KEY = function(){
 		// file name for electron or node-webkit
 		return KEY;
 	}
+};
+
+StorageScenario.prototype.getSerifStatus = function(id) {
+	var status = this.get(id);
+
+	if(!status) status = {};
+
+	return status;
+};
+
+StorageScenario.prototype.getPlayedCount = function(id){
+	var status = this.getSerifStatus(id);
+
+	return status.played_count || 0;
+};
+
+StorageScenario.prototype.incrementPlayedCount = function(id){
+	var status = this.getSerifStatus(id);
+
+	status.played_count = status.played_count || 0;
+	status.played_count++;
+	this.set(id, status);
 };
 
 module.exports = StorageScenario;
@@ -46565,7 +46670,7 @@ var ObjectPoint = require('../../../hakurei').object.point;
 var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
 var CONSTANT_BUTTON = require('../../../hakurei').constant.button;
-var SerifManager = require('../../../hakurei').serif_manager;
+var ScenarioManager = require('../../../hakurei').manager.scenario;
 var BlackMist = require('../../../object/black_mist');
 var DrawSerif = require('../../../logic/draw_serif');
 
@@ -46586,7 +46691,7 @@ var EYE_APPEAR_AND_BLINK_ANIME    = 1;
 var EYE_WAITING_ANIME             = 2;
 var EYE_SEE_RIGHT_AND_BLINK_ANIME = 3;
 
-var SceneSceneEventEncounterSatori = function(core) {
+var SceneEventEncounterSatori = function(core) {
 	base_scene.apply(this, arguments);
 
 	// シーンの各種キャラ
@@ -46598,18 +46703,18 @@ var SceneSceneEventEncounterSatori = function(core) {
 	this.black_mist = new BlackMist(this);
 
 	// セリフ
-	this._serif = new SerifManager({auto_start: false});
+	this._serif = new ScenarioManager();
 
 	// セリフの位置
 	this.serif_position = new ObjectPoint(this);
 	this.serif_position.setPosition(this.width - 120, 400);
 };
-Util.inherit(SceneSceneEventEncounterSatori, base_scene);
+Util.inherit(SceneEventEncounterSatori, base_scene);
 
-SceneSceneEventEncounterSatori.prototype.isUsingEye = function(){
+SceneEventEncounterSatori.prototype.isUsingEye = function(){
 	return false;
 };
-SceneSceneEventEncounterSatori.prototype.init = function(){
+SceneEventEncounterSatori.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// フェードインする
@@ -46635,7 +46740,7 @@ SceneSceneEventEncounterSatori.prototype.init = function(){
 	]);
 };
 
-SceneSceneEventEncounterSatori.prototype.initSatori = function(){
+SceneEventEncounterSatori.prototype.initSatori = function(){
 	this.satori.x(this.width/2);
 	this.satori.y(this.height/2);
 
@@ -46661,7 +46766,7 @@ SceneSceneEventEncounterSatori.prototype.initSatori = function(){
 	});
 
 };
-SceneSceneEventEncounterSatori.prototype.initEye = function(){
+SceneEventEncounterSatori.prototype.initEye = function(){
 	this.eye.x(this.width/2);
 	this.eye.y(this.height/2);
 
@@ -46684,7 +46789,7 @@ SceneSceneEventEncounterSatori.prototype.initEye = function(){
 	});
 
 };
-SceneSceneEventEncounterSatori.prototype.initKoishi = function(){
+SceneEventEncounterSatori.prototype.initKoishi = function(){
 	this.koishi.x(180);
 	this.koishi.y(540);
 
@@ -46699,7 +46804,7 @@ SceneSceneEventEncounterSatori.prototype.initKoishi = function(){
 
 
 
-SceneSceneEventEncounterSatori.prototype.beforeDraw = function(){
+SceneEventEncounterSatori.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	// BGM 再生
@@ -46739,7 +46844,7 @@ SceneSceneEventEncounterSatori.prototype.beforeDraw = function(){
 	}
 
 };
-SceneSceneEventEncounterSatori.prototype.draw = function(){
+SceneEventEncounterSatori.prototype.draw = function(){
 
 	this._showBackground();
 	// キャラのアニメの表示
@@ -46748,7 +46853,7 @@ SceneSceneEventEncounterSatori.prototype.draw = function(){
 	this.black_mist.draw();
 };
 
-SceneSceneEventEncounterSatori.prototype._showBackground = function(){
+SceneEventEncounterSatori.prototype._showBackground = function(){
 	var ctx = this.core.ctx;
 	ctx.save();
 
@@ -46768,11 +46873,11 @@ SceneSceneEventEncounterSatori.prototype._showBackground = function(){
 	ctx.restore();
 };
 
-SceneSceneEventEncounterSatori.prototype._showMessage = function(){
+SceneEventEncounterSatori.prototype._showMessage = function(){
 	if(!this._serif.isStart()) return;
 
 	// セリフ取得
-	var lines = this._serif.lines();
+	var lines = this._serif.getCurrentPrintedSentences();
 	if (!lines.length) return;
 
 	// メッセージウィンドウ表示
@@ -46783,19 +46888,23 @@ SceneSceneEventEncounterSatori.prototype._showMessage = function(){
 };
 
 // セリフウィンドウ表示
-SceneSceneEventEncounterSatori.prototype._showMessageWindow = function(lines){
+SceneEventEncounterSatori.prototype._showMessageWindow = function(lines){
 	var ctx = this.core.ctx;
 	var fukidashi = this.core.image_loader.getImage('fukidashi_gray');
 	DrawSerif.drawWindow(this.serif_position, ctx, fukidashi, lines);
 };
 
-SceneSceneEventEncounterSatori.prototype._showText = function(lines) {
+SceneEventEncounterSatori.prototype._showText = function(lines) {
 	var ctx = this.core.ctx;
 	DrawSerif.drawText(this.serif_position, ctx, lines);
 };
 
+SceneEventEncounterSatori.prototype.isSerifAutoStart = function() {
+	return false;
+};
 
-module.exports = SceneSceneEventEncounterSatori;
+
+module.exports = SceneEventEncounterSatori;
 
 },{"../../../data/anime/chapter0/event/encounter_satori/eye/obj01_anime_1":9,"../../../data/anime/chapter0/event/encounter_satori/eye/obj02_anime_1":10,"../../../data/anime/chapter0/event/encounter_satori/eye/obj03_anime_1":11,"../../../data/anime/chapter0/event/encounter_satori/satori/obj01_anime_1":12,"../../../data/anime/chapter0/event/encounter_satori/satori/obj02_anime_1":13,"../../../data/anime/chapter0/event/encounter_satori/satori/obj03_anime_1":14,"../../../data/anime/koishi/wait_anime_1":100,"../../../hakurei":115,"../../../logic/draw_serif":160,"../../../object/anime_object":162,"../../../object/black_mist":163}],185:[function(require,module,exports){
 'use strict';
@@ -47856,9 +47965,6 @@ Util.inherit(SceneSubStageObjectTalk, base_scene);
 
 SceneSubStageObjectTalk.prototype.init = function(){
 
-	// N秒経ってから beforeDraw 内で再生するため
-	this._serif.setAutoStart(false);
-
 	var serif_list = [
 		{"chara": "koishi","serif":"あっ"},
 	];
@@ -47885,6 +47991,13 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 SceneSubStageObjectTalk.prototype.onSerifEnd = function(){
 	this.root().changeSubScene("play");
 };
+
+SceneSubStageObjectTalk.prototype.isSerifAutoStart = function() {
+	return false;
+};
+
+
+
 module.exports = SceneSubStageObjectTalk;
 
 },{"../../../../hakurei":115,"../../talk_with_object":203}],196:[function(require,module,exports){
@@ -48975,12 +49088,8 @@ module.exports = SceneSubStagePlay;
 'use strict';
 
 // オブジェクトとの会話サブシーン
-// NOTE: encounter_satori scene が継承しており、SerifManager の auto start が false の場合がある
-//       this._serif を使う場合は isStart 判定をすること
-
-
 var base_scene = require('./base');
-var SerifManager = require('../../hakurei').serif_manager;
+var ScenarioManager = require('../../hakurei').manager.scenario;
 var Util = require('../../hakurei').util;
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
@@ -48990,7 +49099,7 @@ var NEXT_TO_SERIF_WAITING_COUNT = 6;
 var SceneSubStageObjectTalk = function(core) {
 	base_scene.apply(this, arguments);
 
-	this._serif = new SerifManager();
+	this._serif = new ScenarioManager();
 
 	// クリック待ちカーソルの状態
 	this._cursor_y = 0; // カーソル位置
@@ -49017,6 +49126,10 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 	// セリフデータの生成
 	var serif_script = serif_list;
 	this._serif.init(serif_script);
+
+	if (this.isSerifAutoStart()) {
+		this._serif.start();
+	}
 
 	// 会話対象のオブジェクト
 	this._target_object = obj;
@@ -49065,7 +49178,7 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 		// TODO:
 	/*
 	// クリック待ちカーソル表示
-	if (this._serif.isWaitingNext()) {
+	if (!this._serif.isEnd() && this._serif.isPrintLetterEnd()) {
 
 		// カーソルを上下に移動させる
 		if (this._cursor_reverse) {
@@ -49095,17 +49208,19 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 
 	}
 };
-
 // セリフ表示
 SceneSubStageObjectTalk.prototype._showMessage = function() {
 	if(!this._serif.isStart()) return;
 
-	var chara_name = this._serif.getChara();
-
+	var chara_name = this._serif.getCurrentCharaNameByPosition();
 
 	var obj = this.root().getPiece(chara_name);
 
-	obj.showMessage(this._serif.lines(), this._serif.isWaitingNext());
+	obj.showMessage(this._serif.getCurrentPrintedSentences(), !this._serif.isEnd() && this._serif.isPrintLetterEnd());
+};
+
+SceneSubStageObjectTalk.prototype.isSerifAutoStart = function() {
+	return true;
 };
 
 module.exports = SceneSubStageObjectTalk;
