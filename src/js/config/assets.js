@@ -216,10 +216,6 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter0/myroom/move_crayon.ogg",
 		volume: 0.7,
 	},
-	"chapter0-myroom-sound_window":    {
-		path: "./sound/chapter0/myroom/sound_window.ogg",
-		volume: 1.0,
-	},
 	"chapter0-myroom-sound_window_for_kokoro":    {
 		path: "./sound/chapter0/myroom/sound_window_for_kokoro.ogg",
 		volume: 1.0,
@@ -271,10 +267,6 @@ AssetsConfig.sounds = {
 	},
 	"chapter0-mansion_corridor2-event_in":    {
 		path: "./sound/chapter0/mansion_corridor2/event/event_in.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor3-open_door":    {
-		path: "./sound/chapter0/mansion_corridor3/open_door.ogg",
 		volume: 1.0,
 	},
 	"chapter0-mansion_corridor3-ring_clock_back":    {
