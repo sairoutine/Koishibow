@@ -145,7 +145,7 @@ Koishi.prototype.beforeDraw = function(){
 
 Koishi.prototype._playWalkSound = function(){
 	// 移動中でなければ再生しない
-	if (!this.isMoving()) return;
+	if (this.current_anime !== "walk" && this.current_anime !== "walk_nohat") return;
 
 	var field_data = this.scene.getFieldData();
 	// 足音
