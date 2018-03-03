@@ -19,16 +19,19 @@ var SsAnimeBase = function(scene) {
 	this.current_anime = null;
 	this.anime_frame = 0;
 	this.loop_count = 0;
+	this._cache_canvas = [];
 };
 Util.inherit(SsAnimeBase, base_object);
 
 SsAnimeBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
+
 	this._is_reflect = false;
 
 	this.current_anime = "default";
 	this.anime_frame = 0;
 	this.loop_count = 0;
+	this._cache_canvas = [];
 
 	var jsonData = this.getJsonData(this.current_anime);
 	this.imageList = this._getImageList(jsonData[DATA_INDEX].images);
@@ -39,6 +42,14 @@ SsAnimeBase.prototype.init = function(){
 	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
 
 	this.ss = new SsSprite(this.animation);
+
+	// update ss state
+	this.ss.rootScaleX = this.scaleWidth();
+	this.ss.rootScaleY = this.scaleHeight();
+	this.ss.x = this._canvas_width  /2;
+	this.ss.y = this._canvas_height /2;
+
+	this._setupAnimationCache();
 };
 SsAnimeBase.prototype.isPlaying = function(name){
 	return this.current_anime === name ? true : false;
@@ -48,6 +59,7 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 	this.current_anime = name;
 	this.anime_frame = 0;
 	this.loop_count = 0;
+	this._cache_canvas = [];
 
 	var jsonData = this.getJsonData(name);
 
@@ -57,7 +69,43 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
 
 	this.ss.setAnimation(this.animation);
+
+	this._setupAnimationCache();
 };
+
+
+
+SsAnimeBase.prototype._setupAnimationCache = function(){
+	//var start = performance.now();
+	this._cache_canvas = [];
+
+	for (var frame_no = 0, len = this.ss.inner.animation.getFrameCount(); frame_no < len; frame_no++) {
+		// create canvas
+		var canvas = document.createElement('canvas');
+		canvas.width  = this._canvas_width;
+		canvas.height = this._canvas_height;
+		var ctx2 = canvas.getContext('2d');
+
+		this.ss.inner.animation.drawFunc(ctx2, frame_no, this.ss.x, this.ss.y, this.ss.flipH, this.ss.flipV, this.ss.inner.partStates, this.ss.rootScaleX, this.ss.rootScaleY);
+
+		// 暗くする
+		if (this.darker()) {
+			canvas = CreateDarkerImage.exec(canvas, this.darker());
+		}
+
+		this._cache_canvas[frame_no] = canvas;
+	}
+
+	//var end = performance.now();
+    //var elapsed = (end - start);
+    //var elapsedStr = elapsed.toPrecision(3);
+    //console.log("time: " + elapsedStr);
+};
+
+
+
+
+
 
 SsAnimeBase.prototype.playAnimationOnce = function(name, _callback){
 	var ss = this.ss;
@@ -117,12 +165,6 @@ SsAnimeBase.prototype.getFrameNo = function(){
 
 SsAnimeBase.prototype.beforeDraw = function(){
 	base_object.prototype.beforeDraw.apply(this, arguments);
-
-	// update ss state
-	this.ss.rootScaleX = this.scaleWidth();
-	this.ss.rootScaleY = this.scaleHeight();
-	this.ss.x = this._canvas_width  /2;
-	this.ss.y = this._canvas_height /2;
 };
 
 // 画面更新
@@ -174,20 +216,7 @@ SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
 	return Math.floor(this.anime_frame);
 };
 SsAnimeBase.prototype._getAnimeImage = function(frame_no){
-	// TODO: メモリキャッシュ
-	// create canvas
-	var canvas = document.createElement('canvas');
-	canvas.width  = this._canvas_width;
-	canvas.height = this._canvas_height;
-	var ctx2 = canvas.getContext('2d');
-
-	this.ss.inner.animation.drawFunc(ctx2, frame_no, this.ss.x, this.ss.y, this.ss.flipH, this.ss.flipV, this.ss.inner.partStates, this.ss.rootScaleX, this.ss.rootScaleY);
-
-	// 暗くする
-	if (this.darker()) {
-		canvas = CreateDarkerImage.exec(canvas, this.darker());
-	}
-	return canvas;
+	return this._cache_canvas[frame_no];
 };
 
 
