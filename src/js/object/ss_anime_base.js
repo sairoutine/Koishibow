@@ -27,7 +27,6 @@ Util.inherit(SsAnimeBase, base_object);
 
 SsAnimeBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
-	//var start = performance.now();
 
 	this._is_reflect = false;
 
@@ -58,11 +57,6 @@ SsAnimeBase.prototype.init = function(){
 
 	this.current_anime = "default";
 	this.changeAnimation(this.current_anime);
-
-	//var end = performance.now();
-	//var elapsed = (end - start);
-	//var elapsedStr = elapsed.toPrecision(3);
-	//console.log("time: " + elapsedStr);
 };
 SsAnimeBase.prototype.changeAnimation = function(name){
 	this.current_anime = name;
