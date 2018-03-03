@@ -131,7 +131,8 @@ SsAnimeBase.prototype.draw = function(){
 	if (!this.isShow()) return;
 	var ctx = this.core.ctx;
 
-	var canvas = this._getCurrentAnimeImage();
+	var frame_no = this._getCurrentAnimeFrameNo();
+	var canvas = this._getAnimeImage(frame_no);
 
 	// draw
 	ctx.save();
@@ -144,15 +145,7 @@ SsAnimeBase.prototype.draw = function(){
 	ctx.restore();
 };
 
-
-SsAnimeBase.prototype._getCurrentAnimeImage = function(){
-	// TODO: メモリキャッシュ
-	// create canvas
-	var canvas = document.createElement('canvas');
-	canvas.width  = this._canvas_width;
-	canvas.height = this._canvas_height;
-	var ctx2 = canvas.getContext('2d');
-
+SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
 	var max_frame = this.ss.inner.animation.getFrameCount();
 	var max_loop = this.ss.inner.loop;
 	if (max_loop === 0) {
@@ -178,10 +171,17 @@ SsAnimeBase.prototype._getCurrentAnimeImage = function(){
 		this.anime_frame %= max_frame;
 	}
 
-	this.ss.inner.animation.drawFunc(ctx2, Math.floor(this.anime_frame), this.ss.x, this.ss.y, this.ss.flipH, this.ss.flipV, this.ss.inner.partStates, this.ss.rootScaleX, this.ss.rootScaleY);
+	return Math.floor(this.anime_frame);
+};
+SsAnimeBase.prototype._getAnimeImage = function(frame_no){
+	// TODO: メモリキャッシュ
+	// create canvas
+	var canvas = document.createElement('canvas');
+	canvas.width  = this._canvas_width;
+	canvas.height = this._canvas_height;
+	var ctx2 = canvas.getContext('2d');
 
-	// TOOD: 削除
-	//this.ss.draw(ctx2, this.frame_count*16.6);
+	this.ss.inner.animation.drawFunc(ctx2, frame_no, this.ss.x, this.ss.y, this.ss.flipH, this.ss.flipV, this.ss.inner.partStates, this.ss.rootScaleX, this.ss.rootScaleY);
 
 	// 暗くする
 	if (this.darker()) {
