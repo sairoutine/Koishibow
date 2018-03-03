@@ -55,10 +55,6 @@ SsAnimeBase.prototype.init = function(){
 	this.current_anime = "default";
 	this.changeAnimation(this.current_anime);
 };
-SsAnimeBase.prototype.isPlaying = function(name){
-	return this.current_anime === name ? true : false;
-};
-
 SsAnimeBase.prototype.changeAnimation = function(name){
 	this.current_anime = name;
 	this.anime_frame = 0;
@@ -72,8 +68,6 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 
 	this._setupAnimationCache(name);
 };
-
-
 
 SsAnimeBase.prototype._setupAnimationCache = function(name){
 	if(name in this._cache_canvas) return;
@@ -104,10 +98,9 @@ SsAnimeBase.prototype._setupAnimationCache = function(name){
 	//console.log("time: " + elapsedStr);
 };
 
-
-
-
-
+SsAnimeBase.prototype.isPlaying = function(name) {
+	return this.current_anime === name ? true : false;
+};
 
 SsAnimeBase.prototype.playAnimationOnce = function(name, _callback){
 	var ss = this.ss;
