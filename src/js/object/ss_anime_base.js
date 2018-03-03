@@ -12,15 +12,23 @@ var SsSprite = SsaPlayer.SsSprite;
 
 // アニメの index は 0 固定
 var DATA_INDEX = 0;
+var DEFAULT_ANIME = "default";
 
 var SsAnimeBase = function(scene) {
 	base_object.apply(this, arguments);
 
+	this.ss = new SsSprite();
+
 	this._is_reflect = false;
 
+	// 現在のアニメ名
 	this.current_anime = null;
-	this.anime_frame = 0;
-	this.loop_count = 0;
+
+	// 現在のアニメの再生フレームNo
+	this._anime_frame = 0;
+	// 現在のアニメの再生回数
+	this._loop_count = 0;
+	// 描画済アニメ
 	this._cache_canvas = {};
 };
 Util.inherit(SsAnimeBase, base_object);
@@ -28,24 +36,12 @@ Util.inherit(SsAnimeBase, base_object);
 SsAnimeBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
+	// initialize properties
 	this._is_reflect = false;
-
-	this.current_anime = "default";
+	this.current_anime = null;
+	this._anime_frame = 0;
+	this._loop_count = 0;
 	this._cache_canvas = {};
-
-	var jsonData = this.getJsonData(this.current_anime);
-	this.imageList = this._getImageList(jsonData[DATA_INDEX].images);
-
-	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
-	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
-
-	this.ss = new SsSprite();
-
-	// update ss state
-	this.ss.rootScaleX = this.scaleWidth();
-	this.ss.rootScaleY = this.scaleHeight();
-	this.ss.x = this._canvas_width  /2;
-	this.ss.y = this._canvas_height /2;
 
 	// preload cache
 	var map = this.jsonAnimeMap();
@@ -55,17 +51,26 @@ SsAnimeBase.prototype.init = function(){
 		}
 	}
 
-	this.current_anime = "default";
-	this.changeAnimation(this.current_anime);
+	this.changeAnimation(DEFAULT_ANIME);
 };
 SsAnimeBase.prototype.changeAnimation = function(name){
 	this.current_anime = name;
-	this.anime_frame = 0;
-	this.loop_count = 0;
+	this._anime_frame = 0;
+	this._loop_count = 0;
 
 	var jsonData = this.getJsonData(name);
 
-	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
+	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
+	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
+
+	// update ss state
+	this.ss.rootScaleX = this.scaleWidth();
+	this.ss.rootScaleY = this.scaleHeight();
+	this.ss.x = this._canvas_width  /2;
+	this.ss.y = this._canvas_height /2;
+
+	var imageList = this._getImageList(jsonData[DATA_INDEX].images);
+	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, imageList);
 
 	this.ss.setAnimation(this.animation);
 
@@ -184,18 +189,18 @@ SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
 	var max_frame = this.ss.inner.animation.getFrameCount();
 	var max_loop = this.ss.inner.loop;
 	if (max_loop === 0) {
-		this.anime_frame += this.ss.inner.animation.getFPS() / 60;
-		this.anime_frame %= max_frame;
+		this._anime_frame += this.ss.inner.animation.getFPS() / 60;
+		this._anime_frame %= max_frame;
 	}
-	else if(this.loop_count < max_loop) {
-		this.anime_frame += this.ss.inner.animation.getFPS() / 60;
+	else if(this._loop_count < max_loop) {
+		this._anime_frame += this.ss.inner.animation.getFPS() / 60;
 
 		// 最終フレームを再生し終えたら
-		if (this.anime_frame >= max_frame - 1) {
-			this.loop_count++;
+		if (this._anime_frame >= max_frame - 1) {
+			this._loop_count++;
 
 			// 最終ループに達してしまったら
-			if (this.loop_count >= max_loop) {
+			if (this._loop_count >= max_loop) {
 				// 停止時コールバック呼び出し
 				if (this.ss.inner.endCallBack != null) {
 					this.ss.inner.endCallBack();
@@ -203,10 +208,10 @@ SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
 			}
 		}
 
-		this.anime_frame %= max_frame;
+		this._anime_frame %= max_frame;
 	}
 
-	return Math.floor(this.anime_frame);
+	return Math.floor(this._anime_frame);
 };
 SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 	return this._cache_canvas[this.current_anime][frame_no];
