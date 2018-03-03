@@ -64,13 +64,13 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 
 	this.ss.setAnimation(this.animation);
 
-	this._setupAnimationCache();
+	this._setupAnimationCache(name);
 };
 
 
 
-SsAnimeBase.prototype._setupAnimationCache = function(){
-	if(this.current_anime in this._cache_canvas) return;
+SsAnimeBase.prototype._setupAnimationCache = function(name){
+	if(name in this._cache_canvas) return;
 
 	//var start = performance.now();
 	var cache_canvas_list = [];
@@ -91,11 +91,11 @@ SsAnimeBase.prototype._setupAnimationCache = function(){
 		cache_canvas_list[frame_no] = canvas;
 	}
 
-	this._cache_canvas[this.current_anime] = cache_canvas_list;
+	this._cache_canvas[name] = cache_canvas_list;
 	//var end = performance.now();
-    //var elapsed = (end - start);
-    //var elapsedStr = elapsed.toPrecision(3);
-    //console.log("time: " + elapsedStr);
+	//var elapsed = (end - start);
+	//var elapsedStr = elapsed.toPrecision(3);
+	//console.log("time: " + elapsedStr);
 };
 
 
