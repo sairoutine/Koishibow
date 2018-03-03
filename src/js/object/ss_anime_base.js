@@ -47,6 +47,12 @@ SsAnimeBase.prototype.init = function(){
 	this.ss.x = this._canvas_width  /2;
 	this.ss.y = this._canvas_height /2;
 
+	// preload cache
+	for (var name in this.jsonAnimeMap()) {
+		this.changeAnimation(name);
+	}
+
+	this.current_anime = "default";
 	this.changeAnimation(this.current_anime);
 };
 SsAnimeBase.prototype.isPlaying = function(name){
