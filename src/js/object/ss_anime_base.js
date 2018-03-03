@@ -75,6 +75,8 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 
 
 SsAnimeBase.prototype._setupAnimationCache = function(){
+	if(this.current_anime in this._cache_canvas) return;
+
 	//var start = performance.now();
 	var cache_canvas_list = [];
 	for (var frame_no = 0, len = this.ss.inner.animation.getFrameCount(); frame_no < len; frame_no++) {
