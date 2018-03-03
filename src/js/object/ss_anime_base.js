@@ -131,9 +131,7 @@ SsAnimeBase.prototype.draw = function(){
 	canvas.width  = this._canvas_width;
 	canvas.height = this._canvas_height;
 	var ctx2 = canvas.getContext('2d');
-	// TODO: frame_count に合わせて描画
-	var t = new Date().getTime();
-	this.ss.draw(ctx2, t);
+	this.ss.draw(ctx2, this.frame_count*16.6);
 
 	// 暗くする
 	if (this.darker()) {
