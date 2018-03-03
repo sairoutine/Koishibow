@@ -19,7 +19,7 @@ var SsAnimeBase = function(scene) {
 	this.current_anime = null;
 	this.anime_frame = 0;
 	this.loop_count = 0;
-	this._cache_canvas = [];
+	this._cache_canvas = {};
 };
 Util.inherit(SsAnimeBase, base_object);
 
@@ -31,7 +31,7 @@ SsAnimeBase.prototype.init = function(){
 	this.current_anime = "default";
 	this.anime_frame = 0;
 	this.loop_count = 0;
-	this._cache_canvas = [];
+	this._cache_canvas = {};
 
 	var jsonData = this.getJsonData(this.current_anime);
 	this.imageList = this._getImageList(jsonData[DATA_INDEX].images);
@@ -59,7 +59,6 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 	this.current_anime = name;
 	this.anime_frame = 0;
 	this.loop_count = 0;
-	this._cache_canvas = [];
 
 	var jsonData = this.getJsonData(name);
 
@@ -77,8 +76,7 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 
 SsAnimeBase.prototype._setupAnimationCache = function(){
 	//var start = performance.now();
-	this._cache_canvas = [];
-
+	var cache_canvas_list = [];
 	for (var frame_no = 0, len = this.ss.inner.animation.getFrameCount(); frame_no < len; frame_no++) {
 		// create canvas
 		var canvas = document.createElement('canvas');
@@ -93,9 +91,10 @@ SsAnimeBase.prototype._setupAnimationCache = function(){
 			canvas = CreateDarkerImage.exec(canvas, this.darker());
 		}
 
-		this._cache_canvas[frame_no] = canvas;
+		cache_canvas_list[frame_no] = canvas;
 	}
 
+	this._cache_canvas[this.current_anime] = cache_canvas_list;
 	//var end = performance.now();
     //var elapsed = (end - start);
     //var elapsedStr = elapsed.toPrecision(3);
@@ -216,7 +215,7 @@ SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
 	return Math.floor(this.anime_frame);
 };
 SsAnimeBase.prototype._getAnimeImage = function(frame_no){
-	return this._cache_canvas[frame_no];
+	return this._cache_canvas[this.current_anime][frame_no];
 };
 
 
