@@ -17,6 +17,8 @@ var SsAnimeBase = function(scene) {
 	base_object.apply(this, arguments);
 
 	this.current_anime = null;
+	this.anime_frame = 0;
+	this.loop_count = 0;
 };
 Util.inherit(SsAnimeBase, base_object);
 
@@ -25,6 +27,8 @@ SsAnimeBase.prototype.init = function(){
 	this._is_reflect = false;
 
 	this.current_anime = "default";
+	this.anime_frame = 0;
+	this.loop_count = 0;
 
 	var jsonData = this.getJsonData(this.current_anime);
 	this.imageList = this._getImageList(jsonData[DATA_INDEX].images);
@@ -42,6 +46,8 @@ SsAnimeBase.prototype.isPlaying = function(name){
 
 SsAnimeBase.prototype.changeAnimation = function(name){
 	this.current_anime = name;
+	this.anime_frame = 0;
+	this.loop_count = 0;
 
 	var jsonData = this.getJsonData(name);
 
@@ -125,19 +131,7 @@ SsAnimeBase.prototype.draw = function(){
 	if (!this.isShow()) return;
 	var ctx = this.core.ctx;
 
-	// TODO: メモリキャッシュ
-	// create canvas
-	var canvas = document.createElement('canvas');
-	canvas.width  = this._canvas_width;
-	canvas.height = this._canvas_height;
-	var ctx2 = canvas.getContext('2d');
-	this.ss.draw(ctx2, this.frame_count*16.6);
-
-	// 暗くする
-	if (this.darker()) {
-		canvas = CreateDarkerImage.exec(canvas, this.darker());
-	}
-
+	var canvas = this._getCurrentAnimeImage();
 
 	// draw
 	ctx.save();
@@ -149,6 +143,53 @@ SsAnimeBase.prototype.draw = function(){
 
 	ctx.restore();
 };
+
+
+SsAnimeBase.prototype._getCurrentAnimeImage = function(){
+	// TODO: メモリキャッシュ
+	// create canvas
+	var canvas = document.createElement('canvas');
+	canvas.width  = this._canvas_width;
+	canvas.height = this._canvas_height;
+	var ctx2 = canvas.getContext('2d');
+
+	var max_frame = this.ss.inner.animation.getFrameCount();
+	var max_loop = this.ss.inner.loop;
+	if (max_loop === 0) {
+		this.anime_frame += this.ss.inner.animation.getFPS() / 60;
+		this.anime_frame %= max_frame;
+	}
+	else if(this.loop_count < max_loop) {
+		this.anime_frame += this.ss.inner.animation.getFPS() / 60;
+
+		// 最終フレームを再生し終えたら
+		if (this.anime_frame >= max_frame - 1) {
+			this.loop_count++;
+
+			// 最終ループに達してしまったら
+			if (this.loop_count >= max_loop) {
+				// 停止時コールバック呼び出し
+				if (this.ss.inner.endCallBack != null) {
+					this.ss.inner.endCallBack();
+				}
+			}
+		}
+
+		this.anime_frame %= max_frame;
+	}
+
+	this.ss.inner.animation.drawFunc(ctx2, Math.floor(this.anime_frame), this.ss.x, this.ss.y, this.ss.flipH, this.ss.flipV, this.ss.inner.partStates, this.ss.rootScaleX, this.ss.rootScaleY);
+
+	// TOOD: 削除
+	//this.ss.draw(ctx2, this.frame_count*16.6);
+
+	// 暗くする
+	if (this.darker()) {
+		canvas = CreateDarkerImage.exec(canvas, this.darker());
+	}
+	return canvas;
+};
+
 
 SsAnimeBase.prototype.isShow = function(){
 	return true;
