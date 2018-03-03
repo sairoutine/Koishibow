@@ -120,18 +120,29 @@ SceneTitle.prototype.beforeDraw = function(){
 	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_LEFT);
 	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_RIGHT);
 	if (is_left_push || is_right_push) {
+		var before_index = this._index;
 		// 左
 		if (is_left_push) {
 			this._index--;
-			if (this._index < 0) {
-				this._index = 0;
+			// 選択不能な選択肢はスキップ
+			while (MENU[this._index] && !MENU[this._index][1](this.core)) {
+				this._index--;
+			}
+			// 行き過ぎた場合戻す
+			if (!MENU[this._index]) {
+				this._index = before_index;
 			}
 		}
 		// 右
 		else if (is_right_push) {
 			this._index++;
-			if (this._index > MENU.length - 1) {
-				this._index = MENU.length - 1;
+			// 選択不能な選択肢はスキップ
+			while (MENU[this._index] && !MENU[this._index][1](this.core)) {
+				this._index++;
+			}
+			// 行き過ぎた場合戻す
+			if (!MENU[this._index]) {
+				this._index = before_index;
 			}
 		}
 	}
