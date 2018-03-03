@@ -16,6 +16,8 @@ var DATA_INDEX = 0;
 var SsAnimeBase = function(scene) {
 	base_object.apply(this, arguments);
 
+	this._is_reflect = false;
+
 	this.current_anime = null;
 	this.anime_frame = 0;
 	this.loop_count = 0;
@@ -29,8 +31,6 @@ SsAnimeBase.prototype.init = function(){
 	this._is_reflect = false;
 
 	this.current_anime = "default";
-	this.anime_frame = 0;
-	this.loop_count = 0;
 	this._cache_canvas = {};
 
 	var jsonData = this.getJsonData(this.current_anime);
@@ -39,9 +39,7 @@ SsAnimeBase.prototype.init = function(){
 	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
 	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
 
-	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
-
-	this.ss = new SsSprite(this.animation);
+	this.ss = new SsSprite();
 
 	// update ss state
 	this.ss.rootScaleX = this.scaleWidth();
@@ -49,7 +47,7 @@ SsAnimeBase.prototype.init = function(){
 	this.ss.x = this._canvas_width  /2;
 	this.ss.y = this._canvas_height /2;
 
-	this._setupAnimationCache();
+	this.changeAnimation(this.current_anime);
 };
 SsAnimeBase.prototype.isPlaying = function(name){
 	return this.current_anime === name ? true : false;
@@ -61,9 +59,6 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 	this.loop_count = 0;
 
 	var jsonData = this.getJsonData(name);
-
-	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
-	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
 
 	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
 
