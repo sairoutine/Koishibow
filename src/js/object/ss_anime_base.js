@@ -27,6 +27,7 @@ Util.inherit(SsAnimeBase, base_object);
 
 SsAnimeBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
+	//var start = performance.now();
 
 	this._is_reflect = false;
 
@@ -54,6 +55,11 @@ SsAnimeBase.prototype.init = function(){
 
 	this.current_anime = "default";
 	this.changeAnimation(this.current_anime);
+
+	//var end = performance.now();
+	//var elapsed = (end - start);
+	//var elapsedStr = elapsed.toPrecision(3);
+	//console.log("time: " + elapsedStr);
 };
 SsAnimeBase.prototype.changeAnimation = function(name){
 	this.current_anime = name;
@@ -72,7 +78,6 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 SsAnimeBase.prototype._setupAnimationCache = function(name){
 	if(name in this._cache_canvas) return;
 
-	//var start = performance.now();
 	var cache_canvas_list = [];
 	for (var frame_no = 0, len = this.ss.inner.animation.getFrameCount(); frame_no < len; frame_no++) {
 		// create canvas
@@ -92,10 +97,6 @@ SsAnimeBase.prototype._setupAnimationCache = function(name){
 	}
 
 	this._cache_canvas[name] = cache_canvas_list;
-	//var end = performance.now();
-	//var elapsed = (end - start);
-	//var elapsedStr = elapsed.toPrecision(3);
-	//console.log("time: " + elapsedStr);
 };
 
 SsAnimeBase.prototype.isPlaying = function(name) {
