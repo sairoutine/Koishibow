@@ -108,8 +108,8 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 	}
 };
 
-// こいし移動後の処理
-ObjectStaticImage.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectStaticImage.prototype.onTouchByKoishi = function() {
 	// こいしのアクション
 	if (this._action_name) {
 		this.scene.root().koishi.actionByObject(this._action_name);

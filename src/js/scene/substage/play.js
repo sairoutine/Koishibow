@@ -51,7 +51,7 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 		var piece = this.root().pieces[i];
 		if (piece.checkIsInTouchArea(this.root().koishi)) {
 			if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
-				piece.onAfterWalkToHere();
+				piece.onTouchByKoishi();
 			}
 			else {
 				// TODO: 調べられるよカーソルを表示

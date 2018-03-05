@@ -29,8 +29,8 @@ ObjectAnimeEventImage.prototype.isCollision = function(point) {
 	return this.scene.root().isUsingEye();
 };
 
-// こいし移動後の処理
-ObjectAnimeEventImage.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectAnimeEventImage.prototype.onTouchByKoishi = function() {
 	// イベント発生
 	this.core.changeScene(this._back.click_event);
 };

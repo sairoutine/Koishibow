@@ -86,8 +86,8 @@ ObjectChapter0Hat.prototype.collisionHeight = function(){
 	}
 };
 
-// こいし移動後の処理
-ObjectChapter0Hat.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectChapter0Hat.prototype.onTouchByKoishi = function() {
 	this.scene.root().changeSubScene("picture_get_hat");
 };
 

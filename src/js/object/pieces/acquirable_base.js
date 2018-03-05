@@ -54,8 +54,8 @@ ObjectAcquirableBase.prototype.isCollision = function(point) {
 	return !this.scene.root().isUsingEye();
 };
 
-// 移動後の処理
-ObjectAcquirableBase.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectAcquirableBase.prototype.onTouchByKoishi = function() {
 	// フィールドから該当のオブジェクトを削除
 	this._deleteFromField();
 

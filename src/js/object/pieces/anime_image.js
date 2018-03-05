@@ -257,8 +257,8 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 	return this.ss.MarginHeight() * this._scale;
 };
 
-// こいし移動後の処理
-ObjectAnimeImage.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectAnimeImage.prototype.onTouchByKoishi = function() {
 	// こいしのアクション
 	if (this._front.action_name) {
 		this.scene.root().koishi.actionByObject(this._front.action_name);

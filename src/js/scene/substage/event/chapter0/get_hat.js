@@ -43,7 +43,7 @@ SceneEventChapter0GetHat.prototype.beforeDraw = function() {
 
 	if (this.hat.checkIsInTouchArea(this.root().koishi)) {
 		if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
-			this.hat.onAfterWalkToHere();
+			this.hat.onTouchByKoishi();
 		}
 		else {
 			// TODO: 調べられるよカーソルを表示
