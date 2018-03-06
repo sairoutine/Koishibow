@@ -87,7 +87,7 @@ Koishi.prototype.useEye = function(){
 
 Koishi.prototype.unUseEye = function(){
 	// サードアイ使用モーション中なら静止に戻す
-	if (this.current_anime === "use_eye") {
+	if (this.isPlaying("use_eye")) {
 		this.setWaitAnime();
 	}
 };
