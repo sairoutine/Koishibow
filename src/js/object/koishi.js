@@ -133,36 +133,6 @@ Koishi.prototype._playWalkSound = function(){
 	}
 };
 
-Koishi.prototype.setMoveTarget = function(obj, callback) {
-	// 移動先のオブジェクト or 座標
-	this._move_target_object = obj;
-
-	// 移動後に実行する callback
-	this._after_move_callback = callback;
-
-	// 移動先位置を取得
-	var move_to_pos = this._getMoveToPos();
-
-	// 移動ベクトルを設定
-	var ax = move_to_pos.x - this.x();
-	var ay = move_to_pos.y - this.y();
-
-	var theta = Util.radianToTheta(Math.atan2(ay, ax));
-
-	this.setVelocity({magnitude:SPEED, theta:theta});
-
-	// 歩きモーションに変更
-	this.setWalkAnime();
-
-	// 移動方向に合わせて こいしを反転
-	if (obj.x() > this.x()) {
-		this.setReflect(false);
-	}
-	else {
-		this.setReflect(true);
-	}
-};
-
 Koishi.prototype.moveByInput = function() {
 	var is_move = false;
 	var add_x = 0;
@@ -247,13 +217,6 @@ Koishi.prototype.moveByInput = function() {
 
 };
 
-
-
-
-
-
-
-
 Koishi.prototype.jsonAnimeMap = function() {
 	return {
 		// 静止
@@ -293,33 +256,6 @@ Koishi.prototype.scaleHeight = function(){
 	return 2/3;
 };
 
-// 移動終了判定
-Koishi.prototype._checkToStop = function() {
-};
-
-
-// 移動先を取得
-Koishi.prototype._getMoveToPos = function() {
-	// 移動先オブジェクト
-	var obj = this._move_target_object;
-
-	// このメソッドを呼ぶときは、必ず移動先が設定されていないといけない
-	if(!obj) throw new Error("unable to get _move_target_object");
-
-	var target_x = obj.x();
-	var target_y = obj.y();
-
-	// 一定以上の奥行きには移動できない
-	if (target_y < this.scene.height - CONSTANT.WALK_DEPTH_LIMIT) {
-		target_y = this.scene.height - CONSTANT.WALK_DEPTH_LIMIT;
-	}
-
-	return {
-		x: target_x,
-		y: target_y,
-	};
-};
-
 // サードアイの自然消耗
 Koishi.prototype.abrasion3rdeye = function() {
 	// 消耗前のレベル
@@ -348,10 +284,6 @@ Koishi.prototype.get3rdeyeGauge = function() {
 Koishi.prototype.isDead = function() {
 	return this.core.save_manager.player.get3rdeyeGauge() === 0;
 };
-
-
-
-
 
 Koishi.prototype.darker = function() {
 	return this.core.debug_manager.get("koishi_alpha");
