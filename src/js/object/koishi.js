@@ -54,11 +54,6 @@ Koishi.prototype.init = function() {
 	this.setWaitAnime();
 };
 
-// 移動中かどうか
-Koishi.prototype.isMoving = function() {
-	return this._move_target_object ? true : false;
-};
-
 // 待機アニメーションに変更
 Koishi.prototype.setWaitAnime = function() {
 	if (this.scene.isNoHat()) {
@@ -80,9 +75,6 @@ Koishi.prototype.setWalkAnime = function() {
 };
 
 Koishi.prototype._stopMove = function() {
-	// 移動中でなければ何もしない
-	if(!this.isMoving()) return;
-
 	this._move_target_object = null;
 	this.setVelocity({magnitude:0, theta:0});
 
@@ -136,11 +128,6 @@ Koishi.prototype.beforeDraw = function(){
 
 	// 足音
 	this._playWalkSound();
-
-	// 移動先
-	if(this.isMoving()) {
-		this._checkToStop();
-	}
 };
 
 Koishi.prototype._playWalkSound = function(){
@@ -173,9 +160,6 @@ Koishi.prototype._playWalkSound = function(){
 };
 
 Koishi.prototype.setMoveTarget = function(obj, callback) {
-	// 移動不可であれば何もしない
-	if (!this.scene.isEnableToMove()) return;
-
 	// 移動先のオブジェクト or 座標
 	this._move_target_object = obj;
 
@@ -206,9 +190,6 @@ Koishi.prototype.setMoveTarget = function(obj, callback) {
 };
 
 Koishi.prototype.moveByInput = function() {
-	// 移動不可であれば何もしない
-	if (!this.scene.isEnableToMove()) return;
-
 	var is_move = false;
 	var add_x = 0;
 	var add_y = 0;

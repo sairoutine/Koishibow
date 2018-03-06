@@ -387,13 +387,6 @@ SceneStage.prototype._draw3rdEyeEmergencyMask = function() {
 	ctx.restore();
 };
 
-// 移動可能かどうか
-SceneStage.prototype.isEnableToMove = function(){
-	// こいし移動中は、再度移動先を設定できない
-	return this.koishi.isMoving() ? false : true;
-};
-
-
 SceneStage.prototype.isNoHat = function(){
 	return this.currentSubScene() instanceof SceneSubStageEventChapter0GetHat;
 };
