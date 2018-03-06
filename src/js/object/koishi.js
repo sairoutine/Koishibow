@@ -71,7 +71,12 @@ Koishi.prototype.setWalkAnime = function() {
 	else {
 		this.playAnimationInfinity("walk");
 	}
+};
+// 歩き中かどうか
+Koishi.prototype.isWalking = function() {
+	if (this.isPlaying("walk_nohat") || this.isPlaying("walk")) return true;
 
+	return false;
 };
 
 Koishi.prototype.useEye = function(){
@@ -101,7 +106,7 @@ Koishi.prototype.beforeDraw = function(){
 
 Koishi.prototype._playWalkSound = function(){
 	// 移動中でなければ再生しない
-	if (this.current_anime !== "walk" && this.current_anime !== "walk_nohat") return;
+	if (this.isWalking()) return;
 
 	var field_data = this.scene.getFieldData();
 	// 足音
@@ -228,13 +233,13 @@ Koishi.prototype.moveByInput = function() {
 	/* モーション変更 */
 	if (is_move) {
 		// 歩きモーションに変更
-		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
+		if (!this.isWalking()) {
 			this.setWalkAnime();
 		}
 	}
 	else {
 		// 歩いてないので待機モーションに変更
-		if(this.isPlaying("walk_nohat") || this.isPlaying("walk")) {
+		if (this.isWalking()) {
 			this.setWaitAnime();
 		}
 	}
