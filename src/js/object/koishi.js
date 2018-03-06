@@ -74,38 +74,7 @@ Koishi.prototype.setWalkAnime = function() {
 
 };
 
-Koishi.prototype._stopMove = function() {
-	this._move_target_object = null;
-	this.setVelocity({magnitude:0, theta:0});
-
-	this.setWaitAnime();
-};
-Koishi.prototype.stopMoveWithoutCallBack = function() {
-	this._stopMove();
-
-	// 移動後に実行する callback
-	this._after_move_callback = null;
-};
-
-Koishi.prototype.stopMove = function() {
-	this._stopMove();
-
-	// 歩いたあとのコールバックを実行
-	if (this._after_move_callback) {
-		var cb = this._after_move_callback;
-		this._after_move_callback = null;
-		cb();
-	}
-};
-
-
-
-
-
-
-
 Koishi.prototype.useEye = function(){
-	this.stopMoveWithoutCallBack();
 
 	// サードアイ使用モーションをしたあとに停止
 	this.playAnimationOnce("use_eye");
@@ -321,28 +290,6 @@ Koishi.prototype.scaleHeight = function(){
 
 // 移動終了判定
 Koishi.prototype._checkToStop = function() {
-	// 移動先位置を取得
-	var move_to_pos = this._getMoveToPos();
-	var target_x = move_to_pos.x;
-	var target_y = move_to_pos.y;
-
-	// "概ね" の範囲
-	var range = SPEED*4;
-
-	// (x,y)座標が概ね target_x と target_y に近づいたら
-	if (
-		this.x() + range >= target_x &&
-		target_x > this.x() - range &&
-		this.y() + range >= target_y &&
-		target_y > this.y() - range
-	) {
-		// end move
-		this.stopMove();
-	}
-	// オブジェクトとぶつかったら止まる
-	else if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
-		this.stopMove();
-	}
 };
 
 
