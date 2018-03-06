@@ -44489,11 +44489,6 @@ Koishi.prototype.init = function() {
 	this.setWaitAnime();
 };
 
-// 移動中かどうか
-Koishi.prototype.isMoving = function() {
-	return this._move_target_object ? true : false;
-};
-
 // 待機アニメーションに変更
 Koishi.prototype.setWaitAnime = function() {
 	if (this.scene.isNoHat()) {
@@ -44511,44 +44506,15 @@ Koishi.prototype.setWalkAnime = function() {
 	else {
 		this.playAnimationInfinity("walk");
 	}
-
 };
+// 歩き中かどうか
+Koishi.prototype.isWalking = function() {
+	if (this.isPlaying("walk_nohat") || this.isPlaying("walk")) return true;
 
-Koishi.prototype._stopMove = function() {
-	// 移動中でなければ何もしない
-	if(!this.isMoving()) return;
-
-	this._move_target_object = null;
-	this.setVelocity({magnitude:0, theta:0});
-
-	this.setWaitAnime();
+	return false;
 };
-Koishi.prototype.stopMoveWithoutCallBack = function() {
-	this._stopMove();
-
-	// 移動後に実行する callback
-	this._after_move_callback = null;
-};
-
-Koishi.prototype.stopMove = function() {
-	this._stopMove();
-
-	// 歩いたあとのコールバックを実行
-	if (this._after_move_callback) {
-		var cb = this._after_move_callback;
-		this._after_move_callback = null;
-		cb();
-	}
-};
-
-
-
-
-
-
 
 Koishi.prototype.useEye = function(){
-	this.stopMoveWithoutCallBack();
 
 	// サードアイ使用モーションをしたあとに停止
 	this.playAnimationOnce("use_eye");
@@ -44556,7 +44522,7 @@ Koishi.prototype.useEye = function(){
 
 Koishi.prototype.unUseEye = function(){
 	// サードアイ使用モーション中なら静止に戻す
-	if (this.current_anime === "use_eye") {
+	if (this.isPlaying("use_eye")) {
 		this.setWaitAnime();
 	}
 };
@@ -44571,16 +44537,11 @@ Koishi.prototype.beforeDraw = function(){
 
 	// 足音
 	this._playWalkSound();
-
-	// 移動先
-	if(this.isMoving()) {
-		this._checkToStop();
-	}
 };
 
 Koishi.prototype._playWalkSound = function(){
 	// 移動中でなければ再生しない
-	if (this.current_anime !== "walk" && this.current_anime !== "walk_nohat") return;
+	if (this.isWalking()) return;
 
 	var field_data = this.scene.getFieldData();
 	// 足音
@@ -44607,43 +44568,7 @@ Koishi.prototype._playWalkSound = function(){
 	}
 };
 
-Koishi.prototype.setMoveTarget = function(obj, callback) {
-	// 移動不可であれば何もしない
-	if (!this.scene.isEnableToMove()) return;
-
-	// 移動先のオブジェクト or 座標
-	this._move_target_object = obj;
-
-	// 移動後に実行する callback
-	this._after_move_callback = callback;
-
-	// 移動先位置を取得
-	var move_to_pos = this._getMoveToPos();
-
-	// 移動ベクトルを設定
-	var ax = move_to_pos.x - this.x();
-	var ay = move_to_pos.y - this.y();
-
-	var theta = Util.radianToTheta(Math.atan2(ay, ax));
-
-	this.setVelocity({magnitude:SPEED, theta:theta});
-
-	// 歩きモーションに変更
-	this.setWalkAnime();
-
-	// 移動方向に合わせて こいしを反転
-	if (obj.x() > this.x()) {
-		this.setReflect(false);
-	}
-	else {
-		this.setReflect(true);
-	}
-};
-
 Koishi.prototype.moveByInput = function() {
-	// 移動不可であれば何もしない
-	if (!this.scene.isEnableToMove()) return;
-
 	var is_move = false;
 	var add_x = 0;
 	var add_y = 0;
@@ -44713,26 +44638,19 @@ Koishi.prototype.moveByInput = function() {
 	/* モーション変更 */
 	if (is_move) {
 		// 歩きモーションに変更
-		if(!this.isPlaying("walk_nohat") && !this.isPlaying("walk")) {
+		if (!this.isWalking()) {
 			this.setWalkAnime();
 		}
 	}
 	else {
 		// 歩いてないので待機モーションに変更
-		if(this.isPlaying("walk_nohat") || this.isPlaying("walk")) {
+		if (this.isWalking()) {
 			this.setWaitAnime();
 		}
 	}
 
 
 };
-
-
-
-
-
-
-
 
 Koishi.prototype.jsonAnimeMap = function() {
 	return {
@@ -44773,55 +44691,6 @@ Koishi.prototype.scaleHeight = function(){
 	return 2/3;
 };
 
-// 移動終了判定
-Koishi.prototype._checkToStop = function() {
-	// 移動先位置を取得
-	var move_to_pos = this._getMoveToPos();
-	var target_x = move_to_pos.x;
-	var target_y = move_to_pos.y;
-
-	// "概ね" の範囲
-	var range = SPEED*4;
-
-	// (x,y)座標が概ね target_x と target_y に近づいたら
-	if (
-		this.x() + range >= target_x &&
-		target_x > this.x() - range &&
-		this.y() + range >= target_y &&
-		target_y > this.y() - range
-	) {
-		// end move
-		this.stopMove();
-	}
-	// オブジェクトとぶつかったら止まる
-	else if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
-		this.stopMove();
-	}
-};
-
-
-// 移動先を取得
-Koishi.prototype._getMoveToPos = function() {
-	// 移動先オブジェクト
-	var obj = this._move_target_object;
-
-	// このメソッドを呼ぶときは、必ず移動先が設定されていないといけない
-	if(!obj) throw new Error("unable to get _move_target_object");
-
-	var target_x = obj.x();
-	var target_y = obj.y();
-
-	// 一定以上の奥行きには移動できない
-	if (target_y < this.scene.height - CONSTANT.WALK_DEPTH_LIMIT) {
-		target_y = this.scene.height - CONSTANT.WALK_DEPTH_LIMIT;
-	}
-
-	return {
-		x: target_x,
-		y: target_y,
-	};
-};
-
 // サードアイの自然消耗
 Koishi.prototype.abrasion3rdeye = function() {
 	// 消耗前のレベル
@@ -44850,10 +44719,6 @@ Koishi.prototype.get3rdeyeGauge = function() {
 Koishi.prototype.isDead = function() {
 	return this.core.save_manager.player.get3rdeyeGauge() === 0;
 };
-
-
-
-
 
 Koishi.prototype.darker = function() {
 	return this.core.debug_manager.get("koishi_alpha");
@@ -45296,8 +45161,8 @@ ObjectAcquirableBase.prototype.isCollision = function(point) {
 	return !this.scene.root().isUsingEye();
 };
 
-// 移動後の処理
-ObjectAcquirableBase.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectAcquirableBase.prototype.onTouchByKoishi = function() {
 	// フィールドから該当のオブジェクトを削除
 	this._deleteFromField();
 
@@ -45411,8 +45276,8 @@ ObjectAnimeEventImage.prototype.isCollision = function(point) {
 	return this.scene.root().isUsingEye();
 };
 
-// こいし移動後の処理
-ObjectAnimeEventImage.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectAnimeEventImage.prototype.onTouchByKoishi = function() {
 	// イベント発生
 	this.core.changeScene(this._back.click_event);
 };
@@ -45696,8 +45561,8 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 	return this.ss.MarginHeight() * this._scale;
 };
 
-// こいし移動後の処理
-ObjectAnimeImage.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectAnimeImage.prototype.onTouchByKoishi = function() {
 	// こいしのアクション
 	if (this._front.action_name) {
 		this.scene.root().koishi.actionByObject(this._front.action_name);
@@ -45735,6 +45600,9 @@ var Util = require('../../hakurei').util;
 var DrawSerif = require('../../logic/draw_serif');
 var WalkImmovableArea = require('../walk_immovable_area');
 
+// こいしがここまでオブジェクトに近づいたら、タッチできる
+var TOUCH_AREA = 50;
+
 var ObjectBase = function(core) {
 	base_object.apply(this, arguments);
 
@@ -45752,7 +45620,7 @@ ObjectBase.prototype.init = function(){
 	this.no = null;
 };
 
-var TOUCH_AREA = 50;
+// こいしとオブジェクトのタッチ判定
 ObjectBase.prototype.checkIsInTouchArea = function(obj) {
 	if (!this.isCollision(obj) || !obj.isCollision(this)) return false;
 
@@ -45765,29 +45633,6 @@ ObjectBase.prototype.checkIsInTouchArea = function(obj) {
 	}
 
 	return false;
-};
-
-
-
-
-// マウスクリック時のイベント
-ObjectBase.prototype.onCollisionWithClick = function(point) {
-	var self = this;
-	// こいしを移動
-	self.scene.root().koishi.setMoveTarget(self, function () {
-		// 移動後
-		self.onAfterWalkToHere();
-	});
-};
-
-// マウスオーバー時のイベント
-ObjectBase.prototype.onCollisionWithMouseOver = function(point) {
-	// 移動不可であればクリックできないので
-	// マウスカーソルは変更しない
-	if (!this.scene.root().isEnableToMove()) return;
-
-	// マウスカーソルを変更
-	this.core.changeCursorImage("ui_icon_pointer_02");
 };
 
 ObjectBase.prototype.z = function(){
@@ -45805,10 +45650,6 @@ ObjectBase.prototype.setData = function(data) {
 	else if (data.position_type === "lying") {
 		this._position_type = "lying";
 	}
-};
-
-// こいし移動後の処理
-ObjectBase.prototype.onAfterWalkToHere = function() {
 };
 
 // 3rd eye の光と当たり判定する
@@ -45843,6 +45684,10 @@ ObjectBase.prototype.getImmovableArea = function() {
 	area.setParentID(this.id);
 
 	return area;
+};
+
+// こいしに触られたときの処理
+ObjectBase.prototype.onTouchByKoishi = function() {
 };
 
 
@@ -45962,8 +45807,8 @@ ObjectChapter0Hat.prototype.collisionHeight = function(){
 	}
 };
 
-// こいし移動後の処理
-ObjectChapter0Hat.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectChapter0Hat.prototype.onTouchByKoishi = function() {
 	this.scene.root().changeSubScene("picture_get_hat");
 };
 
@@ -46169,8 +46014,8 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 	}
 };
 
-// こいし移動後の処理
-ObjectStaticImage.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectStaticImage.prototype.onTouchByKoishi = function() {
 	// こいしのアクション
 	if (this._action_name) {
 		this.scene.root().koishi.actionByObject(this._action_name);
@@ -48011,13 +47856,6 @@ SceneStage.prototype._draw3rdEyeEmergencyMask = function() {
 	ctx.restore();
 };
 
-// 移動可能かどうか
-SceneStage.prototype.isEnableToMove = function(){
-	// こいし移動中は、再度移動先を設定できない
-	return this.koishi.isMoving() ? false : true;
-};
-
-
 SceneStage.prototype.isNoHat = function(){
 	return this.currentSubScene() instanceof SceneSubStageEventChapter0GetHat;
 };
@@ -48144,7 +47982,7 @@ SceneEventChapter0GetHat.prototype.beforeDraw = function() {
 
 	if (this.hat.checkIsInTouchArea(this.root().koishi)) {
 		if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
-			this.hat.onAfterWalkToHere();
+			this.hat.onTouchByKoishi();
 		}
 		else {
 			// TODO: 調べられるよカーソルを表示
@@ -49367,7 +49205,7 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 		var piece = this.root().pieces[i];
 		if (piece.checkIsInTouchArea(this.root().koishi)) {
 			if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
-				piece.onAfterWalkToHere();
+				piece.onTouchByKoishi();
 			}
 			else {
 				// TODO: 調べられるよカーソルを表示
