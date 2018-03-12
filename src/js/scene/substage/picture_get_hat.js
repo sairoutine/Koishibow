@@ -24,7 +24,7 @@ SceneSubStageGetHat.prototype.beforeDraw = function(){
 		this._pos_x += this.root().width/15;
 	}
 	else if(this.frame_count === 30) {
-		this.core.audio_loader.playSound("chapter0_myroom-get_hat");
+		this.core.audio_loader.playSound("touch");
 	}
 	else if(this.frame_count <= 90) {
 		// 何もしない

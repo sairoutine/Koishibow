@@ -199,10 +199,6 @@ AssetsConfig.sounds = {
 		volume: 1.0,
 	},
 
-	"chapter0_myroom-get_hat":    {
-		path: "./sound/chapter0/myroom/get_hat.ogg",
-		volume: 1.0,
-	},
 	"chapter0-myroom-door_open":    {
 		path: "./sound/chapter0/myroom/door_open.ogg",
 		volume: 1.0,
