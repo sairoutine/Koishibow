@@ -31517,6 +31517,15 @@ Game.prototype.setupDebug = function (dom) {
 		game.debug_manager.set("is_show_3rdeye_gauge", false);
 	});
 
+	this.debug_manager.addNewLine();
+
+	this.debug_manager.addUploadFileButton("SE／BGM 挿入", function (game, type, dataurl) {
+		if (!type.match('audio')) return;
+
+		game.audio_loader.playSoundByDataURL(dataurl);
+	}, "data_url");
+
+
 
 
 
@@ -31664,6 +31673,26 @@ AudioLoader.prototype.executePlaySound = function() {
 		delete this._reserved_play_sound_name_map[name];
 	}
 };
+
+AudioLoader.prototype.playSoundByDataURL = function(dataurl, volume) {
+	if(!window || !window.Audio) return;
+
+	if(typeof volume === 'undefined') volume = 1.0;
+
+	var audio = new window.Audio();
+	audio.volume = volume;
+	audio.src = dataurl;
+	audio.addEventListener('canplay', function () {
+		audio.play();
+	});
+	audio.addEventListener("error", function () {
+		throw new Error("Audio Element error. code: " + audio.error.code + ", message: " + audio.error.message);
+	});
+	audio.load();
+};
+
+
+
 AudioLoader.prototype.playBGM = function(name) {
 	// stop playing bgm
 	this.stopAllBGM();
@@ -32947,6 +32976,64 @@ DebugManager.prototype.addCaputureImageButton = function (button_value, filename
 		Util.downloadBlob(blob, current_filename + ".png");
 	});
 };
+
+var READ_TYPE_TO_FILEREADER_FUNCTION_NAME = {
+	array_buffer: "readAsArrayBuffer",
+	binary_string: "readAsBinaryString",
+	text: "readAsText",
+	data_url: "readAsDataURL",
+};
+
+
+// add upload button
+DebugManager.prototype.addUploadFileButton = function (value, func, read_type) {
+	if(!this.is_debug_mode) return;
+
+	if(typeof read_type === "undefined") read_type = "array_buffer";
+
+	if(!READ_TYPE_TO_FILEREADER_FUNCTION_NAME[read_type]) throw new Error("Unknown read_type: " + read_type);
+
+	// add text
+	var dom = window.document.createElement('pre');
+	dom.style ="display:inline"; // unable to insert br
+	dom.textContent = value;
+	this.dom.appendChild(dom);
+
+	// create element
+	var input = window.document.createElement('input');
+
+	// set attributes
+	input.setAttribute('type', 'file');
+
+	var reader_func_name = READ_TYPE_TO_FILEREADER_FUNCTION_NAME[read_type];
+	var core = this.core;
+
+	input.onchange = function (e) {
+		if(!input.value) return;
+
+
+		var file = e.target.files[0]; // FileList object
+		var reader = new FileReader();
+		var type = file.type;
+
+		reader.onload = function (e) {
+			var result = e.target.result;
+			func(core, type, result);
+		};
+
+		reader[reader_func_name](file);
+	};
+
+	// occur onchange event if same file is set
+	input.onclick = function (e) {
+		input.value = null;
+	};
+
+	// add element
+	this.dom.appendChild(input);
+};
+
+
 
 // show collision area of object instance
 DebugManager.prototype.setShowingCollisionAreaOn = function () {
