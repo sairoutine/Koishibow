@@ -174,9 +174,14 @@ Game.prototype.setupDebug = function (dom) {
 		game.debug_manager.set("is_show_3rdeye_gauge", false);
 	});
 
-	this.debug_manager.addUploadFileButton("SE／BGM 挿入", function (game, dataurl) {
-		game.audio_manager.playSoundByDataURL(dataurl);
-	}, "dataurl");
+	this.debug_manager.addNewLine();
+
+	this.debug_manager.addUploadFileButton("SE／BGM 挿入", function (game, type, dataurl) {
+		if (!type.match('audio')) return;
+
+		game.audio_loader.playSoundByDataURL(dataurl);
+	}, "data_url");
+
 
 
 
