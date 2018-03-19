@@ -46,7 +46,7 @@ SceneDefault.prototype.afterBackgroundSsAnimeFunction = function(){
 
 SceneDefault.prototype.scriptMap = function(){
 	return {
-		25: [
+		54: [
 			{
 				command: "play_sound",
 				argument_list: ["chapter0-mansion_corridor3-open_and_falldown"],
