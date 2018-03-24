@@ -5,7 +5,6 @@ var I = 0;
 module.exports = {
 	key: "chapter0_mansion_corridor1",
 	chapter: 0,
-	name: "屋敷の廊下1",
 	bgm: "field2",
 	sub_bgms: ["chapter0-mansion_corridor1-wind"],
 	right_start_position: {x: 800, y: 400},

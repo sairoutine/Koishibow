@@ -5,7 +5,6 @@ var I = 0;
 module.exports = {
 	key: "chapter0_myroom",
 	chapter: 0,
-	name: "こいしの部屋",
 	bgm: "field1",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
