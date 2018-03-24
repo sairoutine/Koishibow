@@ -5,7 +5,7 @@ var I = 0;
 module.exports = {
 	key: "chapter1_01",
 	chapter: 1,
-	bgm: "field1",
+	bgm: "silent",
 	right_start_position: {x: 690, y: 540},
 	left_start_position:  {x: 180, y: 540},
 	right_field: "chapter1_02",
@@ -13,37 +13,65 @@ module.exports = {
 	background: "chapter1-01-bg-001",
 	walk_sound: "walking_bare_default",
 	objects: [
+		/*
 		{
 			no: ++I,
-			image: "chapter0-myroom-obj-01-01",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "ベッド",
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "背景の木々",
 			serif: [
-				{"chara": "koishi","serif":"まだねむたくないもん"},
 			],
-			x: 258, y: 389,
-			scale: 0.7,
-			action_name: "touch",
-			sound_name: "touch"
+			x: 960/2, y: 720/2,
+			scale: 2/3,
+			anime1: "chapter1-01-obj-01-obj01",
+			anime2: null,
+			anime3: null,
+			anime4: "chapter1-01-obj-01-obj02",
+			anime5: "chapter1-01-obj-01-obj03",
+			anime6: "chapter1-01-obj-01-obj04",
+
+			action_name: null,
+			sound_name: null,
+			position_type: "lying",
+		},
+		*/
+		{
+			no: ++I,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "こころと屋敷",
+			serif: [
+				{"chara": "koishi","serif": "test"},
+			],
+			x: 97.50*2/3, y: 447*2/3,
+			scale: 2/3,
+			anime1: "chapter1-01-obj-02-obj01",
+			anime2: "chapter1-01-obj-02-obj02",
+			anime3: "chapter1-01-obj-02-obj03",
+
+			action_name: "look_top",
+			sound_name: null,
 		},
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
-			name: "本",
+			name: "看板",
 			serif: [
-				{"chara": "koishi","serif":"にっきさんひさしぶり！"},
-				{"chara": "koishi","serif": "またね！"},
+				{"chara": "koishi","serif": "test"},
 			],
-			x: 340, y: 530,
-			scale: 0.7,
-			anime1: "chapter0-myroom-obj-02-01-obj01",
-			anime2: "chapter0-myroom-obj-02-01-obj02",
-			anime3: "chapter0-myroom-obj-02-01-obj03",
-			width: 80, height: 80,
-			action_name: "look_bottom",
-			sound_name: "chapter0-myroom-open_book",
-			position_type: "lying",
+			x: 1189.50*2/3, y: 576*2/3,
+			scale: 2/3,
+
+			anime1: "chapter1-01-obj-03-obj01",
+			anime2: "chapter1-01-obj-03-obj02",
+			anime3: "chapter1-01-obj-03-obj03",
+			anime4: "chapter1-01-obj-03-obj04",
+			anime5: "chapter1-01-obj-03-obj05",
+			anime6: "chapter1-01-obj-03-obj06",
+
+			action_name: "touch",
+			sound_name: null,
 		},
+
+
 	],
 };
 
