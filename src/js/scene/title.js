@@ -28,7 +28,7 @@ var MENU = [
 	// config
 	/*
 	["ui-titlepg-btn-opt", function (core) { return true; }, function (core) {
-		core.changeScene("stage", "chapter0_myroom");
+		// TODO:
 	}],
 	*/
 ];
