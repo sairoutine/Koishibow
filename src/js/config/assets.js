@@ -22,10 +22,11 @@ AssetsConfig.images = {
 	},
 
 	// こいし画像
-	"koishi":                "./image/koishi.png",
-
+	"koishi": "./image/koishi.png",
 	// こころ画像
-	"kokoro":                "./image/kokoro.png",
+	"kokoro": "./image/kokoro.png",
+	// てゐ
+	"tewi":   "./image/tewi.png",
 
 	// 3rdeye 使用時のもや
 	"black_mist":            "./image/black_mist.png",
@@ -52,7 +53,11 @@ AssetsConfig.images = {
 	"journal004":  "./image/journal/004.png",
 	"journal005":  "./image/journal/005.png",
 
+	//
 	// フィールドの画像とオブジェクト
+	//
+
+	// chapter0
 	"chapter0-myroom-bg-001":    "./image/chapter0/myroom/chapter0-myroom-bg-001.jpg",
 	"chapter0-myroom-obj-01-01": "./image/chapter0/myroom/chapter0-myroom-obj-01-01.png",
 	"chapter0-myroom-obj-02-01": "./image/chapter0/myroom/chapter0-myroom-obj-02-01.png",
@@ -61,36 +66,59 @@ AssetsConfig.images = {
 	"chapter0-myroom-obj-05-01": "./image/chapter0/myroom/chapter0-myroom-obj-05-01.png",
 	"chapter0-myroom-obj-07-01": "./image/chapter0/myroom/chapter0-myroom-obj-07-01.png",
 
-
-
-
 	"chapter0-hospital_corridor1-bg-001":    "./image/chapter0/hospital_corridor1/chapter0-hospital-bg-001.jpg",
 	"chapter0-hospital_corridor1-obj-01-01": "./image/chapter0/hospital_corridor1/chapter0-hospital-obj-01-01.png",
 	"chapter0-hospital_corridor1-obj-02-01": "./image/chapter0/hospital_corridor1/chapter0-hospital-obj-02-01.png",
 	"chapter0-hospital_corridor1-obj-03-01": "./image/chapter0/hospital_corridor1/chapter0-hospital-obj-03-01.png",
 	"chapter0-hospital_corridor1-obj-04-01": "./image/chapter0/hospital_corridor1/chapter0-hospital-obj-04-01.png",
 
-	"chapter0-hospital2-bg-001":        "./image/chapter0/hospital_corridor2/chapter0-hospital2-bg-001.jpg",
+	"chapter0-hospital2-bg-001":    "./image/chapter0/hospital_corridor2/chapter0-hospital2-bg-001.jpg",
 	"chapter0-hospital2-obj-01-01": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-01-01.png",
 	"chapter0-hospital2-obj-02-01": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-02-01.png",
 	"chapter0-hospital2-obj-03-01": "./image/chapter0/hospital_corridor2/chapter0-hospital2-obj-03-01.png",
 
-	"chapter0-mansionpas-001":          "./image/chapter0/mansion_corridor1/chapter0-mansionpas-001.jpg",
+	"chapter0-mansionpas-001":      "./image/chapter0/mansion_corridor1/chapter0-mansionpas-001.jpg",
 	"chapter0-mspassage-obj-01-01": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-01-01.png",
 	"chapter0-mspassage-obj-02-01": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-02-01.png",
 	"chapter0-mspassage-obj-03-01": "./image/chapter0/mansion_corridor1/chapter0-mspassage-obj-03-01.png",
 
-	"chapter0-mansionpas-002":          "./image/chapter0/mansion_corridor2/chapter0-mspassage-bg-002.jpg",
+	"chapter0-mansionpas-002":      "./image/chapter0/mansion_corridor2/chapter0-mspassage-bg-002.jpg",
 	"chapter0-mspassage-obj-04-01": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-04-01.png",
 	"chapter0-mspassage-obj-05-01": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-05-01.png",
 	"chapter0-mspassage-obj-06-01": "./image/chapter0/mansion_corridor2/chapter0-mspassage-obj-06-01.png",
 
-	"chapter0-mansionpas-003":          "./image/chapter0/mansion_corridor3/chapter0-mspassage-bg-003.jpg",
+	"chapter0-mansionpas-003":      "./image/chapter0/mansion_corridor3/chapter0-mspassage-bg-003.jpg",
 	"chapter0-mspassage-obj-07-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-07-01.png",
 	"chapter0-mspassage-obj-08-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-08-01.png",
 	"chapter0-mspassage-obj-09-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-09-01.png",
 	"chapter0-mspassage-obj-10-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-10-01.png",
 	"chapter0-mspassage-obj-11-01": "./image/chapter0/mansion_corridor3/chapter0-mspassage-obj-11-01.png",
+
+	// chapter1
+	"chapter1-01-bg-001": "./image/chapter1/chapter1-01/chapter1-01-bg-001.jpg",
+	"chapter1-01-obj-01": "./image/chapter1/chapter1-01/chapter1-01-obj-01.png",
+	"chapter1-01-obj-02": "./image/chapter1/chapter1-01/chapter1-01-obj-02.png",
+	"chapter1-01-obj-03": "./image/chapter1/chapter1-01/chapter1-01-obj-03.png",
+	"white-mist":         "./image/chapter1/chapter1-01/white-mist.png",
+
+	"chapter1-02-bg-001": "./image/chapter1/chapter1-02/chapter1-02-bg-001.jpg",
+	"chapter1-02-obj-01": "./image/chapter1/chapter1-02/chapter1-02-obj-01.png",
+	"chapter1-02-obj-02": "./image/chapter1/chapter1-02/chapter1-02-obj-02.png",
+	"chapter1-02-obj-03": "./image/chapter1/chapter1-02/chapter1-02-obj-03.png",
+	"chapter1-02-obj-05": "./image/chapter1/chapter1-02/chapter1-02-obj-05.png",
+	"chapter1-02-obj-06": "./image/chapter1/chapter1-02/chapter1-02-obj-06.png",
+
+	"chapter1-03-bg-001": "./image/chapter1/chapter1-03/chapter1-03-bg-001.jpg",
+	"chapter1-03-obj-01": "./image/chapter1/chapter1-03/chapter1-03-obj-01.png",
+	"chapter1-03-obj-02": "./image/chapter1/chapter1-03/chapter1-03-obj-02.png",
+	"chapter1-03-obj-03": "./image/chapter1/chapter1-03/chapter1-03-obj-03.png",
+	"chapter1-03-obj-04": "./image/chapter1/chapter1-03/chapter1-03-obj-04.png",
+	"chapter1-03-obj-05": "./image/chapter1/chapter1-03/chapter1-03-obj-05.png",
+
+	"chapter1-04-bg-001": "./image/chapter1/chapter1-04/chapter1-04-bg-001.jpg",
+	"chapter1-04-obj-01": "./image/chapter1/chapter1-04/chapter1-04-obj-01.png",
+	"chapter1-04-obj-02": "./image/chapter1/chapter1-04/chapter1-04-obj-02.png",
+	"chapter1-04-obj-03": "./image/chapter1/chapter1-04/chapter1-04-obj-03.png",
 
 	// アイテム 目薬
 	item_01:            "./image/item/icon_item_eyedrops01.png",
