@@ -357,6 +357,12 @@ AssetsConfig.sounds = {
 };
 
 AssetsConfig.bgms = {
+	"silent": {
+		path: "./bgm/silent.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
 	using_3rdeye: {
 		path: "./bgm/using_3rdeye.ogg",
 		loopStart: 0*60 + 0 + 0.000,
