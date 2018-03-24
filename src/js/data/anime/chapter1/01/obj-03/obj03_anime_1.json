@@ -1,0 +1,22 @@
+[
+{
+"images":["chapter1-01-obj-03.png"],
+"name": "obj03_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 360,
+"CanvasHeight": 300,
+"MarginWidth": 188,
+"MarginHeight": 158,
+"parts": ["root","Obj","01"],
+"ssa": [
+[
+[1,0,301,12,299,244,0.0,0.0,0.0,1.0,1.0,149,122]
+],
+[
+[1,0,301,12,299,244,0.0,0.0,0.0,1.0,1.0,149,122]
+]
+]
+}
+}
+]

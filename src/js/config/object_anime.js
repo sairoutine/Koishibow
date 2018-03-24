@@ -77,6 +77,51 @@ var anime_map = {
 	"chapter0-mansion_corridor3-obj-11-01-obj04":  require('../data/anime/chapter0/mansion_corridor3/obj-11-01/obj04_anime_1'),
 	"chapter0-mansion_corridor3-obj-11-01-obj05":  require('../data/anime/chapter0/mansion_corridor3/obj-11-01/obj05_anime_1'),
 	"chapter0-mansion_corridor3-obj-11-01-obj06":  require('../data/anime/chapter0/mansion_corridor3/obj-11-01/obj06_anime_1'),
+	"chapter1-01-obj-01-obj01":  require('../data/anime/chapter1/01/obj-01/obj01_anime_1.json'),
+	"chapter1-01-obj-01-obj02":  require('../data/anime/chapter1/01/obj-01/obj02_anime_1.json'),
+	"chapter1-01-obj-01-obj03":  require('../data/anime/chapter1/01/obj-01/obj03_anime_1.json'),
+	"chapter1-01-obj-01-obj04":  require('../data/anime/chapter1/01/obj-01/obj04_anime_1.json'),
+	"chapter1-01-obj-02-obj01":  require('../data/anime/chapter1/01/obj-02/obj01_anime_1.json'),
+	"chapter1-01-obj-02-obj02":  require('../data/anime/chapter1/01/obj-02/obj02_anime_1.json'),
+	"chapter1-01-obj-02-obj03":  require('../data/anime/chapter1/01/obj-02/obj03_anime_1.json'),
+	"chapter1-01-obj-03-obj01":  require('../data/anime/chapter1/01/obj-03/obj01_anime_1.json'),
+	"chapter1-01-obj-03-obj02":  require('../data/anime/chapter1/01/obj-03/obj02_anime_1.json'),
+	"chapter1-01-obj-03-obj03":  require('../data/anime/chapter1/01/obj-03/obj03_anime_1.json'),
+	"chapter1-01-obj-03-obj04":  require('../data/anime/chapter1/01/obj-03/obj04_anime_1.json'),
+	"chapter1-01-obj-03-obj05":  require('../data/anime/chapter1/01/obj-03/obj05_anime_1.json'),
+	"chapter1-01-obj-03-obj06":  require('../data/anime/chapter1/01/obj-03/obj06_anime_1.json'),
+	"chapter1-01-white-mist":    require('../data/anime/chapter1/01/white-mist/eff01_anime_1.json'),
+
+	"chapter1-02-obj-06-obj01":  require('../data/anime/chapter1/02/obj-06/obj01_anime_1.json'),
+	"chapter1-02-obj-06-obj02":  require('../data/anime/chapter1/02/obj-06/obj02_anime_1.json'),
+	"chapter1-02-obj-06-obj03":  require('../data/anime/chapter1/02/obj-06/obj03_anime_1.json'),
+	"chapter1-02-obj-06-obj04":  require('../data/anime/chapter1/02/obj-06/obj04_anime_1.json'),
+
+	"chapter1-03-obj-01-obj01":  require('../data/anime/chapter1/03/obj-01/obj01_anime_1.json'),
+	"chapter1-03-obj-01-obj02":  require('../data/anime/chapter1/03/obj-01/obj02_anime_1.json'),
+	"chapter1-03-obj-01-obj03":  require('../data/anime/chapter1/03/obj-01/obj03_anime_1.json'),
+	"chapter1-03-obj-01-obj04":  require('../data/anime/chapter1/03/obj-01/obj04_anime_1.json'),
+	"chapter1-03-obj-05-obj01":  require('../data/anime/chapter1/03/obj-05/obj01_anime_1.json'),
+
+	"chapter1-04-obj-01-obj01":  require('../data/anime/chapter1/04/obj-01/obj01_anime_1.json'),
+	"chapter1-04-obj-01-obj02":  require('../data/anime/chapter1/04/obj-01/obj02_anime_1.json'),
+	"chapter1-04-obj-01-obj03":  require('../data/anime/chapter1/04/obj-01/obj03_anime_1.json'),
+	"chapter1-04-obj-01-obj04":  require('../data/anime/chapter1/04/obj-01/obj04_anime_1.json'),
+
+	"chapter1-04-obj-02-obj01":  require('../data/anime/chapter1/04/obj-02/obj01_anime_1.json'),
+	"chapter1-04-obj-02-obj02":  require('../data/anime/chapter1/04/obj-02/obj02_anime_1.json'),
+	"chapter1-04-obj-02-obj03":  require('../data/anime/chapter1/04/obj-02/obj03_anime_1.json'),
+	"chapter1-04-obj-02-obj04":  require('../data/anime/chapter1/04/obj-02/obj04_anime_1.json'),
+	"chapter1-04-obj-02-obj05":  require('../data/anime/chapter1/04/obj-02/obj05_anime_1.json'),
+	"chapter1-04-obj-02-obj06":  require('../data/anime/chapter1/04/obj-02/obj06_anime_1.json'),
+
+	"chapter1-04-obj-03-obj01":  require('../data/anime/chapter1/04/obj-03/obj01_anime_1.json'),
+	"chapter1-04-obj-03-obj02":  require('../data/anime/chapter1/04/obj-03/obj02_anime_1.json'),
+	"chapter1-04-obj-03-obj03":  require('../data/anime/chapter1/04/obj-03/obj03_anime_1.json'),
+	"chapter1-04-obj-03-obj04":  require('../data/anime/chapter1/04/obj-03/obj04_anime_1.json'),
+	"chapter1-04-obj-03-obj05":  require('../data/anime/chapter1/04/obj-03/obj05_anime_1.json'),
+	"chapter1-04-obj-03-obj06":  require('../data/anime/chapter1/04/obj-03/obj06_anime_1.json'),
+
 };
 
 module.exports = anime_map;
