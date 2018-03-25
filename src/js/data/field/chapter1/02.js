@@ -15,34 +15,94 @@ module.exports = {
 	objects: [
 		{
 			no: ++I,
-			image: "chapter0-myroom-obj-01-01",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "ベッド",
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "背景の木々",
 			serif: [
-				{"chara": "koishi","serif":"まだねむたくないもん"},
 			],
-			x: 258, y: 389,
-			scale: 0.7,
-			action_name: "touch",
-			sound_name: "touch"
+			x: 960/2, y: 720/2,
+			scale: 2/3,
+			anime1: "chapter1-02-obj-06-obj01",
+			anime2: null,
+			anime3: null,
+			anime4: "chapter1-02-obj-06-obj02",
+			anime5: "chapter1-02-obj-06-obj03",
+			anime6: "chapter1-02-obj-06-obj04",
+
+			action_name: null,
+			sound_name: null,
+			position_type: "lying",
+		},
+
+		{
+			no: ++I,
+			image: "chapter1-02-obj-01",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "ベンチ",
+			serif: [
+				{"chara": "koishi","serif":"test"},
+			],
+			x: 693.50*2/3, y:619.50*2/3,
+			scale: 2/3,
+			action_name: null,
+			sound_name: null
 		},
 		{
 			no: ++I,
-			type: CONSTANT.ANIME_IMAGE_TYPE,
-			name: "本",
+			image: "chapter1-02-obj-02",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "チョコレート箱",
 			serif: [
-				{"chara": "koishi","serif":"にっきさんひさしぶり！"},
-				{"chara": "koishi","serif": "またね！"},
+				{"chara": "koishi","serif":"test"},
 			],
-			x: 340, y: 530,
-			scale: 0.7,
-			anime1: "chapter0-myroom-obj-02-01-obj01",
-			anime2: "chapter0-myroom-obj-02-01-obj02",
-			anime3: "chapter0-myroom-obj-02-01-obj03",
-			width: 80, height: 80,
+			x:858.50*2/3, y:592*2/3,
+			scale: 2/3,
+			action_name: "touch",
+			sound_name: null
+		},
+		{
+			no: ++I,
+			image: "chapter1-02-obj-03",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "バス停",
+			serif: [
+				{"chara": "koishi","serif":"test"},
+			],
+			x:1188.50*2/3, y:419.50*2/3,
+			scale: 2/3,
+			action_name: "look_top",
+			sound_name: null
+		},
+		/*
+		{
+			no: ++I,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "花壇",
+			serif: [
+				{"chara": "koishi","serif": "test"},
+			],
+			x:719.50*2/3, y:997.50*2/3,
+			scale: 2/3,
+			anime1: "chapter1-02-obj-04-obj01",
+			anime2: "chapter1-02-obj-04-obj02",
+			anime3: "chapter1-02-obj-04-obj03",
+
+			action_name: null,
+			sound_name: null,
+		},
+		*/
+
+		{
+			no: ++I,
+			image: "chapter1-02-obj-05",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "じょうろ",
+			serif: [
+				{"chara": "koishi","serif":"test"},
+			],
+			x:831.50*2/3, y:921.50*2/3,
+			scale: 2/3,
 			action_name: "look_bottom",
-			sound_name: "chapter0-myroom-open_book",
-			position_type: "lying",
+			sound_name: null
 		},
 	],
 };
