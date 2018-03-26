@@ -13,7 +13,6 @@ module.exports = {
 	background: "chapter1-01-bg-001",
 	walk_sound: "walking_bare_default",
 	objects: [
-		/*
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -33,7 +32,6 @@ module.exports = {
 			sound_name: null,
 			position_type: "lying",
 		},
-		*/
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
