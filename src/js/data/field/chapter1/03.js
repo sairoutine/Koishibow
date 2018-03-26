@@ -17,8 +17,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "背景の木々",
-			serif: [
-			],
+			serif: null,
 			x: 960/2, y: 720/2,
 			scale: 2/3,
 			anime1: "chapter1-03-obj-01-obj01",
