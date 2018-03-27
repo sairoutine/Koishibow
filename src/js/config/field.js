@@ -14,6 +14,8 @@ var field_list = [
 	require("../data/field/chapter1/02"),
 	require("../data/field/chapter1/03"),
 	require("../data/field/chapter1/04"),
+	require("../data/field/chapter1/05"),
+	require("../data/field/chapter1/06"),
 ];
 
 var field_map = {};
