@@ -249,12 +249,12 @@ ObjectAnimeImage.prototype.afterDraw = function(){
 
 ObjectAnimeImage.prototype.collisionWidth = function(){
 	if(this._width) return this._width;
-	return this.ss.MarginWidth() * this._scale;
+	return this.ss.width();
 };
 
 ObjectAnimeImage.prototype.collisionHeight = function(){
 	if(this._height) return this._height;
-	return this.ss.MarginHeight() * this._scale;
+	return this.ss.height();
 };
 
 // こいしに触られたときの処理

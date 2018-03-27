@@ -6,10 +6,6 @@ var Util = require('../hakurei').util;
 // それ以外のアニメ用途で使う場合は、ss_anime と名付ける方がよい？
 // 具体的には(hasBackOnLightedAnime, hasFrontClickedAnime)がここにあるのが不適切なので
 
-// アニメの index は 0 固定
-// TODO: 基底の ss_anime_base にも同じ定数が存在する
-var DATA_INDEX = 0;
-
 var ObjectAnimeObject = function(scene) {
 	base_object.apply(this, arguments);
 
@@ -41,21 +37,6 @@ ObjectAnimeObject.prototype.hasFrontClickedAnime = function() {
 		this._json_anime_map.front_clicking_anime &&
 		this._json_anime_map.front_after_click_anime
 	);
-};
-
-
-
-
-ObjectAnimeObject.prototype.MarginWidth = function(){
-	if(this._width) return this._width;
-	// index = 0 のみ有効
-	return this._json_anime_map.default[DATA_INDEX].animation.MarginWidth;
-};
-
-ObjectAnimeObject.prototype.MarginHeight = function(){
-	if(this._height) return this._height;
-	// index = 0 のみ有効
-	return this._json_anime_map.default[DATA_INDEX].animation.MarginHeight;
 };
 
 ObjectAnimeObject.prototype.jsonAnimeMap = function() {

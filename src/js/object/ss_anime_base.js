@@ -217,6 +217,12 @@ SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 	return this._cache_canvas[this.current_anime][frame_no];
 };
 
+SsAnimeBase.prototype.width = function() {
+	return this._canvas_width * this.scaleHeight();
+};
+SsAnimeBase.prototype.height = function() {
+	return this._canvas_height * this.scaleWidth();
+};
 
 SsAnimeBase.prototype.isShow = function(){
 	return true;
