@@ -113,10 +113,10 @@ var anime_map = {
 	"chapter1-03-obj-05-obj01":  require('../data/anime/chapter1/03/obj-05/obj01_anime_1.json'),
 
 	/* てぃ */
-	"tewi-wait":  require('../data/anime/tewi/wait_anime_1'),
-	"tewi-reverse_ura":  require('../data/anime/tewi/reverse_ura_anime_1'),
-	"tewi-ura_wait":  require('../data/anime/tewi/ura_wait_anime_1'),
-	"tewi-reverse_omote":  require('../data/anime/tewi/reverse_omote_anime_1'),
+	"tewi-wait":          require('../data/anime/tewi/wait_anime_1'),
+	"tewi-reverse_ura":   require('../data/anime/tewi/reverse_ura_anime_1'),
+	"tewi-ura_wait":      require('../data/anime/tewi/ura_wait_anime_1'),
+	"tewi-reverse_omote": require('../data/anime/tewi/reverse_omote_anime_1'),
 
 	"chapter1-04-obj-01-obj01":  require('../data/anime/chapter1/04/obj-01/obj01_anime_1.json'),
 	"chapter1-04-obj-01-obj02":  require('../data/anime/chapter1/04/obj-01/obj02_anime_1.json'),
@@ -137,6 +137,23 @@ var anime_map = {
 	"chapter1-04-obj-03-obj05":  require('../data/anime/chapter1/04/obj-03/obj05_anime_1.json'),
 	"chapter1-04-obj-03-obj06":  require('../data/anime/chapter1/04/obj-03/obj06_anime_1.json'),
 
+	/* にとり */
+	"nitori-wait":          require('../data/anime/nitori/wait_anime_1'),
+	"nitori-reverse_ura":   require('../data/anime/nitori/reverse_ura_anime_1'),
+	"nitori-ura_wait":      require('../data/anime/nitori/ura_wait_anime_1'),
+	"nitori-reverse_omote": require('../data/anime/nitori/reverse_omote_anime_1'),
+
+	"chapter1-05-obj-01-obj01":  require('../data/anime/chapter1/05/obj-01/obj01_anime_1.json'),
+	"chapter1-05-obj-01-obj02":  require('../data/anime/chapter1/05/obj-01/obj02_anime_1.json'),
+	"chapter1-05-obj-01-obj03":  require('../data/anime/chapter1/05/obj-01/obj03_anime_1.json'),
+	"chapter1-05-obj-01-obj04":  require('../data/anime/chapter1/05/obj-01/obj04_anime_1.json'),
+
+	"chapter1-06-obj-01-obj01":  require('../data/anime/chapter1/06/obj-01/obj01_anime_1.json'),
+	"chapter1-06-obj-01-obj02":  require('../data/anime/chapter1/06/obj-01/obj02_anime_1.json'),
+	"chapter1-06-obj-01-obj03":  require('../data/anime/chapter1/06/obj-01/obj03_anime_1.json'),
+	"chapter1-06-obj-01-obj04":  require('../data/anime/chapter1/06/obj-01/obj04_anime_1.json'),
+
+	"chapter1-06-obj-04-obj01":  require('../data/anime/chapter1/06/obj-04/obj01_anime_1.json'),
 };
 
 module.exports = anime_map;
