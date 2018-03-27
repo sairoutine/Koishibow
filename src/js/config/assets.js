@@ -27,6 +27,8 @@ AssetsConfig.images = {
 	"kokoro": "./image/kokoro.png",
 	// てゐ
 	"tewi":   "./image/tewi.png",
+	// にとり
+	"nitori":   "./image/nitori.png",
 
 	// 3rdeye 使用時のもや
 	"black_mist":            "./image/black_mist.png",
@@ -120,6 +122,16 @@ AssetsConfig.images = {
 	"chapter1-04-obj-01": "./image/chapter1/chapter1-04/chapter1-04-obj-01.png",
 	"chapter1-04-obj-02": "./image/chapter1/chapter1-04/chapter1-04-obj-02.png",
 	"chapter1-04-obj-03": "./image/chapter1/chapter1-04/chapter1-04-obj-03.png",
+
+	"chapter1-05-bg-001": "./image/chapter1/chapter1-05/chapter1-05-bg-001.jpg",
+	"chapter1-05-obj-01": "./image/chapter1/chapter1-05/chapter1-05-obj-01.png",
+	"chapter1-05-obj-02": "./image/chapter1/chapter1-05/chapter1-05-obj-02.png",
+
+	"chapter1-06-bg-001": "./image/chapter1/chapter1-06/chapter1-06-bg-001.jpg",
+	"chapter1-06-obj-01": "./image/chapter1/chapter1-06/chapter1-06-obj-01.png",
+	"chapter1-06-obj-02": "./image/chapter1/chapter1-06/chapter1-06-obj-02.png",
+	"chapter1-06-obj-03": "./image/chapter1/chapter1-06/chapter1-06-obj-03.png",
+	"chapter1-06-obj-04": "./image/chapter1/chapter1-06/chapter1-06-obj-04.png",
 
 	// アイテム 目薬
 	item_01:            "./image/item/icon_item_eyedrops01.png",
