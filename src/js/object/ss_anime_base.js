@@ -95,7 +95,11 @@ SsAnimeBase.prototype._setupAnimationCache = function(name){
 			canvas = CreateDarkerImage.exec(canvas, this.darker());
 		}
 
-		cache_canvas_list[frame_no] = canvas;
+		// canvas -> image
+		var image = new Image();
+		image.src = canvas.toDataURL();
+
+		cache_canvas_list[frame_no] = image;
 	}
 
 	this._cache_canvas[name] = cache_canvas_list;
