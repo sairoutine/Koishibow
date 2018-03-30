@@ -71,7 +71,6 @@ module.exports = {
 			action_name: "look_top",
 			sound_name: null
 		},
-		/*
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -88,7 +87,6 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
-		*/
 
 		{
 			no: ++I,

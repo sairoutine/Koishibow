@@ -92,14 +92,11 @@ var anime_map = {
 	"chapter1-01-obj-03-obj06":  require('../data/anime/chapter1/01/obj-03/obj06_anime_1.json'),
 	"chapter1-01-white-mist":    require('../data/anime/chapter1/01/white-mist/eff01_anime_1.json'),
 
-	/* 花壇
 	"chapter1-02-obj-04-obj01":  require('../data/anime/chapter1/02/obj-04/obj01_anime_1.json'),
 	"chapter1-02-obj-04-obj02":  require('../data/anime/chapter1/02/obj-04/obj02_anime_1.json'),
 	"chapter1-02-obj-04-obj03":  require('../data/anime/chapter1/02/obj-04/obj03_anime_1.json'),
 	"chapter1-02-obj-04-obj04":  require('../data/anime/chapter1/02/obj-04/obj04_anime_1.json'),
 	"chapter1-02-obj-04-obj05":  require('../data/anime/chapter1/02/obj-04/obj05_anime_1.json'),
-	*/
-
 
 	"chapter1-02-obj-06-obj01":  require('../data/anime/chapter1/02/obj-06/obj01_anime_1.json'),
 	"chapter1-02-obj-06-obj02":  require('../data/anime/chapter1/02/obj-06/obj02_anime_1.json'),
