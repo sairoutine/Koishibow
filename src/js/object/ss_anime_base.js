@@ -200,7 +200,6 @@ SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 	}
 	this._cache_canvas[this.current_anime][frame_no] = canvas;
 
-	console.log("not use cache");
 	return canvas;
 };
 SsAnimeBase.prototype.width = function() {
