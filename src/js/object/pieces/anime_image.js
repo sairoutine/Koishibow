@@ -141,6 +141,8 @@ ObjectAnimeImage.prototype.setData = function(data) {
 	if (data.height) {
 		this._height = data.height;
 	}
+
+	//console.log(data.name + " width: " + this.collisionWidth() + ", height: " + this.collisionHeight() + ",");
 };
 
 
