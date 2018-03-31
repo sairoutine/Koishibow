@@ -73,6 +73,19 @@ module.exports = {
 		},
 		{
 			no: ++I,
+			image: "chapter1-02-obj-05",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "じょうろ",
+			serif: [
+				{"chara": "koishi","serif":"test"},
+			],
+			x:831.50*2/3, y:921.50*2/3,
+			scale: 2/3,
+			action_name: "look_bottom",
+			sound_name: null
+		},
+		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "花壇",
 			serif: [
@@ -88,19 +101,7 @@ module.exports = {
 			sound_name: null,
 		},
 
-		{
-			no: ++I,
-			image: "chapter1-02-obj-05",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "じょうろ",
-			serif: [
-				{"chara": "koishi","serif":"test"},
-			],
-			x:831.50*2/3, y:921.50*2/3,
-			scale: 2/3,
-			action_name: "look_bottom",
-			sound_name: null
-		},
+
 	],
 };
 
