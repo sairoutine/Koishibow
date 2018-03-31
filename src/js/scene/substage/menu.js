@@ -300,6 +300,13 @@ SceneSubStageMenu.prototype.afterDraw = function(){
 
 	ctx.save();
 
+	// 背景をちょっと暗く
+	ctx.save();
+	ctx.fillStyle = 'black';
+	ctx.globalAlpha = 0.4;
+	ctx.fillRect(0, 0, this.width, this.height);
+	ctx.restore();
+
 	// ウィンドウ表示
 	this._showWindow();
 
