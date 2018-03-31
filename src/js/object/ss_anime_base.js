@@ -19,6 +19,8 @@ var SsAnimeBase = function(scene) {
 	this.current_anime = null;
 	this.anime_frame = 0;
 	this.loop_count = 0;
+
+	this._cache_canvas = {};
 };
 Util.inherit(SsAnimeBase, base_object);
 
@@ -174,7 +176,11 @@ SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
 	return Math.floor(this.anime_frame);
 };
 SsAnimeBase.prototype._getAnimeImage = function(frame_no){
-	// TODO: メモリキャッシュ
+	// キャッシュ
+	if(this._cache_canvas[this.current_anime] && this._cache_canvas[this.current_anime][frame_no]) {
+		return this._cache_canvas[this.current_anime][frame_no];
+	}
+
 	// create canvas
 	var canvas = document.createElement('canvas');
 	canvas.width  = this._canvas_width;
@@ -187,6 +193,12 @@ SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 	if (this.darker()) {
 		canvas = CreateDarkerImage.exec(canvas, this.darker());
 	}
+
+	// キャッシュに保存
+	if(!this._cache_canvas[this.current_anime]) {
+		this._cache_canvas[this.current_anime] = [];
+	}
+	this._cache_canvas[this.current_anime][frame_no] = canvas;
 
 	return canvas;
 };
