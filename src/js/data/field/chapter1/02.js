@@ -96,7 +96,7 @@ module.exports = {
 			anime1: "chapter1-02-obj-04-obj01",
 			anime2: "chapter1-02-obj-04-obj02",
 			anime3: "chapter1-02-obj-04-obj03",
-
+			width: 1066, height: 100,
 			action_name: null,
 			sound_name: null,
 		},

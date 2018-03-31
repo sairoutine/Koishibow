@@ -7,7 +7,7 @@ module.exports = {
 	chapter: 1,
 	bgm: "silent",
 	right_start_position: {x: 690, y: 540},
-	left_start_position:  {x: 180, y: 540},
+	left_start_position:  {x: 200, y: 540},
 	right_field: "chapter1_02",
 	left_field: null,
 	background: "chapter1-01-bg-001",
