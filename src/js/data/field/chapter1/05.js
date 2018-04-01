@@ -52,7 +52,7 @@ module.exports = {
 			serif: [
 				{"chara": "koishi","serif":"test"},
 			],
-			x: 469,y: 545,
+			x:721.50*2/3, y:533.00*2/3,
 			scale: 10,
 			anime1: "nitori-wait",
 			anime2: null,
