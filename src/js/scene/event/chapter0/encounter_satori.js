@@ -126,7 +126,7 @@ SceneEventEncounterSatori.prototype.initEye = function(){
 };
 SceneEventEncounterSatori.prototype.initKoishi = function(){
 	this.koishi.x(180);
-	this.koishi.y(540);
+	this.koishi.y(370);
 
 	this.koishi.setAnime({
 		default: jsonDataOfKoishiWait,

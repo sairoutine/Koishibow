@@ -29,7 +29,7 @@ SceneSubStageJournal.prototype.init = function(picture_name){
 
 	// アニメの位置指定
 	self.ss.x(780);
-	self.ss.y(510);
+	self.ss.y(340);
 
 	self.ss.setAnime({
 		default: jsonDataOfWait,
