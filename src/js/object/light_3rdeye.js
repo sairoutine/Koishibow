@@ -7,7 +7,7 @@ var LIGHT_ANCHOR_Y = -336;
 // こいし基準から、光をどの地点を基準に回転させるか
 // (こいしのサードアイの位置)
 var PIVOT_LIGHT_X_FROM_KOISHI = 70;
-var PIVOT_LIGHT_Y_FROM_KOISHI = -110;
+var PIVOT_LIGHT_Y_FROM_KOISHI = -110 + 170;
 
 // 当たり判定のこいしからの距離
 var CIRCLE1_POS_DISTANCE_FROM_KOISHI = 336;
