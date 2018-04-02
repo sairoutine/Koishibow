@@ -16,6 +16,10 @@ var DATA_INDEX = 0;
 var SsAnimeBase = function(scene) {
 	base_object.apply(this, arguments);
 
+	this.ss = new SsSprite();
+
+	this._is_reflect = false;
+
 	this.current_anime = null;
 	this.anime_frame = 0;
 	this.loop_count = 0;
@@ -26,24 +30,16 @@ Util.inherit(SsAnimeBase, base_object);
 
 SsAnimeBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
+
+	var current_anime = "default";
+
+	// init property
 	this._is_reflect = false;
 
-	this.current_anime = "default";
-	this.anime_frame = 0;
-	this.loop_count = 0;
-
-	var jsonData = this.getJsonData(this.current_anime);
+	var jsonData = this.getJsonData(current_anime);
 	this.imageList = this._getImageList(jsonData[DATA_INDEX].images);
 
-	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
-	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
-
-	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
-
-	this.ss = new SsSprite(this.animation);
-};
-SsAnimeBase.prototype.isPlaying = function(name){
-	return this.current_anime === name ? true : false;
+	this.changeAnimation(current_anime);
 };
 
 SsAnimeBase.prototype.changeAnimation = function(name){
@@ -54,12 +50,27 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 	var jsonData = this.getJsonData(name);
 
 	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
-	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
+	if(this._canvas_width < jsonData[DATA_INDEX].animation.MarginWidth) {
+		this._canvas_width = jsonData[DATA_INDEX].animation.MarginWidth;
+	}
+	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight;
+	if(this._canvas_height < jsonData[DATA_INDEX].animation.MarginHeight) {
+		this._canvas_height = jsonData[DATA_INDEX].animation.MarginHeight;
+	}
 
 	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
 
 	this.ss.setAnimation(this.animation);
+
+	// canvas 内での位置調整
+	this.ss.x = jsonData[DATA_INDEX].animation.MarginWidth * this.scaleWidth();
+	this.ss.y = jsonData[DATA_INDEX].animation.MarginHeight * this.scaleHeight();
 };
+
+SsAnimeBase.prototype.isPlaying = function(name){
+	return this.current_anime === name ? true : false;
+};
+
 
 SsAnimeBase.prototype.playAnimationOnce = function(name, _callback){
 	var ss = this.ss;
@@ -123,8 +134,6 @@ SsAnimeBase.prototype.beforeDraw = function(){
 	// update ss state
 	this.ss.rootScaleX = this.scaleWidth();
 	this.ss.rootScaleY = this.scaleHeight();
-	this.ss.x = this._canvas_width  /2;
-	this.ss.y = this._canvas_height /2;
 };
 
 // 画面更新
@@ -142,7 +151,7 @@ SsAnimeBase.prototype.draw = function(){
 	if (this.isReflect()) {
 		ctx.transform(-1, 0, 0, 1, 0, 0);
 	}
-	ctx.drawImage(canvas, -this._canvas_width/2, -this._canvas_height/2);
+	ctx.drawImage(canvas, -this.width()/2, -this.height()/2);
 
 	ctx.restore();
 };
@@ -183,8 +192,8 @@ SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 
 	// create canvas
 	var canvas = document.createElement('canvas');
-	canvas.width  = this._canvas_width;
-	canvas.height = this._canvas_height;
+	canvas.width  = this.width();
+	canvas.height = this.height();
 	var ctx2 = canvas.getContext('2d');
 
 	this.ss.inner.animation.drawFunc(ctx2, frame_no, this.ss.x, this.ss.y, this.ss.flipH, this.ss.flipV, this.ss.inner.partStates, this.ss.rootScaleX, this.ss.rootScaleY);
@@ -203,10 +212,10 @@ SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 	return canvas;
 };
 SsAnimeBase.prototype.width = function() {
-	return this._canvas_width * this.scaleHeight();
+	return this._canvas_width * this.scaleWidth();
 };
 SsAnimeBase.prototype.height = function() {
-	return this._canvas_height * this.scaleWidth();
+	return this._canvas_height * this.scaleHeight();
 };
 
 SsAnimeBase.prototype.isShow = function(){
