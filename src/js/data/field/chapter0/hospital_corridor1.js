@@ -6,8 +6,9 @@ module.exports = {
 	key: "chapter0_hospital_corridor1",
 	chapter: 0,
 	bgm: "field1",
-	right_start_position: {x: 800, y: 420},
-	left_start_position:  {x: 180, y: 540},
+	right_start_position: {x: 800, y: 250},
+	left_start_position:  {x: 180, y: 380},
+
 	right_field: "chapter0_hospital_corridor2",
 	left_field: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
