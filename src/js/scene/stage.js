@@ -65,6 +65,10 @@ var SceneStage = function(core) {
 	// 3rd eye 使用中か否か
 	this._is_using_eye = false;
 
+	// 3rd eye ゲージが少なくなってきたときの画面点滅
+	this._3rdeye_red_mask_alpha = 0;
+	this._3rdeye_red_mask_alpha_rev = false;
+
 	// 移動制限範囲
 	this.walk_immovable_areas = [];
 
@@ -137,6 +141,10 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// 3rd eye 使用中か否か
 	this._is_using_eye = false;
+
+	// 3rd eye ゲージが少なくなってきたときの画面点滅
+	this._3rdeye_red_mask_alpha = 0;
+	this._3rdeye_red_mask_alpha_rev = false;
 
 	// フィールド開始時のこいしの初期位置の決定
 	var pos;
@@ -361,27 +369,48 @@ SceneStage.prototype.draw = function(){
 	this._draw3rdEyeEmergencyMask();
 };
 
+var BLINK_COUNT = 240; // 何フレーム毎にブリンクするか
+var BLINK_INC = 20; // 赤く点滅する速度
 
-var POW = 1.2;
-var POW_MAX = Math.pow(POW, 100);
-var COE = 9;
-var COE_MAX = 9 * 100;
 // 3rd eye の使用状況に応じて赤いマスク
 SceneStage.prototype._draw3rdEyeEmergencyMask = function() {
 	// 充血レベルが最大のときのみ
 	if (this.koishi.get3rdeyeBloodShotLevel() !== 4) return;
 
-	var max = CONSTANT.MAX_3RDEYE_GAUGE * 1 / 4;
+	// ブリンク開始
+	if (this.frame_count % BLINK_COUNT === 0) {
+		this._3rdeye_red_mask_alpha = 1;
+		this._3rdeye_red_mask_alpha_rev = false;
+	}
 
+	// ブリンク開始してなければ何もしない
+	if (this._3rdeye_red_mask_alpha <= 0) return;
 
-	var alpha = (max - this.koishi.get3rdeyeGauge()) / max * 100;
-	alpha = (Math.pow(POW, alpha) + alpha*COE) / (POW_MAX+COE_MAX);
+	// 赤い色の上昇／下降
+	if(this._3rdeye_red_mask_alpha_rev) {
+		this._3rdeye_red_mask_alpha -= BLINK_INC;
+
+		// 下限は0
+		if(this._3rdeye_red_mask_alpha <= 0) {
+			this._3rdeye_red_mask_alpha = 0;
+		}
+	}
+	else {
+		this._3rdeye_red_mask_alpha += BLINK_INC;
+
+		// 折り返し
+		if(this._3rdeye_red_mask_alpha >= 100) {
+			this._3rdeye_red_mask_alpha_rev = true;
+		}
+	}
+
+	var alpha = this._3rdeye_red_mask_alpha / 100;
 
 	var ctx = this.core.ctx;
 	ctx.save();
 
 	ctx.fillStyle = 'red';
-	ctx.globalAlpha = alpha * 0.8;
+	ctx.globalAlpha = alpha * 0.2;
 	ctx.fillRect(0, 0, this.width, this.height);
 
 	ctx.restore();
