@@ -318,6 +318,11 @@ Koishi.prototype._showText = function(lines) {
 };
 
 
+Koishi.prototype.collisionY = function(){
+	return this.y() + 170;
+};
+
+
 Koishi.prototype.collisionWidth = function(){
 	return 100;
 };

@@ -31,8 +31,9 @@ ObjectBase.prototype.checkIsInTouchArea = function(obj) {
 	var this_collsion_width  = this.collisionWidth(obj)  + TOUCH_AREA;
 	var this_collsion_height = this.collisionHeight(obj) + TOUCH_AREA;
 
-	if(Math.abs(this.x() - obj.x()) < this_collsion_width/2 + obj.collisionWidth(this)/2 &&
-		Math.abs(this.y() - obj.y()) < this_collsion_height/2 + obj.collisionHeight(this)/2) {
+	if(Math.abs(this.collisionX() - obj.collisionX()) < this_collsion_width/2 + obj.collisionWidth(this)/2 &&
+		Math.abs(this.collisionY() - obj.collisionY()) < this_collsion_height/2 + obj.collisionHeight(this)/2
+	) {
 		return true;
 	}
 
