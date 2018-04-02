@@ -30,7 +30,11 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 		this.root().koishi.abrasion3rdeye();
 
 		if (this.root().koishi.isDead()) {
+			// 最大値まで回復
+			this.root().koishi.gain3rdeyeGaugeMax();
+
 			this.root().setFadeOut(0);
+
 			this.core.changeScene("gameover");
 		}
 	}

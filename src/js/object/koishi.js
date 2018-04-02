@@ -288,6 +288,11 @@ Koishi.prototype.get3rdeyeGauge = function() {
 Koishi.prototype.isDead = function() {
 	return this.core.save_manager.player.get3rdeyeGauge() === 0;
 };
+// 最大値まで回復
+Koishi.prototype.gain3rdeyeGaugeMax = function() {
+	return this.core.save_manager.player.gain3rdeyeGauge(CONSTANT.MAX_3RDEYE_GAUGE);
+};
+
 
 Koishi.prototype.darker = function() {
 	return this.core.debug_manager.get("koishi_alpha");
