@@ -1,5 +1,5 @@
 'use strict';
-// 小鈴ショップ
+// 公園の入り口
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
@@ -35,9 +35,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "街灯",
-			serif: [
-				{"chara": "koishi","serif":"test"},
-			],
+			serif: null,
 			x:1296.50*2/3, y:344*2/3,
 			scale: 2/3,
 			anime1: "chapter1-06-obj-04-obj01",
@@ -49,9 +47,7 @@ module.exports = {
 			image: "chapter1-06-obj-02",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "石垣(右)",
-			serif: [
-				{"chara": "koishi","serif":"test"},
-			],
+			serif: null,
 			x:1356.50*2/3, y:603*2/3,
 			scale: 2/3,
 			action_name: null,
@@ -62,9 +58,7 @@ module.exports = {
 			image: "chapter1-06-obj-03",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "石垣(左)",
-			serif: [
-				{"chara": "koishi","serif":"test"},
-			],
+			serif: null,
 			x:434.50*2/3, y:600*2/3,
 			scale: 2/3,
 			action_name: null,

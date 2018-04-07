@@ -35,9 +35,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "こころと屋敷",
-			serif: [
-				{"chara": "koishi","serif": "test"},
-			],
+			serif: null,
 			x: 97.50*2/3, y: 447*2/3,
 			scale: 2/3,
 			anime1: "chapter1-01-obj-02-obj01",
@@ -52,7 +50,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "看板",
 			serif: [
-				{"chara": "koishi","serif": "test"},
+				{"chara": "koishi","serif": "こーえん？"},
+				{"chara": "koishi","serif": "いってもいいかな"},
 			],
 			x: 1189.50*2/3, y: 576*2/3,
 			scale: 2/3,
@@ -67,8 +66,6 @@ module.exports = {
 			action_name: "touch",
 			sound_name: null,
 		},
-
-
 	],
 };
 

@@ -35,9 +35,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "電話ボックス赤",
-			serif: [
-				{"chara": "koishi","serif":"test"},
-			],
+			serif: null,
 			x:805, y:308,
 			scale: 2/3,
 			anime1: "chapter1-04-obj-02-obj01",
@@ -55,7 +53,13 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "雑貨屋＆小鈴",
 			serif: [
-				{"chara": "koishi","serif":"test"},
+				// 1-7
+				{"chara": I,"serif":"いらっしゃい！"},
+				{"chara": "koishi","serif":"ここなにやさんなの？"},
+				{"chara": I,"serif":"何でも売ってるよ！"},
+				{"chara": "koishi","serif":"全部屋さん......？"},
+				{"chara": I,"serif":"そうよ！なにが欲しいのかしら？"},
+				{"chara": "koishi","serif":"なにがほしいんだろう……"},
 			],
 			x:293, y:260,
 			scale: 2/3,

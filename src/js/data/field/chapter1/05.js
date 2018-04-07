@@ -1,5 +1,5 @@
 'use strict';
-// 小鈴ショップ
+// にとり お面屋
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
@@ -37,9 +37,7 @@ module.exports = {
 			image: "chapter1-05-obj-02",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "石垣",
-			serif: [
-				{"chara": "koishi","serif":"test"},
-			],
+			serif: null,
 			x:1208*2/3, y:608*2/3,
 			scale: 2/3,
 			action_name: null,
@@ -50,7 +48,19 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "にとり",
 			serif: [
-				{"chara": "koishi","serif":"test"},
+				// 1-9
+				{"chara": "koishi","serif":"なにしてるの？"},
+				{"chara": I,"serif":"仮面屋さ！"},
+				{"chara": "koishi","serif":"仮面って何に使うの？"},
+				{"chara": I,"serif":"そりゃ被るのさ！"},
+				{"chara": "koishi","serif":"ふーん"},
+				{"chara": I,"serif":"おめん欲しいだろ？"},
+				{"chara": "koishi","serif":"うーんちょっとだけ"},
+				{"chara": I,"serif":"そうだよな！それじゃあ特におすすめの希望の面！これは5000でいいぞ！"},
+				{"chara": "koishi","serif":"お金いるの？"},
+				{"chara": I,"serif":"当然さぁ、お店なんだから！"},
+				{"chara": "koishi","serif":"お金ないときはどうしたらいいの？"},
+				{"chara": I,"serif":"金がないんじゃあ仮面は売れないね！とっとといきな！"},
 			],
 			x:721.50*2/3, y:533.00*2/3,
 			scale: 10,

@@ -37,7 +37,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ヘビ",
 			serif: [
-				{"chara": "koishi","serif":"test"},
+				{"chara": "koishi","serif":"みっけ！"},
 			],
 			x:1157*2/3, y:687.50*2/3,
 			scale: 2/3,
@@ -52,7 +52,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ペンキ",
 			serif: [
-				{"chara": "koishi","serif":"test"},
+				{"chara": "koishi","serif":"これさわるといろがかわるんだよ！"},
 			],
 			x:887*2/3, y:715*2/3,
 			scale: 2/3,
@@ -77,7 +77,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ハシゴ",
 			serif: [
-				{"chara": "koishi","serif":"test"},
+				{"chara": "koishi","serif":"おつきさまとれるかな"},
 			],
 			x:1053*2/3, y:484*2/3,
 			scale: 2/3,
@@ -90,7 +90,12 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "てゐ",
 			serif: [
-				{"chara": "koishi","serif":"test"},
+				// 1-4
+				{"chara": I,"serif":"なんだい！"},
+				{"chara": "koishi","serif":"なにしてるの？"},
+				{"chara": I,"serif":"なにもしてないんだよ"},
+				{"chara": "koishi","serif":"へんなの"},
+				{"chara": I,"serif":"みせものじゃないんだ、いきな！"},
 			],
 			x:458.50*2/3, y:609*2/3,
 			scale: 2/3,

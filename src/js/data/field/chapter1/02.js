@@ -38,7 +38,9 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ベンチ",
 			serif: [
-				{"chara": "koishi","serif":"test"},
+				{"chara": "koishi","serif":"まっていればいいのかな"},
+				{"chara": "koishi","serif":"まだかなー"},
+				{"chara": "koishi","serif":"こない"},
 			],
 			x: 693.50*2/3, y:619.50*2/3,
 			scale: 2/3,
@@ -51,7 +53,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "チョコレート箱",
 			serif: [
-				{"chara": "koishi","serif":"test"},
+				{"chara": "koishi","serif":"からっぽ！"},
 			],
 			x:858.50*2/3, y:592*2/3,
 			scale: 2/3,
@@ -64,7 +66,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "バス停",
 			serif: [
-				{"chara": "koishi","serif":"test"},
+				{"chara": "koishi","serif":"わかんない"},
 			],
 			x:1188.50*2/3, y:419.50*2/3,
 			scale: 2/3,
@@ -76,9 +78,7 @@ module.exports = {
 			image: "chapter1-02-obj-05",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "じょうろ",
-			serif: [
-				{"chara": "koishi","serif":"test"},
-			],
+			serif: null,
 			x:831.50*2/3, y:921.50*2/3,
 			scale: 2/3,
 			action_name: "look_bottom",
@@ -88,9 +88,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "花壇",
-			serif: [
-				{"chara": "koishi","serif": "test"},
-			],
+			serif: null,
 			x:719.50*2/3, y:997.50*2/3,
 			scale: 2/3,
 			anime1: "chapter1-02-obj-04-obj01",
