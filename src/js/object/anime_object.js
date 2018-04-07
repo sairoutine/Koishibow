@@ -21,6 +21,11 @@ ObjectAnimeObject.prototype.init = function(){
 ObjectAnimeObject.prototype.setAnime = function(data) {
 	this._json_anime_map = data;
 };
+ObjectAnimeObject.prototype.addAnime = function(name, data) {
+	this._json_anime_map[name] = data;
+};
+
+
 
 // 裏オブジェクト時のライトに照らされた アニメがあるかどうか
 ObjectAnimeObject.prototype.hasBackOnLightedAnime = function() {
