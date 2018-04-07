@@ -209,7 +209,7 @@ ObjectAnimeImage.prototype.onNotCollideWithLightIn3rdEye = function(){
 
 	// 表がクリック済ならクリック済アニメに戻る
 	// 表がクリック前ならクリック前アニメに戻る
-	var front_anime_name = this._is_clicked_in_front ? "front_after_click_anime" : "front_before_click_anime";
+	var front_anime_name = this.ss.hasFrontClickedAnime() && this._is_clicked_in_front ? "front_after_click_anime" : "front_before_click_anime";
 
 	var ss = this.ss;
 	var audio_loader = this.core.audio_loader;
