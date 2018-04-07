@@ -9,6 +9,7 @@ var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 var DrawSerif = require('../logic/draw_serif');
 var CONSTANT_BUTTON = require('../hakurei').constant.button;
+var CharaAnimeConfig = require('../config/chara_anime');
 
 
 /* 使用用途	リピート	fps	フレーム	時間 */
@@ -18,24 +19,12 @@ var jsonDataOfWait = require('../data/anime/koishi/wait_anime_1');
 var jsonDataOfWalk = require('../data/anime/koishi/walk_anime_1');
 // 	サードアイ使用	不	30	15	0.5秒
 var jsonDataOfReaction3rdeye = require('../data/anime/koishi/reaction_3rdeye_anime_1');
-// 	下を見る	不	30	15	0.5秒
-var jsonDataOfReactionLookBottom = require('../data/anime/koishi/reaction_look_bottom_anime_1');
-// 	前を見る	不	30	15	0.5秒
-var jsonDataOfReactionLookFront = require('../data/anime/koishi/reaction_look_front_anime_1');
-//	上を見る	不	30	15	0.5秒
-var jsonDataOfReactionLookTop = require('../data/anime/koishi/reaction_look_top_anime_1');
-//	触る、物を取る	不	30	15	0.5秒
-var jsonDataOfReactionTouch = require('../data/anime/koishi/reaction_touch_anime_1');
-//	YES、うなずく	不	30	15	0.5秒
-var jsonDataOfReactionYes = require('../data/anime/koishi/reaction_yes_anime_1');
 //	(帽子なし) 触る、物を取る	不	30	15	0.5秒
 var jsonDataOfReactionTouchInNoHat = require('../data/anime/koishi/nohat_reaction_touch_anime_1');
 // 	(帽子なし) 待機	可	30	45	1.5秒
 var jsonDataOfWaitInNoHat = require('../data/anime/koishi/nohat_wait_anime_1');
 //	(帽子なし) 歩き	可	30	30	1秒
 var jsonDataOfWalkInNoHat = require('../data/anime/koishi/nohat_walk_anime_1');
-//	座る	可能	45	1.5秒
-var jsonDataOfReactionSit = require('../data/anime/koishi/sit_anime_1');
 
 var Koishi = function (scene) {
 	base_object.apply(this, arguments);
@@ -96,6 +85,13 @@ Koishi.prototype.unUseEye = function(){
 
 // オブジェクトを調べた際のモーションを行う
 Koishi.prototype.actionByObject = function(action_name) {
+	var sound_name = CharaAnimeConfig.KoishiAction[action_name].sound;
+
+	// 音を再生
+	if (sound_name) {
+		this.core.audio_loader.playSound(sound_name);
+	}
+
 	this.playAnimationOnce(action_name);
 };
 
@@ -219,38 +215,28 @@ Koishi.prototype.moveByInput = function() {
 
 };
 
+var JSON_ANIME_MAP = {
+	// 静止
+	default:     jsonDataOfWait,
+	wait:        jsonDataOfWait,
+	// 歩く
+	walk:        jsonDataOfWalk,
+
+	// 静止(帽子なし)
+	wait_nohat:        jsonDataOfWaitInNoHat,
+	// 歩く(帽子なし)
+	walk_nohat:        jsonDataOfWalkInNoHat,
+	// 触る(帽子なし)
+	touch_nohat:        jsonDataOfReactionTouchInNoHat,
+
+	// サードアイ使用
+	use_eye:     jsonDataOfReaction3rdeye,
+};
+
+Util.assign(JSON_ANIME_MAP, CharaAnimeConfig.Koishi);
+
 Koishi.prototype.jsonAnimeMap = function() {
-	return {
-		// 静止
-		default:     jsonDataOfWait,
-		wait:        jsonDataOfWait,
-		// 歩く
-		walk:        jsonDataOfWalk,
-
-		// 静止(帽子なし)
-		wait_nohat:        jsonDataOfWaitInNoHat,
-		// 歩く(帽子なし)
-		walk_nohat:        jsonDataOfWalkInNoHat,
-		// 触る(帽子なし)
-		touch_nohat:        jsonDataOfReactionTouchInNoHat,
-
-		// サードアイ使用
-		use_eye:     jsonDataOfReaction3rdeye,
-		// 触る
-		touch:        jsonDataOfReactionTouch,
-		// 下を見る
-		look_bottom: jsonDataOfReactionLookBottom,
-		// 前を見る
-		look_front:  jsonDataOfReactionLookFront,
-		// 上を見る
-		look_top:    jsonDataOfReactionLookTop,
-		// ものを触る
-		look_touch:  jsonDataOfReactionTouch,
-		// うなづく
-		yes:         jsonDataOfReactionYes,
-		// 座る
-		sit:         jsonDataOfReactionSit,
-	};
+	return JSON_ANIME_MAP;
 };
 
 Koishi.prototype.scaleWidth = function(){
