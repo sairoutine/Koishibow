@@ -99,26 +99,35 @@ ObjectBase.prototype.onTouchByKoishi = function() {
 
 
 
-
-ObjectBase.prototype.showMessage = function(text_lines){
+// オブジェクトがセリフを表示する
+ObjectBase.prototype.showMessage = function(text_lines, width_num, height_num){
 	// メッセージウィンドウ表示
-	this._showMessageWindow(text_lines);
+	this._showMessageWindow(text_lines, width_num, height_num);
 
 	// メッセージ表示
-	this._showText(text_lines);
+	this._showText(text_lines, width_num, height_num);
 };
 
 // セリフウィンドウ表示
-ObjectBase.prototype._showMessageWindow = function(lines){
+ObjectBase.prototype._showMessageWindow = function(lines, width_num, height_num){
 	var ctx = this.core.ctx;
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
 
-	DrawSerif.drawWindow(this, ctx, fukidashi, lines);
+	DrawSerif.drawWindow(this, ctx, fukidashi, lines, width_num, height_num);
 };
 // セリフテキスト表示
-ObjectBase.prototype._showText = function(lines) {
+ObjectBase.prototype._showText = function(lines, width_num, height_num) {
 	var ctx = this.core.ctx;
-	DrawSerif.drawText(this, ctx, lines);
+	DrawSerif.drawText(this, ctx, lines, width_num, height_num);
 };
+
+// TODO: throw new Error にして、継承先に実装させる
+ObjectBase.prototype.width = function() {
+	return this.collisionWidth();
+};
+ObjectBase.prototype.height = function() {
+	return this.collisionHeight();
+};
+
 
 module.exports = ObjectBase;
