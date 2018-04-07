@@ -42,7 +42,11 @@ SsAnimeBase.prototype.init = function(){
 	this.changeAnimation(current_anime);
 };
 
-SsAnimeBase.prototype.changeAnimation = function(name){
+SsAnimeBase.prototype.changeAnimation = function(name) {
+	// 現在と同じアニメーションが指定された場合、何もしない
+	// アニメが初期化されて、アニメに違和感が生じるため
+	if(this.current_anime === name) return false;
+
 	this.current_anime = name;
 	this.anime_frame = 0;
 	this.loop_count = 0;
@@ -65,6 +69,8 @@ SsAnimeBase.prototype.changeAnimation = function(name){
 	// canvas 内での位置調整
 	this.ss.x = jsonData[DATA_INDEX].animation.MarginWidth * this.scaleWidth();
 	this.ss.y = jsonData[DATA_INDEX].animation.MarginHeight * this.scaleHeight();
+
+	return true;
 };
 
 SsAnimeBase.prototype.isPlaying = function(name){
