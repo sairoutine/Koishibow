@@ -28,21 +28,23 @@ DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_n
 
 	ctx.translate(x, y);
 
-	var fukidashi_width = 0;
+	var fukidashi_width = fukidashi.width * scale.width/2;
 	if(is_show_right) {
 		ctx.transform(-1, 0, 0, 1, 0, 0);
-		fukidashi_width = -fukidashi.width * scale.width;
+		fukidashi_width = -fukidashi.width * scale.width/2;
 	}
-	// x,y座標は左上が基準位置
+	// x,y座標は中央が基準位置
 	ctx.drawImage(fukidashi,
 		fukidashi_width,
-		0,
+		-fukidashi.height*scale.height/2,
 		fukidashi.width * scale.width,
 		fukidashi.height * scale.height
 	);
 	ctx.restore();
 
 };
+
+var FONT_SIZE = 18;
 
 DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num) {
 	// セリフがなければ何も表示しない
@@ -52,6 +54,9 @@ DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num) {
 	var x = message_text_pos.x;
 	var y = message_text_pos.y;
 
+	// 基準位置を左上->中央に変更
+	x = x - width_num  * FONT_SIZE / 2;
+	y = y - height_num * (FONT_SIZE+12) / 2;
 
 	ctx.save();
 
@@ -59,13 +64,13 @@ DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num) {
 	var font_color = Util.hexToRGBString("#d4c9aa");
 
 	ctx.fillStyle = font_color;
-	ctx.font = "18px 'OradanoGSRR'";
-	// x,y座標は左上が基準位置
+	ctx.font = FONT_SIZE.toString() + "px 'OradanoGSRR'";
+
 	ctx.textAlign = 'left';
 	ctx.textBaseAlign = 'top';
 
 	for(var i = 0, len = lines.length; i < len; i++) {
-		y += 30;
+		y += FONT_SIZE + 12;
 		ctx.fillText(lines[i], x, y); // 1行表示
 
 	}
