@@ -63,8 +63,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "うさぎを吊るした木",
-			serif: [
-			],
+			serif: null,
 			x:779.00*2/3, y:356.50*2/3,
 			scale: 2/3,
 			anime1: "chapter1-03-obj-05-obj01",
@@ -91,11 +90,11 @@ module.exports = {
 			name: "てゐ",
 			serif: [
 				// 1-4
-				{"chara": I,"serif":"なんだい！"},
-				{"chara": "koishi","serif":"なにしてるの？"},
-				{"chara": I,"serif":"なにもしてないんだよ"},
-				{"chara": "koishi","serif":"へんなの"},
-				{"chara": I,"serif":"みせものじゃないんだ、いきな！"},
+				{"chara": I,        "exp": "tewi-reaction_01", "serif":"なんだい！"},
+				{"chara": "koishi", "exp": "look_front", "serif":"なにしてるの？"},
+				{"chara": I,        "exp": "back", "serif":"なにもしてないんだよ"},
+				{"chara": "koishi", "exp": "back", "serif":"へんなの"},
+				{"chara": I,        "exp": "back", "serif":"みせものじゃないんだ、いきな！"},
 			],
 			x:458.50*2/3, y:609*2/3,
 			scale: 2/3,
