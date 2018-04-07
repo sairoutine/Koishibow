@@ -94,6 +94,10 @@ DrawSerif._getMessagePos = function(obj){
 		y = obj.globalUpY();
 	}
 
+	// 画面上部のオブジェクトは、シーンからはみ出ちゃうので
+	if (y < 100) {
+		y += 100;
+	}
 
 	return {
 		is_show_right: is_show_right,
