@@ -39,6 +39,9 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 	// セリフ再生開始
 	if (this.isSerifAutoStart()) {
 		this._serif.start();
+
+		// 表情変更
+		this._actionExpression();
 	}
 };
 
@@ -52,6 +55,9 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 		if (this._next_to_serif_waiting_count === 0) {
 			// セリフを送る
 			this._serif.next();
+
+			// 表情変更
+			this._actionExpression();
 		}
 	}
 	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
@@ -133,6 +139,34 @@ SceneSubStageObjectTalk.prototype._showMessage = function() {
 		this._serif.getCurrentSentenceNum()
 	);
 };
+
+// 表情(アニメ)
+SceneSubStageObjectTalk.prototype._actionExpression = function() {
+	// 表情
+	var expression = this._serif.getCurrentCharaExpressionByPosition();
+
+	// 現在喋っているオブジェクト名(こいしの場合は koishi)
+	var chara_name = this._serif.getCurrentCharaNameByPosition();
+
+	// オブジェクトを取得
+	var obj = this.root().getPiece(chara_name);
+	if(!obj) throw new Error(chara_name + " doesn't exist");
+
+	// TODO: 基底クラスに必要であることを定義したい
+	// アニメ実行
+	if(expression) {
+		// TODO: 文字の直指定やめたい
+		if (expression === "back") {
+			// 待機モーションに戻す
+			obj.setWaitAnime();
+		}
+		else {
+			obj.actionByObject(expression);
+		}
+	}
+};
+
+
 
 // シーン開始時にセリフを開始させるかどうか
 SceneSubStageObjectTalk.prototype.isSerifAutoStart = function() {
