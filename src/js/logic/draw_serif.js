@@ -20,8 +20,8 @@ DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_n
 
 	// ウィンドウの大きさ
 	var scale = {
-		width: 2/3,
-		height: 2/3,
+		width: 2/4,
+		height: 2/4,
 	};
 
 	ctx.save();
@@ -83,11 +83,11 @@ DrawSerif._getMessageWindowPos = function(obj){
 
 	if(is_show_right) {
 		x = obj.globalRightX();
-		y = obj.globalUpY();
+		y = obj.globalUpY() + 10;
 	}
 	else {
 		x = obj.globalLeftX();
-		y = obj.globalUpY();
+		y = obj.globalUpY() + 10;
 	}
 
 
