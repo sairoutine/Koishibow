@@ -11,7 +11,7 @@ var DrawSerif = function() {};
 DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_num) {
 
 	// ウィンドウの位置
-	var message_window_pos = this._getMessageWindowPos(obj);
+	var message_window_pos = this._getMessagePos(obj);
 	var x = message_window_pos.x;
 	var y = message_window_pos.y;
 	var is_show_right = message_window_pos.is_show_right;
@@ -23,6 +23,10 @@ DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_n
 		width: 2/4,
 		height: 2/4,
 	};
+
+	// ウィンドウ画像が中央からちょっとズレてるので位置調整
+	x += 10;
+	y += 10;
 
 	ctx.save();
 
@@ -49,7 +53,7 @@ DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num) {
 	// セリフがなければ何も表示しない
 	if (lines.length === 0) return;
 
-	var message_text_pos = this._getMessageTextPos(obj);
+	var message_text_pos = this._getMessagePos(obj);
 	var x = message_text_pos.x;
 	var y = message_text_pos.y;
 
@@ -77,30 +81,7 @@ DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num) {
 };
 
 // メッセージウィンドウの位置を取得
-DrawSerif._getMessageWindowPos = function(obj){
-	var is_show_right = this._isShowRight(obj);
-	var x,y;
-
-	if(is_show_right) {
-		x = obj.globalRightX();
-		y = obj.globalUpY() + 10;
-	}
-	else {
-		x = obj.globalLeftX();
-		y = obj.globalUpY() + 10;
-	}
-
-
-	return {
-		is_show_right: is_show_right,
-		x: x,
-		y: y,
-	};
-
-};
-
-// メッセージテキストの開始位置を取得
-DrawSerif._getMessageTextPos = function(obj){
+DrawSerif._getMessagePos = function(obj){
 	var is_show_right = this._isShowRight(obj);
 	var x,y;
 
@@ -119,6 +100,7 @@ DrawSerif._getMessageTextPos = function(obj){
 		x: x,
 		y: y,
 	};
+
 };
 
 // オブジェクトから見て、セリフ表示を右に表示させるかどうか
