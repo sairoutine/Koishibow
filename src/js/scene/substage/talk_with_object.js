@@ -20,9 +20,6 @@ var SceneSubStageObjectTalk = function(core) {
 
 	// クリックしてから次のセリフに移るまでの待機カウント
 	this._next_to_serif_waiting_count = 0;
-
-	// 会話対象のオブジェクト
-	this._target_object = null;
 };
 Util.inherit(SceneSubStageObjectTalk, base_scene);
 
@@ -37,15 +34,12 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 	this._next_to_serif_waiting_count = 0;
 
 	// セリフデータの生成
-	var serif_script = serif_list;
-	this._serif.init(serif_script);
+	this._serif.init(serif_list);
 
+	// セリフ再生開始
 	if (this.isSerifAutoStart()) {
 		this._serif.start();
 	}
-
-	// 会話対象のオブジェクト
-	this._target_object = obj;
 };
 
 SceneSubStageObjectTalk.prototype.beforeDraw = function(){
@@ -125,13 +119,18 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 SceneSubStageObjectTalk.prototype._showMessage = function() {
 	if(!this._serif.isStart()) return;
 
+	// 現在喋っているオブジェクト名(こいしの場合は koishi)
 	var chara_name = this._serif.getCurrentCharaNameByPosition();
 
+	// オブジェクトを取得
 	var obj = this.root().getPiece(chara_name);
+	if(!obj) throw new Error(chara_name + " doesn't exist");
 
+	// 表示
 	obj.showMessage(this._serif.getCurrentPrintedSentences(), !this._serif.isEnd() && this._serif.isPrintLetterEnd());
 };
 
+// シーン開始時にセリフを開始させるかどうか
 SceneSubStageObjectTalk.prototype.isSerifAutoStart = function() {
 	return true;
 };
