@@ -111,9 +111,7 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 // こいしに触られたときの処理
 ObjectStaticImage.prototype.onTouchByKoishi = function() {
 	// こいしのアクション
-	if (this._action_name) {
-		this.scene.root().koishi.actionByObject(this._action_name);
-	}
+	this.scene.root().koishi.actionByObject(this._action_name || "wait");
 
 	// 音を再生
 	if (this._sound_name) {

@@ -266,9 +266,7 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 // こいしに触られたときの処理
 ObjectAnimeImage.prototype.onTouchByKoishi = function() {
 	// こいしのアクション
-	if (this._front.action_name) {
-		this.scene.root().koishi.actionByObject(this._front.action_name);
-	}
+	this.scene.root().koishi.actionByObject(this._front.action_name || "wait");
 
 	// 音を再生
 	if (this._front.sound_name) {
