@@ -127,7 +127,7 @@ SceneSubStageObjectTalk.prototype._showMessage = function() {
 	if(!obj) throw new Error(chara_name + " doesn't exist");
 
 	// 表示
-	obj.showMessage(this._serif.getCurrentPrintedSentences(), !this._serif.isEnd() && this._serif.isPrintLetterEnd());
+	obj.showMessage(this._serif.getCurrentPrintedSentences());
 };
 
 // シーン開始時にセリフを開始させるかどうか
