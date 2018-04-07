@@ -114,6 +114,9 @@ var anime_map = {
 	"tewi-reverse_ura":   require('../data/anime/tewi/reverse_ura_anime_1'),
 	"tewi-ura_wait":      require('../data/anime/tewi/ura_wait_anime_1'),
 	"tewi-reverse_omote": require('../data/anime/tewi/reverse_omote_anime_1'),
+	"tewi-reaction_01":   require('../data/anime/tewi/reaction_01_anime_1'),
+	"tewi-reaction_02":   require('../data/anime/tewi/reaction_02_anime_1'),
+	"tewi-reaction_03":   require('../data/anime/tewi/reaction_03_anime_1'),
 
 	"chapter1-04-obj-01-obj01":  require('../data/anime/chapter1/04/obj-01/obj01_anime_1.json'),
 	"chapter1-04-obj-01-obj02":  require('../data/anime/chapter1/04/obj-01/obj02_anime_1.json'),
@@ -139,6 +142,13 @@ var anime_map = {
 	"nitori-reverse_ura":   require('../data/anime/nitori/reverse_ura_anime_1'),
 	"nitori-ura_wait":      require('../data/anime/nitori/ura_wait_anime_1'),
 	"nitori-reverse_omote": require('../data/anime/nitori/reverse_omote_anime_1'),
+	"nitori-reaction_01":   require('../data/anime/nitori/reaction_01_anime_1'),
+	"nitori-reaction_02":   require('../data/anime/nitori/reaction_02_anime_1'),
+	"nitori-reaction_03":   require('../data/anime/nitori/reaction_03_anime_1'),
+	"nitori-reaction_04":   require('../data/anime/nitori/reaction_04_anime_1'),
+	"nitori-ura_reaction_01":   require('../data/anime/nitori/ura_reaction_01_anime_1'),
+	"nitori-ura_reaction_02":   require('../data/anime/nitori/ura_reaction_02_anime_1'),
+	"nitori-ura_reaction_03":   require('../data/anime/nitori/ura_reaction_03_anime_1'),
 
 	"chapter1-05-obj-01-obj01":  require('../data/anime/chapter1/05/obj-01/obj01_anime_1.json'),
 	"chapter1-05-obj-01-obj02":  require('../data/anime/chapter1/05/obj-01/obj02_anime_1.json'),
