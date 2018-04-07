@@ -302,25 +302,27 @@ Koishi.prototype.z = function(){
 	return 100; //TODO: 固定値やめる
 };
 
-Koishi.prototype.showMessage = function(text_lines){
+Koishi.prototype.showMessage = function(text_lines, width_num, height_num){
 	// メッセージウィンドウ表示
-	this._showMessageWindow(text_lines);
+	this._showMessageWindow(text_lines, width_num, height_num);
 
 	// メッセージ表示
-	this._showText(text_lines);
+	this._showText(text_lines, width_num, height_num);
 };
 
 // セリフウィンドウ表示
-Koishi.prototype._showMessageWindow = function(lines){
+Koishi.prototype._showMessageWindow = function(lines, width_num, height_num){
 	var ctx = this.core.ctx;
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
-	DrawSerif.drawWindow(this, ctx, fukidashi, lines);
+
+	DrawSerif.drawWindow(this, ctx, fukidashi, lines, width_num, height_num);
+};
+// セリフテキスト表示
+Koishi.prototype._showText = function(lines, width_num, height_num) {
+	var ctx = this.core.ctx;
+	DrawSerif.drawText(this, ctx, lines, width_num, height_num);
 };
 
-Koishi.prototype._showText = function(lines) {
-	var ctx = this.core.ctx;
-	DrawSerif.drawText(this, ctx, lines);
-};
 
 
 Koishi.prototype.collisionY = function(){
