@@ -28,14 +28,13 @@ DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_n
 
 	ctx.translate(x, y);
 
-	var fukidashi_width = fukidashi.width * scale.width/2;
 	if(is_show_right) {
 		ctx.transform(-1, 0, 0, 1, 0, 0);
-		fukidashi_width = -fukidashi.width * scale.width/2;
 	}
+
 	// x,y座標は中央が基準位置
 	ctx.drawImage(fukidashi,
-		fukidashi_width,
+		-fukidashi.width * scale.width/2,
 		-fukidashi.height*scale.height/2,
 		fukidashi.width * scale.width,
 		fukidashi.height * scale.height
