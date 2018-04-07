@@ -207,9 +207,8 @@ ObjectAnimeImage.prototype.onNotCollideWithLightIn3rdEye = function(){
 	// 表オブジェクトになった
 	this._is_in_back = false;
 
-	// 表がクリック済ならクリック済アニメに戻る
-	// 表がクリック前ならクリック前アニメに戻る
-	var front_anime_name = this.ss.hasFrontClickedAnime() && this._is_clicked_in_front ? "front_after_click_anime" : "front_before_click_anime";
+	// 元のアニメを取得
+	var front_anime_name = this._getWaitAnimeName();
 
 	var ss = this.ss;
 	var audio_loader = this.core.audio_loader;
@@ -227,6 +226,11 @@ ObjectAnimeImage.prototype.onNotCollideWithLightIn3rdEye = function(){
 	});
 };
 
+// 表がクリック済ならクリック済アニメに戻る
+// 表がクリック前ならクリック前アニメに戻る
+ObjectAnimeImage.prototype._getWaitAnimeName = function() {
+	return this.ss.hasFrontClickedAnime() && this._is_clicked_in_front ? "front_after_click_anime" : "front_before_click_anime";
+};
 ObjectAnimeImage.prototype.beforeDraw = function() {
 	base_object.prototype.beforeDraw.apply(this, arguments);
 
@@ -288,5 +292,23 @@ ObjectAnimeImage.prototype.onTouchByKoishi = function() {
 	// クリック済に状態変更
 	this._is_clicked_in_front = true;
 };
+
+// 会話で発生したリアクション
+ObjectAnimeImage.prototype.actionByObject = function(action_name) {
+	var json = AnimeMap[action_name];
+
+	// アニメのマスタデータを設定 TODO: 最初から定義しておく
+	this.ss.addAnime(action_name, json);
+
+	var ss = this.ss;
+	ss.playAnimationOnce(action_name);
+};
+ObjectAnimeImage.prototype.setWaitAnime = function() {
+	var front_anime_name = this._getWaitAnimeName();
+	var ss = this.ss;
+	ss.playAnimationInfinity(front_anime_name);
+};
+
+
 
 module.exports = ObjectAnimeImage;
