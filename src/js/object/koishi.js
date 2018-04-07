@@ -85,11 +85,13 @@ Koishi.prototype.unUseEye = function(){
 
 // オブジェクトを調べた際のモーションを行う
 Koishi.prototype.actionByObject = function(action_name) {
-	var sound_name = CharaAnimeConfig.KoishiAction[action_name].sound;
+	var action = CharaAnimeConfig.KoishiAction[action_name];
 
 	// 音を再生
-	if (sound_name) {
-		this.core.audio_loader.playSound(sound_name);
+	// CharaAnimeConfig にはないが、jsonAnimeMap に定義される action がある前提なので、
+	// action が存在しなくても playAnimationOnce させる
+	if (action && action.sound) {
+		this.core.audio_loader.playSound(action.sound);
 	}
 
 	this.playAnimationOnce(action_name);
