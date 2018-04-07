@@ -82,7 +82,8 @@ module.exports = {
 			x:831.50*2/3, y:921.50*2/3,
 			scale: 2/3,
 			action_name: "look_bottom",
-			sound_name: null
+			sound_name: null,
+			position_type: "lying"
 		},
 		{
 			no: ++I,
@@ -94,6 +95,9 @@ module.exports = {
 			anime1: "chapter1-02-obj-04-obj01",
 			anime2: "chapter1-02-obj-04-obj02",
 			anime3: "chapter1-02-obj-04-obj03",
+			anime4: "chapter1-02-obj-04-obj04",
+			anime5: "chapter1-02-obj-04-obj05",
+			anime6: "chapter1-02-obj-04-obj05",
 			width: 1066, height: 100,
 			action_name: null,
 			sound_name: null,
