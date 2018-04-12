@@ -8,6 +8,7 @@ var Util = require('../../hakurei').util;
 var CONSTANT = require('../../constant');
 var ItemConfig = require('../../config/item');
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
+var SelectedCursor = require('../../object/ui/selected_cursor');
 
 
 var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
@@ -22,7 +23,10 @@ var SceneSubStageMenu = function(core) {
 	this._index_ui = 0;
 
 	this._is_select_item = false;
+
+	this._show_unable_to_use_message = 0;
 };
+
 Util.inherit(SceneSubStageMenu, base_scene);
 
 SceneSubStageMenu.prototype.init = function(){
@@ -39,12 +43,18 @@ SceneSubStageMenu.prototype.init = function(){
 
 	this._is_select_item = false;
 
+	this._show_unable_to_use_message = 0;
+
 	this._setupMenuItems();
 	this.addObjects(flatten(this.menu_item_list));
 
 	this._setupMenuButtons();
 	this.menu_ui = [this.use_button, this.examine_button, this.combine_button];
 	this.addObjects(this.menu_ui);
+
+	// 選択中カーソル
+	this._cursor_ui = new SelectedCursor(this);
+	this.addObjects(this._cursor_ui);
 
 	// ジャーナルへ
 	var basePosX = 300;
@@ -173,12 +183,20 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 	}
 
 
+	var ui, item;
+
 	// アイテム未選択時
 	if (!this._is_select_item) {
 		// アイテムを選択
 		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 			this.core.audio_loader.playSound("select_item");
 			this._is_select_item = true;
+
+			// 選択中カーソル表示
+			ui = this.menu_ui[this._index_ui];
+			this._cursor_ui.setPosition(ui.x(), ui.y() - 50);
+			this._cursor_ui.show();
+
 			return;
 		}
 		// 選択するアイテムを移動
@@ -216,10 +234,14 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 
 		// アイテムを何も所持していないとき、存在しない可能性がある
 		if(this.menu_item_list[this._index_item_vertical][this._index_item_horizontal]) {
-			var item = this.menu_item_list[this._index_item_vertical][this._index_item_horizontal];
-			if(!this.isFocusItem(item.item_id)) {
+			item = this.menu_item_list[this._index_item_vertical][this._index_item_horizontal];
+			if(!this.isFocusItem(item.item_id())) {
 				// アイテム選択 音
 				this.core.audio_loader.playSound("select_item");
+
+				// 選択中カーソル表示
+				this._cursor_ui.setPosition(item.x(), item.y() - 50);
+				this._cursor_ui.show();
 
 				this.setFocusItem(item.item_id());
 			}
@@ -230,7 +252,7 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 	else {
 		// アイテムを使用／調べる／組み合わせる
 		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
-			var ui = this.menu_ui[this._index_ui];
+			ui = this.menu_ui[this._index_ui];
 
 			if (ui === this.use_button) {
 				// アイテム使用
@@ -253,6 +275,11 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 			this.use_button.setVariable("onfocus", false);
 			this.examine_button.setVariable("onfocus", false);
 			this.combine_button.setVariable("onfocus", false);
+
+			// 選択中カーソル表示
+			item = this.menu_item_list[this._index_item_vertical][this._index_item_horizontal];
+			this._cursor_ui.setPosition(item.x(), item.y() - 50);
+			this._cursor_ui.show();
 		}
 		else if (is_left_push || is_right_push) {
 			// 左
@@ -261,12 +288,24 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 				if (this._index_ui < 0) {
 					this._index_ui = 0;
 				}
+				else {
+					// 選択中カーソル表示
+					ui = this.menu_ui[this._index_ui];
+					this._cursor_ui.setPosition(ui.x(), ui.y() - 50);
+					this._cursor_ui.show();
+				}
 			}
 			// 右
 			else if (is_right_push) {
 				this._index_ui++;
 				if (this._index_ui > this.menu_ui.length - 1) {
 					this._index_ui = this.menu_ui.length - 1;
+				}
+				else {
+					// 選択中カーソル表示
+					ui = this.menu_ui[this._index_ui];
+					this._cursor_ui.setPosition(ui.x(), ui.y() - 50);
+					this._cursor_ui.show();
 				}
 			}
 		}
@@ -357,11 +396,19 @@ SceneSubStageMenu.prototype._showMessage = function(){
 	var ctx = this.core.ctx;
 	var item_config = ItemConfig[this.focus_item_id];
 
+	var description;
+	if (this._show_unable_to_use_message) {
+		description = "使用できません";
+	}
+	else{
+		description = item_config.description;
+	}
+
 	// メニュー文字 表示
 	ctx.font = "24px 'OradanoGSRR'";
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
-	ctx.fillText(item_config.description,
+	ctx.fillText(description,
 		235,
 		680
 	);
@@ -379,20 +426,41 @@ SceneSubStageMenu.prototype._useItem = function(){
 	for(var i = 0, len = menu_item_list.length; i < len; i++) {
 		var menu_item = menu_item_list[i];
 		if(menu_item.item_id() === focus_item_id) {
-			// 選択中から解除
-			this.focus_item_id = null;
+			if (menu_item.isEnableToUse()) {
+				// 選択中から解除
+				this.focus_item_id = null;
 
-			// アイテム使用
-			menu_item.use();
+				// アイテム使用
+				menu_item.use();
 
-			// メニューの表示から削除
-			this.removeObject(menu_item);
-			this._setupMenuItems();
+				// メニューの表示から削除
+				this.removeObject(menu_item);
+				this._setupMenuItems();
+			}
+			else {
+				// TODO: 使用できない音
+				this._showUnableToUseMessage();
+			}
 
 			break;
 		}
 	}
 
+};
+
+// 使用できないメッセージを表示
+SceneSubStageMenu.prototype._showUnableToUseMessage = function(){
+	var self = this;
+
+	// 使用できないメッセージをまだ表示中だったら、それの表示解除はキャンセル
+	if(self._show_unable_to_use_message) {
+		self.core.time_manager.clearTimeout(self._show_unable_to_use_message);
+	}
+
+	// Nフレーム後にメッセージを非表示
+	self._show_unable_to_use_message = self.core.time_manager.setTimeout(function () {
+		self._show_unable_to_use_message = 0;
+	}, 60);
 };
 
 // アイテムを調べる

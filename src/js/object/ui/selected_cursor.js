@@ -1,0 +1,72 @@
+'use strict';
+
+// 選択中カーソル
+
+var base_object = require('../../hakurei').object.sprite;
+var Util = require('../../hakurei').util;
+
+var ObjectSelectedCursor = function(core) {
+	base_object.apply(this, arguments);
+};
+Util.inherit(ObjectSelectedCursor, base_object);
+
+ObjectSelectedCursor.prototype.init = function(){
+	base_object.prototype.init.apply(this, arguments);
+
+	this._is_show = false;
+};
+
+ObjectSelectedCursor.prototype.isShow = function() {
+	return this._is_show;
+};
+
+ObjectSelectedCursor.prototype.show = function() {
+	this._is_show = true;
+};
+ObjectSelectedCursor.prototype.hide = function() {
+	this._is_show = false;
+};
+
+ObjectSelectedCursor.prototype.beforeDraw = function(){
+	base_object.prototype.beforeDraw.apply(this, arguments);
+
+	// カーソルが上下に動く
+	if (Math.floor(this.frame_count/16) % 2 === 0) {
+		this.y(this.y() + 1);
+	}
+	else {
+		this.y(this.y() - 1);
+	}
+};
+
+
+
+// 現状、表示UIとしてしか使ってないので、当たり判定不要
+ObjectSelectedCursor.prototype.isCollision = function() {
+	return false;
+};
+
+ObjectSelectedCursor.prototype.spriteName = function(){
+	return "arrow";
+};
+ObjectSelectedCursor.prototype.spriteIndices = function(){
+	return [{x: 0, y: 0}];
+};
+ObjectSelectedCursor.prototype.spriteWidth = function(){
+	return 136;
+};
+ObjectSelectedCursor.prototype.spriteHeight = function(){
+	return 124;
+};
+ObjectSelectedCursor.prototype.scaleHeight = function(){
+	return 1/3;
+};
+ObjectSelectedCursor.prototype.scaleWidth = function(){
+	return 1/3;
+};
+
+ObjectSelectedCursor.prototype.rotateAdjust = function(){
+	return 90;
+};
+
+module.exports = ObjectSelectedCursor;

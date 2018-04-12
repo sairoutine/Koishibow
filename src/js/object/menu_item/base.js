@@ -48,6 +48,7 @@ ObjectMenuItemBase.prototype.collisionHeight = function(){
 	return 128;
 };
 
+// アイテムID
 ObjectMenuItemBase.prototype.item_id = function() {
 	throw new Error("item_id method must be implemented");
 };
@@ -56,6 +57,11 @@ ObjectMenuItemBase.prototype.item_id = function() {
 ObjectMenuItemBase.prototype.use = function(){
 	// 持ち物から削除
 	this.core.save_manager.item.deleteItem(this.item_id());
+};
+
+// 使用できるか否か判定
+ObjectMenuItemBase.prototype.isEnableToUse = function() {
+	return true;
 };
 
 module.exports = ObjectMenuItemBase;
