@@ -15,9 +15,8 @@ ObjectItemMenuButton.prototype.init = function(){
 };
 
 ObjectItemMenuButton.prototype.isShow = function(){
-	// play or menu scene のみ メニューアイコンを表示
+	// メニューアイコンを表示する条件
 	return(
-		this.scene.current_scene === "play" ||
 		this.scene.current_scene === "menu" ||
 		this.scene.current_scene === "journal_menu" ||
 		this.scene.current_scene === "got_item" ?
