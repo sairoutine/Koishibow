@@ -54,6 +54,7 @@ SceneSubStageMenu.prototype.init = function(){
 
 	// 選択中カーソル
 	this._cursor_ui = new SelectedCursor(this);
+	this._cursor_ui.init();
 	this.addObjects(this._cursor_ui);
 
 	// ジャーナルへ

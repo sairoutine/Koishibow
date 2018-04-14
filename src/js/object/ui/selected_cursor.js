@@ -7,6 +7,8 @@ var Util = require('../../hakurei').util;
 
 var ObjectSelectedCursor = function(core) {
 	base_object.apply(this, arguments);
+	this._is_show = false;
+	this._move_y = 0;
 };
 Util.inherit(ObjectSelectedCursor, base_object);
 
@@ -14,7 +16,14 @@ ObjectSelectedCursor.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
 	this._is_show = false;
+	this._move_y = 0;
 };
+
+ObjectSelectedCursor.prototype.y = function() {
+	return base_object.prototype.y.apply(this, arguments) + this._move_y;
+};
+
+
 
 ObjectSelectedCursor.prototype.isShow = function() {
 	return this._is_show;
@@ -32,10 +41,10 @@ ObjectSelectedCursor.prototype.beforeDraw = function(){
 
 	// カーソルが上下に動く
 	if (Math.floor(this.frame_count/16) % 2 === 0) {
-		this.y(this.y() + 1);
+		this._move_y += 1;
 	}
 	else {
-		this.y(this.y() - 1);
+		this._move_y -= 1;
 	}
 };
 
