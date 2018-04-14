@@ -4,10 +4,10 @@
 "name": "obj04_anime_1",
 "animation": {
 "fps": 30,
-"CanvasWidth": 1500,
-"CanvasHeight": 420,
-"MarginWidth": 758,
-"MarginHeight": 218,
+"CanvasWidth": 1600,
+"CanvasHeight": 300,
+"MarginWidth": 808,
+"MarginHeight": 158,
 "parts": ["root","Obj","omote","01","ura","02"],
 "ssa": [
 [
