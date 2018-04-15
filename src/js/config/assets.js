@@ -135,6 +135,19 @@ AssetsConfig.images = {
 	"chapter1-06-obj-03": "./image/chapter1/chapter1-06/chapter1-06-obj-03.png",
 	"chapter1-06-obj-04": "./image/chapter1/chapter1-06/chapter1-06-obj-04.png",
 
+	"chapter1-07-bg-001": "./image/chapter1/chapter1-07/chapter1-07-bg-001.jpg",
+	"chapter1-07-obj-01": "./image/chapter1/chapter1-07/chapter1-07-obj-01.png",
+	
+	"chapter1-08-bg-001": "./image/chapter1/chapter1-08/chapter1-08-bg-001.jpg",
+	"chapter1-08-obj-01": "./image/chapter1/chapter1-08/chapter1-08-obj-01.png",
+	
+	"chapter1-09-bg-001": "./image/chapter1/chapter1-09/chapter1-09-bg-001.jpg",
+	"chapter1-09-obj-01": "./image/chapter1/chapter1-09/chapter1-09-obj-01.png",
+	"chapter1-09-obj-02": "./image/chapter1/chapter1-09/chapter1-09-obj-02.png",
+	
+	"chapter1-10-bg-001": "./image/chapter1/chapter1-10/chapter1-10-bg-001.jpg",
+	"chapter1-10-obj-01": "./image/chapter1/chapter1-10/chapter1-10-obj-01.png",
+	
 	// アイテム 目薬
 	item_01:            "./image/item/icon_item_eyedrops01.png",
 	item_01_selected:   "./image/item/icon_item_eyedrops02.png",
