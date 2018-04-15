@@ -26,6 +26,6 @@ before_script:
   - cd $TRAVIS_BUILD_DIR/Koishibow/
   - gulp build
   - git add ./public/
-  - git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER) [ci skip]" || :
+  - git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER) [ci skip]" || echo
   - git push origin gh-pages
   - sleep 10
