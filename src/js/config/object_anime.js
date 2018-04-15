@@ -161,6 +161,27 @@ var anime_map = {
 	"chapter1-06-obj-01-obj04":  require('../data/anime/chapter1/06/obj-01/obj04_anime_1.json'),
 
 	"chapter1-06-obj-04-obj01":  require('../data/anime/chapter1/06/obj-04/obj01_anime_1.json'),
+	
+	"chapter1-08-obj-01-obj01":  require('../data/anime/chapter1/08/obj-01/obj01_anime_1.json'),
+	"chapter1-08-obj-01-obj02":  require('../data/anime/chapter1/08/obj-01/obj02_anime_1.json'),
+	"chapter1-08-obj-01-obj03":  require('../data/anime/chapter1/08/obj-01/obj03_anime_1.json'),
+	
+	"chapter1-09-obj-01-obj01":  require('../data/anime/chapter1/09/obj-01/obj01_anime_1.json'),
+	"chapter1-09-obj-01-obj02":  require('../data/anime/chapter1/09/obj-01/obj02_anime_1.json'),
+	"chapter1-09-obj-01-obj03":  require('../data/anime/chapter1/09/obj-01/obj03_anime_1.json'),
+	"chapter1-09-obj-01-obj04":  require('../data/anime/chapter1/09/obj-01/obj04_anime_1.json'),
+	"chapter1-09-obj-01-obj05":  require('../data/anime/chapter1/09/obj-01/obj05_anime_1.json'),
+	"chapter1-09-obj-01-obj06":  require('../data/anime/chapter1/09/obj-01/obj06_anime_1.json'),
+	"chapter1-09-obj-01-obj07":  require('../data/anime/chapter1/09/obj-01/obj07_anime_1.json'),
+	"chapter1-09-obj-01-obj08":  require('../data/anime/chapter1/09/obj-01/obj08_anime_1.json'),
+	
+	"chapter1-09-obj-02-obj01":  require('../data/anime/chapter1/09/obj-02/obj01_anime_1.json'),
+	"chapter1-09-obj-02-obj02":  require('../data/anime/chapter1/09/obj-02/obj02_anime_1.json'),
+	
+	"chapter1-10-obj-01-obj01":  require('../data/anime/chapter1/10/obj-01/obj01_anime_1.json'),
+	"chapter1-10-obj-01-obj02":  require('../data/anime/chapter1/10/obj-01/obj02_anime_1.json'),
+	"chapter1-10-obj-01-obj03":  require('../data/anime/chapter1/10/obj-01/obj03_anime_1.json'),
+	"chapter1-10-obj-01-obj04":  require('../data/anime/chapter1/10/obj-01/obj04_anime_1.json'),
 };
 
 module.exports = anime_map;
