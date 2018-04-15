@@ -6,7 +6,7 @@ AssetsConfig.images = {
 	// HowTo 画像
 	"howto":            "./image/howto.png",
 	// タイトル放置案 背景
-	leaving_title:      "./image/leaving_title.png",
+	"leaving_title":      "./image/leaving_title.png",
 
 
 	// マウスカーソル
@@ -149,34 +149,34 @@ AssetsConfig.images = {
 	"chapter1-10-obj-01": "./image/chapter1/chapter1-10/chapter1-10-obj-01.png",
 	
 	// アイテム 目薬
-	item_01:            "./image/item/icon_item_eyedrops01.png",
-	item_01_selected:   "./image/item/icon_item_eyedrops02.png",
+	"item_01":            "./image/item/icon_item_eyedrops01.png",
+	"item_01_selected":   "./image/item/icon_item_eyedrops02.png",
 
 	// 体験版時のコンティニュー画像
-	tobecontinued:  "./image/tobecontinued.png",
+	"tobecontinued":  "./image/tobecontinued.png",
 
 	// フィールド上に落ちているジャーナル オブジェクト
-	paper:              "./image/chapterall-obj-02-01.png",
+	"paper":              "./image/chapterall-obj-02-01.png",
 	// フィールド上に落ちている目薬 オブジェクト
-	eyedrops:           "./image/chapterall-obj-01-01.png",
+	"eyedrops":           "./image/chapterall-obj-01-01.png",
 
 	// 画面遷移用やじるし
-	arrow:  "./image/ui-common-btn-arrow-wht.png",
+	"arrow":  "./image/ui-common-btn-arrow-wht.png",
 	// アイテムボタン
-	tool: "./image/ui-common-btn-tool-1.png",
+	"tool": "./image/ui-common-btn-tool-1.png",
 	// 第三の目
-	eye1:  "./image/ui-common-btn-eye-1.png",
-	eye2:  "./image/ui-common-btn-eye-2.png",
-	eye3:  "./image/ui-common-btn-eye-3.png",
-	eye4:  "./image/ui-common-btn-eye-4.png",
+	"eye1":  "./image/ui-common-btn-eye-1.png",
+	"eye2":  "./image/ui-common-btn-eye-2.png",
+	"eye3":  "./image/ui-common-btn-eye-3.png",
+	"eye4":  "./image/ui-common-btn-eye-4.png",
 
 	// ふきだし
-	fukidashi:  "./image/ui-common-frame-talk1-brn.png",
-	fukidashi_gray:  "./image/ui-common-frame-talk1-gry.png",
-	fukidashi_arrow:  "./image/ui-common-btn-arrow-brn.png",
+	"fukidashi":  "./image/ui-common-frame-talk1-brn.png",
+	"fukidashi_gray":  "./image/ui-common-frame-talk1-gry.png",
+	"fukidashi_arrow":  "./image/ui-common-btn-arrow-brn.png",
 
 	// ここを選択せよ、的な矢印
-	target_arrow:  "./image/ui-common-btn-arrow-gry.png",
+	"target_arrow":  "./image/ui-common-btn-arrow-gry.png",
 
 	// メニュー
 	"ui-common-bg-toolpu-blk":   "./image/menu/ui-common-bg-toolpu-blk.png",
