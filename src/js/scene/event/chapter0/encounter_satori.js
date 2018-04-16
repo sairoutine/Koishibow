@@ -159,12 +159,12 @@ SceneEventEncounterSatori.prototype.beforeDraw = function(){
 			var serif_manager = this._serif;
 
 			// セリフを送る
-			this.core.setTimeout(function () {
+			this.core.time_manager.setTimeout(function () {
 				serif_manager.next();
 
 			}, 0.2 * 60);
 			// さとりが去っていく
-			this.core.setTimeout(function () {
+			this.core.time_manager.setTimeout(function () {
 				satori.playAnimationOnce(SATORI_LEAVE_SCENE_ANIME);
 			}, 0.4 * 60);
 		}
