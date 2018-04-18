@@ -5,7 +5,7 @@ var I = 0;
 module.exports = {
 	key: "chapter1_02",
 	chapter: 1,
-	bgm: "silent",
+	bgm: "field3",
 	right_start_position: {x: 690, y: 380},
 	left_start_position:  {x: 180, y: 380},
 	right_field: "chapter1_03",
