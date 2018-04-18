@@ -131,7 +131,7 @@ SsAnimeBase.prototype.getJsonData = function(name) {
 	return map[name];
 };
 SsAnimeBase.prototype.getFrameNo = function(){
-	return this.ss.getFrameNo();
+	return Math.floor(this.anime_frame);
 };
 
 SsAnimeBase.prototype.beforeDraw = function(){
@@ -188,7 +188,7 @@ SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
 		this.anime_frame %= max_frame;
 	}
 
-	return Math.floor(this.anime_frame);
+	return this.getFrameNo();
 };
 SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 	// キャッシュ

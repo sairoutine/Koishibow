@@ -125,10 +125,10 @@ Koishi.prototype._playWalkSound = function(){
 	}
 
 	// こいしの歩くアニメーションに合わせて音を再生
-	if(this.ss.getFrameNo() === 14) {
+	if(this.getFrameNo() === 14) {
 		this.core.audio_loader.playSound(walk_sound + "_right");
 	}
-	else if(this.ss.getFrameNo() === 29) {
+	else if(this.getFrameNo() === 29) {
 		this.core.audio_loader.playSound(walk_sound + "_left");
 	}
 };
