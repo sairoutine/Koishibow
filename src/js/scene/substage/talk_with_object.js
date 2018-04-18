@@ -9,6 +9,11 @@ var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 // クリックしてから次のセリフに移るまでの待機カウント
 var NEXT_TO_SERIF_WAITING_COUNT = 6;
 
+// 状態
+var STATE_TALKING  = 1; // セリフ表示
+var STATE_WAITING  = 2; // セリフ非表示
+var STATE_JUNCTION = 3; // 会話の選択肢表示
+
 var SceneSubStageObjectTalk = function(core) {
 	base_scene.apply(this, arguments);
 
@@ -18,8 +23,7 @@ var SceneSubStageObjectTalk = function(core) {
 	this._cursor_y = 0; // カーソル位置
 	this._cursor_reverse = false; // カーソルが↑移動中かどうか
 
-	// クリックしてから次のセリフに移るまでの待機カウント
-	this._next_to_serif_waiting_count = 0;
+	this._state = STATE_TALKING;
 };
 Util.inherit(SceneSubStageObjectTalk, base_scene);
 
@@ -30,8 +34,7 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 	this._cursor_y = 0;
 	this._cursor_reverse = false;
 
-	// クリックしてから次のセリフに移るまでの待機カウント
-	this._next_to_serif_waiting_count = 0;
+	this._state = STATE_TALKING;
 
 	// セリフデータの生成
 	this._serif.init(serif_list);
@@ -48,43 +51,47 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	// クリックしてから一定時間経ったら、次のセリフに移る
-	if(this._next_to_serif_waiting_count) {
-		this._next_to_serif_waiting_count--;
-
-		if (this._next_to_serif_waiting_count === 0) {
-			// セリフを送る
-			this._serif.next();
-
-			// 表情変更
-			this._actionExpression();
-		}
+	if(this._state === STATE_WAITING) {
+		// 何もしない
 	}
-	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
-		if(this._serif.isEnd()) {
+	else if(this._state === STATE_TALKING) {
+		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+			if(this._serif.isEnd()) {
 
-			// オブジェクトに触れた際の会話だった場合、
-			// 触れた際のモーションにこいしがなっているため
-			this.root().koishi.setWaitAnime();
+				// オブジェクトに触れた際の会話だった場合、
+				// 触れた際のモーションにこいしがなっているため
+				this.root().koishi.setWaitAnime();
 
-			// セリフ終わり
-			this.root().changeSubScene("play");
-		}
-		else {
-			if(this._serif.isStart()) {
-				// 次のセリフへ
-				this._next_to_serif_waiting_count = NEXT_TO_SERIF_WAITING_COUNT;
+				// セリフ終わり
+				this.root().changeSubScene("play");
+			}
+			else {
+				if(this._serif.isStart()) {
+					this._state = STATE_WAITING;
+
+					// Nフレーム後に次のセリフへ
+					var self = this;
+					this.core.time_manager.setTimeout(function () {
+						// セリフを送る
+						self._serif.next();
+
+						// 表情変更
+						self._actionExpression();
+
+						self._state = STATE_TALKING;
+
+					}, NEXT_TO_SERIF_WAITING_COUNT);
+				}
 			}
 		}
 	}
-
 };
 
 SceneSubStageObjectTalk.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 
 	// セリフ送り待機中は表示しない
-	if(!this._next_to_serif_waiting_count) {
+	if(this._state === STATE_TALKING) {
 		// セリフ表示
 		this._showMessage();
 
