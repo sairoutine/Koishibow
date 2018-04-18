@@ -11,7 +11,7 @@ module.exports = {
 	right_field: "chapter1_04",
 	left_field: "chapter1_02",
 	background: "chapter1-03-bg-001",
-	walk_sound: "walking_bare_default",
+	walk_sound: "walking_bare_outside",
 	objects: [
 		{
 			no: ++I,
