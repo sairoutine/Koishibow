@@ -6,6 +6,7 @@ module.exports = {
 	key: "chapter1_06",
 	chapter: 1,
 	bgm: "silent",
+	sub_bgms: ["chapter1-06-flicker_light"],
 	right_start_position: {x: 690, y: 380},
 	left_start_position:  {x: 180, y: 380},
 	right_field: null,

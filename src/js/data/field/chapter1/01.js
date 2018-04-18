@@ -44,7 +44,7 @@ module.exports = {
 			anime3: "chapter1-01-obj-02-obj03",
 
 			action_name: "look_top",
-			sound_name: null,
+			sound_name: "chapter1-01-smile_kokoro",
 		},
 		{
 			no: ++I,
@@ -66,6 +66,7 @@ module.exports = {
 
 			action_name: "touch",
 			sound_name: null,
+			sound_back: "chapter1-01-change",
 		},
 	],
 };
