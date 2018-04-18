@@ -27,6 +27,7 @@ var EyeButton = require('../object/ui/eye_button');
 var Light3rdeye = require('../object/light_3rdeye');
 
 var BlackMist = require('../object/black_mist');
+var WhiteMist = require('../object/white_mist');
 
 var Koishi = require('../object/koishi');
 
@@ -56,6 +57,7 @@ var SceneStage = function(core) {
 
 	// 画面の枠
 	this.black_mist = new BlackMist(this);
+	this.white_mist = new WhiteMist(this);
 
 	// UI パーツ
 	this.right_next_field_button = new RightNextFieldButton(this);
@@ -141,6 +143,7 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// 画面の枠
 	this.black_mist.init();
+	this.white_mist.init();
 
 	// UI パーツ
 	this.right_next_field_button.init();
@@ -307,6 +310,7 @@ SceneStage.prototype.beforeDraw = function() {
 
 	// 画面の枠
 	this.black_mist.beforeDraw();
+	this.white_mist.beforeDraw();
 	// UI パーツ
 	this.right_next_field_button.beforeDraw();
 	this.left_next_field_button.beforeDraw();
@@ -363,6 +367,7 @@ SceneStage.prototype.draw = function(){
 
 	// 画面の枠
 	this.black_mist.draw();
+	this.white_mist.draw();
 	// UI パーツ
 	this.right_next_field_button.draw();
 	this.left_next_field_button.draw();
@@ -431,6 +436,10 @@ SceneStage.prototype.isNoHat = function(){
 SceneStage.prototype.getFieldData = function(){
 	return FieldMap[this.core.save_manager.player.getCurrentField()];
 };
+SceneStage.prototype.getChapterNo = function(){
+	return this.getFieldData().chapter;
+};
+
 // ステージ上のオブジェクト or 自機を取得
 SceneStage.prototype.getPiece = function(name) {
 	if (name === "koishi") return this.koishi;

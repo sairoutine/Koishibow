@@ -35,6 +35,8 @@ AssetsConfig.images = {
 	// 3rdeye 使用時の光
 	"light":  "./image/light.png",
 
+	"white_mist":            "./image/white-mist.png",
+
 	// 帽子獲得イベント
 	"get_hat_bg":  "./image/chapter0/event/get_hat/bg.png",
 
