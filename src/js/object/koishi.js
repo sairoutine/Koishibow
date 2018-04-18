@@ -106,7 +106,7 @@ Koishi.prototype.beforeDraw = function(){
 
 Koishi.prototype._playWalkSound = function(){
 	// 移動中でなければ再生しない
-	if (this.isWalking()) return;
+	if (!this.isWalking()) return;
 
 	var field_data = this.scene.getFieldData();
 	// 足音
