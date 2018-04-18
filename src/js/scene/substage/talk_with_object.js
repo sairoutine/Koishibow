@@ -51,10 +51,7 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	if(this._state === STATE_WAITING) {
-		// 何もしない
-	}
-	else if(this._state === STATE_TALKING) {
+	if(this._state === STATE_TALKING) {
 		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 			if(this._serif.isEnd()) {
 
@@ -67,23 +64,34 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 			}
 			else {
 				if(this._serif.isStart()) {
-					this._state = STATE_WAITING;
+					if(this._serif.isCurrentSerifExistsJunction()) {
+						this._state = STATE_JUNCTION;
+					}
+					else {
+						this._state = STATE_WAITING;
 
-					// Nフレーム後に次のセリフへ
-					var self = this;
-					this.core.time_manager.setTimeout(function () {
-						// セリフを送る
-						self._serif.next();
+						// Nフレーム後に次のセリフへ
+						var self = this;
+						this.core.time_manager.setTimeout(function () {
+							// セリフを送る
+							self._serif.next();
 
-						// 表情変更
-						self._actionExpression();
+							// 表情変更
+							self._actionExpression();
 
-						self._state = STATE_TALKING;
+							self._state = STATE_TALKING;
 
-					}, NEXT_TO_SERIF_WAITING_COUNT);
+						}, NEXT_TO_SERIF_WAITING_COUNT);
+					}
 				}
 			}
 		}
+	}
+	else if(this._state === STATE_WAITING) {
+		// 何もしない
+	}
+	else if(this._state === STATE_JUNCTION) {
+		// TODO:
 	}
 };
 
@@ -124,8 +132,12 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 		);
 	}
 	*/
-
-
+	}
+	else if(this._state === STATE_WAITING) {
+		// 何もしない
+	}
+	else if(this._state === STATE_JUNCTION) {
+		// TODO:
 	}
 };
 // セリフ表示
