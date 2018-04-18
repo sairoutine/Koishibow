@@ -341,6 +341,20 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter0/mansion_corridor3/open_and_falldown.ogg",
 		volume: 1.0,
 	},
+	"chapter1-01-change":    {
+		path: "./sound/chapter1/01/change.ogg",
+		volume: 1.0,
+	},
+	"chapter1-01-smile_kokoro":    {
+		path: "./sound/chapter1/01/smile_kokoro.ogg",
+		volume: 1.0,
+	},
+
+	"chapter1-04-standup_kosuzu":    {
+		path: "./sound/chapter1/04/standup_kosuzu.ogg",
+		volume: 1.0,
+	},
+
 	touch:    {
 		path: "./sound/touch.ogg",
 		volume: 1.0,
@@ -361,7 +375,14 @@ AssetsConfig.sounds = {
 		path: "./sound/walking/bare_wood_right.ogg",
 		volume: 1.0,
 	},
-
+	bare_outside_left:    {
+		path: "./sound/walking/bare_outside_left.ogg",
+		volume: 1.0,
+	},
+	bare_outside_right:    {
+		path: "./sound/walking/bare_outside_right.ogg",
+		volume: 1.0,
+	},
 	noise1:    {
 		path: "./sound/noise/noise1.ogg",
 		volume: 1.0,
@@ -415,6 +436,20 @@ AssetsConfig.bgms = {
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 0.9,
 	},
+	field3: {
+		path: "./bgm/field3.ogg",
+		loopStart: 0*60 + 0 + 0.512,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+
+	field4: {
+		path: "./bgm/field4.ogg",
+		loopStart: 0*60 + 0 + 0.300,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+
 	"chapter0-event-encounter_satori": {
 		path: "./bgm/chapter0/event/encounter_satori.ogg",
 		volume: 0.6,
@@ -425,6 +460,7 @@ AssetsConfig.bgms = {
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
 	},
+
 	"chapter0-mansion_corridor1-wind": {
 		path: "./bgm/chapter0/mansion_corridor1/wind.ogg",
 		loopStart: 0*60 + 0 + 0.000,
@@ -437,6 +473,27 @@ AssetsConfig.bgms = {
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
 	},
+	"chapter1-03-drop_paint": {
+		path: "./bgm/chapter1/03/drop_paint.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+
+
+	"chapter1-04-call_phone": {
+		path: "./bgm/chapter1/04/call_phone.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+	"chapter1-06-flicker_light": {
+		path: "./bgm/chapter1/06/flicker_light.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+
 
 };
 
