@@ -5,6 +5,7 @@ var base_scene = require('./base');
 var ScenarioManager = require('../../hakurei').manager.scenario;
 var Util = require('../../hakurei').util;
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
+var DrawSerif = require('../../logic/draw_serif');
 
 // クリックしてから次のセリフに移るまでの待機カウント
 var NEXT_TO_SERIF_WAITING_COUNT = 6;
@@ -23,6 +24,9 @@ var SceneSubStageObjectTalk = function(core) {
 	this._cursor_y = 0; // カーソル位置
 	this._cursor_reverse = false; // カーソルが↑移動中かどうか
 
+	// 今、会話のどの選択肢を選んでいるか
+	this._junction_focus_index = 0;
+
 	this._state = STATE_TALKING;
 };
 Util.inherit(SceneSubStageObjectTalk, base_scene);
@@ -33,6 +37,9 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 	// クリック待ちカーソルの状態
 	this._cursor_y = 0;
 	this._cursor_reverse = false;
+
+	// 今、会話のどの選択肢を選んでいるか
+	this._junction_focus_index = 0;
 
 	this._state = STATE_TALKING;
 
@@ -51,6 +58,7 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
+	var self = this;
 	if(this._state === STATE_TALKING) {
 		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 			if(this._serif.isEnd()) {
@@ -71,7 +79,6 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 						this._state = STATE_WAITING;
 
 						// Nフレーム後に次のセリフへ
-						var self = this;
 						this.core.time_manager.setTimeout(function () {
 							// セリフを送る
 							self._serif.next();
@@ -91,7 +98,37 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 		// 何もしない
 	}
 	else if(this._state === STATE_JUNCTION) {
-		// TODO:
+		var junction_list;
+		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+			var focus_index = this._junction_focus_index;
+			this._junction_focus_index = 0; //reset
+
+			this._state = STATE_WAITING;
+
+			// Nフレーム後に次のセリフへ
+			this.core.time_manager.setTimeout(function () {
+				// セリフを送る
+				self._serif.next(focus_index);
+
+				// 表情変更
+				self._actionExpression();
+
+				self._state = STATE_TALKING;
+
+			}, NEXT_TO_SERIF_WAITING_COUNT);
+		}
+		else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP)) {
+			this._junction_focus_index--;
+			junction_list = this._serif.getCurrentJunctionList();
+			this._junction_focus_index = Util.clamp(this._junction_focus_index, 0, junction_list.length - 1);
+		}
+		else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN)) {
+			this._junction_focus_index++;
+			junction_list = this._serif.getCurrentJunctionList();
+			this._junction_focus_index = Util.clamp(this._junction_focus_index, 0, junction_list.length - 1);
+		}
+
+
 	}
 };
 
@@ -126,7 +163,7 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 		var cursor = this.core.image_loader.getImage("fukidashi_arrow");
 		ctx.drawImage(cursor,
 			x + lines[lines.length-1].length*18, // 18 -> font size
-			y - 18 + 2 + this._cursor_y, // TODO: 要調整
+			y - 18 + 2 + this._cursor_y,
 			cursor.width*2/3,
 			cursor.height*2/3
 		);
@@ -134,10 +171,11 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 	*/
 	}
 	else if(this._state === STATE_WAITING) {
-		// 何もしない
+		// 何も表示しない
 	}
 	else if(this._state === STATE_JUNCTION) {
-		// TODO:
+		// 会話 選択肢 表示
+		this._showJunction();
 	}
 };
 // セリフ表示
@@ -158,6 +196,22 @@ SceneSubStageObjectTalk.prototype._showMessage = function() {
 		this._serif.getCurrentSentenceNum()
 	);
 };
+// 会話 選択肢 表示
+SceneSubStageObjectTalk.prototype._showJunction = function() {
+	if(!this._serif.isStart()) return;
+
+	// こいしを取得
+	var obj = this.root().koishi;
+
+	// 表示
+	var ctx = this.core.ctx;
+	var junction_off = this.core.image_loader.getImage('junction_off');
+	var junction_on  = this.core.image_loader.getImage('junction_on');
+
+	var junction_list = this._serif.getCurrentJunctionList();
+	DrawSerif.drawJunction(obj, ctx, junction_off, junction_on, junction_list, this._junction_focus_index);
+};
+
 
 // 表情(アニメ)
 SceneSubStageObjectTalk.prototype._actionExpression = function() {
