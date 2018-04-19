@@ -26,15 +26,15 @@ var Game = function(canvas) {
 	core.apply(this, arguments);
 
 	// シーン一覧
-	this.addScene("loading", new SceneLoading(this));
-	this.addScene("title", new SceneTitle(this));
-	this.addScene("leaving_title", new SceneLeavingTitle(this));
-	this.addScene("howto", new SceneHowto(this));
-	this.addScene("gameover", new SceneGameover(this));
-	this.addScene("stage", new SceneStage(this));
-	this.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
-	this.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
-	this.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
+	this.scene_manager.addScene("loading", new SceneLoading(this));
+	this.scene_manager.addScene("title", new SceneTitle(this));
+	this.scene_manager.addScene("leaving_title", new SceneLeavingTitle(this));
+	this.scene_manager.addScene("howto", new SceneHowto(this));
+	this.scene_manager.addScene("gameover", new SceneGameover(this));
+	this.scene_manager.addScene("stage", new SceneStage(this));
+	this.scene_manager.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
+	this.scene_manager.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
+	this.scene_manager.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
 
 	// セーブデータ
 	this.save_manager.addClass("event",   StorageEvent);
