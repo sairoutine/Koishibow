@@ -16,14 +16,14 @@ var MENU = [
 		// セーブを消去
 		core.save_manager.del();
 
-		core.changeScene("howto");
+		core.scene_manager.changeScene("howto");
 	}],
 	// continue
 	["ui-titlepg-btn-con", function (core) {
 		// セーブデータがあれば
 		return core.save_manager.player.getCurrentField() ? true : false;
 	}, function (core) {
-		core.changeScene("stage", core.save_manager.player.getCurrentField());
+		core.scene_manager.changeScene("stage", core.save_manager.player.getCurrentField());
 	}],
 	// config
 	/*
@@ -181,7 +181,7 @@ SceneTitle.prototype.beforeDraw = function(){
 
 	// タイトル放置演出
 	if (this.frame_count === 14400) { // 4分後
-		this.core.changeScene("leaving_title");
+		this.core.scene_manager.changeScene("leaving_title");
 	}
 };
 

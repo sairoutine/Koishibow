@@ -23,7 +23,7 @@ SceneGameover.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if (this.frame_count === 60 * 5) {
-		this.core.changeScene("title");
+		this.core.scene_manager.changeScene("title");
 	}
 };
 

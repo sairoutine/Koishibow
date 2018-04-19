@@ -37,7 +37,7 @@ SceneDefault.prototype.backgroundSsAnime = function(){
 
 SceneDefault.prototype.afterBackgroundSsAnimeFunction = function(){
 	return function (core) {
-		core.changeScene("stage", "chapter1_01");
+		core.scene_manager.changeScene("stage", "chapter1_01");
 
 		core.audio_loader.fadeOutBGM(2);
 	};

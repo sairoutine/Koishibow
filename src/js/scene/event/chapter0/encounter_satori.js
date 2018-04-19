@@ -174,7 +174,7 @@ SceneEventEncounterSatori.prototype.beforeDraw = function(){
 			// BGM をフェードアウト
 			this.core.audio_loader.fadeOutBGM(2);
 			// 次のシーンへ
-			this.core.changeScene("stage", "chapter0_mansion_corridor2");
+			this.core.scene_manager.changeScene("stage", "chapter0_mansion_corridor2");
 		}
 	}
 

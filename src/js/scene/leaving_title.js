@@ -24,7 +24,7 @@ SceneHowto.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if (this.frame_count === 85 * 60 - 60) {
-		this.core.changeScene("title");
+		this.core.scene_manager.changeScene("title");
 	}
 };
 

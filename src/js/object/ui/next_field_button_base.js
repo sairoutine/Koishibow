@@ -38,14 +38,14 @@ ObjectNextFieldButtonBase.prototype.onCollision = function(obj){
 	// 屋敷の廊下2はイベント再生する
 	if (this.scene.mainStage().field().left_field === "chapter0_mansion_corridor2" &&
 		!this.core.save_manager.event.isPlayedEvent("chapter0-event-encounter_satori")) {
-		this.core.changeScene("event_for_encounter_satori");
+		this.core.scene_manager.changeScene("event_for_encounter_satori");
 	}
 	// 通常の遷移
 	else {
-		this.core.changeScene("stage", this.scene.mainStage().field().left_field, true);
+		this.core.scene_manager.changeScene("stage", this.scene.mainStage().field().left_field, true);
 	}
 	*/
-	this.core.changeScene("stage", next_field_name, current_field_name);
+	this.core.scene_manager.changeScene("stage", next_field_name, current_field_name);
 };
 
 ObjectNextFieldButtonBase.prototype.isShow = function() {

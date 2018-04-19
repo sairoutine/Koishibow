@@ -50,7 +50,7 @@ Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
 
 	// シーン遷移
-	this.changeScene("loading");
+	this.scene_manager.changeScene("loading");
 };
 
 

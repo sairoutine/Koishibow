@@ -65,7 +65,7 @@ SceneEventBase.prototype.beforeDraw = function(){
 
 			// 命令実行
 			if (command === "change_scene") { // シーン遷移
-				this.core.changeScene.apply(this.core, argument_list);
+				this.core.scene_manager.changeScene.apply(this.core.scene_manager, argument_list);
 			}
 			else if (command === "play_sound") { // SE 再生
 				this.core.audio_loader.playSound.apply(this.core.audio_loader, argument_list);

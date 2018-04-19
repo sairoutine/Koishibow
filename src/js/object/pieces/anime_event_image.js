@@ -32,7 +32,7 @@ ObjectAnimeEventImage.prototype.isCollision = function(point) {
 // こいしに触られたときの処理
 ObjectAnimeEventImage.prototype.onTouchByKoishi = function() {
 	// イベント発生
-	this.core.changeScene(this._back.click_event);
+	this.core.scene_manager.changeScene(this._back.click_event);
 };
 ObjectAnimeEventImage.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);

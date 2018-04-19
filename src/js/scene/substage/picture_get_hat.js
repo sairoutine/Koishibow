@@ -34,7 +34,7 @@ SceneSubStageGetHat.prototype.beforeDraw = function(){
 	}
 	// プレイに戻る
 	else if(this.frame_count > 120) {
-		this.core.changeScene("stage", "chapter0_myroom");
+		this.core.scene_manager.changeScene("stage", "chapter0_myroom");
 	}
 };
 
