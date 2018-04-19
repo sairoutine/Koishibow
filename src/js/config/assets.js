@@ -177,6 +177,10 @@ AssetsConfig.images = {
 	"fukidashi_gray":  "./image/ui-common-frame-talk1-gry.png",
 	"fukidashi_arrow":  "./image/ui-common-btn-arrow-brn.png",
 
+	// 会話選択肢 ふきだし
+	"junction_off":  "./image/junction_off.png",
+	"junction_on":   "./image/junction_on.png",
+
 	// ここを選択せよ、的な矢印
 	"target_arrow":  "./image/ui-common-btn-arrow-gry.png",
 
