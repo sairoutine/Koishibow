@@ -152,6 +152,20 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 		// セリフ表示
 		this._showMessage();
 
+		// クリック待ちカーソル表示
+		this._showMessageCursor();
+	}
+	else if(this._state === STATE_WAITING) {
+		// 何も表示しない
+	}
+	else if(this._state === STATE_JUNCTION) {
+		// 会話 選択肢 表示
+		this._showJunction();
+	}
+};
+
+// クリック待ちカーソル表示
+SceneSubStageObjectTalk.prototype._showMessageCursor = function(){
 		// TODO:
 	/*
 	// クリック待ちカーソル表示
@@ -181,15 +195,8 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 		);
 	}
 	*/
-	}
-	else if(this._state === STATE_WAITING) {
-		// 何も表示しない
-	}
-	else if(this._state === STATE_JUNCTION) {
-		// 会話 選択肢 表示
-		this._showJunction();
-	}
 };
+
 // セリフ表示
 SceneSubStageObjectTalk.prototype._showMessage = function() {
 	if(!this._serif.isStart()) return;
