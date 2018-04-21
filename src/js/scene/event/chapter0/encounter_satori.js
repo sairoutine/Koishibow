@@ -53,10 +53,10 @@ SceneEventEncounterSatori.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// フェードインする
-	this.setFadeIn(120, "black");
+	this.core.scene_manager.setFadeIn(120, "black");
 
 	// イベント再生後はフェードアウトする
-	this.setFadeOut(120, "black");
+	this.core.scene_manager.setFadeOut(120, "black");
 
 	// BGM 止める
 	this.core.audio_loader.stopBGM();

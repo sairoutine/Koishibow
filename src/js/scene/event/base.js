@@ -19,11 +19,11 @@ SceneEventBase.prototype.init = function(){
 
 	if (this.isFadeIn()) {
 		// フェードインする
-		this.setFadeIn(120, "black");
+		this.core.scene_manager.setFadeIn(120, "black");
 	}
 	if (this.isFadeOut()) {
 		// イベント再生後はフェードアウトする
-		this.setFadeOut(120, "black");
+		this.core.scene_manager.setFadeOut(120, "black");
 	}
 	if (this.isStopBGM()) {
 		this.core.audio_loader.stopBGM();

@@ -18,10 +18,10 @@ SceneHowto.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// フェードインする
-	this.setFadeIn(60, "black");
+	this.core.scene_manager.setFadeIn(60, "black");
 
 	// イベント再生後はフェードアウトする
-	this.setFadeOut(60, "black");
+	this.core.scene_manager.setFadeOut(60, "black");
 };
 
 

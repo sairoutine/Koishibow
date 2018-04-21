@@ -28,7 +28,7 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	}
 	else if (this.frame_count === 60) {
 		this.core.audio_loader.playSound("chapter0-mansion_corridor2-event_in");
-		this.root().setFadeOut(120, "black");
+		this.core.scene_manager.setFadeOut(120, "black");
 		this.core.scene_manager.changeScene("event_for_chapter0_encounter_satori");
 	}
 };

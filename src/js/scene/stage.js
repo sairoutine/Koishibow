@@ -189,8 +189,8 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	}
 
 	// フィールド移動時にフェードイン／アウトする
-	this.setFadeIn(30,  "black");
-	this.setFadeOut(30, "black");
+	this.core.scene_manager.setFadeIn(30,  "black");
+	this.core.scene_manager.setFadeOut(30, "black");
 
 };
 

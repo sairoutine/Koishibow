@@ -41,7 +41,7 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 			// 最大値まで回復
 			this.root().koishi.gain3rdeyeGaugeMax();
 
-			this.root().setFadeOut(0);
+			this.core.scene_manager.setFadeOut(0);
 
 			this.core.scene_manager.changeScene("gameover");
 		}
