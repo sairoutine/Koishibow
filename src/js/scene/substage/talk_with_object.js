@@ -71,9 +71,13 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 		throw new Error("illegal talking state: " + this._state);
 	}
 };
-
+// 会話中の処理
 SceneSubStageObjectTalk.prototype._updateInTalking = function(){
+	if(!this._serif.isStart()) return;
+
+	// Z ボタンが押されたら
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
 
 			// オブジェクトに触れた際の会話だった場合、
@@ -83,31 +87,33 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 			// セリフ終わり
 			this.root().changeSubScene("play");
 		}
+		// 会話 継続中
 		else {
-			if(this._serif.isStart()) {
-				if(this._serif.isCurrentSerifExistsJunction()) {
-					this._state = STATE_JUNCTION;
-				}
-				else {
-					this._state = STATE_WAITING;
+			// 会話への回答の選択肢があるなら、次のセリフには進めずに
+			// 選択肢を表示する
+			if(this._serif.isCurrentSerifExistsJunction()) {
+				this._state = STATE_JUNCTION;
+			}
+			// 次のセリフへ
+			else {
+				this._state = STATE_WAITING;
 
-					// Nフレーム後に次のセリフへ
-					var self = this;
-					this.core.time_manager.setTimeout(function () {
-						// セリフを送る
-						self._serif.next();
+				// Nフレーム後に次のセリフへ
+				var self = this;
+				this.core.time_manager.setTimeout(function () {
+					self._state = STATE_TALKING;
 
-						// 表情変更
-						self._actionExpression();
+					// セリフを送る
+					self._serif.next();
 
-						self._state = STATE_TALKING;
-
-					}, NEXT_TO_SERIF_WAITING_COUNT);
-				}
+					// 表情変更
+					self._actionExpression();
+				}, NEXT_TO_SERIF_WAITING_COUNT);
 			}
 		}
 	}
 };
+// 会話 選択肢の処理
 SceneSubStageObjectTalk.prototype._updateInJunction = function(){
 	var junction_list;
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
