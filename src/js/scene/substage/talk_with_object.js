@@ -58,77 +58,86 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
 SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	var self = this;
 	if(this._state === STATE_TALKING) {
-		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
-			if(this._serif.isEnd()) {
-
-				// オブジェクトに触れた際の会話だった場合、
-				// 触れた際のモーションにこいしがなっているため
-				this.root().koishi.setWaitAnime();
-
-				// セリフ終わり
-				this.root().changeSubScene("play");
-			}
-			else {
-				if(this._serif.isStart()) {
-					if(this._serif.isCurrentSerifExistsJunction()) {
-						this._state = STATE_JUNCTION;
-					}
-					else {
-						this._state = STATE_WAITING;
-
-						// Nフレーム後に次のセリフへ
-						this.core.time_manager.setTimeout(function () {
-							// セリフを送る
-							self._serif.next();
-
-							// 表情変更
-							self._actionExpression();
-
-							self._state = STATE_TALKING;
-
-						}, NEXT_TO_SERIF_WAITING_COUNT);
-					}
-				}
-			}
-		}
+		this._updateInTalking();
 	}
 	else if(this._state === STATE_WAITING) {
 		// 何もしない
 	}
 	else if(this._state === STATE_JUNCTION) {
-		var junction_list;
-		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
-			var focus_index = this._junction_focus_index;
-			this._junction_focus_index = 0; //reset
+		this._updateInJunction();
+	}
+	else {
+		throw new Error("illegal talking state: " + this._state);
+	}
+};
 
-			this._state = STATE_WAITING;
+SceneSubStageObjectTalk.prototype._updateInTalking = function(){
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		if(this._serif.isEnd()) {
 
-			// Nフレーム後に次のセリフへ
-			this.core.time_manager.setTimeout(function () {
-				// セリフを送る
-				self._serif.next(focus_index);
+			// オブジェクトに触れた際の会話だった場合、
+			// 触れた際のモーションにこいしがなっているため
+			this.root().koishi.setWaitAnime();
 
-				// 表情変更
-				self._actionExpression();
-
-				self._state = STATE_TALKING;
-
-			}, NEXT_TO_SERIF_WAITING_COUNT);
+			// セリフ終わり
+			this.root().changeSubScene("play");
 		}
-		else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP)) {
-			this._junction_focus_index--;
-			junction_list = this._serif.getCurrentJunctionList();
-			this._junction_focus_index = Util.clamp(this._junction_focus_index, 0, junction_list.length - 1);
-		}
-		else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN)) {
-			this._junction_focus_index++;
-			junction_list = this._serif.getCurrentJunctionList();
-			this._junction_focus_index = Util.clamp(this._junction_focus_index, 0, junction_list.length - 1);
-		}
+		else {
+			if(this._serif.isStart()) {
+				if(this._serif.isCurrentSerifExistsJunction()) {
+					this._state = STATE_JUNCTION;
+				}
+				else {
+					this._state = STATE_WAITING;
 
+					// Nフレーム後に次のセリフへ
+					var self = this;
+					this.core.time_manager.setTimeout(function () {
+						// セリフを送る
+						self._serif.next();
 
+						// 表情変更
+						self._actionExpression();
+
+						self._state = STATE_TALKING;
+
+					}, NEXT_TO_SERIF_WAITING_COUNT);
+				}
+			}
+		}
+	}
+};
+SceneSubStageObjectTalk.prototype._updateInJunction = function(){
+	var junction_list;
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		var focus_index = this._junction_focus_index;
+		this._junction_focus_index = 0; //reset
+
+		this._state = STATE_WAITING;
+
+		// Nフレーム後に次のセリフへ
+		var self = this;
+		this.core.time_manager.setTimeout(function () {
+			// セリフを送る
+			self._serif.next(focus_index);
+
+			// 表情変更
+			self._actionExpression();
+
+			self._state = STATE_TALKING;
+
+		}, NEXT_TO_SERIF_WAITING_COUNT);
+	}
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP)) {
+		this._junction_focus_index--;
+		junction_list = this._serif.getCurrentJunctionList();
+		this._junction_focus_index = Util.clamp(this._junction_focus_index, 0, junction_list.length - 1);
+	}
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN)) {
+		this._junction_focus_index++;
+		junction_list = this._serif.getCurrentJunctionList();
+		this._junction_focus_index = Util.clamp(this._junction_focus_index, 0, junction_list.length - 1);
 	}
 };
 
