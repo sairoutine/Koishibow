@@ -96,55 +96,52 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 			}
 			// 次のセリフへ
 			else {
-				this._state = STATE_WAITING;
-
 				// Nフレーム後に次のセリフへ
-				var self = this;
-				this.core.time_manager.setTimeout(function () {
-					self._state = STATE_TALKING;
-
-					// セリフを送る
-					self._serif.next();
-
-					// 表情変更
-					self._actionExpression();
-				}, NEXT_TO_SERIF_WAITING_COUNT);
+				this._gotoNextSerif();
 			}
 		}
 	}
 };
+
+// Nフレーム後に次のセリフへ
+SceneSubStageObjectTalk.prototype._gotoNextSerif = function(choice){
+	var self = this;
+
+	self._state = STATE_WAITING;
+
+	self.core.time_manager.setTimeout(function () {
+		self._state = STATE_TALKING;
+
+		// セリフを送る
+		self._serif.next(choice);
+
+		// 表情変更
+		self._actionExpression();
+	}, NEXT_TO_SERIF_WAITING_COUNT);
+};
+
 // 会話 選択肢の処理
 SceneSubStageObjectTalk.prototype._updateInJunction = function(){
-	var junction_list;
+	// Zボタン 選択肢の決定
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
-		var focus_index = this._junction_focus_index;
-		this._junction_focus_index = 0; //reset
-
-		this._state = STATE_WAITING;
-
 		// Nフレーム後に次のセリフへ
-		var self = this;
-		this.core.time_manager.setTimeout(function () {
-			// セリフを送る
-			self._serif.next(focus_index);
+		this._gotoNextSerif(this._junction_focus_index);
 
-			// 表情変更
-			self._actionExpression();
-
-			self._state = STATE_TALKING;
-
-		}, NEXT_TO_SERIF_WAITING_COUNT);
+		// 選んでる選択肢のリセット
+		this._junction_focus_index = 0;
 	}
+	// ↑ボタン 選択肢の移動
 	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP)) {
 		this._junction_focus_index--;
-		junction_list = this._serif.getCurrentJunctionList();
-		this._junction_focus_index = Util.clamp(this._junction_focus_index, 0, junction_list.length - 1);
 	}
+	// ↓ボタン 選択肢の移動
 	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN)) {
 		this._junction_focus_index++;
-		junction_list = this._serif.getCurrentJunctionList();
-		this._junction_focus_index = Util.clamp(this._junction_focus_index, 0, junction_list.length - 1);
 	}
+
+	// 選択肢が上下はみ出ないように
+	var junction_list = this._serif.getCurrentJunctionList();
+	this._junction_focus_index = Util.clamp(this._junction_focus_index, 0, junction_list.length - 1);
 };
 
 SceneSubStageObjectTalk.prototype.draw = function(){
