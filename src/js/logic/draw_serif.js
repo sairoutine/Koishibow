@@ -2,9 +2,14 @@
 
 /* セリフを描画する */
 
+var Util = require('../hakurei').util;
+
+// 文字の表示サイズ
 var FONT_SIZE = 18;
 
-var Util = require('../hakurei').util;
+// セリフ文字の色
+var SERIF_FONT_COLOR = Util.hexToRGBString("#d4c9aa");
+
 
 // 静的クラス
 var DrawSerif = function() {};
@@ -17,8 +22,6 @@ DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_n
 	var x = message_window_pos.x;
 	var y = message_window_pos.y;
 	var is_show_right = message_window_pos.is_show_right;
-
-	if (!x && !y) return;
 
 	// ウィンドウの大きさ
 	var scale = {
@@ -63,10 +66,7 @@ DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num) {
 
 	ctx.save();
 
-	// セリフの色
-	var font_color = Util.hexToRGBString("#d4c9aa");
-
-	ctx.fillStyle = font_color;
+	ctx.fillStyle = SERIF_FONT_COLOR;
 	ctx.font = FONT_SIZE.toString() + "px 'OradanoGSRR'";
 
 	ctx.textAlign = 'left';
@@ -88,53 +88,62 @@ DrawSerif.drawJunction = function (obj, ctx, junction_off, junction_on, junction
 	var y = message_window_pos.y;
 	var is_show_right = message_window_pos.is_show_right;
 
-	if (!x && !y) return;
-
 	// ウィンドウの大きさ
 	var scale = {
 		width: 2/3,
 		height: 2/3,
 	};
 
+	// 選択肢間の縦の余白
+	var junction_height_margin = 10;
 
+	// 選択肢の傾き
+	var junction_slope = 5;
 
-	// ウィンドウ画像が中央からちょっとズレてるので位置調整
-	//x += 10;
-	//y += 10;
-	// セリフの色
-	var font_color = Util.hexToRGBString("#000000");
+	// 選択されている選択肢は少し前へ出る
+	var selected_push_margin = 20;
 
-
-	var rotate;
 	for (var i = 0; i < junction_list.length; i++) {
-		if (i === focus_index) continue;
+		// 選択肢ふきだし画像
+		var image = i === focus_index ? junction_on : junction_off;
 
+		// 選択肢ふきだし画像の描画
 		ctx.save();
 
-		ctx.translate(x, y + i*(junction_off.height*scale.height+10));
+		// 選択肢 位置
+		ctx.translate(x, y + i * (image.height*scale.height + junction_height_margin));
 
-		rotate = Util.thetaToRadian((i-junction_list.length/2)*5);
-
+		// 反転
 		if(is_show_right) {
-			ctx.rotate(rotate);
 			ctx.transform(-1, 0, 0, 1, 0, 0);
 		}
-		else {
-			ctx.rotate(-rotate);
+
+		// 選択肢の傾き
+		var rotate = Util.thetaToRadian((i - junction_list.length/2) * junction_slope);
+		ctx.rotate(-rotate);
+
+		// 選択されている選択肢は ちょっと前へ
+		if (i === focus_index) {
+			ctx.translate(-selected_push_margin, 0);
 		}
 
 		// x,y座標は中央が基準位置
-		ctx.drawImage(junction_off,
-			-junction_off.width * scale.width/2,
-			-junction_off.height*scale.height/2,
-			junction_off.width * scale.width,
-			junction_off.height * scale.height
+		ctx.drawImage(image,
+			-image.width * scale.width/2,
+			-image.height*scale.height/2,
+			image.width * scale.width,
+			image.height * scale.height
 		);
 		ctx.restore();
 
+		// 選択肢 文字の描画
 		ctx.save();
 
-		ctx.translate(x, y + i*(junction_off.height*scale.height+10) + 5);
+		ctx.translate(x, y + i * (image.height*scale.height + junction_height_margin) + 5); // +5 は文字用のmargin
+
+		// NOTE: 文字は反転させない(文字が読めなくなってしまうため)
+
+		// 選択肢の傾き
 		if(is_show_right) {
 			ctx.rotate(rotate);
 		}
@@ -142,75 +151,28 @@ DrawSerif.drawJunction = function (obj, ctx, junction_off, junction_on, junction
 			ctx.rotate(-rotate);
 		}
 
+		// 選択されている選択肢は ちょっと前へ
+		if (i === focus_index) {
+			if(is_show_right) {
+				ctx.translate(selected_push_margin, 0);
+			}
+			else {
+				ctx.translate(-selected_push_margin, 0);
+			}
+		}
 
-		ctx.translate(-100, 0);
 
-
-		ctx.fillStyle = font_color;
+		ctx.fillStyle = SERIF_FONT_COLOR;
 		ctx.font = FONT_SIZE.toString() + "px 'OradanoGSRR'";
 
 		ctx.textAlign = 'left';
 		ctx.textBaseAlign = 'middle';
 
-		ctx.fillText(junction_list[i], 0, 0); // 1行表示
+		ctx.fillText(junction_list[i], -100, 0); // 1行表示
 
 		ctx.restore();
 
 	}
-
-	if (1) {
-		ctx.save();
-
-		ctx.translate(x, y + focus_index*(junction_on.height*scale.height+10));
-
-		rotate = Util.thetaToRadian((focus_index-junction_list.length/2)*5);
-		if(is_show_right) {
-			ctx.rotate(rotate);
-			ctx.translate(20, 0);
-			ctx.transform(-1, 0, 0, 1, 0, 0);
-		}
-		else {
-			ctx.rotate(-rotate);
-			ctx.translate(-20, 0);
-		}
-
-
-		// x,y座標は中央が基準位置
-		ctx.drawImage(junction_on,
-			-junction_on.width * scale.width/2,
-			-junction_on.height*scale.height/2,
-			junction_on.width * scale.width,
-			junction_on.height * scale.height
-		);
-		ctx.restore();
-
-		ctx.save();
-
-		ctx.translate(x, y + focus_index*(junction_off.height*scale.height+10) + 5);
-		if(is_show_right) {
-			ctx.rotate(rotate);
-			ctx.translate(-100 + 20, 0);
-		}
-		else {
-			ctx.rotate(-rotate);
-			ctx.translate(-100 - 20, 0);
-		}
-
-
-
-		ctx.fillStyle = font_color;
-		ctx.font = FONT_SIZE.toString() + "px 'OradanoGSRR'";
-
-		ctx.textAlign = 'left';
-		ctx.textBaseAlign = 'middle';
-
-		ctx.fillText(junction_list[focus_index], 0, 0); // 1行表示
-
-		ctx.restore();
-
-
-	}
-
 };
 
 // メッセージウィンドウの位置を取得
