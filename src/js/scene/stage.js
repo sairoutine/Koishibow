@@ -11,6 +11,7 @@ var SceneSubStageMenu = require('./substage/menu'); // アイテムメニュー
 var SceneSubStageJournal = require('./substage/journal'); // ジャーナル表示
 var SceneSubStageJournalMenu = require('./substage/journal_menu'); // ジャーナル メニュー
 var SceneSubStageGotItem = require('./substage/got_item'); // アイテム獲得
+var SceneSubStageLock = require('./substage/lock');
 var SceneSubStagePictureUseEyedrops = require('./substage/picture_use_eyedrops'); // 目薬使用1枚絵
 var SceneSubStageEventChapter0GetHat = require('./substage/event/chapter0/get_hat');
 var SceneSubStagePictureGetHat = require('./substage/picture_get_hat');
@@ -90,6 +91,8 @@ var SceneStage = function(core) {
 	this.addSubScene("journal", new SceneSubStageJournal(core));
 	// アイテム獲得
 	this.addSubScene("got_item", new SceneSubStageGotItem(core));
+	// プレイヤーに何も操作させない
+	this.addSubScene("lock", new SceneSubStageLock(core));
 	// 目薬使用 1枚絵
 	this.addSubScene("picture_use_eyedrops", new SceneSubStagePictureUseEyedrops(core));
 
