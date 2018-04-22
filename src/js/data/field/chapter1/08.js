@@ -49,7 +49,7 @@ module.exports = {
 
 			],
 			x: 1024*2/3, y: 585*2/3,
-			scale: 10,
+			scale: 2/3,
 			anime1: "kyoko-wait",
 			anime2: null,
 			anime3: null,
