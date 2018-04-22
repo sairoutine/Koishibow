@@ -19,8 +19,6 @@ var SceneSubStageEventChapter0KokoroEncounter = require('./substage/event/chapte
 var SceneSubStageEventChapter0SatoriEncounterBegin = require('./substage/event/chapter0/satori_encounter_begin');
 var SceneSubStageEventOpeningMovie = require('./substage/event/opening_movie');
 
-var RightNextFieldButton = require('../object/ui/right_next_field_button');
-var LeftNextFieldButton = require('../object/ui/left_next_field_button');
 var ItemMenuButton = require('../object/ui/item_menu_button');
 var EyeButton = require('../object/ui/eye_button');
 
@@ -61,8 +59,6 @@ var SceneStage = function(core) {
 	this.white_mist = new WhiteMist(this);
 
 	// UI パーツ
-	this.right_next_field_button = new RightNextFieldButton(this);
-	this.left_next_field_button  = new LeftNextFieldButton(this);
 	this.item_menu_button        = new ItemMenuButton(this);
 	this.eye_button              = new EyeButton(this);
 
@@ -149,8 +145,6 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	this.white_mist.init();
 
 	// UI パーツ
-	this.right_next_field_button.init();
-	this.left_next_field_button.init();
 	this.item_menu_button.init();
 	this.eye_button.init();
 
@@ -315,8 +309,6 @@ SceneStage.prototype.beforeDraw = function() {
 	this.black_mist.beforeDraw();
 	this.white_mist.beforeDraw();
 	// UI パーツ
-	this.right_next_field_button.beforeDraw();
-	this.left_next_field_button.beforeDraw();
 	this.item_menu_button.beforeDraw();
 	this.eye_button.beforeDraw();
 
@@ -372,8 +364,6 @@ SceneStage.prototype.draw = function(){
 	this.black_mist.draw();
 	this.white_mist.draw();
 	// UI パーツ
-	this.right_next_field_button.draw();
-	this.left_next_field_button.draw();
 	this.item_menu_button.draw();
 	this.eye_button.draw();
 
