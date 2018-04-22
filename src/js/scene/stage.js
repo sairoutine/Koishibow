@@ -35,6 +35,7 @@ var ObjectAnimeImage = require('../object/pieces/anime_image');
 var ObjectJournal = require('../object/pieces/journal');
 var ObjectAnimeEventImage = require('../object/pieces/anime_event_image');
 var ObjectItem = require('../object/pieces/item');
+var ObjectFieldChange = require('../object/pieces/field_change');
 
 var FieldMap = require('../config/field');
 
@@ -480,6 +481,9 @@ SceneStage.prototype._setupPieces = function() {
 		}
 		else if (data.type === CONSTANT.ITEM_TYPE) { // アイテム
 			object = new ObjectItem(this);
+		}
+		else if (data.type === CONSTANT.FIELD_CHANGE_TYPE) { // フィールド遷移
+			object = new ObjectFieldChange(this);
 		}
 
 		else {

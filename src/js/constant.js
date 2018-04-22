@@ -13,6 +13,7 @@ var CONSTANT = {
 	JOURNAL_TYPE:           3,
 	ANIME_EVENT_IMAGE_TYPE: 4, // chapter0 最後のカーペット
 	ITEM_TYPE:              5,
+	FIELD_CHANGE_TYPE:      6,
 
 	// アイテムの種類
 	ITEM: {
