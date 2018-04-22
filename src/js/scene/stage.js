@@ -195,6 +195,8 @@ SceneStage.prototype.changeInitialSubScene = function() {
 	// フィールドの情報
 	var field_data = this.getFieldData();
 
+	if (!field_data) throw new Error(this.core.save_manager.player.getCurrentField() + " field does not exists");
+
 	// subscene が設定されていて、未再生ならばそれを使う
 	// そうでなければ通常の play シーン
 
