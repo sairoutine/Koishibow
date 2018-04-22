@@ -32,7 +32,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "村紗",
 			serif: [
-				// 1-16
+				// 1-21
 				{"chara": I, "exp": "murasa-reaction_01", "serif":"何"},
 				{"chara": "koishi",        "exp": "back", "serif":"えっ？"},
 				{"chara": I, "exp": "murasa-reaction_01", "serif":"なんだよ"},
