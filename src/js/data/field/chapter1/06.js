@@ -65,6 +65,18 @@ module.exports = {
 			action_name: null,
 			sound_name: null
 		},
+
+		{
+			no: ++I,
+			type: CONSTANT.FIELD_CHANGE_TYPE,
+			name: "公園へのフィールド移動",
+			x: 715,
+			y: 400,
+			width: 270,
+			height: 170,
+			next_field_name: "chapter1_07",
+		},
+
 	],
 };
 

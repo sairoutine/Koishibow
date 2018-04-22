@@ -170,8 +170,10 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 		this.koishi.setReflect(true);
 	}
 	else {
-		// あり得ない想定
-		throw new Error("illegal field data.");
+		// フィールド遷移オブジェクト等で右でも左でもないところから遷移してきた場合
+		pos = field_data.right_start_position;
+		this.koishi.setPosition(pos.x, pos.y);
+		this.koishi.setReflect(true);
 	}
 
 
