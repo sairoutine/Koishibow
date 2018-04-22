@@ -161,11 +161,36 @@ var anime_map = {
 	"chapter1-06-obj-01-obj04":  require('../data/anime/chapter1/06/obj-01/obj04_anime_1.json'),
 
 	"chapter1-06-obj-04-obj01":  require('../data/anime/chapter1/06/obj-04/obj01_anime_1.json'),
-	
+
+	/* 響子 */
+	"kyoko-wait":          require('../data/anime/kyoko/wait_anime_1'),
+	"kyoko-reverse_ura":   require('../data/anime/kyoko/reverse_ura_anime_1'),
+	"kyoko-ura_wait":      require('../data/anime/kyoko/ura_wait_anime_1'),
+	"kyoko-reverse_omote": require('../data/anime/kyoko/reverse_omote_anime_1'),
+	"kyoko-reaction_01":   require('../data/anime/kyoko/reaction_01_anime_1'),
+	"kyoko-reaction_02":   require('../data/anime/kyoko/reaction_02_anime_1'),
+	"kyoko-reaction_03":   require('../data/anime/kyoko/reaction_03_anime_1'),
+	"kyoko-reaction_04":   require('../data/anime/kyoko/reaction_04_anime_1'),
+	"kyoko-reaction_05":   require('../data/anime/kyoko/reaction_05_anime_1'),
+	"kyoko-reaction_06":   require('../data/anime/kyoko/reaction_06_anime_1'),
+	"kyoko-reaction_07":   require('../data/anime/kyoko/reaction_07_anime_1'),
+	"kyoko-ura_reaction_01":   require('../data/anime/kyoko/ura_reaction_01_anime_1'),
+
+	"chapter1-08-obj-01-obj00":  require('../data/anime/chapter1/08/obj-01/obj00_anime_1.json'),
 	"chapter1-08-obj-01-obj01":  require('../data/anime/chapter1/08/obj-01/obj01_anime_1.json'),
 	"chapter1-08-obj-01-obj02":  require('../data/anime/chapter1/08/obj-01/obj02_anime_1.json'),
 	"chapter1-08-obj-01-obj03":  require('../data/anime/chapter1/08/obj-01/obj03_anime_1.json'),
-	
+
+	/* 小傘 */
+	"kogasa-wait":          require('../data/anime/kogasa/wait_anime_1'),
+	"kogasa-reverse_ura":   require('../data/anime/kogasa/reverse_ura_anime_1'),
+	"kogasa-ura_wait":      require('../data/anime/kogasa/ura_wait_anime_1'),
+	"kogasa-reverse_omote": require('../data/anime/kogasa/reverse_omote_anime_1'),
+	"kogasa-reaction_01":   require('../data/anime/kogasa/reaction_01_anime_1'),
+	"kogasa-reaction_02":   require('../data/anime/kogasa/reaction_02_anime_1'),
+	"kogasa-reaction_03":   require('../data/anime/kogasa/reaction_03_anime_1'),
+	"kogasa-reaction_04":   require('../data/anime/kogasa/reaction_04_anime_1'),
+
 	"chapter1-09-obj-01-obj01":  require('../data/anime/chapter1/09/obj-01/obj01_anime_1.json'),
 	"chapter1-09-obj-01-obj02":  require('../data/anime/chapter1/09/obj-01/obj02_anime_1.json'),
 	"chapter1-09-obj-01-obj03":  require('../data/anime/chapter1/09/obj-01/obj03_anime_1.json'),
@@ -174,10 +199,20 @@ var anime_map = {
 	"chapter1-09-obj-01-obj06":  require('../data/anime/chapter1/09/obj-01/obj06_anime_1.json'),
 	"chapter1-09-obj-01-obj07":  require('../data/anime/chapter1/09/obj-01/obj07_anime_1.json'),
 	"chapter1-09-obj-01-obj08":  require('../data/anime/chapter1/09/obj-01/obj08_anime_1.json'),
-	
+
 	"chapter1-09-obj-02-obj01":  require('../data/anime/chapter1/09/obj-02/obj01_anime_1.json'),
 	"chapter1-09-obj-02-obj02":  require('../data/anime/chapter1/09/obj-02/obj02_anime_1.json'),
-	
+
+	/* 村紗 */
+	"murasa-wait":          require('../data/anime/murasa/wait_anime_1'),
+	"murasa-reverse_ura":   require('../data/anime/murasa/reverse_ura_anime_1'),
+	"murasa-ura_wait":      require('../data/anime/murasa/ura_wait_anime_1'),
+	"murasa-reverse_omote": require('../data/anime/murasa/reverse_omote_anime_1'),
+	"murasa-reaction_01":   require('../data/anime/murasa/reaction_01_anime_1'),
+	"murasa-reaction_02":   require('../data/anime/murasa/reaction_02_anime_1'),
+	"murasa-ura_reaction_01":   require('../data/anime/murasa/ura_reaction_01_anime_1'),
+	"murasa-ura_reaction_02":   require('../data/anime/murasa/ura_reaction_02_anime_1'),
+
 	"chapter1-10-obj-01-obj01":  require('../data/anime/chapter1/10/obj-01/obj01_anime_1.json'),
 	"chapter1-10-obj-01-obj02":  require('../data/anime/chapter1/10/obj-01/obj02_anime_1.json'),
 	"chapter1-10-obj-01-obj03":  require('../data/anime/chapter1/10/obj-01/obj03_anime_1.json'),

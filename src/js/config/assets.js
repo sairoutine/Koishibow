@@ -29,6 +29,13 @@ AssetsConfig.images = {
 	"tewi":   "./image/tewi.png",
 	// にとり
 	"nitori":   "./image/nitori.png",
+	// 響子
+	"kyoko":   "./image/kyoko.png",
+	"kyoko_taketonbo":   "./image/kyoko_taketonbo.png",
+	// 小傘
+	"kogasa":   "./image/kogasa.png",
+	// 村紗
+	"murasa":   "./image/murasa.png",
 
 	// 3rdeye 使用時のもや
 	"black_mist":            "./image/black_mist.png",
