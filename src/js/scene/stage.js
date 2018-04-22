@@ -457,13 +457,12 @@ SceneStage.prototype.getPiece = function(name) {
 
 
 SceneStage.prototype._setupPieces = function() {
-	var field_data = this.getFieldData();
-
+	// 画面上のオブジェクト一覧
 	this.pieces = [];
+	// こいしが歩けない範囲
 	this.walk_immovable_areas = [];
 
-	var object_data_list = field_data.objects;
-
+	var object_data_list = this._getObjectDataByFieldData();
 	for (var i = 0, len = object_data_list.length; i < len; i++) {
 		var data = object_data_list[i];
 		var object;
@@ -496,4 +495,37 @@ SceneStage.prototype._setupPieces = function() {
 		this.walk_immovable_areas.push(object.getImmovableArea());
 	}
 };
+
+SceneStage.prototype._getObjectDataByFieldData = function() {
+	var field_data = this.getFieldData();
+	var object_data_list = Array.prototype.concat.apply([], field_data.objects); // shallow copy
+
+	if(field_data.right_field) {
+		object_data_list.push({
+			no: "right_field",
+			type: CONSTANT.FIELD_CHANGE_TYPE,
+			name: "右へのフィールド移動",
+			x: this.width - 48,
+			y: this.height/2,
+			width: 64,
+			height: this.height,
+			next_field_name: field_data.right_field,
+		});
+	}
+	if(field_data.left_field) {
+		object_data_list.push({
+			no: "left_field",
+			type: CONSTANT.FIELD_CHANGE_TYPE,
+			name: "左へのフィールド移動",
+			x: 48,
+			y: this.height/2,
+			width: 64,
+			height: this.height,
+			next_field_name: field_data.left_field,
+		});
+	}
+
+	return object_data_list;
+};
+
 module.exports = SceneStage;
