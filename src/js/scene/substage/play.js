@@ -3,6 +3,7 @@
 var base_scene = require('./base');
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 var SelectedCursor = require('../../object/ui/selected_cursor');
+var ObjectFieldChange = require('../../object/pieces/field_change');
 
 var Util = require('../../hakurei').util;
 
@@ -47,14 +48,6 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 		}
 	}
 
-	// シーン遷移
-	if(this.root().right_next_field_button.checkCollisionWithObject(this.root().koishi)) {
-		return true;
-	}
-	else if(this.root().left_next_field_button.checkCollisionWithObject(this.root().koishi)) {
-		return true;
-	}
-
 	// こいしの移動
 	this.root().koishi.moveByInput();
 
@@ -62,6 +55,14 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 	var is_collide_with_piece = false;
 	for (var i = this.root().pieces.length - 1; i >= 0; i--) { // i の大きい方が手前なので
 		var piece = this.root().pieces[i];
+
+		// フィールド移動オブジェクトのみ、接触するとフィールド遷移するため、
+		// こいしと接触判定を行う
+		if (piece instanceof ObjectFieldChange) {
+			piece.checkCollisionWithObject(this.root().koishi);
+		}
+
+		// こいしとオブジェクトがタッチ可能な範囲にいるかどうか
 		if (piece.checkIsInTouchArea(this.root().koishi)) {
 			if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 				piece.onTouchByKoishi();
