@@ -200,6 +200,18 @@ Koishi.prototype.moveByInput = function() {
 		is_move = false;
 	}
 
+	/* フィールド外に移動したら戻す */
+	if (
+		this.x() < 0 ||
+		this.x() > this.scene.width ||
+		this.y() < CONSTANT.WALK_DEPTH_LIMIT ||
+		this.y() > this.scene.height - 180
+	) {
+		this.x(this.x() - add_x);
+		this.y(this.y() - add_y);
+		is_move = false;
+	}
+
 	/* モーション変更 */
 	if (is_move) {
 		// 歩きモーションに変更
