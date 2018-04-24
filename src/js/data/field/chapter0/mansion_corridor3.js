@@ -129,7 +129,7 @@ module.exports = {
 			y: 290,
 			height: 330,
 			scale: 2/3,
-			item_id: CONSTANT.ITEM.EYEDROPS
+			item_id: "01"
 		},
 
 	],
