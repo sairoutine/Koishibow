@@ -204,30 +204,32 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 		else if (is_left_push || is_right_push || is_up_push || is_down_push) {
 			// 上
 			if (is_up_push) {
+				this._index_item_horizontal--;
+				if (this._index_item_horizontal < 0) {
+					this._index_item_horizontal = 0;
+				}
+
+			}
+			// 下
+			else if (is_down_push) {
+				this._index_item_horizontal++;
+				if (this._index_item_horizontal > this.menu_item_list[this._index_item_vertical].length - 1) {
+					this._index_item_horizontal = this.menu_item_list[this._index_item_vertical].length - 1;
+				}
+
+			}
+			// 左
+			if (is_left_push) {
 				this._index_item_vertical--;
 				if (this._index_item_vertical < 0) {
 					this._index_item_vertical = 0;
 				}
 			}
-			// 下
-			else if (is_down_push) {
+			// 右
+			else if (is_right_push) {
 				this._index_item_vertical++;
 				if (this._index_item_vertical > this.menu_item_list.length - 1) {
 					this._index_item_vertical = this.menu_item_list.length - 1;
-				}
-			}
-			// 左
-			if (is_left_push) {
-				this._index_item_horizontal--;
-				if (this._index_item_horizontal < 0) {
-					this._index_item_horizontal = 0;
-				}
-			}
-			// 右
-			else if (is_right_push) {
-				this._index_item_horizontal++;
-				if (this._index_item_horizontal > this.menu_item_list[this._index_item_vertical].length - 1) {
-					this._index_item_horizontal = this.menu_item_list[this._index_item_vertical].length - 1;
 				}
 			}
 
