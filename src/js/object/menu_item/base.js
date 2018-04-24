@@ -4,15 +4,17 @@ var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
 var ItemConfig = require('../../config/item');
 
-var ObjectMenuItemBase = function(scene) {
+var ObjectMenuItemBase = function(scene, item_id) {
 	base_object.apply(this, arguments);
+
+	this._item_id = item_id;
 };
 Util.inherit(ObjectMenuItemBase, base_object);
 
 ObjectMenuItemBase.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
-	var item_config = ItemConfig[this.item_id()];
+	var item_config = ItemConfig[this.itemId()];
 
 	var image = this.core.image_loader.getImage(item_config.image_name);
 
@@ -20,7 +22,7 @@ ObjectMenuItemBase.prototype.draw = function(){
 	ctx.translate(this.x(), this.y());
 
 	// 選択中の表示
-	if (this.scene.isFocusItem(this.item_id())) {
+	if (this.scene.isFocusItem(this.itemId())) {
 		var selected = this.core.image_loader.getImage("item_selected");
 		var selected_width = selected.width * 2/3;
 		var selected_height = selected.height * 2/3;
@@ -57,14 +59,14 @@ ObjectMenuItemBase.prototype.collisionHeight = function(){
 };
 
 // アイテムID
-ObjectMenuItemBase.prototype.item_id = function() {
-	throw new Error("item_id method must be implemented");
+ObjectMenuItemBase.prototype.itemId = function() {
+	return this._item_id;
 };
 
 // アイテムが使用されたとき
 ObjectMenuItemBase.prototype.use = function(){
 	// 持ち物から削除
-	this.core.save_manager.item.deleteItem(this.item_id());
+	this.core.save_manager.item.deleteItem(this.itemId());
 };
 
 // 使用できるか否か判定
