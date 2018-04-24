@@ -94,9 +94,23 @@ SceneSubStageGotItem.prototype._showItem = function() {
 		}
 	}
 
-	ctx.globalAlpha = alpha;
 
 	ctx.translate(x, y);
+	ctx.globalAlpha = alpha;
+
+	// 背景の光表示
+	var selected = this.core.image_loader.getImage("item_selected");
+	var selected_width = selected.width * 2/3;
+	var selected_height = selected.height * 2/3;
+
+	ctx.drawImage(selected,
+		-selected_width/2,
+		-selected_height/2,
+		selected_width,
+		selected_height
+	);
+
+	// アイテム画像表示
 	ctx.drawImage(picture,
 		-width/2,
 		-height/2,
