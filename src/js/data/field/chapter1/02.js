@@ -75,14 +75,12 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			image: "chapter1-02-obj-05",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
+			type: CONSTANT.ITEM_TYPE,
 			name: "じょうろ",
-			serif: null,
+			image: "chapter1-02-obj-05",
 			x:831.50*2/3, y:921.50*2/3,
 			scale: 2/3,
-			action_name: "look_bottom",
-			sound_name: null,
+			item_id: "03",
 			position_type: "lying"
 		},
 		{
