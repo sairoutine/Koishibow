@@ -73,8 +73,24 @@ module.exports = {
 			action_name: null,
 			sound_name: "chapter1-04-standup_kosuzu",
 		},
-
-
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "マイク",
+			image: "chapter1-04-obj-04",
+			x: 970.50*2/3, y: 767.50*2/3,
+			scale: 2/3,
+			item_id: "07"
+		},
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "熊手",
+			image: "chapter1-04-obj-05",
+			x: 655*2/3, y: 610*2/3,
+			scale: 2/3,
+			item_id: "08"
+		},
 	],
 };
 
