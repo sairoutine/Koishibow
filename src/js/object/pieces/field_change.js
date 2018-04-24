@@ -61,18 +61,7 @@ ObjectFieldChange.prototype.onCollision = function(obj){
 	if (current_field_name === "chapter0_myroom" || this._next_field_name === "chapter0_myroom") {
 		this.core.audio_loader.playSound("chapter0-myroom-door_open");
 	}
-	/*
-	 * TODO:
-	// 屋敷の廊下2はイベント再生する
-	if (this.scene.mainStage().field().left_field === "chapter0_mansion_corridor2" &&
-		!this.core.save_manager.event.isPlayedEvent("chapter0-event-encounter_satori")) {
-		this.core.scene_manager.changeScene("event_for_encounter_satori");
-	}
-	// 通常の遷移
-	else {
-		this.core.scene_manager.changeScene("stage", this.scene.mainStage().field().left_field, true);
-	}
-	*/
+
 	// フィールド遷移中はプレイヤーに操作させない
 	this.scene.changeSubScene("lock");
 	// フィールド遷移
