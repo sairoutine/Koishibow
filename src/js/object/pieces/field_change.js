@@ -40,6 +40,9 @@ ObjectFieldChange.prototype.collisionWidth = function(){
 ObjectFieldChange.prototype.collisionHeight = function(){
 	return this._height;
 };
+ObjectFieldChange.prototype.isCheckInTouchArea = function(){
+	return false;
+};
 
 ObjectFieldChange.prototype.onCollision = function(obj){
 	var field_data = this.scene.getFieldData();

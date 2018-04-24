@@ -107,7 +107,9 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 		return this._image.height * this._scale;
 	}
 };
-
+ObjectStaticImage.prototype.isCheckInTouchArea = function(){
+	return this._action_name || this._sound_name || this._serif;
+};
 // こいしに触られたときの処理
 ObjectStaticImage.prototype.onTouchByKoishi = function() {
 	// こいしのアクション

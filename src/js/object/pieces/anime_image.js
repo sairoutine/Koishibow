@@ -263,6 +263,10 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 	return this.ss.height();
 };
 
+ObjectAnimeImage.prototype.isCheckInTouchArea = function(){
+	return this.ss.hasFrontClickedAnime() || this._front.action_name || this._front.sound_name || this._front.serif;
+};
+
 // こいしに触られたときの処理
 ObjectAnimeImage.prototype.onTouchByKoishi = function() {
 	// こいしのアクション

@@ -24,9 +24,16 @@ ObjectBase.prototype.init = function(){
 	this.no = null;
 };
 
+
+// タッチ判定をするか否か
+ObjectBase.prototype.isCheckInTouchArea = function(){
+	return true;
+};
+
 // こいしとオブジェクトのタッチ判定
 ObjectBase.prototype.checkIsInTouchArea = function(obj) {
 	if (!this.isCollision(obj) || !obj.isCollision(this)) return false;
+	if (!this.isCheckInTouchArea()) return false;
 
 	var this_collsion_width  = this.collisionWidth(obj)  + TOUCH_AREA;
 	var this_collsion_height = this.collisionHeight(obj) + TOUCH_AREA;
