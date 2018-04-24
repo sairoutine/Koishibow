@@ -1,5 +1,9 @@
 'use strict';
 var anime_map = {
+	// ゲームオーバー後のこいし
+	"koishi_button_wait":   require('../data/anime/koishi_button/reaction_01_anime_1.json'),
+	"koishi_button_reaction_01":   require('../data/anime/koishi_button/wait_anime_1.json'),
+
 	"chapter0-myroom-obj-02-01-obj01": require('../data/anime/chapter0/myroom/obj-02-01/obj01_anime_1'),
 	"chapter0-myroom-obj-02-01-obj02": require('../data/anime/chapter0/myroom/obj-02-01/obj02_anime_1'),
 	"chapter0-myroom-obj-02-01-obj03": require('../data/anime/chapter0/myroom/obj-02-01/obj03_anime_1'),
