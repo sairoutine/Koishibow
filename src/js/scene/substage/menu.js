@@ -244,7 +244,7 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 		// アイテムを何も所持していないとき、存在しない可能性がある
 		if(this.menu_item_list[this._index_item_vertical][this._index_item_horizontal]) {
 			item = this.menu_item_list[this._index_item_vertical][this._index_item_horizontal];
-			if(!this.isFocusItem(item.item_id())) {
+			if(!this.isFocusItem(item.itemId())) {
 				// アイテム選択 音
 				this.core.audio_loader.playSound("select_item");
 
@@ -252,7 +252,7 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 				this._cursor_ui.setPosition(item.x(), item.y() - 50);
 				this._cursor_ui.show();
 
-				this.setFocusItem(item.item_id());
+				this.setFocusItem(item.itemId());
 			}
 		}
 
@@ -434,7 +434,7 @@ SceneSubStageMenu.prototype._useItem = function(){
 	var menu_item_list = flatten(this.menu_item_list);
 	for(var i = 0, len = menu_item_list.length; i < len; i++) {
 		var menu_item = menu_item_list[i];
-		if(menu_item.item_id() === focus_item_id) {
+		if(menu_item.itemId() === focus_item_id) {
 			if (menu_item.isEnableToUse()) {
 				// 選択中から解除
 				this.focus_item_id = null;
