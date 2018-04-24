@@ -11,9 +11,6 @@ var ObjectMenuItemEyeDrops = function(scene) {
 };
 Util.inherit(ObjectMenuItemEyeDrops, base_object);
 
-ObjectMenuItemEyeDrops.prototype.item_id = function() {
-	return CONSTANT.ITEM.EYEDROPS;
-};
 // アイテムが使用されたとき
 ObjectMenuItemEyeDrops.prototype.use = function(){
 	base_object.prototype.use.apply(this, arguments);
