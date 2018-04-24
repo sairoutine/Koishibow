@@ -103,8 +103,20 @@ SceneSubStagePlay.prototype._isPlayerUse3rdEye = function(){
 // TODO: リファクタ
 SceneSubStagePlay.prototype._durationButtonXDownCount = function(){
 	this._is_player_use_3rdeye = false;
-	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
-		this._key_down_count_of_button_x++;
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+		// first count
+		this._key_down_count_of_button_x = 1;
+	}
+	else if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
+		// isKeyPush されていた場合は経過秒数をカウント
+		//
+		// NOTE:
+		// menu sceneからX押下でplay sceneに戻ってきた場合に、
+		// 指を話そうとしている時間もカウントされて
+		// メニューを閉じたらすぐサードアイが発動してしまうから
+		if (this._key_down_count_of_button_x) {
+			this._key_down_count_of_button_x++;
+		}
 	}
 	else {
 		if(0 < this._key_down_count_of_button_x && this._key_down_count_of_button_x < 15) { //15フレーム長押し
