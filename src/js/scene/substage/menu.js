@@ -200,6 +200,11 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 
 			return;
 		}
+		// メニューを閉じる
+		else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+			this.root().item_menu_button.onCollision();
+			return;
+		}
 		// 選択するアイテムを移動
 		else if (is_left_push || is_right_push || is_up_push || is_down_push) {
 			// 上
