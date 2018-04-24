@@ -156,10 +156,23 @@ AssetsConfig.images = {
 	
 	"chapter1-10-bg-001": "./image/chapter1/chapter1-10/chapter1-10-bg-001.jpg",
 	"chapter1-10-obj-01": "./image/chapter1/chapter1-10/chapter1-10-obj-01.png",
-	
+
+	// 選択中のアイテム背景
+	"item_selected":      "./image/item/icon_item_common_light01.png",
+
 	// アイテム 目薬
 	"item_01":            "./image/item/icon_item_eyedrops01.png",
-	"item_01_selected":   "./image/item/icon_item_eyedrops02.png",
+	"item_02":            "./image/item/icon_item_matches01.png",
+	"item_03":            "./image/item/icon_item_wcan01.png",
+	"item_04":            "./image/item/icon_item_wcan02.png",
+	"item_05":            "./image/item/icon_item_ladders01.png",
+	"item_06":            "./image/item/icon_item_cucumber01.png",
+	"item_07":            "./image/item/icon_item_mic01.png",
+	"item_08":            "./image/item/icon_item_kumade01.png",
+	"item_09":            "./image/item/icon_item_taketonbo01.png",
+	"item_10":            "./image/item/icon_item_scarymask01.png",
+	"item_11":            "./image/item/icon_item_chocobox01.png",
+	"item_12":            "./image/item/icon_item_doll01.png",
 
 	// 体験版時のコンティニュー画像
 	"tobecontinued":  "./image/tobecontinued.png",

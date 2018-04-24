@@ -18,7 +18,7 @@ var CONSTANT = {
 	// アイテムの種類
 	ITEM: {
 		EYEDROPS: "01",
-
+		NON_USABLE: "02",
 	},
 
 	// ジャーナルの種類
