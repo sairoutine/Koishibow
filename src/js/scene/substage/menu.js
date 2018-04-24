@@ -9,9 +9,10 @@ var CONSTANT = require('../../constant');
 var ItemConfig = require('../../config/item');
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 var SelectedCursor = require('../../object/ui/selected_cursor');
-
+var ItemConfig = require('../../config/item');
 
 var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
+var ObjectMenuItemNonUsable = require('../../object/menu_item/non_usable');
 
 var SceneSubStageMenu = function(core) {
 	base_scene.apply(this, arguments);
@@ -511,12 +512,19 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 	for (var i = 0, len = item_list.length; i < len; i++) {
 		var item_id = item_list[i];
 
+		// item_id => item_type
+		var item_config = ItemConfig[item_id];
+		var type = item_config.type;
+
 		var menu_item;
-		if (item_id === CONSTANT.ITEM.EYEDROPS) { // 目薬
-			menu_item = new ObjectMenuItemEyeDrops(this);
+		if (type === CONSTANT.ITEM.EYEDROPS) { // 目薬
+			menu_item = new ObjectMenuItemEyeDrops(this, item_id);
+		}
+		else if (type === CONSTANT.ITEM.NON_USABLE) { // 会話で消費するアイテム
+			menu_item = new ObjectMenuItemNonUsable(this, item_id);
 		}
 		else {
-			throw new Error ("Unknown item_id error: " + item_id);
+			throw new Error ("Unknown item type error: " + type);
 		}
 
 		var index_horizontal = i % TURN_NUM;
