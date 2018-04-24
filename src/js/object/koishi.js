@@ -25,6 +25,8 @@ var jsonDataOfReactionTouchInNoHat = require('../data/anime/koishi/nohat_reactio
 var jsonDataOfWaitInNoHat = require('../data/anime/koishi/nohat_wait_anime_1');
 //	(帽子なし) 歩き	可	30	30	1秒
 var jsonDataOfWalkInNoHat = require('../data/anime/koishi/nohat_walk_anime_1');
+// ゲームオーバー(しゃがみ込む) 不	80	2.7秒
+var jsonDataOfGameover = require('../data/anime/koishi/gameover_anime_1');
 
 var Koishi = function (scene) {
 	base_object.apply(this, arguments);
@@ -243,6 +245,8 @@ var JSON_ANIME_MAP = {
 	// 触る(帽子なし)
 	touch_nohat:        jsonDataOfReactionTouchInNoHat,
 
+	// ゲームオーバー(しゃがみ込む)
+	gameover: jsonDataOfGameover,
 	// サードアイ使用
 	use_eye:     jsonDataOfReaction3rdeye,
 };
