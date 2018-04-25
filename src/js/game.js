@@ -13,7 +13,6 @@ var StoragePlayer  = require('./storage/player');
 var SceneTitle = require('./scene/title');
 var SceneLeavingTitle = require('./scene/leaving_title');
 var SceneHowto = require('./scene/howto');
-var SceneGameover = require('./scene/gameover');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
 var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
@@ -30,7 +29,6 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("title", new SceneTitle(this));
 	this.scene_manager.addScene("leaving_title", new SceneLeavingTitle(this));
 	this.scene_manager.addScene("howto", new SceneHowto(this));
-	this.scene_manager.addScene("gameover", new SceneGameover(this));
 	this.scene_manager.addScene("stage", new SceneStage(this));
 	this.scene_manager.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
 	this.scene_manager.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
