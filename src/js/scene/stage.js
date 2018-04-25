@@ -8,6 +8,7 @@ var CONSTANT = require('../constant');
 var SceneSubStagePlay = require('./substage/play'); // ゲーム操作可能
 var SceneSubStageTalkWithObject = require('./substage/talk_with_object'); // こいし会話中
 var SceneSubStageMenu = require('./substage/menu'); // アイテムメニュー
+var SceneSubStageGameover = require('./substage/gameover'); // ゲームオーバー
 var SceneSubStageJournal = require('./substage/journal'); // ジャーナル表示
 var SceneSubStageJournalMenu = require('./substage/journal_menu'); // ジャーナル メニュー
 var SceneSubStageGotItem = require('./substage/got_item'); // アイテム獲得
@@ -82,6 +83,8 @@ var SceneStage = function(core) {
 	// journal -> show_journal
 	// アイテム メニュー
 	this.addSubScene("menu", new SceneSubStageMenu(core));
+	// ゲームオーバー
+	this.addSubScene("gameover", new SceneSubStageGameover(core));
 	// ジャーナル メニュー
 	this.addSubScene("journal_menu", new SceneSubStageJournalMenu(core));
 	// ジャーナルを読む

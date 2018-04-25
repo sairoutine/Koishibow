@@ -44,7 +44,7 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 			this.core.scene_manager.setFadeOut(0);
 
-			this.core.scene_manager.changeScene("gameover");
+			this.root().changeSubScene("gameover");
 		}
 	}
 
