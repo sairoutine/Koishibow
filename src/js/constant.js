@@ -30,7 +30,7 @@ var CONSTANT = {
 
 
 	// こいしの歩ける範囲の上 上限(px)
-	WALK_DEPTH_LIMIT: 300,
+	WALK_DEPTH_LIMIT: 240,
 
 	// 3rd eye の最大値
 	MAX_3RDEYE_GAUGE: 3600,
