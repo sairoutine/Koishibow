@@ -4,8 +4,7 @@ var DEBUG = require("./debug_constant");
 var CONSTANT = {
 	DEBUG: {},
 	// ゲームを最初から始めた場合の最初のフィールド
-	//INITIAL_FIELD: "chapter1_01",
-	INITIAL_FIELD: "chapter0_myroom",
+	INITIAL_CHAPTER: "opening_movie_chapter0",
 
 	// オブジェクトの種類
 	STATIC_IMAGE_TYPE:      1,

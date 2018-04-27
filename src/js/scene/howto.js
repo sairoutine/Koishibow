@@ -30,7 +30,7 @@ SceneHowto.prototype.beforeDraw = function(){
 
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
 		this.core.audio_loader.playSound("show_journal");
-		this.core.scene_manager.changeScene("stage", CONSTANT.INITIAL_FIELD);
+		this.core.scene_manager.changeScene(CONSTANT.INITIAL_CHAPTER);
 	}
 };
 
