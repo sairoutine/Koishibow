@@ -42,6 +42,10 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 			// 最大値まで回復
 			this.root().koishi.gain3rdeyeGaugeMax();
 
+			// 最後にゲームオーバーになったフィールドを保存
+			var field_data = this.root().getFieldData();
+			this.core.save_manager.player.setLastGameoverField(field_data.key);
+
 			this.core.scene_manager.setFadeOut(0);
 
 			this.root().changeSubScene("gameover");

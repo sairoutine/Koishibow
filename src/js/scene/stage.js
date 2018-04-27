@@ -533,6 +533,20 @@ SceneStage.prototype._getObjectDataByFieldData = function() {
 		});
 	}
 
+	// ゲームオーバー用ボタンの目こいし
+	if (this.core.save_manager.player.getLastGameoverField() === field_data.key) {
+		object_data_list.push({
+			no: "button_koishi",
+			type: CONSTANT.BUTTON_KOISHI_TYPE,
+			name: "ボタンの目のこいし",
+			x: this.width/2,
+			y: this.height/2,
+		});
+
+		// 一度表示したあとは削除
+		this.core.save_manager.player.deleteLastGameoverField();
+	}
+
 	return object_data_list;
 };
 

@@ -85,4 +85,19 @@ StoragePlayer.prototype.setCurrentField = function(field_name) {
 	this.set("current_field", field_name);
 };
 
+// 最後にゲームオーバーになったフィールドを取得
+StoragePlayer.prototype.getLastGameoverField = function() {
+	var field_name = this.get("last_gameover_field");
+
+	return field_name;
+};
+// 最後にゲームオーバーになったフィールドを設定
+StoragePlayer.prototype.setLastGameoverField = function(field_name) {
+	this.set("last_gameover_field", field_name);
+};
+// 最後にゲームオーバーになったフィールドを削除
+StoragePlayer.prototype.deleteLastGameoverField = function() {
+	this.remove("last_gameover_field");
+};
+
 module.exports = StoragePlayer;
