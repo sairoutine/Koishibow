@@ -18,7 +18,6 @@ var SceneSubStageEventChapter0GetHat = require('./substage/event/chapter0/get_ha
 var SceneSubStagePictureGetHat = require('./substage/picture_get_hat');
 var SceneSubStageEventChapter0KokoroEncounter = require('./substage/event/chapter0/kokoro_encounter');
 var SceneSubStageEventChapter0SatoriEncounterBegin = require('./substage/event/chapter0/satori_encounter_begin');
-var SceneSubStageEventOpeningMovie = require('./substage/event/opening_movie');
 
 var ItemMenuButton = require('../object/ui/item_menu_button');
 var EyeButton = require('../object/ui/eye_button');
@@ -101,14 +100,6 @@ var SceneStage = function(core) {
 	this.addSubScene("picture_get_hat", new SceneSubStagePictureGetHat(core));
 	this.addSubScene("event_chapter0_kokoro_encounter", new SceneSubStageEventChapter0KokoroEncounter(core));
 	this.addSubScene("event_chapter0_satori_encounter_begin", new SceneSubStageEventChapter0SatoriEncounterBegin(core));
-
-	// chapter 開始時のmovie
-	this.addSubScene("event_opening_movie_chapter0", new SceneSubStageEventOpeningMovie(core).setArgs("./movie/chapter0.mp4", "stage", "TODO:"));
-	this.addSubScene("event_opening_movie_chapter1", new SceneSubStageEventOpeningMovie(core).setArgs("./movie/chapter1.mp4", "stage", "chapter1_01"));
-	this.addSubScene("event_opening_movie_chapter2", new SceneSubStageEventOpeningMovie(core).setArgs("./movie/chapter2.mp4", "stage", "TODO:"));
-	this.addSubScene("event_opening_movie_chapter3", new SceneSubStageEventOpeningMovie(core).setArgs("./movie/chapter3.mp4", "stage", "TODO:"));
-	this.addSubScene("event_opening_movie_chapter4", new SceneSubStageEventOpeningMovie(core).setArgs("./movie/chapter4.mp4", "stage", "TODO:"));
-	this.addSubScene("event_opening_movie_chapter5", new SceneSubStageEventOpeningMovie(core).setArgs("./movie/chapter5.mp4", "stage", "TODO:"));
 };
 Util.inherit(SceneStage, base_scene);
 
