@@ -23,6 +23,7 @@ AssetsConfig.images = {
 
 	// こいし画像
 	"koishi": "./image/koishi.png",
+	"koishi_button": "./image/koishi_button.png",
 	// こころ画像
 	"kokoro": "./image/kokoro.png",
 	// てゐ
