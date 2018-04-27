@@ -15,6 +15,7 @@ var SceneLeavingTitle = require('./scene/leaving_title');
 var SceneHowto = require('./scene/howto');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
+var SceneOpeningMovie = require('./scene/opening_movie');
 var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
 var SceneEventForChapter0Last            = require('./scene/event/chapter0/last');
 var SceneEventForTrialLast               = require('./scene/event/trial_last');
@@ -30,6 +31,16 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("leaving_title", new SceneLeavingTitle(this));
 	this.scene_manager.addScene("howto", new SceneHowto(this));
 	this.scene_manager.addScene("stage", new SceneStage(this));
+
+	// chapter 開始時のmovie
+	this.scene_manager.addScene("opening_movie_chapter0", new SceneOpeningMovie(this).setArgs("chapter0"));
+	this.scene_manager.addScene("opening_movie_chapter1", new SceneOpeningMovie(this).setArgs("chapter1"));
+	this.scene_manager.addScene("opening_movie_chapter2", new SceneOpeningMovie(this).setArgs("chapter2"));
+	this.scene_manager.addScene("opening_movie_chapter3", new SceneOpeningMovie(this).setArgs("chapter3"));
+	this.scene_manager.addScene("opening_movie_chapter4", new SceneOpeningMovie(this).setArgs("chapter4"));
+	this.scene_manager.addScene("opening_movie_chapter5", new SceneOpeningMovie(this).setArgs("chapter5"));
+	this.scene_manager.addScene("opening_movie_chapter6", new SceneOpeningMovie(this).setArgs("chapter6"));
+
 	this.scene_manager.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
 	this.scene_manager.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
 	this.scene_manager.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
