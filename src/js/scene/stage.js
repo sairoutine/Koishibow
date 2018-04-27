@@ -37,6 +37,7 @@ var ObjectJournal = require('../object/pieces/journal');
 var ObjectAnimeEventImage = require('../object/pieces/anime_event_image');
 var ObjectItem = require('../object/pieces/item');
 var ObjectFieldChange = require('../object/pieces/field_change');
+var ObjectAnimeDeadKoishi = require('../object/pieces/anime_dead_koishi');
 
 var FieldMap = require('../config/field');
 
@@ -489,7 +490,9 @@ SceneStage.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.FIELD_CHANGE_TYPE) { // フィールド遷移
 			object = new ObjectFieldChange(this);
 		}
-
+		else if (data.type === CONSTANT.BUTTON_KOISHI_TYPE) {
+			object = new ObjectAnimeDeadKoishi(this);
+		}
 		else {
 			throw new Error ("Unknown object type error: " + data.type);
 		}
