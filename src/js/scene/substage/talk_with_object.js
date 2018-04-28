@@ -85,6 +85,12 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 
 	// Z ボタンが押されたら
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		// アイテム獲得
+		if (this._serif.getCurrentOption().getItem) {
+			this.core.save_manager.item.addItem(this._serif.getCurrentOption().getItem);
+		}
+
+
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
 
