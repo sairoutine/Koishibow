@@ -107,25 +107,25 @@ ObjectBase.prototype.onTouchByKoishi = function() {
 
 
 // オブジェクトがセリフを表示する
-ObjectBase.prototype.showMessage = function(text_lines, width_num, height_num){
+ObjectBase.prototype.showMessage = function(text_lines, width_num, height_num, option){
 	// メッセージウィンドウ表示
-	this._showMessageWindow(text_lines, width_num, height_num);
+	this._showMessageWindow(text_lines, width_num, height_num, option);
 
 	// メッセージ表示
-	this._showText(text_lines, width_num, height_num);
+	this._showText(text_lines, width_num, height_num, option);
 };
 
 // セリフウィンドウ表示
-ObjectBase.prototype._showMessageWindow = function(lines, width_num, height_num){
+ObjectBase.prototype._showMessageWindow = function(lines, width_num, height_num, option){
 	var ctx = this.core.ctx;
 	var fukidashi = this.core.image_loader.getImage('fukidashi');
 
-	DrawSerif.drawWindow(this, ctx, fukidashi, lines, width_num, height_num);
+	DrawSerif.drawWindow(this, ctx, fukidashi, lines, width_num, height_num, option);
 };
 // セリフテキスト表示
-ObjectBase.prototype._showText = function(lines, width_num, height_num) {
+ObjectBase.prototype._showText = function(lines, width_num, height_num, option) {
 	var ctx = this.core.ctx;
-	DrawSerif.drawText(this, ctx, lines, width_num, height_num);
+	DrawSerif.drawText(this, ctx, lines, width_num, height_num, option);
 };
 
 // TODO: throw new Error にして、継承先に実装させる

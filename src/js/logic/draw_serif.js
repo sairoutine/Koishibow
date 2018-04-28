@@ -6,6 +6,9 @@ var Util = require('../hakurei').util;
 
 // 文字の表示サイズ
 var FONT_SIZE = 18;
+// フォント名
+var FONT_NAME = "OradanoGSRR";
+
 
 // セリフ文字の色
 var SERIF_FONT_COLOR = Util.hexToRGBString("#d4c9aa");
@@ -15,7 +18,7 @@ var SERIF_FONT_COLOR = Util.hexToRGBString("#d4c9aa");
 var DrawSerif = function() {};
 
 // @param: {ObjectBase} obj
-DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_num) {
+DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_num, option) {
 
 	// ウィンドウの位置
 	var message_window_pos = this._getMessagePos(obj);
@@ -52,28 +55,31 @@ DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_n
 
 };
 
-DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num) {
+DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num, option) {
 	// セリフがなければ何も表示しない
 	if (lines.length === 0) return;
+
+	var font_size = option.fontSize || FONT_SIZE;
+	var font_name = option.fontName || FONT_NAME;
 
 	var message_text_pos = this._getMessagePos(obj);
 	var x = message_text_pos.x;
 	var y = message_text_pos.y;
 
 	// 基準位置を左上->中央に変更
-	x = x - width_num  * FONT_SIZE / 2;
-	y = y - height_num * (FONT_SIZE+12) / 2;
+	x = x - width_num  * font_size / 2;
+	y = y - height_num * (font_size+12) / 2;
 
 	ctx.save();
 
 	ctx.fillStyle = SERIF_FONT_COLOR;
-	ctx.font = FONT_SIZE.toString() + "px 'OradanoGSRR'";
+	ctx.font = font_size.toString() + "px '"+ font_name + "'";
 
 	ctx.textAlign = 'left';
 	ctx.textBaseAlign = 'top';
 
 	for(var i = 0, len = lines.length; i < len; i++) {
-		y += FONT_SIZE + 12;
+		y += font_size + 12;
 		ctx.fillText(lines[i], x, y); // 1行表示
 
 	}
@@ -163,7 +169,7 @@ DrawSerif.drawJunction = function (obj, ctx, junction_off, junction_on, junction
 
 
 		ctx.fillStyle = SERIF_FONT_COLOR;
-		ctx.font = FONT_SIZE.toString() + "px 'OradanoGSRR'";
+		ctx.font = FONT_SIZE.toString() + "px '" + FONT_NAME + "'";
 
 		ctx.textAlign = 'left';
 		ctx.textBaseAlign = 'middle';

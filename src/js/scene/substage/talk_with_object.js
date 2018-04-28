@@ -226,7 +226,12 @@ SceneSubStageObjectTalk.prototype._showMessage = function() {
 	obj.showMessage(
 		this._serif.getCurrentPrintedSentences(),
 		this._serif.getCurrentMaxLengthLetters(),
-		this._serif.getCurrentSentenceNum()
+		this._serif.getCurrentSentenceNum(),
+		// オプション
+		{
+			fontSize: this._serif.getCurrentOption().fontSize,
+			fontName: this._serif.getCurrentOption().fontName,
+		}
 	);
 };
 // 会話 選択肢 表示
