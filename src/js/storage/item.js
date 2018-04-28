@@ -42,16 +42,22 @@ StorageItem.prototype.addItem = function(item_id){
 StorageItem.prototype.deleteItem = function(target_item_id) {
 	var list = this.getItemList();
 
+	var is_delete = false;
 	for (var i = 0, len = list.length; i < len; i++) {
 		var item_id = list[i];
 
 		if (item_id === target_item_id) {
 			list.splice(i, 1);
+			is_delete = true;
 			break;
 		}
 	}
 
-	this.set("item_list", list);
+	if (is_delete) {
+		this.set("item_list", list);
+	}
+
+	return is_delete;
 };
 
 module.exports = StorageItem;
