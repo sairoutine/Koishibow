@@ -89,6 +89,7 @@ module.exports = {
 			image: "chapter1-04-obj-05",
 			x: 655*2/3, y: 610*2/3,
 			scale: 2/3,
+			height: 300,
 			item_id: "08"
 		},
 	],
