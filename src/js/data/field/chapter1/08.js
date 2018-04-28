@@ -36,17 +36,56 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "響子",
 			serif: [
-				// 1-16
-				{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-				{"chara": "koishi",        "exp": "back", "serif":"あなた、どうしておくちがあかないの？"},
-				{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-				{"chara": "koishi",        "exp": "back", "serif":"............"},
-				{"chara": "koishi",        "exp": "back", "serif":"ねえ、あそばないの？"},
-				{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-				{"chara": "koishi",        "exp": "back", "serif":"ねえ？"},
-				{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-
-
+				// みどりいろのぐねぐねを持っているか否か
+				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["07"], "serifs": [
+					[
+						// 1-17
+						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+						{"chara": I, "exp": "kyoko-reaction_02", "serif":"！！", "option": {
+							"fontSize": 12,
+						}},
+						{"chara": "koishi",        "exp": "back", "serif":"えっなに？"},
+						{"chara": I, "exp": "kyoko-reaction_03", "serif":"ごあいさつしていい？"},
+						{"chara": "koishi",        "exp": "back", "serif":"なにが？"},
+						{"chara": I, "exp": "kyoko-reaction_03", "serif":"ごあいさつ！"},
+						{"chara": "koishi",        "exp": "back", "serif":"ごあいさつって？"},
+						{"chara": "koishi",        "exp": "back", "serif":""},
+						{"chara": I, "exp": "kyoko-reaction_04", "serif":"こ", "option": {
+							"fontSize": 30,
+						}},
+						{"chara": I, "exp": "kyoko-reaction_04", "serif":"ん", "option": {
+							"fontSize": 30,
+						}},
+						{"chara": I, "exp": "kyoko-reaction_04", "serif":"ち", "option": {
+							"fontSize": 30,
+						}},
+						{"chara": I, "exp": "kyoko-reaction_04", "serif":"は～～～！", "option": {
+							"fontSize": 30,
+						}},
+						{"chara": I, "exp": "kyoko-reaction_05", "serif":"先生は黙りなさいっていうの。\nしゃべっていいんでしょ？"},
+						{"chara": "koishi",        "exp": "back", "serif":"しゃべっちゃだめだったの？"},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":"ううん！先生いないから！"},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":"先生いなくてもだまってたんだ"},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":"みんながうるさいっていうから"},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":"おしゃべりたのしいよね！"},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":"まえはおしゃべりしてくれるひと\nたくさんいたのにね！"},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":"あっはっはっは", "option":{
+							"fontSize": 30,
+							"fontName": "ＭＳ Ｐ明朝",
+						}},
+					],
+					[
+						// 1-16
+						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+						{"chara": "koishi",        "exp": "back", "serif":"あなた、どうしておくちがあかないの？"},
+						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+						{"chara": "koishi",        "exp": "back", "serif":"............"},
+						{"chara": "koishi",        "exp": "back", "serif":"ねえ、あそばないの？"},
+						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+						{"chara": "koishi",        "exp": "back", "serif":"ねえ？"},
+						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+					]
+				]}
 			],
 			x: 1024*2/3, y: 585*2/3,
 			scale: 2/3,
