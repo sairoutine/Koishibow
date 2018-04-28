@@ -42,8 +42,10 @@ module.exports = {
 			],
 			x:1157*2/3, y:687.50*2/3,
 			scale: 2/3,
+			height: 200,
 			action_name: null,
-			sound_name: null
+			sound_name: null,
+			position_type: "lying",
 		},
 
 
@@ -82,7 +84,8 @@ module.exports = {
 			x:1053*2/3, y:484*2/3,
 			scale: 2/3,
 			action_name: null,
-			sound_name: null
+			sound_name: null,
+			position_type: "lying",
 		},
 
 		{
