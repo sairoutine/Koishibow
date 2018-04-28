@@ -57,8 +57,14 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 	// フィールドの各種オブジェクトとの当たり判定
 	var is_collide_with_piece = false;
-	for (var i = this.root().pieces.length - 1; i >= 0; i--) { // i の大きい方が手前なので
-		var piece = this.root().pieces[i];
+
+	// こいしの位置によってどのオブジェクトにフォーカスを当てるか変える
+	// 固定すると、場所によってはどうしても触れないオブジェクトが存在するため
+	// 21 の数字を大きくすることでフォーカスが変わるタイミングを伸ばすことができる
+	var pieces = Math.floor((this.root().koishi.y() + this.root().koishi.x())/21) % 2 ? this.root().pieces : this.root().pieces.slice().reverse();
+
+	for (var i in pieces) {
+		var piece = pieces[i];
 
 		// フィールド移動オブジェクトのみ、接触するとフィールド遷移するため、
 		// こいしと接触判定を行う
