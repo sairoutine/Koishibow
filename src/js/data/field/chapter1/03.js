@@ -34,17 +34,13 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			image: "chapter1-03-obj-04",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
+			type: CONSTANT.ITEM_TYPE,
 			name: "ヘビ",
-			serif: [
-				{"chara": "koishi","serif":"みっけ！"},
-			],
+			image: "chapter1-03-obj-04",
 			x:1157*2/3, y:687.50*2/3,
 			scale: 2/3,
+			item_id: "06",
 			height: 200,
-			action_name: null,
-			sound_name: null,
 			position_type: "lying",
 		},
 
