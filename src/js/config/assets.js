@@ -167,7 +167,7 @@ AssetsConfig.images = {
 	"item_03":            "./image/item/icon_item_wcan01.png",
 	"item_04":            "./image/item/icon_item_wcan02.png",
 	"item_05":            "./image/item/icon_item_ladders01.png",
-	"item_06":            "./image/item/icon_item_cucumber01.png",
+	"item_06":            "./image/item/icon_item_snake01.png",
 	"item_07":            "./image/item/icon_item_mic01.png",
 	"item_08":            "./image/item/icon_item_kumade01.png",
 	"item_09":            "./image/item/icon_item_taketonbo01.png",
