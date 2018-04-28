@@ -18,7 +18,15 @@ var STATE_JUNCTION = 3; // 会話の選択肢表示
 var SceneSubStageObjectTalk = function(core) {
 	base_scene.apply(this, arguments);
 
-	this._serif = new ScenarioManager();
+	this._serif = new ScenarioManager(core, {
+		// 会話で使う条件分岐
+		criteria: {
+			// アイテムを持っていれば消費して true
+			useItem: function (core, item_id) {
+				return core.save_manager.item.deleteItem(item_id) ? 0 : 1;
+			},
+		}
+	});
 
 	// クリック待ちカーソルの状態
 	this._cursor_y = 0; // カーソル位置
