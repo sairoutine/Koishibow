@@ -108,23 +108,7 @@ SceneEventTalkWithMobu.prototype.initMobu = function(){
 	this.mobu.setAnime(anime_config);
 	this.mobu.init();
 
-	var self = this;
-	this.mobu.playAnimationOnce(this._anime_num, function () {
-		self._serif.start();
-		// アニメ進行
-		if (self._serif.getCurrentOption().is_next) {
-			self._anime_num++;
-
-			if (self._anime_num === 2 || self._anime_num === 3 || self._anime_num === 4) {
-				self.koishi.playAnimationInfinity(self._anime_num);
-				self.mobu.playAnimationInfinity(self._anime_num);
-			}
-			else {
-				self.koishi.playAnimationOnce(self._anime_num);
-				self.mobu.playAnimationOnce(self._anime_num);
-			}
-		}
-	});
+	this.mobu.playAnimationOnce(this._anime_num);
 };
 SceneEventTalkWithMobu.prototype.initKoishi = function(){
 	this.koishi.x(this.width/2);
@@ -142,7 +126,24 @@ SceneEventTalkWithMobu.prototype.initKoishi = function(){
 	this.koishi.setAnime(anime_config);
 	this.koishi.init();
 
-	this.koishi.playAnimationOnce(this._anime_num);
+	var self = this;
+	this.koishi.playAnimationOnce(this._anime_num, function () {
+		self._serif.start();
+		// アニメ進行
+		if (self._serif.getCurrentOption().is_next) {
+			self._anime_num++;
+
+			if (self._anime_num === 2 || self._anime_num === 3 || self._anime_num === 4) {
+				self.koishi.playAnimationInfinity(self._anime_num);
+				self.mobu.playAnimationInfinity(self._anime_num);
+			}
+			else {
+				self.koishi.playAnimationOnce(self._anime_num);
+				self.mobu.playAnimationOnce(self._anime_num);
+			}
+		}
+	});
+
 };
 
 
