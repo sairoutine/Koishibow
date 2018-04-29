@@ -19,7 +19,7 @@ var DrawSerif = function() {};
 
 // @param: {ObjectBase} obj
 DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_num, option) {
-
+	option = option || {};
 	// ウィンドウの位置
 	var message_window_pos = this._getMessagePos(obj);
 	var x = message_window_pos.x;
@@ -59,6 +59,7 @@ DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num, option) {
 	// セリフがなければ何も表示しない
 	if (lines.length === 0) return;
 
+	option = option || {};
 	var font_size = option.fontSize || FONT_SIZE;
 	var font_name = option.fontName || FONT_NAME;
 
