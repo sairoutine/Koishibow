@@ -196,6 +196,7 @@ AssetsConfig.images = {
 	// ふきだし
 	"fukidashi":  "./image/ui-common-frame-talk1-brn.png",
 	"fukidashi_gray":  "./image/ui-common-frame-talk1-gry.png",
+	"fukidashi_dark":  "./image/ui-common-frame-talk1-dark.png",
 	"fukidashi_arrow":  "./image/ui-common-btn-arrow-brn.png",
 
 	// 会話選択肢 ふきだし
