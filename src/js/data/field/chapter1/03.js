@@ -89,12 +89,27 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "てゐ",
 			serif: [
-				// 1-4
-				{"chara": I,        "exp": "tewi-reaction_01", "serif":"なんだい！"},
-				{"chara": "koishi", "exp": "look_front", "serif":"なにしてるの？"},
-				{"chara": I,        "exp": "back", "serif":"なにもしてないんだよ"},
-				{"chara": "koishi", "exp": "back", "serif":"へんなの"},
-				{"chara": I,        "exp": "back", "serif":"みせものじゃないんだ、いきな！"},
+				// こわいおめんを持っているか否か
+				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["10"], "serifs": [
+					[
+						{"chara": I,        "exp": "tewi-reaction_04", "serif":"げえっ！"},
+						{"chara": I,        "exp": "back", "serif":"い、いつからそこに"},
+						{"chara": "koishi", "exp": "back", "serif":"............."},
+						{"chara": I,        "exp": "tewi-reaction_01", "serif":"わかりました！"},
+						{"chara": I,        "exp": "tewi-reaction_03", "serif":"わかりましたよ！"},
+						{"chara": I,        "exp": "tewi-reaction_01", "serif":"いまやるから、もうちょっとまっててくれよ", "option": {
+							"getItem": "05",
+						}},
+					],
+					[
+						// 1-4
+						{"chara": I,        "exp": "tewi-reaction_01", "serif":"なんだい！"},
+						{"chara": "koishi", "exp": "look_front", "serif":"なにしてるの？"},
+						{"chara": I,        "exp": "back", "serif":"なにもしてないんだよ"},
+						{"chara": "koishi", "exp": "back", "serif":"へんなの"},
+						{"chara": I,        "exp": "back", "serif":"みせものじゃないんだ、いきな！"},
+					]
+				]}
 			],
 			x:458.50*2/3, y:609*2/3,
 			scale: 2/3,

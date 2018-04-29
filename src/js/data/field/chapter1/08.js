@@ -31,6 +31,26 @@ module.exports = {
 			sound_name: null,
 			position_type: "lying",
 		},
+
+		{
+			no: ++I,
+			image: "chapter1-03-obj-03",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "ハシゴ",
+			serif: [
+				{"chara": "koishi","serif":null, "option": {
+					getItem: "09",
+				}},
+			],
+			x:196, y:484*2/3,
+			scale: 2/3,
+			action_name: null,
+			sound_name: null,
+			position_type: "lying",
+		},
+
+
+
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -99,6 +119,7 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
+
 	]
 };
 

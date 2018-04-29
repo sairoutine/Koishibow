@@ -121,6 +121,9 @@ var anime_map = {
 	"tewi-reaction_01":   require('../data/anime/tewi/reaction_01_anime_1'),
 	"tewi-reaction_02":   require('../data/anime/tewi/reaction_02_anime_1'),
 	"tewi-reaction_03":   require('../data/anime/tewi/reaction_03_anime_1'),
+	"tewi-reaction_04":   require('../data/anime/tewi/reaction_04_anime_1'),
+	"tewi-ura_reaction_01":   require('../data/anime/tewi/ura_reaction_01_anime_1'),
+	"tewi-ura_reaction_02":   require('../data/anime/tewi/ura_reaction_02_anime_1'),
 
 	"chapter1-04-obj-01-obj01":  require('../data/anime/chapter1/04/obj-01/obj01_anime_1.json'),
 	"chapter1-04-obj-01-obj02":  require('../data/anime/chapter1/04/obj-01/obj02_anime_1.json'),
