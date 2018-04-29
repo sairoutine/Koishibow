@@ -213,7 +213,11 @@ SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 	if(!this._cache_canvas[this.current_anime]) {
 		this._cache_canvas[this.current_anime] = [];
 	}
-	this._cache_canvas[this.current_anime][frame_no] = canvas;
+
+	// 一定確率でキャッシュ
+	if (this.frame_count % 2 === 0) {
+		this._cache_canvas[this.current_anime][frame_no] = canvas;
+	}
 
 	return canvas;
 };
