@@ -11,6 +11,7 @@ module.exports = {
 	left_field: "chapter1_06",
 	background: "chapter1-07-bg-001",
 	walk_sound: "walking_bare_outside",
+	event: "event_for_chapter1_talk_with_mobu",
 	objects: [
 		{
 			no: ++I,
