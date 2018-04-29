@@ -46,6 +46,7 @@ var SceneEventEncounterSatori = function(core) {
 };
 Util.inherit(SceneEventEncounterSatori, base_scene);
 
+// black_mist が参照する
 SceneEventEncounterSatori.prototype.isUsingEye = function(){
 	return false;
 };
