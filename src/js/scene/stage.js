@@ -195,16 +195,22 @@ SceneStage.prototype.changeInitialSubScene = function() {
 
 	if (!field_data) throw new Error(this.core.save_manager.player.getCurrentField() + " field does not exists");
 
-	// subscene が設定されていて、未再生ならばそれを使う
+	// scene or subscene が設定されていて、未再生ならばそれを使う
 	// そうでなければ通常の play シーン
 
-	var subscene = field_data.event;
-	if (!subscene || this.core.save_manager.event.isPlayedEvent(subscene)) {
-		this.changeSubScene("play");
+	var subscene = field_data.subevent;
+	var scene = field_data.event;
+	if (scene && !this.core.save_manager.event.isPlayedEvent(scene)) {
+		this.core.save_manager.event.setPlayedEvent(scene);
+
+		this.core.scene_manager.changeScene(scene);
 	}
-	else {
+	else if (subscene && !this.core.save_manager.event.isPlayedEvent(subscene)) {
 		this.core.save_manager.event.setPlayedEvent(subscene);
 		this.changeSubScene(subscene);
+	}
+	else {
+		this.changeSubScene("play");
 	}
 };
 

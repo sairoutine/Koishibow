@@ -12,7 +12,7 @@ module.exports = {
 	left_field: "chapter0_mansion_corridor1",
 	background: "chapter0-mansionpas-002",
 	walk_sound: "walking_bare_wood",
-	event: "event_chapter0_satori_encounter_begin",
+	subevent: "event_chapter0_satori_encounter_begin",
 	objects: [
 		{
 			no: ++I,

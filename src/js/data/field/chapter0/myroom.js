@@ -12,7 +12,7 @@ module.exports = {
 	left_field: null,
 	background: "chapter0-myroom-bg-001",
 	walk_sound: "walking_bare_default",
-	event: "event_chapter0_get_hat",
+	subevent: "event_chapter0_get_hat",
 	objects: [
 		{
 			no: ++I,
