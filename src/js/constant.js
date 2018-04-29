@@ -14,6 +14,7 @@ var CONSTANT = {
 	ITEM_TYPE:              5,
 	FIELD_CHANGE_TYPE:      6,
 	BUTTON_KOISHI_TYPE:     7, // ゲームオーバー用ボタンの目こいし
+	STATIC_EVENT_IMAGE_TYPE:8, // chapter1 ボール
 
 	// アイテムの種類
 	ITEM: {
