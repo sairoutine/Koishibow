@@ -58,6 +58,13 @@ AssetsConfig.images = {
 	"eye":  "./image/chapter0/event/encounter_satori/eye.png",
 	"str":  "./image/chapter0/event/encounter_satori/str.png",
 
+	// 1-7 フラッシュバック(モブとの会話)
+	"chapter1-07-event-bg-001":  "./image/chapter1/event/talk_with_mobu/chapter1-07-event-bg-001.jpg",
+	"chapter1_07_event_mobu1":  "./image/chapter1/event/talk_with_mobu/chapter1_07_event_mobu1.png",
+	"chapter1_07_event_mobu2":  "./image/chapter1/event/talk_with_mobu/chapter1_07_event_mobu2.png",
+	"chapter1_07_event_mobu3":  "./image/chapter1/event/talk_with_mobu/chapter1_07_event_mobu3.png",
+	"chapter1_07_event_koishi": "./image/chapter1/event/talk_with_mobu/chapter1_07_event_koishi.png",
+
 	// ジャーナル画像
 	"journal001":  "./image/journal/001.png",
 	"journal002":  "./image/journal/002.png",
