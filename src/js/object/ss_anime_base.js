@@ -43,10 +43,6 @@ SsAnimeBase.prototype.init = function(){
 };
 
 SsAnimeBase.prototype.changeAnimation = function(name) {
-	// 現在と同じアニメーションが指定された場合、何もしない
-	// アニメが初期化されて、アニメに違和感が生じるため
-	if(this.current_anime === name) return false;
-
 	this.current_anime = name;
 	this.anime_frame = 0;
 	this.loop_count = 0;
@@ -98,6 +94,10 @@ SsAnimeBase.prototype.playAnimationOnce = function(name, _callback){
 };
 
 SsAnimeBase.prototype.playAnimationInfinity = function(name){
+	// 現在と同じアニメーションが指定された場合、何もしない
+	// アニメが初期化されて、アニメに違和感が生じるため
+	if(this.current_anime === name) return false;
+
 	this.ss.setLoop(0);
 	this.changeAnimation(name);
 };
