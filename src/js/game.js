@@ -20,6 +20,7 @@ var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encou
 var SceneEventForChapter0Last            = require('./scene/event/chapter0/last');
 var SceneEventForTrialLast               = require('./scene/event/trial_last');
 var SceneEventForChapter1TalkWithMobu    = require('./scene/event/chapter1/talk_with_mobu');
+var SceneEventForChapter1PlayDoll        = require('./scene/event/chapter1/playdoll');
 
 var Game = function(canvas) {
 	core.apply(this, arguments);
@@ -43,6 +44,7 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
 	this.scene_manager.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
 	this.scene_manager.addScene("event_for_chapter1_talk_with_mobu", new SceneEventForChapter1TalkWithMobu(this));
+	this.scene_manager.addScene("event_for_chapter1_playdoll", new SceneEventForChapter1PlayDoll(this));
 	this.scene_manager.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
 
 	// セーブデータ
