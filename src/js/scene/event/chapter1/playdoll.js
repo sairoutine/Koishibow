@@ -17,29 +17,43 @@ var NEXT_TO_SERIF_WAITING_COUNT = 6;
 // 状態
 var STATE_TALKING  = 1; // セリフ表示
 var STATE_WAITING  = 2; // セリフ非表示
+var STATE_JUNCTION = 3; // 会話の選択肢表示
 
 
 
-var jsonDataOfMobu1 = require('../../../data/anime/chapter1/event/talk_with_mobu/mobu/obj01_anime_1');
-var jsonDataOfMobu2 = require('../../../data/anime/chapter1/event/talk_with_mobu/mobu/obj02_anime_1');
-var jsonDataOfMobu3 = require('../../../data/anime/chapter1/event/talk_with_mobu/mobu/obj03_anime_1');
-var jsonDataOfMobu4 = require('../../../data/anime/chapter1/event/talk_with_mobu/mobu/obj04_anime_1');
-var jsonDataOfMobu5 = require('../../../data/anime/chapter1/event/talk_with_mobu/mobu/obj05_anime_1');
-var jsonDataOfKoishi1 = require('../../../data/anime/chapter1/event/talk_with_mobu/koishi/obj01_anime_1');
-var jsonDataOfKoishi2 = require('../../../data/anime/chapter1/event/talk_with_mobu/koishi/obj02_anime_1');
-var jsonDataOfKoishi3 = require('../../../data/anime/chapter1/event/talk_with_mobu/koishi/obj03_anime_1');
-var jsonDataOfKoishi4 = require('../../../data/anime/chapter1/event/talk_with_mobu/koishi/obj04_anime_1');
-var jsonDataOfKoishi5 = require('../../../data/anime/chapter1/event/talk_with_mobu/koishi/obj05_anime_1');
+var jsonDataOfChr1 = require('../../../data/anime/chapter1/event/playdoll/chr/obj01_anime_1');
+var jsonDataOfChr2 = require('../../../data/anime/chapter1/event/playdoll/chr/obj02_anime_1');
+var jsonDataOfChr3 = require('../../../data/anime/chapter1/event/playdoll/chr/obj03_anime_1');
+var jsonDataOfChr4 = require('../../../data/anime/chapter1/event/playdoll/chr/obj04_anime_1');
+var jsonDataOfChr5 = require('../../../data/anime/chapter1/event/playdoll/chr/obj05_anime_1');
+var jsonDataOfChr6 = require('../../../data/anime/chapter1/event/playdoll/chr/obj06_anime_1');
+var jsonDataOfChr7 = require('../../../data/anime/chapter1/event/playdoll/chr/obj07_anime_1');
+var jsonDataOfChr8 = require('../../../data/anime/chapter1/event/playdoll/chr/obj08_anime_1');
+var jsonDataOfChrSelect01_1 = require('../../../data/anime/chapter1/event/playdoll/chr/select01_1_anime_1');
+var jsonDataOfChrSelect02_1 = require('../../../data/anime/chapter1/event/playdoll/chr/select02_1_anime_1');
+var jsonDataOfChrSelect02_2 = require('../../../data/anime/chapter1/event/playdoll/chr/select02_2_anime_1');
+var jsonDataOfKoishi1 = require('../../../data/anime/chapter1/event/playdoll/koishi/obj01_anime_1');
+var jsonDataOfKoishi2 = require('../../../data/anime/chapter1/event/playdoll/koishi/obj02_anime_1');
+var jsonDataOfKoishi3 = require('../../../data/anime/chapter1/event/playdoll/koishi/obj03_anime_1');
+var jsonDataOfKoishi4 = require('../../../data/anime/chapter1/event/playdoll/koishi/obj04_anime_1');
+var jsonDataOfKoishi5 = require('../../../data/anime/chapter1/event/playdoll/koishi/obj05_anime_1');
+var jsonDataOfKoishi6 = require('../../../data/anime/chapter1/event/playdoll/koishi/obj06_anime_1');
+var jsonDataOfKoishi7 = require('../../../data/anime/chapter1/event/playdoll/koishi/obj07_anime_1');
+var jsonDataOfKoishi8 = require('../../../data/anime/chapter1/event/playdoll/koishi/obj08_anime_1');
+var jsonDataOfKoishiSelect01_1 = require('../../../data/anime/chapter1/event/playdoll/koishi/select01_1_anime_1');
+var jsonDataOfKoishiSelect02_1 = require('../../../data/anime/chapter1/event/playdoll/koishi/select02_1_anime_1');
+var jsonDataOfKoishiSelect02_2 = require('../../../data/anime/chapter1/event/playdoll/koishi/select02_2_anime_1');
 
-var SceneEventTalkWithMobu = function(core) {
+var SceneEventPlayDoll = function(core) {
 	base_scene.apply(this, arguments);
-
-	this._state = STATE_TALKING;
-	this._anime_num = 1;
-
 	// シーンの各種キャラ
-	this.mobu = new SS(this);
+	this.chr = new SS(this);
 	this.koishi = new SS(this);
+
+
+	this._state = STATE_WAITING;
+	this._junction_focus_index = 0;
+	this._is_gameover = false;
 
 	// 黒いもや
 	this.black_mist = new BlackMist(this);
@@ -48,18 +62,31 @@ var SceneEventTalkWithMobu = function(core) {
 	this._serif = new ScenarioManager();
 
 	// セリフの位置
-	this.serif_position_of_mobu = new ObjectPoint(this);
-	this.serif_position_of_mobu.setPosition(this.width - 300, 200);
+	this.serif_position_of_murasa = new ObjectPoint(this);
+	this.serif_position_of_murasa.setPosition(this.width - 400, 200);
+	this.serif_position_of_kogasa = new ObjectPoint(this);
+	this.serif_position_of_kogasa.setPosition(this.width - 200, 200);
+	this.serif_position_of_kyoko = new ObjectPoint(this);
+	this.serif_position_of_kyoko.setPosition(this.width - 300, 200);
 	this.serif_position_of_koishi = new ObjectPoint(this);
 	this.serif_position_of_koishi.setPosition(300, 200);
-};
-Util.inherit(SceneEventTalkWithMobu, base_scene);
+	this.serif_position_of_koishi_junction = new ObjectPoint(this);
+	this.serif_position_of_koishi_junction.setPosition(450, 550);
 
-SceneEventTalkWithMobu.prototype.init = function(){
+};
+Util.inherit(SceneEventPlayDoll, base_scene);
+
+SceneEventPlayDoll.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
-	this._state = STATE_TALKING;
-	this._anime_num = 1;
+	// シーンの各種キャラ
+	this.chr = new SS(this);
+	this.koishi = new SS(this);
+
+
+	this._state = STATE_WAITING;
+	this._junction_focus_index = 0;
+	this._is_gameover = false;
 
 	// フェードインする
 	this.core.scene_manager.setFadeIn(120, "black");
@@ -71,62 +98,79 @@ SceneEventTalkWithMobu.prototype.init = function(){
 	this.core.audio_loader.stopBGM();
 
 
-	this.initMobu();
+	this.initChr();
 	this.initKoishi();
-	this.addObjects([this.mobu, this.koishi]);
+	this.removeAllObject();
+	this.addObjects([this.chr, this.koishi]);
 
 	this.black_mist.init();
 
 	this._serif.init([
-		{"chara": "koishi","serif":"ねえ、人形ごっこしましょ！", "option": {"is_next": true}},
-		{"chara": "koishi","serif":"お気に入りの子供をかわいがるの", "option": {"is_next": true}},
-		{"chara": "mobu","serif":"やぁよ", "option": {"is_next": false}},
-		{"chara": "mobu","serif":"私たちいまから縄跳びで遊ぶの", "option": {"is_next": false}},
-		{"chara": "koishi","serif":"そうなの？", "option": {"is_next": false}},
-		{"chara": "koishi","serif":"それより人形遊びのほうが賢いし素敵よ", "option": {"is_next": false}},
-		{"chara": "koishi","serif":"なわとびなんて汚くなるし人生を無駄にしてる", "option": {"is_next": false}},
-		{"chara": "koishi","serif":"頭おかしいのね！", "option": {"is_next": false}},
-		{"chara": "mobu","serif":"なんでそんなこと言われなきゃならないの？", "option": {"is_next": false}},
-		{"chara": "mobu","serif":"バカにしに来たわけ？", "option": {"is_next": false}},
-		{"chara": "koishi","serif":"もういい", "option": {"is_next": true}},
+		{"chara": null,"serif":"", "option": {"is_next": 1}},
+		{"chara": "murasa","serif":"あ！"},
+		{"chara": "kyoko","serif":"............."},
+		{"chara": null,"serif":"", "option": {"is_next": 2}},
+		{"chara": null,"serif":"", "option": {"is_next": 3}},
+		{"chara": "koishi","serif":"............."},
+		{"chara": null,"serif":"", "option": {"is_next": 4}},
+		{"chara": "kogasa","serif":"変なの"},
+		{"chara": null,"serif":"", "option": {"is_next": 5}},
+		{"chara": null,"serif":"", "option": {"is_next": 6}},
+		{"chara": "koishi","serif":"ねえ、にんぎょうごっこしましょ！"},
+		{"chara": "murasa","serif":"なにそれえ"},
+		{"chara": "koishi","serif":"見てて"},
+		{"chara": null,"serif":"", "option": {"is_next": 7}},
+		{"chara": null,"serif":"", "option": {"is_next": 8}},
+		{"chara": "murasa","serif":"そんなのつまんないじゃん", "junction": [
+			"あいてのきもちになる",
+			"もうおうちにかえる"
+		]},
+		{"type": "junction_serif", "serifs": [
+			[
+				{"chara": null,"serif":"", "option": {"is_next": "select_01_1"}},
+			],
+			[
+				{"chara": null,"serif":"", "option": {"is_next": "select_02_1", "setGameover": true}},
+				{"chara": "koishi","serif":"ふん！"},
+				{"chara": "koishi","serif":"この楽しさがわからないなんて"},
+				{"chara": "koishi","serif":"なんて馬鹿なのかしら"},
+				{"chara": "murasa","serif":"なんなの？"},
+				{"chara": "murasa","serif":"あっち行ってよ！"},
+				{"chara": "koishi","serif":"こんなとこくるんじゃなかったわ"},
+				{"chara": null,"serif":"", "option": {"is_next": "select_02_2"}},
+				{"chara": "murasa","serif":"へんなこ！"},
+			],
+		]},
 	]);
+
+	this._serif.start();
+	this._state = STATE_TALKING;
 };
 
-SceneEventTalkWithMobu.prototype.initMobu = function(){
-	this.mobu.x(this.width/2);
-	this.mobu.y(this.height/2);
+SceneEventPlayDoll.prototype.initChr = function(){
+	this.chr.x(this.width/2);
+	this.chr.y(this.height/2);
 
 	var anime_config = {
-		default: jsonDataOfMobu1,
+		default: jsonDataOfChr1,
 	};
-	anime_config[1] = jsonDataOfMobu1;
-	anime_config[2] = jsonDataOfMobu2;
-	anime_config[3] = jsonDataOfMobu3;
-	anime_config[4] = jsonDataOfMobu4;
-	anime_config[5] = jsonDataOfMobu5;
+	anime_config[1] = jsonDataOfChr1;
+	anime_config[2] = jsonDataOfChr2;
+	anime_config[3] = jsonDataOfChr3;
+	anime_config[4] = jsonDataOfChr4;
+	anime_config[5] = jsonDataOfChr5;
+	anime_config[6] = jsonDataOfChr6;
+	anime_config[7] = jsonDataOfChr7;
+	anime_config[8] = jsonDataOfChr8;
+	anime_config.select_01_1 = jsonDataOfChrSelect01_1;
+	anime_config.select_02_1 = jsonDataOfChrSelect02_1;
+	anime_config.select_02_2 = jsonDataOfChrSelect02_2;
 
-	this.mobu.setAnime(anime_config);
-	this.mobu.init();
+	this.chr.setAnime(anime_config);
+	this.chr.init();
 
-	var self = this;
-	this.mobu.playAnimationOnce(this._anime_num, function () {
-		self._serif.start();
-		// アニメ進行
-		if (self._serif.getCurrentOption().is_next) {
-			self._anime_num++;
-
-			if (self._anime_num === 2 || self._anime_num === 3 || self._anime_num === 4) {
-				self.koishi.playAnimationInfinity(self._anime_num);
-				self.mobu.playAnimationInfinity(self._anime_num);
-			}
-			else {
-				self.koishi.playAnimationOnce(self._anime_num);
-				self.mobu.playAnimationOnce(self._anime_num);
-			}
-		}
-	});
 };
-SceneEventTalkWithMobu.prototype.initKoishi = function(){
+SceneEventPlayDoll.prototype.initKoishi = function(){
 	this.koishi.x(this.width/2);
 	this.koishi.y(this.height/2);
 
@@ -138,24 +182,32 @@ SceneEventTalkWithMobu.prototype.initKoishi = function(){
 	anime_config[3] = jsonDataOfKoishi3;
 	anime_config[4] = jsonDataOfKoishi4;
 	anime_config[5] = jsonDataOfKoishi5;
+	anime_config[6] = jsonDataOfKoishi6;
+	anime_config[7] = jsonDataOfKoishi7;
+	anime_config[8] = jsonDataOfKoishi8;
+	anime_config.select_01_1 = jsonDataOfKoishiSelect01_1;
+	anime_config.select_02_1 = jsonDataOfKoishiSelect02_1;
+	anime_config.select_02_2 = jsonDataOfKoishiSelect02_2;
+
 
 	this.koishi.setAnime(anime_config);
 	this.koishi.init();
 
-	this.koishi.playAnimationOnce(this._anime_num);
 };
 
 
 
 
-SceneEventTalkWithMobu.prototype.beforeDraw = function(){
+SceneEventPlayDoll.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
-
 	if(this._state === STATE_TALKING) {
 		this._updateInTalking();
 	}
 	else if(this._state === STATE_WAITING) {
 		// 何もしない
+	}
+	else if(this._state === STATE_JUNCTION) {
+		this._updateInJunction();
 	}
 	else {
 		throw new Error("illegal talking state: " + this._state);
@@ -164,7 +216,7 @@ SceneEventTalkWithMobu.prototype.beforeDraw = function(){
 	this.black_mist.beforeDraw();
 };
 // Nフレーム後に次のセリフへ
-SceneEventTalkWithMobu.prototype._gotoNextSerif = function(choice){
+SceneEventPlayDoll.prototype._gotoNextSerif = function(choice){
 	var self = this;
 
 	self._state = STATE_WAITING;
@@ -175,26 +227,59 @@ SceneEventTalkWithMobu.prototype._gotoNextSerif = function(choice){
 		// セリフを送る
 		self._serif.next(choice);
 
-		// アニメ進行
-		if (self._serif.getCurrentOption().is_next) {
-			self._anime_num++;
-			if (self._anime_num === 2 || self._anime_num === 3 || self._anime_num === 4) {
-				self.koishi.playAnimationInfinity(self._anime_num);
-				self.mobu.playAnimationInfinity(self._anime_num);
-			}
-			else {
-				self.koishi.playAnimationOnce(self._anime_num);
-				self.mobu.playAnimationOnce(self._anime_num);
-			}
+		if (self._serif.getCurrentOption().setGameover){
+			self._is_gameover = true;
 		}
 
+		// アニメ進行
+		var is_next = self._serif.getCurrentOption().is_next;
+		if (is_next) {
+			if (is_next === 3 || is_next === 4 || is_next === 6 || is_next === 8 || is_next === "select_02_1") {
+				self.koishi.playAnimationInfinity(is_next);
+				self.chr.playAnimationInfinity(is_next);
+				self._serif.next(choice);
+			}
+			else {
+				self.koishi.playAnimationOnce(is_next);
+				self.chr.playAnimationOnce(is_next, function () {
+					if (!self._serif.isEnd()) {
+						self._gotoNextSerif(choice);
+					}
+				});
+			}
+
+		}
 
 	}, NEXT_TO_SERIF_WAITING_COUNT);
+};
+// 会話 選択肢の処理
+SceneEventPlayDoll.prototype._updateInJunction = function(){
+	// Zボタン 選択肢の決定
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		// Nフレーム後に次のセリフへ
+		this._gotoNextSerif(this._junction_focus_index);
+
+		// 選んでる選択肢のリセット
+		this._junction_focus_index = 0;
+	}
+	// ↑ボタン 選択肢の移動
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP)) {
+		this._junction_focus_index--;
+	}
+	// ↓ボタン 選択肢の移動
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN)) {
+		this._junction_focus_index++;
+	}
+
+	// 選択肢が上下はみ出ないように
+	var junction_list = this._serif.getCurrentJunctionList();
+	this._junction_focus_index = Util.clamp(this._junction_focus_index, 0, junction_list.length - 1);
 };
 
 
 
-SceneEventTalkWithMobu.prototype.draw = function(){
+
+SceneEventPlayDoll.prototype.draw = function(){
 
 	this._showBackground();
 	// キャラのアニメの表示
@@ -208,44 +293,64 @@ SceneEventTalkWithMobu.prototype.draw = function(){
 	else if(this._state === STATE_WAITING) {
 		// 何も表示しない
 	}
+	else if(this._state === STATE_JUNCTION) {
+		// 会話 選択肢 表示
+		this._showJunction();
+	}
 
 	this.black_mist.draw();
 };
 // 会話中の処理
-SceneEventTalkWithMobu.prototype._updateInTalking = function(){
+SceneEventPlayDoll.prototype._updateInTalking = function(){
 	// Z ボタンが押されたら
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
-			this._state = STATE_WAITING;
-
-			this._anime_num++;
-			this.koishi.playAnimationOnce(this._anime_num);
-			this.mobu.playAnimationOnce(this._anime_num);
-			var self = this;
-			self.core.time_manager.setTimeout(function () {
-				self.core.scene_manager.changeScene("stage", "chapter1_07");
-			}, 60);
+			if (this._is_gameover) {
+				// 間違い
+				this.core.save_manager.event.resetPlayedEvent("event_for_chapter1_playdoll");
+				this.core.scene_manager.changeScene("title");
+			}
+			else {
+				// 正解
+				this.core.scene_manager.changeScene("stage", "chapter1_07");
+			}
 		}
 		// 会話 継続中
 		else {
-			// Nフレーム後に次のセリフへ
-			this._gotoNextSerif();
+			// 会話への回答の選択肢があるなら、次のセリフには進めずに
+			// 選択肢を表示する
+			if(this._serif.isCurrentSerifExistsJunction()) {
+				this._state = STATE_JUNCTION;
+			}
+			// 次のセリフへ
+			else {
+				// Nフレーム後に次のセリフへ
+				this._gotoNextSerif();
+			}
 		}
 	}
 };
 
-SceneEventTalkWithMobu.prototype._showMessage = function(){
+SceneEventPlayDoll.prototype._showMessage = function(){
 	// 現在喋っているオブジェクト名(こいしの場合は koishi)
 	var chara_name = this._serif.getCurrentCharaNameByPosition();
-
 	// オブジェクトを取得
 	var obj;
 	if (chara_name === "koishi") {
 		obj = this.serif_position_of_koishi;
 	}
+	else if (chara_name === "kogasa") {
+		obj = this.serif_position_of_kogasa;
+	}
+	else if (chara_name === "murasa") {
+		obj = this.serif_position_of_murasa;
+	}
+	else if (chara_name === "kyoko") {
+		obj = this.serif_position_of_kyoko;
+	}
 	else {
-		obj = this.serif_position_of_mobu;
+		return;
 	}
 
 	// セリフ取得
@@ -256,23 +361,31 @@ SceneEventTalkWithMobu.prototype._showMessage = function(){
 	if (!lines.length) return;
 
 	var ctx = this.core.ctx;
-	var fukidashi = this.core.image_loader.getImage('fukidashi_dark');
+	var fukidashi = this.core.image_loader.getImage('fukidashi');
 	DrawSerif.drawWindow(obj, ctx, fukidashi, lines, width, height);
 	DrawSerif.drawText(obj, ctx, lines, width, height);
 };
 
+// 会話 選択肢 表示
+SceneEventPlayDoll.prototype._showJunction = function() {
+	if(!this._serif.isStart()) return;
 
+	// こいしを取得
+	var obj = this.serif_position_of_koishi_junction;
+	// 表示
+	var ctx = this.core.ctx;
+	var junction_off = this.core.image_loader.getImage('junction_off');
+	var junction_on  = this.core.image_loader.getImage('junction_on');
 
+	var junction_list = this._serif.getCurrentJunctionList();
+	DrawSerif.drawJunction(obj, ctx, junction_off, junction_on, junction_list, this._junction_focus_index);
+};
 
-
-
-
-
-SceneEventTalkWithMobu.prototype._showBackground = function(){
+SceneEventPlayDoll.prototype._showBackground = function(){
 	var ctx = this.core.ctx;
 	ctx.save();
 
-	var background = this.core.image_loader.getImage("chapter1-07-event-bg-001");
+	var background = this.core.image_loader.getImage("chapter1-07-bg-001");
 
 	ctx.drawImage(background,
 		0,
@@ -288,8 +401,8 @@ SceneEventTalkWithMobu.prototype._showBackground = function(){
 	ctx.restore();
 };
 // black_mist が参照する
-SceneEventTalkWithMobu.prototype.isUsingEye = function(){
+SceneEventPlayDoll.prototype.isUsingEye = function(){
 	return false;
 };
 
-module.exports = SceneEventTalkWithMobu;
+module.exports = SceneEventPlayDoll;
