@@ -89,6 +89,10 @@ SsAnimeBase.prototype.playAnimationOnce = function(name, _callback){
 
 		ss.setEndCallBack(callback);
 	}
+	else {
+		ss.setEndCallBack(null);
+	}
+
 	this.ss.setLoop(1);
 	this.changeAnimation(name);
 };
