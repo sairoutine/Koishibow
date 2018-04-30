@@ -191,10 +191,12 @@ SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
 	return this.getFrameNo();
 };
 SsAnimeBase.prototype._getAnimeImage = function(frame_no){
+	/*
 	// キャッシュ
 	if(this._cache_canvas[this.current_anime] && this._cache_canvas[this.current_anime][frame_no]) {
 		return this._cache_canvas[this.current_anime][frame_no];
 	}
+	*/
 
 	// create canvas
 	var canvas = document.createElement('canvas');
@@ -209,6 +211,7 @@ SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 		canvas = CreateDarkerImage.exec(canvas, this.darker());
 	}
 
+	/*
 	// キャッシュに保存
 	if(!this._cache_canvas[this.current_anime]) {
 		this._cache_canvas[this.current_anime] = [];
@@ -218,6 +221,7 @@ SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 	if (this.frame_count % 2 === 0) {
 		this._cache_canvas[this.current_anime][frame_no] = canvas;
 	}
+	*/
 
 	return canvas;
 };
