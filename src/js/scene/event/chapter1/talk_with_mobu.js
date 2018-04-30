@@ -73,6 +73,7 @@ SceneEventTalkWithMobu.prototype.init = function(){
 
 	this.initMobu();
 	this.initKoishi();
+	this.removeAllObject();
 	this.addObjects([this.mobu, this.koishi]);
 
 	this.black_mist.init();
