@@ -25,7 +25,38 @@ ObjectStaticImage.prototype.setData = function(data) {
 
 // こいしに触られたときの処理
 ObjectStaticImage.prototype.onTouchByKoishi = function() {
+	// フィールドから該当のオブジェクトを削除
+	this._deleteFromField();
+
 	// イベント発生
 	this.core.scene_manager.changeScene(this._click_event);
 };
+
+ObjectStaticImage.prototype._deleteFromField = function() {
+	this.core.save_manager.piece.setPieceData(
+		this.scene.root().getFieldData().key,
+		this.no,
+		"is_delete",
+		true
+	);
+};
+
+ObjectStaticImage.prototype._isDeleted = function() {
+	return this.core.save_manager.piece.getPieceData(
+		this.scene.root().getFieldData().key,
+		this.no,
+		"is_delete"
+	);
+};
+
+ObjectStaticImage.prototype.isShow = function() {
+	return !this._isDeleted();
+};
+
+ObjectStaticImage.prototype.isCollision = function() {
+	return !this._isDeleted();
+};
+
+
+
 module.exports = ObjectStaticImage;
