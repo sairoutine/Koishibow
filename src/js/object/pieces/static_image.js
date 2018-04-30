@@ -70,9 +70,12 @@ ObjectStaticImage.prototype.setData = function(data) {
 		this._scale = data.scale;
 	}
 };
-
+ObjectStaticImage.prototype.isShow = function(){
+	return true;
+};
 ObjectStaticImage.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+	if(!this.isShow()) return;
 
 	var ctx = this.core.ctx;
 	var image = this._image;
