@@ -46,6 +46,8 @@ SceneSubStageMenu.prototype.init = function(){
 
 	this._show_unable_to_use_message = 0;
 
+	this.removeAllObject();
+
 	this._setupMenuItems();
 	this.addObjects(flatten(this.menu_item_list));
 
