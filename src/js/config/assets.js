@@ -65,6 +65,14 @@ AssetsConfig.images = {
 	"chapter1_07_event_mobu3":  "./image/chapter1/event/talk_with_mobu/chapter1_07_event_mobu3.png",
 	"chapter1_07_event_koishi": "./image/chapter1/event/talk_with_mobu/chapter1_07_event_koishi.png",
 
+	// 1-7 遊びを提案する
+	"chapter1-07-event-02-chr_obj_01":  "./image/chapter1/event/playdoll/chapter1-07-event-02-chr_obj_01.png",
+	"chapter1_07_event2_obj_01":  "./image/chapter1/event/playdoll/chapter1_07_event2_obj_01.png",
+	"chapter1_07_event_02_kogasa":  "./image/chapter1/event/playdoll/chapter1_07_event_02_kogasa.png",
+	"chapter1_07_event_02_koishi":  "./image/chapter1/event/playdoll/chapter1_07_event_02_koishi.png",
+	"chapter1_07_event_02_kyoko":  "./image/chapter1/event/playdoll/chapter1_07_event_02_kyoko.png",
+	"chapter1_07_event_02_murasa":  "./image/chapter1/event/playdoll/chapter1_07_event_02_murasa.png",
+
 	// ジャーナル画像
 	"journal001":  "./image/journal/001.png",
 	"journal002":  "./image/journal/002.png",
