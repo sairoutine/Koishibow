@@ -87,7 +87,7 @@ ObjectBase.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);
 	area.init();
 	area.setPosition(this.x(), this.y());
-	if (this._position_type === "lying") {
+	if (this._position_type === "lying" || !this.isCollision()) {
 		area.setSize(0, 0);
 	}
 	else {
