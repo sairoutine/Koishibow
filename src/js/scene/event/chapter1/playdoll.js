@@ -308,7 +308,7 @@ SceneEventPlayDoll.prototype._updateInTalking = function(){
 		if(this._serif.isEnd()) {
 			if (this._is_gameover) {
 				// 間違い
-				this.core.save_manager.event.resetPlayedEvent("event_for_chapter1_playdoll");
+				this.core.save_manager.reload();
 				this.core.scene_manager.changeScene("title");
 			}
 			else {
