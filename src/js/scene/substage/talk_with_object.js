@@ -25,6 +25,11 @@ var SceneSubStageObjectTalk = function(core) {
 			useItem: function (core, item_id) {
 				return core.save_manager.item.deleteItem(item_id) ? 0 : 1;
 			},
+			// アイテムを持っていれば
+			existsItem: function (core, item_id) {
+				return core.save_manager.item.existsItem(item_id) ? 0 : 1;
+			},
+
 		}
 	});
 
@@ -89,6 +94,21 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 		if (this._serif.getCurrentOption().getItem) {
 			this.core.save_manager.item.addItem(this._serif.getCurrentOption().getItem);
 		}
+
+		// 1枚絵に遷移
+		if (this._serif.getCurrentOption().showPicture) {
+			// セリフ終わり
+			this.root().changeSubScene(this._serif.getCurrentOption().showPicture);
+			return;
+		}
+
+		// 別のシーンへ遷移
+		if (this._serif.getCurrentOption().scene) {
+			// セリフ終わり
+			this.core.scene_manager.changeScene(this._serif.getCurrentOption().scene);
+			return;
+		}
+
 
 
 		// 会話がもう終わりなら
