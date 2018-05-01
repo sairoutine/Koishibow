@@ -23,7 +23,9 @@ ObjectAnimeEventImage.prototype.setData = function(data) {
 	this._back.click_event = data.action_back_event;
 };
 
-
+ObjectAnimeEventImage.prototype.isCheckInTouchArea = function(){
+	return this.scene.root().isUsingEye();
+};
 // 3rd eye 使用時のみ当たり判定を行う
 ObjectAnimeEventImage.prototype.isCollision = function(point) {
 	return this.scene.root().isUsingEye();
