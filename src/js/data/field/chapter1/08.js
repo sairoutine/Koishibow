@@ -95,15 +95,29 @@ module.exports = {
 						}},
 					],
 					[
-						// 1-16
-						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-						{"chara": "koishi",        "exp": "back", "serif":"あなた、どうしておくちがあかないの？"},
-						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-						{"chara": "koishi",        "exp": "back", "serif":"............"},
-						{"chara": "koishi",        "exp": "back", "serif":"ねえ、あそばないの？"},
-						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-						{"chara": "koishi",        "exp": "back", "serif":"ねえ？"},
-						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+						{"type": "criteria_serif", "criteria": "useItem", "arguments": ["09"], "serifs": [
+							[
+								{"chara": I, "exp": "kyoko-reaction_05", "serif":"うわ！"},
+								{"chara": I, "exp": "kyoko-reaction_06", "serif":"これ飛ぶ奴だよね！"},
+								{"chara": I, "exp": "kyoko-reaction_07", "serif":"わーっ......"},
+								{"chara": I, "exp": "kyoko-reaction_07", "serif":"これどこまで飛ぶかなあ"},
+								{"chara": I, "exp": "kyoko-reaction_07", "serif":"やってみようよ", "option": {
+									"showPicture": "picture_play_for_chapter1-08",
+								}},
+							],
+							[
+								// 1-16
+								{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+								{"chara": "koishi",        "exp": "back", "serif":"あなた、どうしておくちがあかないの？"},
+								{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+								{"chara": "koishi",        "exp": "back", "serif":"............"},
+								{"chara": "koishi",        "exp": "back", "serif":"ねえ、あそばないの？"},
+								{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+								{"chara": "koishi",        "exp": "back", "serif":"ねえ？"},
+								{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+							],
+
+						]}
 					]
 				]}
 			],

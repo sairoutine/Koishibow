@@ -36,13 +36,26 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "小傘",
 			serif: [
-				// 1-24
-				{"chara": I, "exp": "kogasa-reaction_01", "serif":"あら"},
-				{"chara": I, "exp": "kogasa-reaction_01", "serif":"あなたも私が気になるの？"},
-				{"chara": "koishi",        "exp": "back", "serif":"え？"},
-				{"chara": "koishi",        "exp": "back", "serif":"なにが？"},
-				{"chara": I, "exp": "kogasa-reaction_02", "serif":"わたしがすきなんでしょ？"},
-				{"chara": "koishi",        "exp": "back", "serif":"？"},
+				// 水をためたじょうろ
+				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["04"], "serifs": [
+					[
+						{"chara": I, "exp": "kogasa-reaction_03", "serif":"！"},
+						{"chara": I, "exp": "kogasa-reaction_02", "serif":"みずあそびするの？"},
+						{"chara": I, "exp": "kogasa-reaction_01", "serif":"わたしそれ得意だから！"},
+						{"chara": I, "exp": "kogasa-reaction_01", "serif":"みてて！みてて！", "option": {
+							"showPicture": "picture_play_for_chapter1-10",
+						}},
+					],
+					[
+						// 1-24
+						{"chara": I, "exp": "kogasa-reaction_01", "serif":"あら"},
+						{"chara": I, "exp": "kogasa-reaction_01", "serif":"あなたも私が気になるの？"},
+						{"chara": "koishi",        "exp": "back", "serif":"え？"},
+						{"chara": "koishi",        "exp": "back", "serif":"なにが？"},
+						{"chara": I, "exp": "kogasa-reaction_02", "serif":"わたしがすきなんでしょ？"},
+						{"chara": "koishi",        "exp": "back", "serif":"？"},
+					]
+				]}
 			],
 			x: 955*2/3, y: 429*2/3,
 			scale: 2/3,

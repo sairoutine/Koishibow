@@ -16,7 +16,11 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "生垣(秘密基地)",
-			serif: null,
+			serif: [
+				{"chara": "koishi","serif":null, "option": {
+					getItem: "12",
+				}},
+			],
 			x: 720*2/3, y: 428*2/3,
 			scale: 2/3,
 			anime1: "chapter1-09-obj-02-obj01",
@@ -26,22 +30,31 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
-
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "村紗",
 			serif: [
-				// 1-21
-				{"chara": I, "exp": "murasa-reaction_01", "serif":"何"},
-				{"chara": "koishi",        "exp": "back", "serif":"えっ？"},
-				{"chara": I, "exp": "murasa-reaction_01", "serif":"なんだよ"},
-				{"chara": I, "exp": "murasa-reaction_02", "serif":"用がないならあっちいけよ"},
-				{"chara": "koishi",        "exp": "back", "serif":"あそばないの？"},
-				{"chara": I, "exp": "murasa-reaction_01", "serif":"は？"},
-				{"chara": I, "exp": "murasa-reaction_01", "serif":"もう遊んでるだろ"},
-				{"chara": "koishi",        "exp": "back", "serif":"............"},
-				{"chara": I, "exp": "murasa-reaction_02", "serif":"なんだよ！あっちいけよ！"},
+				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["12"], "serifs": [
+					[
+						{"chara": I, "exp": "murasa-reaction_01", "serif":"", "option": {
+							"scene": "event_for_chapter1_play_with_murasa",
+						}},
+					],
+					[
+						// 1-21
+						{"chara": I, "exp": "murasa-reaction_01", "serif":"何"},
+						{"chara": "koishi",        "exp": "back", "serif":"えっ？"},
+						{"chara": I, "exp": "murasa-reaction_01", "serif":"なんだよ"},
+						{"chara": I, "exp": "murasa-reaction_02", "serif":"用がないならあっちいけよ"},
+						{"chara": "koishi",        "exp": "back", "serif":"あそばないの？"},
+						{"chara": I, "exp": "murasa-reaction_01", "serif":"は？"},
+						{"chara": I, "exp": "murasa-reaction_01", "serif":"もう遊んでるだろ"},
+						{"chara": "koishi",        "exp": "back", "serif":"............"},
+						{"chara": I, "exp": "murasa-reaction_02", "serif":"なんだよ！あっちいけよ！"},
+					],
+				]},
+
 			],
 			x: 1198*2/3, y: 588*2/3,
 			scale: 2/3,
