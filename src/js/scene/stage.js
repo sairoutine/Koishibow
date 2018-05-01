@@ -105,7 +105,7 @@ var SceneStage = function(core) {
 	this.addSubScene("event_chapter0_satori_encounter_begin", new SceneSubStageEventChapter0SatoriEncounterBegin(core));
 
 	this.addSubScene("picture_play_for_chapter1-08", new SceneSubStagePicturePlay(core).setArgs("picture_chapter1-08-illust-01"));
-	this.addSubScene("picture_play_for_chapter1-09", new SceneSubStagePicturePlay(core).setArgs("picture_chapter1-09-illust-01"));
+	this.addSubScene("picture_play_for_chapter1-10", new SceneSubStagePicturePlay(core).setArgs("picture_chapter1-10-illust-01"));
 };
 Util.inherit(SceneStage, base_scene);
 
