@@ -38,6 +38,7 @@ var ObjectItem = require('../object/pieces/item');
 var ObjectFieldChange = require('../object/pieces/field_change');
 var ObjectAnimeDeadKoishi = require('../object/pieces/anime_dead_koishi');
 var ObjectStaticEventImage = require('../object/pieces/static_event_image');
+var ObjectFaucet = require('../object/pieces/faucet');
 
 var FieldMap = require('../config/field');
 
@@ -494,6 +495,10 @@ SceneStage.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.STATIC_EVENT_IMAGE_TYPE) {
 			object = new ObjectStaticEventImage(this);
 		}
+		else if (data.type === CONSTANT.FAUCET_TYPE) {
+			object = new ObjectFaucet(this);
+		}
+
 		else {
 			throw new Error ("Unknown object type error: " + data.type);
 		}
