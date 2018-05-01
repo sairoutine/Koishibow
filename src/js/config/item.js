@@ -7,7 +7,7 @@ Item["01"] = {
 	type: CONSTANT.ITEM.EYEDROPS,
 	name: "目薬",
 	image_name: "item_01",
-	description: "使うと目の充血がやわらぐ",
+	description: "おめめがよくなるお薬。ちょっとこわい",
 };
 Item["02"] = {
 	type: CONSTANT.ITEM.NON_USABLE,
