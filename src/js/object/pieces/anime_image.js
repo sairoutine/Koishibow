@@ -22,6 +22,9 @@ var ObjectAnimeImage = function(core) {
 
 	// 裏オブジェクトのパラメータ
 	this._back = {
+		// クリック時のセリフ
+		serif: null,
+
 		// BGM
 		bgm_name: null,
 
@@ -38,6 +41,9 @@ var ObjectAnimeImage = function(core) {
 
 	// 表オブジェクトで既にクリック済かどうか
 	this._is_clicked_in_front = false;
+
+	// 表オブジェクトで既にクリック済かどうか
+	this._is_clicked_in_back = false;
 
 	// 裏オブジェクト中かどうか
 	this._is_in_back = false;
@@ -62,6 +68,9 @@ ObjectAnimeImage.prototype.init = function(){
 
 	// 裏オブジェクトのパラメータ
 	this._back = {
+		// クリック時のセリフ
+		serif: null,
+
 		// BGM
 		bgm_name: null,
 
@@ -75,6 +84,9 @@ ObjectAnimeImage.prototype.init = function(){
 
 	// 表オブジェクトで既にクリック済かどうか
 	this._is_clicked_in_front = false;
+
+	// 表オブジェクトで既にクリック済かどうか
+	this._is_clicked_in_back = false;
 
 	// 裏オブジェクト中かどうか
 	this._is_in_back = false;
@@ -123,6 +135,10 @@ ObjectAnimeImage.prototype.setData = function(data) {
 	// 表オブジェクト クリック時のSE
 	this._front.sound_name  = data.sound_name;
 
+	// 裏オブジェクト クリック時のセリフ
+	this._back.serif = data.serif_back;
+
+
 	// 裏オブジェクト中のBGM
 	this._back.bgm_name  = data.bgm_back;
 
@@ -147,9 +163,13 @@ ObjectAnimeImage.prototype.setData = function(data) {
 
 
 ObjectAnimeImage.prototype.isCollision = function(point) {
-	// サードアイ使用中ならクリックしても調べられないので何もしない
 	// 一度既にクリックしていれば、二度目はクリックできない
-	return !this.scene.root().isUsingEye() && !this._is_clicked_in_front;
+	if (this.scene.root().isUsingEye()) {
+		return !this._is_clicked_in_back;
+	}
+	else {
+		return !this._is_clicked_in_front;
+	}
 };
 
 // 3rd eye の光と当たり判定する
@@ -264,11 +284,24 @@ ObjectAnimeImage.prototype.collisionHeight = function(){
 };
 
 ObjectAnimeImage.prototype.isCheckInTouchArea = function(){
-	return this.ss.hasFrontClickedAnime() || this._front.action_name || this._front.sound_name || this._front.serif;
+	if (this.scene.root().isUsingEye()) {
+		return !!this._back.serif;
+	}
+	else {
+		return this.ss.hasFrontClickedAnime() || this._front.action_name || this._front.sound_name || this._front.serif;
+	}
 };
 
 // こいしに触られたときの処理
 ObjectAnimeImage.prototype.onTouchByKoishi = function() {
+	if (this.scene.root().isUsingEye()) {
+		this._onTouchByKoishiInBack();
+	}
+	else {
+		this._onTouchByKoishiInFront();
+	}
+};
+ObjectAnimeImage.prototype._onTouchByKoishiInFront = function() {
 	// こいしのアクション
 	this.scene.root().koishi.actionByObject(this._front.action_name || "wait");
 
@@ -294,6 +327,19 @@ ObjectAnimeImage.prototype.onTouchByKoishi = function() {
 	// クリック済に状態変更
 	this._is_clicked_in_front = true;
 };
+
+ObjectAnimeImage.prototype._onTouchByKoishiInBack = function() {
+	// 会話するオブジェクトなので、クリックしたら会話する
+	if (this._back.serif) {
+		this.scene.root().changeSubScene("talk_with_object", this._back.serif, this);
+	}
+
+	// クリック済に状態変更
+	this._is_clicked_in_back = true;
+};
+
+
+
 
 // 会話で発生したリアクション
 ObjectAnimeImage.prototype.actionByObject = function(action_name) {
