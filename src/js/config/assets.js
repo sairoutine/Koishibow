@@ -73,6 +73,11 @@ AssetsConfig.images = {
 	"chapter1_07_event_02_kyoko":  "./image/chapter1/event/playdoll/chapter1_07_event_02_kyoko.png",
 	"chapter1_07_event_02_murasa":  "./image/chapter1/event/playdoll/chapter1_07_event_02_murasa.png",
 
+	// 1-9 村紗と遊ぶ
+	"chapter1-09-event-01-chr-murasa":  "./image/chapter1/event/play_with_murasa/chapter1-09-event-01-chr-murasa.png",
+	"chapter1-09-event-01-obj01":  "./image/chapter1/event/play_with_murasa/chapter1-09-event-01-obj01.png",
+	"chapter1-09-event-01-koishi":  "./image/chapter1/event/play_with_murasa/chapter1-09-event-01-koishi.png",
+
 	// ジャーナル画像
 	"journal001":  "./image/journal/001.png",
 	"journal002":  "./image/journal/002.png",
@@ -245,6 +250,9 @@ AssetsConfig.images = {
 	// 1枚絵
 	"picture_get_hat":   "./image/picture/illust_01.png",
 	"picture_use_eyedrops":   "./image/picture/illust_02.png",
+	"picture_chapter1-08-illust-01":   "./image/picture/chapter1-08-illust-01.png",
+	"picture_chapter1-09-illust-01":   "./image/picture/chapter1-09-illust-01.png",
+	"picture_chapter1-10-illust-01":   "./image/picture/chapter1-10-illust-01.png",
 
 	// 不要
 	//paper_clip:  "./image/ui-common-frame-paper_clip.png",
