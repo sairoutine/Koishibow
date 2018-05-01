@@ -60,4 +60,19 @@ StorageItem.prototype.deleteItem = function(target_item_id) {
 	return is_delete;
 };
 
+// アイテムの存在チェック
+StorageItem.prototype.existsItem = function(target_item_id) {
+	var list = this.getItemList();
+
+	for (var i = 0, len = list.length; i < len; i++) {
+		var item_id = list[i];
+
+		if (item_id === target_item_id) {
+			return true;
+		}
+	}
+
+	return false;
+};
+
 module.exports = StorageItem;
