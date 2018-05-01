@@ -57,9 +57,19 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			type: CONSTANT.ANIME_IMAGE_TYPE,
+			type: CONSTANT.FAUCET_TYPE,
 			name: "蛇口",
-			serif: null,
+			serif: [
+				{"chara": "koishi", "exp": "back", "serif":"みずがでない"},
+			],
+			serif_back: [
+				{"chara": I, "serif":"こら！"},
+				{"chara": I, "serif":"詰まってるのにだめでしょ！"},
+				{"chara": I, "serif":"あふれちゃって……"},
+				{"chara": I, "serif":"みんなおぼれちゃうでしょ！"},
+				{"chara": I, "serif":"ちゃんと掃除して頂戴！"},
+			],
+
 			x:384*2/3, y:572*2/3,
 			scale: 2/3,
 			anime1: "chapter1-09-obj-01-obj01",
