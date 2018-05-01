@@ -15,12 +15,14 @@ var SceneLeavingTitle = require('./scene/leaving_title');
 var SceneHowto = require('./scene/howto');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
+var SceneMovie = require('./hakurei').scene.movie;
 var SceneOpeningMovie = require('./scene/opening_movie');
 var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
 var SceneEventForChapter0Last            = require('./scene/event/chapter0/last');
 var SceneEventForTrialLast               = require('./scene/event/trial_last');
 var SceneEventForChapter1TalkWithMobu    = require('./scene/event/chapter1/talk_with_mobu');
 var SceneEventForChapter1PlayDoll        = require('./scene/event/chapter1/playdoll');
+var SceneEventForChapter1PlayWithMurasa  = require('./scene/event/chapter1/play_with_murasa');
 
 var Game = function(canvas) {
 	core.apply(this, arguments);
@@ -31,6 +33,7 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("leaving_title", new SceneLeavingTitle(this));
 	this.scene_manager.addScene("howto", new SceneHowto(this));
 	this.scene_manager.addScene("stage", new SceneStage(this));
+	this.scene_manager.addScene("movie", new SceneMovie(this));
 
 	// chapter 開始時のmovie
 	this.scene_manager.addScene("opening_movie_chapter0", new SceneOpeningMovie(this).setArgs("chapter0"));
@@ -45,6 +48,7 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
 	this.scene_manager.addScene("event_for_chapter1_talk_with_mobu", new SceneEventForChapter1TalkWithMobu(this));
 	this.scene_manager.addScene("event_for_chapter1_playdoll", new SceneEventForChapter1PlayDoll(this));
+	this.scene_manager.addScene("event_for_chapter1_play_with_murasa", new SceneEventForChapter1PlayWithMurasa(this));
 	this.scene_manager.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
 
 	// セーブデータ
