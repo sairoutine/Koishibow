@@ -82,6 +82,10 @@ ObjectAnimeImage.prototype.init = function(){
 	this._width  = null;
 	this._height = null;
 
+
+	// 何回でもタッチできるかどうか
+	this._loop = false;
+
 	// 表オブジェクトで既にクリック済かどうか
 	this._is_clicked_in_front = false;
 
@@ -158,11 +162,17 @@ ObjectAnimeImage.prototype.setData = function(data) {
 		this._height = data.height;
 	}
 
+	if (data.loop) {
+		this._loop = true;
+	}
+
 	//console.log(data.name + " width: " + this.collisionWidth() + ", height: " + this.collisionHeight() + ",");
 };
 
 
 ObjectAnimeImage.prototype.isCollision = function(point) {
+	if (this._loop) return true;
+
 	// 一度既にクリックしていれば、二度目はクリックできない
 	if (this.scene.root().isUsingEye()) {
 		return !this._is_clicked_in_back;
