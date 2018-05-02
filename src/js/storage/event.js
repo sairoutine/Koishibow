@@ -34,17 +34,4 @@ StorageEvent.prototype.setPlayedEvent = function(event_name) {
 	this.set("played_event_map", played_event_map);
 };
 
-// イベントを未再生に設定
-StorageEvent.prototype.resetPlayedEvent = function(event_name) {
-	var played_event_map = this.get("played_event_map");
-
-	if(!played_event_map) {
-		played_event_map = {};
-	}
-
-	played_event_map[event_name] = false;
-
-	this.set("played_event_map", played_event_map);
-};
-
 module.exports = StorageEvent;
