@@ -29,6 +29,11 @@ var SceneSubStageObjectTalk = function(core) {
 			existsItem: function (core, item_id) {
 				return core.save_manager.item.existsItem(item_id) ? 0 : 1;
 			},
+			// id のセリフを再生済かどうか
+			isPlayed: function (core, id) {
+				return core.save_manager.scenario.getPlayedCount(id) ? 0 : 1;
+			},
+
 			// max_num まで1ずつ上昇し、それを超えると最初に戻る
 			circulate: function (core, id, max_num) {
 				var index = core.save_manager.scenario.getPlayedCount(id);
@@ -37,8 +42,16 @@ var SceneSubStageObjectTalk = function(core) {
 
 				return index % max_num;
 			},
+			// max_num まで1ずつ上昇し、それを超えると最大値を返し続ける
+			limit: function (core, id, max_num) {
+				var index = core.save_manager.scenario.getPlayedCount(id);
 
+				if (index >= max_num) return max_num;
 
+				core.save_manager.scenario.incrementPlayedCount(id);
+
+				return index;
+			},
 		}
 	});
 
