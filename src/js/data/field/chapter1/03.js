@@ -88,6 +88,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "てゐ",
+			loop: true, // 何回でもタッチできる
 			serif: [
 				// こわいおめんを持っているか否か
 				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["10"], "serifs": [
@@ -102,12 +103,28 @@ module.exports = {
 						}},
 					],
 					[
-						// 1-4
-						{"chara": I,        "exp": "tewi-reaction_01", "serif":"なんだい！"},
-						{"chara": "koishi", "exp": "look_front", "serif":"なにしてるの？"},
-						{"chara": I,        "exp": "back", "serif":"なにもしてないんだよ"},
-						{"chara": "koishi", "exp": "back", "serif":"へんなの"},
-						{"chara": I,        "exp": "back", "serif":"みせものじゃないんだ、いきな！"},
+						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_03-" + I + "limit-01", 1], "serifs": [
+							[
+								// 1-4
+								{"chara": I,        "exp": "tewi-reaction_01", "serif":"なんだい！"},
+								{"chara": "koishi", "exp": "look_front", "serif":"なにしてるの？"},
+								{"chara": I,        "exp": "back", "serif":"なにもしてないんだよ"},
+								{"chara": "koishi", "exp": "back", "serif":"へんなの"},
+								{"chara": I,        "exp": "back", "serif":"みせものじゃないんだ、いきな！"},
+							],
+
+							[
+								{"chara": I,        "exp": "tewi-reaction_02", "serif":"おまえひまなのか？"},
+								{"chara": I,        "exp": "tewi-reaction_02", "serif":"あのなあ"},
+								{"chara": "koishi", "exp": "back", "serif":"なに？"},
+								{"chara": I,        "exp": "tewi-wait", "serif":"おまえやることないのか？"},
+								{"chara": "koishi", "exp": "back", "serif":"えっと、あるよ"},
+								{"chara": I,        "exp": "tewi-reaction_01", "serif":"じゃーとっとと行きな！"},
+								{"chara": "koishi", "exp": "back", "serif":"でも、わたしなにをしなきゃいけないんだっけ"},
+								{"chara": I,        "exp": "tewi-reaction_03", "serif":"わたしが知るもんか！"},
+								{"chara": "koishi", "exp": "back", "serif":"……"},
+							],
+						]}
 					]
 				]}
 			],

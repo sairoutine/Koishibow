@@ -55,10 +55,12 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "響子",
+			loop: true,
 			serif: [
 				// みどりいろのぐねぐねを持っているか否か
 				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["07"], "serifs": [
 					[
+						{"id": "chapter1_08-" + I + "-_useItem-07", "save": true},
 						// 1-17
 						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
 						{"chara": I, "exp": "kyoko-reaction_02", "serif":"！！", "option": {
@@ -106,15 +108,47 @@ module.exports = {
 								}},
 							],
 							[
-								// 1-16
-								{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-								{"chara": "koishi",        "exp": "back", "serif":"あなた、どうしておくちがあかないの？"},
-								{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-								{"chara": "koishi",        "exp": "back", "serif":"............"},
-								{"chara": "koishi",        "exp": "back", "serif":"ねえ、あそばないの？"},
-								{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-								{"chara": "koishi",        "exp": "back", "serif":"ねえ？"},
-								{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_08-" + I + "-_useItem-07"], "serifs": [
+									[
+										{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_08-" + I + "limit-01", 1], "serifs": [
+											[
+												{"chara": "koishi",        "exp": "back", "serif":"ねえ、なにしてるの？"},
+												{"chara": I, "exp": "kyoko-reaction_03", "serif":"えー？"},
+												{"chara": I, "exp": "kyoko-reaction_03", "serif":"えっとねー"},
+												{"chara": I, "exp": "kyoko-reaction_03", "serif":"先生がやりなさいって言ったやつ！"},
+												{"chara": I, "exp": "kyoko-reaction_02", "serif":"わたしたちけんかいっつもするの！"},
+												{"chara": I, "exp": "kyoko-reaction_02", "serif":"だから先生がみんなで遊べるからって言ったの"},
+												{"chara": I, "exp": "kyoko-wait", "serif":"これだったらいいんだって！"},
+												{"chara": "koishi",        "exp": "back", "serif":"楽しいの？"},
+												{"chara": I, "exp": "kyoko-wait", "serif":"そんなにたのしくないよ！"},
+												{"chara": I, "exp": "kyoko-wait", "serif":"でもみんなこれしかやらないから"},
+												{"chara": I, "exp": "kyoko-reaction_03", "serif":"わたしはおしゃべり禁止だし……"},
+												{"chara": I, "exp": "kyoko-reaction_01", "serif":"だれもおしゃべりしてくれないから……"},
+											],
+											[
+												{"chara": I, "exp": "kyoko-reaction_03", "serif":"むかしね、みんなあかちゃんだったでしょ！"},
+												{"chara": "koishi",        "exp": "back", "serif":"そうなの？"},
+												{"chara": I, "exp": "kyoko-reaction_03", "serif":"あかちゃんはいいよねー\nしゃべったら\nほめてくれるんだもん！"},
+												{"chara": I, "exp": "kyoko-reaction_02", "serif":"ねえねえ、空の上には極楽があるって\n先生はいうんだけどさあ！"},
+												{"chara": "koishi",        "exp": "back", "serif":"うん"},
+												{"chara": I, "exp": "kyoko-reaction_02", "serif":"ぜったいうそだよねー！"},
+												{"chara": I, "exp": "kyoko-reaction_02", "serif":"だってみえないんだもん"},
+												{"chara": I, "exp": "kyoko-reaction_02", "serif":"お空に飛べたらぶつかっちゃうしね"},
+											],
+										]},
+									],
+									[
+										// 1-16
+										{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+										{"chara": "koishi",        "exp": "back", "serif":"あなた、どうしておくちがあかないの？"},
+										{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+										{"chara": "koishi",        "exp": "back", "serif":"............"},
+										{"chara": "koishi",        "exp": "back", "serif":"ねえ、あそばないの？"},
+										{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+										{"chara": "koishi",        "exp": "back", "serif":"ねえ？"},
+										{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+									],
+								]}
 							],
 
 						]}

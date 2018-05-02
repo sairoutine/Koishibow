@@ -34,6 +34,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "村紗",
+			loop: true,
 			serif: [
 				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["12"], "serifs": [
 					[
@@ -42,16 +43,24 @@ module.exports = {
 						}},
 					],
 					[
-						// 1-21
-						{"chara": I, "exp": "murasa-reaction_01", "serif":"何"},
-						{"chara": "koishi",        "exp": "back", "serif":"えっ？"},
-						{"chara": I, "exp": "murasa-reaction_01", "serif":"なんだよ"},
-						{"chara": I, "exp": "murasa-reaction_02", "serif":"用がないならあっちいけよ"},
-						{"chara": "koishi",        "exp": "back", "serif":"あそばないの？"},
-						{"chara": I, "exp": "murasa-reaction_01", "serif":"は？"},
-						{"chara": I, "exp": "murasa-reaction_01", "serif":"もう遊んでるだろ"},
-						{"chara": "koishi",        "exp": "back", "serif":"............"},
-						{"chara": I, "exp": "murasa-reaction_02", "serif":"なんだよ！あっちいけよ！"},
+						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_09-" + I + "limit-01", 1], "serifs": [
+							[
+								// 1-21
+								{"chara": I, "exp": "murasa-reaction_01", "serif":"何"},
+								{"chara": "koishi",        "exp": "back", "serif":"えっ？"},
+								{"chara": I, "exp": "murasa-reaction_01", "serif":"なんだよ"},
+								{"chara": I, "exp": "murasa-reaction_02", "serif":"用がないならあっちいけよ"},
+								{"chara": "koishi",        "exp": "back", "serif":"あそばないの？"},
+								{"chara": I, "exp": "murasa-reaction_01", "serif":"は？"},
+								{"chara": I, "exp": "murasa-reaction_01", "serif":"もう遊んでるだろ"},
+								{"chara": "koishi",        "exp": "back", "serif":"............"},
+								{"chara": I, "exp": "murasa-reaction_02", "serif":"なんだよ！あっちいけよ！"},
+							],
+							[
+								{"chara": I, "exp": "murasa-reaction_02", "serif":"なんだよ！あっちいけよ！"},
+								{"chara": "koishi",        "exp": "back", "serif":"............"},
+							]
+						]},
 					],
 				]},
 
@@ -73,7 +82,8 @@ module.exports = {
 			type: CONSTANT.FAUCET_TYPE,
 			name: "蛇口",
 			serif: [
-				{"chara": "koishi", "exp": "back", "serif":"みずがでない"},
+				{"chara": "koishi", "exp": "back", "serif":"あれ？"},
+				{"chara": "koishi", "exp": "back", "serif":"水でないなー"},
 			],
 			serif_back: [
 				{"chara": I, "serif":"こら！"},
