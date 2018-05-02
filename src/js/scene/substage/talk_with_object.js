@@ -29,6 +29,15 @@ var SceneSubStageObjectTalk = function(core) {
 			existsItem: function (core, item_id) {
 				return core.save_manager.item.existsItem(item_id) ? 0 : 1;
 			},
+			// max_num まで1ずつ上昇し、それを超えると最初に戻る
+			circulate: function (core, id, max_num) {
+				var index = core.save_manager.scenario.getPlayedCount(id);
+
+				core.save_manager.scenario.incrementPlayedCount(id);
+
+				return index % max_num;
+			},
+
 
 		}
 	});
