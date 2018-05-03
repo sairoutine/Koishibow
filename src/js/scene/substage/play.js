@@ -4,6 +4,7 @@ var base_scene = require('./base');
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 var SelectedCursor = require('../../object/ui/selected_cursor');
 var ObjectFieldChange = require('../../object/pieces/field_change');
+var ChapterMap = require('../../config/chapter');
 
 var Util = require('../../hakurei').util;
 
@@ -45,6 +46,10 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 			// 最後にゲームオーバーになったフィールドを保存
 			var field_data = this.root().getFieldData();
 			this.core.save_manager.player.setLastGameoverField(field_data.key);
+
+			// 開始フィールドをchapterの最初に設定する
+			var field_name = ChapterMap["chapter" + field_data.chapter].first_field;
+			this.core.save_manager.player.setCurrentField(field_name);
 
 			this.core.scene_manager.setFadeOut(0);
 
