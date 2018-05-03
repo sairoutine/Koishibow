@@ -58,6 +58,20 @@ module.exports = {
 			action_name: "touch",
 			sound_name: null
 		},
+
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "目薬",
+			image: "eyedrops",
+			x: 320,
+			y: 410,
+			height: 330,
+			scale: 2/3,
+			item_id: "01",
+			position_type: "lying",
+		},
+
 		{
 			no: ++I,
 			image: "chapter1-02-obj-03",
