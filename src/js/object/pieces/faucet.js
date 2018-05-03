@@ -58,7 +58,19 @@ ObjectAnimeEventImage.prototype.onTouchByKoishi = function() {
 		// 空のじょうろを持っている(空のじょうろを削除)
 		if (this.core.save_manager.item.deleteItem("03")) {
 			// 水が入る
-			this.core.save_manager.item.addItem("04");
+			// NOTE: 会話で行うので不要
+			//this.core.save_manager.item.addItem("04");
+
+			this.scene.root().changeSubScene("talk_with_object", [
+				{"chara": this.no, "serif":"掃除してくださったのね！"},
+				{"chara": this.no, "serif":"お道具も取りに行ってくださったのね！"},
+				{"chara": "koishi", "serif":"えっとね"},
+				{"chara": "koishi", "serif":"これね"},
+				{"chara": "koishi", "serif":"貸してくれたの"},
+				{"chara": "koishi", "serif":"お姉さんが貸してくれたの！", "option": {
+					getItem: "04", // 水が入る
+				}},
+			], this);
 		}
 		// 空のじょうろを持っていない
 		else {
