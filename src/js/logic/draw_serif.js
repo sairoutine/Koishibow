@@ -188,11 +188,11 @@ DrawSerif._getMessagePos = function(obj){
 	var x,y;
 
 	if(is_show_right) {
-		x = obj.globalRightX();
+		x = obj.globalRightX() - 100;
 		y = obj.globalUpY();
 	}
 	else {
-		x = obj.globalLeftX();
+		x = obj.globalLeftX() + 100;
 		y = obj.globalUpY();
 	}
 
