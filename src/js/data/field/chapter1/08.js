@@ -59,6 +59,7 @@ module.exports = {
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_08-" + I + "-talk01"], "serifs": [
 					[
+						{"id": "chapter1_10-secretBase-02", "save": true},
 						{"chara": I, "serif":"だいきらいなのに離れたくないもの、なーんだ？"},
 					],
 					[

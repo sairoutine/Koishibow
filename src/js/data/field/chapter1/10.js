@@ -51,6 +51,7 @@ module.exports = {
 					],
 					*/
 					[
+						{"id": "chapter1_10-secretBase-01", "save": true},
 						{"chara": I, "serif":"こわいけどやさしいもの、なーんだ？"},
 					],
 					[

@@ -16,13 +16,39 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "生垣(秘密基地)",
-			serif: [
-				{"chara": "koishi","serif":null, "option": {
-					getItem: "12",
-				}},
+			loop: true,
+			serif: null,
+			serif_back: [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_10-secretBase-01"], "serifs": [
+					[
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_10-secretBase-02"], "serifs": [
+							// 2つの合言葉を知っている
+							[
+								{"chara": I, "serif":"合言葉は？", "junction": ["先生","お母さん","友達","兄弟"]},
+								{"chara": I, "serif":"へえ、気が合うな......"},
+								{"chara": I, "serif":"中のものが欲しいのか？"},
+								{"chara": "koishi", "serif":"うん"},
+								{"chara": I, "serif":"中のものが欲しいのか？"},
+								{"chara": I, "serif":"そら、あの子の忘れ物だ", "option": {
+									getItem: "12",
+								}},
+								{"chara": I, "serif":"じゃあな"},
+							],
+							[
+								{"chara": I, "serif":"合言葉は？"},
+								{"chara": "koishi", "serif":"知らない"},
+							],
+						]}
+					],
+					[
+						{"chara": I, "serif":"合言葉は？"},
+						{"chara": "koishi", "serif":"知らない"},
+					],
+				]},
 			],
 			x: 720*2/3, y: 428*2/3,
 			scale: 2/3,
+			width: 100,
 			anime1: "chapter1-09-obj-02-obj01",
 			anime2: "chapter1-09-obj-02-obj02",
 			anime3: "chapter1-09-obj-02-obj01",
