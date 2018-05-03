@@ -276,6 +276,14 @@ AssetsConfig.sounds = {
 		path: "./sound/got_item/common.ogg",
 		volume: 1.0,
 	},
+	got_item_boombox:    {
+		path: "./sound/got_item/boombox.ogg",
+		volume: 1.0,
+	},
+	got_item_radder:    {
+		path: "./sound/got_item/radder.ogg",
+		volume: 1.0,
+	},
 	open_menu:    {
 		path: "./sound/open_menu.ogg",
 		volume: 1.0,
@@ -302,6 +310,26 @@ AssetsConfig.sounds = {
 	},
 	use_eyedrops:    {
 		path: "./sound/use_eyedrops.ogg",
+		volume: 1.0,
+	},
+	fall:    {
+		path: "./sound/fall.ogg",
+		volume: 1.0,
+	},
+	gameover1:    {
+		path: "./sound/gameover/go1.ogg",
+		volume: 1.0,
+	},
+	gameover2:    {
+		path: "./sound/gameover/go2.ogg",
+		volume: 1.0,
+	},
+	gameover3:    {
+		path: "./sound/gameover/go3.ogg",
+		volume: 1.0,
+	},
+	gameover4:    {
+		path: "./sound/gameover/go4.ogg",
 		volume: 1.0,
 	},
 
@@ -391,6 +419,22 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter0/mansion_corridor3/open_and_falldown.ogg",
 		volume: 1.0,
 	},
+	"chapter1-event-play_wipe_out_common":    {
+		path: "./sound/chapter1/event/play_wipe_out_common.ogg",
+		volume: 1.0,
+	},
+	"chapter1-event-play_wipe_in_kyoko":    {
+		path: "./sound/chapter1/event/play_wipe_in_kyoko.ogg",
+		volume: 1.0,
+	},
+	"chapter1-event-play_wipe_in_kogasa":    {
+		path: "./sound/chapter1/event/play_wipe_in_kogasa.ogg",
+		volume: 1.0,
+	},
+	"chapter1-event-play_wipe_in_murasa":    {
+		path: "./sound/chapter1/event/play_wipe_in_murasa.ogg",
+		volume: 1.0,
+	},
 	"chapter1-01-change":    {
 		path: "./sound/chapter1/01/change.ogg",
 		volume: 1.0,
@@ -404,7 +448,26 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter1/04/standup_kosuzu.ogg",
 		volume: 1.0,
 	},
-
+	"chapter1-03-sound_bucket":    {
+		path: "./sound/chapter1/03/sound_bucket.ogg",
+		volume: 1.0,
+	},
+	"chapter1-08-suspended":    {
+		path: "./sound/chapter1/08/suspended.ogg",
+		volume: 1.0,
+	},
+	"chapter1-09-twist_faucet":    {
+		path: "./sound/chapter1/09/twist_faucet.ogg",
+		volume: 1.0,
+	},
+	"chapter1-09-growl":    {
+		path: "./sound/chapter1/09/growl.ogg",
+		volume: 1.0,
+	},
+	"chapter1-10-flow_sand":    {
+		path: "./sound/chapter1/10/flow_sand.ogg",
+		volume: 1.0,
+	},
 	touch:    {
 		path: "./sound/touch.ogg",
 		volume: 1.0,
@@ -488,7 +551,7 @@ AssetsConfig.bgms = {
 	},
 	field3: {
 		path: "./bgm/field3.ogg",
-		loopStart: 0*60 + 0 + 0.512,
+		//loopStart: 0*60 + 0 + 0.512,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
 	},
@@ -504,6 +567,12 @@ AssetsConfig.bgms = {
 		path: "./bgm/chapter0/event/encounter_satori.ogg",
 		volume: 0.6,
 	},
+	"chapter1-event-talk_with_mobu": {
+		path: "./bgm/chapter1/event/talk_with_mobu.ogg",
+		volume: 0.6,
+	},
+
+
 	"chapter0-mansion_corridor1-tricycle": {
 		path: "./bgm/chapter0/mansion_corridor1/tricycle.ogg",
 		loopStart: 0*60 + 0 + 0.000,
@@ -529,8 +598,6 @@ AssetsConfig.bgms = {
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
 	},
-
-
 	"chapter1-04-call_phone": {
 		path: "./bgm/chapter1/04/call_phone.ogg",
 		loopStart: 0*60 + 0 + 0.000,
@@ -543,8 +610,12 @@ AssetsConfig.bgms = {
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
 	},
-
-
+	"chapter1-09-flows_water": {
+		path: "./bgm/chapter1/09/flows_water.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
 };
 
 AssetsConfig.fonts = {
