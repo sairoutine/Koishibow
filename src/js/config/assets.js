@@ -448,6 +448,12 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter1/04/standup_kosuzu.ogg",
 		volume: 1.0,
 	},
+	"chapter1-04-receive_phone":    {
+		path: "./sound/chapter1/04/receive_phone.ogg",
+		volume: 1.0,
+	},
+
+
 	"chapter1-03-sound_bucket":    {
 		path: "./sound/chapter1/03/sound_bucket.ogg",
 		volume: 1.0,

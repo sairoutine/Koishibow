@@ -49,6 +49,7 @@ ObjectAnimeEventImage.prototype.onTouchByKoishi = function() {
 		}
 		// くまでを持っていない
 		else {
+			this.core.audio_loader.playSound("chapter1-09-twist_faucet");
 			base_object.prototype.onTouchByKoishi.apply(this, arguments);
 		}
 	}
@@ -126,6 +127,11 @@ ObjectAnimeEventImage.prototype._changeRemovedLeavesAnime = function() {
 		lighted_end_anime: AnimeMap[this.noleaves_anime.anime6],
 	});
 	this.ss.init();
+	// ステージのBGM開始フレームに合わせること
+	var self = this;
+	this.core.time_manager.setTimeout(function () {
+		self.core.audio_loader.addBGM("chapter1-09-flows_water");
+	}, 60+1);
 };
 
 

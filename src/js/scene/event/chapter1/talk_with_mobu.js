@@ -68,7 +68,12 @@ SceneEventTalkWithMobu.prototype.init = function(){
 	this.core.scene_manager.setFadeOut(120, "black");
 
 	// BGM 止める
-	this.core.audio_loader.stopBGM();
+	//this.core.audio_loader.stopBGM();
+
+	this.core.audio_loader.changeBGM("chapter1-event-talk_with_mobu");
+
+
+	this.core.audio_loader.playSound("chapter0-mansion_corridor2-event_in");
 
 
 	this.initMobu();
@@ -226,6 +231,11 @@ SceneEventTalkWithMobu.prototype._updateInTalking = function(){
 			this.mobu.playAnimationOnce(this._anime_num);
 			var self = this;
 			self.core.time_manager.setTimeout(function () {
+				// イベント終わりのSE再生
+				self.core.audio_loader.playSound("chapter0-mansion_corridor2-event_out");
+				// BGM をフェードアウト
+				self.core.audio_loader.fadeOutBGM(2);
+
 				self.core.scene_manager.changeScene("stage", "chapter1_07");
 			}, 60);
 		}

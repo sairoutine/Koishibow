@@ -133,7 +133,7 @@ module.exports = {
 			anime5: "chapter1-04-obj-02-obj05",
 			anime6: "chapter1-04-obj-02-obj06",
 			action_name: "look_front",
-			sound_name: null,
+			sound_name: "chapter1-04-receive_phone",
 			bgm_back: "chapter1-04-call_phone",
 		},
 

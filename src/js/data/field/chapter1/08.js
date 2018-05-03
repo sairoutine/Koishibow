@@ -29,6 +29,7 @@ module.exports = {
 
 			action_name: null,
 			sound_name: null,
+			sound_back: "chapter1-08-suspended",
 			position_type: "lying",
 		},
 

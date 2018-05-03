@@ -53,8 +53,8 @@ module.exports = {
 			anime2: "chapter1-09-obj-02-obj02",
 			anime3: "chapter1-09-obj-02-obj01",
 
-			action_name: null,
-			sound_name: null,
+			action_name: "look_front",
+			sound_name: "chapter1-09-growl",
 		},
 		{
 			no: ++I,

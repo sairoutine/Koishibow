@@ -41,6 +41,16 @@ SceneSubStageGameover.prototype.init = function(){
 		self._state = 1;
 	});
 
+	// キュルキュル音
+	self.core.audio_loader.playSound("gameover1");
+	// 膝をつく音
+	this.core.time_manager.setTimeout(function () {
+		self.core.audio_loader.playSound("gameover2");
+	}, 80);
+	// 途切れる音
+	this.core.time_manager.setTimeout(function () {
+		self.core.audio_loader.playSound("gameover3");
+	}, 162); // 2.7秒後(キュルキュル音のあと)
 };
 
 
@@ -58,6 +68,8 @@ SceneSubStageGameover.prototype.beforeDraw = function(){
 		}
 	}
 	else if (this._state === 2) {
+		// 暗転後 倒れこむ音
+		this.core.audio_loader.playSound("gameover4");
 		this.core.scene_manager.changeScene("title");
 	}
 };

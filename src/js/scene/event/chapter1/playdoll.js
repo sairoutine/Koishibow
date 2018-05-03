@@ -94,8 +94,8 @@ SceneEventPlayDoll.prototype.init = function(){
 	// イベント再生後はフェードアウトする
 	this.core.scene_manager.setFadeOut(120, "black");
 
-	// BGM 止める
-	this.core.audio_loader.stopBGM();
+	// BGM 止めない
+	//this.core.audio_loader.stopBGM();
 
 
 	this.initChr();
@@ -119,7 +119,7 @@ SceneEventPlayDoll.prototype.init = function(){
 		{"chara": "koishi","serif":"ねえ、にんぎょうごっこしましょ！"},
 		{"chara": "murasa","serif":"なにそれえ"},
 		{"chara": "koishi","serif":"見てて"},
-		{"chara": null,"serif":"", "option": {"is_next": 7}},
+		{"chara": null,"serif":"", "option": {"is_next": 7, "sound": "fall"}},
 		{"chara": null,"serif":"", "option": {"is_next": 8}},
 		{"chara": "murasa","serif":"そんなのつまんないじゃん", "junction": [
 			"あいてのきもちになる",
@@ -230,6 +230,15 @@ SceneEventPlayDoll.prototype._gotoNextSerif = function(choice){
 		if (self._serif.getCurrentOption().setGameover){
 			self._is_gameover = true;
 		}
+
+		if (self._serif.getCurrentOption().sound){
+			// fall だけ 50フレーム再生を遅らせる
+			self.core.time_manager.setTimeout(function () {
+				self.core.audio_loader.playSound(self._serif.getCurrentOption().sound);
+			}, 50);
+		}
+
+
 
 		// アニメ進行
 		var is_next = self._serif.getCurrentOption().is_next;

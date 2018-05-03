@@ -30,14 +30,28 @@ SceneSubStageGetHat.prototype.setArgs = function(picture_name){
 SceneSubStageGetHat.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
+	if(this.frame_count === 1) {
+		// 小傘
+		if (this._picture_name === "picture_chapter1-10-illust-01") {
+			this.core.audio_loader.playSound("chapter1-event-play_wipe_in_kogasa");
+		}
+		// 響子
+		else if (this._picture_name === "picture_chapter1-08-illust-01") {
+			this.core.audio_loader.playSound("chapter1-event-play_wipe_in_kyoko");
+		}
+		else {
+			// ここにはこないはず
+		}
+	}
+
 	if(this.frame_count <= 15) {
 		this._pos_x += this.root().width/15;
 	}
-	else if(this.frame_count === 30) {
-		this.core.audio_loader.playSound("touch");
-	}
-	else if(this.frame_count <= 90) {
+	else if(this.frame_count < 90) {
 		// 何もしない
+	}
+	else if(this.frame_count === 90) {
+		this.core.audio_loader.playSound("chapter1-event-play_wipe_out_common");
 	}
 	else if(this.frame_count <= 105) {
 		this._pos_x += this.root().width/15;

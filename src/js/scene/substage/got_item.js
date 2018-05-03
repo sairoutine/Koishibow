@@ -30,7 +30,8 @@ SceneSubStageGotItem.prototype.init = function(item_piece){
 	// 獲得したアイテム オブジェクト
 	this._piece = item_piece;
 
-	this.core.audio_loader.playSound("got_item_common");
+	var sound_name = ItemConfig[item_piece.getItemId()].sound_name;
+	this.core.audio_loader.playSound(sound_name);
 };
 
 SceneSubStageGotItem.prototype.beforeDraw = function(){

@@ -28,6 +28,7 @@ module.exports = {
 
 			action_name: null,
 			sound_name: null,
+			sound_back: "chapter1-10-flow_sand",
 			position_type: "lying",
 		},
 

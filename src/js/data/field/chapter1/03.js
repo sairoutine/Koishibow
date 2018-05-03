@@ -55,8 +55,9 @@ module.exports = {
 			],
 			x:887*2/3, y:715*2/3,
 			scale: 2/3,
-			action_name: null,
-			sound_name: null
+			action_name: "look_bottom",
+			sound_name: "chapter1-03-sound_bucket",
+
 		},
 		{
 			no: ++I,
@@ -67,7 +68,7 @@ module.exports = {
 			scale: 2/3,
 			anime1: "chapter1-03-obj-05-obj01",
 			action_name: null,
-			sound_name: null,
+			sound_name: null
 		},
 		{
 			no: ++I,

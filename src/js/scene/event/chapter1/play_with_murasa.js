@@ -281,14 +281,22 @@ SceneEventPlayDoll.prototype._gotoNextSerif = function(choice){
 SceneEventPlayDoll.prototype._updateInPicture = function(){
 	this.frame_count_of_pic++;
 
+	if(this.frame_count_of_pic === 1) {
+		this.core.audio_loader.playSound("chapter1-event-play_wipe_in_murasa");
+	}
+
+
 	if(this.frame_count_of_pic <= 15) {
 		this._pos_x += this.root().width/15;
 	}
 	else if(this.frame_count_of_pic === 30) {
 		this.core.audio_loader.playSound("touch");
 	}
-	else if(this.frame_count_of_pic <= 90) {
+	else if(this.frame_count_of_pic < 90) {
 		// 何もしない
+	}
+	else if(this.frame_count === 90) {
+		this.core.audio_loader.playSound("chapter1-event-play_wipe_out_common");
 	}
 	else if(this.frame_count_of_pic <= 105) {
 		this._pos_x += this.root().width/15;
