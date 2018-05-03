@@ -368,7 +368,7 @@ SceneEventPlayDoll.prototype._updateInTalking = function(){
 			}
 			else {
 				// 正解
-				this.core.scene_manager.changeScene("movie", "./movie/chapter0.mp4", "event_for_trial_last");
+				this.core.scene_manager.changeScene("movie", "./movie/chapter1ed.mp4", "event_for_trial_last");
 			}
 		}
 		// 会話 継続中
