@@ -42,7 +42,7 @@ var SceneEventEncounterSatori = function(core) {
 
 	// セリフの位置
 	this.serif_position = new ObjectPoint(this);
-	this.serif_position.setPosition(this.width - 120, 400);
+	this.serif_position.setPosition(this.width - 350, 150);
 };
 Util.inherit(SceneEventEncounterSatori, base_scene);
 
@@ -216,24 +216,18 @@ SceneEventEncounterSatori.prototype._showMessage = function(){
 	var lines = this._serif.getCurrentPrintedSentences();
 	if (!lines.length) return;
 
+	var width_num = this._serif.getCurrentMaxLengthLetters();
+	var height_num = this._serif.getCurrentSentenceNum();
+
 	// メッセージウィンドウ表示
-	this._showMessageWindow(lines);
-
-	// メッセージ表示
-	this._showText(lines);
-};
-
-// セリフウィンドウ表示
-SceneEventEncounterSatori.prototype._showMessageWindow = function(lines){
 	var ctx = this.core.ctx;
 	var fukidashi = this.core.image_loader.getImage('fukidashi_gray');
-	DrawSerif.drawWindow(this.serif_position, ctx, fukidashi, lines);
+	DrawSerif.drawWindow(this.serif_position, ctx, fukidashi, lines, width_num, height_num);
+
+	// メッセージ表示
+	DrawSerif.drawText(this.serif_position, ctx, lines, width_num, height_num);
 };
 
-SceneEventEncounterSatori.prototype._showText = function(lines) {
-	var ctx = this.core.ctx;
-	DrawSerif.drawText(this.serif_position, ctx, lines);
-};
 
 SceneEventEncounterSatori.prototype.isSerifAutoStart = function() {
 	return false;
