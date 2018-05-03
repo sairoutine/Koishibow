@@ -94,6 +94,7 @@ module.exports = {
 				{"chara": "koishi", "exp": "back", "serif":"水でないなー"},
 			],
 			serif_back: [
+				{"id": "chapter1_09-faucet-talk-1", "save": true},
 				{"chara": I, "serif":"こら！"},
 				{"chara": I, "serif":"詰まってるのにだめでしょ！"},
 				{"chara": I, "serif":"あふれちゃって……"},

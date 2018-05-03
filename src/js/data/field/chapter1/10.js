@@ -37,16 +37,37 @@ module.exports = {
 			name: "小傘",
 			loop: true,
 			serif_back: [
-				{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"わたしはゴミじゃない！"},
-				{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"私は捨てられていない！"},
-				{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"パパもママも好きって言ったもん"},
-				{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"ほんとだもん！"},
-				{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"迎えに来てくれるもん！"},
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_10-" + I + "-talk01"], "serifs": [
+					/*
+					[
+						{"chara": I, "exp": "kogasa-ura_reaction_02", "serif":"こわいけどやさしいもの、なーんだ？"},
+					],
+					[
+						{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"わたしはゴミじゃない！"},
+						{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"私は捨てられていない！"},
+						{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"パパもママも好きって言ったもん"},
+						{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"ほんとだもん！"},
+						{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"迎えに来てくれるもん！"},
+					],
+					*/
+					[
+						{"chara": I, "serif":"こわいけどやさしいもの、なーんだ？"},
+					],
+					[
+						{"chara": I, "serif":"わたしはゴミじゃない！"},
+						{"chara": I, "serif":"私は捨てられていない！"},
+						{"chara": I, "serif":"パパもママも好きって言ったもん"},
+						{"chara": I, "serif":"ほんとだもん！"},
+						{"chara": I, "serif":"迎えに来てくれるもん！"},
+					],
+
+				]}
 			],
 			serif: [
 				// 水をためたじょうろ
 				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["04"], "serifs": [
 					[
+						{"id": "chapter1_10-" + I + "-_useItem-04", "save": true},
 						{"chara": I, "exp": "kogasa-reaction_03", "serif":"！"},
 						{"chara": I, "exp": "kogasa-reaction_02", "serif":"みずあそびするの？"},
 						{"chara": I, "exp": "kogasa-reaction_01", "serif":"わたしそれ得意だから！"},
@@ -55,26 +76,49 @@ module.exports = {
 						}},
 					],
 					[
-						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_10-" + I + "limit-01", 2], "serifs": [
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_10-" + I + "-_useItem-04"], "serifs": [
 							[
-								// 1-24
-								{"chara": I, "exp": "kogasa-reaction_01", "serif":"あら"},
-								{"chara": I, "exp": "kogasa-reaction_01", "serif":"あなたも私が気になるの？"},
-								{"chara": "koishi",        "exp": "back", "serif":"え？"},
-								{"chara": "koishi",        "exp": "back", "serif":"なにが？"},
-								{"chara": I, "exp": "kogasa-reaction_02", "serif":"わたしがすきなんでしょ？"},
-								{"chara": "koishi",        "exp": "back", "serif":"？"},
+								{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_10-" + I + "limit-01", 1], "serifs": [
+									[
+										{"chara": I, "exp": "kogasa-reaction_02", "serif":"どうしたの？"},
+										{"chara": I, "exp": "kogasa-reaction_02", "serif":"ああ、あの子？"},
+										{"chara": I, "exp": "kogasa-reaction_04", "serif":"あのこちょっと怖いから……"},
+										{"chara": I, "exp": "kogasa-reaction_04", "serif":"だっていっつも怒ってるんだモン"},
+
+										{"chara": I, "exp": "kogasa-reaction_04", "serif":"みんなで遊ぶのはいいけど\nあの子と一緒にいるの嫌なの"},
+									],
+									[
+										{"id": "chapter1_10-" + I + "-talk01", "save": true},
+										{"chara": "koishi",        "exp": "back", "serif":"ひつみきちってなんなの？"},
+										{"chara": I, "exp": "kogasa-reaction_02", "serif":"秘密基地？"},
+										{"chara": I, "exp": "kogasa-reaction_01", "serif":"友達だけが入れる\n秘密の部屋があるの！"},
+										{"chara": I, "exp": "kogasa-reaction_04", "serif":"うーん教えようかな\nどうしようかな"},
+									],
+								]},
 							],
 							[
-								{"chara": I, "exp": "kogasa-reaction_01", "serif":"みんな私が大好きなの！"},
-								{"chara": I, "exp": "kogasa-reaction_01", "serif":"あなたも好きだよね！"},
-							],
-							[
-								{"chara": "koishi",        "exp": "back", "serif":"ねえ、なんでそんなこと言うの？"},
-								{"chara": I, "exp": "kogasa-reaction_02", "serif":"なにが？"},
-								{"chara": "koishi",        "exp": "back", "serif":"・・・・・・"},
+								{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_10-" + I + "limit-02", 2], "serifs": [
+									[
+										// 1-24
+										{"chara": I, "exp": "kogasa-reaction_01", "serif":"あら"},
+										{"chara": I, "exp": "kogasa-reaction_01", "serif":"あなたも私が気になるの？"},
+										{"chara": "koishi",        "exp": "back", "serif":"え？"},
+										{"chara": "koishi",        "exp": "back", "serif":"なにが？"},
+										{"chara": I, "exp": "kogasa-reaction_02", "serif":"わたしがすきなんでしょ？"},
+										{"chara": "koishi",        "exp": "back", "serif":"？"},
+									],
+									[
+										{"chara": I, "exp": "kogasa-reaction_01", "serif":"みんな私が大好きなの！"},
+										{"chara": I, "exp": "kogasa-reaction_01", "serif":"あなたも好きだよね！"},
+									],
+									[
+										{"chara": "koishi",        "exp": "back", "serif":"ねえ、なんでそんなこと言うの？"},
+										{"chara": I, "exp": "kogasa-reaction_02", "serif":"なにが？"},
+										{"chara": "koishi",        "exp": "back", "serif":"・・・・・・"},
+									]
+								]},
 							]
-						]},
+						]}
 					]
 				]}
 			],

@@ -141,14 +141,43 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "雑貨屋＆小鈴",
+			loop: true,
 			serif: [
-				// 1-7
-				{"chara": I,"serif":"いらっしゃい！"},
-				{"chara": "koishi","serif":"ここなにやさんなの？"},
-				{"chara": I,"serif":"何でも売ってるよ！"},
-				{"chara": "koishi","serif":"全部屋さん......？"},
-				{"chara": I,"serif":"そうよ！なにが欲しいのかしら？"},
-				{"chara": "koishi","serif":"なにがほしいんだろう……"},
+
+				// 蛇口に喋りかけたあと
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_09-faucet-talk-1"], "serifs": [
+					[
+						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_04-" + I + "limit-01", 1], "serifs": [
+							[
+								{"chara": I, "serif":"オッ熊手が欲しいのかい！"},
+								{"chara": I, "serif":"それなら、えー"},
+								{"chara": I, "serif":"500だ！"},
+								{"chara": "koishi","serif":"500って、お金のこと？"},
+							],
+							[
+								{"chara": I, "serif":"さ、お財布見せてごらん！"},
+								{"chara": "koishi","serif":"お財布もってないの"},
+								{"chara": "koishi","serif":"でも水道さんが困ってるから......"},
+								{"chara": I, "serif":"あっ！", "option": {
+									getItem: "08", // 熊手
+								}},
+								{"chara": I, "serif":"お前！"},
+								{"chara": I, "serif":"待て！"},
+								{"chara": I, "serif":"あっ"},
+							],
+						]},
+					],
+					[
+						// 1-7
+						{"chara": I,"serif":"いらっしゃい！"},
+						{"chara": "koishi","serif":"ここなにやさんなの？"},
+						{"chara": I,"serif":"何でも売ってるよ！"},
+						{"chara": "koishi","serif":"全部屋さん......？"},
+						{"chara": I,"serif":"そうよ！なにが欲しいのかしら？"},
+						{"chara": "koishi","serif":"なにがほしいんだろう……"},
+					],
+
+				]}
 			],
 			x:293, y:260,
 			scale: 2/3,
@@ -178,7 +207,6 @@ module.exports = {
 			x: 655*2/3, y: 610*2/3,
 			scale: 2/3,
 			height: 300,
-			item_id: "08"
 		},
 	],
 };
