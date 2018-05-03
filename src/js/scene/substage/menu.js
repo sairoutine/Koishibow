@@ -61,6 +61,7 @@ SceneSubStageMenu.prototype.init = function(){
 	this.addObjects(this._cursor_ui);
 
 	// ジャーナルへ
+	/*
 	var basePosX = 300;
 	var basePosY = this.root().height - 165 + 105/3;
 	var buttonWidth  = 250*2/3;
@@ -100,6 +101,7 @@ SceneSubStageMenu.prototype.init = function(){
 		}
 	);
 	this.addObject(this.goto_journal_button);
+	*/
 };
 
 SceneSubStageMenu.prototype._setupMenuButtons = function() {
