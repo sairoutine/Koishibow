@@ -49,9 +49,12 @@ AssetsConfig.images = {
 	"get_hat_bg":  "./image/chapter0/event/get_hat/bg.png",
 
 	// こいしが落ちるイベント
-	"bg01_for_falldown_koishi":  "./image/chapter0/event/falldown_koishi/bg01_for_falldown_koishi.jpg",
-	"door":  "./image/chapter0/event/falldown_koishi/door.png",
-	"shadow":  "./image/chapter0/event/falldown_koishi/shadow.png",
+	"chapter0-mspassage-event-02-obj-10-01":  "./image/chapter0/event/falldown_koishi/chapter0-mspassage-event-02-obj-10-01.png",
+	"chapter0-mspassage-event-02_bg01":  "./image/chapter0/event/falldown_koishi/chapter0-mspassage-event-02_bg01.jpg",
+	"chapter0-mspassage-event-02_black_mist":  "./image/chapter0/event/falldown_koishi/chapter0-mspassage-event-02_black_mist.png",
+	"chapter0-mspassage-event-02_door":  "./image/chapter0/event/falldown_koishi/chapter0-mspassage-event-02_door.png",
+	"chapter0-mspassage-event-02_koishi":  "./image/chapter0/event/falldown_koishi/chapter0-mspassage-event-02_koishi.png",
+	"chapter0-mspassage-event-02_shadow":  "./image/chapter0/event/falldown_koishi/chapter0-mspassage-event-02_shadow.png",
 
 	// さとり邂逅イベント
 	"chapter0-mspassage-bg-002_event":  "./image/chapter0/event/encounter_satori/chapter0-mspassage-bg-002_event.jpg",
