@@ -35,6 +35,14 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "小傘",
+			loop: true,
+			serif_back: [
+				{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"わたしはゴミじゃない！"},
+				{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"私は捨てられていない！"},
+				{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"パパもママも好きって言ったもん"},
+				{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"ほんとだもん！"},
+				{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"迎えに来てくれるもん！"},
+			],
 			serif: [
 				// 水をためたじょうろ
 				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["04"], "serifs": [
@@ -47,13 +55,26 @@ module.exports = {
 						}},
 					],
 					[
-						// 1-24
-						{"chara": I, "exp": "kogasa-reaction_01", "serif":"あら"},
-						{"chara": I, "exp": "kogasa-reaction_01", "serif":"あなたも私が気になるの？"},
-						{"chara": "koishi",        "exp": "back", "serif":"え？"},
-						{"chara": "koishi",        "exp": "back", "serif":"なにが？"},
-						{"chara": I, "exp": "kogasa-reaction_02", "serif":"わたしがすきなんでしょ？"},
-						{"chara": "koishi",        "exp": "back", "serif":"？"},
+						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_10-" + I + "limit-01", 2], "serifs": [
+							[
+								// 1-24
+								{"chara": I, "exp": "kogasa-reaction_01", "serif":"あら"},
+								{"chara": I, "exp": "kogasa-reaction_01", "serif":"あなたも私が気になるの？"},
+								{"chara": "koishi",        "exp": "back", "serif":"え？"},
+								{"chara": "koishi",        "exp": "back", "serif":"なにが？"},
+								{"chara": I, "exp": "kogasa-reaction_02", "serif":"わたしがすきなんでしょ？"},
+								{"chara": "koishi",        "exp": "back", "serif":"？"},
+							],
+							[
+								{"chara": I, "exp": "kogasa-reaction_01", "serif":"みんな私が大好きなの！"},
+								{"chara": I, "exp": "kogasa-reaction_01", "serif":"あなたも好きだよね！"},
+							],
+							[
+								{"chara": "koishi",        "exp": "back", "serif":"ねえ、なんでそんなこと言うの？"},
+								{"chara": I, "exp": "kogasa-reaction_02", "serif":"なにが？"},
+								{"chara": "koishi",        "exp": "back", "serif":"・・・・・・"},
+							]
+						]},
 					]
 				]}
 			],

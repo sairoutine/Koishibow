@@ -35,6 +35,14 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "村紗",
 			loop: true,
+			serif_back: [
+				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":"う............"},
+				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":"みんなわたしのこときらいだって"},
+				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":"わたしもみんなみたいになりたい......"},
+				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":"すきでこうなったわけじゃないのに....."},
+				{"chara": I, "exp": "murasa-ura_reaction_02", "serif":"もういや……"},
+				{"chara": I, "exp": "murasa-ura_reaction_02", "serif":"ひみつきちだって私だけは入れない……"},
+			],
 			serif: [
 				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["12"], "serifs": [
 					[
