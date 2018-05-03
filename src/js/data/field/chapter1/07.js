@@ -18,6 +18,7 @@ module.exports = {
 			image: "chapter1-07-obj-01",
 			type: CONSTANT.STATIC_EVENT_IMAGE_TYPE,
 			name: "ボール",
+			is_acquirable: true,
 			serif: null,
 			x: 625*2/3, y: 768.50*2/3,
 			scale: 2/3,

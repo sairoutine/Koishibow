@@ -31,22 +31,20 @@ module.exports = {
 			sound_name: null,
 			position_type: "lying",
 		},
-
 		{
 			no: ++I,
 			image: "chapter1-02-obj-01",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
+			type: CONSTANT.STATIC_EVENT_IMAGE_TYPE,
 			name: "ベンチ",
-			serif: [
-				{"chara": "koishi","serif":"まっていればいいのかな"},
-				{"chara": "koishi","serif":"まだかなー"},
-				{"chara": "koishi","serif":"こない"},
-			],
+			is_acquirable: false,
+			serif: null,
 			x: 693.50*2/3, y:619.50*2/3,
 			scale: 2/3,
-			action_name: "sit",
-			sound_name: null
+			action_name: "touch",
+			sound_name: null,
+			action_event: "event_for_chapter1_sit_at_busstop"
 		},
+
 		{
 			no: ++I,
 			image: "chapter1-02-obj-02",
