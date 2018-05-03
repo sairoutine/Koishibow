@@ -39,7 +39,7 @@ ObjectAnimeEventImage.prototype.onTouchByKoishi = function() {
 	// 落ち葉が取り払われてなければ
 	if (!this._isRemovedLeaves()) {
 		// くまでを持っている(持っていれば削除)
-		if (this.core.save_manager.item.deleteItem("08")) {
+		if (this.core.save_manager.item.reduceItem("08")) {
 			// 落ち葉取り払ったフラグを立てる
 			this._removeLeaves();
 
@@ -56,7 +56,7 @@ ObjectAnimeEventImage.prototype.onTouchByKoishi = function() {
 	else {
 
 		// 空のじょうろを持っている(空のじょうろを削除)
-		if (this.core.save_manager.item.deleteItem("03")) {
+		if (this.core.save_manager.item.reduceItem("03")) {
 			// 水が入る
 			// NOTE: 会話で行うので不要
 			//this.core.save_manager.item.addItem("04");

@@ -23,7 +23,7 @@ var SceneSubStageObjectTalk = function(core) {
 		criteria: {
 			// アイテムを持っていれば消費して true
 			useItem: function (core, item_id) {
-				return core.save_manager.item.deleteItem(item_id) ? 0 : 1;
+				return core.save_manager.item.reduceItem(item_id) ? 0 : 1;
 			},
 			// アイテムを持っていれば
 			existsItem: function (core, item_id) {

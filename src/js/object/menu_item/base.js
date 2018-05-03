@@ -4,10 +4,11 @@ var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
 var ItemConfig = require('../../config/item');
 
-var ObjectMenuItemBase = function(scene, item_id) {
+var ObjectMenuItemBase = function(scene, item_id, num) {
 	base_object.apply(this, arguments);
 
 	this._item_id = item_id;
+	this._num     = num;
 };
 Util.inherit(ObjectMenuItemBase, base_object);
 
@@ -46,6 +47,18 @@ ObjectMenuItemBase.prototype.draw = function(){
 		height
 	);
 
+	// アイテム所持数 表示
+	if (this.num() > 1) {
+		ctx.font = "28px 'OradanoGSRR'";
+		//ctx.textAlign = 'center';
+		//ctx.textBaseAlign = 'middle';
+		ctx.fillStyle = 'rgb( 255, 255, 255 )';
+		ctx.fillText("x" + this.num(),
+			40,
+			40
+		);
+	}
+
 	ctx.restore();
 
 };
@@ -62,11 +75,16 @@ ObjectMenuItemBase.prototype.collisionHeight = function(){
 ObjectMenuItemBase.prototype.itemId = function() {
 	return this._item_id;
 };
+// アイテム所持数
+ObjectMenuItemBase.prototype.num = function() {
+	return this._num;
+};
+
 
 // アイテムが使用されたとき
 ObjectMenuItemBase.prototype.use = function(){
 	// 持ち物から削除
-	this.core.save_manager.item.deleteItem(this.itemId());
+	this.core.save_manager.item.reduceItem(this.itemId());
 };
 
 // 使用できるか否か判定

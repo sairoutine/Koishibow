@@ -514,7 +514,9 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 
 	this.menu_item_list = [];
 	for (var i = 0, len = item_list.length; i < len; i++) {
-		var item_id = item_list[i];
+		var item_data = item_list[i];
+		var item_id = item_data.item_id;
+		var num = item_data.num;
 
 		// item_id => item_type
 		var item_config = ItemConfig[item_id];
@@ -522,10 +524,10 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 
 		var menu_item;
 		if (type === CONSTANT.ITEM.EYEDROPS) { // 目薬
-			menu_item = new ObjectMenuItemEyeDrops(this, item_id);
+			menu_item = new ObjectMenuItemEyeDrops(this, item_id, num);
 		}
 		else if (type === CONSTANT.ITEM.NON_USABLE) { // 会話で消費するアイテム
-			menu_item = new ObjectMenuItemNonUsable(this, item_id);
+			menu_item = new ObjectMenuItemNonUsable(this, item_id, num);
 		}
 		else {
 			throw new Error ("Unknown item type error: " + type);
