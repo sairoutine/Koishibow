@@ -272,8 +272,8 @@ AssetsConfig.sounds = {
 		path: "./sound/show_journal.ogg",
 		volume: 1.0,
 	},
-	got_item:    {
-		path: "./sound/got_item.ogg",
+	got_item_common:    {
+		path: "./sound/got_item/common.ogg",
 		volume: 1.0,
 	},
 	open_menu:    {
