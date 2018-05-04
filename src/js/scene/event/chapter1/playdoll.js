@@ -231,10 +231,11 @@ SceneEventPlayDoll.prototype._gotoNextSerif = function(choice){
 			self._is_gameover = true;
 		}
 
-		if (self._serif.getCurrentOption().sound){
+		var sound = self._serif.getCurrentOption().sound;
+		if (sound){
 			// fall だけ 50フレーム再生を遅らせる
 			self.core.time_manager.setTimeout(function () {
-				self.core.audio_loader.playSound(self._serif.getCurrentOption().sound);
+				self.core.audio_loader.playSound(sound);
 			}, 50);
 		}
 
