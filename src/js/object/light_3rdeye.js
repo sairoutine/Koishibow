@@ -226,6 +226,25 @@ ObjectLight3rdeye.prototype.intersectWithPiece = function (piece) {
 		y: this._pivot_y + CIRCLE2_POS_DISTANCE_FROM_KOISHI * Math.sin(this._radian),
 	};
 
+	// オブジェクトの当たり判定内にサードアイの円があれば真
+	// これがないとデカイオブジェクトとサードアイがなぜか当たらない
+	if (
+		piece.getCollisionLeftX() < map1.x &&
+		map1.x < piece.getCollisionRightX() &&
+		piece.getCollisionUpY() < map1.y &&
+		map1.y < piece.getCollisionDownY()
+	) {
+		return true;
+	}
+	if (
+		piece.getCollisionLeftX() < map2.x &&
+		map2.x < piece.getCollisionRightX() &&
+		piece.getCollisionUpY() < map2.y &&
+		map2.y < piece.getCollisionDownY()
+	) {
+		return true;
+	}
+
 	// 1つ目の円
 	if(Math.pow(map1.x-piece.getCollisionLeftX(), 2)  + Math.pow(map1.y-piece.getCollisionUpY(), 2) <= Math.pow(CIRCLE1_RADIUS, 2) ||
 	   Math.pow(map1.x-piece.getCollisionLeftX(), 2)  + Math.pow(map1.y-piece.getCollisionDownY(), 2) <= Math.pow(CIRCLE1_RADIUS, 2) ||
