@@ -195,6 +195,10 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 	if (!this._is_select_item) {
 		// アイテムを選択
 		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+
+			// 何もアイテムを所持していなければ何もしない
+			if(!this.menu_item_list[this._index_item_vertical][this._index_item_horizontal]) return;
+
 			this.core.audio_loader.playSound("select_item");
 			this._is_select_item = true;
 
