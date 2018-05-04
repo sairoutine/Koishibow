@@ -77,7 +77,13 @@ SceneTitle.prototype.init = function(){
 	// メニューボタンがクリックされたときのフレーム数
 	this._menu_clicked_frame_count = null;
 
-	this._index = 0;
+	// セーブデータがあれば、コンティニューがデフォルト位置
+	if(this.core.save_manager.player.getCurrentField()) {
+		this._index = 1;
+	}
+	else {
+		this._index = 0;
+	}
 };
 
 // メニューUI一覧
