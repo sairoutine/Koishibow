@@ -91,6 +91,7 @@ module.exports = {
 			anime3: "chapter0-myroom-obj-04-01-obj03",
 			action_name: "look_top",
 			sound_name: "chapter0-myroom-sound_window_for_kokoro",
+			height: 700,
 			target_x: 177, target_y: 531
 		},
 		{
@@ -103,7 +104,7 @@ module.exports = {
 				{"chara": "koishi","serif":"いいこいいこ！"},
 				{"chara": "koishi","serif":"ばいばい"},
 			],
-			width: 150, height: 150,
+			width: 150, height: 200,
 			x: 670, y: 300,
 			scale: 2/3,
 			target_x: 532, target_y: 418

@@ -34,6 +34,17 @@ module.exports = {
 
 		{
 			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "崖",
+			serif: null,
+			width: 300, height: 250,
+			x: 800, y: 600,
+		},
+
+
+		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "小傘",
 			loop: true,
