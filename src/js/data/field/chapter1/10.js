@@ -39,8 +39,8 @@ module.exports = {
 			loop: true,
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_10-" + I + "-talk01"], "serifs": [
-					/*
 					[
+						{"id": "chapter1_10-secretBase-01", "save": true},
 						{"chara": I, "exp": "kogasa-ura_reaction_02", "serif":"こわいけどやさしいもの、なーんだ？"},
 					],
 					[
@@ -50,19 +50,6 @@ module.exports = {
 						{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"ほんとだもん！"},
 						{"chara": I, "exp": "kogasa-ura_reaction_01", "serif":"迎えに来てくれるもん！"},
 					],
-					*/
-					[
-						{"id": "chapter1_10-secretBase-01", "save": true},
-						{"chara": I, "serif":"こわいけどやさしいもの、なーんだ？"},
-					],
-					[
-						{"chara": I, "serif":"わたしはゴミじゃない！"},
-						{"chara": I, "serif":"私は捨てられていない！"},
-						{"chara": I, "serif":"パパもママも好きって言ったもん"},
-						{"chara": I, "serif":"ほんとだもん！"},
-						{"chara": I, "serif":"迎えに来てくれるもん！"},
-					],
-
 				]}
 			],
 			serif: [

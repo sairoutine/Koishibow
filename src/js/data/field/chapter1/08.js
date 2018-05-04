@@ -61,7 +61,7 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_08-" + I + "-talk01"], "serifs": [
 					[
 						{"id": "chapter1_10-secretBase-02", "save": true},
-						{"chara": I, "serif":"だいきらいなのに離れたくないもの、なーんだ？"},
+						{"chara": I, "exp": "kyoko-ura_reaction_02", "serif":"だいきらいなのに離れたくないもの、なーんだ？"},
 					],
 					[
 						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"私が話しても誰も返事しない"},

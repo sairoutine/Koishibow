@@ -182,6 +182,8 @@ var anime_map = {
 	"kyoko-reaction_06":   require('../data/anime/kyoko/reaction_06_anime_1'),
 	"kyoko-reaction_07":   require('../data/anime/kyoko/reaction_07_anime_1'),
 	"kyoko-ura_reaction_01":   require('../data/anime/kyoko/ura_reaction_01_anime_1'),
+	"kyoko-ura_reaction_02":   require('../data/anime/kyoko/ura_reaction_02_anime_1'),
+
 
 	"chapter1-08-obj-01-obj00":  require('../data/anime/chapter1/08/obj-01/obj00_anime_1.json'),
 	"chapter1-08-obj-01-obj01":  require('../data/anime/chapter1/08/obj-01/obj01_anime_1.json'),
@@ -197,6 +199,8 @@ var anime_map = {
 	"kogasa-reaction_02":   require('../data/anime/kogasa/reaction_02_anime_1'),
 	"kogasa-reaction_03":   require('../data/anime/kogasa/reaction_03_anime_1'),
 	"kogasa-reaction_04":   require('../data/anime/kogasa/reaction_04_anime_1'),
+	"kogasa-ura_reaction_01":   require('../data/anime/kogasa/ura_reaction_01_anime_1'),
+	"kogasa-ura_reaction_02":   require('../data/anime/kogasa/ura_reaction_02_anime_1'),
 
 	"chapter1-09-obj-01-obj01":  require('../data/anime/chapter1/09/obj-01/obj01_anime_1.json'),
 	"chapter1-09-obj-01-obj02":  require('../data/anime/chapter1/09/obj-01/obj02_anime_1.json'),
