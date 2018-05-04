@@ -39,7 +39,7 @@ SceneSubStageGotItem.prototype.beforeDraw = function(){
 
 	if (this.frame_count > WAIT_COUNT_TO_NEXT_SCENE) {
 		// 通常のサブシーンへ戻る
-		this.root().changeSubScene("play");
+		this.root().returnSubScene("play");
 	}
 };
 
