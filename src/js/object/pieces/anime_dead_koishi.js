@@ -88,7 +88,6 @@ ObjectAnimeImage.prototype.setWaitAnime = function() {
 ObjectAnimeImage.prototype._getSerif = function() {
 	var SERIF_LIST = [
 		"へたくそ",
-		"やめたら、このゲーム",
 		"何のつもりなの？",
 		"あなたが悪いのよ",
 		"なんのつもり？",
