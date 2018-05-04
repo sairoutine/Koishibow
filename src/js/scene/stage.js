@@ -14,6 +14,7 @@ var SceneSubStageJournalMenu = require('./substage/journal_menu'); // ジャー�
 var SceneSubStageGotItem = require('./substage/got_item'); // アイテム獲得
 var SceneSubStageUseItem = require('./substage/use_item'); // アイテム使用
 var SceneSubStageLock = require('./substage/lock');
+var SceneSubStageTouchHashigo = require('./substage/touch_hashigo');
 var SceneSubStagePictureUseEyedrops = require('./substage/picture_use_eyedrops'); // 目薬使用1枚絵
 var SceneSubStageEventChapter0GetHat = require('./substage/event/chapter0/get_hat');
 var SceneSubStagePictureGetHat = require('./substage/picture_get_hat');
@@ -42,6 +43,7 @@ var ObjectAnimeDeadKoishi = require('../object/pieces/anime_dead_koishi');
 var ObjectStaticEventImage = require('../object/pieces/static_event_image');
 var ObjectFaucet = require('../object/pieces/faucet');
 var ObjectSuspendedTree = require('../object/pieces/suspended_tree');
+var ObjectChapter1Hashigo = require('../object/pieces/chapter1_hashigo');
 
 var FieldMap = require('../config/field');
 
@@ -100,6 +102,8 @@ var SceneStage = function(core) {
 	this.addSubScene("use_item", new SceneSubStageUseItem(core));
 	// プレイヤーに何も操作させない
 	this.addSubScene("lock", new SceneSubStageLock(core));
+	this.addSubScene("touch_hashigo", new SceneSubStageTouchHashigo(core));
+
 	// 目薬使用 1枚絵
 	this.addSubScene("picture_use_eyedrops", new SceneSubStagePictureUseEyedrops(core));
 
@@ -509,6 +513,10 @@ SceneStage.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.SUSPENDED_TREE_TYPE) {
 			object = new ObjectSuspendedTree(this);
 		}
+		else if (data.type === CONSTANT.HASHIGO_TYPE) {
+			object = new ObjectChapter1Hashigo(this);
+		}
+
 		else {
 			throw new Error ("Unknown object type error: " + data.type);
 		}

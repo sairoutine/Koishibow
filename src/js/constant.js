@@ -17,6 +17,7 @@ var CONSTANT = {
 	STATIC_EVENT_IMAGE_TYPE:8, // chapter1 ボール
 	FAUSET_TYPE:            9, // chapter1 蛇口
 	SUSPENDED_TREE_TYPE:   10, // chapter1 うさぎが吊るされた木
+	HASHIGO_TYPE:          11, // chapter1 はしごをかけられる場所
 
 	// アイテムの種類
 	ITEM: {
