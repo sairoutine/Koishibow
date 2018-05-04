@@ -27,7 +27,7 @@ ObjectStaticImage.prototype.setData = function(data) {
 
 	this._click_event = data.action_event;
 
-	if (data.acquirable) {
+	if (data.is_acquirable) {
 		this._is_acquirable   = true;
 	}
 };
