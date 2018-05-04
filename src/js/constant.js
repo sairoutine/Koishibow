@@ -16,6 +16,7 @@ var CONSTANT = {
 	BUTTON_KOISHI_TYPE:     7, // ゲームオーバー用ボタンの目こいし
 	STATIC_EVENT_IMAGE_TYPE:8, // chapter1 ボール
 	FAUSET_TYPE:            9, // chapter1 蛇口
+	SUSPENDED_TREE_TYPE:   10, // chapter1 うさぎが吊るされた木
 
 	// アイテムの種類
 	ITEM: {

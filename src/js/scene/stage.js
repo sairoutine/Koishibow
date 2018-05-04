@@ -41,6 +41,7 @@ var ObjectFieldChange = require('../object/pieces/field_change');
 var ObjectAnimeDeadKoishi = require('../object/pieces/anime_dead_koishi');
 var ObjectStaticEventImage = require('../object/pieces/static_event_image');
 var ObjectFaucet = require('../object/pieces/faucet');
+var ObjectSuspendedTree = require('../object/pieces/suspended_tree');
 
 var FieldMap = require('../config/field');
 
@@ -505,7 +506,9 @@ SceneStage.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.FAUCET_TYPE) {
 			object = new ObjectFaucet(this);
 		}
-
+		else if (data.type === CONSTANT.SUSPENDED_TREE_TYPE) {
+			object = new ObjectSuspendedTree(this);
+		}
 		else {
 			throw new Error ("Unknown object type error: " + data.type);
 		}
