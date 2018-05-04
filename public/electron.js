@@ -9,7 +9,6 @@ const globalShortcut = electron.globalShortcut;
 let mainWindow;
 
 function createWindow () {
-	/*
 	// dialog 表示
 	var fullscreen_answer = dialog.showMessageBox({
 		type: 'question',
@@ -17,8 +16,6 @@ function createWindow () {
 		title: 'フルスクリーン起動',
 		message: 'フルスクリーンで起動しますか？'
 	});
-	*/
-	var fullscreen_answer = 1;
 	// fullscreen
 	if(fullscreen_answer === 0) {
 		mainWindow = new BrowserWindow({
