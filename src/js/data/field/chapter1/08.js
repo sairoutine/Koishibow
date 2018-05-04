@@ -80,11 +80,11 @@ module.exports = {
 			],
 			serif: [
 				// マイクを持っているか否か
-				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["07"], "serifs": [
+				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["07"], "serifs": [
 					[
 						{"id": "chapter1_08-" + I + "-_useItem-07", "save": true},
 						// 1-17
-						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............", "option": {"useItem": "07"}},
 						{"chara": I, "exp": "kyoko-reaction_02", "serif":"！！", "option": {
 							"fontSize": 12,
 						}},
@@ -93,7 +93,6 @@ module.exports = {
 						{"chara": "koishi",        "exp": "back", "serif":"なにが？"},
 						{"chara": I, "exp": "kyoko-reaction_03", "serif":"ごあいさつ！"},
 						{"chara": "koishi",        "exp": "back", "serif":"ごあいさつって？"},
-						{"chara": "koishi",        "exp": "back", "serif":""},
 						{"chara": I, "exp": "kyoko-reaction_04", "serif":"こ", "option": {
 							"fontSize": 30,
 						}},
@@ -119,10 +118,10 @@ module.exports = {
 						}},
 					],
 					[
-						{"type": "criteria_serif", "criteria": "useItem", "arguments": ["09"], "serifs": [
+						{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["09"], "serifs": [
 							[
 								{"id": "chapter1_08-" + I + "-_useItem-09", "save": true},
-								{"chara": I, "exp": "kyoko-reaction_05", "serif":"うわ！"},
+								{"chara": I, "exp": "kyoko-reaction_05", "serif":"うわ！", "option": {"useItem": "09"}},
 								{"chara": I, "exp": "kyoko-reaction_06", "serif":"これ飛ぶ奴だよね！"},
 								{"chara": I, "exp": "kyoko-reaction_07", "serif":"わーっ......"},
 								{"chara": I, "exp": "kyoko-reaction_07", "serif":"これどこまで飛ぶかなあ"},

@@ -106,10 +106,10 @@ module.exports = {
 			],
 			serif: [
 				// こわいおめんを持っているか否か
-				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["10"], "serifs": [
+				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["10"], "serifs": [
 					[
 						{"id": "chapter1_03-" + I + "-_useItem-10", "save": true},
-						{"chara": I,        "exp": "tewi-reaction_04", "serif":"げえっ！"},
+						{"chara": I,        "exp": "tewi-reaction_04", "serif":"げえっ！", "option": {"useItem": "10"}},
 						{"chara": I,        "exp": "back", "serif":"い、いつからそこに"},
 						{"chara": "koishi", "exp": "back", "serif":"............."},
 						{"chara": I,        "exp": "tewi-reaction_01", "serif":"わかりました！"},

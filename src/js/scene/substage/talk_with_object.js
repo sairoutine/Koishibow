@@ -21,10 +21,6 @@ var SceneSubStageObjectTalk = function(core) {
 	this._serif = new ScenarioManager(core, {
 		// 会話で使う条件分岐
 		criteria: {
-			// アイテムを持っていれば消費して true
-			useItem: function (core, item_id) {
-				return core.save_manager.item.reduceItem(item_id) ? 0 : 1;
-			},
 			// アイテムを持っていれば
 			existsItem: function (core, item_id) {
 				return core.save_manager.item.existsItem(item_id) ? 0 : 1;
@@ -131,12 +127,24 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 			this.root().changeSubScene("got_item", this._serif.getCurrentOption().getItem, "talk_with_object");
 		}
 
+		// アイテム使用
+		if (this._serif.getCurrentOption().useItem) {
+			var use_item_id = this._serif.getCurrentOption().useItem;
+
+			this.core.save_manager.item.reduceItem(use_item_id);
+
+			// アイテム使用演出へ遷移
+			this.root().changeSubScene("use_item", use_item_id, "talk_with_object");
+		}
+
 		// 1枚絵に遷移
 		if (this._serif.getCurrentOption().showPicture) {
 			// セリフ終わり
 			this.root().changeSubScene(this._serif.getCurrentOption().showPicture);
 			return;
 		}
+
+
 
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {

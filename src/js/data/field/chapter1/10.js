@@ -65,10 +65,10 @@ module.exports = {
 			],
 			serif: [
 				// 水をためたじょうろ
-				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["04"], "serifs": [
+				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["04"], "serifs": [
 					[
 						{"id": "chapter1_10-" + I + "-_useItem-04", "save": true},
-						{"chara": I, "exp": "kogasa-reaction_03", "serif":"！"},
+						{"chara": I, "exp": "kogasa-reaction_03", "serif":"！", "option": {"useItem": "04"}},
 						{"chara": I, "exp": "kogasa-reaction_02", "serif":"みずあそびするの？"},
 						{"chara": I, "exp": "kogasa-reaction_01", "serif":"わたしそれ得意だから！"},
 						{"chara": I, "exp": "kogasa-reaction_01", "serif":"みてて！みてて！", "option": {

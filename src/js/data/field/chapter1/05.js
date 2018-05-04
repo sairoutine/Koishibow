@@ -64,13 +64,13 @@ module.exports = {
 			],
 			serif: [
 				// みどりいろのぐねぐねを持っているか否か
-				{"type": "criteria_serif", "criteria": "useItem", "arguments": ["06"], "serifs": [
+				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["06"], "serifs": [
 					[
 						// 1-11
 						{"id": "chapter1_05-" + I + "-_useItem-06", "save": true},
 						{"chara": "koishi", "exp": "back", "serif":"ねえ、これ"},
 						{"chara": I,        "exp": "nitori-reaction_03", "serif":"なんだい"},
-						{"chara": "koishi", "exp": "back", "serif":"これみて。ほしいんじゃないの？"},
+						{"chara": "koishi", "exp": "back", "serif":"これみて。ほしいんじゃないの？", "option": {"useItem": "06"}},
 						{"chara": I,        "exp": "nitori-reaction_01", "serif":"おっ！"},
 						{"chara": I,        "exp": "nitori-reaction_01", "serif":"みどりで！"},
 						{"chara": I,        "exp": "nitori-reaction_01", "serif":"ながくて！"},
