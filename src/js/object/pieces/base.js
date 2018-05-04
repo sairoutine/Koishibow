@@ -5,7 +5,7 @@ var DrawSerif = require('../../logic/draw_serif');
 var WalkImmovableArea = require('../walk_immovable_area');
 
 // こいしがここまでオブジェクトに近づいたら、タッチできる
-var TOUCH_AREA = 50;
+var TOUCH_AREA = 100;
 
 var ObjectBase = function(core) {
 	base_object.apply(this, arguments);
