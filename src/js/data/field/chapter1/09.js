@@ -24,15 +24,26 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_10-secretBase-02"], "serifs": [
 							// 2つの合言葉を知っている
 							[
-								{"chara": I, "serif":"合言葉は？", "junction": ["先生","お母さん","友達","兄弟"]},
-								{"chara": I, "serif":"へえ、気が合うな......"},
-								{"chara": I, "serif":"中のものが欲しいのか？"},
-								{"chara": "koishi", "serif":"うん"},
-								{"chara": I, "serif":"中のものが欲しいのか？"},
-								{"chara": I, "serif":"そら、あの子の忘れ物だ", "option": {
-									getItem: "12",
-								}},
-								{"chara": I, "serif":"じゃあな"},
+
+
+								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_09-" + I + "-_getItem-12"], "serifs": [
+									// アイテムを手に入れたあと
+									[
+										{"chara": I, "serif":"合言葉は仲間にしか教えちゃいけないんだぜ"},
+										{"chara": I, "serif":"秘密だからな"},
+									],
+									[
+										{"id": "chapter1_09-" + I + "-_getItem-12", "save": true},
+										{"chara": I, "serif":"合言葉は？", "junction": ["先生","お母さん","友達","兄弟"]},
+										{"chara": I, "serif":"へえ、気が合うな......"},
+										{"chara": I, "serif":"中のものが欲しいのか？"},
+										{"chara": "koishi", "serif":"うん"},
+										{"chara": I, "serif":"そら、あの子の忘れ物だ", "option": {
+											getItem: "12",
+										}},
+										{"chara": I, "serif":"じゃあな"},
+									],
+								]}
 							],
 							[
 								{"chara": I, "serif":"合言葉は？"},

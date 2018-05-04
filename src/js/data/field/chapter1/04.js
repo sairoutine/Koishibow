@@ -147,25 +147,27 @@ module.exports = {
 				// 蛇口に喋りかけたあと
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_09-faucet-talk-1"], "serifs": [
 					[
-						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_04-" + I + "limit-01", 1], "serifs": [
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_04-" + I + "-_getItem-08"], "serifs": [
 							[
+								{"chara": I, "serif":"熊手は役に立ったかい？"},
+								{"chara": I, "serif":"今度はちゃんとお金をもらってくるんだぞ！"},
+							],
+							[
+								{"id": "chapter1_04-" + I + "-_getItem-08", "save": true},
+								{"chara": "koishi","serif":"熊手ある？"},
 								{"chara": I, "serif":"オッ熊手が欲しいのかい！"},
 								{"chara": I, "serif":"それなら、えー"},
 								{"chara": I, "serif":"500だ！"},
 								{"chara": "koishi","serif":"500って、お金のこと？"},
-							],
-							[
 								{"chara": I, "serif":"さ、お財布見せてごらん！"},
 								{"chara": "koishi","serif":"お財布もってないの"},
 								{"chara": "koishi","serif":"でも水道さんが困ってるから......"},
-								{"chara": I, "serif":"あっ！", "option": {
+								{"chara": I, "serif":"......"},
+								{"chara": I, "serif":"わかった、貸すだけだぞ！", "option": {
 									getItem: "08", // 熊手
 								}},
-								{"chara": I, "serif":"お前！"},
-								{"chara": I, "serif":"待て！"},
-								{"chara": I, "serif":"あっ"},
 							],
-						]},
+						]}
 					],
 					[
 						// 1-7

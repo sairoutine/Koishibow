@@ -87,25 +87,34 @@ module.exports = {
 						{"chara": I,        "exp": "nitori-reaction_04", "serif":"またきてね！"},
 					],
 					[
-						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_05-" + I + "limit-01", 1], "serifs": [
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_05-" + I + "-_useItem-06"], "serifs": [
 							[
-								{"chara": I,        "exp": "nitori-reaction_01", "serif":"いよお友よ！"},
-								{"chara": "koishi", "exp": "back", "serif":"えっ？"},
+								{"chara": I,        "exp": "back", "serif":"仮面屋よりも、もっとやりたいことあるんだよね"},
+								{"chara": I,        "exp": "back", "serif":"あなたはどう？"},
+								{"chara": I,        "exp": "back", "serif":"本当はやってみたいこと、ない？"},
 							],
 							[
-								// 1-9
-								{"chara": "koishi", "exp": "back", "serif":"なにしてるの？"},
-								{"chara": I,        "exp": "back", "serif":"仮面屋さ！"},
-								{"chara": "koishi", "exp": "back", "serif":"仮面って何に使うの？"},
-								{"chara": I,        "exp": "back", "serif":"そりゃ被るのさ！"},
-								{"chara": "koishi", "exp": "back", "serif":"ふーん"},
-								{"chara": I,        "exp": "back", "serif":"おめん欲しいだろ？"},
-								{"chara": "koishi", "exp": "back", "serif":"うーんちょっとだけ"},
-								{"chara": I,        "exp": "back", "serif":"そうだよな！\nそれじゃあ特におすすめの希望の面！\nこれは5000でいいぞ！"},
-								{"chara": "koishi", "exp": "back", "serif":"お金いるの？"},
-								{"chara": I,        "exp": "back", "serif":"当然さぁ、お店なんだから！"},
-								{"chara": "koishi", "exp": "back", "serif":"お金ないときはどうしたらいいの？"},
-								{"chara": I,        "exp": "nitori-reaction_02", "serif":"金がないんじゃあ仮面は売れないね！\nとっとといきな！"},
+								{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_05-" + I + "limit-01", 1], "serifs": [
+									[
+										{"chara": I,        "exp": "nitori-reaction_01", "serif":"いよお友よ！"},
+										{"chara": "koishi", "exp": "back", "serif":"えっ？"},
+									],
+									[
+										// 1-9
+										{"chara": "koishi", "exp": "back", "serif":"なにしてるの？"},
+										{"chara": I,        "exp": "back", "serif":"仮面屋さ！"},
+										{"chara": "koishi", "exp": "back", "serif":"仮面って何に使うの？"},
+										{"chara": I,        "exp": "back", "serif":"そりゃ被るのさ！"},
+										{"chara": "koishi", "exp": "back", "serif":"ふーん"},
+										{"chara": I,        "exp": "back", "serif":"おめん欲しいだろ？"},
+										{"chara": "koishi", "exp": "back", "serif":"うーんちょっとだけ"},
+										{"chara": I,        "exp": "back", "serif":"そうだよな！\nそれじゃあ特におすすめの希望の面！\nこれは5000でいいぞ！"},
+										{"chara": "koishi", "exp": "back", "serif":"お金いるの？"},
+										{"chara": I,        "exp": "back", "serif":"当然さぁ、お店なんだから！"},
+										{"chara": "koishi", "exp": "back", "serif":"お金ないときはどうしたらいいの？"},
+										{"chara": I,        "exp": "nitori-reaction_02", "serif":"金がないんじゃあ仮面は売れないね！\nとっとといきな！"},
+									],
+								]}
 							],
 						]}
 					]
