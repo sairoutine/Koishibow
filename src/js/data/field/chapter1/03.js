@@ -61,12 +61,13 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			type: CONSTANT.ANIME_IMAGE_TYPE,
+			type: CONSTANT.SUSPENDED_TREE_TYPE,
 			name: "うさぎを吊るした木",
 			serif: null,
 			x:779.00*2/3, y:356.50*2/3,
 			scale: 2/3,
 			anime1: "chapter1-03-obj-05-obj01",
+			after_anime: "chapter1-03-obj-05-obj02", // 特殊アニメ
 			action_name: null,
 			sound_name: null
 		},
@@ -83,6 +84,7 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 			position_type: "lying",
+			not_show_if_event_true: "chapter1_03-afterWork",
 		},
 
 		{
@@ -109,6 +111,7 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["10"], "serifs": [
 					[
 						{"id": "chapter1_03-" + I + "-_useItem-10", "save": true},
+						{"id": "chapter1_03-afterWork", "save": true},
 						{"chara": I,        "exp": "tewi-reaction_04", "serif":"げえっ！", "option": {"useItem": "10"}},
 						{"chara": I,        "exp": "back", "serif":"い、いつからそこに"},
 						{"chara": "koishi", "exp": "back", "serif":"............."},
@@ -116,6 +119,7 @@ module.exports = {
 						{"chara": I,        "exp": "tewi-reaction_03", "serif":"わかりましたよ！"},
 						{"chara": I,        "exp": "tewi-reaction_01", "serif":"いまやるから、もうちょっとまっててくれよ", "option": {
 							"getItem": "05",
+							"dark": true,
 						}},
 					],
 					[
