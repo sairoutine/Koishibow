@@ -123,8 +123,16 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 		if (this._serif.getCurrentOption().getItem) {
 			this.core.save_manager.item.addItem(this._serif.getCurrentOption().getItem);
 
-			// アイテム獲得演出へ遷移
-			this.root().changeSubScene("got_item", this._serif.getCurrentOption().getItem, "talk_with_object");
+			// 暗転
+			if (this._serif.getCurrentOption().dark) {
+				// セリフ終わり
+				this.core.scene_manager.changeScene("stage", "chapter1_03"); // TODO: field の直指定やめる
+			}
+			// 暗転しない場合
+			else {
+				// アイテム獲得演出へ遷移
+				this.root().changeSubScene("got_item", this._serif.getCurrentOption().getItem, "talk_with_object");
+			}
 		}
 
 		// アイテム使用
@@ -143,8 +151,6 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 			this.root().changeSubScene(this._serif.getCurrentOption().showPicture);
 			return;
 		}
-
-
 
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
