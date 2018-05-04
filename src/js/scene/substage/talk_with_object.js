@@ -110,6 +110,14 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 	if(!this._serif.isStart()) return;
 
+	// 別のシーンへ遷移
+	if (this._serif.getCurrentOption().scene) {
+		// セリフ終わり
+		this.core.scene_manager.changeScene(this._serif.getCurrentOption().scene);
+		this._state = STATE_WAITING;
+		return;
+	}
+
 	// Z ボタンが押されたら
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		// アイテム獲得
@@ -123,15 +131,6 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 			this.root().changeSubScene(this._serif.getCurrentOption().showPicture);
 			return;
 		}
-
-		// 別のシーンへ遷移
-		if (this._serif.getCurrentOption().scene) {
-			// セリフ終わり
-			this.core.scene_manager.changeScene(this._serif.getCurrentOption().scene);
-			return;
-		}
-
-
 
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {

@@ -83,7 +83,7 @@ module.exports = {
 			serif: [
 				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["12"], "serifs": [
 					[
-						{"chara": I, "exp": "murasa-reaction_01", "serif":"", "option": {
+						{"chara": I, "serif":"", "option": {
 							"scene": "event_for_chapter1_play_with_murasa",
 						}},
 					],

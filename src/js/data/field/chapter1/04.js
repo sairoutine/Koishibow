@@ -201,15 +201,6 @@ module.exports = {
 			scale: 2/3,
 			item_id: "07"
 		},
-		{
-			no: ++I,
-			type: CONSTANT.ITEM_TYPE,
-			name: "熊手",
-			image: "chapter1-04-obj-05",
-			x: 655*2/3, y: 610*2/3,
-			scale: 2/3,
-			height: 300,
-		},
 	],
 };
 
