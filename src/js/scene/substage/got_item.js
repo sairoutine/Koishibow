@@ -1,6 +1,6 @@
 'use strict';
 
-// アイテム獲得
+// アイテム獲得 演出
 // TODO: 持ち物がいっぱいだったら、このクラスで持ち物がいっぱいか判定して、
 // それ専用の表示をだす
 
@@ -19,18 +19,24 @@ var WAIT_COUNT_TO_NEXT_SCENE = 60 + WAIT_COUNT_TO_ANIMATION;
 var SceneSubStageGotItem = function(core) {
 	base_scene.apply(this, arguments);
 
-	// 獲得したアイテム オブジェクト
-	this._piece = null;
+	// 獲得したアイテム ID
+	this._item_id = null;
+
+	// 演出後に戻るサブシーン
+	this._sub_scene_name = null;
 };
 Util.inherit(SceneSubStageGotItem, base_scene);
 
-SceneSubStageGotItem.prototype.init = function(item_piece){
+SceneSubStageGotItem.prototype.init = function(item_id, sub_scene_name){
 	base_scene.prototype.init.apply(this, arguments);
 
-	// 獲得したアイテム オブジェクト
-	this._piece = item_piece;
+	// 獲得したアイテム ID
+	this._item_id = item_id;
 
-	var sound_name = ItemConfig[item_piece.getItemId()].sound_name;
+	// 演出後に戻るサブシーン
+	this._sub_scene_name = sub_scene_name || "play";
+
+	var sound_name = ItemConfig[item_id].sound_name;
 	this.core.audio_loader.playSound(sound_name);
 };
 
@@ -38,8 +44,7 @@ SceneSubStageGotItem.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if (this.frame_count > WAIT_COUNT_TO_NEXT_SCENE) {
-		// 通常のサブシーンへ戻る
-		this.root().returnSubScene("play");
+		this.root().returnSubScene(this._sub_scene_name);
 	}
 };
 
@@ -75,7 +80,7 @@ SceneSubStageGotItem.prototype._showItem = function() {
 
 	ctx.save();
 
-	var picture = this.core.image_loader.getImage(ItemConfig[this._piece.getItemId()].image_name);
+	var picture = this.core.image_loader.getImage(ItemConfig[this._item_id].image_name);
 
 	var width = picture.width * 2/3;
 	var height = picture.height * 2/3;

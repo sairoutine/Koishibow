@@ -118,11 +118,17 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 		return;
 	}
 
+	// TODO: バグがあって、セリフの最後にアイテムを手に入れると、talk_with_object が再生されない
+	// (isEnd() の分岐で play sub scene に上書きされるため)
+
 	// Z ボタンが押されたら
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		// アイテム獲得
 		if (this._serif.getCurrentOption().getItem) {
 			this.core.save_manager.item.addItem(this._serif.getCurrentOption().getItem);
+
+			// アイテム獲得演出へ遷移
+			this.root().changeSubScene("got_item", this._serif.getCurrentOption().getItem, "talk_with_object");
 		}
 
 		// 1枚絵に遷移
