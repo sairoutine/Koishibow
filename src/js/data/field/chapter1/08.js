@@ -5,7 +5,7 @@ module.exports = {
 	key: "chapter1_08",
 	chapter: 1,
 	bgm: "field4",
-	right_start_position: {x: 690, y: 380},
+	right_start_position: {x: 800, y: 380},
 	left_start_position:  {x: 180, y: 380},
 	right_field: "chapter1_09",
 	left_field: "chapter1_07",
@@ -208,7 +208,7 @@ module.exports = {
 			anime4: "kyoko-reverse_ura",
 			anime5: "kyoko-ura_wait",
 			anime6: "kyoko-reverse_omote",
-
+			width: 150,
 			action_name: null,
 			sound_name: null,
 		},

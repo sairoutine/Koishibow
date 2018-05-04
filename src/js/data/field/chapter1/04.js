@@ -126,6 +126,7 @@ module.exports = {
 			],
 			x:805, y:308,
 			scale: 2/3,
+			width: 230,
 			anime1: "chapter1-04-obj-02-obj01",
 			anime2: "chapter1-04-obj-02-obj02",
 			anime3: "chapter1-04-obj-02-obj03",

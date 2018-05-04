@@ -6,7 +6,7 @@ module.exports = {
 	key: "chapter1_05",
 	chapter: 1,
 	bgm: "field3",
-	right_start_position: {x: 690, y: 380},
+	right_start_position: {x: 800, y: 380},
 	left_start_position:  {x: 180, y: 380},
 	right_field: "chapter1_06",
 	left_field:  "chapter1_04",
@@ -131,7 +131,6 @@ module.exports = {
 
 			action_name: null,
 			sound_name: null,
-			position_type: "lying",
 		},
 
 

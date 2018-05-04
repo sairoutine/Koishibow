@@ -130,6 +130,7 @@ module.exports = {
 			anime4: "kogasa-reverse_ura",
 			anime5: "kogasa-ura_wait",
 			anime6: "kogasa-reverse_omote",
+			width: 150,
 
 			action_name: null,
 			sound_name: null,

@@ -5,7 +5,7 @@ module.exports = {
 	key: "chapter1_09",
 	chapter: 1,
 	bgm: "field4",
-	right_start_position: {x: 690, y: 380},
+	right_start_position: {x: 670, y: 380},
 	left_start_position:  {x: 180, y: 380},
 	right_field: "chapter1_10",
 	left_field: "chapter1_08",
@@ -118,6 +118,7 @@ module.exports = {
 			anime4: "murasa-reverse_ura",
 			anime5: "murasa-ura_wait",
 			anime6: "murasa-reverse_omote",
+			width: 150,
 
 			action_name: null,
 			sound_name: null,
@@ -147,6 +148,8 @@ module.exports = {
 			anime4: "chapter1-09-obj-01-obj02",
 			anime5: "chapter1-09-obj-01-obj03",
 			anime6: "chapter1-09-obj-01-obj04",
+			width: 240,
+			height: 240,
 
 			action_name: null,
 			sound_name: null,

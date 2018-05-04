@@ -7,7 +7,7 @@ module.exports = {
 	chapter: 0,
 	bgm: "field2",
 	sub_bgms: ["chapter0-mansion_corridor1-wind"],
-	right_start_position: {x: 800, y: 230},
+	right_start_position: {x: 800, y: 240},
 	left_start_position:  {x: 180, y: 370},
 
 	right_field: "chapter0_mansion_corridor2",
@@ -25,6 +25,7 @@ module.exports = {
 			x: 805,
 			y: 65,
 			scale: 0.7,
+			height: 600,
 			anime1: "chapter0-mansion_corridor1-obj-01-01-obj01",
 			anime2: "chapter0-mansion_corridor1-obj-01-01-obj02",
 			anime3: "chapter0-mansion_corridor1-obj-01-01-obj03",
@@ -45,7 +46,7 @@ module.exports = {
 			x: 815,
 			y: 515,
 			width: 200,
-			height: 200,
+			height: 100,
 			scale: 0.7,
 			anime1: "chapter0-mansion_corridor1-obj-02-01-obj01",
 			anime2: "chapter0-mansion_corridor1-obj-02-01-obj02",
@@ -60,6 +61,19 @@ module.exports = {
 		},
 		{
 			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "三輪車の下",
+			serif: null,
+			width: 200, height: 300,
+			x: 815,
+			y: 715,
+
+		},
+
+
+		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "カーテン",
 			serif: [
@@ -68,7 +82,7 @@ module.exports = {
 			x: 190,
 			y: 135,
 			width: 300,
-			height: 250,
+			height: 450,
 			scale: 0.7,
 			anime1: "chapter0-mansion_corridor1-obj-03-01-obj01",
 			anime2: "chapter0-mansion_corridor1-obj-03-01-obj02",
