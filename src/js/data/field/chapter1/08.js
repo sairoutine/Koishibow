@@ -42,6 +42,17 @@ module.exports = {
 			position_type: "lying",
 		},
 
+		{
+			no: ++I,
+			image: "item_09",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "竹とんぼ",
+			x:75, y:100,
+			scale: 2/3,
+			position_type: "lying",
+			not_show_if_event_true: "chapter1_08-useHashigo",
+		},
+
 
 
 		{

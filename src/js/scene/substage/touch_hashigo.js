@@ -17,6 +17,10 @@ SceneSubStageLock.prototype.init = function(){
 	this.core.save_manager.item.reduceItem("05");
 	// 竹とんぼを追加
 	this.core.save_manager.item.addItem("09");
+
+	// イベントが終わったことを保存
+	this.core.save_manager.scenario.incrementPlayedCount("chapter1_08-useHashigo");
+
 };
 
 
