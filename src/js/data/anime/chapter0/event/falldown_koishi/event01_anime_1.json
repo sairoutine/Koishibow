@@ -6,8 +6,8 @@
 "fps": 30,
 "CanvasWidth": 1440,
 "CanvasHeight": 1080,
-"MarginWidth": 728,
-"MarginHeight": 548,
+"MarginWidth": 720,
+"MarginHeight": 540,
 "parts": ["root","event","blk","shadow","black-mist","bg01","Chara","koishi0_bottom0","koishi0_thighs_l0","koishi0_calf_l0","koishi0_foot_l0","koishi0_thighs_r0","koishi0_calf_r0","koishi0_foot_r0","koishi0_body","koishi0_arm0_r0","koishi0_arm0_l0","koishi0_head0","koishi0_hear_b0","koishi0_hear_f1","koishi0_hear_f0","koishi0_mouth0","koishi0_eye0_l0","koishi0_eye0_l1","koishi0_eye0_l2","koishi0_eye1_l0","koishi0_eye0_r0","koishi0_eye0_r1","koishi0_eye0_r2","koishi0_eye1_r0","koishi0_hat0_f0","koishi0_hat0_b0","koishi0_hat0_obj0","3rdeye0_all","3rdeye0_cord_b0","3rdeye0_cord_f0","3rdeye0_body0","3rdeye0_eye0","3rdeye0_light0","3rdeye0_eye1","door_all","door01","door","bg","clock","01_omote","02_omote","03"],
 "ssa": [
 [
