@@ -6,7 +6,7 @@
 
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
-var ItemConfig = require('../../config/item');
+var ItemMasterRepository = require("../../repository/item");
 
 // アニメまでの待機時間
 var WAIT_COUNT_TO_ANIMATION = 60;
@@ -36,7 +36,7 @@ SceneSubStageGotItem.prototype.init = function(item_id, sub_scene_name){
 	// 演出後に戻るサブシーン
 	this._sub_scene_name = sub_scene_name || "play";
 
-	var sound_name = ItemConfig[item_id].sound_name;
+	var sound_name = ItemMasterRepository.find(item_id).soundName();
 	this.core.audio_loader.playSound(sound_name);
 };
 
@@ -80,7 +80,8 @@ SceneSubStageGotItem.prototype._showItem = function() {
 
 	ctx.save();
 
-	var picture = this.core.image_loader.getImage(ItemConfig[this._item_id].image_name);
+	var image_name = ItemMasterRepository.find(this._item_id).imageName();
+	var picture = this.core.image_loader.getImage(image_name);
 
 	var width = picture.width * 2/3;
 	var height = picture.height * 2/3;

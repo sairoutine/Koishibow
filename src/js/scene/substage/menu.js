@@ -6,10 +6,9 @@ var base_scene = require('./base');
 var UIParts = require('../../hakurei').object.ui_parts;
 var Util = require('../../hakurei').util;
 var CONSTANT = require('../../constant');
-var ItemConfig = require('../../config/item');
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 var SelectedCursor = require('../../object/ui/selected_cursor');
-var ItemConfig = require('../../config/item');
+var ItemMasterRepository = require("../../repository/item");
 
 var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
 var ObjectMenuItemNonUsable = require('../../object/menu_item/non_usable');
@@ -411,14 +410,14 @@ SceneSubStageMenu.prototype._showMessage = function(){
 	if (!this.focus_item_id) return;
 
 	var ctx = this.core.ctx;
-	var item_config = ItemConfig[this.focus_item_id];
+	var item_config = ItemMasterRepository.find(this.focus_item_id);
 
 	var description;
 	if (this._show_unable_to_use_message) {
 		description = "使用できません";
 	}
 	else{
-		description = item_config.description;
+		description = item_config.description();
 	}
 
 	// メニュー文字 表示
@@ -523,8 +522,8 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 		var num = item_data.num;
 
 		// item_id => item_type
-		var item_config = ItemConfig[item_id];
-		var type = item_config.type;
+		var item_config = ItemMasterRepository.find(item_id);
+		var type = item_config.type();
 
 		var menu_item;
 		if (type === CONSTANT.ITEM.EYEDROPS) { // 目薬

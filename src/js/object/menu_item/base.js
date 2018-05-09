@@ -2,7 +2,7 @@
 
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
-var ItemConfig = require('../../config/item');
+var ItemMasterRepository = require("../../repository/item");
 
 var ObjectMenuItemBase = function(scene, item_id, num) {
 	base_object.apply(this, arguments);
@@ -15,9 +15,9 @@ Util.inherit(ObjectMenuItemBase, base_object);
 ObjectMenuItemBase.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
-	var item_config = ItemConfig[this.itemId()];
+	var item_config = ItemMasterRepository.find(this.itemId());
 
-	var image = this.core.image_loader.getImage(item_config.image_name);
+	var image = this.core.image_loader.getImage(item_config.imageName());
 
 	ctx.save();
 	ctx.translate(this.x(), this.y());
