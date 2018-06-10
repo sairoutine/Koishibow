@@ -183,6 +183,7 @@ AssetsConfig.images = {
 
 	// chapter3
 	"chapter3-03-bg-001": "./image/chapter3/chapter3-03/chapter3-10-bg001.jpg",
+	"chapter3-10-obj-01": "./image/chapter3/chapter3-03/chapter3-10-obj-01.png",
 	"chapter3-03-obj-02_back": "./image/chapter3/chapter3-03/chapter3-10-obj-02_back.png",
 	"chapter3-03-obj-02_front": "./image/chapter3/chapter3-03/chapter3-10-obj-02_front.png",
 	
