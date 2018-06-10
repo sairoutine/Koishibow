@@ -181,6 +181,11 @@ AssetsConfig.images = {
 	"chapter1-10-bg-001": "./image/chapter1/chapter1-10/chapter1-10-bg-001.jpg",
 	"chapter1-10-obj-01": "./image/chapter1/chapter1-10/chapter1-10-obj-01.png",
 
+	// chapter3
+	"chapter3-03-bg-001": "./image/chapter3/chapter3-03/chapter3-10-bg001.jpg",
+	"chapter3-03-obj-02_back": "./image/chapter3/chapter3-03/chapter3-10-obj-02_back.png",
+	"chapter3-03-obj-02_front": "./image/chapter3/chapter3-03/chapter3-10-obj-02_front.png",
+	
 	// 選択中のアイテム背景
 	"item_selected":      "./image/item/icon_item_common_light01.png",
 
