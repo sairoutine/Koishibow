@@ -234,6 +234,28 @@ var anime_map = {
 	"chapter1-10-obj-01-obj02":  require('../data/anime/chapter1/10/obj-01/obj02_anime_1.json'),
 	"chapter1-10-obj-01-obj03":  require('../data/anime/chapter1/10/obj-01/obj03_anime_1.json'),
 	"chapter1-10-obj-01-obj04":  require('../data/anime/chapter1/10/obj-01/obj04_anime_1.json'),
+	
+	/* チルノ */
+	"cirno-wait":          require('../data/anime/cirno/wait_anime_1'),
+	"cirno-reverse_ura":   require('../data/anime/cirno/reverse_ura_anime_1'),
+	"cirno-ura_wait":      require('../data/anime/cirno/ura_wait_anime_1'),
+	"cirno-reverse_omote": require('../data/anime/cirno/reverse_omote_anime_1'),
+	"cirno-run": require('../data/anime/cirno/run_anime_1'),
+	"cirno-reaction_01":   require('../data/anime/cirno/reaction_01_anime_1'),
+	"cirno-reaction_02":   require('../data/anime/cirno/reaction_02_anime_1'),
+	"cirno-reaction_03":   require('../data/anime/cirno/reaction_03_anime_1'),
+	"cirno-reaction_04":   require('../data/anime/cirno/reaction_04_anime_1'),
+	"cirno-reaction_05":   require('../data/anime/cirno/reaction_05_anime_1'),
+	"cirno-reaction_06":   require('../data/anime/cirno/reaction_06_anime_1'),
+	"cirno-reaction_07":   require('../data/anime/cirno/reaction_07_anime_1'),
+	"cirno-reaction_08":   require('../data/anime/cirno/reaction_08_anime_1'),
+	"cirno-reaction_09":   require('../data/anime/cirno/reaction_09_anime_1'),
+	"cirno-ura_reaction_01":   require('../data/anime/cirno/ura_reaction_01_anime_1'),
+	"cirno-ura_reaction_02":   require('../data/anime/cirno/ura_reaction_02_anime_1'),
+	"cirno-ura_reaction_03":   require('../data/anime/cirno/ura_reaction_03_anime_1'),
+	"cirno-ura_reaction_04":   require('../data/anime/cirno/ura_reaction_04_anime_1'),
+	"cirno-ura_reaction_05":   require('../data/anime/cirno/ura_reaction_05_anime_1'),
+	"cirno-ura_reaction_06":   require('../data/anime/cirno/ura_reaction_06_anime_1'),
 };
 
 module.exports = anime_map;
