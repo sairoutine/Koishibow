@@ -114,6 +114,11 @@ var anime_map = {
 	"chapter1-03-obj-05-obj01":  require('../data/anime/chapter1/03/obj-05/obj01_anime_1.json'),
 	"chapter1-03-obj-05-obj02":  require('../data/anime/chapter1/03/obj-05/obj02_anime_1.json'),
 
+	"chapterchapter3-10-obj-01":  require('../data/anime/chapter3/10/obj-01/obj01_anime_1.json'),
+	"chapterchapter3-10-obj-02":  require('../data/anime/chapter3/10/obj-01/obj02_anime_1.json'),
+	"chapterchapter3-10-obj-03":  require('../data/anime/chapter3/10/obj-01/obj03_anime_1.json'),
+	"chapterchapter3-10-obj-04":  require('../data/anime/chapter3/10/obj-01/obj04_anime_1.json'),
+
 	/* てぃ */
 	"tewi-wait":          require('../data/anime/tewi/wait_anime_1'),
 	"tewi-reverse_ura":   require('../data/anime/tewi/reverse_ura_anime_1'),
