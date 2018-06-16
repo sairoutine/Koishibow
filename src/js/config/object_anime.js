@@ -258,5 +258,24 @@ var anime_map = {
 	"cirno-ura_reaction_06":   require('../data/anime/cirno/ura_reaction_06_anime_1'),
 };
 
+	/* フラン */
+	"fran-wait":          require('../data/anime/fran/wait_anime_1'),
+	"fran-reverse_ura":   require('../data/anime/fran/reverse_ura_anime_1'),
+	"fran-ura_wait":      require('../data/anime/fran/ura_wait_anime_1'),
+	"fran-reverse_omote": require('../data/anime/fran/reverse_omote_anime_1'),
+	"fran-reaction_01":   require('../data/anime/fran/reaction_01_anime_1'),
+	"fran-reaction_02":   require('../data/anime/fran/reaction_02_anime_1'),
+	"fran-reaction_03":   require('../data/anime/fran/reaction_03_anime_1'),
+	"fran-reaction_04":   require('../data/anime/fran/reaction_04_anime_1'),
+	"fran-reaction_05":   require('../data/anime/fran/reaction_05_anime_1'),
+	"fran-reaction_06":   require('../data/anime/fran/reaction_06_anime_1'),
+	"fran-ura_reaction_01":   require('../data/anime/fran/ura_reaction_01_anime_1'),
+	"fran-ura_reaction_02":   require('../data/anime/fran/ura_reaction_02_anime_1'),
+	"fran-ura_reaction_03":   require('../data/anime/fran/ura_reaction_03_anime_1'),
+	"fran-ura_reaction_04":   require('../data/anime/fran/ura_reaction_04_anime_1'),
+	"fran-ura_reaction_05":   require('../data/anime/fran/ura_reaction_05_anime_1'),
+	"fran-ura_reaction_06":   require('../data/anime/fran/ura_reaction_06_anime_1'),
+};
+
 module.exports = anime_map;
 
