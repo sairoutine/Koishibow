@@ -186,10 +186,13 @@ AssetsConfig.images = {
 	// chapter3
 	"chapter3-06-bg-001": "./image/chapter3/chapter3-06/chapter3-06-bg-001.jpg",
 	
-	"chapter3-03-bg-001": "./image/chapter3/chapter3-03/chapter3-10-bg001.jpg",
-	"chapter3-10-obj-01": "./image/chapter3/chapter3-03/chapter3-10-obj-01.png",
-	"chapter3-03-obj-02_back": "./image/chapter3/chapter3-03/chapter3-10-obj-02_back.png",
-	"chapter3-03-obj-02_front": "./image/chapter3/chapter3-03/chapter3-10-obj-02_front.png",
+	"chapter3-10-bg-001": "./image/chapter3/chapter3-10/chapter3-10-bg-001.jpg",
+	"chapter3-10-obj-01": "./image/chapter3/chapter3-10/chapter3-10-obj-01.png",
+	"chapter3-10-obj-02-back": "./image/chapter3/chapter3-10/chapter3-10-obj-02_back.png",
+	"chapter3-10-obj-02-front": "./image/chapter3/chapter3-10/chapter3-10-obj-02_front.png",
+	
+	"chapter3-14-bg-001": "./image/chapter3/chapter3-14/chapter3-14-bg-001.jpg",
+	"chapter3-14-obj-01": "./image/chapter3/chapter3-14/chapter3-14-obj-01.png",
 	
 	// 選択中のアイテム背景
 	"item_selected":      "./image/item/icon_item_common_light01.png",
