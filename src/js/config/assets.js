@@ -194,6 +194,13 @@ AssetsConfig.images = {
 	"chapter3-14-bg-001": "./image/chapter3/chapter3-14/chapter3-14-bg-001.jpg",
 	"chapter3-14-obj-01": "./image/chapter3/chapter3-14/chapter3-14-obj-01.png",
 	
+	// 3-8 さとりとのフラッシュバック
+	"chapter3-08-event-01-koishi":  "./image/chapter3/event/pchapter3-08-event-01/chapter3-08-event-01-koishi.png",
+	"chapter3-08-event-01-satori":  "./image/chapter3/event/pchapter3-08-event-01/chapter3-08-event-01-satori.png",
+	"chapter3-08-event-01-obj-01":  "./image/chapter3/event/pchapter3-08-event-01/chapter3-08-event-01-obj-01.png",
+	"chapter3-08-event-01-obj-02":  "./image/chapter3/event/pchapter3-08-event-01/chapter3-08-event-01-obj-02.png",
+	"chapter3-08-event-01-bg-001":  "./image/chapter3/event/pchapter3-08-event-01/chapter3-08-event-01-bg-001.jpg",
+	
 	// 選択中のアイテム背景
 	"item_selected":      "./image/item/icon_item_common_light01.png",
 
