@@ -198,6 +198,12 @@ AssetsConfig.images = {
 	"chapter3-11-obj-04": "./image/chapter3/chapter3-11/chapter3-11-obj-04.png",
 	"chapter3-11-obj-05": "./image/chapter3/chapter3-11/chapter3-11-obj-05.png",
 	
+	"chapter3-12-bg-001": "./image/chapter3/chapter3-12/chapter3-12-bg-001.jpg",
+	"chapter3-12-obj-01": "./image/chapter3/chapter3-12/chapter3-12-obj-01.png",
+	"chapter3-12-obj-02": "./image/chapter3/chapter3-12/chapter3-12-obj-02.png",
+	"chapter3-12-obj-03": "./image/chapter3/chapter3-12/chapter3-12-obj-03.png",
+	"chapter3-12-obj-04": "./image/chapter3/chapter3-12/chapter3-12-obj-04.png",
+	
 	"chapter3-14-bg-001": "./image/chapter3/chapter3-14/chapter3-14-bg-001.jpg",
 	"chapter3-14-obj-01": "./image/chapter3/chapter3-14/chapter3-14-obj-01.png",
 	
