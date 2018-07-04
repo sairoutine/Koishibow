@@ -319,7 +319,6 @@ var anime_map = {
 	"cirno-ura_reaction_04":   require('../data/anime/cirno/ura_reaction_04_anime_1'),
 	"cirno-ura_reaction_05":   require('../data/anime/cirno/ura_reaction_05_anime_1'),
 	"cirno-ura_reaction_06":   require('../data/anime/cirno/ura_reaction_06_anime_1'),
-};
 
 	/* フラン */
 	"fran-wait":          require('../data/anime/fran/wait_anime_1'),

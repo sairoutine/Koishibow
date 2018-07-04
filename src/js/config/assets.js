@@ -84,22 +84,22 @@ AssetsConfig.images = {
 	"chapter1-09-event-01-koishi":  "./image/chapter1/event/play_with_murasa/chapter1-09-event-01-koishi.png",
 	
 	// 3-1 こいしが起きる
-	"chapter3-01-event-01-koishi":  "./image/chapter3/event/pchapter3-01-event-01/chapter3-01-event-01-koishi.png",
-	"chapter3-01-event-01-bg-001":  "./image/chapter3/event/pchapter3-01-event-01/chapter3-01-event-01-bg-001.jpg",	
+	"chapter3-01-event-01-koishi":  "./image/chapter3/event/chapter3-01-event-01/chapter3-01-event-01-koishi.png",
+	"chapter3-01-event-01-bg-001":  "./image/chapter3/event/chapter3-01-event-01/chapter3-01-event-01-bg-001.jpg",	
 	
 	// 3-8 さとりとのフラッシュバック
-	"chapter3-08-event-01-koishi":  "./image/chapter3/event/pchapter3-08-event-01/chapter3-08-event-01-koishi.png",
-	"chapter3-08-event-01-satori":  "./image/chapter3/event/pchapter3-08-event-01/chapter3-08-event-01-satori.png",
-	"chapter3-08-event-01-obj-01":  "./image/chapter3/event/pchapter3-08-event-01/chapter3-08-event-01-obj-01.png",
-	"chapter3-08-event-01-obj-02":  "./image/chapter3/event/pchapter3-08-event-01/chapter3-08-event-01-obj-02.png",
-	"chapter3-08-event-01-bg-001":  "./image/chapter3/event/pchapter3-08-event-01/chapter3-08-event-01-bg-001.jpg",
+	"chapter3-08-event-01-koishi":  "./image/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-koishi.png",
+	"chapter3-08-event-01-satori":  "./image/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-satori.png",
+	"chapter3-08-event-01-obj-01":  "./image/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-obj-01.png",
+	"chapter3-08-event-01-obj-02":  "./image/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-obj-02.png",
+	"chapter3-08-event-01-bg-001":  "./image/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-bg-001.jpg",
 	
 	// 3-8 チルノを引っ張り出す
-	"chapter3-08-event-02-koishi":  "./image/chapter3/event/pchapter3-08-event-02/chapter3-08-event-02-koishi.png",
-	"chapter3-08-event-02-cirno":  "./image/chapter3/event/pchapter3-08-event-02/chapter3-08-event-02-cirno.png",
-	"chapter3-08-event-02-snow":  "./image/chapter3/event/pchapter3-08-event-02/chapter3-08-event-02-snow.png",
-	"chapter3-08-event-02-tree":  "./image/chapter3/event/pchapter3-08-event-02/chapter3-08-event-02-tree.png",
-	"chapter3-08-event-02-bg-001":  "./image/chapter3/event/pchapter3-08-event-02/chapter3-08-event-02-bg-001.jpg",
+	"chapter3-08-event-02-koishi":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-koishi.png",
+	"chapter3-08-event-02-cirno":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-cirno.png",
+	"chapter3-08-event-02-snow":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-snow.png",
+	"chapter3-08-event-02-tree":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-tree.png",
+	"chapter3-08-event-02-bg-001":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-bg-001.jpg",
 
 	// ジャーナル画像
 	"journal001":  "./image/journal/001.png",
@@ -226,8 +226,8 @@ AssetsConfig.images = {
 	
 	"chapter3-10-bg-001": "./image/chapter3/chapter3-10/chapter3-10-bg-001.jpg",
 	"chapter3-10-obj-01": "./image/chapter3/chapter3-10/chapter3-10-obj-01.png",
-	"chapter3-10-obj-02-back": "./image/chapter3/chapter3-10/chapter3-10-obj-02_back.png",
-	"chapter3-10-obj-02-front": "./image/chapter3/chapter3-10/chapter3-10-obj-02_front.png",
+	"chapter3-10-obj-02-back": "./image/chapter3/chapter3-10/chapter3-10-obj-02-back.png",
+	"chapter3-10-obj-02-front": "./image/chapter3/chapter3-10/chapter3-10-obj-02-front.png",
 	
 	"chapter3-11-bg-001": "./image/chapter3/chapter3-11/chapter3-11-bg-001.jpg",
 	"chapter3-11-obj-01": "./image/chapter3/chapter3-11/chapter3-11-obj-01.png",
