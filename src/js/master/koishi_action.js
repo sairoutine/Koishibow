@@ -12,45 +12,42 @@ var jsonDataOfReactionYes = require('../data/anime/koishi/reaction_yes_anime_1')
 //	座る	可能	45	1.5秒
 var jsonDataOfReactionSit = require('../data/anime/koishi/sit_anime_1');
 
-
-var CharaAnimeConfig = {};
-
-CharaAnimeConfig.KoishiAction = {
+module.exports = [
 	// 触る
-	touch: {
+	{
+		name: "touch",
 		anime: jsonDataOfReactionTouch,
 		sound: "touch",
 	},
 	// 下を見る
-	look_bottom: {
+	{
+		name: "look_bottom",
 		anime: jsonDataOfReactionLookBottom,
 		sound: "",
 	},
 	// 前を見る
-	look_front: {
+	{
+		name: "look_front",
 		anime: jsonDataOfReactionLookFront,
 		sound: "",
 	},
 	// 上を見る
-	look_top: {
+	{
+		name: "look_top",
 		anime: jsonDataOfReactionLookTop,
 		sound: "",
 	},
 	// うなづく
-	yes: {
+	{
+		name: "yes",
 		anime: jsonDataOfReactionYes,
 		sound: "",
 	},
 	// 座る
-	sit: {
+	{
+		name: "sit",
 		anime: jsonDataOfReactionSit,
 		sound: "",
 	},
-};
+];
 
-// Koishi クラスの jsonAnimeMap 用
-CharaAnimeConfig.Koishi = {};
-for (var key in CharaAnimeConfig.KoishiAction) {
-	CharaAnimeConfig.Koishi[key] = CharaAnimeConfig.KoishiAction[key].anime;
-}
-module.exports = CharaAnimeConfig;

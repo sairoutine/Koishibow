@@ -9,7 +9,7 @@ var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
 var DrawSerif = require('../logic/draw_serif');
 var CONSTANT_BUTTON = require('../hakurei').constant.button;
-var CharaAnimeConfig = require('../config/chara_anime');
+var KoishiActionMasterRepository = require('../repository/koishi_action');
 
 
 /* 使用用途	リピート	fps	フレーム	時間 */
@@ -87,13 +87,13 @@ Koishi.prototype.unUseEye = function(){
 
 // オブジェクトを調べた際のモーションを行う
 Koishi.prototype.actionByObject = function(action_name) {
-	var action = CharaAnimeConfig.KoishiAction[action_name];
+	var action = KoishiActionMasterRepository.find(action_name);
 
 	// 音を再生
-	// CharaAnimeConfig にはないが、jsonAnimeMap に定義される action がある前提なので、
+	// KoishiActionMasterRepository にはないが、jsonAnimeMap に定義される action がある前提なので、
 	// action が存在しなくても playAnimationOnce させる
-	if (action && action.sound) {
-		this.core.audio_loader.playSound(action.sound);
+	if (action && action.sound()) {
+		this.core.audio_loader.playSound(action.sound());
 	}
 
 	this.playAnimationOnce(action_name);
@@ -251,7 +251,13 @@ var JSON_ANIME_MAP = {
 	use_eye:     jsonDataOfReaction3rdeye,
 };
 
-Util.assign(JSON_ANIME_MAP, CharaAnimeConfig.Koishi);
+// KoishiActionMasterRepository の内容も追加
+var koishi_action_list = KoishiActionMasterRepository.all();
+for (var i = 0, len = koishi_action_list.length; i < len; i++) {
+	var action = koishi_action_list[i];
+	JSON_ANIME_MAP[action.name()] = action.anime();
+}
+
 
 Koishi.prototype.jsonAnimeMap = function() {
 	return JSON_ANIME_MAP;
