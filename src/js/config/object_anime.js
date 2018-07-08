@@ -114,6 +114,24 @@ var anime_map = {
 	"chapter1-03-obj-05-obj01":  require('../data/anime/chapter1/03/obj-05/obj01_anime_1.json'),
 	"chapter1-03-obj-05-obj02":  require('../data/anime/chapter1/03/obj-05/obj02_anime_1.json'),
 
+	"chapter3-07-obj-01-obj01":  require('../data/anime/chapter3/07/obj-01/obj01_anime_1.json'),
+	"chapter3-07-obj-01-obj02":  require('../data/anime/chapter3/07/obj-01/obj02_anime_1.json'),
+	"chapter3-07-obj-01-obj03":  require('../data/anime/chapter3/07/obj-01/obj03_anime_1.json'),
+	"chapter3-07-obj-01-obj04":  require('../data/anime/chapter3/07/obj-01/obj04_anime_1.json'),
+	"chapter3-07-obj-03-obj01":  require('../data/anime/chapter3/07/obj-03/obj01_anime_1.json'),
+	"chapter3-07-obj-03-obj02":  require('../data/anime/chapter3/07/obj-03/obj02_anime_1.json'),
+	"chapter3-07-obj-03-obj03":  require('../data/anime/chapter3/07/obj-03/obj03_anime_1.json'),
+	"chapter3-07-obj-03-obj04":  require('../data/anime/chapter3/07/obj-03/obj04_anime_1.json'),
+	"chapter3-07-obj-05-obj01":  require('../data/anime/chapter3/07/obj-05/obj01_anime_1.json'),
+	"chapter3-07-obj-05-obj02":  require('../data/anime/chapter3/07/obj-05/obj02_anime_1.json'),
+	"chapter3-07-obj-05-obj03":  require('../data/anime/chapter3/07/obj-05/obj03_anime_1.json'),
+	"chapter3-07-obj-05-obj04":  require('../data/anime/chapter3/07/obj-05/obj04_anime_1.json'),
+	
+	"chapter3-08-obj-01-obj01":  require('../data/anime/chapter3/08/obj-01/obj01_anime_1.json'),
+	"chapter3-08-obj-01-obj02":  require('../data/anime/chapter3/08/obj-01/obj02_anime_1.json'),
+	"chapter3-08-obj-01-obj03":  require('../data/anime/chapter3/08/obj-01/obj03_anime_1.json'),
+	"chapter3-08-obj-01-obj04":  require('../data/anime/chapter3/08/obj-01/obj04_anime_1.json'),
+	
 	"chapter3-10-obj-01-obj01":  require('../data/anime/chapter3/10/obj-01/obj01_anime_1.json'),
 	"chapter3-10-obj-01-obj02":  require('../data/anime/chapter3/10/obj-01/obj02_anime_1.json'),
 	"chapter3-10-obj-01-obj03":  require('../data/anime/chapter3/10/obj-01/obj03_anime_1.json'),
@@ -145,6 +163,11 @@ var anime_map = {
 	"chapter3-12-obj-01-obj04":  require('../data/anime/chapter3/12/obj-01/obj04_anime_1.json'),
 	"chapter3-12-obj-03-obj01":  require('../data/anime/chapter3/12/obj-03/obj01_anime_1.json'),
 	"chapter3-12-obj-04-obj01":  require('../data/anime/chapter3/12/obj-04/obj01_anime_1.json'),
+	
+	"chapter3-13-obj-01-obj01":  require('../data/anime/chapter3/13/obj-01/obj01_anime_1.json'),
+	"chapter3-13-obj-01-obj02":  require('../data/anime/chapter3/13/obj-01/obj02_anime_1.json'),
+	"chapter3-13-obj-01-obj03":  require('../data/anime/chapter3/13/obj-01/obj03_anime_1.json'),
+	"chapter3-13-obj-01-obj04":  require('../data/anime/chapter3/13/obj-01/obj04_anime_1.json'),
 
 	/* てぃ */
 	"tewi-wait":          require('../data/anime/tewi/wait_anime_1'),
