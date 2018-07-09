@@ -5,7 +5,7 @@ var base_scene = require('./base');
 var UIParts = require('../../hakurei').object.ui_parts;
 var Util = require('../../hakurei').util;
 //var CONSTANT = require('../../constant');
-var JournalConfig = require('../../config/journal');
+var JournalMasterRepository = require('../../repository/journal');
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 
 
@@ -35,7 +35,7 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 
 	this.menu_journal_list = [];
 
-	var journal_config = JournalConfig;
+	var journal_list = JournalMasterRepository.all();
 
 	var basePosX = 270 + 200;
 	var basePosY = 80;
@@ -43,10 +43,8 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 	var buttonWidth = 400;
 	var buttonHeight = 30;
 
-	var i = 0;
-	for(var id in journal_config) {
-		i++;
-		var conf = journal_config[id];
+	for(var i = 0, len = journal_list.length; i < len; i++) {
+		var conf = journal_list[i];
 
 		(function(conf) {
 			var ui = new UIParts(
@@ -64,7 +62,7 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 					ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
 					var prefix = this.no === self._index ? "▶" : "";
-					ctx.fillText(prefix + conf.title,
+					ctx.fillText(prefix + conf.title(),
 						this.getCollisionLeftX(),
 						this.getCollisionUpY() + 28
 					);
@@ -76,7 +74,7 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 			// TODO: 戻り先をちゃんとする
 			// クリックされたら
 			ui.setCollisionCallback(function () {
-				this.scene.root().changeSubScene("journal", conf.id);
+				this.scene.root().changeSubScene("journal", conf.id());
 			});
 
 			self.menu_journal_list.push(ui);

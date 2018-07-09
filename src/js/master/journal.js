@@ -1,7 +1,7 @@
 'use strict';
 var CONSTANT = require('../constant');
 
-var JournalList = [
+module.exports = [
 	{
 		id: "journal001",
 		type: CONSTANT.JOURNAL.IMAGE,
@@ -65,12 +65,3 @@ var JournalList = [
 	},
 ];
 
-var Journal = {};
-for (var i = 0, len = JournalList.length; i < len; i++) {
-	var conf = JournalList[i];
-	if(Journal[conf.id]) throw new Error ("journal ID: " + conf.id + "is duplicated");
-
-	Journal[conf.id] = conf;
-}
-
-module.exports = Journal;
