@@ -2,7 +2,7 @@
 
 var Util = require('../hakurei').util;
 var BaseScene = require('../hakurei').scene.movie;
-var ChapterMap = require('../config/chapter');
+var ChapterMasterRepository = require('../repository/chapter');
 
 var SceneOpeningMovie = function(core) {
 	BaseScene.apply(this, arguments);
@@ -14,12 +14,12 @@ var SceneOpeningMovie = function(core) {
 Util.inherit(SceneOpeningMovie, BaseScene);
 
 SceneOpeningMovie.prototype.setArgs = function(chapter_name){
-	var chapter_data = ChapterMap[chapter_name];
+	var chapter_data = ChapterMasterRepository.find(chapter_name);
 
 	// movie ファイル
-	this._movie_path = chapter_data.opening_movie;
+	this._movie_path = chapter_data.openingMovie();
 	// chapter開始フィールド名
-	this._field_name = chapter_data.first_field;
+	this._field_name = chapter_data.firstField();
 
 	return this;
 };
