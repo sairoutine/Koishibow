@@ -7,12 +7,12 @@ module.exports = {
 	chapter: 0,
 	bgm: "field2",
 	sub_bgms: ["chapter0-mansion_corridor3-clock"],
-	right_start_position: {x: 690, y: 380},
-	left_start_position:  {x: 180, y: 380},
-	right_field: null,
-	left_field: "chapter0_mansion_corridor2",
+	rightStartPosition: {x: 690, y: 380},
+	leftStartPosition:  {x: 180, y: 380},
+	rightField: null,
+	leftField: "chapter0_mansion_corridor2",
 	background: "chapter0-mansionpas-003",
-	walk_sound: "walking_bare_wood",
+	walkSound: "walking_bare_wood",
 	objects: [
 		{
 			no: ++I,

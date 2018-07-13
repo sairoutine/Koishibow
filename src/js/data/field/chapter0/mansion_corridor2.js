@@ -6,12 +6,12 @@ module.exports = {
 	key: "chapter0_mansion_corridor2",
 	chapter: 0,
 	bgm: "field2",
-	right_start_position: {x: 690, y: 380},
-	left_start_position:  {x: 180, y: 380},
-	right_field: "chapter0_mansion_corridor3",
-	left_field: "chapter0_mansion_corridor1",
+	rightStartPosition: {x: 690, y: 380},
+	leftStartPosition:  {x: 180, y: 380},
+	rightField: "chapter0_mansion_corridor3",
+	leftField: "chapter0_mansion_corridor1",
 	background: "chapter0-mansionpas-002",
-	walk_sound: "walking_bare_wood",
+	walkSound: "walking_bare_wood",
 	subevent: "event_chapter0_satori_encounter_begin",
 	objects: [
 		{

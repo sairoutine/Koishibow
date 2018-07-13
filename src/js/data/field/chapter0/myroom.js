@@ -6,12 +6,12 @@ module.exports = {
 	key: "chapter0_myroom",
 	chapter: 0,
 	bgm: "field1",
-	right_start_position: {x: 690, y: 380},
-	left_start_position:  {x: 180, y: 380},
-	right_field: "chapter0_hospital_corridor1",
-	left_field: null,
+	rightStartPosition: {x: 690, y: 380},
+	leftStartPosition:  {x: 180, y: 380},
+	rightField: "chapter0_hospital_corridor1",
+	leftField: null,
 	background: "chapter0-myroom-bg-001",
-	walk_sound: "walking_bare_default",
+	walkSound: "walking_bare_default",
 	subevent: "event_chapter0_get_hat",
 	objects: [
 		{

@@ -7,12 +7,12 @@ module.exports = {
 	chapter: 1,
 	bgm: "silent",
 	sub_bgms: ["chapter1-06-flicker_light"],
-	right_start_position: {x: 690, y: 380},
-	left_start_position:  {x: 180, y: 380},
-	right_field: null,
-	left_field: "chapter1_05",
+	rightStartPosition: {x: 690, y: 380},
+	leftStartPosition:  {x: 180, y: 380},
+	rightField: null,
+	leftField: "chapter1_05",
 	background: "chapter1-06-bg-001",
-	walk_sound: "walking_bare_outside",
+	walkSound: "walking_bare_outside",
 	objects: [
 		{
 			no: ++I,

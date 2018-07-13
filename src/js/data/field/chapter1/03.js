@@ -7,12 +7,12 @@ module.exports = {
 	chapter: 1,
 	bgm: "field3",
 	sub_bgms: ["chapter1-03-drop_paint"],
-	right_start_position: {x: 690, y: 380},
-	left_start_position:  {x: 146, y: 320},
-	right_field: "chapter1_04",
-	left_field: "chapter1_02",
+	rightStartPosition: {x: 690, y: 380},
+	leftStartPosition:  {x: 146, y: 320},
+	rightField: "chapter1_04",
+	leftField: "chapter1_02",
 	background: "chapter1-03-bg-001",
-	walk_sound: "walking_bare_outside",
+	walkSound: "walking_bare_outside",
 	objects: [
 		{
 			no: ++I,

@@ -6,13 +6,13 @@ module.exports = {
 	key: "chapter0_hospital_corridor1",
 	chapter: 0,
 	bgm: "field1",
-	right_start_position: {x: 800, y: 250},
-	left_start_position:  {x: 180, y: 380},
+	rightStartPosition: {x: 800, y: 250},
+	leftStartPosition:  {x: 180, y: 380},
 
-	right_field: "chapter0_hospital_corridor2",
-	left_field: "chapter0_myroom",
+	rightField: "chapter0_hospital_corridor2",
+	leftField: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
-	walk_sound: "walking_bare_default",
+	walkSound: "walking_bare_default",
 	objects: [
 		{
 			no: ++I,

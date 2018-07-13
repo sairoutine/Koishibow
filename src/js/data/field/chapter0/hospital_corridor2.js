@@ -6,12 +6,12 @@ module.exports = {
 	key: "chapter0_hospital_corridor2",
 	chapter: 0,
 	bgm: "field1",
-	right_start_position: {x: 690, y: 380},
-	left_start_position:  {x: 180, y: 380},
-	right_field: "chapter0_mansion_corridor1",
-	left_field: "chapter0_hospital_corridor1",
+	rightStartPosition: {x: 690, y: 380},
+	leftStartPosition:  {x: 180, y: 380},
+	rightField: "chapter0_mansion_corridor1",
+	leftField: "chapter0_hospital_corridor1",
 	background: "chapter0-hospital2-bg-001",
-	walk_sound: "walking_bare_default",
+	walkSound: "walking_bare_default",
 	subevent: "event_chapter0_kokoro_encounter",
 	objects: [
 		{

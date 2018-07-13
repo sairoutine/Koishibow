@@ -5,12 +5,12 @@ module.exports = {
 	key: "chapter1_09",
 	chapter: 1,
 	bgm: "field4",
-	right_start_position: {x: 670, y: 380},
-	left_start_position:  {x: 180, y: 380},
-	right_field: "chapter1_10",
-	left_field: "chapter1_08",
+	rightStartPosition: {x: 670, y: 380},
+	leftStartPosition:  {x: 180, y: 380},
+	rightField: "chapter1_10",
+	leftField: "chapter1_08",
 	background: "chapter1-09-bg-001",
-	walk_sound: "walking_bare_outside",
+	walkSound: "walking_bare_outside",
 	objects: [
 		{
 			no: ++I,

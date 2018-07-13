@@ -112,7 +112,7 @@ Koishi.prototype._playWalkSound = function(){
 
 	var field_data = this.scene.getFieldData();
 	// 足音
-	var walk_sound = field_data.walk_sound;
+	var walkSound = field_data.walkSound;
 
 	// 屋敷の廊下2は、病院の廊下の床と木の床の境なので、円判定で、音を切り替える
 	if (field_data.key === "chapter0_hospital_corridor2") {
@@ -122,16 +122,16 @@ Koishi.prototype._playWalkSound = function(){
 
 		// 円と点の衝突判定
 		if (Math.pow(arc_x-this.x(), 2) + Math.pow(arc_y-this.y(), 2) <= Math.pow(r, 2)) {
-			walk_sound = "walking_bare_wood";
+			walkSound = "walking_bare_wood";
 		}
 	}
 
 	// こいしの歩くアニメーションに合わせて音を再生
 	if(this.getFrameNo() === 14) {
-		this.core.audio_loader.playSound(walk_sound + "_right");
+		this.core.audio_loader.playSound(walkSound + "_right");
 	}
 	else if(this.getFrameNo() === 29) {
-		this.core.audio_loader.playSound(walk_sound + "_left");
+		this.core.audio_loader.playSound(walkSound + "_left");
 	}
 };
 

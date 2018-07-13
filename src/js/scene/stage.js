@@ -167,20 +167,20 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// フィールド開始時のこいしの初期位置の決定
 	var pos;
-	if (!from_field_name || field_data.left_field === from_field_name) {
+	if (!from_field_name || field_data.leftField === from_field_name) {
 		// 左のフィールドからきた場合
-		pos = field_data.left_start_position;
+		pos = field_data.leftStartPosition;
 		this.koishi.setPosition(pos.x, pos.y);
 	}
-	else if (field_data.right_field === from_field_name) {
+	else if (field_data.rightField === from_field_name) {
 		// 右のフィールドからきた場合
-		pos = field_data.right_start_position;
+		pos = field_data.rightStartPosition;
 		this.koishi.setPosition(pos.x, pos.y);
 		this.koishi.setReflect(true);
 	}
 	else {
 		// フィールド遷移オブジェクト等で右でも左でもないところから遷移してきた場合
-		pos = field_data.right_start_position;
+		pos = field_data.rightStartPosition;
 		this.koishi.setPosition(pos.x, pos.y);
 		this.koishi.setReflect(true);
 	}
@@ -532,28 +532,28 @@ SceneStage.prototype._getObjectDataByFieldData = function() {
 	var field_data = this.getFieldData();
 	var object_data_list = Array.prototype.concat.apply([], field_data.objects); // shallow copy
 
-	if(field_data.right_field) {
+	if(field_data.rightField) {
 		object_data_list.push({
-			no: "right_field",
+			no: "rightField",
 			type: CONSTANT.FIELD_CHANGE_TYPE,
 			name: "右へのフィールド移動",
 			x: this.width - 48,
 			y: this.height/2,
 			width: 64,
 			height: this.height,
-			next_field_name: field_data.right_field,
+			next_field_name: field_data.rightField,
 		});
 	}
-	if(field_data.left_field) {
+	if(field_data.leftField) {
 		object_data_list.push({
-			no: "left_field",
+			no: "leftField",
 			type: CONSTANT.FIELD_CHANGE_TYPE,
 			name: "左へのフィールド移動",
 			x: 48,
 			y: this.height/2,
 			width: 64,
 			height: this.height,
-			next_field_name: field_data.left_field,
+			next_field_name: field_data.leftField,
 		});
 	}
 
