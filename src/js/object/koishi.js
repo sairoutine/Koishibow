@@ -112,10 +112,10 @@ Koishi.prototype._playWalkSound = function(){
 
 	var field_data = this.scene.getFieldData();
 	// 足音
-	var walkSound = field_data.walkSound;
+	var walkSound = field_data.walkSound();
 
 	// 屋敷の廊下2は、病院の廊下の床と木の床の境なので、円判定で、音を切り替える
-	if (field_data.key === "chapter0_hospital_corridor2") {
+	if (field_data.key() === "chapter0_hospital_corridor2") {
 		var arc_x = 860;
 		var arc_y = 95;
 		var r = 600;

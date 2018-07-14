@@ -90,7 +90,7 @@ ObjectAnimeEventImage.prototype.isCheckInTouchArea = function(){
 
 ObjectAnimeEventImage.prototype._removeLeaves = function() {
 	this.core.save_manager.piece.setPieceData(
-		this.scene.root().getFieldData().key,
+		this.scene.root().getFieldData().key(),
 		this.no,
 		"is_removed_leaves",
 		true
@@ -99,7 +99,7 @@ ObjectAnimeEventImage.prototype._removeLeaves = function() {
 
 ObjectAnimeEventImage.prototype._isRemovedLeaves = function() {
 	return this.core.save_manager.piece.getPieceData(
-		this.scene.root().getFieldData().key,
+		this.scene.root().getFieldData().key(),
 		this.no,
 		"is_removed_leaves"
 	);

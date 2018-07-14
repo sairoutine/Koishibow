@@ -15,7 +15,7 @@ var ScenarioManager = require('../../../hakurei').manager.scenario;
 var BlackMist = require('../../../object/black_mist');
 var DrawSerif = require('../../../logic/draw_serif');
 
-var FieldMap = require('../../../config/field');
+var FieldMasterRepository = require('../../../repository/field');
 var CONSTANT = require('../../../constant');
 var ObjectStaticImage      = require('../../../object/pieces/static_image');
 var ObjectAnimeImage       = require('../../../object/pieces/anime_image');
@@ -404,7 +404,7 @@ SceneEventPlayDoll.prototype._setupPieces = function() {
 	// 画面上のオブジェクト一覧
 	this.pieces = [];
 
-	var object_data_list = this.getFieldData();
+	var object_data_list = this.getFieldData().objects();
 	for (var i = 0, len = object_data_list.length; i < len; i++) {
 
 		var data = object_data_list[i];
@@ -449,7 +449,9 @@ SceneEventPlayDoll.prototype._setupPieces = function() {
 };
 
 SceneEventPlayDoll.prototype.getFieldData = function(){
-	return FieldMap.chapter1_02.objects;
+	return FieldMasterRepository.find("chapter1_02");
 };
+
+
 
 module.exports = SceneEventPlayDoll;

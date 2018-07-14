@@ -46,7 +46,7 @@ ObjectStaticImage.prototype.onTouchByKoishi = function() {
 
 ObjectStaticImage.prototype._deleteFromField = function() {
 	this.core.save_manager.piece.setPieceData(
-		this.scene.root().getFieldData().key,
+		this.scene.root().getFieldData().key(),
 		this.no,
 		"is_delete",
 		true
@@ -55,7 +55,7 @@ ObjectStaticImage.prototype._deleteFromField = function() {
 
 ObjectStaticImage.prototype._isDeleted = function() {
 	return this.core.save_manager.piece.getPieceData(
-		this.scene.root().getFieldData().key,
+		this.scene.root().getFieldData().key(),
 		this.no,
 		"is_delete"
 	);

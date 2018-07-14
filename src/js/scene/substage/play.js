@@ -45,10 +45,10 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 			// 最後にゲームオーバーになったフィールドを保存
 			var field_data = this.root().getFieldData();
-			this.core.save_manager.player.setLastGameoverField(field_data.key);
+			this.core.save_manager.player.setLastGameoverField(field_data.key());
 
 			// 開始フィールドをchapterの最初に設定する
-			var field_name = ChapterMasterRepository.find("chapter" + field_data.chapter).firstField();
+			var field_name = ChapterMasterRepository.find("chapter" + field_data.chapter()).firstField();
 			this.core.save_manager.player.setCurrentField(field_name);
 
 			this.core.scene_manager.setFadeOut(0);

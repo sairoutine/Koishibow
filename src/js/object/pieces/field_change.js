@@ -46,7 +46,7 @@ ObjectFieldChange.prototype.isCheckInTouchArea = function(){
 
 ObjectFieldChange.prototype.onCollision = function(obj){
 	var field_data = this.scene.getFieldData();
-	var current_field_name = field_data.key;
+	var current_field_name = field_data.key();
 
 	// 3rd eye 使用中であれば解除
 	if (this.scene.isUsingEye()) {

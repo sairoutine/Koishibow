@@ -45,7 +45,7 @@ var ObjectFaucet = require('../object/pieces/faucet');
 var ObjectSuspendedTree = require('../object/pieces/suspended_tree');
 var ObjectChapter1Hashigo = require('../object/pieces/chapter1_hashigo');
 
-var FieldMap = require('../config/field');
+var FieldMasterRepository = require('../repository/field');
 
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
@@ -167,30 +167,30 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// フィールド開始時のこいしの初期位置の決定
 	var pos;
-	if (!from_field_name || field_data.leftField === from_field_name) {
+	if (!from_field_name || field_data.leftField() === from_field_name) {
 		// 左のフィールドからきた場合
-		pos = field_data.leftStartPosition;
+		pos = field_data.leftStartPosition();
 		this.koishi.setPosition(pos.x, pos.y);
 	}
-	else if (field_data.rightField === from_field_name) {
+	else if (field_data.rightField() === from_field_name) {
 		// 右のフィールドからきた場合
-		pos = field_data.rightStartPosition;
+		pos = field_data.rightStartPosition();
 		this.koishi.setPosition(pos.x, pos.y);
 		this.koishi.setReflect(true);
 	}
 	else {
 		// フィールド遷移オブジェクト等で右でも左でもないところから遷移してきた場合
-		pos = field_data.rightStartPosition;
+		pos = field_data.rightStartPosition();
 		this.koishi.setPosition(pos.x, pos.y);
 		this.koishi.setReflect(true);
 	}
 
 
-	if(this.core.audio_loader.isPlayingBGM(field_data.bgm)) {
-		var sub_bgms = field_data.sub_bgms;
+	if(this.core.audio_loader.isPlayingBGM(field_data.bgm())) {
+		var sub_bgms = field_data.sub_bgms();
 		if (!sub_bgms) sub_bgms = [];
 
-		this.core.audio_loader.stopBGMWithout(field_data.bgm);
+		this.core.audio_loader.stopBGMWithout(field_data.bgm());
 	}
 	else {
 		// BGM 止める
@@ -212,8 +212,8 @@ SceneStage.prototype.changeInitialSubScene = function() {
 	// scene or subscene が設定されていて、未再生ならばそれを使う
 	// そうでなければ通常の play シーン
 
-	var subscene = field_data.subevent;
-	var scene = field_data.event;
+	var subscene = field_data.subevent();
+	var scene = field_data.event();
 	if (scene && !this.core.save_manager.event.isPlayedEvent(scene)) {
 		this.core.save_manager.event.setPlayedEvent(scene);
 
@@ -270,12 +270,12 @@ SceneStage.prototype.beforeDraw = function() {
 
 	// BGM 再生
 	if(!this.isUsingEye() && this.frame_count >= 60) {
-		if(!this.core.audio_loader.isPlayingBGM(field_data.bgm)) {
+		if(!this.core.audio_loader.isPlayingBGM(field_data.bgm())) {
 			// メインBGM 再生
-			this.core.audio_loader.changeBGM(field_data.bgm);
+			this.core.audio_loader.changeBGM(field_data.bgm());
 		}
 
-		var sub_bgms = field_data.sub_bgms;
+		var sub_bgms = field_data.sub_bgms();
 		if (!sub_bgms) sub_bgms = [];
 
 		// サブBGM
@@ -292,7 +292,7 @@ SceneStage.prototype.beforeDraw = function() {
 	// chapter 0 で3rd eye を使用していないときのみ
 	// ランダムノイズ再生
 	// N秒ごとにN%の確率で再生
-	if (field_data.chapter === 0 && !this.isUsingEye()) {
+	if (field_data.chapter() === 0 && !this.isUsingEye()) {
 		if(this.core.frame_count % CONSTANT.CHAPTER0.NOISE_SOUND_INTERVAL_COUNT === 0) {
 			if (Util.getRandomInt(100) <= CONSTANT.CHAPTER0.NOISE_SOUND_PROB) {
 				var sound_name = CONSTANT.CHAPTER0.NOISE_SOUND_LIST[ Util.getRandomInt(0, CONSTANT.CHAPTER0.NOISE_SOUND_LIST.length - 1) ];
@@ -344,7 +344,7 @@ SceneStage.prototype.draw = function(){
 	var ctx = this.core.ctx;
 
 	// 背景描画
-	var bg = this.core.image_loader.getImage(field_data.background);
+	var bg = this.core.image_loader.getImage(field_data.background());
 	ctx.save();
 	ctx.drawImage(bg,
 		0,
@@ -447,10 +447,10 @@ SceneStage.prototype.isNoHat = function(){
 	return this.currentSubScene() instanceof SceneSubStageEventChapter0GetHat;
 };
 SceneStage.prototype.getFieldData = function(){
-	return FieldMap[this.core.save_manager.player.getCurrentField()];
+	return FieldMasterRepository.find(this.core.save_manager.player.getCurrentField());
 };
 SceneStage.prototype.getChapterNo = function(){
-	return this.getFieldData().chapter;
+	return this.getFieldData().chapter();
 };
 
 // ステージ上のオブジェクト or 自機を取得
@@ -530,9 +530,9 @@ SceneStage.prototype._setupPieces = function() {
 
 SceneStage.prototype._getObjectDataByFieldData = function() {
 	var field_data = this.getFieldData();
-	var object_data_list = Array.prototype.concat.apply([], field_data.objects); // shallow copy
+	var object_data_list = Array.prototype.concat.apply([], field_data.objects()); // shallow copy
 
-	if(field_data.rightField) {
+	if(field_data.rightField()) {
 		object_data_list.push({
 			no: "rightField",
 			type: CONSTANT.FIELD_CHANGE_TYPE,
@@ -541,10 +541,10 @@ SceneStage.prototype._getObjectDataByFieldData = function() {
 			y: this.height/2,
 			width: 64,
 			height: this.height,
-			next_field_name: field_data.rightField,
+			next_field_name: field_data.rightField(),
 		});
 	}
-	if(field_data.leftField) {
+	if(field_data.leftField()) {
 		object_data_list.push({
 			no: "leftField",
 			type: CONSTANT.FIELD_CHANGE_TYPE,
@@ -553,12 +553,12 @@ SceneStage.prototype._getObjectDataByFieldData = function() {
 			y: this.height/2,
 			width: 64,
 			height: this.height,
-			next_field_name: field_data.leftField,
+			next_field_name: field_data.leftField(),
 		});
 	}
 
 	// ゲームオーバー用ボタンの目こいし
-	if (this.core.save_manager.player.getLastGameoverField() === field_data.key) {
+	if (this.core.save_manager.player.getLastGameoverField() === field_data.key()) {
 		object_data_list.push({
 			no: "button_koishi",
 			type: CONSTANT.BUTTON_KOISHI_TYPE,
