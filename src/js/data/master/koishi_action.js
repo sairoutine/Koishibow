@@ -1,16 +1,16 @@
 'use strict';
 // 	下を見る	不	30	15	0.5秒
-var jsonDataOfReactionLookBottom = require('../data/anime/koishi/reaction_look_bottom_anime_1');
+var jsonDataOfReactionLookBottom = require('../../data/anime/koishi/reaction_look_bottom_anime_1');
 // 	前を見る	不	30	15	0.5秒
-var jsonDataOfReactionLookFront = require('../data/anime/koishi/reaction_look_front_anime_1');
+var jsonDataOfReactionLookFront = require('../../data/anime/koishi/reaction_look_front_anime_1');
 //	上を見る	不	30	15	0.5秒
-var jsonDataOfReactionLookTop = require('../data/anime/koishi/reaction_look_top_anime_1');
+var jsonDataOfReactionLookTop = require('../../data/anime/koishi/reaction_look_top_anime_1');
 //	触る、物を取る	不	30	15	0.5秒
-var jsonDataOfReactionTouch = require('../data/anime/koishi/reaction_touch_anime_1');
+var jsonDataOfReactionTouch = require('../../data/anime/koishi/reaction_touch_anime_1');
 //	YES、うなずく	不	30	15	0.5秒
-var jsonDataOfReactionYes = require('../data/anime/koishi/reaction_yes_anime_1');
+var jsonDataOfReactionYes = require('../../data/anime/koishi/reaction_yes_anime_1');
 //	座る	可能	45	1.5秒
-var jsonDataOfReactionSit = require('../data/anime/koishi/sit_anime_1');
+var jsonDataOfReactionSit = require('../../data/anime/koishi/sit_anime_1');
 
 module.exports = [
 	// 触る

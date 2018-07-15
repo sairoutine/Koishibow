@@ -1,7 +1,7 @@
 'use strict';
 var MasterRepositoryGenerator = require('../hakurei').Master.RepositoryGenerator;
 var CONSTANT = require('../constant');
-var data_list = require("../master/item");
+var data_list = require("../data/master/item");
 
 var ItemMasterRepository = MasterRepositoryGenerator.exec(
 	{

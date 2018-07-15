@@ -1,7 +1,7 @@
 'use strict';
 var MasterRepositoryGenerator = require('../hakurei').Master.RepositoryGenerator;
 var CONSTANT = require('../constant');
-var data_list = require("../master/koishi_action");
+var data_list = require("../data/master/koishi_action");
 
 var KoishiActionMasterRepository = MasterRepositoryGenerator.exec(
 	{
