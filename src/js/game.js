@@ -25,6 +25,9 @@ var SceneEventForChapter1TalkWithMobu    = require('./scene/event/chapter1/talk_
 var SceneEventForChapter1PlayDoll        = require('./scene/event/chapter1/playdoll');
 var SceneEventForChapter1PlayWithMurasa  = require('./scene/event/chapter1/play_with_murasa');
 
+var FieldMasterRepository = require('./repository/field');
+
+
 var Game = function(canvas) {
 	core.apply(this, arguments);
 
@@ -198,6 +201,16 @@ Game.prototype.setupDebug = function (dom) {
 	});
 	this.debug_manager.addMenuButton("SAN値 非表示", function (game) {
 		game.debug_manager.set("is_show_3rdeye_gauge", false);
+	});
+
+	var field_list = FieldMasterRepository.all()
+	var field_name_list = [];
+	for (var i = 0, len = field_list.length; i < len; i++) {
+		field_name_list.push({value: field_list[i].key()});
+	}
+	this.debug_manager.addMenuSelect("フィールド移動", field_name_list,
+	function (game, value) {
+		game.scene_manager.changeScene("stage", value);
 	});
 
 	this.debug_manager.addNewLine();
