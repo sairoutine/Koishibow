@@ -47,30 +47,45 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			image: "chapter3-09-obj-03",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "レミリアの死骸",
 			serif: [
 				{"chara": "koishi","serif":""},
 			],
 			x:865*2/3, y:742.50*2/3,
 			scale: 2/3,
+			anime1: "chapter3-09-obj-03-obj01",
+			anime2: null,
+			anime3: null,
+			anime4: "chapter3-09-obj-03-obj02",
+			anime5: "chapter3-09-obj-03-obj03",
+			anime6: "chapter3-09-obj-03-obj04",
+
 			action_name: "touch",
-			sound_name: null
+			sound_name: null,
 		},
+
+
 		{
 			no: ++I,
-			image: "chapter3-09-obj-04",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "胸像",
 			serif: [
 				{"chara": "koishi","serif":""},
 			],
 			x:345*2/3, y:631.50*2/3,
 			scale: 2/3,
+			anime1: "chapter3-09-obj-04-obj01",
+			anime2: null,
+			anime3: null,
+			anime4: "chapter3-09-obj-04-obj02",
+			anime5: "chapter3-09-obj-04-obj03",
+			anime6: "chapter3-09-obj-04-obj04",
+
 			action_name: "touch",
-			sound_name: null
+			sound_name: null,
 		},
+
 		{
 			no: ++I,
 			image: "chapter3-09-obj-05",
