@@ -8,7 +8,7 @@ module.exports = [
 	require("../../data/field/chapter0/mansion_corridor2"),
 	require("../../data/field/chapter0/mansion_corridor3"),
 
-	// chapte../.1
+	// chapter1
 	require("../../data/field/chapter1/01"),
 	require("../../data/field/chapter1/02"),
 	require("../../data/field/chapter1/03"),
@@ -20,7 +20,7 @@ module.exports = [
 	require("../../data/field/chapter1/09"),
 	require("../../data/field/chapter1/10"),
 
-	// chapte../.3
+	// chapter3
 	require("../../data/field/chapter3/myroom"),
 	require("../../data/field/chapter3/hospital_corridor1"),
 	require("../../data/field/chapter3/hospital_corridor2"),
@@ -28,13 +28,10 @@ module.exports = [
 	require("../../data/field/chapter3/mansion_corridor2"),
 	require("../../data/field/chapter3/mansion_corridor3"),
 	require("../../data/field/chapter3/07"),
-	/*
 	require("../../data/field/chapter3/08"),
 	require("../../data/field/chapter3/09"),
 	require("../../data/field/chapter3/10"),
 	require("../../data/field/chapter3/11"),
 	require("../../data/field/chapter3/12"),
 	require("../../data/field/chapter3/13"),
-	*/
-
 ];
