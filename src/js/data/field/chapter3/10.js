@@ -42,7 +42,8 @@ module.exports = {
 			x: 763.5*2/3, y: 681.50*2/3,
 			scale: 2/3,
 			action_name: null,
-			sound_name: null
+			sound_name: null,
+			position_type: "lying",
 		},
 		{
 			no: ++I,
@@ -55,7 +56,8 @@ module.exports = {
 			x: 747*2/3, y: 654*2/3,
 			scale: 2/3,
 			action_name: null,
-			sound_name: null
+			sound_name: null,
+			position_type: "lying",
 		},
 
 

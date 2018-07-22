@@ -37,7 +37,9 @@ module.exports = {
 			image: "chapter3-08-obj-02",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "チルノが埋まってる雪山",
-			serif: {"chara": "koishi","serif":""},
+			serif: [
+				{"chara": "koishi","serif":""},
+			],
 			x: 711.50*2/3, y: 643.50*2/3,
 			scale: 2/3,
 			action_name: null,
