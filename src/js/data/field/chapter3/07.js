@@ -76,8 +76,6 @@ module.exports = {
 			action_name: "touch",
 			sound_name: null,
 		},
-
-		/*
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -87,17 +85,16 @@ module.exports = {
 			],
 			x: 579.50*2/3, y: 695.50*2/3,
 			scale: 2/3,
-			anime1: "chapter3-07-obj-03-obj01",
+			anime1: "chapter3-07-obj-05-obj01",
 			anime2: null,
 			anime3: null,
-			anime4: "chapter3-07-obj-03-obj02",
-			anime5: "chapter3-07-obj-03-obj03",
-			anime6: "chapter3-07-obj-03-obj04",
+			anime4: "chapter3-07-obj-05-obj02",
+			anime5: "chapter3-07-obj-05-obj03",
+			anime6: "chapter3-07-obj-05-obj04",
 
 			action_name: "touch",
 			sound_name: null,
 		},
-		*/
 
 	],
 };
