@@ -328,6 +328,7 @@ AssetsConfig.images = {
 	"picture_chapter1-08-illust-01":   "./image/picture/chapter1-08-illust-01.png",
 	"picture_chapter1-09-illust-01":   "./image/picture/chapter1-09-illust-01.png",
 	"picture_chapter1-10-illust-01":   "./image/picture/chapter1-10-illust-01.png",
+	"picture_chapter3-08-illust-01":   "./image/picture/chapter3-08-illust-01.png",
 
 	// 不要
 	//paper_clip:  "./image/ui-common-frame-paper_clip.png",
