@@ -108,6 +108,14 @@ AssetsConfig.images = {
 	"chapter3-08-event-03-tree":  "./image/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-tree.png",
 	"chapter3-08-event-03-bg-001":  "./image/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-bg-001.jpg",
 	
+	// 3-10 チルノとフランが橋をはさんで言い争う
+	"chapter3-10-event-01-koishi":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-koishi.png",
+	"chapter3-10-event-01-cirno":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-cirno.png",
+	"chapter3-10-event-01-fran":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-fran.png",
+	"chapter3-10-event-01-obj-01":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-obj-01.png",
+	"chapter3-10-event-01-obj-02":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-obj-02.png",
+	"chapter3-10-event-01-bg-001":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-bg-001.jpg",
+	
 	// 3-12 フランあいさつ
 	"chapter3-12-event-01-koishi":  "./image/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-koishi.png",
 	"chapter3-12-event-01-fran":  "./image/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-fran.png",
