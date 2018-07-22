@@ -119,9 +119,7 @@ key名→`journalNNN` (NNNは3桁の連番)
 ファイル名は `icon_item_`。を先頭につける。
 ### 2.
 `src/js/config/assets.js` に入れた画像を登録する。
-**key名**
-選択前：`item_NN` (NNは2桁の数字の連番)  
-選択後：`item_NN_selected` (NNは2桁の数字の連番)  
+key名 → `item_NN` (NNは2桁の数字の連番)  
 登録方法の詳細は[画像のプログラム内での登録方法](#画像のプログラム内での登録方法)参照
 
 # 共通
