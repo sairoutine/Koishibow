@@ -168,6 +168,12 @@ SsAnimeBase.prototype.draw = function(){
 
 SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
 	var max_frame = this.ss.inner.animation.getFrameCount();
+
+	// 何も表示しないアニメだと、frameの最大数が 0になる(何も描画しなくてよい)
+	if (max_frame === 0) {
+		return null;
+	}
+
 	var max_loop = this.ss.inner.loop;
 	if (max_loop === 0) {
 		this.anime_frame += this.ss.inner.animation.getFPS() / 60;
@@ -237,7 +243,8 @@ SsAnimeBase.prototype.height = function() {
 };
 
 SsAnimeBase.prototype.isShow = function(){
-	return true;
+	// 何も表示しないアニメだと、frameの最大数が 0になる(何も描画しなくてよい)
+	return this.ss.inner.animation.getFrameCount() > 0 ? true : false;
 };
 SsAnimeBase.prototype.isReflect = function(){
 	return this._is_reflect;
