@@ -21,14 +21,12 @@ module.exports = [
 	require("../../data/field/chapter1/10"),
 
 	// chapte../.3
-	/*
-	require("../../data/field/chapter3/01"),
-	require("../../data/field/chapter3/02"),
-	require("../../data/field/chapter3/03"),
-	require("../../data/field/chapter3/04"),
-	require("../../data/field/chapter3/05"),
-	require("../../data/field/chapter3/06"),
-	*/
+	require("../../data/field/chapter3/myroom"),
+	require("../../data/field/chapter3/hospital_corridor1"),
+	require("../../data/field/chapter3/hospital_corridor2"),
+	require("../../data/field/chapter3/mansion_corridor1"),
+	require("../../data/field/chapter3/mansion_corridor2"),
+	require("../../data/field/chapter3/mansion_corridor3"),
 	require("../../data/field/chapter3/07"),
 	/*
 	require("../../data/field/chapter3/08"),
