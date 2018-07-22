@@ -98,7 +98,7 @@ AssetsConfig.images = {
 	"chapter3-08-event-02-koishi":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-koishi.png",
 	"chapter3-08-event-02-cirno":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-cirno.png",
 	"chapter3-08-event-02-snow":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-snow.png",
-	//"chapter3-08-event-02-tree":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-tree.png",
+	"chapter3-08-event-02-tree":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-tree.png",
 	"chapter3-08-event-02-bg-001":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-bg-001.jpg",
 
 	// ジャーナル画像
