@@ -100,6 +100,13 @@ AssetsConfig.images = {
 	"chapter3-08-event-02-snow":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-snow.png",
 	"chapter3-08-event-02-tree":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-tree.png",
 	"chapter3-08-event-02-bg-001":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-bg-001.jpg",
+	
+	// 3-8 チルノが雪を集め始める
+	"chapter3-08-event-03-koishi":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-03-koishi.png",
+	"chapter3-08-event-03-cirno":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-03-cirno.png",
+	"chapter3-08-event-03-snow":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-03-snow.png",
+	"chapter3-08-event-03-tree":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-03-tree.png",
+	"chapter3-08-event-03-bg-001":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-03-bg-001.jpg",
 
 	// ジャーナル画像
 	"journal001":  "./image/journal/001.png",
