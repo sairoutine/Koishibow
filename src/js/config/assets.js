@@ -261,6 +261,14 @@ AssetsConfig.images = {
 	"item_10":            "./image/item/icon_item_scarymask01.png",
 	"item_11":            "./image/item/icon_item_chocobox01.png",
 	"item_12":            "./image/item/icon_item_doll01.png",
+	"item_13":            "./image/item/icon_item_cp3_sho.png",
+	"item_14":            "./image/item/icon_item_cp3_jyo.png",
+	"item_15":            "./image/item/icon_item_cp3_zen.png",
+	"item_16":            "./image/item/icon_item_cp3_sap.png",
+	"item_17":            "./image/item/icon_item_cp3_rub.png",
+	"item_18":            "./image/item/icon_item_cp3_ax.png",
+	"item_19":            "./image/item/icon_item_cp3_orn.png",
+	"item_20":            "./image/item/icon_item_cp3_cir.png",
 
 	// 体験版時のコンティニュー画像
 	"tobecontinued":  "./image/tobecontinued.png",
