@@ -114,7 +114,6 @@ AssetsConfig.images = {
 	"chapter3-10-event-01-fran":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-fran.png",
 	"chapter3-10-event-01-obj-01":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-obj-01.png",
 	"chapter3-10-event-01-obj-02":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-obj-02.png",
-	"chapter3-10-event-01-bg-001":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-bg-001.jpg",
 	
 	// 3-11 となりのフィールドで爆発、雪崩
 	"chapter3-11-event-01-koishi":  "./image/chapter3/event/chapter3-11-event-01/chapter3-11-event-01-koishi.png",
