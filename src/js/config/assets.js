@@ -87,26 +87,38 @@ AssetsConfig.images = {
 	"chapter3-01-event-01-koishi":  "./image/chapter3/event/chapter3-01-event-01/chapter3-01-event-01-koishi.png",
 	"chapter3-01-event-01-bg-001":  "./image/chapter3/event/chapter3-01-event-01/chapter3-01-event-01-bg-001.jpg",	
 	
-	// 3-8 さとりとのフラッシュバック
+	// 3-8-1 さとりとのフラッシュバック
 	"chapter3-08-event-01-koishi":  "./image/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-koishi.png",
 	"chapter3-08-event-01-satori":  "./image/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-satori.png",
 	"chapter3-08-event-01-obj-01":  "./image/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-obj-01.png",
 	"chapter3-08-event-01-obj-02":  "./image/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-obj-02.png",
 	"chapter3-08-event-01-bg-001":  "./image/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-bg-001.jpg",
 	
-	// 3-8 チルノを引っ張り出す
+	// 3-8-2 チルノを引っ張り出す
 	"chapter3-08-event-02-koishi":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-koishi.png",
 	"chapter3-08-event-02-cirno":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-cirno.png",
 	"chapter3-08-event-02-snow":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-snow.png",
 	"chapter3-08-event-02-tree":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-tree.png",
 	"chapter3-08-event-02-bg-001":  "./image/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-bg-001.jpg",
 	
-	// 3-8 チルノが雪を集め始める
+	// 3-8-3 チルノが雪を集め始める
 	"chapter3-08-event-03-koishi":  "./image/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-koishi.png",
 	"chapter3-08-event-03-cirno":  "./image/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-cirno.png",
 	"chapter3-08-event-03-snow":  "./image/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-snow.png",
 	"chapter3-08-event-03-tree":  "./image/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-tree.png",
 	"chapter3-08-event-03-bg-001":  "./image/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-bg-001.jpg",
+    
+    // 3-8-4 【BADEND】
+	"chapter3-08-event-04-koishi":  "./image/chapter3/event/chapter3-08-event-04/chapter3-08-event-04-koishi.png",
+    "chapter3-08-event-04-cirno":  "./image/chapter3/event/chapter3-08-event-04/chapter3-08-event-04-cirno.png",
+    "chapter3-08-event-04-bg-001":  "./image/chapter3/event/chapter3-08-event-04/chapter3-08-event-04-bg-001.jpg",
+    
+    // 3-9 フランがダイナマイトで爆破
+	"chapter3-09-event-01-koishi":  "./image/chapter3/event/chapter3-9-event-01/chapter3-09-event-01-koishi.png",
+    "chapter3-09-event-01-fran":  "./image/chapter3/event/chapter3-9-event-01/chapter3-09-event-01-fran.png",
+    "chapter3-09-event-01-obj-01":  "./image/chapter3/event/chapter3-9-event-01/chapter3-09-event-01-obj-01.jpg",
+    "chapter3-09-event-01-obj-02":  "./image/chapter3/event/chapter3-9-event-01/chapter3-09-event-01-obj-02.png",
+    "chapter3-09-event-01-obj-03":  "./image/chapter3/event/chapter3-9-event-01/chapter3-09-event-01-obj-03.png",
 	
 	// 3-10 チルノとフランが橋をはさんで言い争う
 	"chapter3-10-event-01-koishi":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-koishi.png",
@@ -127,6 +139,27 @@ AssetsConfig.images = {
 	"chapter3-12-event-01-obj-02":  "./image/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-obj-02.png",
 	"chapter3-12-event-01-obj-03":  "./image/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-obj-03.png",
 	"chapter3-12-event-01-bg-001":  "./image/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-bg-001.jpg",
+    
+    // 3-13-1 これがいいアイデアなの？
+    "chapter3-12-event-01-koishi":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-koishi.png",
+    "chapter3-13-event-01-fran":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-fran.png",
+    "chapter3-13-event-01-cirno":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-cirno.png",
+    "chapter3-13-event-01-bg-001":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-bg-001.jpg",
+    
+    // 3-13-3 チルノの首がはねられている？
+    "chapter3-13-event-03-koishi":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-03-koishi.png",
+    "chapter3-13-event-03-cirno":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-03-cirno.png",
+    "chapter3-13-event-03-fran":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-03-fran.png",
+    "chapter3-13-event-03-obj-01":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-03-obj-01.png",
+    "chapter3-13-event-03-bg-001":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-03-bg-001.jpg",
+    
+    // 3-13-4 チルノの首がはねられている？
+    "chapter3-13-event-04-koishi":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-koishi.png",
+    "chapter3-13-event-04-cirno":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-cirno.png",
+    "chapter3-13-event-04-fran":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-fran.png",
+    "chapter3-13-event-04-obj-01":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-obj-01.png",
+    "chapter3-13-event-04-obj-02":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-obj-02.png",
+    "chapter3-13-event-04-bg-001":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-04-bg-001.jpg",
 
 	// ジャーナル画像
 	"journal001":  "./image/journal/001.png",
@@ -274,6 +307,7 @@ AssetsConfig.images = {
     "chapter3-13-obj-02": "./image/chapter3/chapter3-13/chapter3-13-obj-02.png",
     "chapter3-13-obj-03": "./image/chapter3/chapter3-13/chapter3-13-obj-03.png",
     "chapter3-13-obj-04": "./image/chapter3/chapter3-13/chapter3-13-obj-04.png",
+    "chapter3-13-obj-05": "./image/chapter3/chapter3-13/chapter3-13-obj-05.png",
 	
 	// 選択中のアイテム背景
 	"item_selected":      "./image/item/icon_item_common_light01.png",
