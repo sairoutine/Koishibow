@@ -114,17 +114,17 @@ AssetsConfig.images = {
     "chapter3-08-event-04-bg-001":  "./image/chapter3/event/chapter3-08-event-04/chapter3-08-event-04-bg-001.jpg",
     
     // 3-9 フランがダイナマイトで爆破
-	"chapter3-09-event-01-koishi":  "./image/chapter3/event/chapter3-9-event-01/chapter3-09-event-01-koishi.png",
-    "chapter3-09-event-01-fran":  "./image/chapter3/event/chapter3-9-event-01/chapter3-09-event-01-fran.png",
-    "chapter3-09-event-01-obj-01":  "./image/chapter3/event/chapter3-9-event-01/chapter3-09-event-01-obj-01.jpg",
-    "chapter3-09-event-01-obj-02":  "./image/chapter3/event/chapter3-9-event-01/chapter3-09-event-01-obj-02.png",
-    "chapter3-09-event-01-obj-03":  "./image/chapter3/event/chapter3-9-event-01/chapter3-09-event-01-obj-03.png",
+	"chapter3-09-event-01-koishi":  "./image/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-koishi.png",
+    "chapter3-09-event-01-fran":  "./image/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-fran.png",
+    "chapter3-09-event-01-obj-01":  "./image/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-obj-01.jpg",
+    "chapter3-09-event-01-obj-02":  "./image/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-obj-02.png",
+    "chapter3-09-event-01-obj-03":  "./image/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-obj-03.png",
 	
 	// 3-10 チルノとフランが橋をはさんで言い争う
 	"chapter3-10-event-01-koishi":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-koishi.png",
 	"chapter3-10-event-01-cirno":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-cirno.png",
 	"chapter3-10-event-01-fran":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-fran.png",
-	"chapter3-10-event-01-obj-01":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-obj-01.png",
+	"chapter3-10-event-01-bg-001":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-bg-001.jpg",
 	"chapter3-10-event-01-obj-02":  "./image/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-obj-02.png",
 	
 	// 3-11 となりのフィールドで爆発、雪崩
@@ -147,19 +147,19 @@ AssetsConfig.images = {
     "chapter3-13-event-01-bg-001":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-bg-001.jpg",
     
     // 3-13-3 チルノの首がはねられている？
-    "chapter3-13-event-03-koishi":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-03-koishi.png",
-    "chapter3-13-event-03-cirno":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-03-cirno.png",
-    "chapter3-13-event-03-fran":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-03-fran.png",
-    "chapter3-13-event-03-obj-01":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-03-obj-01.png",
-    "chapter3-13-event-03-bg-001":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-03-bg-001.jpg",
-    
+    "chapter3-13-event-03-koishi":  "./image/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-koishi.png",
+    "chapter3-13-event-03-cirno":  "./image/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-cirno.png",
+    "chapter3-13-event-03-fran":  "./image/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-fran.png",
+    "chapter3-13-event-03-obj-01":  "./image/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-obj-01.png",
+    "chapter3-13-event-03-bg-001":  "./image/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-bg-001.jpg",
+
     // 3-13-4 チルノの首がはねられている？
     "chapter3-13-event-04-koishi":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-koishi.png",
     "chapter3-13-event-04-cirno":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-cirno.png",
     "chapter3-13-event-04-fran":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-fran.png",
     "chapter3-13-event-04-obj-01":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-obj-01.png",
     "chapter3-13-event-04-obj-02":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-obj-02.png",
-    "chapter3-13-event-04-bg-001":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-04-bg-001.jpg",
+    "chapter3-13-event-04-bg-001":  "./image/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-bg-001.jpg",
 
 	// ジャーナル画像
 	"journal001":  "./image/journal/001.png",
