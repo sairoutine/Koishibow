@@ -38,7 +38,7 @@ AssetsConfig.images = {
 	// 村紗
 	"murasa":   "./image/murasa.png",
 	// チルノ
-	"murasa":   "./image/cirno.png",
+	"cirno":   "./image/cirno.png",
 
 	// 3rdeye 使用時のもや
 	"black_mist":            "./image/black_mist.png",
