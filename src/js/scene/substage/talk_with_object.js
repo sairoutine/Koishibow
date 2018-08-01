@@ -62,7 +62,7 @@ var SceneSubStageObjectTalk = function(core) {
 };
 Util.inherit(SceneSubStageObjectTalk, base_scene);
 
-SceneSubStageObjectTalk.prototype.init = function(serif_list, obj){
+SceneSubStageObjectTalk.prototype.init = function(serif_list){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// クリック待ちカーソルの状態
