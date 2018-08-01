@@ -47,6 +47,8 @@ var ObjectChapter1Hashigo = require('../object/pieces/chapter1_hashigo');
 
 var FieldMasterRepository = require('../repository/field');
 
+var CommonProcess = require('../logic/common_process');
+
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
@@ -129,9 +131,6 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	// フィールドの情報
 	var field_data = this.getFieldData();
 
-	// サブシーン設定
-	this.changeInitialSubScene();
-
 	// ステージ上のオブジェクト一覧
 	this._setupPieces();
 
@@ -201,32 +200,26 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	this.core.scene_manager.setFadeIn(30,  "black");
 	this.core.scene_manager.setFadeOut(30, "black");
 
+	this.changeSubScene("play");
+
+	// フィールド固有の初期処理
+	this._executeInitialProcess();
 };
 
-SceneStage.prototype.changeInitialSubScene = function() {
+// フィールド固有の初期処理
+SceneStage.prototype._executeInitialProcess = function() {
 	// フィールドの情報
 	var field_data = this.getFieldData();
 
 	if (!field_data) throw new Error(this.core.save_manager.player.getCurrentField() + " field does not exists");
 
-	// scene or subscene が設定されていて、未再生ならばそれを使う
-	// そうでなければ通常の play シーン
+	if(!field_data.initialProcess()) return;
 
-	var subscene = field_data.subevent();
-	var scene = field_data.event();
-	if (scene && !this.core.save_manager.event.isPlayedEvent(scene)) {
-		this.core.save_manager.event.setPlayedEvent(scene);
-
-		this.core.scene_manager.changeScene(scene);
-	}
-	else if (subscene && !this.core.save_manager.event.isPlayedEvent(subscene)) {
-		this.core.save_manager.event.setPlayedEvent(subscene);
-		this.changeSubScene(subscene);
-	}
-	else {
-		this.changeSubScene("play");
-	}
+	CommonProcess.exec(this.core, field_data.initialProcess());
 };
+
+
+
 
 SceneStage.prototype.isUsingEye = function() {
 	return this._is_using_eye;
