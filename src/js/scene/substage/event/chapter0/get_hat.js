@@ -33,6 +33,9 @@ SceneEventChapter0GetHat.prototype.init = function(){
 		x: 767, y: 529,
 		scale: 2/3,
 	});
+
+	// まだ帽子あり待機になっているので、帽子なし待機にする
+	this.root().koishi.setWaitAnime();
 };
 
 SceneEventChapter0GetHat.prototype.beforeDraw = function() {
