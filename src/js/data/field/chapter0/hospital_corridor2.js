@@ -12,7 +12,17 @@ module.exports = {
 	leftField: "chapter0_hospital_corridor1",
 	background: "chapter0-hospital2-bg-001",
 	walkSound: "walking_bare_default",
-	subevent: "event_chapter0_kokoro_encounter",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter0_hospital_corridor2_firstaccess"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playSubEvent", "arguments": ["event_chapter0_kokoro_encounter"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter0_hospital_corridor2_firstaccess"]}
+			],
+		]},
+	],
 	objects: [
 		{
 			no: ++I,

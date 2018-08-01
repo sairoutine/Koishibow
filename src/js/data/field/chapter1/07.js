@@ -11,7 +11,17 @@ module.exports = {
 	leftField: "chapter1_06",
 	background: "chapter1-07-bg-001",
 	walkSound: "walking_bare_outside",
-	event: "event_for_chapter1_talk_with_mobu",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter1_07_firstaccess"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playEvent", "arguments": ["event_for_chapter1_talk_with_mobu"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter1_07_firstaccess"]}
+			],
+		]},
+	],
 	objects: [
 		{
 			no: ++I,

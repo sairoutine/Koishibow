@@ -9,8 +9,9 @@ var FieldMasterRepository = MasterRepositoryGenerator.exec(
 		chapter:            "number",
 		bgm:                "string",
 		sub_bgms:           "array",
-		event:              "string",
-		subevent:           "string",
+		event:              "string", // TODO: 削除
+		subevent:           "string", // TODO: 削除
+		initialProcess:     "hash",
 		rightStartPosition: "hash",
 		leftStartPosition:  "hash",
 		rightField:         "number",

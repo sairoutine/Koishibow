@@ -12,7 +12,17 @@ module.exports = {
 	leftField: "chapter0_mansion_corridor1",
 	background: "chapter0-mansionpas-002",
 	walkSound: "walking_bare_wood",
-	subevent: "event_chapter0_satori_encounter_begin",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter0_mansion_corridor2_firstaccess"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playSubEvent", "arguments": ["event_chapter0_satori_encounter_begin"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter0_mansion_corridor2_firstaccess"]}
+			],
+		]},
+	],
 	objects: [
 		{
 			no: ++I,

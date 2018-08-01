@@ -12,7 +12,18 @@ module.exports = {
 	leftField: null,
 	background: "chapter0-myroom-bg-001",
 	walkSound: "walking_bare_default",
-	subevent: "event_chapter0_get_hat",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter0_myroom_firstaccess"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playSubEvent", "arguments": ["event_chapter0_get_hat"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter0_myroom_firstaccess"]}
+			],
+		]},
+	],
+
 	objects: [
 		{
 			no: ++I,
