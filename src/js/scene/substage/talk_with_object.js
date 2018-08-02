@@ -2,7 +2,8 @@
 
 // オブジェクトとの会話サブシーン
 var base_scene = require('./base');
-var ScenarioManager = require('../../hakurei').manager.scenario;
+var ScenarioManager = require('../../hakurei').Manager.Scenario;
+var TimeManager = require('../../hakurei').Manager.Time;
 var Util = require('../../hakurei').util;
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 var DrawSerif = require('../../logic/draw_serif');
@@ -14,6 +15,7 @@ var NEXT_TO_SERIF_WAITING_COUNT = 6;
 var STATE_TALKING  = 1; // セリフ表示
 var STATE_WAITING  = 2; // セリフ非表示
 var STATE_JUNCTION = 3; // 会話の選択肢表示
+var STATE_END      = 4; // 会話終了
 
 var SceneSubStageObjectTalk = function(core) {
 	base_scene.apply(this, arguments);
@@ -49,6 +51,13 @@ var SceneSubStageObjectTalk = function(core) {
 				return index;
 			},
 		}
+	});
+
+	// フレーム数によるイベント管理
+	var self = this;
+	this._time = new TimeManager(this.core);
+	this._time.setFrameCountFunction(function () {
+		return self.frame_count;
 	});
 
 	// クリック待ちカーソルの状態
@@ -89,6 +98,8 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list){
 SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
+	this._time.executeEvents();
+
 	if(this._state === STATE_TALKING) {
 		this._updateInTalking();
 	}
@@ -98,6 +109,14 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	else if(this._state === STATE_JUNCTION) {
 		this._updateInJunction();
 	}
+	else if(this._state === STATE_END) {
+		// オブジェクトに触れた際の会話だった場合、
+		// 触れた際のモーションにこいしがなっているため
+		this.root().koishi.setWaitAnime();
+
+		// セリフ サブシーン終わり
+		this.root().changeSubScene("play");
+	}
 	else {
 		throw new Error("illegal talking state: " + this._state);
 	}
@@ -106,61 +125,72 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 	if(!this._serif.isStart()) return;
 
-	// 別のシーンへ遷移
-	if (this._serif.getCurrentOption().scene) {
-		// セリフ終わり
-		this.core.scene_manager.changeScene(this._serif.getCurrentOption().scene);
-		this._state = STATE_WAITING;
-		return;
-	}
+	// 会話以外の処理
+	this._updateProcess();
+	// 会話処理
+	this._updateTalk();
+};
 
-	// TODO: バグがあって、セリフの最後にアイテムを手に入れると、talk_with_object が再生されない
-	// (isEnd() の分岐で play sub scene に上書きされるため)
+// 会話以外の処理
+// 処理がなければ false を返す
+SceneSubStageObjectTalk.prototype._updateProcess = function(){
+	var option = this._serif.getCurrentOption();
 
 	// Z ボタンが押されたら
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		// 別のシーンへ遷移
+		if (option.changeScene) {
+			this.core.scene_manager.changeScene(option.changeScene);
+			return true;
+		}
+		// 別のフィールドへ遷移
+		if (option.changeField) {
+			this.core.scene_manager.changeScene("stage", option.changeField);
+			return true;
+		}
 		// アイテム獲得
-		if (this._serif.getCurrentOption().getItem) {
-			this.core.save_manager.item.addItem(this._serif.getCurrentOption().getItem);
+		else if (option.getItem) {
+			// アイテム追加
+			this.core.save_manager.item.addItem(option.getItem);
 
-			// 暗転
-			if (this._serif.getCurrentOption().dark) {
-				// セリフ終わり
-				this.core.scene_manager.changeScene("stage", "chapter1_03"); // TODO: field の直指定やめる
+			// アイテム獲得のみ、別のシーンへ遷移と組み合わせられる
+			if (option.changeField) {
+				this.core.scene_manager.changeScene("stage", option.changeField);
+				return true;
 			}
-			// 暗転しない場合
 			else {
 				// アイテム獲得演出へ遷移
-				this.root().changeSubScene("got_item", this._serif.getCurrentOption().getItem, "talk_with_object");
+				this.root().changeSubScene("got_item", option.getItem, "talk_with_object");
+				return true;
 			}
 		}
-
 		// アイテム使用
-		if (this._serif.getCurrentOption().useItem) {
-			var use_item_id = this._serif.getCurrentOption().useItem;
+		else if (option.useItem) {
+			var use_item_id = option.useItem;
 
 			this.core.save_manager.item.reduceItem(use_item_id);
 
 			// アイテム使用演出へ遷移
 			this.root().changeSubScene("use_item", use_item_id, "talk_with_object");
+			return true;
 		}
-
-		// 1枚絵に遷移
-		if (this._serif.getCurrentOption().showPicture) {
+		// 1枚絵を表示
+		else if (option.showPicture) {
 			// セリフ終わり
-			this.root().changeSubScene(this._serif.getCurrentOption().showPicture);
-			return;
+			this.root().changeSubScene("picture", option.showPicture, "talk_with_object");
+			return true;
 		}
+	}
 
+	return false;
+};
+
+// 会話の処理
+SceneSubStageObjectTalk.prototype._updateTalk = function(){
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
-
-			// オブジェクトに触れた際の会話だった場合、
-			// 触れた際のモーションにこいしがなっているため
-			this.root().koishi.setWaitAnime();
-
-			// セリフ終わり
-			this.root().changeSubScene("play");
+			this._state = STATE_END;
 		}
 		// 会話 継続中
 		else {
@@ -184,7 +214,7 @@ SceneSubStageObjectTalk.prototype._gotoNextSerif = function(choice){
 
 	self._state = STATE_WAITING;
 
-	self.core.time_manager.setTimeout(function () {
+	self._time.setTimeout(function () {
 		self._state = STATE_TALKING;
 
 		// セリフを送る
