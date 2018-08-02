@@ -1,6 +1,6 @@
 'use strict';
 
-// chapter1 遊ぶシーン
+// 会話中に1枚絵を表示する
 
 var base_scene = require('./base');
 
@@ -13,18 +13,12 @@ var SceneSubStageGetHat = function(core) {
 };
 Util.inherit(SceneSubStageGetHat, base_scene);
 
-SceneSubStageGetHat.prototype.init = function(picture_name){
+SceneSubStageGetHat.prototype.init = function(picture_name, return_subscene){
 	base_scene.prototype.init.apply(this, arguments);
 
 	this._pos_x = -this.root().width/2;
-};
-
-SceneSubStageGetHat.prototype.setArgs = function(picture_name){
-	base_scene.prototype.init.apply(this, arguments);
-
 	this._picture_name = picture_name;
-
-	return this;
+	this._return_subscene = return_subscene || "play"; // 再生後の戻り先サブシーン
 };
 
 SceneSubStageGetHat.prototype.beforeDraw = function(){
@@ -40,7 +34,7 @@ SceneSubStageGetHat.prototype.beforeDraw = function(){
 			this.core.audio_loader.playSound("chapter1-event-play_wipe_in_kyoko");
 		}
 		else {
-			// ここにはこないはず
+			// 何もしない
 		}
 	}
 
@@ -56,9 +50,9 @@ SceneSubStageGetHat.prototype.beforeDraw = function(){
 	else if(this.frame_count <= 105) {
 		this._pos_x += this.root().width/15;
 	}
-	// プレイに戻る
+	// 前のサブシーンに戻る
 	else if(this.frame_count > 120) {
-		this.root().changeSubScene("play");
+		this.root().returnSubScene(this._return_subscene);
 	}
 };
 
