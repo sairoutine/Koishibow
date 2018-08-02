@@ -2,21 +2,21 @@
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
 
-var ObjectChapter0Hat = function(core) {
+var ObjectChapter1Hashigo = function(core) {
 	base_object.apply(this, arguments);
 
 	this._width  = null;
 	this._height = null;
 };
-Util.inherit(ObjectChapter0Hat, base_object);
+Util.inherit(ObjectChapter1Hashigo, base_object);
 
-ObjectChapter0Hat.prototype.isCollision = function(point) {
+ObjectChapter1Hashigo.prototype.isCollision = function(obj) {
 	// サードアイ使用中ならクリックしても調べられないので何もしない
 	// かつ、はしごを持っている時
-	return !this.scene.root().isUsingEye() && this.core.save_manager.item.existsItem("05");
+	return base_object.prototype.isCollision.apply(this, arguments) && !this.scene.root().isUsingEye() && this.core.save_manager.item.existsItem("05");
 };
 
-ObjectChapter0Hat.prototype.init = function(){
+ObjectChapter1Hashigo.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
 	this._width  = null;
@@ -24,7 +24,7 @@ ObjectChapter0Hat.prototype.init = function(){
 };
 
 // パラメータをオブジェクトに設定する
-ObjectChapter0Hat.prototype.setData = function(data) {
+ObjectChapter1Hashigo.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
 	this.setPosition(data.x, data.y);
 
@@ -36,7 +36,7 @@ ObjectChapter0Hat.prototype.setData = function(data) {
 	}
 };
 
-ObjectChapter0Hat.prototype.collisionWidth = function(){
+ObjectChapter1Hashigo.prototype.collisionWidth = function(){
 	if(this._width) {
 		return this._width;
 	}
@@ -45,7 +45,7 @@ ObjectChapter0Hat.prototype.collisionWidth = function(){
 	}
 };
 
-ObjectChapter0Hat.prototype.collisionHeight = function(){
+ObjectChapter1Hashigo.prototype.collisionHeight = function(){
 	if(this._height) {
 		return this._height;
 	}
@@ -55,8 +55,8 @@ ObjectChapter0Hat.prototype.collisionHeight = function(){
 };
 
 // こいしに触られたときの処理
-ObjectChapter0Hat.prototype.onTouchByKoishi = function() {
+ObjectChapter1Hashigo.prototype.onTouchByKoishi = function() {
 	this.scene.root().changeSubScene("touch_hashigo");
 };
 
-module.exports = ObjectChapter0Hat;
+module.exports = ObjectChapter1Hashigo;

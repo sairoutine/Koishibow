@@ -12,6 +12,7 @@ var ObjectBase = function(core) {
 
 	this._z = 0;
 	this._position_type = null;
+	this._not_show_if_event_true = null;
 	this.no = null;
 };
 Util.inherit(ObjectBase, base_object);
@@ -62,6 +63,11 @@ ObjectBase.prototype.setData = function(data) {
 	else if (data.position_type === "lying") {
 		this._position_type = "lying";
 	}
+
+	// 表示条件イベント(ここで指定されたイベントを見ていれば表示されない)
+	if (data.not_show_if_event_true) {
+		this._not_show_if_event_true = data.not_show_if_event_true;
+	}
 };
 
 // 3rd eye の光と当たり判定する
@@ -87,7 +93,7 @@ ObjectBase.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);
 	area.init();
 	area.setPosition(this.x(), this.y());
-	if (this._position_type === "lying" || !this.isCollision()) {
+	if (this._position_type === "lying" || !this.isCollision(null)) {
 		area.setSize(0, 0);
 	}
 	else {
@@ -104,7 +110,12 @@ ObjectBase.prototype.onTouchByKoishi = function() {
 
 
 
-
+ObjectBase.prototype.isShow = function(){
+	return this._not_show_if_event_true && this.core.save_manager.scenario.getPlayedCount(this._not_show_if_event_true) ? false : true;
+};
+ObjectBase.prototype.isCollision = function(obj){
+	return this._not_show_if_event_true && this.core.save_manager.scenario.getPlayedCount(this._not_show_if_event_true) ? false : true;
+};
 
 // オブジェクトがセリフを表示する
 ObjectBase.prototype.showMessage = function(text_lines, width_num, height_num, option){

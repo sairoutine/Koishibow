@@ -27,8 +27,8 @@ ObjectAnimeEventImage.prototype.isCheckInTouchArea = function(){
 	return this.scene.root().isUsingEye();
 };
 // 3rd eye 使用時のみ当たり判定を行う
-ObjectAnimeEventImage.prototype.isCollision = function(point) {
-	return this.scene.root().isUsingEye();
+ObjectAnimeEventImage.prototype.isCollision = function(obj) {
+	return base_object.prototype.isCollision.apply(this, arguments) && this.scene.root().isUsingEye();
 };
 
 // こいしに触られたときの処理

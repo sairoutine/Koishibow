@@ -65,7 +65,6 @@ ObjectAcquirableBase.prototype.onTouchByKoishi = function() {
 
 ObjectAcquirableBase.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
-
 	if (!this.isShow()) return;
 
 	var ctx = this.core.ctx;
@@ -104,11 +103,11 @@ ObjectAcquirableBase.prototype._isDeleted = function() {
 };
 
 ObjectAcquirableBase.prototype.isShow = function() {
-	return !this._isDeleted();
+	return base_object.prototype.isShow.apply(this, arguments) && !this._isDeleted();
 };
 
-ObjectAcquirableBase.prototype.isCollision = function() {
-	return !this._isDeleted();
+ObjectAcquirableBase.prototype.isCollision = function(obj) {
+	return base_object.prototype.isCollision.apply(this, arguments) && !this._isDeleted();
 };
 
 

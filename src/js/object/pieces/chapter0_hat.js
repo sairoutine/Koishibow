@@ -13,9 +13,9 @@ var ObjectChapter0Hat = function(core) {
 };
 Util.inherit(ObjectChapter0Hat, base_object);
 
-ObjectChapter0Hat.prototype.isCollision = function(point) {
+ObjectChapter0Hat.prototype.isCollision = function(obj) {
 	// サードアイ使用中ならクリックしても調べられないので何もしない
-	return !this.scene.root().isUsingEye();
+	return base_object.prototype.isCollision.apply(this, arguments) && !this.scene.root().isUsingEye();
 };
 
 ObjectChapter0Hat.prototype.init = function(){
@@ -48,6 +48,7 @@ ObjectChapter0Hat.prototype.setData = function(data) {
 
 ObjectChapter0Hat.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+	if(!this.isShow()) return;
 
 	var ctx = this.core.ctx;
 	var image = this._image;

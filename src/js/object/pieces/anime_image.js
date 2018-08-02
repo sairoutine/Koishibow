@@ -171,6 +171,10 @@ ObjectAnimeImage.prototype.setData = function(data) {
 
 
 ObjectAnimeImage.prototype.isCollision = function(point) {
+	if (!base_object.prototype.isCollision.apply(this, arguments)) {
+		return false;
+	}
+
 	if (this._loop) return true;
 
 	// 一度既にクリックしていれば、二度目はクリックできない
@@ -271,6 +275,7 @@ ObjectAnimeImage.prototype.beforeDraw = function() {
 
 ObjectAnimeImage.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+	if(!this.isShow()) return;
 
 	this.ss.draw();
 };

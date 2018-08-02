@@ -10,8 +10,6 @@ var ObjectStaticImage = function(core) {
 	this._sound_name  = null;
 	this._action_name = null;
 
-	this._not_show_if_event_true = null;
-
 	this._scale = 1;
 	this._width  = null;
 	this._height = null;
@@ -20,7 +18,7 @@ Util.inherit(ObjectStaticImage, base_object);
 
 ObjectStaticImage.prototype.isCollision = function(point) {
 	// サードアイ使用中ならクリックしても調べられないので何もしない
-	return !this.scene.root().isUsingEye();
+	return base_object.prototype.isCollision.apply(this, arguments) && !this.scene.root().isUsingEye();
 };
 
 
@@ -62,11 +60,6 @@ ObjectStaticImage.prototype.setData = function(data) {
 		this._action_name  = data.action_name;
 	}
 
-	// 表示条件イベント(ここで指定されたイベントを見ていれば表示されない)
-	if (data.not_show_if_event_true) {
-		this._not_show_if_event_true = data.not_show_if_event_true;
-	}
-
 	if (data.width) {
 		this._width  = data.width;
 	}
@@ -77,13 +70,6 @@ ObjectStaticImage.prototype.setData = function(data) {
 		this._scale = data.scale;
 	}
 };
-ObjectStaticImage.prototype.isShow = function(){
-	return this._not_show_if_event_true && this.core.save_manager.scenario.getPlayedCount(this._not_show_if_event_true) ? false : true;
-};
-ObjectStaticImage.prototype.isCollision = function(){
-	return this._not_show_if_event_true && this.core.save_manager.scenario.getPlayedCount(this._not_show_if_event_true) ? false : true;
-};
-
 ObjectStaticImage.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	if(!this.isShow()) return;

@@ -4,18 +4,18 @@ var Util = require('../../hakurei').util;
 var SS = require('../anime_object');
 var AnimeMap = require('../../config/object_anime');
 
-var ObjectAnimeImage = function(core) {
+var ObjectAnimeDeadKoishi = function(core) {
 	base_object.apply(this, arguments);
 
 	// アニメ
 	this.ss = new SS(this.scene);
 };
-Util.inherit(ObjectAnimeImage, base_object);
+Util.inherit(ObjectAnimeDeadKoishi, base_object);
 
-ObjectAnimeImage.prototype.init = function(){
+ObjectAnimeDeadKoishi.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 };
-ObjectAnimeImage.prototype.setPosition = function(x, y) {
+ObjectAnimeDeadKoishi.prototype.setPosition = function(x, y) {
 	base_object.prototype.setPosition.apply(this, arguments);
 
 	// update sprite
@@ -23,7 +23,7 @@ ObjectAnimeImage.prototype.setPosition = function(x, y) {
 	this.ss.y(this.y());
 };
 
-ObjectAnimeImage.prototype.setData = function(data) {
+ObjectAnimeDeadKoishi.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
 	// 位置
 	this.setPosition(data.x, data.y);
@@ -36,12 +36,12 @@ ObjectAnimeImage.prototype.setData = function(data) {
 };
 
 
-ObjectAnimeImage.prototype.isCollision = function(point) {
+ObjectAnimeDeadKoishi.prototype.isCollision = function(point) {
 	// サードアイ使用中ならクリックしても調べられないので何もしない
-	return !this.scene.root().isUsingEye();
+	return base_object.prototype.isCollision.apply(this, arguments) && !this.scene.root().isUsingEye();
 };
 
-ObjectAnimeImage.prototype.beforeDraw = function() {
+ObjectAnimeDeadKoishi.prototype.beforeDraw = function() {
 	base_object.prototype.beforeDraw.apply(this, arguments);
 
 	this.ss.beforeDraw();
@@ -49,13 +49,14 @@ ObjectAnimeImage.prototype.beforeDraw = function() {
 
 
 
-ObjectAnimeImage.prototype.draw = function(){
+ObjectAnimeDeadKoishi.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+	if(!this.isShow()) return;
 
 	this.ss.draw();
 };
 
-ObjectAnimeImage.prototype.afterDraw = function(){
+ObjectAnimeDeadKoishi.prototype.afterDraw = function(){
 	base_object.prototype.afterDraw.apply(this, arguments);
 
 	this.ss.afterDraw();
@@ -63,29 +64,29 @@ ObjectAnimeImage.prototype.afterDraw = function(){
 
 
 
-ObjectAnimeImage.prototype.collisionWidth = function(){
+ObjectAnimeDeadKoishi.prototype.collisionWidth = function(){
 	return this.ss.width();
 };
 
-ObjectAnimeImage.prototype.collisionHeight = function(){
+ObjectAnimeDeadKoishi.prototype.collisionHeight = function(){
 	return this.ss.height();
 };
 
 // こいしに触られたときの処理
-ObjectAnimeImage.prototype.onTouchByKoishi = function() {
+ObjectAnimeDeadKoishi.prototype.onTouchByKoishi = function() {
 	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.root().changeSubScene("talk_with_object", this._getSerif(), this);
 };
 
 // 会話で発生したリアクション
-ObjectAnimeImage.prototype.actionByObject = function(action_name) {
+ObjectAnimeDeadKoishi.prototype.actionByObject = function(action_name) {
 	this.ss.playAnimationOnce(action_name);
 };
-ObjectAnimeImage.prototype.setWaitAnime = function() {
+ObjectAnimeDeadKoishi.prototype.setWaitAnime = function() {
 	this.ss.playAnimationInfinity("default");
 };
 
-ObjectAnimeImage.prototype._getSerif = function() {
+ObjectAnimeDeadKoishi.prototype._getSerif = function() {
 	var SERIF_LIST = [
 		"へたくそ",
 		"何のつもりなの？",
@@ -112,4 +113,4 @@ ObjectAnimeImage.prototype._getSerif = function() {
 
 
 
-module.exports = ObjectAnimeImage;
+module.exports = ObjectAnimeDeadKoishi;

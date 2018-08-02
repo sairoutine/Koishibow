@@ -3,19 +3,19 @@ var base_object = require('./anime_image');
 var Util = require('../../hakurei').util;
 var AnimeMap = require('../../config/object_anime');
 
-var ObjectAnimeEventImage = function(core) {
+var ObjectFaucet = function(core) {
 	base_object.apply(this, arguments);
 
 	this.noleaves_anime = {};
 };
-Util.inherit(ObjectAnimeEventImage, base_object);
+Util.inherit(ObjectFaucet, base_object);
 
-ObjectAnimeEventImage.prototype.init = function(){
+ObjectFaucet.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
 	this.noleaves_anime = {};
 };
-ObjectAnimeEventImage.prototype.setData = function(data) {
+ObjectFaucet.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
 
 	this.noleaves_anime = {
@@ -35,7 +35,7 @@ ObjectAnimeEventImage.prototype.setData = function(data) {
 
 
 // こいしに触られたときの処理
-ObjectAnimeEventImage.prototype.onTouchByKoishi = function() {
+ObjectFaucet.prototype.onTouchByKoishi = function() {
 	// 落ち葉が取り払われてなければ
 	if (!this._isRemovedLeaves()) {
 		// くまでを持っている(持っていれば削除)
@@ -80,7 +80,7 @@ ObjectAnimeEventImage.prototype.onTouchByKoishi = function() {
 	}
 };
 
-ObjectAnimeEventImage.prototype.isCheckInTouchArea = function(){
+ObjectFaucet.prototype.isCheckInTouchArea = function(){
 	// 落ち葉が取り払われていて、空のじょうろをもってなければタッチしても無意味
 	return base_object.prototype.isCheckInTouchArea.apply(this, arguments) && !(this._isRemovedLeaves() && !this.core.save_manager.item.existsItem("03"));
 };
@@ -88,7 +88,7 @@ ObjectAnimeEventImage.prototype.isCheckInTouchArea = function(){
 
 
 
-ObjectAnimeEventImage.prototype._removeLeaves = function() {
+ObjectFaucet.prototype._removeLeaves = function() {
 	this.core.save_manager.piece.setPieceData(
 		this.scene.root().getFieldData().key(),
 		this.no,
@@ -97,7 +97,7 @@ ObjectAnimeEventImage.prototype._removeLeaves = function() {
 	);
 };
 
-ObjectAnimeEventImage.prototype._isRemovedLeaves = function() {
+ObjectFaucet.prototype._isRemovedLeaves = function() {
 	return this.core.save_manager.piece.getPieceData(
 		this.scene.root().getFieldData().key(),
 		this.no,
@@ -105,7 +105,7 @@ ObjectAnimeEventImage.prototype._isRemovedLeaves = function() {
 	);
 };
 
-ObjectAnimeEventImage.prototype._changeRemovedLeavesAnime = function() {
+ObjectFaucet.prototype._changeRemovedLeavesAnime = function() {
 	this.ss.setAnime({
 		// 表
 
@@ -135,4 +135,4 @@ ObjectAnimeEventImage.prototype._changeRemovedLeavesAnime = function() {
 };
 
 
-module.exports = ObjectAnimeEventImage;
+module.exports = ObjectFaucet;

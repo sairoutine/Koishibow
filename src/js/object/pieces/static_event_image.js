@@ -2,7 +2,7 @@
 var base_object = require('./static_image');
 var Util = require('../../hakurei').util;
 
-var ObjectStaticImage = function(core) {
+var ObjectStaticEventImage = function(core) {
 	base_object.apply(this, arguments);
 
 	// 表オブジェクト時にクリックして発生するイベント名
@@ -11,9 +11,9 @@ var ObjectStaticImage = function(core) {
 	// 1度触ったら消えるかどうか
 	this._is_acquirable   = false;
 };
-Util.inherit(ObjectStaticImage, base_object);
+Util.inherit(ObjectStaticEventImage, base_object);
 
-ObjectStaticImage.prototype.init = function(){
+ObjectStaticEventImage.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
 	// 表オブジェクト時にクリックして発生するイベント名
@@ -22,7 +22,7 @@ ObjectStaticImage.prototype.init = function(){
 	// 1度触ったら消えるかどうか
 	this._is_acquirable   = false;
 };
-ObjectStaticImage.prototype.setData = function(data) {
+ObjectStaticEventImage.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
 
 	this._click_event = data.action_event;
@@ -34,7 +34,7 @@ ObjectStaticImage.prototype.setData = function(data) {
 
 
 // こいしに触られたときの処理
-ObjectStaticImage.prototype.onTouchByKoishi = function() {
+ObjectStaticEventImage.prototype.onTouchByKoishi = function() {
 	// フィールドから該当のオブジェクトを削除
 	if (this._is_acquirable) {
 		this._deleteFromField();
@@ -44,7 +44,7 @@ ObjectStaticImage.prototype.onTouchByKoishi = function() {
 	this.core.scene_manager.changeScene(this._click_event);
 };
 
-ObjectStaticImage.prototype._deleteFromField = function() {
+ObjectStaticEventImage.prototype._deleteFromField = function() {
 	this.core.save_manager.piece.setPieceData(
 		this.scene.root().getFieldData().key(),
 		this.no,
@@ -53,7 +53,7 @@ ObjectStaticImage.prototype._deleteFromField = function() {
 	);
 };
 
-ObjectStaticImage.prototype._isDeleted = function() {
+ObjectStaticEventImage.prototype._isDeleted = function() {
 	return this.core.save_manager.piece.getPieceData(
 		this.scene.root().getFieldData().key(),
 		this.no,
@@ -61,14 +61,14 @@ ObjectStaticImage.prototype._isDeleted = function() {
 	);
 };
 
-ObjectStaticImage.prototype.isShow = function() {
-	return !this._isDeleted();
+ObjectStaticEventImage.prototype.isShow = function() {
+	return base_object.prototype.isShow.apply(this, arguments) && !this._isDeleted();
 };
 
-ObjectStaticImage.prototype.isCollision = function() {
-	return !this._isDeleted();
+ObjectStaticEventImage.prototype.isCollision = function(obj) {
+	return base_object.prototype.isCollision.apply(this, arguments) && !this._isDeleted();
 };
 
 
 
-module.exports = ObjectStaticImage;
+module.exports = ObjectStaticEventImage;
