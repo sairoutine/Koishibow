@@ -72,7 +72,7 @@ module.exports = {
 						{"chara": I, "exp": "kogasa-reaction_02", "serif":"みずあそびするの？"},
 						{"chara": I, "exp": "kogasa-reaction_01", "serif":"わたしそれ得意だから！"},
 						{"chara": I, "exp": "kogasa-reaction_01", "serif":"みてて！みてて！", "option": {
-							"showPicture": "picture_play_for_chapter1-10",
+							"showPicture": "picture_chapter1-10-illust-01",
 						}},
 					],
 					[

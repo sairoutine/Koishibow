@@ -111,15 +111,15 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["10"], "serifs": [
 					[
 						{"id": "chapter1_03-" + I + "-_useItem-10", "save": true},
-						{"id": "chapter1_03-afterWork", "save": true},
 						{"chara": I,        "exp": "tewi-reaction_04", "serif":"げえっ！", "option": {"useItem": "10"}},
 						{"chara": I,        "exp": "back", "serif":"い、いつからそこに"},
 						{"chara": "koishi", "exp": "back", "serif":"............."},
 						{"chara": I,        "exp": "tewi-reaction_01", "serif":"わかりました！"},
 						{"chara": I,        "exp": "tewi-reaction_03", "serif":"わかりましたよ！"},
+						{"id": "chapter1_03-afterWork", "save": true},
 						{"chara": I,        "exp": "tewi-reaction_01", "serif":"いまやるから、もうちょっとまっててくれよ", "option": {
 							"getItem": "05",
-							"dark": true,
+							"changeField": "chapter1_03",
 						}},
 					],
 					[

@@ -129,7 +129,7 @@ module.exports = {
 								{"chara": I, "exp": "kyoko-reaction_07", "serif":"わーっ......"},
 								{"chara": I, "exp": "kyoko-reaction_07", "serif":"これどこまで飛ぶかなあ"},
 								{"chara": I, "exp": "kyoko-reaction_07", "serif":"やってみようよ", "option": {
-									"showPicture": "picture_play_for_chapter1-08",
+									"showPicture": "picture_chapter1-08-illust-01",
 								}},
 							],
 							[
