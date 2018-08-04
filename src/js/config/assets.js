@@ -141,7 +141,7 @@ AssetsConfig.images = {
 	"chapter3-12-event-01-bg-001":  "./image/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-bg-001.jpg",
     
     // 3-13-1 これがいいアイデアなの？
-    "chapter3-12-event-01-koishi":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-koishi.png",
+    "chapter3-13-event-01-koishi":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-koishi.png",
     "chapter3-13-event-01-fran":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-fran.png",
     "chapter3-13-event-01-cirno":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-cirno.png",
     "chapter3-13-event-01-bg-001":  "./image/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-bg-001.jpg",
