@@ -267,6 +267,9 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 		// 会話 選択肢 表示
 		this._showJunction();
 	}
+	else if(this._state === STATE_END) {
+		// 何もしない
+	}
 };
 
 // クリック待ちカーソル表示
