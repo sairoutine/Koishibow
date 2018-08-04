@@ -42,12 +42,25 @@ var CriteriaList = {
 };
 
 var ProcessList = {
-	// イベントを再生する
-	playEvent: function (core, event_name) {
-		//core.save_manager.event.setPlayedEvent(scene);
+	// 特定のフィールドに遷移
+	changeField: function (core, field_name) {
+		core.scene_manager.changeScene("stage", field_name);
+	},
+	// アイテムを削除
+	deleteItem: function (core, item_id) {
+		core.save_manager.item.reduceItem(item_id);
+	},
+	// 特定のシーンに戻る
+	returnScene: function (core, scene_name) {
+		core.scene_manager.returnScene(scene_name);
+	},
+	// イベントを再生する or シーン遷移
+	changeScene: function (core, scene_name, varArgs) {
+		var args = Array.prototype.slice.call(arguments); // convert arguments to array
 
+		core = args.shift();
 		core.scene_manager.setFadeOut(0); // フェードアウトしない
-		core.scene_manager.changeScene(event_name);
+		core.scene_manager.changeScene.apply(core.scene_manager, args);
 	},
 	// サブ イベントを再生する
 	playSubEvent: function (core, event_name) {
