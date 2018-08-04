@@ -110,31 +110,10 @@ SceneEventTalk.prototype.init = function(event_name){
 		this.core.audio_loader.playSound(this._master.startSE());
 	}
 
+	var serif_list = this._master.serifs();
+
 	// ss の init
-	this.ss.x(this.width/2);
-	this.ss.y(this.height/2);
-
-	var anime_conf = {
-		default: AnimeMap[this._master.startAnime()],
-	};
-	for (var i = 0, len = this._master.expAnimes().length; i < len; i++) {
-		var anime_name = this._master.expAnimes()[i];
-		anime_conf[anime_name] = AnimeMap[anime_name];
-	}
-
-	this.ss.setAnime(anime_conf);
-	this.ss.init();
-	var self = this;
-	// アニメ再生開始
-	this.ss.playAnimationOnce("default", function () {
-		// セリフ再生開始
-		if (self.isSerifAutoStart()) {
-			self._serif.start();
-
-			// 表情変更
-			self._actionExpression();
-		}
-	});
+	this._initSS();
 
 	this.removeAllObject();
 	this._serif_position.init();
@@ -143,7 +122,6 @@ SceneEventTalk.prototype.init = function(event_name){
 	// 黒い霧
 	this._black_mist.init();
 
-	var serif_list = this._master.serifs();
 	// event_talk 固有 end
 
 	// 今、会話のどの選択肢を選んでいるか
@@ -153,7 +131,57 @@ SceneEventTalk.prototype.init = function(event_name){
 
 	// セリフデータの生成
 	this._serif.init(serif_list);
+
+	// event_talk 固有 start
+	this._startSerif();
+	// event_talk 固有 end
 };
+
+SceneEventTalk.prototype._initSS = function(){
+	this.ss.x(this.width/2);
+	this.ss.y(this.height/2);
+
+	var default_anime;
+	if (this._master.startAnime()) {
+		default_anime = this._master.startAnime();
+	}
+	else {
+		default_anime = this._master.expAnimes()[0]; // 仮で最初のアニメを入れておく
+	}
+
+	var anime_conf = {
+		default: AnimeMap[default_anime],
+	};
+	for (var i = 0, len = this._master.expAnimes().length; i < len; i++) {
+		var anime_name = this._master.expAnimes()[i];
+		anime_conf[anime_name] = AnimeMap[anime_name];
+	}
+
+	this.ss.setAnime(anime_conf);
+	this.ss.init();
+};
+SceneEventTalk.prototype._startSerif = function(){
+	var self = this;
+	var start_function = function () {
+		// セリフ再生開始
+		if (self.isSerifAutoStart()) {
+			self._serif.start();
+
+			// 表情変更
+			self._actionExpression();
+		}
+	};
+
+	if (this._master.startAnime()) {
+		// アニメ再生開始
+		this.ss.playAnimationOnce("default", start_function);
+	}
+	else {
+		// セリフ再生開始
+		start_function();
+	}
+};
+
 
 SceneEventTalk.prototype.beforeDraw = function(){
 	BaseScene.prototype.beforeDraw.apply(this, arguments);

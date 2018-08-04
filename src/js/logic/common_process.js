@@ -1,5 +1,6 @@
 'use strict';
 /* 共通処理 */
+// フィールド遷移時の処理と、イベント終了後の処理
 
 // TOOD: フラグ管理を save_manager.scenario ではなく save_manager.flag にする
 
@@ -60,6 +61,14 @@ var ProcessList = {
 
 		core = args.shift();
 		core.scene_manager.setFadeOut(0); // フェードアウトしない
+		core.scene_manager.changeScene.apply(core.scene_manager, args);
+	},
+	// イベントを再生する or シーン遷移
+	changeSceneWithFadeout: function (core, scene_name, varArgs) {
+		var args = Array.prototype.slice.call(arguments); // convert arguments to array
+
+		core = args.shift();
+		core.scene_manager.setFadeOut(60, "black");
 		core.scene_manager.changeScene.apply(core.scene_manager, args);
 	},
 	// サブ イベントを再生する
