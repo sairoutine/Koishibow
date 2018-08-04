@@ -7,6 +7,7 @@ var EventTalkMasterRepository = MasterRepositoryGenerator.exec(
 	{
 		// TODO: フェードイン・フェードアウトするしないを設定できる
 		key:        "string",
+		serifWindow:"string",
 		serifs:     "array",
 		expAnimes:  "array",
 		startAnime: "string",

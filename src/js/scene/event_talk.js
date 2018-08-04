@@ -331,7 +331,7 @@ SceneEventTalk.prototype._gotoNextSerif = function(choice){
 		// セリフを送る
 		self._serif.next(choice);
 
-		// 表情変更
+		// アニメ変更
 		self._actionExpression();
 	}, NEXT_TO_SERIF_WAITING_COUNT);
 };
@@ -397,7 +397,7 @@ SceneEventTalk.prototype._showMessage = function(){
 	if (!lines.length) return;
 
 	var ctx = this.core.ctx;
-	var fukidashi = this.core.image_loader.getImage('fukidashi_dark');
+	var fukidashi = this.core.image_loader.getImage(this._master.serifWindow());
 	DrawSerif.drawWindow(this._serif_position, ctx, fukidashi, lines, width, height);
 	DrawSerif.drawText(this._serif_position, ctx, lines, width, height,
 		// オプション

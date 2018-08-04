@@ -8,6 +8,7 @@
 
 module.exports = {
 	key: "chapter3-13-event-01",
+	serifWindow: "fukidashi",
 	bgm: "field3",
 	startSE: "chapter0-mansion_corridor2-event_in",
 	endSE: "chapter0-mansion_corridor2-event_out",
