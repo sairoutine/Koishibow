@@ -223,7 +223,9 @@ SceneEventTalk.prototype._endProcess = function(){
 	}
 
 	// BGM をフェードアウト
-	this.core.audio_loader.fadeOutBGM(2);
+	if (this._master.bgm()) {
+		this.core.audio_loader.fadeOutBGM(2);
+	}
 
 	// ユーザー定義の最後の処理
 	CommonProcess.exec(this.core, this._master.endProcess());
