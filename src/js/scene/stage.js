@@ -27,23 +27,13 @@ var EyeButton = require('../object/ui/eye_button');
 
 // 3rd eye の光
 var Light3rdeye = require('../object/light_3rdeye');
+// フィールド上のオブジェクト一覧
+var PieceContainer = require('../object/piece_container');
 
 var BlackMist = require('../object/black_mist');
 var WhiteMist = require('../object/white_mist');
 
 var Koishi = require('../object/koishi');
-
-var ObjectStaticImage = require('../object/pieces/static_image');
-var ObjectAnimeImage = require('../object/pieces/anime_image');
-var ObjectJournal = require('../object/pieces/journal');
-var ObjectAnimeEventImage = require('../object/pieces/anime_event_image');
-var ObjectItem = require('../object/pieces/item');
-var ObjectFieldChange = require('../object/pieces/field_change');
-var ObjectAnimeDeadKoishi = require('../object/pieces/anime_dead_koishi');
-var ObjectStaticEventImage = require('../object/pieces/static_event_image');
-var ObjectFaucet = require('../object/pieces/faucet');
-var ObjectSuspendedTree = require('../object/pieces/suspended_tree');
-var ObjectChapter1Hashigo = require('../object/pieces/chapter1_hashigo');
 
 var FieldMasterRepository = require('../repository/field');
 
@@ -53,14 +43,10 @@ var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
 	// ステージ上のオブジェクト一覧
-	// TODO: 管理がしんどくなってきたら、piece_manager を用意する
-	this.pieces = [];
+	this.piece_container = new PieceContainer(this);
 
 	// 自機
 	this.koishi = new Koishi(this);
-
-	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
-	this._koishi_and_pieces = [];
 
 	// 3rd eye の光
 	this.light_3rdeye = new Light3rdeye(this);
@@ -134,20 +120,14 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	// フィールドの情報
 	var field_data = this.getFieldData();
 
-	// ステージ上のオブジェクト一覧
-	this._setupPieces();
-
 	// 自機
 	this.koishi.init();
 
-	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
-	this._koishi_and_pieces = this.pieces.concat(this.koishi);
-	// z軸の降順ソート
-	this._koishi_and_pieces.sort(function(a,b){
-		if(a.z() < b.z()) return -1;
-		if(a.z() > b.z()) return 1;
-		return 0;
-	});
+	// ステージ上のオブジェクト一覧
+	this.piece_container.init(this.core.save_manager.player.getCurrentField(), this.koishi);
+
+	// 移動制限範囲
+	this.walk_immovable_areas = this.piece_container.getWalkImmovableAreas();
 
 	// 3rd eye の光
 	this.light_3rdeye.init();
@@ -239,9 +219,7 @@ SceneStage.prototype.switchEyeOn = function() {
 	this.core.audio_loader.addBGM("using_3rdeye");
 
 	// ステージ上のオブジェクトに 3rd eye を使用したことを通知
-	for (var i = 0, len = this.pieces.length; i < len; i++) {
-		this.pieces[i].onUse3rdEye();
-	}
+	this.piece_container.notifyUse3rdEye();
 
 	this.koishi.useEye();
 };
@@ -253,9 +231,7 @@ SceneStage.prototype.switchEyeOff = function() {
 	this.core.audio_loader.unMuteWithFadeInAllBGM(3); // N秒かけてフェードイン
 
 	// ステージ上のオブジェクトに 3rd eye を使用解除したことを通知
-	for (var i = 0, len = this.pieces.length; i < len; i++) {
-		this.pieces[i].onUnUse3rdEye();
-	}
+	this.piece_container.notifyUnUse3rdEye();
 
 	this.koishi.unUseEye();
 };
@@ -308,9 +284,8 @@ SceneStage.prototype.beforeDraw = function() {
 	}
 
 	// ステージ上のオブジェクト一覧
-	for (i = 0, len = this.pieces.length; i < len; i++) {
-		this.pieces[i].beforeDraw();
-	}
+	this.piece_container.beforeDraw();
+
 	// 自機
 	this.koishi.beforeDraw();
 	// 3rd eye の光
@@ -354,19 +329,9 @@ SceneStage.prototype.draw = function(){
 	);
 	ctx.restore();
 
-	// ステージ上のオブジェクト一覧
-	// 自機
-	var obj, i, len;
-	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
-		obj = this._koishi_and_pieces[i];
-		obj.draw();
-	}
-	/*
-	for (var i = 0, len = this.pieces.length; i < len; i++) {
-		this.pieces[i].draw();
-	}
-	this.koishi.draw();
-	*/
+	// ステージ上のオブジェクトと自機の描画
+	// NOTE: オブジェクトとオブジェクトの間に自機がいることもあるので一緒に描画している
+	this.piece_container.draw();
 
 	// 3rd eye の光
 	if (this.isUsingEye()) {
@@ -383,8 +348,8 @@ SceneStage.prototype.draw = function(){
 	this.item_menu_button.draw();
 	this.eye_button.draw();
 
-	for (i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
-		obj = this.walk_immovable_areas[i];
+	for (var i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
+		var obj = this.walk_immovable_areas[i];
 		obj.draw();
 	}
 
@@ -453,121 +418,7 @@ SceneStage.prototype.getChapterNo = function(){
 SceneStage.prototype.getPiece = function(name) {
 	if (name === "koishi") return this.koishi;
 
-	// 自機
-	var obj, i, len;
-	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
-		obj = this._koishi_and_pieces[i];
-		// TODO: O(1)
-		if(obj.no === name) {
-			return obj;
-		}
-	}
-
-	return null;
-};
-
-
-
-
-SceneStage.prototype._setupPieces = function() {
-	// 画面上のオブジェクト一覧
-	this.pieces = [];
-	// こいしが歩けない範囲
-	this.walk_immovable_areas = [];
-
-	var object_data_list = this._getObjectDataByFieldData();
-	for (var i = 0, len = object_data_list.length; i < len; i++) {
-		var data = object_data_list[i];
-		var object;
-		if (data.type === CONSTANT.STATIC_IMAGE_TYPE) { // 静止オブジェクト
-			object = new ObjectStaticImage(this);
-		}
-		else if (data.type === CONSTANT.ANIME_IMAGE_TYPE) { // サードアイを当てると動くオブジェクト
-			object = new ObjectAnimeImage(this);
-		}
-		else if (data.type === CONSTANT.JOURNAL_TYPE) { // ジャーナル
-			object = new ObjectJournal(this);
-		}
-		else if (data.type === CONSTANT.ANIME_EVENT_IMAGE_TYPE) { // イベント発生オブジェクト
-			object = new ObjectAnimeEventImage(this);
-		}
-		else if (data.type === CONSTANT.ITEM_TYPE) { // アイテム
-			object = new ObjectItem(this);
-		}
-		else if (data.type === CONSTANT.FIELD_CHANGE_TYPE) { // フィールド遷移
-			object = new ObjectFieldChange(this);
-		}
-		else if (data.type === CONSTANT.BUTTON_KOISHI_TYPE) {
-			object = new ObjectAnimeDeadKoishi(this);
-		}
-		else if (data.type === CONSTANT.STATIC_EVENT_IMAGE_TYPE) {
-			object = new ObjectStaticEventImage(this);
-		}
-		else if (data.type === CONSTANT.FAUCET_TYPE) {
-			object = new ObjectFaucet(this);
-		}
-		else if (data.type === CONSTANT.SUSPENDED_TREE_TYPE) {
-			object = new ObjectSuspendedTree(this);
-		}
-		else if (data.type === CONSTANT.HASHIGO_TYPE) {
-			object = new ObjectChapter1Hashigo(this);
-		}
-
-		else {
-			throw new Error ("Unknown object type error: " + data.type);
-		}
-		object.init();
-		object.setData(data);
-		this.pieces.push(object);
-
-		this.walk_immovable_areas.push(object.getImmovableArea());
-	}
-};
-
-SceneStage.prototype._getObjectDataByFieldData = function() {
-	var field_data = this.getFieldData();
-	var object_data_list = Array.prototype.concat.apply([], field_data.objects()); // shallow copy
-
-	if(field_data.rightField()) {
-		object_data_list.push({
-			no: "rightField",
-			type: CONSTANT.FIELD_CHANGE_TYPE,
-			name: "右へのフィールド移動",
-			x: this.width - 48,
-			y: this.height/2,
-			width: 64,
-			height: this.height,
-			next_field_name: field_data.rightField(),
-		});
-	}
-	if(field_data.leftField()) {
-		object_data_list.push({
-			no: "leftField",
-			type: CONSTANT.FIELD_CHANGE_TYPE,
-			name: "左へのフィールド移動",
-			x: 48,
-			y: this.height/2,
-			width: 64,
-			height: this.height,
-			next_field_name: field_data.leftField(),
-		});
-	}
-
-	// ゲームオーバー用ボタンの目こいし
-	if (this.core.save_manager.player.getLastGameoverField() === field_data.key()) {
-		object_data_list.push({
-			no: "button_koishi",
-			type: CONSTANT.BUTTON_KOISHI_TYPE,
-			name: "ボタンの目のこいし",
-			x: this.width/2,
-			y: this.height/2,
-		});
-
-		// 一度表示したあとは削除
-		this.core.save_manager.player.deleteLastGameoverField();
-	}
-
-	return object_data_list;
+	return this.piece_container.get(name);
 };
 
 module.exports = SceneStage;

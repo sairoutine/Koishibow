@@ -34,7 +34,7 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 
 	if (this.root().isUsingEye()) {
 		// サードアイの光の当たり判定
-		this.root().light_3rdeye.checkCollisionWithPieces(this.root().pieces);
+		this.root().light_3rdeye.checkCollisionWithPieces(this.root().piece_container.getAll());
 
 		// サードアイの消耗
 		this.root().koishi.abrasion3rdeye();
@@ -66,7 +66,7 @@ SceneSubStagePlay.prototype.beforeDraw = function(){
 	// こいしの位置によってどのオブジェクトにフォーカスを当てるか変える
 	// 固定すると、場所によってはどうしても触れないオブジェクトが存在するため
 	// 21 の数字を大きくすることでフォーカスが変わるタイミングを伸ばすことができる
-	var pieces = Math.floor((this.root().koishi.y() + this.root().koishi.x())/21) % 2 ? this.root().pieces : this.root().pieces.slice().reverse();
+	var pieces = Math.floor((this.root().koishi.y() + this.root().koishi.x())/21) % 2 ? this.root().piece_container.getAll() : this.root().piece_container.getAll().slice().reverse();
 
 	for (var i in pieces) {
 		var piece = pieces[i];
