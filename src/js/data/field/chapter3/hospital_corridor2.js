@@ -19,7 +19,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "くつした",
 			serif: [
-				{"chara": "koishi","serif":"やだやだ。"},
+				{"chara": "koishi","serif":"きらいだけどきなきゃだめ？"},
 			],
 			x: 302,
 			y: 443,
@@ -32,7 +32,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "車イス",
 			serif: [
-				{"chara": "koishi","serif":"あしおれたらのってもいい？"},
+				{"chara": "koishi","serif":"雪の中で乗ったらすごいんじゃない？"},
 			],
 			x: 130,
 			y: 360,
@@ -45,9 +45,11 @@ module.exports = {
 			width: 258,
 			height: 280
 		},
+		/*
 		{
 			no: ++I,
 			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 627, y: 689, scale: 2/3, journal_id: "journal003"},
+		*/
 	],
 
 };

@@ -18,7 +18,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ほこりの積もった観葉植物",
 			serif: [
-				{"chara": "koishi","serif":"このはっぱ、えがかけるよ"},
+				{"chara": "koishi","serif":"ほこりだらけ！"},
 			],
 			x: 840,
 			y: 305,
@@ -75,9 +75,11 @@ module.exports = {
 			sound_name:      "chapter0-mansion_corridor2-open_door",
 		},
 
+		/*
 		{
 			no: ++I,
 			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 177, y: 400, scale: 2/3, journal_id: "journal005"},
+		*/
 	],
 
 

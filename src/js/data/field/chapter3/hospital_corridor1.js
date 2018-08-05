@@ -36,7 +36,8 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
 			serif: [
-				{"chara": "koishi","serif":"くすりはいらない……"},
+				{"chara": "koishi","serif":"風邪じゃないよ！"},
+				{"chara": "koishi","serif":"お薬飲みたくないから"},
 			],
 			x: 279,
 			y: 378,
@@ -48,8 +49,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "救急箱",
 			serif: [
-				{"chara": "koishi","serif": "くーくーばこ！"},
-				{"chara": "koishi","serif": "けがしてないよ！"},
+				{"chara": "koishi","serif": "けがしたらここ！"},
 			],
 			x: 281,
 			y: 280,
@@ -72,9 +72,11 @@ module.exports = {
 			action_name: "look_front",
 			position_type: "front",
 		},
+		/*
 		{
 			no: ++I,
 			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 643, y:425, scale: 2/3, journal_id: "journal002"},
+		*/
 	],
 };
 

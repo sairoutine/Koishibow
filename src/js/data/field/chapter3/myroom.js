@@ -19,7 +19,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ベッド",
 			serif: [
-				{"chara": "koishi","serif":"まだねむたくないもん"},
+				{"chara": "koishi","serif":"まだあったかい！"},
 			],
 			x: 258, y: 389,
 			scale: 0.7,
@@ -32,7 +32,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
 			serif: [
-				{"chara": "koishi","serif":"あけない"},
+				{"chara": "koishi","serif":"まだしまっとこっと"},
 			],
 			x: 59, y: 496,
 			scale: 0.7,
@@ -63,8 +63,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "クレヨン",
 			serif: [
-				{"chara": "koishi","serif":"くれおん！"},
-				{"chara": "koishi","serif": "ピンクなくなっちゃったなー"},
+				{"chara": "koishi","serif":"ピンク色が欲しいな"},
 			],
 			x: 600, y: 530,
 			scale: 0.7,
@@ -81,7 +80,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "まど",
 			serif: [
-				{"chara": "koishi","serif":"なにかいる！"},
+				{"chara": "koishi","serif":"なんなの！"},
 			],
 			x: 5, y: 180,
 			scale: 0.7,
@@ -99,18 +98,20 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "部屋の隅",
 			serif: [
-				{"chara": "koishi","serif":"ここジョンのばしょ！"},
-				{"chara": "koishi","serif":"いいこいいこ！"},
-				{"chara": "koishi","serif":"ばいばい"},
+				{"chara": "koishi","serif":"ジョン、出てこないの？"},
+				{"chara": "koishi","serif":"寒いもんね"},
+				{"chara": "koishi","serif":"またあとでね"},
 			],
 			width: 150, height: 200,
 			x: 670, y: 300,
 			scale: 2/3,
 			target_x: 532, target_y: 418
 		},
+		/*
 		{
 			no: ++I,
 			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 258, y: 689, scale: 2/3, journal_id: "journal001"},
+		*/
 	],
 };
 

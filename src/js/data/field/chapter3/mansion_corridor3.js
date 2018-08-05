@@ -19,7 +19,9 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "振子時計",
 			serif: [
-				{"chara": "koishi","serif":"これうるさいからきらい"},
+				{"chara": "koishi","serif":"あれ？"},
+				{"chara": "koishi","serif":"動いてないな"},
+				{"chara": "koishi","serif":"寝ちゃったの？"},
 			],
 			x: 145,
 			y: 230,
