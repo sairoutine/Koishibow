@@ -13,6 +13,7 @@ var ObjectBase = function(core) {
 	this._z = 0;
 	this._position_type = null;
 	this._not_show_if_event_true = null;
+	this._show_if_event_true = null;
 	this.no = null;
 };
 Util.inherit(ObjectBase, base_object);
@@ -22,6 +23,8 @@ ObjectBase.prototype.init = function(){
 
 	this._z = 0;
 	this._position_type = null;
+	this._not_show_if_event_true = null;
+	this._show_if_event_true = null;
 	this.no = null;
 };
 
@@ -68,6 +71,16 @@ ObjectBase.prototype.setData = function(data) {
 	if (data.not_show_if_event_true) {
 		this._not_show_if_event_true = data.not_show_if_event_true;
 	}
+
+	// 表示条件イベント(ここで指定されたイベントを見ていれば表示される)
+	if (data.show_if_event_true) {
+		this._show_if_event_true = data.show_if_event_true;
+	}
+
+	// 表示条件は両方同時に指定できない
+	if (data.not_show_if_event_true && data.show_if_event_true) {
+		throw new Error("Can't set both not_show_if_event_true and show_if_event_true param");
+	}
 };
 
 // 3rd eye の光と当たり判定する
@@ -111,10 +124,21 @@ ObjectBase.prototype.onTouchByKoishi = function() {
 
 
 ObjectBase.prototype.isShow = function(){
-	return this._not_show_if_event_true && this.core.save_manager.scenario.getPlayedCount(this._not_show_if_event_true) ? false : true;
+	return this._existsByData();
 };
 ObjectBase.prototype.isCollision = function(obj){
-	return this._not_show_if_event_true && this.core.save_manager.scenario.getPlayedCount(this._not_show_if_event_true) ? false : true;
+	return this._existsByData();
+};
+
+ObjectBase.prototype._existsByData = function(){
+	if(this._not_show_if_event_true) {
+		return this.core.save_manager.scenario.getPlayedCount(this._not_show_if_event_true) ? false : true;
+	}
+	else if (this._show_if_event_true) {
+		return this.core.save_manager.scenario.getPlayedCount(this._show_if_event_true) ? true : false;
+	}
+
+	return true;
 };
 
 // オブジェクトがセリフを表示する
