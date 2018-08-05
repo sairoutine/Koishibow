@@ -27,6 +27,19 @@ var SceneSubStageObjectTalk = function(core) {
 			existsItem: function (core, item_id) {
 				return core.save_manager.item.existsItem(item_id) ? 0 : 1;
 			},
+			// アイテムすべて持っていれば
+			existsItemAll: function (core, item_ids) {
+				var args = Array.prototype.slice.call(arguments); // convert arguments to array
+				core = args.shift();
+
+				for (var i, len = args.length; i < len; i++) {
+					if(!core.save_manager.item.existsItem(args[i])) { // 1つでも持っていなければ
+						return 1;
+					}
+				}
+
+				return 0;
+			},
 			// id のセリフを再生済かどうか
 			isPlayed: function (core, id) {
 				return core.save_manager.scenario.getPlayedCount(id) ? 0 : 1;
