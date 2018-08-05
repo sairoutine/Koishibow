@@ -51,9 +51,36 @@ module.exports = {
 			name: "レミリアの死骸",
 			serif: null,
 			serif_back: [
-				{"chara": "koishi","serif":"うわー"},
-				{"chara": "koishi","serif":"なんかへんなの"},
-				{"chara": "koishi","serif":"わるもの？"},
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "serifs": [
+					// 丘の上での喧嘩イベント後
+					[
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30340"], "serifs": [
+							// レミリアの死骸爆破イベント後
+							[
+								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getruby"], "serifs": [
+									// ルビー獲得前
+									[
+										{"id": "chapter3_09_getruby", "save": true},
+										{"chara": "koishi","serif":"やっぱりここにあった！", "option": {"getItem": "17"}},
+										{"chara": "koishi","serif":"ありがとう！"},
+									],
+									// ルビー獲得後
+									[
+										{"chara": "koishi","serif":"やっぱりちょっと気持ち悪い"},
+									],
+								]},
+							],
+							[
+								// TODO: イベント 30340 へ
+							],
+						]},
+					],
+					[
+						{"chara": "koishi","serif":"うわー"},
+						{"chara": "koishi","serif":"なんかへんなの"},
+						{"chara": "koishi","serif":"わるもの？"},
+					],
+				]},
 			],
 			x:865*2/3, y:742.50*2/3,
 			scale: 2/3,

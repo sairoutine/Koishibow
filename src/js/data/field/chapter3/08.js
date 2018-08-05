@@ -73,6 +73,10 @@ module.exports = {
 					// Bad ルート
 					[
 						{"type": "criteria_serif", "criteria": "existsItemAll", "arguments": ["14", "15", "16"], "serifs": [
+							// すべてもっている
+							[
+								// TODO: イベント 30290 へ
+							],
 							[
 								{"chara": "koishi","serif":"材料集めてきたよ"},
 								{"chara": I, "exp": "cirno-reaction_04", "serif":"ほんと！"},
@@ -80,49 +84,74 @@ module.exports = {
 								{"chara": I, "exp": "cirno-reaction_02", "serif":"ちゃんとぜんぶ集めてきてよね！"},
 								{"chara": "koishi","serif":"うん............"},
 							],
-							[
-								// TODO: イベント 30290 へ
-							],
 						]}
 					],
-					// まだ bad でも good でもない
 					[
-						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_08-" + I + "-_firstEvent"], "serifs": [
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_12-Event-_30310"], "serifs": [
+							// good ルート
 							[
-								{"chara": "koishi","serif":"ねえあなたお友達いる？"},
-								{"chara": I, "exp": "cirno-reaction_02", "serif":"いないよ！"},
-								{"chara": I, "exp": "cirno-reaction_02", "serif":"わたしに釣り合う奴なんていないから！"},
+								{"chara": "koishi","serif":"ねえ"},
+								{"chara": I, "exp": "cirno-reaction_07", "serif":"............"},
+								{"chara": I, "exp": "cirno-reaction_07", "serif":"............"},
+								{"chara": "koishi","serif":"みんなで作ろ"},
+								{"chara": I, "exp": "cirno-reaction_01", "serif":"やだ！"},
+								{"chara": I, "exp": "cirno-reaction_02", "serif":"あの子嫌いなんだモン"},
+
+								{"chara": "koishi","serif":"いいことおもいついたの"},
+								{"chara": I, "exp": "cirno-reaction_07", "serif":"............"},
+								{"chara": "koishi","serif":"ねえ"},
+								{"chara": I, "exp": "cirno-reaction_07", "serif":"............"},
+								{"chara": "koishi","serif":"いいことおもいついたの"},
+								{"chara": "koishi","serif":"上よ"},
+								{"chara": I, "exp": "cirno-reaction_02", "serif":"上って？"},
+								{"chara": "koishi","serif":"丘のほう"},
+								{"chara": "koishi","serif":"雪いっぱいあるし"},
+								{"chara": "koishi","serif":"とおくまでみえるし"},
+								{"chara": "koishi","serif":"いいでしょ"},
+								{"chara": I, "exp": "cirno-reaction_08", "serif":"ん"},
+								{"chara": "koishi","serif":"じゃああとでね"},
+								{"chara": I, "exp": "cirno-reaction_02", "serif":"うん"},
 							],
+							// まだ bad でも good でもない
 							[
-								{"id": "chapter3_08-" + I + "-_firstEvent", "save": true},
-								{"chara": I, "exp": "cirno-reaction_01", "serif":"おまえー！"},
-								{"chara": I, "exp": "cirno-reaction_01", "serif":"せっかくいいところだったのに！"},
-								{"chara": "koishi","serif":"でも死んじゃうわ"},
-								{"chara": I, "exp": "cirno-reaction_02", "serif":"あたいはね、"},
-								{"chara": I, "exp": "cirno-reaction_03", "serif":"だるまになりたいの！"},
-								{"chara": I, "exp": "cirno-reaction_02", "serif":"邪魔しないでよ"},
-								{"chara": "koishi","serif":"？"},
-								{"chara": "koishi","serif":"のこぎり使えば？"},
-								{"chara": I, "exp": "cirno-reaction_01", "serif":"スノーマンよ！"},
-								{"chara": "koishi","serif":"ふーん"},
-								{"chara": I, "exp": "cirno-reaction_03", "serif":"あたいは人気者になりたいの！"},
-								{"chara": I, "exp": "cirno-reaction_02", "serif":"責任取って雪だるまにして！"},
-								{"chara": "koishi","serif":"なんで？"},
-								{"chara": I, "exp": "cirno-reaction_02", "serif":"雪だるまはねえ！"},
-								{"chara": I, "exp": "cirno-reaction_03", "serif":"みんなに抱きしめてもらえるの！"},
-								{"chara": I, "exp": "cirno-reaction_03", "serif":"氷の像なんかと違ってね！"},
-								{"chara": I, "exp": "cirno-reaction_02", "serif":"だからあたいを雪だるまにして！", "junction": ["いいよ！","いいよ","いいよ......"]},
-								// TODO: イベント再生
-								{"chara": I, "exp": "cirno-reaction_02", "serif":"計画はね！"},
-								{"chara": I, "exp": "cirno-reaction_03", "serif":"わたしのからだにいっぱい雪をつけるでしょ"},
-								{"chara": I, "exp": "cirno-reaction_03", "serif":"そしたらからだがおっきくなるから"},
-								{"chara": I, "exp": "cirno-reaction_03", "serif":"そしたらおっきなゆきだるまになるから"},
-								{"chara": I, "exp": "cirno-reaction_02", "serif":"すごいでしょ！"},
-								{"chara": "koishi","serif":"いいわ"},
-								{"chara": "koishi","serif":"やる"},
-								{"chara": I, "exp": "cirno-reaction_04", "serif":"これ見て！", "option": {"showPicture": "picture_chapter3-08-illust-01"}},
-								{"chara": I, "exp": "cirno-reaction_04", "serif":"完璧な計画よね！"},
-								// TODO: イベント再生
+								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_08-" + I + "-_firstEvent"], "serifs": [
+									[
+										{"chara": "koishi","serif":"ねえあなたお友達いる？"},
+										{"chara": I, "exp": "cirno-reaction_02", "serif":"いないよ！"},
+										{"chara": I, "exp": "cirno-reaction_02", "serif":"わたしに釣り合う奴なんていないから！"},
+									],
+									[
+										{"id": "chapter3_08-" + I + "-_firstEvent", "save": true},
+										{"chara": I, "exp": "cirno-reaction_01", "serif":"おまえー！"},
+										{"chara": I, "exp": "cirno-reaction_01", "serif":"せっかくいいところだったのに！"},
+										{"chara": "koishi","serif":"でも死んじゃうわ"},
+										{"chara": I, "exp": "cirno-reaction_02", "serif":"あたいはね、"},
+										{"chara": I, "exp": "cirno-reaction_03", "serif":"だるまになりたいの！"},
+										{"chara": I, "exp": "cirno-reaction_02", "serif":"邪魔しないでよ"},
+										{"chara": "koishi","serif":"？"},
+										{"chara": "koishi","serif":"のこぎり使えば？"},
+										{"chara": I, "exp": "cirno-reaction_01", "serif":"スノーマンよ！"},
+										{"chara": "koishi","serif":"ふーん"},
+										{"chara": I, "exp": "cirno-reaction_03", "serif":"あたいは人気者になりたいの！"},
+										{"chara": I, "exp": "cirno-reaction_02", "serif":"責任取って雪だるまにして！"},
+										{"chara": "koishi","serif":"なんで？"},
+										{"chara": I, "exp": "cirno-reaction_02", "serif":"雪だるまはねえ！"},
+										{"chara": I, "exp": "cirno-reaction_03", "serif":"みんなに抱きしめてもらえるの！"},
+										{"chara": I, "exp": "cirno-reaction_03", "serif":"氷の像なんかと違ってね！"},
+										{"chara": I, "exp": "cirno-reaction_02", "serif":"だからあたいを雪だるまにして！", "junction": ["いいよ！","いいよ","いいよ......"]},
+										// TODO: イベント再生
+										{"chara": I, "exp": "cirno-reaction_02", "serif":"計画はね！"},
+										{"chara": I, "exp": "cirno-reaction_03", "serif":"わたしのからだにいっぱい雪をつけるでしょ"},
+										{"chara": I, "exp": "cirno-reaction_03", "serif":"そしたらからだがおっきくなるから"},
+										{"chara": I, "exp": "cirno-reaction_03", "serif":"そしたらおっきなゆきだるまになるから"},
+										{"chara": I, "exp": "cirno-reaction_02", "serif":"すごいでしょ！"},
+										{"chara": "koishi","serif":"いいわ"},
+										{"chara": "koishi","serif":"やる"},
+										{"chara": I, "exp": "cirno-reaction_04", "serif":"これ見て！", "option": {"showPicture": "picture_chapter3-08-illust-01"}},
+										{"chara": I, "exp": "cirno-reaction_04", "serif":"完璧な計画よね！"},
+										// TODO: イベント再生
+									],
+								]},
 							],
 						]},
 					],
