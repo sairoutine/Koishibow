@@ -39,6 +39,8 @@ AssetsConfig.images = {
 	"murasa":   "./image/murasa.png",
 	// チルノ
 	"cirno":   "./image/cirno.png",
+	// フラン
+	"fran":   "./image/fran.png",
 
 	// 3rdeye 使用時のもや
 	"black_mist":            "./image/black_mist.png",
