@@ -151,13 +151,22 @@ SceneSubStageObjectTalk.prototype._updateProcess = function(){
 
 	// Z ボタンが押されたら
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		// ムービーを再生
+		if (option.playMovie) {
+			var scene_manager = this.core.scene_manager;
+			scene_manager.setFadeOut(0);
+			scene_manager.changeScene("movie", option.playMovie, function () {
+				scene_manager.returnScene("stage");
+			});
+			return true;
+		}
 		// 別のシーンへ遷移
-		if (option.changeScene) {
+		else if (option.changeScene) {
 			this.core.scene_manager.changeScene(option.changeScene);
 			return true;
 		}
 		// 別のフィールドへ遷移
-		if (option.changeField) {
+		else if (option.changeField) {
 			this.core.scene_manager.changeScene("stage", option.changeField);
 			return true;
 		}
