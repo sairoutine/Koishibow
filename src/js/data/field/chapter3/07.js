@@ -9,10 +9,25 @@ module.exports = {
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 200, y: 450},
 	rightField: "chapter3_08",
-	leftField: "chapter3_06",
+	leftField: null,
 	background: "chapter3-07-bg-001",
 	walkSound: "walking_bare_outside",
-	initialProcess: [],
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_07_30040"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "koishi","serif":"わあー"},
+						{"chara": "koishi","serif":"真っ白ね"},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_07_30040"]}
+			],
+		]},
+	],
 	objects: [
 		{
 			no: ++I,

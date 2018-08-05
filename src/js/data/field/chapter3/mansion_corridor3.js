@@ -36,6 +36,21 @@ module.exports = {
 			sound_name:      "chapter0-mansion_corridor3-ring_clock_front",
 			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
 		},
+		{
+			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "雪",
+			serif: [
+				{"chara": "koishi","serif":"雪！"},
+				{"chara": "koishi","serif":"つめたーい", "option": {"changeField": "chapter3_07"}},
+			],
+			width: 400, height: 1000,
+			action_name: "touch",
+			x: 600, y: 300,
+		},
+
+
 	],
 };
 
