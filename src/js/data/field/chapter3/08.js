@@ -115,11 +115,44 @@ module.exports = {
 							// まだ bad でも good でもない
 							[
 								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_08-" + I + "-_firstEvent"], "serifs": [
+									// 2回目以降
 									[
-										{"chara": "koishi","serif":"ねえあなたお友達いる？"},
-										{"chara": I, "exp": "cirno-reaction_02", "serif":"いないよ！"},
-										{"chara": I, "exp": "cirno-reaction_02", "serif":"わたしに釣り合う奴なんていないから！"},
+										{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["17"], "serifs": [
+											// ルビーの宝飾品を持っている
+											[
+												{"chara": I, "exp": "cirno-reaction_07", "serif":"えーっとね、これはね"},
+												{"chara": I, "exp": "cirno-reaction_07", "serif":"この宝石は............"},
+												{"chara": "koishi","serif":"知らないの？"},
+												{"chara": I, "exp": "cirno-reaction_02", "serif":"知ってるもん！"},
+												{"chara": I, "exp": "cirno-reaction_02", "serif":"これはファイアーレッドって言うの！"},
+												{"chara": "koishi","serif":"ふーん"},
+											],
+											// ルビーの宝飾品を持っていない
+											[
+												{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["16"], "serifs": [
+													// サファイアの宝飾品を持っている
+													[
+														{"chara": I, "exp": "cirno-reaction_07", "serif":"この青い石……"},
+														{"chara": "koishi","serif":"なにかしってるの？"},
+														{"chara": I, "exp": "cirno-reaction_02", "serif":"宝石だよ！"},
+														{"chara": "koishi","serif":"なんていう宝石？"},
+														{"chara": I, "exp": "cirno-reaction_07", "serif":"えーっと............"},
+														{"chara": I, "exp": "cirno-reaction_07", "serif":"ブルー............"},
+														{"chara": "koishi","serif":"ブルー？"},
+														{"chara": I, "exp": "cirno-reaction_04", "serif":"ブルートパーズだ！"},
+														{"chara": "koishi","serif":"へーっ"},
+													],
+													// サファイアの宝飾品を持っていない
+													[
+														{"chara": "koishi","serif":"ねえあなたお友達いる？"},
+														{"chara": I, "exp": "cirno-reaction_02", "serif":"いないよ！"},
+														{"chara": I, "exp": "cirno-reaction_02", "serif":"わたしに釣り合う奴なんていないから！"},
+													],
+												]},
+											],
+										]},
 									],
+									// 1回目
 									[
 										{"id": "chapter3_08-" + I + "-_firstEvent", "save": true},
 										{"chara": I, "exp": "cirno-reaction_01", "serif":"おまえー！"},
@@ -156,6 +189,28 @@ module.exports = {
 						]},
 					],
 				]},
+			],
+			serif_back: [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_08-cirno-_uraFirst"], "serifs": [
+					[
+						{"chara": I, "exp": "cirno-ura_reaction_01", "serif":"ほらほらできた！"},
+						{"chara": I, "exp": "cirno-ura_reaction_03", "serif":"すごでしょ？"},
+						{"chara": I, "exp": "cirno-ura_reaction_03", "serif":"すごいでしょすごいでしょ？"},
+						{"chara": I, "exp": "cirno-ura_reaction_06", "serif":"............"},
+						{"chara": I, "exp": "cirno-ura_reaction_04", "serif":"なんで！？"},
+						{"chara": I, "exp": "cirno-ura_reaction_04", "serif":"すごいでしょ！？"},
+						{"chara": I, "exp": "cirno-ura_reaction_05", "serif":"すごいって言え！"},
+						{"chara": I, "exp": "cirno-ura_reaction_05", "serif":"言えよ！"},
+					],
+					[
+						{"id": "chapter3_08-cirno-_uraFirst", "save": true},
+						{"chara": I, "exp": "cirno-ura_reaction_01", "serif":"なによ！"},
+						{"chara": I, "exp": "cirno-ura_reaction_01", "serif":"私の言うことがわからない？"},
+						{"chara": I, "exp": "cirno-ura_reaction_04", "serif":"馬鹿じゃないの？"},
+						{"chara": I, "exp": "cirno-ura_reaction_01", "serif":"ニホンゴわからないんですかー？"},
+						{"chara": I, "exp": "cirno-ura_reaction_02", "serif":"へーばかだー、ばかなんだー！"},
+					],
+				]}
 			],
 			x: 711.50*2/3, y: 643.50*2/3,
 			scale: 2/3,

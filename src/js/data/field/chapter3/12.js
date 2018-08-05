@@ -6,7 +6,7 @@ module.exports = {
 	key: "chapter3_12",
 	chapter: 3,
 	bgm: "field3",
-	rightStartPosition: {x: 690, y: 380},
+	rightStartPosition: {x: 690, y: 450},
 	leftStartPosition:  {x: 200, y: 450},
 	rightField: "chapter3_13",
 	leftField: "chapter3_11",
@@ -138,6 +138,27 @@ module.exports = {
 						{"chara": "fran", "exp": "fran-reaction_01", "serif":"はやくいきましょ！"},
 					],
 				]},
+			],
+			serif_back: [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_12-fran-_uraFirst"], "serifs": [
+					[
+						{"chara": "fran", "exp": "fran-ura_reaction_01", "serif":"ねえねえおねえちゃん"},
+						{"chara": "fran", "exp": "fran-ura_reaction_04", "serif":"いまお人形作ってるんだけど"},
+						{"chara": "fran", "exp": "fran-ura_reaction_03", "serif":"おめめがね？"},
+						{"chara": "fran", "exp": "fran-ura_reaction_05", "serif":"おめめをどうしたらいいかわからないの"},
+						{"chara": "fran", "exp": "fran-ura_reaction_01", "serif":"おねえちゃんのもらっていーい？"},
+						{"chara": "fran", "exp": "fran-ura_reaction_05", "serif":"だめなの？"},
+						{"chara": "fran", "exp": "fran-ura_reaction_03", "serif":"なんで"},
+					],
+					[
+						{"id": "chapter3_12-fran-_uraFirst", "save": true},
+						{"chara": "fran", "exp": "fran-ura_reaction_01", "serif":"私のが一番だったの！？"},
+						{"chara": "fran", "exp": "fran-ura_reaction_02", "serif":"やったあ！"},
+						{"chara": "fran", "exp": "fran-ura_reaction_02", "serif":"うれしい！"},
+						{"chara": "fran", "exp": "fran-ura_reaction_03", "serif":"あのね、おねえちゃんが\n教えてくれたから上手にできたの！"},
+						{"chara": "fran", "exp": "fran-ura_reaction_02", "serif":"おねえちゃん大好き"},
+					],
+				]}
 			],
 			x: 650, y: 400,
 			scale: 2/3,
