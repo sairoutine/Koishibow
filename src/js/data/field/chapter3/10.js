@@ -33,20 +33,6 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			image: "chapter3-10-obj-02-front",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "橋_手前",
-			serif: [
-				{"chara": "koishi","serif":""},
-			],
-			x: 763.5*2/3, y: 681.50*2/3,
-			scale: 2/3,
-			action_name: null,
-			sound_name: null,
-			position_type: "lying",
-		},
-		{
-			no: ++I,
 			image: "chapter3-10-obj-02-back",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "橋_奥",
@@ -59,7 +45,20 @@ module.exports = {
 			sound_name: null,
 			position_type: "lying",
 		},
-
+		{
+			no: ++I,
+			image: "chapter3-10-obj-02-front",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "橋_手前",
+			serif: [
+				{"chara": "koishi","serif":""},
+			],
+			x: 763.5*2/3, y: 681.50*2/3,
+			scale: 2/3,
+			action_name: null,
+			sound_name: null,
+			position_type: "lying",
+		},
 
 	],
 };

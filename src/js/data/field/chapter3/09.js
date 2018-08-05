@@ -37,20 +37,23 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "レミリアの墓",
 			serif: [
-				{"chara": "koishi","serif":""},
+				{"chara": "koishi","serif":"大きいなあ"},
+				{"chara": "koishi","serif":"誰のお墓なんだろう？"},
 			],
-
 			x:1041.50*2/3, y: 519*2/3,
 			scale: 2/3,
-			action_name: null,
+			action_name: "look_front",
 			sound_name: null
 		},
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "レミリアの死骸",
-			serif: [
-				{"chara": "koishi","serif":""},
+			serif: null,
+			serif_back: [
+				{"chara": "koishi","serif":"うわー"},
+				{"chara": "koishi","serif":"なんかへんなの"},
+				{"chara": "koishi","serif":"わるもの？"},
 			],
 			x:865*2/3, y:742.50*2/3,
 			scale: 2/3,
@@ -60,8 +63,9 @@ module.exports = {
 			anime4: "chapter3-09-obj-03-obj02",
 			anime5: "chapter3-09-obj-03-obj03",
 			anime6: "chapter3-09-obj-03-obj04",
+			width: 240,
 
-			action_name: "touch",
+			action_name: null,
 			sound_name: null,
 		},
 
@@ -71,7 +75,14 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "胸像",
 			serif: [
-				{"chara": "koishi","serif":""},
+				{"chara": "koishi","serif":"まっしろだわ！"},
+				{"chara": "koishi","serif":"これスノーマンかしら"},
+			],
+			serif_back: [
+				{"chara": I,"serif":"責任についてどう思っているんだ"},
+				{"chara": "koishi","serif":"なにが"},
+				{"chara": I,"serif":"約束や責任を何だと思っているんだ！"},
+				{"chara": "koishi","serif":"しらなーい"},
 			],
 			x:345*2/3, y:631.50*2/3,
 			scale: 2/3,
