@@ -18,6 +18,8 @@ module.exports = {
 			[],
 			// まだ未アクセス
 			[
+				// チルノ雪だるま表示
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3-08-show_cirnosnow"]},
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
 						{"chara": "koishi","serif":"あら"},
@@ -61,7 +63,7 @@ module.exports = {
 			scale: 2/3,
 			action_name: null,
 			sound_name: null,
-			not_show_if_event_true: "chapter3-08-event-02_played",
+			show_if_event_true: "chapter3-08-show_cirnosnow",
 		},
 		{
 			no: ++I,
@@ -222,7 +224,7 @@ module.exports = {
 			anime6: "cirno-reverse_omote",
 			action_name: null,
 			sound_name: null,
-			show_if_event_true: "chapter3-08-event-02_played",
+			show_if_event_true: "chapter3-08-show_cirno",
 		},
 		{
 			no: ++I,

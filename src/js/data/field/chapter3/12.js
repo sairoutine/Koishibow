@@ -12,6 +12,19 @@ module.exports = {
 	leftField: "chapter3_11",
 	background: "chapter3-12-bg-001",
 	walkSound: "walking_bare_outside",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12_firstaccess"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				// フラン表示
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3-08-show_fran"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_12_firstaccess"]}
+			],
+		]},
+	],
+
 	objects: [
 		{
 			no: ++I,
@@ -37,16 +50,16 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "おもちゃ箱",
 			serif: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "serifs": [
-					// フランがいないとき
-					[
-						{"chara": "koishi","serif":"おもちゃいーなー"},
-					],
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3-08-show_fran"], "serifs": [
 					// フランがいるとき
 					[
 						{"chara": "fran", "exp": "fran-reaction_04", "serif":"それはだめよ！"},
 						{"chara": "fran", "exp": "fran-wait", "serif":"それはわたしの"},
 						{"chara": "koishi","exp": "back", "serif":"わかった"},
+					],
+					// フランがいないとき
+					[
+						{"chara": "koishi","serif":"おもちゃいーなー"},
 					],
 				]},
 
@@ -80,11 +93,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "クリスマスツリー",
 			serif: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "serifs": [
-					// フランがいないとき
-					[
-						{"chara": "koishi","serif":"きれい！"},
-					],
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3-08-show_fran"], "serifs": [
 					// フランがいるとき
 					[
 						{"chara": "koishi","serif":"おっきいなー"},
@@ -95,6 +104,10 @@ module.exports = {
 						{"chara": "koishi","serif":"なんで？"},
 						{"chara": "fran", "exp": "fran-reaction_01", "serif":"そのほうが楽しいから！"},
 						{"chara": "fran", "exp": "fran-reaction_01", "serif":"いっぱい雪が降ったら\nやることなくなっちゃうからね！"},
+					],
+					// フランがいないとき
+					[
+						{"chara": "koishi","serif":"きれい！"},
 					],
 				]},
 			],
@@ -189,6 +202,7 @@ module.exports = {
 			anime6: "fran-reverse_omote",
 			action_name: null,
 			sound_name: null,
+			show_if_event_true: "chapter3-08-show_fran",
 		},
 
 	],
