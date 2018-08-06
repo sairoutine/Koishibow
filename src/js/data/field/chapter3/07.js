@@ -97,7 +97,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "猫の霊",
 			serif: [
-				{"chara": "koishi","serif":""},
+				{"chara": "koishi","serif":"わーっ、ジョン！"},
 			],
 			x: 579.50*2/3, y: 695.50*2/3,
 			scale: 2/3,

@@ -37,9 +37,19 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "おもちゃ箱",
 			serif: [
-				{"chara": "fran", "exp": "fran-reaction_04", "serif":"それはだめよ！"},
-				{"chara": "fran", "exp": "fran-wait", "serif":"それはわたしの"},
-				{"chara": "koishi","exp": "back", "serif":"わかった"},
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "serifs": [
+					// フランがいないとき
+					[
+						{"chara": "koishi","serif":"おもちゃいーなー"},
+					],
+					// フランがいるとき
+					[
+						{"chara": "fran", "exp": "fran-reaction_04", "serif":"それはだめよ！"},
+						{"chara": "fran", "exp": "fran-wait", "serif":"それはわたしの"},
+						{"chara": "koishi","exp": "back", "serif":"わかった"},
+					],
+				]},
+
 			],
 			x: 1268*2/3, y: 770.50*2/3,
 			scale: 2/3,
@@ -51,7 +61,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "蓄音機",
 			serif: [
-				{"chara": "koishi","serif":""},
+				{"chara": "koishi","serif":"わたしもこうゆうのほしいな..."},
 			],
 			x: 412*2/3, y: 628*2/3,
 			scale: 2/3,
@@ -70,14 +80,23 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "クリスマスツリー",
 			serif: [
-				{"chara": "koishi","serif":"おっきいなー"},
-				{"chara": "fran", "exp": "fran-reaction_03", "serif":"えへへ"},
-				{"chara": "koishi", "exp": "back", "serif":"これなに？"},
-				{"chara": "fran", "exp": "fran-wait", "serif":"冬飾りよ"},
-				{"chara": "fran", "exp": "fran-reaction_03", "serif":"毎年雪が積もったら木をきれいにするの"},
-				{"chara": "koishi","serif":"なんで？"},
-				{"chara": "fran", "exp": "fran-reaction_01", "serif":"そのほうが楽しいから！"},
-				{"chara": "fran", "exp": "fran-reaction_01", "serif":"いっぱい雪が降ったら\nやることなくなっちゃうからね！"},
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "serifs": [
+					// フランがいないとき
+					[
+						{"chara": "koishi","serif":"きれい！"},
+					],
+					// フランがいるとき
+					[
+						{"chara": "koishi","serif":"おっきいなー"},
+						{"chara": "fran", "exp": "fran-reaction_03", "serif":"えへへ"},
+						{"chara": "koishi", "exp": "back", "serif":"これなに？"},
+						{"chara": "fran", "exp": "fran-wait", "serif":"冬飾りよ"},
+						{"chara": "fran", "exp": "fran-reaction_03", "serif":"毎年雪が積もったら木をきれいにするの"},
+						{"chara": "koishi","serif":"なんで？"},
+						{"chara": "fran", "exp": "fran-reaction_01", "serif":"そのほうが楽しいから！"},
+						{"chara": "fran", "exp": "fran-reaction_01", "serif":"いっぱい雪が降ったら\nやることなくなっちゃうからね！"},
+					],
+				]},
 			],
 			x: 717*2/3, y: 400*2/3,
 			scale: 2/3,
