@@ -51,6 +51,29 @@ module.exports = {
 	leftField: "chapter3_12",
 	background: "chapter3-13-bg-001",
 	walkSound: "walking_bare_outside",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "process": [
+			// すでにイベント30370を再生済み
+			[],
+			// まだイベント30370を未再生
+			[
+				// フラン good ルート会話後
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12-fran-serif-30320"], "process": [
+					[
+						// チルノ good ルート会話後
+						{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_08-cirno-serif-30330"], "process": [
+							[
+								// イベント再生
+								{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter3-13-event-01"]},
+							],
+							[],
+						]},
+					],
+					[],
+				]},
+			],
+		]},
+	],
 	objects: [
 		{
 			no: ++I,

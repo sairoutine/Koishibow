@@ -92,13 +92,13 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_12-Event-_30310"], "serifs": [
 							// good ルート
 							[
+								{"id": "chapter3_08-cirno-serif-30330", "save": true},
 								{"chara": "koishi","serif":"ねえ"},
 								{"chara": I, "exp": "cirno-reaction_07", "serif":"............"},
 								{"chara": I, "exp": "cirno-reaction_07", "serif":"............"},
 								{"chara": "koishi","serif":"みんなで作ろ"},
 								{"chara": I, "exp": "cirno-reaction_01", "serif":"やだ！"},
 								{"chara": I, "exp": "cirno-reaction_02", "serif":"あの子嫌いなんだモン"},
-
 								{"chara": "koishi","serif":"いいことおもいついたの"},
 								{"chara": I, "exp": "cirno-reaction_07", "serif":"............"},
 								{"chara": "koishi","serif":"ねえ"},

@@ -130,9 +130,9 @@ module.exports = {
 			loop: true,
 			serif: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_12-Event-_30310"], "serifs": [
-					[],
 					// good root
 					[
+						{"id": "chapter3_12-fran-serif-30320", "save": true},
 						{"chara": "koishi","serif":"また作ってる"},
 						{"chara": "fran", "exp": "fran-reaction_03", "serif":"うん"},
 						{"chara": "koishi","serif":"なんで"},
