@@ -99,6 +99,9 @@ SceneEventTalk.prototype.init = function(event_name){
 	// フェードインする
 	this.core.scene_manager.setFadeIn(120, "black");
 
+	// フェードアウトする
+	this.core.scene_manager.setFadeOut(120, "black");
+
 	// BGM再生
 	if (this._master.bgm()) {
 		this.core.audio_loader.changeBGM(this._master.bgm());
