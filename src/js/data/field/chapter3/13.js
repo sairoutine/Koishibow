@@ -154,7 +154,7 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 			width: 120, height: 350,
-			//show_if_event_true: "chapter3_13-Event-_30370", TODO:
+			show_if_event_true: "chapter3-13-show_cirno",
 		},
 		{
 			no: "fran",
@@ -192,7 +192,7 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 			width: 120, height: 350,
-			//show_if_event_true: "chapter3_13-Event-_30370", TODO:
+			show_if_event_true: "chapter3-13-show_fran",
 		},
 
 	],
