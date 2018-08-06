@@ -84,6 +84,10 @@ var ProcessList = {
 	incrementPlayedFlag: function (core, flag_name) {
 		core.save_manager.scenario.incrementPlayedCount(flag_name);
 	},
+	// フラグを下ろす
+	resetPlayedCount: function (core, flag_name) {
+		core.save_manager.scenario.resetPlayedCount(flag_name);
+	},
 };
 
 // 静的クラス
