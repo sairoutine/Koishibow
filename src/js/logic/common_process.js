@@ -12,7 +12,7 @@ var CriteriaList = {
 	},
 	// 特定のイベントを再生済みなら
 	isPlayedEvent: function (core, event_name) {
-		return this.core.save_manager.event.isPlayedEvent(event_name) ? 0 : 1;
+		return core.save_manager.event.isPlayedEvent(event_name) ? 0 : 1;
 	},
 
 	// id のフラグが立っている
