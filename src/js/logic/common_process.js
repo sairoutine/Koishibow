@@ -85,7 +85,7 @@ var ProcessList = {
 		core.save_manager.scenario.incrementPlayedCount(flag_name);
 	},
 	// フラグを下ろす
-	resetPlayedCount: function (core, flag_name) {
+	resetPlayedFlag: function (core, flag_name) {
 		core.save_manager.scenario.resetPlayedCount(flag_name);
 	},
 };

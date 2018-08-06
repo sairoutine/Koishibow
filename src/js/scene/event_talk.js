@@ -25,6 +25,8 @@ var STATE_WAITING  = 2; // セリフ非表示
 var STATE_JUNCTION = 3; // 会話の選択肢表示
 var STATE_END      = 4; // 会話終了
 
+var CONSTANT = require('../constant');
+
 var SceneEventTalk = function(core) {
 	BaseScene.apply(this, arguments);
 
@@ -213,6 +215,16 @@ SceneEventTalk.prototype.beforeDraw = function(){
 
 	// event_talk 固有 start
 	this._black_mist.beforeDraw();
+
+	// 左クリック位置を出力
+	if (CONSTANT.DEBUG.ON) {
+		if(this.core.input_manager.isLeftClickPush()) {
+			var x = this.core.input_manager.mousePositionX();
+			var y = this.core.input_manager.mousePositionY();
+
+			console.log("x: " + x + ", y: " + y);
+		}
+	}
 	// event_talk 固有 end
 };
 
@@ -427,6 +439,8 @@ SceneEventTalk.prototype._showJunction = function() {
 SceneEventTalk.prototype._actionExpression = function() {
 	// 表情
 	var expression = this._serif.getCurrentCharaExpressionByPosition();
+
+	if(!expression) return;
 
 	var option = this._serif.getCurrentOption();
 
