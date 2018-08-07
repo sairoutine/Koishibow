@@ -71,7 +71,9 @@ module.exports = {
 								]},
 							],
 							[
-								// TODO: イベント 30340 へ
+								// イベント 30340 へ
+								{"id": "chapter3_13-Event-_30340", "save": true},
+								{"chara": "koishi", "serif": "", "option": {"playEvent": "chapter3-09-event-01"}},
 							],
 						]},
 					],
@@ -106,10 +108,41 @@ module.exports = {
 				{"chara": "koishi","serif":"これスノーマンかしら"},
 			],
 			serif_back: [
-				{"chara": I,"serif":"責任についてどう思っているんだ"},
-				{"chara": "koishi","serif":"なにが"},
-				{"chara": I,"serif":"約束や責任を何だと思っているんだ！"},
-				{"chara": "koishi","serif":"しらなーい"},
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "serifs": [
+					// 丘の上での喧嘩イベント後
+					[
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30360"], "serifs": [
+							// 胸像爆破イベント後
+							[
+								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getaxe"], "serifs": [
+									// 斧獲得前
+									[
+										{"id": "chapter3_09_getaxe", "save": true},
+										{"chara": "koishi","serif":"", "option": {"getItem": "17"}},
+									],
+									// 斧獲得後
+									[
+										{"chara": I,"serif":"責任についてどう思っているんだ"},
+										{"chara": "koishi","serif":"なにが"},
+										{"chara": I,"serif":"約束や責任を何だと思っているんだ！"},
+										{"chara": "koishi","serif":"しらなーい"},
+									],
+								]},
+							],
+							[
+								// イベント 30360 へ
+								{"id": "chapter3_13-Event-_30360", "save": true},
+								{"chara": "koishi", "serif": "", "option": {"playEvent": "chapter3-09-event-01"}},
+							],
+						]},
+					],
+					[
+						{"chara": I,"serif":"責任についてどう思っているんだ"},
+						{"chara": "koishi","serif":"なにが"},
+						{"chara": I,"serif":"約束や責任を何だと思っているんだ！"},
+						{"chara": "koishi","serif":"しらなーい"},
+					],
+				]},
 			],
 			x:345*2/3, y:631.50*2/3,
 			scale: 2/3,
