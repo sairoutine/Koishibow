@@ -208,6 +208,12 @@ SceneSubStageObjectTalk.prototype._updateProcess = function(){
 			this.root().changeSubScene("picture", option.showPicture, "talk_with_object");
 			return true;
 		}
+		// フラグを下ろす
+		else if (option.resetFlag) {
+			this.core.save_manager.scenario.resetPlayedCount(option.resetFlag);
+			return true;
+		}
+
 	}
 
 	return false;

@@ -99,16 +99,14 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "チルノの頭",
 			serif: [
-				{"chara": "koishi","serif":"なんか気持ち悪い"},
-				{"id": "chapter3_13_GetCirnoHead", "save": true},
+				{"chara": "koishi","serif":"なんか気持ち悪い", "option": {"resetFlag": "chapter3-13-show_cirno_head"}},
 				{"chara": "fran", "exp": "fran-reaction_01", "serif":"じゃあそれ、のせて！", "option": {"getItem": "20"}},
 			],
 			x: 596*2/3, y: 854.50*2/3,
 			scale: 2/3,
 			action_name: null,
 			sound_name: null,
-			//show_if_event_true: "", TODO:
-			not_show_if_event_true: "chapter3_13_GetCirnoHead",
+			show_if_event_true: "chapter3-13-show_cirno_head",
 		},
 		{
 			no: ++I,
@@ -149,6 +147,7 @@ module.exports = {
 			position_type: "lying",
 			//show_if_event_true: "", TODO:
 			// セリフ30360の後に表示
+			show_if_event_true: "chapter3-13-show_cirno_body",
 		},
 		{
 			no: "cirno",

@@ -1,15 +1,8 @@
 'use strict';
-/*
-再生済み"	30350					そうだ！			chapter3-13-event-03	obj01
-フラン								こいしから斧をひったくる	ねえこれ貸して			chapter3-13-event-03	obj02
-フラン								チルノのほうへ駆け寄って	大丈夫よ			chapter3-13-event-03	obj03
-フラン								斧を振りかぶる	前にもやったから！			chapter3-13-event-03	obj03停止
-フラン					独自	チルノの頭を出現		暗転、明転。チルノの首がはねられている	私ってほんと達人！			chapter3-13-event-03	obj04
-*/
+/* フランがチルノの首を落とす */
 module.exports = {
 	key: "chapter3-13-event-03",
 	serifWindow: "fukidashi",
-	startAnime: "chapter3-13-event-03-obj01",
 	expAnimes: [
 		"chapter3-13-event-03-obj01",
 		"chapter3-13-event-03-obj02",
@@ -17,13 +10,22 @@ module.exports = {
 		"chapter3-13-event-03-obj04",
 	],
 	serifs: [
-		{"exp": "chapter3-13-event-03-obj01", "serif":"11111111", "option": {"x": 400, "y": 400, "loop": false}},
-		{"exp": "chapter3-13-event-03-obj02", "serif":"22222222", "option": {"x": 300, "y": 300, "loop": false}},
-		{"exp": "chapter3-13-event-03-obj02", "serif":"33333333", "option": {"x": 200, "y": 200, "loop": false}},
+		/*
+		// フラン
+		{"exp": "chapter3-13-event-03-obj01", "serif":"11111111", "option": {"x": 550, "y": 200, "loop": false}},
+		*/
+		{"exp": "chapter3-13-event-03-obj01", "serif":"そうだ！", "option": {"x": 550, "y": 200, "loop": false}},
+		{"exp": "chapter3-13-event-03-obj02", "serif":"ねえこれ貸して", "option": {"x": 550, "y": 300, "loop": false}},
+		{"exp": "chapter3-13-event-03-obj03", "serif":"大丈夫よ", "option": {"x": 470, "y": 180, "loop": false}},
+		{"exp": null, "serif":"前にもやったから！", "option": {"x": 470, "y": 180, "loop": false}},
+		{"exp": "chapter3-13-event-03-obj04", "serif":"私ってほんと達人！", "option": {"x": 550, "y": 200, "loop": false}},
 	],
 
 	endProcess: [
-		{"type": "process", "value": "changeScene", "arguments": ["title"]},
+		{"type": "process", "value": "resetPlayedFlag", "arguments": ["chapter3-13-show_cirno"]},
+		{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3-13-show_cirno_body"]},
+		{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3-13-show_cirno_head"]},
+		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
 	],
 
 };
