@@ -215,7 +215,9 @@ SceneSubStageObjectTalk.prototype._updateProcess = function(){
 
 // 会話の処理
 SceneSubStageObjectTalk.prototype._updateTalk = function(){
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	// Z ボタンが押されたら
+	// あるいは空文字 = オプションの内容だけ処理したい
+	if(this._serif.getCurrentMaxLengthLetters() === 0 || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
 			this._state = STATE_END;
