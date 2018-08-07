@@ -1,6 +1,9 @@
 'use strict';
 
 // talk_with_object と共通の処理が多いのでまとめたい
+//
+// ただ、talk_with_object が表情とセリフを同時に再生するのに対して、
+// event_talk は表情を再生してから、セリフを再生する違いがある
 
 var BaseScene = require('../hakurei').Scene.Base;
 var ScenarioManager = require('../hakurei').Manager.Scenario;
@@ -82,7 +85,7 @@ var SceneEventTalk = function(core) {
 	// 今、会話のどの選択肢を選んでいるか
 	this._junction_focus_index = 0;
 
-	this._state = STATE_TALKING;
+	this._state = STATE_WAITING;
 };
 Util.inherit(SceneEventTalk, BaseScene);
 
@@ -129,7 +132,7 @@ SceneEventTalk.prototype.init = function(event_name){
 	// 今、会話のどの選択肢を選んでいるか
 	this._junction_focus_index = 0;
 
-	this._state = STATE_TALKING;
+	this._state = STATE_WAITING;
 
 	// セリフデータの生成
 	this._serif.init(serif_list);
@@ -167,16 +170,25 @@ SceneEventTalk.prototype._startSerif = function(){
 	var start_function = function () {
 		// セリフ再生開始
 		if (self.isSerifAutoStart()) {
+			// 表情を次へ
 			self._serif.start();
 
-			// 表情変更
-			self._actionExpression();
+			// 表情→セリフの順に再生するので、セリフ再生は一旦止める
+			self._serif.pausePrintLetter();
+
+			// 表情 再生
+			self._actionExpression(function () {
+				self._state = STATE_TALKING;
+
+				// その後、止めたセリフ再生を再開
+				self._serif.resumePrintLetter();
+			});
 		}
 	};
 
 	if (this._master.startAnime()) {
 		// アニメ再生開始
-		this.ss.playAnimationOnce("default", start_function);
+		this.ss.playAnimationOnce(this._master.startAnime(), start_function);
 	}
 	else {
 		// セリフ再生開始
@@ -340,15 +352,19 @@ SceneEventTalk.prototype._gotoNextSerif = function(choice){
 
 	self._state = STATE_WAITING;
 
-	self._time.setTimeout(function () {
+	// 表情を次へ
+	self._serif.next(choice);
+
+	// 表情→セリフの順に再生するので、セリフ再生は一旦止める
+	self._serif.pausePrintLetter();
+
+	// 表情 再生
+	self._actionExpression(function () {
 		self._state = STATE_TALKING;
 
-		// セリフを送る
-		self._serif.next(choice);
-
-		// アニメ変更
-		self._actionExpression();
-	}, NEXT_TO_SERIF_WAITING_COUNT);
+		// その後、止めたセリフ再生を再開
+		self._serif.resumePrintLetter();
+	});
 };
 
 // 会話 選択肢の処理
@@ -439,19 +455,30 @@ SceneEventTalk.prototype._showJunction = function() {
 	DrawSerif.drawJunction(obj, ctx, junction_off, junction_on, junction_list, this._junction_focus_index);
 };
 // アニメ
-SceneEventTalk.prototype._actionExpression = function() {
+SceneEventTalk.prototype._actionExpression = function(callback) {
+	callback = callback || function () {};
 	// 表情
 	var expression = this._serif.getCurrentCharaExpressionByPosition();
-
-	if(!expression) return;
+	if(!expression) {
+		// 表情終了を待たない分、N 秒だけ待つ
+		this._time.setTimeout(function () {
+			callback();
+		}, NEXT_TO_SERIF_WAITING_COUNT);
+		return;
+	}
 
 	var option = this._serif.getCurrentOption();
 
 	if (option.loop) {
 		this.ss.playAnimationInfinity(expression);
+
+		// 表情終了を待たない分、N 秒だけ待つ
+		this._time.setTimeout(function () {
+			callback();
+		}, NEXT_TO_SERIF_WAITING_COUNT);
 	}
 	else {
-		this.ss.playAnimationOnce(expression);
+		this.ss.playAnimationOnce(expression, callback);
 	}
 };
 // event_talk 固有 end
