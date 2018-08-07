@@ -174,7 +174,11 @@ module.exports = {
 										{"chara": I, "exp": "cirno-reaction_03", "serif":"みんなに抱きしめてもらえるの！"},
 										{"chara": I, "exp": "cirno-reaction_03", "serif":"氷の像なんかと違ってね！"},
 										{"chara": I, "exp": "cirno-reaction_02", "serif":"だからあたいを雪だるまにして！", "junction": ["いいよ！","いいよ","いいよ......"]},
-										// TODO: イベント再生
+										{"chara": I, "exp": "cirno-reaction_04", "serif":"きまりね"},
+										{"chara": I, "exp": "cirno-reaction_02", "serif":"ふつうの雪だるまじゃないのよ！"},
+										{"chara": I, "exp": "cirno-reaction_05", "serif":"世界一の雪だるまになるんだから！"},
+										{"chara": I, "exp": "cirno-reaction_03", "serif":"あたいならできる！"},
+										// TODO: 30470 イベント再生
 										{"chara": I, "exp": "cirno-reaction_02", "serif":"計画はね！"},
 										{"chara": I, "exp": "cirno-reaction_03", "serif":"わたしのからだにいっぱい雪をつけるでしょ"},
 										{"chara": I, "exp": "cirno-reaction_03", "serif":"そしたらからだがおっきくなるから"},
