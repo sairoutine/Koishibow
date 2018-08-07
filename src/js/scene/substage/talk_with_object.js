@@ -150,7 +150,8 @@ SceneSubStageObjectTalk.prototype._updateProcess = function(){
 	var option = this._serif.getCurrentOption();
 
 	// Z ボタンが押されたら
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	// あるいは空文字 = オプションの内容だけ処理したい
+	if(this._serif.getCurrentMaxLengthLetters() === 0 || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		// ムービーを再生
 		if (option.playMovie) {
 			var scene_manager = this.core.scene_manager;
@@ -168,6 +169,11 @@ SceneSubStageObjectTalk.prototype._updateProcess = function(){
 		// 別のフィールドへ遷移
 		else if (option.changeField) {
 			this.core.scene_manager.changeScene("stage", option.changeField);
+			return true;
+		}
+		// 別のシーンへ遷移
+		else if (option.playEvent) {
+			this.core.scene_manager.changeScene("event_talk", option.playEvent);
 			return true;
 		}
 		// アイテム獲得
