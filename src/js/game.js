@@ -25,6 +25,7 @@ var SceneEventForChapter1SitAtBusstop    = require('./scene/event/chapter1/sit_a
 var SceneEventForChapter1TalkWithMobu    = require('./scene/event/chapter1/talk_with_mobu');
 var SceneEventForChapter1PlayDoll        = require('./scene/event/chapter1/playdoll');
 var SceneEventForChapter1PlayWithMurasa  = require('./scene/event/chapter1/play_with_murasa');
+var SceneEventForChapter3GetupKoishi     = require('./scene/event/chapter3/getup_koishi');
 
 var FieldMasterRepository = require('./repository/field');
 
@@ -56,6 +57,7 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("event_for_chapter1_talk_with_mobu", new SceneEventForChapter1TalkWithMobu(this));
 	this.scene_manager.addScene("event_for_chapter1_playdoll", new SceneEventForChapter1PlayDoll(this));
 	this.scene_manager.addScene("event_for_chapter1_play_with_murasa", new SceneEventForChapter1PlayWithMurasa(this));
+	this.scene_manager.addScene("event_for_chapter3_getup_koishi", new SceneEventForChapter3GetupKoishi(this));
 	this.scene_manager.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
 
 	// セーブデータ

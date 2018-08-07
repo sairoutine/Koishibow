@@ -12,6 +12,19 @@ module.exports = {
 	leftField: null,
 	background: "chapter0-myroom-bg-001",
 	walkSound: "walking_bare_default",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_08_30010"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				// こいし起床イベント
+				{"type": "process", "value": "changeScene", "arguments": ["event_for_chapter3_getup_koishi"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_08_30010"]}
+			],
+		]},
+	],
+
 	objects: [
 		{
 			no: ++I,
