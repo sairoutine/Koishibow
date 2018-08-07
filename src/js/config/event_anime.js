@@ -1,5 +1,11 @@
 'use strict';
 var anime_map = {
+	"chapter3-08-event-04-obj01": require('../data/anime/chapter3/event/chapter3-08-event-04/chapter3-08-event-04/obj01_anime_1'),
+	"chapter3-08-event-04-obj02": require('../data/anime/chapter3/event/chapter3-08-event-04/chapter3-08-event-04/obj02_anime_1'),
+	"chapter3-08-event-04-obj03": require('../data/anime/chapter3/event/chapter3-08-event-04/chapter3-08-event-04/obj03_anime_1'),
+	"chapter3-08-event-04-obj04": require('../data/anime/chapter3/event/chapter3-08-event-04/chapter3-08-event-04/obj04_anime_1'),
+
+
 	"chapter3-13-event-01-obj01": require('../data/anime/chapter3/event/chapter3-13-event-01/chapter3-13-event-01/obj01_anime_1'),
 	"chapter3-13-event-01-obj02": require('../data/anime/chapter3/event/chapter3-13-event-01/chapter3-13-event-01/obj02_anime_1'),
 	"chapter3-13-event-01-obj03": require('../data/anime/chapter3/event/chapter3-13-event-01/chapter3-13-event-01/obj03_anime_1'),

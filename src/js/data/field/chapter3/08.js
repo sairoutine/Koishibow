@@ -57,7 +57,6 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "チルノが埋まってる雪山",
 			serif: [
-				{"chara": "koishi","serif":""},
 			],
 			x: 711.50*2/3, y: 643.50*2/3,
 			scale: 2/3,
@@ -77,7 +76,8 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "existsItemAll", "arguments": ["14", "15", "16"], "serifs": [
 							// すべてもっている
 							[
-								// TODO: イベント 30290 へ
+								// イベント 30290 へ
+								{"chara": "koishi", "serif": "", "option": {"playEvent": "chapter3-08-event-04"}},
 							],
 							[
 								{"chara": "koishi","serif":"材料集めてきたよ"},
