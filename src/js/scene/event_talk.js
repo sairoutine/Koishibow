@@ -213,15 +213,20 @@ SceneEventTalk.prototype.beforeDraw = function(){
 	}
 	else if(this._state === STATE_END) {
 		// event_talk 固有 start
-		if (this._master.endAnime()) {
-			this.ss.playAnimationOnce(this._master.endAnime());
-		}
-
-		// N 秒後にイベント終了処理
 		var self = this;
-		self._time.setTimeout(function () {
-			self._endProcess();
-		}, 60);
+		this._state = STATE_WAITING;
+
+		if (this._master.endAnime()) {
+			this.ss.playAnimationOnce(this._master.endAnime(), function () {
+				self._endProcess();
+			});
+		}
+		else {
+			// N 秒後にイベント終了処理
+			self._time.setTimeout(function () {
+				self._endProcess();
+			}, 60);
+		}
 		// event_talk 固有 end
 	}
 	else {
