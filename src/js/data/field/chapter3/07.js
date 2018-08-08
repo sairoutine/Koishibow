@@ -5,13 +5,13 @@ var I = 0;
 module.exports = {
 	key: "chapter3_07",
 	chapter: 3,
-	bgm: "field3",
+	bgm: "field7",
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 200, y: 450},
 	rightField: "chapter3_08",
 	leftField: null,
 	background: "chapter3-07-bg-001",
-	walkSound: "walking_bare_outside",
+	walkSound: "walking_bare_snow",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_07_30040"], "process": [
 			// すでにアクセス済み
@@ -110,6 +110,7 @@ module.exports = {
 
 			action_name: "touch",
 			sound_name: null,
+			sound_back: "chapter3-08-crows_cat",
 		},
 
 	],

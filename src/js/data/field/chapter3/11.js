@@ -5,13 +5,13 @@ var I = 0;
 module.exports = {
 	key: "chapter3_11",
 	chapter: 3,
-	bgm: "field3",
+	bgm: "field7",
 	rightStartPosition: {x: 680, y: 380},
 	leftStartPosition:  {x: 200, y: 450},
 	rightField: "chapter3_12",
 	leftField: "chapter3_10",
 	background: "chapter3-11-bg-001",
-	walkSound: "walking_bare_outside",
+	walkSound: "walking_bare_snow",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3-11-show_skred"], "process": [
 			// 雪崩表示済み

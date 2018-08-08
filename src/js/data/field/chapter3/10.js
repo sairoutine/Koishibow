@@ -5,13 +5,13 @@ var I = 0;
 module.exports = {
 	key: "chapter3_10",
 	chapter: 3,
-	bgm: "field3",
+	bgm: "field7",
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 200, y: 450},
 	rightField: "chapter3_11",
 	leftField: "chapter3_09",
 	background: "chapter3-10-bg-001",
-	walkSound: "walking_bare_outside",
+	walkSound: "walking_bare_snow",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12_Event_30210"], "process": [
 			// フランに1度出会っている

@@ -5,7 +5,7 @@ var I = 0;
 module.exports = {
 	key: "chapter3_04",
 	chapter: 3,
-	bgm: "field2",
+	bgm: "field6",
 	sub_bgms: ["chapter0-mansion_corridor1-wind"],
 	rightStartPosition: {x: 800, y: 240},
 	leftStartPosition:  {x: 180, y: 370},

@@ -5,13 +5,13 @@ var I = 0;
 module.exports = {
 	key: "chapter3_09",
 	chapter: 3,
-	bgm: "field3",
+	bgm: "field7",
 	rightStartPosition: {x: 790, y: 450},
 	leftStartPosition:  {x: 200, y: 450},
 	rightField: "chapter3_10",
 	leftField: "chapter3_08",
 	background: "chapter3-09-bg-001",
-	walkSound: "walking_bare_outside",
+	walkSound: "walking_bare_snow",
 	objects: [
 		{
 			no: ++I,

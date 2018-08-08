@@ -5,8 +5,8 @@ var I = 0;
 module.exports = {
 	key: "chapter3_06",
 	chapter: 3,
-	bgm: "field2",
-	sub_bgms: ["chapter0-mansion_corridor3-clock"],
+	bgm: "field6",
+	//sub_bgms: ["chapter0-mansion_corridor3-clock"],
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 180, y: 380},
 	rightField: "chapter3_07",
@@ -35,7 +35,7 @@ module.exports = {
 			anime5: "chapter0-mansion_corridor3-obj-10-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-10-01-obj06",
 			action_name: "look_top",
-			sound_name:      "chapter0-mansion_corridor3-ring_clock_front",
+			sound_name:      "chapter3-mansion_corridor3-breaked_clock",
 			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
 		},
 		{
