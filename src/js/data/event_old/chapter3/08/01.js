@@ -2,11 +2,16 @@
 
 // こいし＆さとりフラッシュバック
 
+
+
 module.exports = {
 	key: "chapter3-08-event-01",
 	serifWindow: "fukidashi_dark",
 	animeNum: 4,
+	bgm: "chapter0-event-encounter_satori",
 	bg: "chapter3-08-event-01-bg-001",
+	startSE:    "chapter0-mansion_corridor2-event_in",
+	endSE:      "chapter0-mansion_corridor2-event_out",
 	expAnimes: {
 		"chapter3-08-event-01-obj01": [
 			"chapter3-08-event-01-obj-01",

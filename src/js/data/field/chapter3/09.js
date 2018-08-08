@@ -58,16 +58,17 @@ module.exports = {
 							// レミリアの死骸爆破イベント後
 							[
 								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getruby"], "serifs": [
+									// ルビー獲得後
+									[
+										{"chara": "koishi","serif":"やっぱりちょっと気持ち悪い"},
+									],
 									// ルビー獲得前
 									[
 										{"id": "chapter3_09_getruby", "save": true},
 										{"chara": "koishi","serif":"やっぱりここにあった！", "option": {"getItem": "17"}},
 										{"chara": "koishi","serif":"ありがとう！"},
 									],
-									// ルビー獲得後
-									[
-										{"chara": "koishi","serif":"やっぱりちょっと気持ち悪い"},
-									],
+
 								]},
 							],
 							[
@@ -115,17 +116,17 @@ module.exports = {
 							// 胸像爆破イベント後
 							[
 								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getaxe"], "serifs": [
-									// 斧獲得前
-									[
-										{"id": "chapter3_09_getaxe", "save": true},
-										{"chara": "koishi","serif":"", "option": {"getItem": "17"}},
-									],
 									// 斧獲得後
 									[
 										{"chara": I,"serif":"責任についてどう思っているんだ"},
 										{"chara": "koishi","serif":"なにが"},
 										{"chara": I,"serif":"約束や責任を何だと思っているんだ！"},
 										{"chara": "koishi","serif":"しらなーい"},
+									],
+									// 斧獲得前
+									[
+										{"id": "chapter3_09_getaxe", "save": true},
+										{"chara": "koishi","serif":"", "option": {"getItem": "18"}},
 									],
 								]},
 							],
