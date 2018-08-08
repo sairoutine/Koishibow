@@ -171,9 +171,16 @@ SceneSubStageObjectTalk.prototype._updateProcess = function(){
 			this.core.scene_manager.changeScene("stage", option.changeField);
 			return true;
 		}
-		// 別のシーンへ遷移
+		// 別のイベントを再生
 		else if (option.playEvent) {
+			this.core.scene_manager.setFadeOut(0);
 			this.core.scene_manager.changeScene("event_talk", option.playEvent);
+			return true;
+		}
+		// 別のイベントを再生(旧)
+		else if (option.playEventOld) {
+			this.core.scene_manager.setFadeOut(0);
+			this.core.scene_manager.changeScene("event_talk_old", option.playEventOld);
 			return true;
 		}
 		// アイテム獲得

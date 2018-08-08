@@ -18,6 +18,7 @@ var SceneLoading = require('./scene/loading');
 var SceneMovie = require('./hakurei').scene.movie;
 var SceneOpeningMovie = require('./scene/opening_movie');
 var SceneEventTalk = require('./scene/event_talk');
+var SceneEventTalkOld = require('./scene/event/event_talk_old');
 var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
 var SceneEventForChapter0Last            = require('./scene/event/chapter0/last');
 var SceneEventForTrialLast               = require('./scene/event/trial_last');
@@ -41,6 +42,7 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("stage", new SceneStage(this));
 	this.scene_manager.addScene("movie", new SceneMovie(this));
 	this.scene_manager.addScene("event_talk", new SceneEventTalk(this));
+	this.scene_manager.addScene("event_talk_old", new SceneEventTalkOld(this));
 
 	// chapter 開始時のmovie
 	this.scene_manager.addScene("opening_movie_chapter0", new SceneOpeningMovie(this).setArgs("chapter0"));
