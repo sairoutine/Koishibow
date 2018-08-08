@@ -54,6 +54,47 @@ var anime_map = {
 	"chapter3-08-event-01-satori-obj09": require('../data/anime/chapter3/event/chapter3-08-event-01/satori/obj09_anime_1'),
 	"chapter3-08-event-01-koishi-obj10": require('../data/anime/chapter3/event/chapter3-08-event-01/koishi/obj10_anime_1'),
 	"chapter3-08-event-01-satori-obj10": require('../data/anime/chapter3/event/chapter3-08-event-01/satori/obj10_anime_1'),
+
+	"chapter3-08-event-02-tree-obj01": require('../data/anime/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-tree/obj01_anime_1'),
+	"chapter3-08-event-02-koishi-obj01": require('../data/anime/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-koishi/obj01_anime_1'),
+	"chapter3-08-event-02-cirno-obj01": require('../data/anime/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-cirno/obj01_anime_1'),
+	"chapter3-08-event-02-koishi-obj02": require('../data/anime/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-koishi/obj02_anime_1'),
+	"chapter3-08-event-02-cirno-obj02": require('../data/anime/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-cirno/obj02_anime_1'),
+	"chapter3-08-event-02-koishi-obj03": require('../data/anime/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-koishi/obj03_anime_1'),
+	"chapter3-08-event-02-cirno-obj03": require('../data/anime/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-cirno/obj03_anime_1'),
+	"chapter3-08-event-02-koishi-obj04": require('../data/anime/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-koishi/obj04_anime_1'),
+	"chapter3-08-event-02-cirno-obj04": require('../data/anime/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-cirno/obj04_anime_1'),
+
+	"chapter3-08-event-03-koishi-obj01": require('../data/anime/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-koishi/obj01_anime_1'),
+	"chapter3-08-event-03-cirno-obj01": require('../data/anime/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-cirno/obj01_anime_1'),
+	"chapter3-08-event-03-tree-obj01": require('../data/anime/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-tree/obj01_anime_1'),
+
+	"chapter3-11-event-01-koishi-obj01": require('../data/anime/chapter3/event/chapter3-11-event-01/chapter3-11-event-01-koishi/obj01_anime_1'),
+	"chapter3-11-event-01-obj-01": require('../data/anime/chapter3/event/chapter3-11-event-01/chapter3-11-event-01-obj-01/obj01_anime_1'),
+	"chapter3-11-event-01-obj-02": require('../data/anime/chapter3/event/chapter3-11-event-01/chapter3-11-event-01-obj-02/obj01_anime_1'),
+
+	"chapter3-10-event-01-obj-01": require('../data/anime/chapter3/event/chapter3-11-event-01/chapter3-11-event-01-obj-01/obj01_anime_1'),
+	"chapter3-10-event-01-koishi-obj01": require('../data/anime/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-koishi/obj01_anime_1'),
+	"chapter3-10-event-01-cirno-obj01": require('../data/anime/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-cirno/obj01_anime_1'),
+	"chapter3-10-event-01-fran-obj01": require('../data/anime/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-fran/obj01_anime_1'),
+	"chapter3-10-event-01-koishi-obj02": require('../data/anime/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-koishi/obj02_anime_1'),
+	"chapter3-10-event-01-cirno-obj02": require('../data/anime/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-cirno/obj02_anime_1'),
+	"chapter3-10-event-01-fran-obj02": require('../data/anime/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-fran/obj02_anime_1'),
+	"chapter3-10-event-01-koishi-obj03": require('../data/anime/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-koishi/obj03_anime_1'),
+	"chapter3-10-event-01-cirno-obj03": require('../data/anime/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-cirno/obj03_anime_1'),
+	"chapter3-10-event-01-fran-obj03": require('../data/anime/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-fran/obj03_anime_1'),
+
+	"chapter3-12-event-01-koishi-obj01": require('../data/anime/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-koishi/obj1_anime_1'),
+	"chapter3-12-event-01-obj-01-obj01": require('../data/anime/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-obj-01/obj1_anime_1'),
+	"chapter3-12-event-01-fran-obj01": require('../data/anime/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-fran/obj1_anime_1'),
+	"chapter3-12-event-01-koishi-obj02": require('../data/anime/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-koishi/obj2_anime_1'),
+	"chapter3-12-event-01-obj-01-obj02": require('../data/anime/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-obj-01/obj2_anime_1'),
+	"chapter3-12-event-01-fran-obj02": require('../data/anime/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-fran/obj2_anime_1'),
+	"chapter3-12-event-01-koishi-obj03": require('../data/anime/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-koishi/obj3_anime_1'),
+	"chapter3-12-event-01-obj-01-obj03": require('../data/anime/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-obj-01/obj3_anime_1'),
+	"chapter3-12-event-01-fran-obj03": require('../data/anime/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-fran/obj3_anime_1'),
+
+
 };
 
 module.exports = anime_map;
