@@ -576,6 +576,130 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter1/event/play_wipe_in_murasa.ogg",
 		volume: 1.0,
 	},
+	"chapter3-myroom-getup_koishi01":    {
+		path: "./sound/chapter3/event/getup_koishi/01.ogg",
+		volume: 1.0,
+	},
+	"chapter3-myroom-getup_koishi02": {
+		path: "./sound/chapter3/event/getup_koishi/02.ogg",
+		volume: 1.0,
+	},
+	"chapter3-myroom-getup_koishi03": {
+		path: "./sound/chapter3/event/getup_koishi/03.ogg",
+		volume: 1.0,
+	},
+	"chapter3-08-event-02-01":    {
+		path: "./sound/chapter3/event/chapter3-08-event-02/01.ogg",
+		volume: 1.0,
+	},
+	"chapter3-08-event-02-02":    {
+		path: "./sound/chapter3/event/chapter3-08-event-02/02.ogg",
+		volume: 1.0,
+	},
+	"chapter3-08-event-02-03":    {
+		path: "./sound/chapter3/event/chapter3-08-event-02/03.ogg",
+		volume: 1.0,
+	},
+	"chapter3-08-event-02-04":    {
+		path: "./sound/chapter3/event/chapter3-08-event-02/04.ogg",
+		volume: 1.0,
+	},
+	"chapter3-08-event-03-01":    {
+		path: "./sound/chapter3/event/chapter3-08-event-03/01.ogg",
+		volume: 1.0,
+	},
+	"chapter3-08-event-03-02":    {
+		path: "./sound/chapter3/event/chapter3-08-event-03/02.ogg",
+		volume: 1.0,
+	},
+	"chapter3-08-event-03-03":    {
+		path: "./sound/chapter3/event/chapter3-08-event-03/03.ogg",
+		volume: 1.0,
+	},
+	"chapter3-09-event-01-01":    {
+		path: "./sound/chapter3/event/chapter3-09-event-01/01.ogg",
+		volume: 1.0,
+	},
+	"chapter3-09-event-01-02":    {
+		path: "./sound/chapter3/event/chapter3-09-event-01/02.ogg",
+		volume: 1.0,
+	},
+	"chapter3-09-event-01-03":    {
+		path: "./sound/chapter3/event/chapter3-09-event-01/03.ogg",
+		volume: 1.0,
+	},
+	"chapter3-09-event-01-04":    {
+		path: "./sound/chapter3/event/chapter3-09-event-01/04.ogg",
+		volume: 1.0,
+	},
+	"chapter3-09-event-01-05":    {
+		path: "./sound/chapter3/event/chapter3-09-event-01/05.ogg",
+		volume: 1.0,
+	},
+	"chapter3-11-event-01-01":    {
+		path: "./sound/chapter3/event/chapter3-11-event-01/01.ogg",
+		volume: 1.0,
+	},
+	"chapter3-11-event-01-02":    {
+		path: "./sound/chapter3/event/chapter3-11-event-01/02.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-03-01":    {
+		path: "./sound/chapter3/event/chapter3-13-event-03/01.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-03-02":    {
+		path: "./sound/chapter3/event/chapter3-13-event-03/02.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-01":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/01.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-02":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/02.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-03":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/03.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-04":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/04.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-05":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/05.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-06":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/06.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-07":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/07.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-08":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/08.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-09":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/09.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-10":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/10.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-11":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/11.ogg",
+		volume: 1.0,
+	},
+	"chapter3-13-event-04-12":    {
+		path: "./sound/chapter3/event/chapter3-13-event-04/12.ogg",
+		volume: 1.0,
+	},
 	"chapter1-01-change":    {
 		path: "./sound/chapter1/01/change.ogg",
 		volume: 1.0,
@@ -593,8 +717,6 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter1/04/receive_phone.ogg",
 		volume: 1.0,
 	},
-
-
 	"chapter1-03-sound_bucket":    {
 		path: "./sound/chapter1/03/sound_bucket.ogg",
 		volume: 1.0,
@@ -613,6 +735,22 @@ AssetsConfig.sounds = {
 	},
 	"chapter1-10-flow_sand":    {
 		path: "./sound/chapter1/10/flow_sand.ogg",
+		volume: 1.0,
+	},
+	"chapter3-mansion_corridor3-breaked_clock":    {
+		path: "./sound/chapter3/mansion_corridor3/breaked_clock.ogg",
+		volume: 1.0,
+	},
+	"chapter3-08-crows_cat":    {
+		path: "./sound/chapter3/08/crows_cat.ogg",
+		volume: 1.0,
+	},
+	"chapter3-11-drop_skull":    {
+		path: "./sound/chapter3/11/drop_skull.ogg",
+		volume: 1.0,
+	},
+	"chapter3-12-touch_toybox":    {
+		path: "./sound/chapter3/12/touch_toybox.ogg",
 		volume: 1.0,
 	},
 	touch:    {
@@ -639,8 +777,12 @@ AssetsConfig.sounds = {
 		path: "./sound/walking/bare_outside_left.ogg",
 		volume: 1.0,
 	},
-	walking_bare_outside_right:    {
-		path: "./sound/walking/bare_outside_right.ogg",
+	walking_bare_snow_right:    {
+		path: "./sound/walking/walking_bare_snow_right.ogg",
+		volume: 1.0,
+	},
+	walking_bare_snow_left:    {
+		path: "./sound/walking/walking_bare_snow_left.ogg",
 		volume: 1.0,
 	},
 	noise1:    {
@@ -709,7 +851,30 @@ AssetsConfig.bgms = {
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
 	},
-
+	field5: {
+		path: "./bgm/field5.ogg",
+		//loopStart: 0*60 + 0 + 0.512,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+	field6: {
+		path: "./bgm/field6.ogg",
+		//loopStart: 0*60 + 0 + 0.512,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+	field7: {
+		path: "./bgm/field7.ogg",
+		//loopStart: 0*60 + 0 + 0.512,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+	field8: {
+		path: "./bgm/field8.ogg",
+		//loopStart: 0*60 + 0 + 0.512,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
 	"chapter0-event-encounter_satori": {
 		path: "./bgm/chapter0/event/encounter_satori.ogg",
 		volume: 0.6,
@@ -759,6 +924,12 @@ AssetsConfig.bgms = {
 	},
 	"chapter1-09-flows_water": {
 		path: "./bgm/chapter1/09/flows_water.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+	},
+	"chapter3-12-wood": {
+		path: "./bgm/chapter3/12/wood.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
