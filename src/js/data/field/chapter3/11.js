@@ -12,6 +12,25 @@ module.exports = {
 	leftField: "chapter3_10",
 	background: "chapter3-11-bg-001",
 	walkSound: "walking_bare_outside",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3-11-show_skred"], "process": [
+			// 雪崩表示済み
+			[
+			],
+			// 雪崩表示前
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12-Event-_30260"], "process": [
+					// bad root
+					[
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3-11-show_skred"]},
+						{"type": "process", "value": "changeScene", "arguments": ["event_talk_old", "chapter3-11-event-01"]},
+					],
+					// good root or まだbad でも good でもない
+					[],
+				]}
+			],
+		]}
+	],
 	objects: [
 		{
 			no: ++I,
@@ -135,8 +154,16 @@ module.exports = {
 			action_name: "look_bottom",
 			x: 650, y: 600,
 		},
-
-
+		{
+			no: ++I,
+			image: "chapter3-11-obj-06",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "雪崩",
+			serif: null,
+			width: 400, height: 1000,
+			x: 1088.50*2/3, y: 797.50*2/3,
+			show_if_event_true: "chapter3-11-show_skred",
+		},
 	],
 };
 

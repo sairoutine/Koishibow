@@ -187,7 +187,7 @@ module.exports = {
 										{"chara": "koishi","serif":"やる"},
 										{"chara": I, "exp": "cirno-reaction_04", "serif":"これ見て！", "option": {"showPicture": "picture_chapter3-08-illust-01"}},
 										{"chara": I, "exp": "cirno-reaction_04", "serif":"完璧な計画よね！"},
-										// TODO: イベント再生
+										{"chara": I, "exp": "cirno-reaction_03", "serif":"あたいならできる！", "option": {"playEventOld": "chapter3-08-event-03"}},
 									],
 								]},
 							],
@@ -236,11 +236,11 @@ module.exports = {
 			name: "枯れ木",
 			serif: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_08-Event-_30060"], "serifs": [
-					// チルノ再生済み
 					[
 						{"chara": "koishi","serif":"この木さむそう！"},
 					],
 					[
+						// チルノ救出
 						{"id": "chapter3_08-Event-_30060", "save": true},
 						{"chara": "koishi", "serif": "", "option": {"playEventOld": "chapter3-08-event-02"}},
 					],

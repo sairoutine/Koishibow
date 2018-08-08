@@ -20,7 +20,8 @@ module.exports = {
 			[
 				// フラン表示
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3-08-show_fran"]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_12_firstaccess"]}
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_12_firstaccess"]},
+				{"type": "process", "value": "changeScene", "arguments": ["event_talk_old", "chapter3-12-event-01"]},
 			],
 		]},
 	],

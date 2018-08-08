@@ -1,9 +1,8 @@
 'use strict';
 
-// こいし＆さとりフラッシュバック
 
 module.exports = {
-	key: "chapter3-08-event-01",
+	key: "chapter3-10-event-01",
 	serifWindow: "fukidashi",
 	animeNum: 4,
 	bg: "chapter3-08-event-01-bg-001",
