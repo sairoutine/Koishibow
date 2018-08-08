@@ -13,14 +13,14 @@ module.exports = {
 	background: "chapter3-12-bg-001",
 	walkSound: "walking_bare_outside",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12_firstaccess"], "process": [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12_Event_30210"], "process": [
 			// すでにアクセス済み
 			[],
 			// まだ未アクセス
 			[
 				// フラン表示
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3-08-show_fran"]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_12_firstaccess"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_12_Event_30210"]},
 				{"type": "process", "value": "changeScene", "arguments": ["event_talk_old", "chapter3-12-event-01"]},
 			],
 		]},

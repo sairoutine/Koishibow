@@ -12,6 +12,26 @@ module.exports = {
 	leftField: "chapter3_09",
 	background: "chapter3-10-bg-001",
 	walkSound: "walking_bare_outside",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12_Event_30210"], "process": [
+			// フランに1度出会っている
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_11_Event-30250"], "process": [
+					// すでに再生済み
+					[],
+					// まだ未再生
+					[
+						// 喧嘩イベント再生
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_11_Event-30250"]},
+						{"type": "process", "value": "changeScene", "arguments": ["event_talk_old", "chapter3-10-event-01"]},
+					],
+				]},
+			],
+			// まだあってない
+			[
+			],
+		]},
+	],
 	objects: [
 		{
 			no: ++I,

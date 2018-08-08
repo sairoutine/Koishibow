@@ -1,105 +1,80 @@
 'use strict';
 
+// フランとチルノが橋で喧嘩する
 
 module.exports = {
 	key: "chapter3-10-event-01",
 	serifWindow: "fukidashi",
-	animeNum: 4,
-	bg: "chapter3-08-event-01-bg-001",
+	//animeNum: 4,
+	animeNum: 3,
+	bg: "chapter3-10-event-01-bg-001",
+	front: "chapter3-10-event-01-obj-02",
 	expAnimes: {
-		"chapter3-08-event-01-obj01": [
-			"chapter3-08-event-01-obj-01",
-			"chapter3-08-event-01-obj-02",
-			"chapter3-08-event-01-koishi-obj01",
-			"chapter3-08-event-01-satori-obj01",
+		"chapter3-10-event-01-obj01": [
+			//"chapter3-10-event-01-obj-01",
+			"chapter3-10-event-01-koishi-obj01",
+			"chapter3-10-event-01-cirno-obj01",
+			"chapter3-10-event-01-fran-obj01",
 		],
-		"chapter3-08-event-01-obj02": [
-			"chapter3-08-event-01-obj-01",
-			"chapter3-08-event-01-obj-02",
-			"chapter3-08-event-01-koishi-obj02",
-			"chapter3-08-event-01-satori-obj02"
+		"chapter3-10-event-01-obj02": [
+			//"chapter3-10-event-01-obj-01",
+			"chapter3-10-event-01-koishi-obj02",
+			"chapter3-10-event-01-cirno-obj02",
+			"chapter3-10-event-01-fran-obj02",
 		],
-		"chapter3-08-event-01-obj03": [
-			"chapter3-08-event-01-obj-01",
-			"chapter3-08-event-01-obj-02",
-			"chapter3-08-event-01-koishi-obj03",
-			"chapter3-08-event-01-satori-obj03"
-		],
-		"chapter3-08-event-01-obj04": [
-			"chapter3-08-event-01-obj-01",
-			"chapter3-08-event-01-obj-02",
-			"chapter3-08-event-01-koishi-obj04",
-			"chapter3-08-event-01-satori-obj04"
-		],
-		"chapter3-08-event-01-obj05": [
-			"chapter3-08-event-01-obj-01",
-			"chapter3-08-event-01-obj-02",
-			"chapter3-08-event-01-koishi-obj05",
-			"chapter3-08-event-01-satori-obj05"
-		],
-		"chapter3-08-event-01-obj06": [
-			"chapter3-08-event-01-obj-01",
-			"chapter3-08-event-01-obj-02",
-			"chapter3-08-event-01-koishi-obj06",
-			"chapter3-08-event-01-satori-obj06"
-		],
-		"chapter3-08-event-01-obj07": [
-			"chapter3-08-event-01-obj-01",
-			"chapter3-08-event-01-obj-02",
-			"chapter3-08-event-01-koishi-obj07",
-			"chapter3-08-event-01-satori-obj07"
-		],
-		"chapter3-08-event-01-obj08": [
-			"chapter3-08-event-01-obj-01",
-			"chapter3-08-event-01-obj-02",
-			"chapter3-08-event-01-koishi-obj08",
-			"chapter3-08-event-01-satori-obj08"
-		],
-		"chapter3-08-event-01-obj09": [
-			"chapter3-08-event-01-obj-01",
-			"chapter3-08-event-01-obj-02",
-			"chapter3-08-event-01-koishi-obj09",
-			"chapter3-08-event-01-satori-obj09"
-		],
-		"chapter3-08-event-01-obj10": [
-			"chapter3-08-event-01-obj-01",
-			"chapter3-08-event-01-obj-02",
-			"chapter3-08-event-01-koishi-obj10",
-			"chapter3-08-event-01-satori-obj10"
+		"chapter3-10-event-01-obj03": [
+			//"chapter3-10-event-01-obj-01",
+			"chapter3-10-event-01-koishi-obj03",
+			"chapter3-10-event-01-cirno-obj03",
+			"chapter3-10-event-01-fran-obj03",
 		],
 	},
 	serifs: [
-		{"exp": "chapter3-08-event-01-obj01", "serif":"おねえちゃん！", "option": {"x": 370, "y": 250, "loop": false}},
-		{"exp": "chapter3-08-event-01-obj02", "serif":"みてみてクッキー！", "option": {"x": 370, "y": 250, "loop": false}},
-		{"exp": "chapter3-08-event-01-obj03", "serif":"ぜんぶじぶんでやったのよ！", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"え……", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": "chapter3-08-event-01-obj04", "serif":"だれに教わったの？", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": "chapter3-08-event-01-obj05", "serif":"んーん！", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"ご本を読んで作ったのよ！", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": "chapter3-08-event-01-obj06", "serif":"そう、すごいわね", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": "chapter3-08-event-01-obj07", "serif":"めしあがれ！", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"え？", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": "chapter3-08-event-01-obj07",  "serif":"めしあがれ！", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"おなかすいてないから……", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": null, "serif":"夕ご飯食べられなくなっちゃうし", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": "chapter3-08-event-01-obj08", "serif":"うん、だから一枚だけね！", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"ありがとう", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": null, "serif":"おいしいわ", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": null, "serif":"いままで食べたことないくらい", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": null, "serif":"ほんとお！", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"はじめてなのに上手にできた！", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"そうね、あなたは何でも上手ね", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": null, "serif":"えへへ", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"えらい？", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"そうね、えらいわ", "option": {"x": 500, "y": 220, "loop": false}},
-		{"exp": "chapter3-08-event-01-obj09", "serif":"えへへへ", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"もっといっぱいつくらなきゃ！", "option": {"x": 460, "y": 250, "loop": false}},
-		{"exp": null, "serif":"わたしなんでもつくるんだ！", "option": {"x": 460, "y": 250, "loop": false}},
+		{"exp": "chapter3-10-event-01-obj01", "serif":"あ！", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": null, "serif":"ちょっと！", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": null, "serif":"なんでこの子を連れてきたの", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": "chapter3-10-event-01-obj02", "serif":"あー", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": null, "serif":"なるほどね", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": null, "serif":"あなたがいたのね", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": null, "serif":"そりゃうまくいかないでしょうね", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": "chapter3-10-event-01-obj03", "serif":"なんですって！", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": null, "serif":"何でもかんでも壊すくせに", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": null, "serif":"そんなあんたがゲージュツをリカイできるの？", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": "chapter3-10-event-01-obj02", "serif":"ふん！", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": null, "serif":"おねーちゃんがいったもん！", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": null, "serif":"自分で作ったものは壊していいし", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": null, "serif":"壊したぶんまたつくればいいのよ！", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": null, "serif":"そんなことも知らないの？", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": null, "serif":"ばかじゃない？", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": "chapter3-10-event-01-obj03", "serif":"そうやってわたしにケガさせたじゃない！", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": null, "serif":"わたしはヒガイシャなのよ！", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": null, "serif":"セキニンとれ！", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": "chapter3-10-event-01-obj02", "serif":"わたしの作品に勝手にさわったし", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": null, "serif":"それにバカにした", "option": {"x": 670, "y": 250, "loop": false}},
+
+		{"exp": null, "serif":"あなたが悪いのよ", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": "chapter3-10-event-01-obj03", "serif":"ふん、どうだっていいわ", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": null, "serif":"わたしはこの子と作るから！", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": "chapter3-10-event-01-obj02", "serif":"ふん、勝手にしたら", "option": {"x": 670, "y": 250, "loop": false}},
+
+		{"exp": null, "serif":"ねえ、私とやりたくなったらすぐおいでね", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": null, "serif":"うふふ", "option": {"x": 670, "y": 250, "loop": false}},
+		{"exp": "chapter3-10-event-01-obj03", "serif":"やなやつ！", "option": {"x": 370, "y": 250, "loop": false}},
+		{"exp": null, "serif":"", "junction": ["みんなでがんばる","ひとりでがんばる"],"option": {"x": 480, "y": 345, "loop": false}},
+		{"type": "junction_serif", "serifs": [
+			// みんなでがんばる
+			[
+				{"id": "chapter3_12-Event-_30310", "serif": "", "save": true},
+			],
+			// ひとりでがんばる
+			[
+				{"id": "chapter3_12-Event-_30260", "serif": "", "save": true},
+			],
+		]},
 	],
-	endAnime: "chapter3-08-event-01-obj10",
 	endProcess: [
 		// 戻る
-		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
+		{"type": "process", "value": "changeField", "arguments": ["chapter3_10"]},
 	],
 
 };
