@@ -177,8 +177,8 @@ module.exports = {
 										{"chara": I, "exp": "cirno-reaction_04", "serif":"きまりね"},
 										{"chara": I, "exp": "cirno-reaction_02", "serif":"ふつうの雪だるまじゃないのよ！"},
 										{"chara": I, "exp": "cirno-reaction_05", "serif":"世界一の雪だるまになるんだから！"},
-										{"chara": I, "exp": "cirno-reaction_03", "serif":"あたいならできる！"},
-										// TODO: 30470 イベント再生
+										// 30470 フラッシュバック イベント再生
+										{"chara": I, "exp": "cirno-reaction_03", "serif":"あたいならできる！", "option": {"playEventOld": "chapter3-08-event-01"}},
 										{"chara": I, "exp": "cirno-reaction_02", "serif":"計画はね！"},
 										{"chara": I, "exp": "cirno-reaction_03", "serif":"わたしのからだにいっぱい雪をつけるでしょ"},
 										{"chara": I, "exp": "cirno-reaction_03", "serif":"そしたらからだがおっきくなるから"},
@@ -228,7 +228,7 @@ module.exports = {
 			anime6: "cirno-reverse_omote",
 			action_name: null,
 			sound_name: null,
-			show_if_event_true: "chapter3-08-show_cirno",
+			//show_if_event_true: "chapter3-08-show_cirno",
 		},
 		{
 			no: ++I,
