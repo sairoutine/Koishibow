@@ -308,7 +308,8 @@ SceneEventTalk.prototype._updateProcess = function(){
 	var option = this._serif.getCurrentOption();
 
 	// Z ボタンが押されたら
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	// あるいは空文字 = オプションの内容だけ処理したい
+	if(this._serif.getCurrentMaxLengthLetters() === 0 || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		// 別のシーンへ遷移
 		if (option.changeScene) {
 			this.core.scene_manager.changeScene(option.changeScene);
@@ -358,7 +359,10 @@ SceneEventTalk.prototype._updateProcess = function(){
 
 // 会話の処理
 SceneEventTalk.prototype._updateTalk = function(){
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+
+	// Z ボタンが押されたら
+	// あるいは空文字 = オプションの内容だけ処理したい
+	if(this._serif.getCurrentMaxLengthLetters() === 0 || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
 			this._state = STATE_END;
@@ -425,9 +429,9 @@ SceneEventTalk.prototype._updateInJunction = function(){
 };
 
 SceneEventTalk.prototype.draw = function(){
+	var ctx = this.core.ctx;
 	// 背景表示
 	if (this._master.bg()) {
-		var ctx = this.core.ctx;
 		var bg = this.core.image_loader.getImage(this._master.bg());
 		ctx.save();
 		ctx.drawImage(bg,
@@ -459,6 +463,20 @@ SceneEventTalk.prototype.draw = function(){
 	}
 	else if(this._state === STATE_END) {
 		// 何もしない
+	}
+
+	// 手前に画像表示
+	if (this._master.front()) {
+		//chapter3-10 の橋専用
+		var front = this.core.image_loader.getImage(this._master.front());
+		ctx.save();
+		ctx.translate(763.5*2/3, 681.50*2/3);
+		ctx.drawImage(front,
+			-front.width/2*2/3, -front.height/2*2/3,
+			front.width*2/3,
+			front.height*2/3
+		);
+		ctx.restore();
 	}
 
 	// event_talk 固有 start
