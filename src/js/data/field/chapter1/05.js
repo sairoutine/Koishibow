@@ -79,7 +79,6 @@ module.exports = {
 						{"chara": "koishi", "exp": "back", "serif":"えっ？"},
 						{"chara": "koishi", "exp": "back", "serif":"わかんない......"},
 						// 1-14
-						// TODO: 別の会話に切り出す
 						{"chara": I,        "exp": "nitori-reaction_04", "serif":"お面がほしいの？"},
 						{"chara": I,        "exp": "nitori-reaction_04", "serif":"売れ残りだけど、あげちゃう！", "option": {
 							"getItem": "10",
