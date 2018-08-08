@@ -166,6 +166,8 @@ SceneEventTalk.prototype._initSS = function(){
 			var obj_anime_list = this._master.expAnimes()[name];
 			var anime_name = obj_anime_list[i];
 			anime_conf[name] = AnimeMap[anime_name];
+
+			if(!anime_conf[name]) throw new Error("Can't find anime json: " + anime_name);
 		}
 
 		ss.setAnime(anime_conf);
