@@ -779,6 +779,11 @@ AssetsConfig.sounds = {
 		path: "./sound/walking/bare_outside_left.ogg",
 		volume: 1.0,
 	},
+	walking_bare_outside_right:    {
+		path: "./sound/walking/bare_outside_right.ogg",
+		volume: 1.0,
+	},
+
 	walking_bare_snow_right:    {
 		path: "./sound/walking/walking_bare_snow_right.ogg",
 		volume: 1.0,
