@@ -4,7 +4,7 @@
 
 module.exports = {
 	key: "chapter3-08-event-01",
-	serifWindow: "fukidashi_dark",
+	serifWindow: "fukidashi",
 	animeNum: 4,
 	bg: "chapter3-08-event-01-bg-001",
 	expAnimes: {

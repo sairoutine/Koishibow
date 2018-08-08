@@ -56,8 +56,7 @@ module.exports = {
 			image: "chapter3-08-obj-02",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "チルノが埋まってる雪山",
-			serif: [
-			],
+			serif: null,
 			x: 711.50*2/3, y: 643.50*2/3,
 			scale: 2/3,
 			action_name: null,
@@ -228,7 +227,7 @@ module.exports = {
 			anime6: "cirno-reverse_omote",
 			action_name: null,
 			sound_name: null,
-			//show_if_event_true: "chapter3-08-show_cirno",
+			show_if_event_true: "chapter3-08-show_cirno",
 		},
 		{
 			no: ++I,
@@ -236,8 +235,16 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "枯れ木",
 			serif: [
-				// TODO: イベントのあとのセリフです
-				{"chara": "koishi","serif":"この木さむそう！"},
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_08-Event-_30060"], "serifs": [
+					// チルノ再生済み
+					[
+						{"chara": "koishi","serif":"この木さむそう！"},
+					],
+					[
+						{"id": "chapter3_08-Event-_30060", "save": true},
+						{"chara": "koishi", "serif": "", "option": {"playEventOld": "chapter3-08-event-02"}},
+					],
+				]},
 			],
 			x:967*2/3, y:366.50*2/3,
 			scale: 2/3,
