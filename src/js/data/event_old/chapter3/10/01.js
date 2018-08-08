@@ -5,25 +5,24 @@
 module.exports = {
 	key: "chapter3-10-event-01",
 	serifWindow: "fukidashi",
-	//animeNum: 4,
-	animeNum: 3,
+	animeNum: 4,
 	bg: "chapter3-10-event-01-bg-001",
 	front: "chapter3-10-event-01-obj-02",
 	expAnimes: {
 		"chapter3-10-event-01-obj01": [
-			//"chapter3-10-event-01-obj-01",
+			"chapter3-10-event-01-obj-01",
 			"chapter3-10-event-01-koishi-obj01",
 			"chapter3-10-event-01-cirno-obj01",
 			"chapter3-10-event-01-fran-obj01",
 		],
 		"chapter3-10-event-01-obj02": [
-			//"chapter3-10-event-01-obj-01",
+			"chapter3-10-event-01-obj-02",
 			"chapter3-10-event-01-koishi-obj02",
 			"chapter3-10-event-01-cirno-obj02",
 			"chapter3-10-event-01-fran-obj02",
 		],
 		"chapter3-10-event-01-obj03": [
-			//"chapter3-10-event-01-obj-01",
+			"chapter3-10-event-01-obj-03",
 			"chapter3-10-event-01-koishi-obj03",
 			"chapter3-10-event-01-cirno-obj03",
 			"chapter3-10-event-01-fran-obj03",
