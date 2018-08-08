@@ -66,7 +66,27 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "墓標1「John」",
 			serif: [
-				{"chara": "koishi","serif":"まだ生きてるのに変なの"},
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_07-getItem-15"], "serifs": [
+					// アイテム獲得済み
+					[
+						{"chara": "koishi","serif":"まだ生きてるのに変なの"},
+					],
+					// アイテム未獲得
+					[
+						{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["13"], "serifs": [
+							// しゃべる持ってる
+							[
+								{"id": "chapter3_07-getItem-15", "save": true},
+								{"chara": "koishi","serif":"あった！", "option": {"getItem": "15"}},
+								{"chara": "koishi","serif":"シャベル持ってきてよかった"},
+							],
+							// しゃべる持ってない
+							[
+								{"chara": "koishi","serif":"まだ生きてるのに変なの"},
+							],
+						]},
+					],
+				]},
 			],
 			x:371*2/3, y:674*2/3,
 			scale: 2/3,
@@ -78,7 +98,28 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "墓標2「U.N.Owen」",
 			serif: [
-				{"chara": "koishi","serif":"誰？"},
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_07-getItem-14"], "serifs": [
+					// アイテム獲得済み
+					[
+						{"chara": "koishi","serif":"誰？"},
+					],
+					// アイテム未獲得
+					[
+						{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["13"], "serifs": [
+							// しゃべる持ってる
+							[
+								{"id": "chapter3_07-getItem-14", "save": true},
+								{"chara": "koishi","serif":"あった！", "option": {"getItem": "14"}},
+								{"chara": "koishi","serif":"思ったより重たい"},
+							],
+							// しゃべる持ってない
+							[
+								{"chara": "koishi","serif":"誰？"},
+							],
+						]},
+					],
+				]},
+
 			],
 			x: 692.50*2/3, y: 570.50*2/3,
 			scale: 2/3,
@@ -96,7 +137,8 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "猫の霊",
-			serif: [
+			serif: null,
+			serif_back: [
 				{"chara": "koishi","serif":"わーっ、ジョン！"},
 			],
 			x: 579.50*2/3, y: 695.50*2/3,
@@ -111,6 +153,7 @@ module.exports = {
 			action_name: "touch",
 			sound_name: null,
 			sound_back: "chapter3-08-crows_cat",
+			position_type: "lying",
 		},
 
 	],
