@@ -426,20 +426,22 @@ SceneEventTalk.prototype._updateInJunction = function(){
 
 SceneEventTalk.prototype.draw = function(){
 	// 背景表示
-	var ctx = this.core.ctx;
-	var bg = this.core.image_loader.getImage(this._master.bg());
-	ctx.save();
-	ctx.drawImage(bg,
-		0,
-		0,
-		bg.width,
-		bg.height,
-		0,
-		0,
-		this.width,
-		this.height
-	);
-	ctx.restore();
+	if (this._master.bg()) {
+		var ctx = this.core.ctx;
+		var bg = this.core.image_loader.getImage(this._master.bg());
+		ctx.save();
+		ctx.drawImage(bg,
+			0,
+			0,
+			bg.width,
+			bg.height,
+			0,
+			0,
+			this.width,
+			this.height
+		);
+		ctx.restore();
+	}
 
 	BaseScene.prototype.draw.apply(this, arguments);
 
