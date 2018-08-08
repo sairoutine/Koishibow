@@ -145,6 +145,7 @@ SceneEventTalk.prototype.init = function(event_name){
 };
 
 SceneEventTalk.prototype._initSS = function(){
+	this.ss_list = [];
 	for (var i = 0; i < this._master.animeNum(); i++) {
 		var ss = new SS(this);
 		ss.x(this.width/2);
