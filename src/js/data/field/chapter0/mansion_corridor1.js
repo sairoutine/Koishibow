@@ -36,6 +36,7 @@ module.exports = {
 			sound_name:      "chapter0-mansion_corridor1-lamp_front",
 			sound_back: "chapter0-mansion_corridor1-lamp_back"
 		},
+		/*
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -59,6 +60,7 @@ module.exports = {
 			bgm_back: "chapter0-mansion_corridor1-tricycle",
 			position_type: "front",
 		},
+		*/
 		{
 			no: ++I,
 			image: null,
