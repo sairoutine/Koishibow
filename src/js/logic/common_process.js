@@ -51,6 +51,10 @@ var ProcessList = {
 	deleteItem: function (core, item_id) {
 		core.save_manager.item.reduceItem(item_id);
 	},
+	// アイテムを追加
+	addItem: function (core, item_id) {
+		core.save_manager.item.addItem(item_id);
+	},
 	// 特定のシーンに戻る
 	returnScene: function (core, scene_name) {
 		core.scene_manager.returnScene(scene_name);
