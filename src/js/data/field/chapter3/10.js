@@ -13,23 +13,30 @@ module.exports = {
 	background: "chapter3-10-bg-001",
 	walkSound: "walking_bare_snow",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12_Event_30210"], "process": [
-			// フランに1度出会っている
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_08-Event-_30060"], "process": [
+			// チルノを救出している
 			[
-				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_11_Event-30250"], "process": [
-					// すでに再生済み
-					[],
-					// まだ未再生
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12_Event_30210"], "process": [
+					// フランに1度出会っている
 					[
-						// 喧嘩イベント再生
-						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_11_Event-30250"]},
-						{"type": "process", "value": "changeScene", "arguments": ["event_talk_old", "chapter3-10-event-01"]},
+						{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_11_Event-30250"], "process": [
+							// すでに喧嘩イベント再生済み
+							[],
+							// まだ喧嘩イベント未再生
+							[
+								// 喧嘩イベント再生
+								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_11_Event-30250"]},
+								{"type": "process", "value": "changeScene", "arguments": ["event_talk_old", "chapter3-10-event-01"]},
+							],
+						]},
+					],
+					// まだあってない
+					[
 					],
 				]},
 			],
-			// まだあってない
-			[
-			],
+			// チルノを救出していない
+			[],
 		]},
 	],
 	objects: [

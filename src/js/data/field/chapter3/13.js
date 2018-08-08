@@ -4,7 +4,7 @@ var CONSTANT = require("../../../constant");
 var I = 0;
 
 var loopSerifOfFranAndCirno = [
-	{"id": "chapter3_13-" + I + "-_firstEvent", "save": true},
+	{"id": "chapter3_13-_firstEvent", "save": true},
 	{"chara": "fran", "exp": "fran-reaction_03", "serif":"雪玉を作るときはね\nすこしずつゆっくり転がすの"},
 	{"chara": "fran", "exp": "fran-reaction_01", "serif":"まっすぐじゃなくていろんな向きにね"},
 	{"chara": "cirno", "exp": "cirno-reaction_08", "serif":"うん"},
@@ -18,23 +18,46 @@ var loopSerifOfFranAndCirno = [
 
 
 var serifOfFranAndCirno = [
-	{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-" + I + "-_firstEvent"], "serifs": [
+	{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-_firstEvent"], "serifs": [
 		[
-			{"type": "criteria_serif", "criteria": "existsItemAll", "arguments": ["14", "15", "16", "17"], "serifs": [
-				// 「前腕骨」「上腕骨」「ルビー」「サファイア」を持っている、かつ2回目の会話
+			{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13_SnowManWithDeco"], "serifs": [
+				// アイテムを使って雪だるまをデコった後
 				[
-					{"chara": "koishi","serif":"おまたせ！"},
-					{"chara": "cirno", "exp": "cirno-reaction_09", "serif":"おーそーいー！"},
-					{"chara": "cirno", "exp": "cirno-reaction_03", "serif":"もう半分できちゃったから！"},
-					{"chara": "fran", "exp": "fran-reaction_01", "serif":"それじゃあやっちゃおう！", "option": {"playMovie": "./movie/chapter3-13-event-02.mp4"}}, // イベント30340
-					{"chara": "koishi","serif":"できた！"},
-					{"chara": "koishi","serif":"できた？"},
-					{"chara": "cirno", "exp": "cirno-reaction_02", "serif":"まだよ！"},
-					{"chara": "cirno", "exp": "cirno-reaction_01", "serif":"まだ頭がないじゃないの！"},
-					{"chara": "cirno", "exp": "cirno-reaction_06", "serif":"これじゃ世界一なんていえない！"},
-					{"chara": "fran", "exp": "fran-reaction_02", "serif":"うーんどうしよう"},
+					{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["18"], "serifs": [
+						// 斧を持っている
+						[
+							{"chara": "koishi", "serif":"", "option": {"deleteItem": "18"}},
+							{"chara": "koishi", "serif":"", "option": {"playEvent": "chapter3-13-event-03"}},
+						],
+						// 斧を持っていない
+						// TODO: チルノが会話に混ざるので変更が必要
+						loopSerifOfFranAndCirno,
+					]},
 				],
-				loopSerifOfFranAndCirno,
+				// アイテムを使って雪だるまをデコる前
+				[
+					{"type": "criteria_serif", "criteria": "existsItemAll", "arguments": ["14", "15", "16", "17"], "serifs": [
+						// 「前腕骨」「上腕骨」「ルビー」「サファイア」を持っている、かつ2回目の会話
+						[
+							{"chara": "koishi", "serif":"", "option": {"deleteItem": "14"}},
+							{"chara": "koishi", "serif":"", "option": {"deleteItem": "15"}},
+							{"chara": "koishi", "serif":"", "option": {"deleteItem": "16"}},
+							{"chara": "koishi", "serif":"", "option": {"deleteItem": "17"}},
+							{"chara": "koishi","serif":"おまたせ！"},
+							{"chara": "cirno", "exp": "cirno-reaction_09", "serif":"おーそーいー！"},
+							{"chara": "cirno", "exp": "cirno-reaction_03", "serif":"もう半分できちゃったから！"},
+							{"chara": "fran", "exp": "fran-reaction_01", "serif":"それじゃあやっちゃおう！", "option": {"playMovie": "./movie/chapter3-13-event-02.mp4"}}, // イベント30340
+							{"id": "chapter3_13_SnowManWithDeco", "save": true, "option": {"resetFlag": "chapter3_13_SnowMan"}},
+							{"chara": "koishi","serif":"できた！"},
+							{"chara": "koishi","serif":"できた？"},
+							{"chara": "cirno", "exp": "cirno-reaction_02", "serif":"まだよ！"},
+							{"chara": "cirno", "exp": "cirno-reaction_01", "serif":"まだ頭がないじゃないの！"},
+							{"chara": "cirno", "exp": "cirno-reaction_06", "serif":"これじゃ世界一なんていえない！"},
+							{"chara": "fran", "exp": "fran-reaction_02", "serif":"うーんどうしよう"},
+						],
+						loopSerifOfFranAndCirno,
+					]},
+				],
 			]},
 		],
 		loopSerifOfFranAndCirno,
@@ -118,16 +141,24 @@ module.exports = {
 			scale: 2/3,
 			action_name: null,
 			sound_name: null,
-			//show_if_event_true: "", TODO:
-			// セリフ30360の後に表示
-			// かつ  "chapter3_13_SnowManWithDeco" が true なら表示しない
+			show_if_event_true: "chapter3_13_SnowMan",
 		},
 		{
 			no: ++I,
 			image: "chapter3-13-obj-04",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "飾りつけした雪だるま一段目（頭無し）",
-			serif: null,
+			serif: [
+				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["20"], "serifs": [
+					// チルノの頭を持っている
+					[
+						{"chara": "koishi", "serif":"", "option": {"deleteItem": "20"}},
+						{"chara": "koishi", "serif":"", "option": {"playEvent": "chapter3-13-event-04"}},
+					],
+					// チルノの頭を持っていない
+					[],
+				]},
+			],
 			x: 720.50*2/3, y: 571*2/3,
 			scale: 2/3,
 			action_name: null,
@@ -145,8 +176,6 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 			position_type: "lying",
-			//show_if_event_true: "", TODO:
-			// セリフ30360の後に表示
 			show_if_event_true: "chapter3-13-show_cirno_body",
 		},
 		{

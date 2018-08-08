@@ -31,8 +31,7 @@ var SceneSubStageObjectTalk = function(core) {
 			existsItemAll: function (core, item_ids) {
 				var args = Array.prototype.slice.call(arguments); // convert arguments to array
 				core = args.shift();
-
-				for (var i, len = args.length; i < len; i++) {
+				for (var i = 0, len = args.length; i < len; i++) {
 					if(!core.save_manager.item.existsItem(args[i])) { // 1つでも持っていなければ
 						return 1;
 					}
@@ -220,6 +219,13 @@ SceneSubStageObjectTalk.prototype._updateProcess = function(){
 			this.core.save_manager.scenario.resetPlayedCount(option.resetFlag);
 			return true;
 		}
+		// アイテムを削除
+		else if (option.deleteItem) {
+			var delete_item_id = option.deleteItem;
+			this.core.save_manager.item.reduceItem(delete_item_id);
+			return true;
+		}
+
 
 	}
 

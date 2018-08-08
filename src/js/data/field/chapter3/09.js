@@ -133,6 +133,7 @@ module.exports = {
 							[
 								// イベント 30360 へ
 								{"id": "chapter3_13-Event-_30360", "save": true},
+								{"id": "chapter3_13_SnowMan", "save": true},
 								{"chara": "koishi", "serif": "", "option": {"playEvent": "chapter3-09-event-01"}},
 							],
 						]},
