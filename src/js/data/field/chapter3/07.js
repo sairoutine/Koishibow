@@ -29,6 +29,7 @@ module.exports = {
 		]},
 	],
 	objects: [
+		/*
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -133,6 +134,7 @@ module.exports = {
 			action_name: "touch",
 			sound_name: null,
 		},
+		*/
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
