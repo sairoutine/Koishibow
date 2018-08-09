@@ -13,8 +13,8 @@ var EventTalkMasterRepository = MasterRepositoryGenerator.exec(
 		startAnime: "string",
 		endAnime:   "string",
 		bgm:        "string",
-		startSE:    "string",
-		endSE:      "string",
+		startSounds:"array",
+		endSounds:  "array",
 		endProcess: "array",
 	},
 	{

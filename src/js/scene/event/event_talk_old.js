@@ -111,8 +111,8 @@ SceneEventTalk.prototype.init = function(event_name){
 	}
 
 	// チャプター開始時のSE再生
-	if (this._master.startSE()) {
-		this.core.audio_loader.playSound(this._master.startSE());
+	if (this._master.startSounds()) {
+		this._playSounds(this._master.startSounds());
 	}
 
 	var serif_list = this._master.serifs();
@@ -236,6 +236,12 @@ SceneEventTalk.prototype.beforeDraw = function(){
 		var self = this;
 		this._state = STATE_WAITING;
 
+		// イベント終わりのSE再生
+		if (this._master.endSounds()) {
+			this._playSounds(this._master.endSounds());
+		}
+
+		// イベント終わりのアニメ再生
 		if (this._master.endAnime()) {
 			for (var i = 0, len = this.ss_list.length; i < len; i++) {
 				var ss = this.ss_list[i];
@@ -277,11 +283,6 @@ SceneEventTalk.prototype.beforeDraw = function(){
 };
 
 SceneEventTalk.prototype._endProcess = function(){
-	// イベント終わりのSE再生
-	if (this._master.endSE()) {
-		this.core.audio_loader.playSound(this._master.endSE());
-	}
-
 	// BGM をフェードアウト
 	if (this._master.bgm()) {
 		this.core.audio_loader.fadeOutBGM(2);
@@ -541,21 +542,8 @@ SceneEventTalk.prototype._actionExpression = function(callback) {
 	var option = this._serif.getCurrentOption();
 
 	// sound 再生
-	// sounds: [{sound: ~~~, frame: ~~~}, {sound: ~~~, frame: ~~~}]
 	var sounds = this._serif.getCurrentOption().sounds;
-	if (sounds) {
-		for (i = 0, len = sounds.length; i < len; i++) {
-			var sound = sounds[i].name;
-			var frame = sounds[i].frame || 1; // 0だと再生されない
-
-			(function(core, sound, frame) {
-				var audio_loader = core.audio_loader;
-				core.time_manager.setTimeout(function () {
-					audio_loader.playSound(sound);
-				}, frame);
-			})(this.core, sound, frame);
-		}
-	}
+	this._playSounds(sounds);
 
 	var i, len, ss;
 	if (option.loop) {
@@ -582,6 +570,25 @@ SceneEventTalk.prototype._actionExpression = function(callback) {
 
 	}
 };
+
+// 引数
+// [{sound: ~~~, frame: ~~~}, {sound: ~~~, frame: ~~~}]
+SceneEventTalk.prototype._playSounds = function(sounds) {
+	if (sounds) {
+		for (var i = 0, len = sounds.length; i < len; i++) {
+			var sound = sounds[i].name;
+			var frame = sounds[i].frame || 1; // 0だと再生されない
+
+			(function(core, sound, frame) {
+				var audio_loader = core.audio_loader;
+				core.time_manager.setTimeout(function () {
+					audio_loader.playSound(sound);
+				}, frame);
+			})(this.core, sound, frame);
+		}
+	}
+};
+
 // event_talk 固有 end
 
 // black_mist が参照する
