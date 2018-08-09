@@ -116,11 +116,10 @@ module.exports = {
 						{"chara": "koishi", "exp": "back", "serif":"............."},
 						{"chara": I,        "exp": "tewi-reaction_01", "serif":"わかりました！"},
 						{"chara": I,        "exp": "tewi-reaction_03", "serif":"わかりましたよ！"},
+						{"chara": I,        "exp": "tewi-reaction_01", "serif":"いまやるから、もうちょっとまっててくれよ"},
+						{"chara": "koishi", "serif": "", "option": {"getItem": "05"}},
 						{"id": "chapter1_03-afterWork", "save": true},
-						{"chara": I,        "exp": "tewi-reaction_01", "serif":"いまやるから、もうちょっとまっててくれよ", "option": {
-							"getItem": "05",
-							"changeField": "chapter1_03",
-						}},
+						{"chara": "koishi", "serif": "", "option": {"changeField": "chapter1_03"}},
 					],
 					[
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_03-" + I + "-_useItem-10"], "serifs": [
