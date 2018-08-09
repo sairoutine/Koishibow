@@ -589,7 +589,6 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter3/event/getup_koishi/03.ogg",
 		volume: 1.0,
 	},
-	/*
 	"chapter3-08-event-02-01":    {
 		path: "./sound/chapter3/event/chapter3-08-event-02/01.ogg",
 		volume: 1.0,
@@ -702,7 +701,6 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter3/event/chapter3-13-event-04/12.ogg",
 		volume: 1.0,
 	},
-	*/
 	"chapter1-01-change":    {
 		path: "./sound/chapter1/01/change.ogg",
 		volume: 1.0,
