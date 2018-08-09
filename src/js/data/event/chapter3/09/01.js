@@ -25,7 +25,7 @@ module.exports = {
 	endSounds: [
 		{"name": "chapter3-09-event-01-01", "frame": 1},
 		{"name": "chapter3-09-event-01-02", "frame": 90},
-		//{"name": "chapter3-09-event-01-03", "frame": 100},
+		{"name": "chapter3-09-event-01-03", "frame": 120},
 		{"name": "chapter3-09-event-01-04", "frame": 120},
 		{"name": "chapter3-09-event-01-05", "frame": 200},
 	],
