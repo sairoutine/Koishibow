@@ -25,8 +25,12 @@ SceneOpeningMovie.prototype.setArgs = function(chapter_name){
 };
 
 SceneOpeningMovie.prototype.init = function(){
-	var scene_name = "stage";
-	BaseScene.prototype.init.apply(this, [this._movie_path, scene_name, this._field_name]);
+	var self = this;
+	var scene_manager = self.core.scene_manager;
+	var field_name = self._field_name;
+	BaseScene.prototype.init.apply(self, [self._movie_path, function () {
+		scene_manager.changeScene("stage", field_name);
+	}]);
 };
 
 module.exports = SceneOpeningMovie;
