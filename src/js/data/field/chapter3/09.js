@@ -236,11 +236,13 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "胸像の側の穴(常に表示されている)",
 			serif: null,
-			x:359.50*2/3, y:762.*2/3,
+			x:359.50*2/3, y:777*2/3,
 			scale: 2/3,
 			sound_name: null,
 			show_if_event_true: "chapter3-09-show_hole",
 		},
+
+
 	],
 };
 
