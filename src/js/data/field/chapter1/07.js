@@ -17,7 +17,7 @@ module.exports = {
 			[],
 			// まだ未アクセス
 			[
-				{"type": "process", "value": "playEvent", "arguments": ["event_for_chapter1_talk_with_mobu"]},
+				{"type": "process", "value": "changeScene", "arguments": ["event_for_chapter1_talk_with_mobu"]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter1_07_firstaccess"]}
 			],
 		]},
