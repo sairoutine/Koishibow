@@ -35,6 +35,17 @@ module.exports = {
 			sound_name:      "chapter0-mansion_corridor1-lamp_front",
 			sound_back: "chapter0-mansion_corridor1-lamp_back"
 		},
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "目薬",
+			image: "eyedrops",
+			x: 815,
+			y: 515,
+			scale: 2/3,
+			item_id: "01",
+			position_type: "lying",
+		},
 		/*
 		{
 			no: ++I,

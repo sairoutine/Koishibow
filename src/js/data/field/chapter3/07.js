@@ -29,7 +29,6 @@ module.exports = {
 		]},
 	],
 	objects: [
-		/*
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -59,8 +58,6 @@ module.exports = {
 			action_name: null,
 			sound_name: null
 		},
-
-
 		{
 			no: ++I,
 			image: "chapter3-07-obj-02",
@@ -134,7 +131,6 @@ module.exports = {
 			action_name: "touch",
 			sound_name: null,
 		},
-		*/
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -152,9 +148,21 @@ module.exports = {
 			anime5: "chapter3-07-obj-05-obj03",
 			anime6: "chapter3-07-obj-05-obj04",
 
-			action_name: "touch",
+			//action_name: "touch",
 			sound_name: null,
 			sound_back: "chapter3-08-crows_cat",
+			position_type: "lying",
+		},
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "目薬",
+			image: "eyedrops",
+			x: 455,
+			y: 310,
+			height: 330,
+			scale: 2/3,
+			item_id: "01",
 			position_type: "lying",
 		},
 
