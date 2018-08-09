@@ -44,6 +44,12 @@ module.exports = {
 	],
 	endAnime: "chapter3-08-event-04-obj04",
 	endProcess: [
+		// 喧嘩イベント再生済みフラグを消す(また good と bad を選べる)
+		{"type": "process", "value": "resetPlayedFlag", "arguments": ["chapter3_11_Event-30250"]},
+		// 1人でがんばるフラグを消す
+		{"type": "process", "value": "resetPlayedFlag", "arguments": ["chapter3_12-Event-_30260"]},
+		// 雪崩フラグも消す
+		{"type": "process", "value": "resetPlayedFlag", "arguments": ["chapter3-11-show_skred"]},
 		// bad end
 		{"type": "process", "value": "changeSceneWithFadeout", "arguments": ["title"]},
 	],

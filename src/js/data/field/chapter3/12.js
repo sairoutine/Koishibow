@@ -121,6 +121,7 @@ module.exports = {
 			anime5: null,
 			anime6: null,
 
+			width: 150,
 			action_name: "look_top",
 			sound_name: null,
 		},
@@ -203,6 +204,7 @@ module.exports = {
 			anime6: "fran-reverse_omote",
 			action_name: null,
 			sound_name: null,
+			width: 150,
 			show_if_event_true: "chapter3-08-show_fran",
 		},
 

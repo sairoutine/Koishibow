@@ -48,8 +48,9 @@ var serifOfFranAndCirno = [
 							{"chara": "koishi","serif":"おまたせ！"},
 							{"chara": "cirno", "exp": "cirno-reaction_09", "serif":"おーそーいー！"},
 							{"chara": "cirno", "exp": "cirno-reaction_03", "serif":"もう半分できちゃったから！"},
-							{"chara": "fran", "exp": "fran-reaction_01", "serif":"それじゃあやっちゃおう！", "option": {"playMovie": "./movie/chapter3-13-event-02.mp4"}}, // イベント30340
-							{"id": "chapter3_13_SnowManWithDeco", "save": true, "option": {"resetFlag": "chapter3_13_SnowMan"}},
+							{"chara": "fran", "exp": "fran-reaction_01", "serif":"それじゃあやっちゃおう！", "option": {"playEventMovie": "chapter3-13-event-02"}}, // イベント30340
+							{"chara": "koishi", "serif": "", "option": {"resetFlag": "chapter3_13_SnowMan"}},
+							{"id": "chapter3_13_SnowManWithDeco", "save": true},
 							{"chara": "koishi","serif":"できた！"},
 							{"chara": "koishi","serif":"できた？"},
 							{"chara": "cirno", "exp": "cirno-reaction_02", "serif":"まだよ！"},

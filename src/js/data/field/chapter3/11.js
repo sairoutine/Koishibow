@@ -121,6 +121,16 @@ module.exports = {
 		},
 		{
 			no: ++I,
+			image: "chapter3-11-obj-06",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "雪崩",
+			serif: null,
+			width: 400, height: 1000,
+			x: 1088.50*2/3, y: 797.50*2/3,
+			show_if_event_true: "chapter3-11-show_skred",
+		},
+		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "木+白骨体",
 			serif: [
@@ -150,20 +160,10 @@ module.exports = {
 				{"chara": "koishi","serif":"わあーっ"},
 				{"chara": "koishi","serif":"なんてきれいなの", "option": {"getItem": "16"}}, // サファイアの宝飾品
 			],
-			width: 80, height: 80,
+			width: 240, height: 80,
 			action_name: "look_bottom",
 			x: 650, y: 600,
 			position_type: "lying",
-		},
-		{
-			no: ++I,
-			image: "chapter3-11-obj-06",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "雪崩",
-			serif: null,
-			width: 400, height: 1000,
-			x: 1088.50*2/3, y: 797.50*2/3,
-			show_if_event_true: "chapter3-11-show_skred",
 		},
 	],
 };

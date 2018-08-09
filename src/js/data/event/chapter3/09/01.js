@@ -16,6 +16,7 @@
 module.exports = {
 	key: "chapter3-09-event-01",
 	serifWindow: "fukidashi",
+	bgm: "field7",
 	expAnimes: [
 		"chapter3-09-event-01-obj01",
 		"chapter3-09-event-01-obj02",

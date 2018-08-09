@@ -8,6 +8,7 @@
 
 module.exports = {
 	key: "chapter3-13-event-01",
+	bgm: "field7",
 	serifWindow: "fukidashi",
 	startAnime: "chapter3-13-event-01-obj01",
 	expAnimes: [
