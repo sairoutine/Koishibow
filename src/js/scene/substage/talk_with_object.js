@@ -152,12 +152,10 @@ SceneSubStageObjectTalk.prototype._updateProcess = function(){
 	// あるいは空文字 = オプションの内容だけ処理したい
 	if(this._serif.getCurrentMaxLengthLetters() === 0 || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		// ムービーを再生
-		if (option.playMovie) {
+		if (option.playEventMovie) {
 			var scene_manager = this.core.scene_manager;
 			scene_manager.setFadeOut(0);
-			scene_manager.changeScene("movie", option.playMovie, function () {
-				scene_manager.returnScene("stage");
-			});
+			scene_manager.changeScene("event_movie", option.playEventMovie);
 			return true;
 		}
 		// 別のシーンへ遷移
