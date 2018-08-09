@@ -214,6 +214,11 @@ SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 	canvas.height = this.height();
 	var ctx2 = canvas.getContext('2d');
 
+	// chapter3 の猫の霊を照らして戻すと、なぜかエラーになる
+	if(!this.ss.inner.animation.ssaData.ssa[frame_no]) {
+		return canvas;
+	}
+
 	this.ss.inner.animation.drawFunc(ctx2, frame_no, this.ss.x, this.ss.y, this.ss.flipH, this.ss.flipV, this.ss.inner.partStates, this.ss.rootScaleX, this.ss.rootScaleY);
 
 	// 暗くする
