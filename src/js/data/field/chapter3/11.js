@@ -134,7 +134,16 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "木+白骨体",
 			serif: [
-				// TODO: 白骨体を調べる処理によっては削除するかも
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_11-getItem-16"], "serifs": [
+					// サファイアの宝飾品 獲得済み
+					[
+					],
+					// 未獲得
+					[
+						// 骸骨の頭に当たり判定をつける
+						{"id": "chapter3-11-show_skull_collision", "save": true},
+					],
+				]},
 				{"chara": "koishi","serif":"この木もはだかんぼ！"},
 			],
 			x: 731*2/3, y: 403.50*2/3,
@@ -157,13 +166,15 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "白骨体",
 			serif: [
-				{"chara": "koishi","serif":"わあーっ"},
+				{"id": "chapter3_11-getItem-16", "save": true},
+				{"chara": "koishi","serif":"わあーっ", "option": {"resetFlag": "chapter3-11-show_skull_collision"}},
 				{"chara": "koishi","serif":"なんてきれいなの", "option": {"getItem": "16"}}, // サファイアの宝飾品
 			],
 			width: 240, height: 80,
 			action_name: "look_bottom",
 			x: 650, y: 600,
 			position_type: "lying",
+			show_if_event_true: "chapter3-11-show_skull_collision",
 		},
 	],
 };
