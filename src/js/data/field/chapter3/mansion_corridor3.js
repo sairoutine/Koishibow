@@ -16,7 +16,8 @@ module.exports = {
 	objects: [
 		{
 			no: ++I,
-			type: CONSTANT.ANIME_IMAGE_TYPE,
+			image: "chapter3-mspassage-obj-01",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "振子時計",
 			serif: [
 				{"chara": "koishi","serif":"あれ？"},
@@ -28,15 +29,8 @@ module.exports = {
 			width: 200,
 			height: 450,
 			scale: 2/3,
-			anime1: "chapter0-mansion_corridor3-obj-10-01-obj01",
-			anime2: "chapter0-mansion_corridor3-obj-10-01-obj02",
-			anime3: "chapter0-mansion_corridor3-obj-10-01-obj03",
-			anime4: "chapter0-mansion_corridor3-obj-10-01-obj04",
-			anime5: "chapter0-mansion_corridor3-obj-10-01-obj05",
-			anime6: "chapter0-mansion_corridor3-obj-10-01-obj06",
 			action_name: "look_top",
 			sound_name:      "chapter3-mansion_corridor3-breaked_clock",
-			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
 		},
 		{
 			no: ++I,
@@ -51,8 +45,6 @@ module.exports = {
 			action_name: "touch",
 			x: 600, y: 300,
 		},
-
-
 	],
 };
 
