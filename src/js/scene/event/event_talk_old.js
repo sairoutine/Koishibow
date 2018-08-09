@@ -526,6 +526,8 @@ SceneEventTalk.prototype._showJunction = function() {
 // アニメ
 SceneEventTalk.prototype._actionExpression = function(callback) {
 	callback = callback || function () {};
+	var i;
+
 	// 表情
 	var expression = this._serif.getCurrentCharaExpressionByPosition();
 	if(!expression) {
@@ -537,6 +539,23 @@ SceneEventTalk.prototype._actionExpression = function(callback) {
 	}
 
 	var option = this._serif.getCurrentOption();
+
+	// sound 再生
+	// sounds: [{sound: ~~~, frame: ~~~}, {sound: ~~~, frame: ~~~}]
+	var sounds = this._serif.getCurrentOption().sounds;
+	if (sounds) {
+		for (i = 0, len = sounds.length; i < len; i++) {
+			var sound = sounds[i].name;
+			var frame = sounds[i].frame || 1; // 0だと再生されない
+
+			(function(core, sound, frame) {
+				var audio_loader = core.audio_loader;
+				core.time_manager.setTimeout(function () {
+					audio_loader.playSound(sound);
+				}, frame);
+			})(this.core, sound, frame);
+		}
+	}
 
 	var i, len, ss;
 	if (option.loop) {
