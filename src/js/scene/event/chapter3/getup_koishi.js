@@ -81,9 +81,14 @@ SceneEventPlayDoll.prototype.init = function(){
 	});
 
 	this._serif.init([
-		{"chara": "koishi", "exp": "chapter3-01-event-01-koishi", "serif":"あれ"},
+		{"chara": "koishi", "exp": "chapter3-01-event-01-koishi", "serif":"あれ", "option": {"sounds": [
+			{"name": "chapter3-myroom-getup_koishi01", "frame": 30},
+		]}},
 		{"chara": "koishi", "exp": null, "serif":"またへんなかんじ"},
-		{"chara": "koishi", "exp": "chapter3-01-event-02-koishi", "serif":"さむい！"},
+		{"chara": "koishi", "exp": "chapter3-01-event-02-koishi", "serif":"さむい！", "option": {"sounds": [
+			{"name": "chapter3-myroom-getup_koishi02", "frame": 25},
+			{"name": "chapter3-myroom-getup_koishi03", "frame": 90},
+		]}},
 		{"chara": "koishi", "exp": null, "serif":"置いて行かれたわ"},
 	]);
 
@@ -260,6 +265,23 @@ SceneEventPlayDoll.prototype._actionExpression = function(callback) {
 	}
 
 	var option = this._serif.getCurrentOption();
+
+	// sound 再生
+	// [{sound: ~~~, frame: ~~~}, {sound: ~~~, frame: ~~~}]
+	var sounds = this._serif.getCurrentOption().sounds;
+	if (sounds) {
+		for (var i = 0, len = sounds.length; i < len; i++) {
+			var sound = sounds[i].name;
+			var frame = sounds[i].frame || 1; // 0だと再生されない
+
+			(function(core, sound, frame) {
+				var audio_loader = core.audio_loader;
+				core.time_manager.setTimeout(function () {
+					audio_loader.playSound(sound);
+				}, frame);
+			})(this.core, sound, frame);
+		}
+	}
 
 	if (option.loop) {
 		this.koishi.playAnimationInfinity(expression);
