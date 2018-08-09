@@ -61,6 +61,7 @@ module.exports = {
 			scale: 2/3,
 			action_name: null,
 			sound_name: null,
+			width: 150,
 			show_if_event_true: "chapter3-08-show_cirnosnow",
 		},
 		{
@@ -218,6 +219,7 @@ module.exports = {
 				]}
 			],
 			x: 711.50*2/3, y: 643.50*2/3,
+			width: 150,
 			scale: 2/3,
 			anime1: "cirno-wait",
 			anime2: null,
@@ -248,6 +250,7 @@ module.exports = {
 			],
 			x:967*2/3, y:366.50*2/3,
 			scale: 2/3,
+			width: 150,
 			action_name: "touch",
 			sound_name: null
 		},
