@@ -6,6 +6,7 @@ module.exports = {
 	key: "chapter3_12",
 	chapter: 3,
 	bgm: "field8",
+	sub_bgms: ["chapter3-12-wood"],
 	rightStartPosition: {x: 690, y: 450},
 	leftStartPosition:  {x: 200, y: 450},
 	rightField: "chapter3_13",
@@ -68,7 +69,7 @@ module.exports = {
 			x: 1268*2/3, y: 770.50*2/3,
 			scale: 2/3,
 			action_name: null,
-			sound_name: null
+			sound_name: "chapter3-12-touch_toybox",
 		},
 		{
 			no: ++I,

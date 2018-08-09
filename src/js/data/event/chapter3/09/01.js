@@ -1,18 +1,5 @@
 'use strict';
-/*
-おまたせ
-ええ！
-全然足りないじゃない！
-ボタンが足りない！
-見つからない
-ごめんなさい
-やだ！
-やだ！やだ！
-ちゃんととってこれないんだったら
-わたし帰るから！
-ごめん
-............
-*/
+/* フラン爆発イベント */
 module.exports = {
 	key: "chapter3-09-event-01",
 	serifWindow: "fukidashi",
@@ -35,6 +22,13 @@ module.exports = {
 		{"exp": null, "serif":"はいこれ！", "option": {"x": 550, "y": 240, "loop": false}},
 	],
 	endAnime: "chapter3-09-event-01-obj02",
+	endSounds: [
+		{"name": "chapter3-09-event-01-01", "frame": 1},
+		{"name": "chapter3-09-event-01-02", "frame": 90},
+		//{"name": "chapter3-09-event-01-03", "frame": 100},
+		{"name": "chapter3-09-event-01-04", "frame": 120},
+		{"name": "chapter3-09-event-01-05", "frame": 200},
+	],
 	endProcess: [
 		{"type": "process", "value": "changeSceneWithFadeout", "arguments": ["stage", "chapter3_09"]},
 	],

@@ -158,7 +158,7 @@ module.exports = {
 			anime6: null,
 
 			action_name: "touch",
-			sound_name: null,
+			sound_name: "chapter3-11-drop_skull",
 		},
 		{
 			no: ++I,
