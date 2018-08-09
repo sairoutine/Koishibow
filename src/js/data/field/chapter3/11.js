@@ -153,6 +153,7 @@ module.exports = {
 			width: 80, height: 80,
 			action_name: "look_bottom",
 			x: 650, y: 600,
+			position_type: "lying",
 		},
 		{
 			no: ++I,
