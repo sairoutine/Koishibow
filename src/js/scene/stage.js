@@ -236,28 +236,33 @@ SceneStage.prototype.switchEyeOff = function() {
 	this.koishi.unUseEye();
 };
 
+SceneStage.prototype._playBGM = function() {
+	var field_data = this.getFieldData();
+	if(!this.core.audio_loader.isPlayingBGM(field_data.bgm())) {
+		// メインBGM 再生
+		this.core.audio_loader.changeBGM(field_data.bgm());
+	}
+
+	var sub_bgms = field_data.sub_bgms();
+	if (!sub_bgms) sub_bgms = [];
+
+	// サブBGM
+	for (var i = 0, len = sub_bgms.length; i < len; i++) {
+		var sub_bgm = sub_bgms[i];
+
+		if(!this.core.audio_loader.isPlayingBGM(sub_bgm)) {
+			this.core.audio_loader.addBGM(sub_bgm);
+		}
+	}
+};
+
 SceneStage.prototype.beforeDraw = function() {
 	var field_data = this.getFieldData();
 	var i, len;
 
 	// BGM 再生
 	if(!this.isUsingEye() && this.frame_count >= 60) {
-		if(!this.core.audio_loader.isPlayingBGM(field_data.bgm())) {
-			// メインBGM 再生
-			this.core.audio_loader.changeBGM(field_data.bgm());
-		}
-
-		var sub_bgms = field_data.sub_bgms();
-		if (!sub_bgms) sub_bgms = [];
-
-		// サブBGM
-		for (i = 0, len = sub_bgms.length; i < len; i++) {
-			var sub_bgm = sub_bgms[i];
-
-			if(!this.core.audio_loader.isPlayingBGM(sub_bgm)) {
-				this.core.audio_loader.addBGM(sub_bgm);
-			}
-		}
+		this._playBGM();
 	}
 
 
