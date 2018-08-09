@@ -72,7 +72,7 @@ module.exports = {
 								]},
 							],
 							[
-								// イベント 30340 へ
+								// イベント 30340 (爆破イベント)へ
 								{"id": "chapter3_13-Event-_30340", "save": true},
 								{"chara": "koishi", "serif": "", "option": {"playEvent": "chapter3-09-event-01"}},
 							],
@@ -97,6 +97,7 @@ module.exports = {
 
 			action_name: null,
 			sound_name: null,
+			position_type: "lying",
 		},
 
 
@@ -161,16 +162,20 @@ module.exports = {
 
 		{
 			no: ++I,
-			image: "chapter3-09-obj-05",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "胸像の側に埋まっている斧",
-			serif: [
-				{"chara": "koishi","serif":""},
-			],
+			serif: null,
 			x:359.50*2/3, y:762.*2/3,
 			scale: 2/3,
-			action_name: "touch",
-			sound_name: null
+			sound_name: null,
+
+			anime1: "chapter3-09-obj-05-obj01",
+			anime2: null,
+			anime3: null,
+			anime4: "chapter3-09-obj-05-obj02",
+			anime5: "chapter3-09-obj-05-obj03",
+			anime6: "chapter3-09-obj-05-obj04",
+			position_type: "lying",
 		},
 	],
 };
