@@ -609,12 +609,12 @@ AssetsConfig.sounds = {
 		path: "./sound/chapter3/event/chapter3-08-event-03/01.ogg",
 		volume: 1.0,
 	},
-	"chapter3-08-event-03-02":    {
-		path: "./sound/chapter3/event/chapter3-08-event-03/02.ogg",
+	"chapter3-08-event-04-01":    {
+		path: "./sound/chapter3/event/chapter3-08-event-04/01.ogg",
 		volume: 1.0,
 	},
-	"chapter3-08-event-03-03":    {
-		path: "./sound/chapter3/event/chapter3-08-event-03/03.ogg",
+	"chapter3-08-event-04-02":    {
+		path: "./sound/chapter3/event/chapter3-08-event-04/02.ogg",
 		volume: 1.0,
 	},
 	"chapter3-09-event-01-01":    {

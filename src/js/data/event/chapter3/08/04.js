@@ -43,6 +43,10 @@ module.exports = {
 		*/
 	],
 	endAnime: "chapter3-08-event-04-obj04",
+	endSounds: [
+		{"name": "chapter3-08-event-04-01", "frame": 0},
+		{"name": "chapter3-08-event-04-02", "frame": 90},
+	],
 	endProcess: [
 		// 喧嘩イベント再生済みフラグを消す(また good と bad を選べる)
 		{"type": "process", "value": "resetPlayedFlag", "arguments": ["chapter3_11_Event-30250"]},
