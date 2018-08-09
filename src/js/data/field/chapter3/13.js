@@ -30,8 +30,10 @@ var serifOfFranAndCirno = [
 							{"chara": "koishi", "serif":"", "option": {"playEvent": "chapter3-13-event-03"}},
 						],
 						// 斧を持っていない
-						// TODO: チルノが会話に混ざるので変更が必要
-						loopSerifOfFranAndCirno,
+						[
+							{"chara": "fran", "serif":"やっと完成ね！"},
+							{"chara": "fran", "serif":"仕上げはお願いね！"},
+						],
 					]},
 				],
 				// アイテムを使って雪だるまをデコる前
@@ -156,7 +158,9 @@ module.exports = {
 						{"chara": "koishi", "serif":"", "option": {"playEvent": "chapter3-13-event-04"}},
 					],
 					// チルノの頭を持っていない
-					[],
+					[
+						{"chara": "koishi", "serif":"早く完成させなきゃ！"},
+					],
 				]},
 			],
 			x: 720.50*2/3, y: 571*2/3,
