@@ -12,6 +12,18 @@ module.exports = {
 	leftField: "chapter3_08",
 	background: "chapter3-09-bg-001",
 	walkSound: "walking_bare_snow",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_08_firstaccess"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3-08-show_remillia_skull"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3-08-show_axe"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_08_firstaccess"]},
+			],
+		]},
+	],
 	objects: [
 		{
 			no: ++I,
@@ -54,29 +66,10 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "serifs": [
 					// 丘の上での喧嘩イベント後
 					[
-						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30340"], "serifs": [
-							// レミリアの死骸爆破イベント後
-							[
-								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getruby"], "serifs": [
-									// ルビー獲得後
-									[
-										{"chara": "koishi","serif":"やっぱりちょっと気持ち悪い"},
-									],
-									// ルビー獲得前
-									[
-										{"id": "chapter3_09_getruby", "save": true},
-										{"chara": "koishi","serif":"やっぱりここにあった！", "option": {"getItem": "17"}},
-										{"chara": "koishi","serif":"ありがとう！"},
-									],
-
-								]},
-							],
-							[
-								// イベント 30340 (爆破イベント)へ
-								{"id": "chapter3_13-Event-_30340", "save": true},
-								{"chara": "koishi", "serif": "", "option": {"playEvent": "chapter3-09-event-01"}},
-							],
-						]},
+						// イベント 30340 (爆破イベント)へ
+						{"id": "chapter3-08-show_remillia_skull_already", "save": true},
+						{"chara": "koishi", "serif": "", "option": {"resetFlag": "chapter3-08-show_remillia_skull"}},
+						{"chara": "koishi", "serif": "", "option": {"playEvent": "chapter3-09-event-01"}},
 					],
 					[
 						{"chara": "koishi","serif":"うわー"},
@@ -98,9 +91,43 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 			position_type: "lying",
+			show_if_event_true: "chapter3-08-show_remillia_skull",
 		},
+		{
+			no: ++I,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "レミリアの死骸(常に表示されている)",
+			serif: null,
+			serif_back: [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getruby"], "serifs": [
+					// ルビー獲得後
+					[
+						{"chara": "koishi","serif":"やっぱりちょっと気持ち悪い"},
+					],
+					// ルビー獲得前
+					[
+						{"id": "chapter3_09_getruby", "save": true},
+						// ルビー獲得
+						{"chara": "koishi","serif":"やっぱりここにあった！", "option": {"getItem": "17"}},
+						{"chara": "koishi","serif":"ありがとう！"},
+					],
+				]},
+			],
+			x:865*2/3, y:742.50*2/3,
+			scale: 2/3,
+			anime1: "chapter3-09-obj-03-obj03",
+			anime2: null,
+			anime3: null,
+			anime4: null,
+			anime5: null,
+			anime6: null,
+			width: 240,
 
-
+			action_name: null,
+			sound_name: null,
+			position_type: "lying",
+			show_if_event_true: "chapter3-08-show_remillia_skull_already",
+		},
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -113,27 +140,19 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "serifs": [
 					// 丘の上での喧嘩イベント後
 					[
-						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30360"], "serifs": [
-							// 胸像爆破イベント後
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09-Event-_30360"], "serifs": [
+							// 爆破イベント後
 							[
-								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getaxe"], "serifs": [
-									// 斧獲得後
-									[
-										{"chara": I,"serif":"責任についてどう思っているんだ"},
-										{"chara": "koishi","serif":"なにが"},
-										{"chara": I,"serif":"約束や責任を何だと思っているんだ！"},
-										{"chara": "koishi","serif":"しらなーい"},
-									],
-									// 斧獲得前
-									[
-										{"id": "chapter3_09_getaxe", "save": true},
-										{"chara": "koishi","serif":"", "option": {"getItem": "18"}},
-									],
-								]},
+								{"chara": I,"serif":"責任についてどう思っているんだ"},
+								{"chara": "koishi","serif":"なにが"},
+								{"chara": I,"serif":"約束や責任を何だと思っているんだ！"},
+								{"chara": "koishi","serif":"しらなーい"},
 							],
+							// 爆破イベント前
 							[
-								// イベント 30360 へ
-								{"id": "chapter3_13-Event-_30360", "save": true},
+								// 爆破イベント 30360 へ
+								{"id": "chapter3-09-show_axe_hole", "save": true},
+								{"id": "chapter3_09-Event-_30360", "save": true},
 								{"id": "chapter3_13_SnowMan", "save": true},
 								{"chara": "koishi", "serif": "", "option": {"playEvent": "chapter3-09-event-01"}},
 							],
@@ -176,6 +195,51 @@ module.exports = {
 			anime5: "chapter3-09-obj-05-obj03",
 			anime6: "chapter3-09-obj-05-obj04",
 			position_type: "lying",
+			show_if_event_true: "chapter3-08-show_axe",
+		},
+		{
+			no: ++I,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "胸像の側に埋まっている斧(常に表示されている)",
+			serif: [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getaxe"], "serifs": [
+					// 斧獲得後
+					[
+					],
+					// 斧獲得前
+					[
+						// 斧と穴→穴に変更
+						{"id": "chapter3-09-show_hole", "save": true},
+						{"chara": "koishi", "serif": "", "option": {"resetFlag": "chapter3-09-show_axe_hole"}},
+						// 斧獲得
+						{"chara": "koishi","serif":"", "option": {"getItem": "18"}},
+					],
+				]},
+
+			],
+			x:359.50*2/3, y:762.*2/3,
+			scale: 2/3,
+			sound_name: null,
+
+			anime1: "chapter3-09-obj-05-obj03",
+			anime2: null,
+			anime3: null,
+			anime4: null,
+			anime5: null,
+			anime6: null,
+			position_type: "lying",
+			show_if_event_true: "chapter3-09-show_axe_hole",
+		},
+		{
+			no: ++I,
+			image: "chapter3-09-obj-06",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "胸像の側の穴(常に表示されている)",
+			serif: null,
+			x:359.50*2/3, y:762.*2/3,
+			scale: 2/3,
+			sound_name: null,
+			show_if_event_true: "chapter3-09-show_hole",
 		},
 	],
 };
