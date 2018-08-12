@@ -62,6 +62,7 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("event_for_chapter1_playdoll", new SceneEventForChapter1PlayDoll(this));
 	this.scene_manager.addScene("event_for_chapter1_play_with_murasa", new SceneEventForChapter1PlayWithMurasa(this));
 	this.scene_manager.addScene("event_for_chapter3_getup_koishi", new SceneEventForChapter3GetupKoishi(this));
+	// 体験版 終了
 	this.scene_manager.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
 
 	// セーブデータ
