@@ -3,6 +3,8 @@ var DEBUG = require("./debug_constant");
 
 var CONSTANT = {
 	DEBUG: {},
+
+	TRIAL: true,
 	// ゲームを最初から始めた場合の最初のフィールド
 	INITIAL_CHAPTER: "opening_movie_chapter0",
 

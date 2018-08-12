@@ -377,8 +377,14 @@ SceneEventPlayDoll.prototype._updateInTalking = function(){
 			else {
 				// 正解
 				var scene_manager = this.core.scene_manager;
-				this.core.scene_manager.changeScene("movie", "./movie/chapter1ed.mp4", function () {
-					scene_manager.changeScene("opening_movie_chapter3");
+				this.core.scene_manager.changeScene("movie", "./movie/common/chapter1ed.mp4", function () {
+					if (CONSTANT.TRIAL) {
+						// 体験版ならば chapter1 で終了
+						scene_manager.changeScene("event_for_trial_last");
+					}
+					else {
+						scene_manager.changeScene("opening_movie_chapter3");
+					}
 				});
 			}
 		}
