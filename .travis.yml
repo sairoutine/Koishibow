@@ -24,7 +24,7 @@ before_script:
   - git checkout master
   - npm install
   - cd $TRAVIS_BUILD_DIR/Koishibow/
-  - npm run build
+  - npm run build:js
   - git add ./public/
   - git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER) [ci skip]" || echo
   - git push origin gh-pages
