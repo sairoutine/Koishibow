@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v")
 // にとり お面屋
 var CONSTANT = require("../../../constant");
 var I = 0;

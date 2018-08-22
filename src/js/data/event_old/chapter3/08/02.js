@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v")
 
 // 雪からチルノを助け出す
 

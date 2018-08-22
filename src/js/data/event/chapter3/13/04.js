@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v")
 module.exports = {
 	key: "chapter3-13-event-04",
 	serifWindow: "fukidashi",

@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v")
 // こいしの自室(ベッド／帽子／ドア) 帽子はベッドのふちにかけてある
 var CONSTANT = require("../../../constant");
 var I = 0;

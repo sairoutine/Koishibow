@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v")
 // てぃ ペンキ
 var CONSTANT = require("../../../constant");
 var I = 0;

@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v")
 /* フランがチルノの首を落とす */
 module.exports = {
 	key: "chapter3-13-event-03",

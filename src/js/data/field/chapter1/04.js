@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v")
 // 小鈴ショップ
 var CONSTANT = require("../../../constant");
 var I = 0;

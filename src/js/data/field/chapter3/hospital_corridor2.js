@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v")
 // 病院の廊下2(こころ)
 var CONSTANT = require("../../../constant");
 var I = 0;

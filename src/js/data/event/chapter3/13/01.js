@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v")
 /*
 これがいいアイデアなの？
 この子と一緒にやるの？
