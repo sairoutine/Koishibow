@@ -135,7 +135,7 @@ module.exports = {
 			serif_back: [
 				{"id": "chapter1_09-faucet-talk-1", "save": true},
 				{"chara": I, "serif":_("こら！")},
-				{"chara": I, "serif":_("詰まってるのにだめでしょ！")},
+				{"chara": I, "serif":_("排水溝が詰まってるのにだめでしょ！")},
 				{"chara": I, "serif":_("あふれちゃって……")},
 				{"chara": I, "serif":_("みんなおぼれちゃうでしょ！")},
 				{"chara": I, "serif":_("ちゃんと掃除して頂戴！")},

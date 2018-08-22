@@ -233,7 +233,7 @@
         "もうかけてこないで！": "Stop calling me!",
         "ごめんなさい！": "I'm sorry!",
         "おねがいします！": "Please!",
-        "おかけになった電話番号は\n現在使われておりません": "The number you have dialed\is not in service.",
+        "おかけになった電話番号は\n現在使われておりません": "The number you have dialed\nis not in service.",
         "天気予告をお知らせいたします。": "This is a weather announcement.",
         "明日の天気はハレ、明日の天気はハレ": "Tomorrow will be sunny.\nTomorrow will be sunny.",
         "おでんわありがとう！": "Thank you for calling!",
@@ -644,7 +644,7 @@
         "この楽しさがわからないなんて": "You don't get what's fun\nabout this?",
         "なんて馬鹿なのかしら": "How dumb can you be?",
         "なんなの？": "What's your problem?",
-        "あっちいってよ！": "Go away!",
+        "あっち行ってよ！": "Go away!",
         "こんなとこくるんじゃなかったわ": "I never should've come here!",
         "へんなこ！": "You're weird!",
         "まっていればいいのかな": "Should I just wait?",
@@ -701,6 +701,7 @@
         "わたしとあなた": "Me and You",
         "CHAPTER1_FIELD_08_SERIF0002": "Uh-huh.",
         "CHAPTER1_FIELD_04_SERIF0002": "Yes.",
-        "CHAPTER1_EVENT_PLAY_WITH_MURASA_SERIF0001": "Mm."
+        "CHAPTER1_EVENT_PLAY_WITH_MURASA_SERIF0001": "Mm.",
+        "うん": "",
     }
 }
