@@ -1,12 +1,16 @@
 'use strict';
 
 var CONSTANT = require('./constant');
+
+// 多言語変換
+// NOTE: game class を require する前に実行すること
+//       data 配下の json が require される前に実行する必要があるため
 var i18n = require('i18n4v');
-var translations = {
+i18n.translator.add({
 	'en'   : require('./data/translation/en.json'),
 	'ja'   : require('./data/translation/ja.json'),
-};
-i18n.translator.add(translations[CONSTANT.LANGUAGE]);
+}[CONSTANT.LANGUAGE]);
+
 
 var Game = require('./game');
 
