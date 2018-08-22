@@ -1,5 +1,5 @@
 'use strict';
-var _ = require("i18n4v")
+var _ = require('i18n4v')
 // パークへの案内カンバンがある通路
 var CONSTANT = require("../../../constant");
 var I = 0;

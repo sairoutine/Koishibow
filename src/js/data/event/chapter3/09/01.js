@@ -1,5 +1,5 @@
 'use strict';
-var _ = require("i18n4v")
+var _ = require('i18n4v')
 /* フラン爆発イベント */
 module.exports = {
 	key: "chapter3-09-event-01",

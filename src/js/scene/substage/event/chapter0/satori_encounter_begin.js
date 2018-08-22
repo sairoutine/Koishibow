@@ -1,5 +1,5 @@
 'use strict';
-var _ = require("i18n4v");
+var _ = require('i18n4v');
 
 var base_scene = require('../../talk_with_object');
 var Util = require('../../../../hakurei').util;

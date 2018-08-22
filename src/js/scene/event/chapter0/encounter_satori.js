@@ -1,5 +1,5 @@
 'use strict';
-var _ = require("i18n4v");
+var _ = require('i18n4v');
 var base_scene = require('../../../hakurei').scene.base;
 var ObjectPoint = require('../../../hakurei').object.point;
 var SS = require('../../../object/anime_object');

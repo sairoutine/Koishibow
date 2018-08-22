@@ -1,5 +1,5 @@
 'use strict';
-var _ = require("i18n4v")
+var _ = require('i18n4v')
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
 var CONSTANT = require("../../../constant");
 var I = 0;

@@ -1,5 +1,5 @@
 'use strict';
-var _ = require("i18n4v")
+var _ = require('i18n4v')
 
 // フランとチルノが橋で喧嘩する
 
