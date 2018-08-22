@@ -1,6 +1,14 @@
 'use strict';
-var Game = require('./game');
+
 var CONSTANT = require('./constant');
+var i18n = require('i18n4v');
+var translations = {
+	'en'   : require('./data/translation/en.json'),
+	'ja'   : require('./data/translation/ja.json'),
+};
+i18n.translator.add(translations[CONSTANT.LANGUAGE]);
+
+var Game = require('./game');
 
 var game;
 

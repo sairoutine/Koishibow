@@ -7,6 +7,9 @@ var CONSTANT = {
 	// 体験版モードかどうか
 	TRIAL: true,
 
+	// 言語
+	LANGUAGE: "en",
+
 	// ゲームを最初から始めた場合の最初のフィールド
 	INITIAL_CHAPTER: "opening_movie_chapter0",
 
