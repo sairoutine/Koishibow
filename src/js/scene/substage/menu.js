@@ -416,7 +416,7 @@ SceneSubStageMenu.prototype._showMessage = function(){
 
 	var description;
 	if (this._show_unable_to_use_message) {
-		description = "使用できません";
+		description = _("使用できません");
 	}
 	else{
 		description = item_config.description();
