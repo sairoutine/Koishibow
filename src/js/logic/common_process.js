@@ -105,7 +105,7 @@ var CommonProcess = function() {};
 			[],
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
-					[{"chara": "koishi","serif":"こんにちは"}],
+					[{"chara": "koishi","serif":_("こんにちは")}],
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_07_access"]}
 			],
