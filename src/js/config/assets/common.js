@@ -4,7 +4,8 @@ var AssetsConfig = {};
 
 AssetsConfig.images = {
 	// HowTo 画像
-	"howto":            "./image/common/howto.png",
+	"howto_ja":            "./image/common/howto_ja.png",
+	"howto_en":            "./image/common/howto_en.png",
 	// タイトル放置案 背景
 	"leaving_title":      "./image/common/leaving_title.png",
 
@@ -81,12 +82,21 @@ AssetsConfig.images = {
 	"chapter1-09-event-01-obj01":  "./image/common/chapter1/event/play_with_murasa/chapter1-09-event-01-obj01.png",
 	"chapter1-09-event-01-koishi":  "./image/common/chapter1/event/play_with_murasa/chapter1-09-event-01-koishi.png",
 
-	// ジャーナル画像
-	"journal001":  "./image/common/journal/001.png",
-	"journal002":  "./image/common/journal/002.png",
-	"journal003":  "./image/common/journal/003.png",
-	"journal004":  "./image/common/journal/004.png",
-	"journal005":  "./image/common/journal/005.png",
+	// ジャーナル画像(日本語)
+	"journal001_ja":  "./image/common/journal/ja/001.png",
+	"journal002_ja":  "./image/common/journal/ja/002.png",
+	"journal003_ja":  "./image/common/journal/ja/003.png",
+	"journal004_ja":  "./image/common/journal/ja/004.png",
+	"journal005_ja":  "./image/common/journal/ja/005.png",
+
+	// ジャーナル画像(英語)
+	"journal001_en":  "./image/common/journal/en/001.png",
+	"journal002_en":  "./image/common/journal/en/002.png",
+	"journal003_en":  "./image/common/journal/en/003.png",
+	"journal004_en":  "./image/common/journal/en/004.png",
+	"journal005_en":  "./image/common/journal/en/005.png",
+
+
 
 	//
 	// フィールドの画像とオブジェクト
