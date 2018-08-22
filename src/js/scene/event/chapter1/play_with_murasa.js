@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v");
 
 // 1-8 村紗と遊ぶ
 

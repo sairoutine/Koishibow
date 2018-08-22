@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v");
 
 // 3-1 こいし起床
 

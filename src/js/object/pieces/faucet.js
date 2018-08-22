@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v");
 var base_object = require('./anime_image');
 var Util = require('../../hakurei').util;
 var AnimeMap = require('../../config/object_anime');

@@ -1,4 +1,5 @@
 'use strict';
+var _ = require("i18n4v");
 
 // 1-7 子どもたちへ遊びを提案
 
