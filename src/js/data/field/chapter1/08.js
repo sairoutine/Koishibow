@@ -193,7 +193,7 @@ module.exports = {
 												{"chara": "koishi",        "exp": "back", "serif":_("............")},
 												{"chara": "koishi",        "exp": "back", "serif":_("ねえ、あそばないの？")},
 												{"chara": I, "exp": "kyoko-reaction_01", "serif":_("............")},
-												{"chara": "koishi",        "exp": "back", "serif":_("ねえ？")},
+												{"chara": "koishi",        "exp": "back", "serif":_("ねえ！")},
 												{"chara": I, "exp": "kyoko-reaction_01", "serif":_("............")},
 											],
 										]}
