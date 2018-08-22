@@ -38,7 +38,7 @@ module.exports = {
 										{"chara": I, "serif":_("合言葉は？"), "junction": ["先生","お母さん","友達","兄弟"]},
 										{"chara": I, "serif":_("へえ、気が合うな......")},
 										{"chara": I, "serif":_("中のものが欲しいのか？")},
-										{"chara": "koishi", "serif":_("うん")},
+										{"chara": "koishi", "serif":_("CHAPTER1_FIELD_09_SERIF0001")},
 										{"chara": I, "serif":_("そら、あの子の忘れ物だ"), "option": {
 											getItem: "12",
 										}},
