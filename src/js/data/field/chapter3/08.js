@@ -174,7 +174,7 @@ module.exports = {
 										{"chara": I, "exp": "cirno-reaction_02", "serif":_("雪だるまはねえ！")},
 										{"chara": I, "exp": "cirno-reaction_03", "serif":_("みんなに抱きしめてもらえるの！")},
 										{"chara": I, "exp": "cirno-reaction_03", "serif":_("氷の像なんかと違ってね！")},
-										{"chara": I, "exp": "cirno-reaction_02", "serif":_("だからあたいを雪だるまにして！"), "junction": ["いいよ！","いいよ","いいよ......"]},
+										{"chara": I, "exp": "cirno-reaction_02", "serif":_("だからあたいを雪だるまにして！"), "junction": [_("いいよ！"),_("いいよ"),_("いいよ......")]},
 										{"chara": I, "exp": "cirno-reaction_04", "serif":_("きまりね")},
 										{"chara": I, "exp": "cirno-reaction_02", "serif":_("ふつうの雪だるまじゃないのよ！")},
 										{"chara": I, "exp": "cirno-reaction_05", "serif":_("世界一の雪だるまになるんだから！")},

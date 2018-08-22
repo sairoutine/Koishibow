@@ -60,7 +60,7 @@ module.exports = {
 		{"exp": null, "serif":_("ねえ、私とやりたくなったらすぐおいでね"), "option": {"x": 670, "y": 250, "loop": false}},
 		{"exp": null, "serif":_("うふふ"), "option": {"x": 670, "y": 250, "loop": false}},
 		{"exp": "chapter3-10-event-01-obj03", "serif":_("やなやつ！"), "option": {"x": 370, "y": 250, "loop": false}},
-		{"exp": null, "serif":"", "junction": ["みんなでがんばる","ひとりでがんばる"],"option": {"x": 480, "y": 345, "loop": false}},
+		{"exp": null, "serif":"", "junction": [_("みんなでがんばる"),_("ひとりでがんばる")],"option": {"x": 480, "y": 345, "loop": false}},
 		{"type": "junction_serif", "serifs": [
 			// みんなでがんばる
 			[

@@ -35,7 +35,7 @@ module.exports = {
 									],
 									[
 										{"id": "chapter1_09-" + I + "-_getItem-12", "save": true},
-										{"chara": I, "serif":_("合言葉は？"), "junction": ["先生","お母さん","友達","兄弟"]},
+										{"chara": I, "serif":_("合言葉は？"), "junction": [_("先生"),_("お母さん"),_("友達"),_("兄弟")]},
 										{"chara": I, "serif":_("へえ、気が合うな......")},
 										{"chara": I, "serif":_("中のものが欲しいのか？")},
 										{"chara": "koishi", "serif":_("CHAPTER1_FIELD_09_SERIF0001")},
