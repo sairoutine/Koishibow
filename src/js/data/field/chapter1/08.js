@@ -94,7 +94,7 @@ module.exports = {
 						}},
 						{"chara": "koishi",        "exp": "back", "serif":_("えっなに？")},
 						{"chara": I, "exp": "kyoko-reaction_03", "serif":_("ごあいさつしていい？")},
-						{"chara": "koishi",        "exp": "back", "serif":_("なにが？")},
+						{"chara": "koishi",        "exp": "back", "serif":_("CHAPTER1_FIELD_08_SERIF0001")},
 						{"chara": I, "exp": "kyoko-reaction_03", "serif":_("ごあいさつ！")},
 						{"chara": "koishi",        "exp": "back", "serif":_("ごあいさつって？")},
 						{"chara": I, "exp": "kyoko-reaction_04", "serif":_("こ"), "option": {
@@ -177,7 +177,7 @@ module.exports = {
 														{"chara": "koishi",        "exp": "back", "serif":_("そうなの？")},
 														{"chara": I, "exp": "kyoko-reaction_03", "serif":_("あかちゃんはいいよねー\nしゃべったら\nほめてくれるんだもん！")},
 														{"chara": I, "exp": "kyoko-reaction_02", "serif":_("ねえねえ、空の上には極楽があるって\n先生はいうんだけどさあ！")},
-														{"chara": "koishi",        "exp": "back", "serif":_("うん")},
+														{"chara": "koishi",        "exp": "back", "serif":_("CHAPTER1_FIELD_08_SERIF0002")},
 														{"chara": I, "exp": "kyoko-reaction_02", "serif":_("ぜったいうそだよねー！")},
 														{"chara": I, "exp": "kyoko-reaction_02", "serif":_("だってみえないんだもん")},
 														{"chara": I, "exp": "kyoko-reaction_02", "serif":_("お空に飛べたらぶつかっちゃうしね")},

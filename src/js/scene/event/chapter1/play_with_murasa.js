@@ -149,7 +149,7 @@ SceneEventPlayDoll.prototype.init = function(){
 		{"chara": null,"serif":"", "option": {"is_next": 8}},
 		{"chara": "koishi","serif":_("ああ")},
 		{"chara": null,"serif":"", "option": {"is_next": 9}},
-		{"chara": "koishi","serif":_("うん"), "option": {"show_picture": true}},
+		{"chara": "koishi","serif":_("CHAPTER1_EVENT_PLAY_WITH_MURASA_SERIF0001"), "option": {"show_picture": true}},
 		{"chara": "other","serif":_("おーい！")},
 		{"chara": null,"serif":"", "option": {"is_next": 10}},
 	]);

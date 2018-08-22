@@ -65,9 +65,9 @@ module.exports = {
 					],
 					[
 						{"chara": I,"serif":_("はい わたしです")},
-						{"chara": I,"serif":_("はい")},
+						{"chara": I,"serif":_("CHAPTER1_FIELD_04_SERIF0001")},
 						{"chara": I,"serif":_("問題なく")},
-						{"chara": I,"serif":_("はい")},
+						{"chara": I,"serif":_("CHAPTER1_FIELD_04_SERIF0002")},
 						{"chara": I,"serif":_("すべてをやり直せます")},
 						{"chara": I,"serif":_("彼女はいまも眠っています")},
 						{"chara": I,"serif":_("心的外傷を癒す時が来たのです")},

@@ -104,7 +104,7 @@ module.exports = {
 										{"chara": I, "exp": "kogasa-reaction_01", "serif":_("あら")},
 										{"chara": I, "exp": "kogasa-reaction_01", "serif":_("あなたも私が気になるの？")},
 										{"chara": "koishi",        "exp": "back", "serif":_("え？")},
-										{"chara": "koishi",        "exp": "back", "serif":_("なにが？")},
+										{"chara": "koishi",        "exp": "back", "serif":_("CHAPTER1_FIELD_10_SERIF0001")},
 										{"chara": I, "exp": "kogasa-reaction_02", "serif":_("わたしがすきなんでしょ？")},
 										{"chara": "koishi",        "exp": "back", "serif":_("？")},
 									],
@@ -114,7 +114,7 @@ module.exports = {
 									],
 									[
 										{"chara": "koishi",        "exp": "back", "serif":_("ねえ、なんでそんなこと言うの？")},
-										{"chara": I, "exp": "kogasa-reaction_02", "serif":_("なにが？")},
+										{"chara": I, "exp": "kogasa-reaction_02", "serif":_("CHAPTER1_FIELD_10_SERIF0002")},
 										{"chara": "koishi",        "exp": "back", "serif":_("・・・・・・")},
 									]
 								]},
