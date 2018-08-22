@@ -63,12 +63,12 @@ ObjectFaucet.prototype.onTouchByKoishi = function() {
 			//this.core.save_manager.item.addItem("04");
 
 			this.scene.root().changeSubScene("talk_with_object", [
-				{"chara": this.no, "serif":"掃除してくださったのね！"},
-				{"chara": this.no, "serif":"お道具も取りに行ってくださったのね！"},
-				{"chara": "koishi", "serif":"えっとね"},
-				{"chara": "koishi", "serif":"これね"},
-				{"chara": "koishi", "serif":"貸してくれたの"},
-				{"chara": "koishi", "serif":"お姉さんが貸してくれたの！", "option": {
+				{"chara": this.no, "serif":_("掃除してくださったのね！")},
+				{"chara": this.no, "serif":_("お道具も取りに行ってくださったのね！")},
+				{"chara": "koishi", "serif":_("えっとね")},
+				{"chara": "koishi", "serif":_("これね")},
+				{"chara": "koishi", "serif":_("貸してくれたの")},
+				{"chara": "koishi", "serif":_("お姉さんが貸してくれたの！"), "option": {
 					getItem: "04", // 水が入る
 				}},
 			], this);

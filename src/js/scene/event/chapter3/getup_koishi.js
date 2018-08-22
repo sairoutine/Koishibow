@@ -81,15 +81,15 @@ SceneEventPlayDoll.prototype.init = function(){
 	});
 
 	this._serif.init([
-		{"chara": "koishi", "exp": "chapter3-01-event-01-koishi", "serif":"あれ", "option": {"sounds": [
+		{"chara": "koishi", "exp": "chapter3-01-event-01-koishi", "serif":_("あれ"), "option": {"sounds": [
 			{"name": "chapter3-myroom-getup_koishi01", "frame": 30},
 		]}},
-		{"chara": "koishi", "exp": null, "serif":"またへんなかんじ"},
-		{"chara": "koishi", "exp": "chapter3-01-event-02-koishi", "serif":"さむい！", "option": {"sounds": [
+		{"chara": "koishi", "exp": null, "serif":_("またへんなかんじ")},
+		{"chara": "koishi", "exp": "chapter3-01-event-02-koishi", "serif":_("さむい！"), "option": {"sounds": [
 			{"name": "chapter3-myroom-getup_koishi02", "frame": 25},
 			{"name": "chapter3-myroom-getup_koishi03", "frame": 90},
 		]}},
-		{"chara": "koishi", "exp": null, "serif":"置いて行かれたわ"},
+		{"chara": "koishi", "exp": null, "serif":_("置いて行かれたわ")},
 	]);
 
 	this._serif.start();

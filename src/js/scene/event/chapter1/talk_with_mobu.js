@@ -84,17 +84,17 @@ SceneEventTalkWithMobu.prototype.init = function(){
 	this.black_mist.init();
 
 	this._serif.init([
-		{"chara": "koishi","serif":"ねえ、人形ごっこしましょ！", "option": {"is_next": true}},
-		{"chara": "koishi","serif":"お気に入りの子供をかわいがるの", "option": {"is_next": true}},
-		{"chara": "mobu","serif":"やぁよ", "option": {"is_next": false}},
-		{"chara": "mobu","serif":"私たちいまから縄跳びで遊ぶの", "option": {"is_next": false}},
-		{"chara": "koishi","serif":"そうなの？", "option": {"is_next": false}},
-		{"chara": "koishi","serif":"それより人形遊びのほうが賢いし素敵よ", "option": {"is_next": false}},
-		{"chara": "koishi","serif":"なわとびなんて汚くなるし人生を無駄にしてる", "option": {"is_next": false}},
-		{"chara": "koishi","serif":"頭おかしいのね！", "option": {"is_next": false}},
-		{"chara": "mobu","serif":"なんでそんなこと言われなきゃならないの？", "option": {"is_next": false}},
-		{"chara": "mobu","serif":"バカにしに来たわけ？", "option": {"is_next": false}},
-		{"chara": "koishi","serif":"もういい", "option": {"is_next": true}},
+		{"chara": "koishi","serif":_("ねえ、人形ごっこしましょ！"), "option": {"is_next": true}},
+		{"chara": "koishi","serif":_("お気に入りの子供をかわいがるの"), "option": {"is_next": true}},
+		{"chara": "mobu","serif":_("やぁよ"), "option": {"is_next": false}},
+		{"chara": "mobu","serif":_("私たちいまから縄跳びで遊ぶの"), "option": {"is_next": false}},
+		{"chara": "koishi","serif":_("そうなの？"), "option": {"is_next": false}},
+		{"chara": "koishi","serif":_("それより人形遊びのほうが賢いし素敵よ"), "option": {"is_next": false}},
+		{"chara": "koishi","serif":_("なわとびなんて汚くなるし人生を無駄にしてる"), "option": {"is_next": false}},
+		{"chara": "koishi","serif":_("頭おかしいのね！"), "option": {"is_next": false}},
+		{"chara": "mobu","serif":_("なんでそんなこと言われなきゃならないの？"), "option": {"is_next": false}},
+		{"chara": "mobu","serif":_("バカにしに来たわけ？"), "option": {"is_next": false}},
+		{"chara": "koishi","serif":_("もういい"), "option": {"is_next": true}},
 	]);
 };
 

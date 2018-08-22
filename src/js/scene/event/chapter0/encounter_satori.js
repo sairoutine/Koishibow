@@ -71,8 +71,8 @@ SceneEventEncounterSatori.prototype.init = function(){
 	this.black_mist.init();
 
 	this._serif.init([
-		{"chara": "satori","serif":"おいで"},
-		{"chara": "satori","serif":"あなたはいい子にならなきゃだめよ"},
+		{"chara": "satori","serif":_("おいで")},
+		{"chara": "satori","serif":_("あなたはいい子にならなきゃだめよ")},
 	]);
 };
 

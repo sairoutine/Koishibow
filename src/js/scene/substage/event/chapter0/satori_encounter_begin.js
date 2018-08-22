@@ -11,7 +11,7 @@ Util.inherit(SceneSubStageObjectTalk, base_scene);
 SceneSubStageObjectTalk.prototype.init = function(){
 
 	var serif_list = [
-		{"chara": "koishi","serif":"あっ"},
+		{"chara": "koishi","serif":_("あっ")},
 	];
 	var obj = null;
 

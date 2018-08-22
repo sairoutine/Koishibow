@@ -105,9 +105,9 @@ SceneEventPlayDoll.prototype.init = function(){
 	this.black_mist.init();
 
 	this._serif.init([
-		{"chara": "koishi","serif":"まっていればいいのかな"},
-		{"chara": "koishi","serif":"まだかなー"},
-		{"chara": "koishi","serif":"こない"},
+		{"chara": "koishi","serif":_("まっていればいいのかな")},
+		{"chara": "koishi","serif":_("まだかなー")},
+		{"chara": "koishi","serif":_("こない")},
 	]);
 
 	this._serif.start();
