@@ -123,8 +123,8 @@ SceneEventPlayDoll.prototype.init = function(){
 		{"chara": null,"serif":"", "option": {"is_next": 7, "sound": "fall"}},
 		{"chara": null,"serif":"", "option": {"is_next": 8}},
 		{"chara": "murasa","serif":_("そんなのつまんないじゃん"), "junction": [
-			"あいてのきもちになる",
-			"もうおうちにかえる"
+			_("あいてのきもちになる"),
+			_("もうおうちにかえる")
 		]},
 		{"type": "junction_serif", "serifs": [
 			[
