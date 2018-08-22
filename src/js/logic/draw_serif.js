@@ -3,6 +3,7 @@
 /* セリフを描画する */
 
 var Util = require('../hakurei').util;
+var CONSTANT = require('../constant');
 
 // 文字の表示サイズ
 var FONT_SIZE = 18;
@@ -70,6 +71,11 @@ DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num, option) {
 	var message_text_pos = this._getMessagePos(obj);
 	var x = message_text_pos.x;
 	var y = message_text_pos.y;
+
+	// 英語だと半角なので文字数を半分にする
+	if (CONSTANT.LANGUAGE === 'en') {
+		width_num /= 2;
+	}
 
 	// 基準位置を左上->中央に変更
 	x = x - width_num  * font_size / 2;
