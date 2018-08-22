@@ -19,7 +19,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "くつした",
 			serif: [
-				{"chara": "koishi","serif":"きらいだけどきなきゃだめ？"},
+				{"chara": "koishi","serif":_("きらいだけどきなきゃだめ？")},
 			],
 			x: 302,
 			y: 443,
@@ -32,7 +32,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "車イス",
 			serif: [
-				{"chara": "koishi","serif":"雪の中で乗ったらすごいんじゃない？"},
+				{"chara": "koishi","serif":_("雪の中で乗ったらすごいんじゃない？")},
 			],
 			x: 130,
 			y: 360,

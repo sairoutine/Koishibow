@@ -29,31 +29,31 @@ module.exports = {
 								{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_09-" + I + "-_getItem-12"], "serifs": [
 									// アイテムを手に入れたあと
 									[
-										{"chara": I, "serif":"合言葉は仲間にしか教えちゃいけないんだぜ"},
-										{"chara": I, "serif":"秘密だからな"},
+										{"chara": I, "serif":_("合言葉は仲間にしか教えちゃいけないんだぜ")},
+										{"chara": I, "serif":_("秘密だからな")},
 									],
 									[
 										{"id": "chapter1_09-" + I + "-_getItem-12", "save": true},
-										{"chara": I, "serif":"合言葉は？", "junction": ["先生","お母さん","友達","兄弟"]},
-										{"chara": I, "serif":"へえ、気が合うな......"},
-										{"chara": I, "serif":"中のものが欲しいのか？"},
-										{"chara": "koishi", "serif":"うん"},
-										{"chara": I, "serif":"そら、あの子の忘れ物だ", "option": {
+										{"chara": I, "serif":_("合言葉は？"), "junction": ["先生","お母さん","友達","兄弟"]},
+										{"chara": I, "serif":_("へえ、気が合うな......")},
+										{"chara": I, "serif":_("中のものが欲しいのか？")},
+										{"chara": "koishi", "serif":_("うん")},
+										{"chara": I, "serif":_("そら、あの子の忘れ物だ"), "option": {
 											getItem: "12",
 										}},
-										{"chara": I, "serif":"じゃあな"},
+										{"chara": I, "serif":_("じゃあな")},
 									],
 								]}
 							],
 							[
-								{"chara": I, "serif":"合言葉は？"},
-								{"chara": "koishi", "serif":"知らない"},
+								{"chara": I, "serif":_("合言葉は？")},
+								{"chara": "koishi", "serif":_("知らない")},
 							],
 						]}
 					],
 					[
-						{"chara": I, "serif":"合言葉は？"},
-						{"chara": "koishi", "serif":"知らない"},
+						{"chara": I, "serif":_("合言葉は？")},
+						{"chara": "koishi", "serif":_("知らない")},
 					],
 				]},
 			],
@@ -73,12 +73,12 @@ module.exports = {
 			name: "村紗",
 			loop: true,
 			serif_back: [
-				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":"う............"},
-				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":"みんなわたしのこときらいだって"},
-				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":"わたしもみんなみたいになりたい......"},
-				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":"すきでこうなったわけじゃないのに....."},
-				{"chara": I, "exp": "murasa-ura_reaction_02", "serif":"もういや……"},
-				{"chara": I, "exp": "murasa-ura_reaction_02", "serif":"ひみつきちだって私だけは入れない……"},
+				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":_("う............")},
+				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":_("みんなわたしのこときらいだって")},
+				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":_("わたしもみんなみたいになりたい......")},
+				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":_("すきでこうなったわけじゃないのに.....")},
+				{"chara": I, "exp": "murasa-ura_reaction_02", "serif":_("もういや……")},
+				{"chara": I, "exp": "murasa-ura_reaction_02", "serif":_("ひみつきちだって私だけは入れない……")},
 			],
 			serif: [
 				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["12"], "serifs": [
@@ -91,19 +91,19 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_09-" + I + "limit-01", 1], "serifs": [
 							[
 								// 1-21
-								{"chara": I, "exp": "murasa-reaction_01", "serif":"何"},
-								{"chara": "koishi",        "exp": "back", "serif":"えっ？"},
-								{"chara": I, "exp": "murasa-reaction_01", "serif":"なんだよ"},
-								{"chara": I, "exp": "murasa-reaction_02", "serif":"用がないならあっちいけよ"},
-								{"chara": "koishi",        "exp": "back", "serif":"あそばないの？"},
-								{"chara": I, "exp": "murasa-reaction_01", "serif":"は？"},
-								{"chara": I, "exp": "murasa-reaction_01", "serif":"もう遊んでるだろ"},
-								{"chara": "koishi",        "exp": "back", "serif":"............"},
-								{"chara": I, "exp": "murasa-reaction_02", "serif":"なんだよ！あっちいけよ！"},
+								{"chara": I, "exp": "murasa-reaction_01", "serif":_("何")},
+								{"chara": "koishi",        "exp": "back", "serif":_("えっ？")},
+								{"chara": I, "exp": "murasa-reaction_01", "serif":_("なんだよ")},
+								{"chara": I, "exp": "murasa-reaction_02", "serif":_("用がないならあっちいけよ")},
+								{"chara": "koishi",        "exp": "back", "serif":_("あそばないの？")},
+								{"chara": I, "exp": "murasa-reaction_01", "serif":_("は？")},
+								{"chara": I, "exp": "murasa-reaction_01", "serif":_("もう遊んでるだろ")},
+								{"chara": "koishi",        "exp": "back", "serif":_("............")},
+								{"chara": I, "exp": "murasa-reaction_02", "serif":_("なんだよ！あっちいけよ！")},
 							],
 							[
-								{"chara": I, "exp": "murasa-reaction_02", "serif":"なんだよ！あっちいけよ！"},
-								{"chara": "koishi",        "exp": "back", "serif":"............"},
+								{"chara": I, "exp": "murasa-reaction_02", "serif":_("なんだよ！あっちいけよ！")},
+								{"chara": "koishi",        "exp": "back", "serif":_("............")},
 							]
 						]},
 					],
@@ -128,16 +128,16 @@ module.exports = {
 			type: CONSTANT.FAUCET_TYPE,
 			name: "蛇口",
 			serif: [
-				{"chara": "koishi", "exp": "back", "serif":"あれ？"},
-				{"chara": "koishi", "exp": "back", "serif":"水でないなー"},
+				{"chara": "koishi", "exp": "back", "serif":_("あれ？")},
+				{"chara": "koishi", "exp": "back", "serif":_("水でないなー")},
 			],
 			serif_back: [
 				{"id": "chapter1_09-faucet-talk-1", "save": true},
-				{"chara": I, "serif":"こら！"},
-				{"chara": I, "serif":"詰まってるのにだめでしょ！"},
-				{"chara": I, "serif":"あふれちゃって……"},
-				{"chara": I, "serif":"みんなおぼれちゃうでしょ！"},
-				{"chara": I, "serif":"ちゃんと掃除して頂戴！"},
+				{"chara": I, "serif":_("こら！")},
+				{"chara": I, "serif":_("詰まってるのにだめでしょ！")},
+				{"chara": I, "serif":_("あふれちゃって……")},
+				{"chara": I, "serif":_("みんなおぼれちゃうでしょ！")},
+				{"chara": I, "serif":_("ちゃんと掃除して頂戴！")},
 			],
 
 			x:384*2/3, y:572*2/3,

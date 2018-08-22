@@ -51,14 +51,14 @@ module.exports = {
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_05-" + I + "-_useItem-06"], "serifs": [
 					[
-						{"chara": I,        "exp": "nitori-ura_reaction_03", "serif":"きゅうりさんきゅうりさん\nうふふ"},
+						{"chara": I,        "exp": "nitori-ura_reaction_03", "serif":_("きゅうりさんきゅうりさん\nうふふ")},
 					],
 					[
 
-						{"chara": I,        "exp": "nitori-ura_reaction_01", "serif":"なんでしらないひとと\nなかよくしなきゃいけないの？"},
-						{"chara": I,        "exp": "nitori-ura_reaction_01", "serif":"ほんとうはしらないひと\nこわいのに......"},
-						{"chara": I,        "exp": "nitori-ura_reaction_01", "serif":"あーあ、すきなものだけが\nほしいのに......"},
-						{"chara": I,        "exp": "nitori-ura_wait", "serif":"ほかのこみたいになりたいな......"},
+						{"chara": I,        "exp": "nitori-ura_reaction_01", "serif":_("なんでしらないひとと\nなかよくしなきゃいけないの？")},
+						{"chara": I,        "exp": "nitori-ura_reaction_01", "serif":_("ほんとうはしらないひと\nこわいのに......")},
+						{"chara": I,        "exp": "nitori-ura_reaction_01", "serif":_("あーあ、すきなものだけが\nほしいのに......")},
+						{"chara": I,        "exp": "nitori-ura_wait", "serif":_("ほかのこみたいになりたいな......")},
 					],
 				]}
 			],
@@ -68,50 +68,50 @@ module.exports = {
 					[
 						// 1-11
 						{"id": "chapter1_05-" + I + "-_useItem-06", "save": true},
-						{"chara": "koishi", "exp": "back", "serif":"ねえ、これ"},
-						{"chara": I,        "exp": "nitori-reaction_03", "serif":"なんだい"},
-						{"chara": "koishi", "exp": "back", "serif":"これみて。ほしいんじゃないの？", "option": {"useItem": "06"}},
-						{"chara": I,        "exp": "nitori-reaction_01", "serif":"おっ！"},
-						{"chara": I,        "exp": "nitori-reaction_01", "serif":"みどりで！"},
-						{"chara": I,        "exp": "nitori-reaction_01", "serif":"ながくて！"},
-						{"chara": I,        "exp": "nitori-reaction_01", "serif":"ぐねぐねなやつ！"},
-						{"chara": I,        "exp": "nitori-reaction_04", "serif":"これだいすき！なんでわかったの？"},
-						{"chara": "koishi", "exp": "back", "serif":"えっ？"},
-						{"chara": "koishi", "exp": "back", "serif":"わかんない......"},
+						{"chara": "koishi", "exp": "back", "serif":_("ねえ、これ")},
+						{"chara": I,        "exp": "nitori-reaction_03", "serif":_("なんだい")},
+						{"chara": "koishi", "exp": "back", "serif":_("これみて。ほしいんじゃないの？"), "option": {"useItem": "06"}},
+						{"chara": I,        "exp": "nitori-reaction_01", "serif":_("おっ！")},
+						{"chara": I,        "exp": "nitori-reaction_01", "serif":_("みどりで！")},
+						{"chara": I,        "exp": "nitori-reaction_01", "serif":_("ながくて！")},
+						{"chara": I,        "exp": "nitori-reaction_01", "serif":_("ぐねぐねなやつ！")},
+						{"chara": I,        "exp": "nitori-reaction_04", "serif":_("これだいすき！なんでわかったの？")},
+						{"chara": "koishi", "exp": "back", "serif":_("えっ？")},
+						{"chara": "koishi", "exp": "back", "serif":_("わかんない......")},
 						// 1-14
-						{"chara": I,        "exp": "nitori-reaction_04", "serif":"お面がほしいの？"},
-						{"chara": I,        "exp": "nitori-reaction_04", "serif":"売れ残りだけど、あげちゃう！", "option": {
+						{"chara": I,        "exp": "nitori-reaction_04", "serif":_("お面がほしいの？")},
+						{"chara": I,        "exp": "nitori-reaction_04", "serif":_("売れ残りだけど、あげちゃう！"), "option": {
 							"getItem": "10",
 						}},
-						{"chara": I,        "exp": "nitori-reaction_04", "serif":"またきてね！"},
+						{"chara": I,        "exp": "nitori-reaction_04", "serif":_("またきてね！")},
 					],
 					[
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_05-" + I + "-_useItem-06"], "serifs": [
 							[
-								{"chara": I,        "exp": "back", "serif":"仮面屋よりも、もっとやりたいことあるんだよね"},
-								{"chara": I,        "exp": "back", "serif":"あなたはどう？"},
-								{"chara": I,        "exp": "back", "serif":"本当はやってみたいこと、ない？"},
+								{"chara": I,        "exp": "back", "serif":_("仮面屋よりも、もっとやりたいことあるんだよね")},
+								{"chara": I,        "exp": "back", "serif":_("あなたはどう？")},
+								{"chara": I,        "exp": "back", "serif":_("本当はやってみたいこと、ない？")},
 							],
 							[
 								{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_05-" + I + "limit-01", 1], "serifs": [
 									[
-										{"chara": I,        "exp": "nitori-reaction_01", "serif":"いよお友よ！"},
-										{"chara": "koishi", "exp": "back", "serif":"えっ？"},
+										{"chara": I,        "exp": "nitori-reaction_01", "serif":_("いよお友よ！")},
+										{"chara": "koishi", "exp": "back", "serif":_("えっ？")},
 									],
 									[
 										// 1-9
-										{"chara": "koishi", "exp": "back", "serif":"なにしてるの？"},
-										{"chara": I,        "exp": "back", "serif":"仮面屋さ！"},
-										{"chara": "koishi", "exp": "back", "serif":"仮面って何に使うの？"},
-										{"chara": I,        "exp": "back", "serif":"そりゃ被るのさ！"},
-										{"chara": "koishi", "exp": "back", "serif":"ふーん"},
-										{"chara": I,        "exp": "back", "serif":"おめん欲しいだろ？"},
-										{"chara": "koishi", "exp": "back", "serif":"うーんちょっとだけ"},
-										{"chara": I,        "exp": "back", "serif":"そうだよな！\nそれじゃあ特におすすめの希望の面！\nこれは5000でいいぞ！"},
-										{"chara": "koishi", "exp": "back", "serif":"お金いるの？"},
-										{"chara": I,        "exp": "back", "serif":"当然さぁ、お店なんだから！"},
-										{"chara": "koishi", "exp": "back", "serif":"お金ないときはどうしたらいいの？"},
-										{"chara": I,        "exp": "nitori-reaction_02", "serif":"金がないんじゃあ仮面は売れないね！\nとっとといきな！"},
+										{"chara": "koishi", "exp": "back", "serif":_("なにしてるの？")},
+										{"chara": I,        "exp": "back", "serif":_("仮面屋さ！")},
+										{"chara": "koishi", "exp": "back", "serif":_("仮面って何に使うの？")},
+										{"chara": I,        "exp": "back", "serif":_("そりゃ被るのさ！")},
+										{"chara": "koishi", "exp": "back", "serif":_("ふーん")},
+										{"chara": I,        "exp": "back", "serif":_("おめん欲しいだろ？")},
+										{"chara": "koishi", "exp": "back", "serif":_("うーんちょっとだけ")},
+										{"chara": I,        "exp": "back", "serif":_("そうだよな！\nそれじゃあ特におすすめの希望の面！\nこれは5000でいいぞ！")},
+										{"chara": "koishi", "exp": "back", "serif":_("お金いるの？")},
+										{"chara": I,        "exp": "back", "serif":_("当然さぁ、お店なんだから！")},
+										{"chara": "koishi", "exp": "back", "serif":_("お金ないときはどうしたらいいの？")},
+										{"chara": I,        "exp": "nitori-reaction_02", "serif":_("金がないんじゃあ仮面は売れないね！\nとっとといきな！")},
 									],
 								]}
 							],

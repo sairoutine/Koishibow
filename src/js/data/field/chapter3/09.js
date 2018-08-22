@@ -49,8 +49,8 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "レミリアの墓",
 			serif: [
-				{"chara": "koishi","serif":"大きいなあ"},
-				{"chara": "koishi","serif":"誰のお墓なんだろう？"},
+				{"chara": "koishi","serif":_("大きいなあ")},
+				{"chara": "koishi","serif":_("誰のお墓なんだろう？")},
 			],
 			x:1041.50*2/3, y: 519*2/3,
 			scale: 2/3,
@@ -72,9 +72,9 @@ module.exports = {
 						{"chara": "koishi", "serif": "", "option": {"playEvent": "chapter3-09-event-01"}},
 					],
 					[
-						{"chara": "koishi","serif":"うわー"},
-						{"chara": "koishi","serif":"なんかへんなの"},
-						{"chara": "koishi","serif":"わるもの？"},
+						{"chara": "koishi","serif":_("うわー")},
+						{"chara": "koishi","serif":_("なんかへんなの")},
+						{"chara": "koishi","serif":_("わるもの？")},
 					],
 				]},
 			],
@@ -102,14 +102,14 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getruby"], "serifs": [
 					// ルビー獲得後
 					[
-						{"chara": "koishi","serif":"やっぱりちょっと気持ち悪い"},
+						{"chara": "koishi","serif":_("やっぱりちょっと気持ち悪い")},
 					],
 					// ルビー獲得前
 					[
 						{"id": "chapter3_09_getruby", "save": true},
 						// ルビー獲得
-						{"chara": "koishi","serif":"やっぱりここにあった！", "option": {"getItem": "17"}},
-						{"chara": "koishi","serif":"ありがとう！"},
+						{"chara": "koishi","serif":_("やっぱりここにあった！"), "option": {"getItem": "17"}},
+						{"chara": "koishi","serif":_("ありがとう！")},
 					],
 				]},
 			],
@@ -133,8 +133,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "胸像",
 			serif: [
-				{"chara": "koishi","serif":"まっしろだわ！"},
-				{"chara": "koishi","serif":"これスノーマンかしら"},
+				{"chara": "koishi","serif":_("まっしろだわ！")},
+				{"chara": "koishi","serif":_("これスノーマンかしら")},
 			],
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "serifs": [
@@ -143,10 +143,10 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09-Event-_30360"], "serifs": [
 							// 爆破イベント後
 							[
-								{"chara": I,"serif":"責任についてどう思っているんだ"},
-								{"chara": "koishi","serif":"なにが"},
-								{"chara": I,"serif":"約束や責任を何だと思っているんだ！"},
-								{"chara": "koishi","serif":"しらなーい"},
+								{"chara": I,"serif":_("責任についてどう思っているんだ")},
+								{"chara": "koishi","serif":_("なにが")},
+								{"chara": I,"serif":_("約束や責任を何だと思っているんだ！")},
+								{"chara": "koishi","serif":_("しらなーい")},
 							],
 							// 爆破イベント前
 							[
@@ -159,10 +159,10 @@ module.exports = {
 						]},
 					],
 					[
-						{"chara": I,"serif":"責任についてどう思っているんだ"},
-						{"chara": "koishi","serif":"なにが"},
-						{"chara": I,"serif":"約束や責任を何だと思っているんだ！"},
-						{"chara": "koishi","serif":"しらなーい"},
+						{"chara": I,"serif":_("責任についてどう思っているんだ")},
+						{"chara": "koishi","serif":_("なにが")},
+						{"chara": I,"serif":_("約束や責任を何だと思っているんだ！")},
+						{"chara": "koishi","serif":_("しらなーい")},
 					],
 				]},
 			],

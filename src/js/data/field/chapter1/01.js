@@ -50,8 +50,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "看板",
 			serif: [
-				{"chara": "koishi","serif": "こーえん？"},
-				{"chara": "koishi","serif": "いってもいいかな"},
+				{"chara": "koishi","serif":_("こーえん？")},
+				{"chara": "koishi","serif":_("いってもいいかな")},
 			],
 			x: 1189.50*2/3, y: 576*2/3,
 			scale: 2/3,

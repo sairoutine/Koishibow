@@ -64,19 +64,19 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_08-" + I + "-talk01"], "serifs": [
 					[
 						{"id": "chapter1_10-secretBase-02", "save": true},
-						{"chara": I, "exp": "kyoko-ura_reaction_02", "serif":"だいきらいなのに離れたくないもの、なーんだ？"},
+						{"chara": I, "exp": "kyoko-ura_reaction_02", "serif":_("だいきらいなのに離れたくないもの、なーんだ？")},
 					],
 					[
-						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"私が話しても誰も返事しない"},
-						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"…………"},
-						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"…………"},
-						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"…………"},
-						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"…………"},
-						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"だから黙ってなきゃ"},
-						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"…………"},
-						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"…………"},
-						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"…………"},
-						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":"…………"},
+						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":_("私が話しても誰も返事しない")},
+						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":_("…………")},
+						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":_("…………")},
+						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":_("…………")},
+						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":_("…………")},
+						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":_("だから黙ってなきゃ")},
+						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":_("…………")},
+						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":_("…………")},
+						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":_("…………")},
+						{"chara": I, "exp": "kyoko-ura_reaction_01", "serif":_("…………")},
 					],
 				]}
 
@@ -87,35 +87,35 @@ module.exports = {
 					[
 						{"id": "chapter1_08-" + I + "-_useItem-07", "save": true},
 						// 1-17
-						{"chara": I, "exp": "kyoko-reaction_01", "serif":"............", "option": {"useItem": "07"}},
-						{"chara": I, "exp": "kyoko-reaction_02", "serif":"！！", "option": {
+						{"chara": I, "exp": "kyoko-reaction_01", "serif":_("............"), "option": {"useItem": "07"}},
+						{"chara": I, "exp": "kyoko-reaction_02", "serif":_("！！"), "option": {
 							"fontSize": 12,
 						}},
-						{"chara": "koishi",        "exp": "back", "serif":"えっなに？"},
-						{"chara": I, "exp": "kyoko-reaction_03", "serif":"ごあいさつしていい？"},
-						{"chara": "koishi",        "exp": "back", "serif":"なにが？"},
-						{"chara": I, "exp": "kyoko-reaction_03", "serif":"ごあいさつ！"},
-						{"chara": "koishi",        "exp": "back", "serif":"ごあいさつって？"},
-						{"chara": I, "exp": "kyoko-reaction_04", "serif":"こ", "option": {
+						{"chara": "koishi",        "exp": "back", "serif":_("えっなに？")},
+						{"chara": I, "exp": "kyoko-reaction_03", "serif":_("ごあいさつしていい？")},
+						{"chara": "koishi",        "exp": "back", "serif":_("なにが？")},
+						{"chara": I, "exp": "kyoko-reaction_03", "serif":_("ごあいさつ！")},
+						{"chara": "koishi",        "exp": "back", "serif":_("ごあいさつって？")},
+						{"chara": I, "exp": "kyoko-reaction_04", "serif":_("こ"), "option": {
 							"fontSize": 30,
 						}},
-						{"chara": I, "exp": "kyoko-reaction_04", "serif":"ん", "option": {
+						{"chara": I, "exp": "kyoko-reaction_04", "serif":_("ん"), "option": {
 							"fontSize": 30,
 						}},
-						{"chara": I, "exp": "kyoko-reaction_04", "serif":"ち", "option": {
+						{"chara": I, "exp": "kyoko-reaction_04", "serif":_("ち"), "option": {
 							"fontSize": 30,
 						}},
-						{"chara": I, "exp": "kyoko-reaction_04", "serif":"は～～～！", "option": {
+						{"chara": I, "exp": "kyoko-reaction_04", "serif":_("は～～～！"), "option": {
 							"fontSize": 30,
 						}},
-						{"chara": I, "exp": "kyoko-reaction_05", "serif":"先生は黙りなさいっていうの。\nしゃべっていいんでしょ？"},
-						{"chara": "koishi",        "exp": "back", "serif":"しゃべっちゃだめだったの？"},
-						{"chara": I, "exp": "kyoko-reaction_06", "serif":"ううん！先生いないから！"},
-						{"chara": I, "exp": "kyoko-reaction_06", "serif":"先生いなくてもだまってたんだ"},
-						{"chara": I, "exp": "kyoko-reaction_06", "serif":"みんながうるさいっていうから"},
-						{"chara": I, "exp": "kyoko-reaction_06", "serif":"おしゃべりたのしいよね！"},
-						{"chara": I, "exp": "kyoko-reaction_06", "serif":"まえはおしゃべりしてくれるひと\nたくさんいたのにね！"},
-						{"chara": I, "exp": "kyoko-reaction_06", "serif":"あっはっはっは", "option":{
+						{"chara": I, "exp": "kyoko-reaction_05", "serif":_("先生は黙りなさいっていうの。\nしゃべっていいんでしょ？")},
+						{"chara": "koishi",        "exp": "back", "serif":_("しゃべっちゃだめだったの？")},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":_("ううん！先生いないから！")},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":_("先生いなくてもだまってたんだ")},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":_("みんながうるさいっていうから")},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":_("おしゃべりたのしいよね！")},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":_("まえはおしゃべりしてくれるひと\nたくさんいたのにね！")},
+						{"chara": I, "exp": "kyoko-reaction_06", "serif":_("あっはっはっは"), "option":{
 							"fontSize": 30,
 							"fontName": "ＭＳ Ｐ明朝",
 						}},
@@ -124,11 +124,11 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["09"], "serifs": [
 							[
 								{"id": "chapter1_08-" + I + "-_useItem-09", "save": true},
-								{"chara": I, "exp": "kyoko-reaction_05", "serif":"うわ！", "option": {"useItem": "09"}},
-								{"chara": I, "exp": "kyoko-reaction_06", "serif":"これ飛ぶ奴だよね！"},
-								{"chara": I, "exp": "kyoko-reaction_07", "serif":"わーっ......"},
-								{"chara": I, "exp": "kyoko-reaction_07", "serif":"これどこまで飛ぶかなあ"},
-								{"chara": I, "exp": "kyoko-reaction_07", "serif":"やってみようよ", "option": {
+								{"chara": I, "exp": "kyoko-reaction_05", "serif":_("うわ！"), "option": {"useItem": "09"}},
+								{"chara": I, "exp": "kyoko-reaction_06", "serif":_("これ飛ぶ奴だよね！")},
+								{"chara": I, "exp": "kyoko-reaction_07", "serif":_("わーっ......")},
+								{"chara": I, "exp": "kyoko-reaction_07", "serif":_("これどこまで飛ぶかなあ")},
+								{"chara": I, "exp": "kyoko-reaction_07", "serif":_("やってみようよ"), "option": {
 									"showPicture": "picture_chapter1-08-illust-01",
 								}},
 							],
@@ -137,17 +137,17 @@ module.exports = {
 									[
 										{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_08-" + I + "limit-01", 1], "serifs": [
 											[
-												{"chara": I, "exp": "kyoko-reaction_03", "serif":"え？"},
-												{"chara": I, "exp": "kyoko-reaction_03", "serif":"わたしあの子のことあんまり知らない"},
-												{"chara": I, "exp": "kyoko-reaction_03", "serif":"だっていっつも怒ってるから"},
+												{"chara": I, "exp": "kyoko-reaction_03", "serif":_("え？")},
+												{"chara": I, "exp": "kyoko-reaction_03", "serif":_("わたしあの子のことあんまり知らない")},
+												{"chara": I, "exp": "kyoko-reaction_03", "serif":_("だっていっつも怒ってるから")},
 											],
 											[
 												{"id": "chapter1_08-" + I + "-talk01", "save": true},
-												{"chara": "koishi",        "exp": "back", "serif":"ひつみきちってしってる？"},
-												{"chara": I, "exp": "kyoko-reaction_02", "serif":"知ってるよ！"},
-												{"chara": I, "exp": "kyoko-reaction_02", "serif":"あのね！"},
-												{"chara": I, "exp": "kyoko-reaction_01", "serif":"あーでもこれ秘密だった"},
-												{"chara": I, "exp": "kyoko-reaction_01", "serif":"秘密基地だから……"},
+												{"chara": "koishi",        "exp": "back", "serif":_("ひつみきちってしってる？")},
+												{"chara": I, "exp": "kyoko-reaction_02", "serif":_("知ってるよ！")},
+												{"chara": I, "exp": "kyoko-reaction_02", "serif":_("あのね！")},
+												{"chara": I, "exp": "kyoko-reaction_01", "serif":_("あーでもこれ秘密だった")},
+												{"chara": I, "exp": "kyoko-reaction_01", "serif":_("秘密基地だから……")},
 											],
 										]},
 									],
@@ -158,42 +158,42 @@ module.exports = {
 											[
 												{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_08-" + I + "limit-02", 1], "serifs": [
 													[
-														{"chara": "koishi",        "exp": "back", "serif":"ねえ、なにしてるの？"},
-														{"chara": I, "exp": "kyoko-reaction_03", "serif":"えー？"},
-														{"chara": I, "exp": "kyoko-reaction_03", "serif":"えっとねー"},
-														{"chara": I, "exp": "kyoko-reaction_03", "serif":"先生がやりなさいって言ったやつ！"},
-														{"chara": I, "exp": "kyoko-reaction_02", "serif":"わたしたちけんかいっつもするの！"},
-														{"chara": I, "exp": "kyoko-reaction_02", "serif":"だから先生がみんなで遊べるからって言ったの"},
-														{"chara": I, "exp": "kyoko-wait", "serif":"これだったらいいんだって！"},
-														{"chara": "koishi",        "exp": "back", "serif":"楽しいの？"},
-														{"chara": I, "exp": "kyoko-wait", "serif":"そんなにたのしくないよ！"},
-														{"chara": I, "exp": "kyoko-wait", "serif":"でもみんなこれしかやらないから"},
-														{"chara": I, "exp": "kyoko-reaction_03", "serif":"わたしはおしゃべり禁止だし……"},
-														{"chara": I, "exp": "kyoko-reaction_01", "serif":"だれもおしゃべりしてくれないから……"},
+														{"chara": "koishi",        "exp": "back", "serif":_("ねえ、なにしてるの？")},
+														{"chara": I, "exp": "kyoko-reaction_03", "serif":_("えー？")},
+														{"chara": I, "exp": "kyoko-reaction_03", "serif":_("えっとねー")},
+														{"chara": I, "exp": "kyoko-reaction_03", "serif":_("先生がやりなさいって言ったやつ！")},
+														{"chara": I, "exp": "kyoko-reaction_02", "serif":_("わたしたちけんかいっつもするの！")},
+														{"chara": I, "exp": "kyoko-reaction_02", "serif":_("だから先生がみんなで遊べるからって言ったの")},
+														{"chara": I, "exp": "kyoko-wait", "serif":_("これだったらいいんだって！")},
+														{"chara": "koishi",        "exp": "back", "serif":_("楽しいの？")},
+														{"chara": I, "exp": "kyoko-wait", "serif":_("そんなにたのしくないよ！")},
+														{"chara": I, "exp": "kyoko-wait", "serif":_("でもみんなこれしかやらないから")},
+														{"chara": I, "exp": "kyoko-reaction_03", "serif":_("わたしはおしゃべり禁止だし……")},
+														{"chara": I, "exp": "kyoko-reaction_01", "serif":_("だれもおしゃべりしてくれないから……")},
 													],
 													[
-														{"chara": I, "exp": "kyoko-reaction_03", "serif":"むかしね、みんなあかちゃんだったでしょ！"},
-														{"chara": "koishi",        "exp": "back", "serif":"そうなの？"},
-														{"chara": I, "exp": "kyoko-reaction_03", "serif":"あかちゃんはいいよねー\nしゃべったら\nほめてくれるんだもん！"},
-														{"chara": I, "exp": "kyoko-reaction_02", "serif":"ねえねえ、空の上には極楽があるって\n先生はいうんだけどさあ！"},
-														{"chara": "koishi",        "exp": "back", "serif":"うん"},
-														{"chara": I, "exp": "kyoko-reaction_02", "serif":"ぜったいうそだよねー！"},
-														{"chara": I, "exp": "kyoko-reaction_02", "serif":"だってみえないんだもん"},
-														{"chara": I, "exp": "kyoko-reaction_02", "serif":"お空に飛べたらぶつかっちゃうしね"},
+														{"chara": I, "exp": "kyoko-reaction_03", "serif":_("むかしね、みんなあかちゃんだったでしょ！")},
+														{"chara": "koishi",        "exp": "back", "serif":_("そうなの？")},
+														{"chara": I, "exp": "kyoko-reaction_03", "serif":_("あかちゃんはいいよねー\nしゃべったら\nほめてくれるんだもん！")},
+														{"chara": I, "exp": "kyoko-reaction_02", "serif":_("ねえねえ、空の上には極楽があるって\n先生はいうんだけどさあ！")},
+														{"chara": "koishi",        "exp": "back", "serif":_("うん")},
+														{"chara": I, "exp": "kyoko-reaction_02", "serif":_("ぜったいうそだよねー！")},
+														{"chara": I, "exp": "kyoko-reaction_02", "serif":_("だってみえないんだもん")},
+														{"chara": I, "exp": "kyoko-reaction_02", "serif":_("お空に飛べたらぶつかっちゃうしね")},
 													],
 												]},
 											],
 											// マイクを使用するまえ
 											[
 												// 1-16
-												{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-												{"chara": "koishi",        "exp": "back", "serif":"あなた、どうしておくちがあかないの？"},
-												{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-												{"chara": "koishi",        "exp": "back", "serif":"............"},
-												{"chara": "koishi",        "exp": "back", "serif":"ねえ、あそばないの？"},
-												{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
-												{"chara": "koishi",        "exp": "back", "serif":"ねえ？"},
-												{"chara": I, "exp": "kyoko-reaction_01", "serif":"............"},
+												{"chara": I, "exp": "kyoko-reaction_01", "serif":_("............")},
+												{"chara": "koishi",        "exp": "back", "serif":_("あなた、どうしておくちがあかないの？")},
+												{"chara": I, "exp": "kyoko-reaction_01", "serif":_("............")},
+												{"chara": "koishi",        "exp": "back", "serif":_("............")},
+												{"chara": "koishi",        "exp": "back", "serif":_("ねえ、あそばないの？")},
+												{"chara": I, "exp": "kyoko-reaction_01", "serif":_("............")},
+												{"chara": "koishi",        "exp": "back", "serif":_("ねえ？")},
+												{"chara": I, "exp": "kyoko-reaction_01", "serif":_("............")},
 											],
 										]}
 									],

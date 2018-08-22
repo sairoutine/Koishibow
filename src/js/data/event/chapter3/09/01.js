@@ -11,15 +11,15 @@ module.exports = {
 	serifs: [
 		/*
 		// こいし
-		{"exp": "chapter3-09-event-01-obj01", "serif":"おまたせ", "option": {"x": 470, "y": 240, "loop": false}},
+		{"exp": "chapter3-09-event-01-obj01", "serif":_("おまたせ"), "option": {"x": 470, "y": 240, "loop": false}},
 		// フラン
-		{"exp": "chapter3-09-event-01-obj01", "serif":"おまたせ", "option": {"x": 550, "y": 240, "loop": false}},
+		{"exp": "chapter3-09-event-01-obj01", "serif":_("おまたせ"), "option": {"x": 550, "y": 240, "loop": false}},
 		*/
-		{"exp": "chapter3-09-event-01-obj01", "serif":"どうしたの？", "option": {"x": 550, "y": 240, "loop": false}},
-		{"exp": null, "serif":"この下が気になるの？", "option": {"x": 550, "y": 240, "loop": false}},
-		{"exp": null, "serif":"そうなの", "option": {"x": 470, "y": 240, "loop": false}},
-		{"exp": null, "serif":"じゃあねー", "option": {"x": 550, "y": 240, "loop": false}},
-		{"exp": null, "serif":"はいこれ！", "option": {"x": 550, "y": 240, "loop": false}},
+		{"exp": "chapter3-09-event-01-obj01", "serif":_("どうしたの？"), "option": {"x": 550, "y": 240, "loop": false}},
+		{"exp": null, "serif":_("この下が気になるの？"), "option": {"x": 550, "y": 240, "loop": false}},
+		{"exp": null, "serif":_("そうなの"), "option": {"x": 470, "y": 240, "loop": false}},
+		{"exp": null, "serif":_("じゃあねー"), "option": {"x": 550, "y": 240, "loop": false}},
+		{"exp": null, "serif":_("はいこれ！"), "option": {"x": 550, "y": 240, "loop": false}},
 	],
 	endAnime: "chapter3-09-event-01-obj02",
 	endSounds: [

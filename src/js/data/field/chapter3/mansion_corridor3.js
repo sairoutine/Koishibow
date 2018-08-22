@@ -20,9 +20,9 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "振子時計",
 			serif: [
-				{"chara": "koishi","serif":"あれ？"},
-				{"chara": "koishi","serif":"動いてないな"},
-				{"chara": "koishi","serif":"寝ちゃったの？"},
+				{"chara": "koishi","serif":_("あれ？")},
+				{"chara": "koishi","serif":_("動いてないな")},
+				{"chara": "koishi","serif":_("寝ちゃったの？")},
 			],
 			x: 145,
 			y: 230,
@@ -38,8 +38,8 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "雪",
 			serif: [
-				{"chara": "koishi","serif":"雪！"},
-				{"chara": "koishi","serif":"つめたーい", "option": {"changeField": "chapter3_07"}},
+				{"chara": "koishi","serif":_("雪！")},
+				{"chara": "koishi","serif":_("つめたーい"), "option": {"changeField": "chapter3_07"}},
 			],
 			width: 400, height: 1000,
 			action_name: "touch",

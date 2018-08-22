@@ -39,88 +39,88 @@ module.exports = {
 			serif: [
 				{"type": "criteria_serif", "criteria": "circulate", "arguments": ["chapter1_04-" + I + "circulate", 19], "serifs": [
 					[
-						{"chara": I,"serif":"ぷーーーー"},
+						{"chara": I,"serif":_("ぷーーーー")},
 					],
 					[
-						{"chara": I,"serif":"ぷーっぷーっぷーっ"},
+						{"chara": I,"serif":_("ぷーっぷーっぷーっ")},
 					],
 					[
-						{"chara": I,"serif":"泣いてる子だあれ？泣いてる子は迎えに行くよ"},
+						{"chara": I,"serif":_("泣いてる子だあれ？泣いてる子は迎えに行くよ")},
 					],
 					[
-						{"chara": I,"serif":"らりるれろ！らりるれろ！らりるれろ！"},
+						{"chara": I,"serif":_("らりるれろ！らりるれろ！らりるれろ！")},
 					],
 					[
-						{"chara": I,"serif":"そこで見てるのだれ？"},
+						{"chara": I,"serif":_("そこで見てるのだれ？")},
 					],
 					[
-						{"chara": I,"serif":"もしもし、どなた？"},
+						{"chara": I,"serif":_("もしもし、どなた？")},
 					],
 					[
-						{"chara": I,"serif":"もしもし？"},
+						{"chara": I,"serif":_("もしもし？")},
 					],
 					[
-						{"chara": I,"serif":"あなたなの？"},
+						{"chara": I,"serif":_("あなたなの？")},
 					],
 					[
-						{"chara": I,"serif":"はい わたしです"},
-						{"chara": I,"serif":"はい"},
-						{"chara": I,"serif":"問題なく"},
-						{"chara": I,"serif":"はい"},
-						{"chara": I,"serif":"すべてをやり直せます"},
-						{"chara": I,"serif":"彼女はいまも眠っています"},
-						{"chara": I,"serif":"心的外傷を癒す時が来たのです"},
-						{"chara": I,"serif":"彼女こそあなたの”ソフィー”です"},
+						{"chara": I,"serif":_("はい わたしです")},
+						{"chara": I,"serif":_("はい")},
+						{"chara": I,"serif":_("問題なく")},
+						{"chara": I,"serif":_("はい")},
+						{"chara": I,"serif":_("すべてをやり直せます")},
+						{"chara": I,"serif":_("彼女はいまも眠っています")},
+						{"chara": I,"serif":_("心的外傷を癒す時が来たのです")},
+						{"chara": I,"serif":_("彼女こそあなたの”ソフィー”です")},
 					],
 					[
-						{"chara": I,"serif":"もしもし？"},
+						{"chara": I,"serif":_("もしもし？")},
 					],
 					[
-						{"chara": I,"serif":"迷惑なんですけど！"},
+						{"chara": I,"serif":_("迷惑なんですけど！")},
 					],
 					[
-						{"chara": I,"serif":"ひょっとしてメリーさん？"},
+						{"chara": I,"serif":_("ひょっとしてメリーさん？")},
 					],
 					[
-						{"chara": I,"serif":"やめなさいよ！"},
+						{"chara": I,"serif":_("やめなさいよ！")},
 					],
 					[
-						{"chara": I,"serif":"もうかけてこないで！"},
+						{"chara": I,"serif":_("もうかけてこないで！")},
 					],
 					[
-						{"chara": I,"serif":"ごめんなさい！"},
+						{"chara": I,"serif":_("ごめんなさい！")},
 					],
 					[
-						{"chara": I,"serif":"おねがいします！"},
+						{"chara": I,"serif":_("おねがいします！")},
 					],
 					[
-						{"chara": I,"serif":"おかけになった電話番号は\n現在使われておりません"},
+						{"chara": I,"serif":_("おかけになった電話番号は\n現在使われておりません")},
 					],
 					[
-						{"chara": I,"serif":"天気予告をお知らせいたします。"},
-						{"chara": I,"serif":"明日の天気はハレ、明日の天気はハレ"},
+						{"chara": I,"serif":_("天気予告をお知らせいたします。")},
+						{"chara": I,"serif":_("明日の天気はハレ、明日の天気はハレ")},
 					],
 					[
-						{"chara": I,"serif":"こんにちは"},
-						{"chara": I,"serif":"おでんわありがとう！"},
-						{"chara": I,"serif":"おはなししましょ！"},
-						{"chara": I,"serif":"ばいばーい！"},
+						{"chara": I,"serif":_("こんにちは")},
+						{"chara": I,"serif":_("おでんわありがとう！")},
+						{"chara": I,"serif":_("おはなししましょ！")},
+						{"chara": I,"serif":_("ばいばーい！")},
 					],
 					[
-						{"chara": I,"serif":"火事ですか救急ですか？"},
-						{"chara": "koishi","serif":"あのね、何でもないです"},
+						{"chara": I,"serif":_("火事ですか救急ですか？")},
+						{"chara": "koishi","serif":_("あのね、何でもないです")},
 					],
 					[
-						{"chara": I,"serif":"火事ですか救急ですか？"},
-						{"chara": I,"serif":"あのね、何でもないです"},
+						{"chara": I,"serif":_("火事ですか救急ですか？")},
+						{"chara": I,"serif":_("あのね、何でもないです")},
 					],
 					[
-						{"chara": I,"serif":"申します申します、どちらへお繋しますか？"},
+						{"chara": I,"serif":_("申します申します、どちらへお繋しますか？")},
 					],
 					[
-						{"chara": I,"serif":"おかあさん"},
-						{"chara": I,"serif":"おかあさん"},
-						{"chara": I,"serif":"どうして？"},
+						{"chara": I,"serif":_("おかあさん")},
+						{"chara": I,"serif":_("おかあさん")},
+						{"chara": I,"serif":_("どうして？")},
 					],
 				]}
 			],
@@ -150,21 +150,21 @@ module.exports = {
 					[
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_04-" + I + "-_getItem-08"], "serifs": [
 							[
-								{"chara": I, "serif":"熊手は役に立ったかい？"},
-								{"chara": I, "serif":"今度はちゃんとお金をもらってくるんだぞ！"},
+								{"chara": I, "serif":_("熊手は役に立ったかい？")},
+								{"chara": I, "serif":_("今度はちゃんとお金をもらってくるんだぞ！")},
 							],
 							[
 								{"id": "chapter1_04-" + I + "-_getItem-08", "save": true},
-								{"chara": "koishi","serif":"熊手ある？"},
-								{"chara": I, "serif":"オッ熊手が欲しいのかい！"},
-								{"chara": I, "serif":"それなら、えー"},
-								{"chara": I, "serif":"500だ！"},
-								{"chara": "koishi","serif":"500って、お金のこと？"},
-								{"chara": I, "serif":"さ、お財布見せてごらん！"},
-								{"chara": "koishi","serif":"お財布もってないの"},
-								{"chara": "koishi","serif":"でも水道さんが困ってるから......"},
-								{"chara": I, "serif":"......"},
-								{"chara": I, "serif":"わかった、貸すだけだぞ！", "option": {
+								{"chara": "koishi","serif":_("熊手ある？")},
+								{"chara": I, "serif":_("オッ熊手が欲しいのかい！")},
+								{"chara": I, "serif":_("それなら、えー")},
+								{"chara": I, "serif":_("500だ！")},
+								{"chara": "koishi","serif":_("500って、お金のこと？")},
+								{"chara": I, "serif":_("さ、お財布見せてごらん！")},
+								{"chara": "koishi","serif":_("お財布もってないの")},
+								{"chara": "koishi","serif":_("でも水道さんが困ってるから......")},
+								{"chara": I, "serif":_("......")},
+								{"chara": I, "serif":_("わかった、貸すだけだぞ！"), "option": {
 									getItem: "08", // 熊手
 								}},
 							],
@@ -172,12 +172,12 @@ module.exports = {
 					],
 					[
 						// 1-7
-						{"chara": I,"serif":"いらっしゃい！"},
-						{"chara": "koishi","serif":"ここなにやさんなの？"},
-						{"chara": I,"serif":"何でも売ってるよ！"},
-						{"chara": "koishi","serif":"全部屋さん......？"},
-						{"chara": I,"serif":"そうよ！なにが欲しいのかしら？"},
-						{"chara": "koishi","serif":"なにがほしいんだろう……"},
+						{"chara": I,"serif":_("いらっしゃい！")},
+						{"chara": "koishi","serif":_("ここなにやさんなの？")},
+						{"chara": I,"serif":_("何でも売ってるよ！")},
+						{"chara": "koishi","serif":_("全部屋さん......？")},
+						{"chara": I,"serif":_("そうよ！なにが欲しいのかしら？")},
+						{"chara": "koishi","serif":_("なにがほしいんだろう……")},
 					],
 
 				]}

@@ -20,7 +20,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ストレッチャー",
 			serif: [
-				{"chara": "koishi","serif": "へんなベッド"},
+				{"chara": "koishi","serif":_("へんなベッド")},
 			],
 			x: 814,
 			y: 608,
@@ -37,7 +37,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
 			serif: [
-				{"chara": "koishi","serif":"くすりはいらない……"},
+				{"chara": "koishi","serif":_("くすりはいらない……")},
 			],
 			x: 279,
 			y: 378,
@@ -49,8 +49,8 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "救急箱",
 			serif: [
-				{"chara": "koishi","serif": "くーくーばこ！"},
-				{"chara": "koishi","serif": "けがしてないよ！"},
+				{"chara": "koishi","serif":_("くーくーばこ！")},
+				{"chara": "koishi","serif":_("けがしてないよ！")},
 			],
 			x: 281,
 			y: 280,
@@ -65,7 +65,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "メス",
 			serif: [
-				{"chara": "koishi","serif":"ナイフ"},
+				{"chara": "koishi","serif":_("ナイフ")},
 			],
 			x: 853,
 			y: 534,

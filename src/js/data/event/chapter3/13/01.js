@@ -19,23 +19,23 @@ module.exports = {
 	serifs: [
 		/*
 		// こいし
-		{"exp": "chapter3-13-event-01-obj01", "serif":"11111111", "option": {"x": 250, "y": 283, "loop": false}},
+		{"exp": "chapter3-13-event-01-obj01", "serif":_("11111111"), "option": {"x": 250, "y": 283, "loop": false}},
 		// フラン
-		{"exp": "chapter3-13-event-01-obj01", "serif":"22222222", "option": {"x": 491, "y": 200, "loop": false}},
+		{"exp": "chapter3-13-event-01-obj01", "serif":_("22222222"), "option": {"x": 491, "y": 200, "loop": false}},
 		// チルノ
-		{"exp": "chapter3-13-event-01-obj02", "serif":"33333333", "option": {"x": 470, "y": 200, "loop": false}},
+		{"exp": "chapter3-13-event-01-obj02", "serif":_("33333333"), "option": {"x": 470, "y": 200, "loop": false}},
 		*/
 
-		{"exp": null, "serif":"これがいいアイデアなの？", "option": {"x": 470, "y": 200, "loop": false}},
-		{"exp": null, "serif":"この子と一緒にやるの？", "option": {"x": 470, "y": 200, "loop": false}},
-		{"exp": null, "serif":"うん", "option": {"x": 250, "y": 283, "loop": false}},
-		{"exp": "chapter3-13-event-01-obj02", "serif":"だって作り方知らないから", "option": {"x": 250, "y": 283, "loop": false}},
-		{"exp": "chapter3-13-event-01-obj03", "serif":"わかったわよ！", "option": {"x": 470, "y": 200, "loop": false}},
-		{"exp": null, "serif":"じゃあほら、とっととやりましょう", "option": {"x": 470, "y": 200, "loop": false}},
-		{"exp": null, "serif":"でもせかいいちなのよ！\nせかいいち、作れるの？", "option": {"x": 470, "y": 200, "loop": false}},
-		{"exp": null, "serif":"もちろんよ", "option": {"x": 491, "y": 200, "loop": false}},
-		{"exp": null, "serif":"私だって世界一の達人なのよ", "option": {"x": 491, "y": 200, "loop": false}},
-		{"exp": null, "serif":"おねえちゃんがそう言ったんだから", "option": {"x": 491, "y": 200, "loop": false}},
+		{"exp": null, "serif":_("これがいいアイデアなの？"), "option": {"x": 470, "y": 200, "loop": false}},
+		{"exp": null, "serif":_("この子と一緒にやるの？"), "option": {"x": 470, "y": 200, "loop": false}},
+		{"exp": null, "serif":_("うん"), "option": {"x": 250, "y": 283, "loop": false}},
+		{"exp": "chapter3-13-event-01-obj02", "serif":_("だって作り方知らないから"), "option": {"x": 250, "y": 283, "loop": false}},
+		{"exp": "chapter3-13-event-01-obj03", "serif":_("わかったわよ！"), "option": {"x": 470, "y": 200, "loop": false}},
+		{"exp": null, "serif":_("じゃあほら、とっととやりましょう"), "option": {"x": 470, "y": 200, "loop": false}},
+		{"exp": null, "serif":_("でもせかいいちなのよ！\nせかいいち、作れるの？"), "option": {"x": 470, "y": 200, "loop": false}},
+		{"exp": null, "serif":_("もちろんよ"), "option": {"x": 491, "y": 200, "loop": false}},
+		{"exp": null, "serif":_("私だって世界一の達人なのよ"), "option": {"x": 491, "y": 200, "loop": false}},
+		{"exp": null, "serif":_("おねえちゃんがそう言ったんだから"), "option": {"x": 491, "y": 200, "loop": false}},
 	],
 	endProcess: [
 		// チルノとフランを 3-8 → 3-13 へ移動
