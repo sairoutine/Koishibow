@@ -1,4 +1,5 @@
 'use strict';
+var _ = require('i18n4v')
 
 // TODO: ジャーナルに行くボタン
 var base_scene = require('./base');
@@ -12,6 +13,22 @@ var ItemMasterRepository = require("../../repository/item");
 
 var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
 var ObjectMenuItemNonUsable = require('../../object/menu_item/non_usable');
+
+// メニュー一覧
+var MENU_BUTTONS = [
+	{
+		property: "use_button",
+		value: _("使用"),
+	},
+	{
+		property: "examine_button",
+		value: _("調べる"),
+	},
+	{
+		property: "combine_button",
+		value: _("組み合わせる"),
+	}
+];
 
 var SceneSubStageMenu = function(core) {
 	base_scene.apply(this, arguments);
@@ -104,21 +121,6 @@ SceneSubStageMenu.prototype.init = function(){
 };
 
 SceneSubStageMenu.prototype._setupMenuButtons = function() {
-	var menu_buttons = [
-		{
-			property: "use_button",
-			value: "使用",
-		},
-		{
-			property: "examine_button",
-			value: "調べる",
-		},
-		{
-			property: "combine_button",
-			value: "組み合わせる",
-		}
-	];
-
 	var basePosX = 300;
 	var basePosY = this.root().height - 165 + 105/3;
 	var buttonWidth  = 250*2/3;
@@ -126,8 +128,8 @@ SceneSubStageMenu.prototype._setupMenuButtons = function() {
 	var buttonMarginWidth  = 15;
 
 	var self = this;
-	for (var i = 0, len = menu_buttons.length; i < len; i++) {
-		var conf = menu_buttons[i];
+	for (var i = 0, len = MENU_BUTTONS.length; i < len; i++) {
+		var conf = MENU_BUTTONS[i];
 
 		(function(conf) {
 			self[conf.property] = new UIParts(
