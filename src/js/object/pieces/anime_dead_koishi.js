@@ -3,6 +3,7 @@ var base_object = require('./base');
 var Util = require('../../hakurei').util;
 var SS = require('../anime_object');
 var AnimeMap = require('../../config/object_anime');
+var SERIF_LIST = require('../../data/dead_koishi_serif');
 
 var ObjectAnimeDeadKoishi = function(core) {
 	base_object.apply(this, arguments);
@@ -87,23 +88,6 @@ ObjectAnimeDeadKoishi.prototype.setWaitAnime = function() {
 };
 
 ObjectAnimeDeadKoishi.prototype._getSerif = function() {
-	var SERIF_LIST = [
-		"へたくそ",
-		"何のつもりなの？",
-		"あなたが悪いのよ",
-		"なんのつもり？",
-		"早く進みなさいよ",
-		"とっととねろ",
-		"誰のせいでこうなったと思う？",
-		"グズめ",
-		"お前はいつもそうだ",
-		"また約束破られた",
-		"こうなるってわからなかったの？",
-		"馬鹿ね",
-		"馬鹿",
-		"馬鹿じゃないの？",
-	];
-
 	var serif = SERIF_LIST[Math.floor(Math.random() * SERIF_LIST.length)];
 
 	return [
