@@ -5,6 +5,7 @@ var base_scene = require('./base');
 var Util = require('../../hakurei').util;
 var JournalMasterRepository = require('../../repository/journal');
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
+var CONSTANT = require('../../constant');
 
 var SceneSubStageJournal = function(core) {
 	base_scene.apply(this, arguments);
@@ -18,7 +19,16 @@ SceneSubStageJournal.prototype.init = function(journal_id){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// 表示するジャーナル画像名
-	this._picture_name = JournalMasterRepository.find(journal_id).image();
+	this._picture_name = null;
+
+	// 英語版
+	if (CONSTANT.LANGUAGE === 'en') {
+		this._picture_name = JournalMasterRepository.find(journal_id).imageEn();
+	}
+	// 日本語版
+	else {
+		this._picture_name = JournalMasterRepository.find(journal_id).imageJa();
+	}
 };
 
 SceneSubStageJournal.prototype.beforeDraw = function(){

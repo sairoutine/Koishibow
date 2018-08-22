@@ -8,7 +8,8 @@ var JournalMasterRepository = MasterRepositoryGenerator.exec(
 		id: "string",
 		type: "number",
 		title: "string",
-		image: "string",
+		imageJa: "string",
+		imageEn: "string",
 	},
 	{
 		pk: "id",
