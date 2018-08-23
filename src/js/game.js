@@ -4,22 +4,73 @@ var core = require('./hakurei').core;
 var util = require('./hakurei').util;
 var CONSTANT = require('./constant');
 
-var SaveManager = require('./save_manager');
+var StorageEvent   = require('./storage/event');
+var StorageItem    = require('./storage/item');
+var StorageJournal = require('./storage/journal');
+var StoragePiece   = require('./storage/piece');
+var StoragePlayer  = require('./storage/player');
 
 var SceneTitle = require('./scene/title');
 var SceneLeavingTitle = require('./scene/leaving_title');
 var SceneHowto = require('./scene/howto');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
+var SceneMovie = require('./hakurei').scene.movie;
+var SceneOpeningMovie = require('./scene/opening_movie');
+var SceneEventTalk = require('./scene/event_talk');
+var SceneEventTalkOld = require('./scene/event/event_talk_old');
+var SceneEventMovie = require('./scene/event_movie');
 var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
 var SceneEventForChapter0Last            = require('./scene/event/chapter0/last');
 var SceneEventForTrialLast               = require('./scene/event/trial_last');
+var SceneEventForChapter1SitAtBusstop    = require('./scene/event/chapter1/sit_at_busstop');
+var SceneEventForChapter1TalkWithMobu    = require('./scene/event/chapter1/talk_with_mobu');
+var SceneEventForChapter1PlayDoll        = require('./scene/event/chapter1/playdoll');
+var SceneEventForChapter1PlayWithMurasa  = require('./scene/event/chapter1/play_with_murasa');
+var SceneEventForChapter3GetupKoishi     = require('./scene/event/chapter3/getup_koishi');
 
+var FieldMasterRepository = require('./repository/field');
 
 
 var Game = function(canvas) {
 	core.apply(this, arguments);
 
+	// シーン一覧
+	this.scene_manager.addScene("loading", new SceneLoading(this));
+	this.scene_manager.addScene("title", new SceneTitle(this));
+	this.scene_manager.addScene("leaving_title", new SceneLeavingTitle(this));
+	this.scene_manager.addScene("howto", new SceneHowto(this));
+	this.scene_manager.addScene("stage", new SceneStage(this));
+	this.scene_manager.addScene("movie", new SceneMovie(this));
+	this.scene_manager.addScene("event_talk", new SceneEventTalk(this));
+	this.scene_manager.addScene("event_talk_old", new SceneEventTalkOld(this));
+	this.scene_manager.addScene("event_movie", new SceneEventMovie(this));
+
+	// chapter 開始時のmovie
+	this.scene_manager.addScene("opening_movie_chapter0", new SceneOpeningMovie(this).setArgs("chapter0"));
+	this.scene_manager.addScene("opening_movie_chapter1", new SceneOpeningMovie(this).setArgs("chapter1"));
+	this.scene_manager.addScene("opening_movie_chapter2", new SceneOpeningMovie(this).setArgs("chapter2"));
+	this.scene_manager.addScene("opening_movie_chapter3", new SceneOpeningMovie(this).setArgs("chapter3"));
+	this.scene_manager.addScene("opening_movie_chapter4", new SceneOpeningMovie(this).setArgs("chapter4"));
+	this.scene_manager.addScene("opening_movie_chapter5", new SceneOpeningMovie(this).setArgs("chapter5"));
+	this.scene_manager.addScene("opening_movie_chapter6", new SceneOpeningMovie(this).setArgs("chapter6"));
+
+	this.scene_manager.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
+	this.scene_manager.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
+	this.scene_manager.addScene("event_for_chapter1_sit_at_busstop", new SceneEventForChapter1SitAtBusstop(this));
+	this.scene_manager.addScene("event_for_chapter1_talk_with_mobu", new SceneEventForChapter1TalkWithMobu(this));
+	this.scene_manager.addScene("event_for_chapter1_playdoll", new SceneEventForChapter1PlayDoll(this));
+	this.scene_manager.addScene("event_for_chapter1_play_with_murasa", new SceneEventForChapter1PlayWithMurasa(this));
+	this.scene_manager.addScene("event_for_chapter3_getup_koishi", new SceneEventForChapter3GetupKoishi(this));
+	// 体験版 終了
+	this.scene_manager.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
+
+	// セーブデータ
+	this.save_manager.addClass("event",   StorageEvent);
+	this.save_manager.addClass("item",    StorageItem);
+	this.save_manager.addClass("journal", StorageJournal);
+	this.save_manager.addClass("piece",   StoragePiece);
+	this.save_manager.addClass("player",  StoragePlayer);
 };
 util.inherit(Game, core);
 
@@ -27,24 +78,8 @@ util.inherit(Game, core);
 Game.prototype.init = function () {
 	core.prototype.init.apply(this, arguments);
 
-	// カーソル設定
-	this.enableCursorImage("ui_icon_pointer_01");
-
-	// セーブデータ
-	this.save_manager = SaveManager.load();
-
-	// シーン一覧
-	this.addScene("loading", new SceneLoading(this));
-	this.addScene("title", new SceneTitle(this));
-	this.addScene("leaving_title", new SceneLeavingTitle(this));
-	this.addScene("howto", new SceneHowto(this));
-	this.addScene("stage", new SceneStage(this));
-	this.addScene("event_for_chapter0_encounter_satori", new SceneEventForChapter0EncounterSatori(this));
-	this.addScene("event_for_chapter0_last",             new SceneEventForChapter0Last(this));
-	this.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
-
 	// シーン遷移
-	this.changeScene("loading");
+	this.scene_manager.changeScene("loading");
 };
 
 
@@ -55,7 +90,9 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.setOn(dom);
 
 	// テキスト追加
-	this.debug_manager.addMenuText("マウスクリックで移動／調べる");
+	this.debug_manager.addMenuText("Zキー：決定、調べる");
+	this.debug_manager.addMenuText("Xキー：キャンセル、サードアイ使用／解除、押しっぱなしでライトの移動");
+	this.debug_manager.addMenuText("SPACEキー：メニュー開く／閉じる");
 
 	this.debug_manager.addMenuImage("https://api.travis-ci.org/sairoutine/Koishibow.svg?branch=gh-pages");
 
@@ -82,6 +119,7 @@ Game.prototype.setupDebug = function (dom) {
 	// ゲームデータ消去ボタン
 	this.debug_manager.addMenuButton("セーブクリア", function (game) {
 		game.save_manager.del();
+		game.reload();
 	});
 
 	this.debug_manager.addMenuButton("当たり判定表示", function (game) {
@@ -97,6 +135,15 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.addMenuButton("移動制限範囲非表示", function (game) {
 		game.debug_manager.set("is_show_immovable_area", false);
 	});
+
+	this.debug_manager.addMenuButton("FPS表示", function (game) {
+		game.debug_manager.setShowingFpsOn();
+	});
+	this.debug_manager.addMenuButton("FPS非表示", function (game) {
+		game.debug_manager.setShowingFpsOff();
+	});
+
+
 	/*
 	this.debug_manager.addMenuSelect("ライトの合成方法", [
 		{value: "source-over"},
@@ -145,6 +192,48 @@ Game.prototype.setupDebug = function (dom) {
 	], function (game, value) {
 		game.debug_manager.set("koishi_alpha", value);
 	});
+
+	this.debug_manager.addNewLine();
+
+	var amount = Math.floor(CONSTANT.MAX_3RDEYE_GAUGE/4);
+	this.debug_manager.addMenuButton("SAN値+" + amount, function (game) {
+		game.save_manager.player.gain3rdeyeGauge(amount);
+	});
+	this.debug_manager.addMenuButton("SAN値-" + amount, function (game) {
+		game.save_manager.player.reduce3rdeyeGauge(amount);
+	});
+	this.debug_manager.addMenuButton("SAN値 全回復", function (game) {
+		game.save_manager.player.gain3rdeyeGauge(CONSTANT.MAX_3RDEYE_GAUGE);
+	});
+	this.debug_manager.addMenuButton("SAN値 表示", function (game) {
+		game.debug_manager.set("is_show_3rdeye_gauge", true);
+	});
+	this.debug_manager.addMenuButton("SAN値 非表示", function (game) {
+		game.debug_manager.set("is_show_3rdeye_gauge", false);
+	});
+
+	var field_list = FieldMasterRepository.all()
+	var field_name_list = [];
+	for (var i = 0, len = field_list.length; i < len; i++) {
+		field_name_list.push({value: field_list[i].key()});
+	}
+	this.debug_manager.addMenuSelect("フィールド移動", field_name_list,
+	function (game, value) {
+		game.scene_manager.changeScene("stage", value);
+	});
+
+	this.debug_manager.addNewLine();
+
+	this.debug_manager.addUploadFileButton("SE／BGM 挿入", function (game, type, dataurl) {
+		if (!type.match('audio')) return;
+
+		game.audio_loader.playSoundByDataURL(dataurl);
+	}, "data_url");
+
+
+
+
+
 };
 
 module.exports = Game;

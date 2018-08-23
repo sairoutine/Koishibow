@@ -2,55 +2,63 @@
 
 var base_object = require('../../hakurei').object.base;
 var Util = require('../../hakurei').util;
-var CONSTANT = require('../../constant');
-var ItemConfig = require('../../config/item');
+var ItemMasterRepository = require("../../repository/item");
 
-var ObjectMenuItemBase = function(scene) {
+var ObjectMenuItemBase = function(scene, item_id, num) {
 	base_object.apply(this, arguments);
+
+	this._item_id = item_id;
+	this._num     = num;
 };
 Util.inherit(ObjectMenuItemBase, base_object);
-
-ObjectMenuItemBase.prototype.onCollision = function() {
-	if (this.core.input_manager.isLeftClickPush()) {
-		// アイテム選択 音
-		this.core.audio_loader.playSound("select_item");
-
-		// 選択中を自分に
-		this.scene.setFocusItem(this.item_id());
-	}
-	else {
-		// クリック可能を表すマウスカーソルに
-		//this.core.changeCursorImage("ui_icon_pointer_02");
-	}
-};
 
 ObjectMenuItemBase.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
-	var item_config = ItemConfig[this.item_id()];
-	var image;
+	var item_config = ItemMasterRepository.find(this.itemId());
 
-	if (this.scene.isFocusItem(this.item_id())) {
-		// 選択中でない画像
-		image = this.core.image_loader.getImage(item_config.selected_image_name);
+	var image = this.core.image_loader.getImage(item_config.imageName());
+
+	ctx.save();
+	ctx.translate(this.x(), this.y());
+
+	// 選択中の表示
+	if (this.scene.isFocusItem(this.itemId())) {
+		var selected = this.core.image_loader.getImage("item_selected");
+		var selected_width = selected.width * 2/3;
+		var selected_height = selected.height * 2/3;
+
+		ctx.drawImage(selected,
+			-selected_width/2,
+			-selected_height/2,
+			selected_width,
+			selected_height
+		);
 	}
-	else {
-		// 選択中 画像
-		image = this.core.image_loader.getImage(item_config.image_name);
-	}
+
 	var width = image.width * 2/3;
 	var height = image.height * 2/3;
 
-	ctx.save();
-
 	// アイテム画像 描画
-	ctx.translate(this.x(), this.y());
 	ctx.drawImage(image,
 		-width/2,
 		-height/2,
 		width,
 		height
 	);
+
+	// アイテム所持数 表示
+	if (this.num() > 1) {
+		ctx.font = "28px 'OradanoGSRR'";
+		//ctx.textAlign = 'center';
+		//ctx.textBaseAlign = 'middle';
+		ctx.fillStyle = 'rgb( 255, 255, 255 )';
+		ctx.fillText("x" + this.num(),
+			40,
+			40
+		);
+	}
+
 	ctx.restore();
 
 };
@@ -63,14 +71,25 @@ ObjectMenuItemBase.prototype.collisionHeight = function(){
 	return 128;
 };
 
-ObjectMenuItemBase.prototype.item_id = function() {
-	throw new Error("item_id method must be implemented");
+// アイテムID
+ObjectMenuItemBase.prototype.itemId = function() {
+	return this._item_id;
 };
+// アイテム所持数
+ObjectMenuItemBase.prototype.num = function() {
+	return this._num;
+};
+
 
 // アイテムが使用されたとき
 ObjectMenuItemBase.prototype.use = function(){
 	// 持ち物から削除
-	this.core.save_manager.deleteItem(this.item_id());
+	this.core.save_manager.item.reduceItem(this.itemId());
+};
+
+// 使用できるか否か判定
+ObjectMenuItemBase.prototype.isEnableToUse = function() {
+	return true;
 };
 
 module.exports = ObjectMenuItemBase;

@@ -3,6 +3,7 @@
 var base_scene = require('../hakurei').scene.base;
 
 var Util = require('../hakurei').util;
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 var CONSTANT = require('../constant');
 
 var HOWTO_IMAGE_RATIO = 3/4;
@@ -17,19 +18,19 @@ SceneHowto.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// フェードインする
-	this.setFadeIn(60, "black");
+	this.core.scene_manager.setFadeIn(60, "black");
 
 	// イベント再生後はフェードアウトする
-	this.setFadeOut(60, "black");
+	this.core.scene_manager.setFadeOut(60, "black");
 };
 
 
 SceneHowto.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	if(this.core.input_manager.isLeftClickPush()) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
 		this.core.audio_loader.playSound("show_journal");
-		this.core.changeScene("stage", "chapter0_myroom");
+		this.core.scene_manager.changeScene(CONSTANT.INITIAL_CHAPTER);
 	}
 };
 
@@ -45,7 +46,16 @@ SceneHowto.prototype.draw = function(){
 
 	ctx.save();
 
-	var howto = this.core.image_loader.getImage("howto");
+	var image_name;
+	// 英語版
+	if (CONSTANT.LANGUAGE === 'en') {
+		image_name = "howto_en";
+	}
+	// 日本語版
+	else {
+		image_name = "howto_ja";
+	}
+	var howto = this.core.image_loader.getImage(image_name);
 
 	ctx.translate(this.width/2, this.height/2);
 	ctx.drawImage(howto,

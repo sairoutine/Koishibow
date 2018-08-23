@@ -20,7 +20,6 @@ var gulp       = require('gulp');
 var source     = require('vinyl-source-stream');
 var uglify     = require("gulp-uglify");
 var rename     = require('gulp-rename');
-var plumber    = require('gulp-plumber');
 var runSequence= require('run-sequence');
 var path       = require('path');
 var notify     = require('gulp-notify');
@@ -79,14 +78,18 @@ gulp.task('browser-sync', function() {
 	});
 });
 
+var watch_dir = [
+	'src/js/**/*.js',
+	'src/js/**/*.json',
+];
 gulp.task('watch', ['browser-sync'], function() {
-	watch(['src/js/**/*.js'], function(event) {
+	watch(watch_dir, function(event) {
 		gulp.start("build");
 	});
 });
 
 gulp.task('watch_without_minify', ['browser-sync'], function() {
-	watch(['src/js/**/*.js'], function(event) {
+	watch(watch_dir, function(event) {
 		gulp.start("build_without_minify");
 	});
 });

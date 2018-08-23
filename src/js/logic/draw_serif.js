@@ -3,33 +3,56 @@
 /* セリフを描画する */
 
 var Util = require('../hakurei').util;
+var CONSTANT = require('../constant');
+
+// 文字の表示サイズ
+var FONT_SIZE = 18;
+// フォント名
+var FONT_NAME = "OradanoGSRR";
+
+
+// セリフ文字の色
+var SERIF_FONT_COLOR = Util.hexToRGBString("#d4c9aa");
+
 
 // 静的クラス
 var DrawSerif = function() {};
 
-DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines) {
+// @param: {ObjectBase} obj
+DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_num, option) {
+	option = option || {};
+
+	// セリフがなければ何も表示しない
+	if (lines.length === 0) return;
+
 	// ウィンドウの位置
-	var message_window_pos = this._getMessageWindowPos(obj);
+	var message_window_pos = this._getMessagePos(obj);
 	var x = message_window_pos.x;
 	var y = message_window_pos.y;
-	var is_reflect = message_window_pos.is_reflect;
+	var is_show_right = message_window_pos.is_show_right;
 
+	// ウィンドウの大きさ
+	var scale = {
+		width: 2/4,
+		height: 2/4,
+	};
+
+	// ウィンドウ画像が中央からちょっとズレてるので位置調整
+	x += 10;
+	y += 10;
 
 	ctx.save();
 
-	if (!x && !y) return;
+	ctx.translate(x, y);
 
-	// ウィンドウの大きさ
-	var scale = this._getMessageWindowScale(lines);
-
-	if(is_reflect) {
-		x = -x; // 反転
-		ctx.transform(-1, 0, 0, 1, fukidashi.width, 0); // 左右反転
+	if(is_show_right) {
+		ctx.transform(-1, 0, 0, 1, 0, 0);
 	}
 
+	// x,y座標は中央が基準位置
 	ctx.drawImage(fukidashi,
-		x,
-		y,
+		-fukidashi.width * scale.width/2,
+		-fukidashi.height*scale.height/2,
 		fukidashi.width * scale.width,
 		fukidashi.height * scale.height
 	);
@@ -37,98 +60,202 @@ DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines) {
 
 };
 
-DrawSerif.drawText = function (obj, ctx, lines) {
-	if (!lines.length) return;
+DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num, option) {
+	// セリフがなければ何も表示しない
+	if (lines.length === 0) return;
 
-	var message_text_pos = this._getMessageTextPos(obj);
+	option = option || {};
+	var font_size = option.fontSize || FONT_SIZE;
+	var font_name = option.fontName || FONT_NAME;
+
+	var message_text_pos = this._getMessagePos(obj);
 	var x = message_text_pos.x;
 	var y = message_text_pos.y;
 
+	// 英語だと半角なので文字数を半分にする
+	if (CONSTANT.LANGUAGE === 'en') {
+		width_num /= 2;
+	}
+
+	// 基準位置を左上->中央に変更
+	x = x - width_num  * font_size / 2;
+	y = y - height_num * (font_size+12) / 2;
 
 	ctx.save();
 
-	// セリフの色
-	var font_color = Util.hexToRGBString("#d4c9aa");
+	ctx.fillStyle = SERIF_FONT_COLOR;
+	ctx.font = font_size.toString() + "px '"+ font_name + "'";
 
-	ctx.fillStyle = font_color;
-	ctx.font = "18px 'OradanoGSRR'";
 	ctx.textAlign = 'left';
-	ctx.textBaseAlign = 'middle';
+	ctx.textBaseAlign = 'top';
 
 	for(var i = 0, len = lines.length; i < len; i++) {
-		y+= 30;
+		y += font_size + 12;
 		ctx.fillText(lines[i], x, y); // 1行表示
 
 	}
 	ctx.restore();
 };
 
-// ウィンドウの大きさ
-DrawSerif._getMessageWindowScale = function(lines){
-	var scale_width, scale_height;
-	if (lines.length === 2) {
-		scale_width = 0.4;
-		scale_height = 0.5;
+// @param: {ObjectBase} obj
+DrawSerif.drawJunction = function (obj, ctx, junction_off, junction_on, junction_list, focus_index) {
+	// ウィンドウの位置
+	var message_window_pos = this._getJunctionPos(obj);
+	var x = message_window_pos.x;
+	var y = message_window_pos.y;
+	var is_show_right = message_window_pos.is_show_right;
+
+	// ウィンドウの大きさ
+	var scale = {
+		width: 2/3,
+		height: 2/3,
+	};
+
+	// 選択肢間の縦の余白
+	var junction_height_margin = 10;
+
+	// 選択肢の傾き
+	var junction_slope = 5;
+
+	// 選択されている選択肢は少し前へ出る
+	var selected_push_margin = 20;
+
+	for (var i = 0; i < junction_list.length; i++) {
+		// 選択肢ふきだし画像
+		var image = i === focus_index ? junction_on : junction_off;
+
+		// 選択肢ふきだし画像の描画
+		ctx.save();
+
+		// 選択肢 位置
+		ctx.translate(x, y + i * (image.height*scale.height + junction_height_margin));
+
+		// 反転
+		if(is_show_right) {
+			ctx.transform(-1, 0, 0, 1, 0, 0);
+		}
+
+		// 選択肢の傾き
+		var rotate = Util.thetaToRadian((i - junction_list.length/2) * junction_slope);
+		ctx.rotate(-rotate);
+
+		// 選択されている選択肢は ちょっと前へ
+		if (i === focus_index) {
+			ctx.translate(-selected_push_margin, 0);
+		}
+
+		// x,y座標は中央が基準位置
+		ctx.drawImage(image,
+			-image.width * scale.width/2,
+			-image.height*scale.height/2,
+			image.width * scale.width,
+			image.height * scale.height
+		);
+		ctx.restore();
+
+		// 選択肢 文字の描画
+		ctx.save();
+
+		ctx.translate(x, y + i * (image.height*scale.height + junction_height_margin) + 5); // +5 は文字用のmargin
+
+		// NOTE: 文字は反転させない(文字が読めなくなってしまうため)
+
+		// 選択肢の傾き
+		if(is_show_right) {
+			ctx.rotate(rotate);
+		}
+		else {
+			ctx.rotate(-rotate);
+		}
+
+		// 選択されている選択肢は ちょっと前へ
+		if (i === focus_index) {
+			if(is_show_right) {
+				ctx.translate(selected_push_margin, 0);
+			}
+			else {
+				ctx.translate(-selected_push_margin, 0);
+			}
+		}
+
+
+		ctx.fillStyle = SERIF_FONT_COLOR;
+		ctx.font = FONT_SIZE.toString() + "px '" + FONT_NAME + "'";
+
+		ctx.textAlign = 'left';
+		ctx.textBaseAlign = 'middle';
+
+		ctx.fillText(junction_list[i], -100, 0); // 1行表示
+
+		ctx.restore();
+
 	}
-	else {
-		scale_width = 0.4;
-		scale_height = 0.4;
-	}
-	return {width: scale_width, height: scale_height};
 };
 
 // メッセージウィンドウの位置を取得
-DrawSerif._getMessageWindowPos = function(obj){
-	var is_reflect = !this._isShowRight(obj);
-
+DrawSerif._getMessagePos = function(obj){
+	var is_show_right = this._isShowRight(obj);
 	var x,y;
 
-	if(is_reflect) {
-		x = obj.x() - 550;
-		y = obj.y() - 330;
+	if(is_show_right) {
+		x = obj.globalRightX() - 100;
+		y = obj.globalUpY();
 	}
 	else {
-		x = obj.x() - 300;
-		y = obj.y() - 330;
+		x = obj.globalLeftX() + 100;
+		y = obj.globalUpY();
+	}
+
+	// 画面上部のオブジェクトは、シーンからはみ出ちゃうので
+	if (y < 100) {
+		y += 100;
 	}
 
 	return {
-		is_reflect: is_reflect,
+		is_show_right: is_show_right,
 		x: x,
 		y: y,
 	};
+
 };
 
-// メッセージテキストの開始位置を取得
-DrawSerif._getMessageTextPos = function(obj){
-	var is_reflect = !this._isShowRight(obj);
-
+// 選択肢分岐の位置を取得
+DrawSerif._getJunctionPos = function(obj){
+	var is_show_right = this._isShowRight(obj);
 	var x,y;
 
-	if(is_reflect) {
-		x = obj.x() + 80;
-		y = obj.y() - 290;
+	if(is_show_right) {
+		x = obj.globalRightX() + 50;
+		y = obj.y() - 50;
 	}
 	else {
-		x = obj.x() - 220;
-		y = obj.y() - 290;
+		x = obj.globalLeftX() - 50;
+		y = obj.y() - 50;
 	}
 
+	// 画面上部のオブジェクトは、シーンからはみ出ちゃうので
+	if (y < 100) {
+		y += 100;
+	}
 
 	return {
-		is_reflect: is_reflect,
+		is_show_right: is_show_right,
 		x: x,
 		y: y,
 	};
+
 };
 
-// セリフ表示を右に表示させるかどうか
+
+
+// オブジェクトから見て、セリフ表示を右に表示させるかどうか
 DrawSerif._isShowRight = function(obj){
 	var x = obj.x();
 
 	var scene_center_x = obj.scene.width / 2;
 
-	if (x > scene_center_x) {
+	// 画面左側にオブジェクトが存在するなら、セリフは右側に表示する
+	if (x < scene_center_x) {
 		return true;
 	}
 	else {

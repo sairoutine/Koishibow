@@ -1,11 +1,13 @@
 'use strict';
-
+var _ = require('i18n4v');
 var base_scene = require('../../../hakurei').scene.base;
-var CONSTANT = require('../../../constant');
+var ObjectPoint = require('../../../hakurei').object.point;
 var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
-var SerifManager = require('../../../hakurei').serif_manager;
+var CONSTANT_BUTTON = require('../../../hakurei').constant.button;
+var ScenarioManager = require('../../../hakurei').manager.scenario;
 var BlackMist = require('../../../object/black_mist');
+var DrawSerif = require('../../../logic/draw_serif');
 
 
 var jsonDataOfEye1 = require('../../../data/anime/chapter0/event/encounter_satori/eye/obj01_anime_1');
@@ -16,33 +18,46 @@ var jsonDataOfSatori2 = require('../../../data/anime/chapter0/event/encounter_sa
 var jsonDataOfSatori3 = require('../../../data/anime/chapter0/event/encounter_satori/satori/obj03_anime_1');
 var jsonDataOfKoishiWait = require('../../../data/anime/koishi/wait_anime_1');
 
+var SATORI_PULLED_HAND_ANIME = 1;
+var SATORI_WAITING_ANIME     = 2;
+var SATORI_LEAVE_SCENE_ANIME = 3;
 
+var EYE_APPEAR_AND_BLINK_ANIME    = 1;
+var EYE_WAITING_ANIME             = 2;
+var EYE_SEE_RIGHT_AND_BLINK_ANIME = 3;
 
-
-var SceneDefault = function(core) {
+var SceneEventEncounterSatori = function(core) {
 	base_scene.apply(this, arguments);
 
+	// シーンの各種キャラ
 	this.eye = new SS(this);
 	this.satori = new SS(this);
 	this.koishi = new SS(this);
 
-	this._serif = new SerifManager();
-
+	// 黒いもや
 	this.black_mist = new BlackMist(this);
-};
-Util.inherit(SceneDefault, base_scene);
 
-SceneDefault.prototype.isUsingEye = function(){
+	// セリフ
+	this._serif = new ScenarioManager();
+
+	// セリフの位置
+	this.serif_position = new ObjectPoint(this);
+	this.serif_position.setPosition(this.width - 350, 150);
+};
+Util.inherit(SceneEventEncounterSatori, base_scene);
+
+// black_mist が参照する
+SceneEventEncounterSatori.prototype.isUsingEye = function(){
 	return false;
 };
-SceneDefault.prototype.init = function(){
+SceneEventEncounterSatori.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// フェードインする
-	this.setFadeIn(120, "black");
+	this.core.scene_manager.setFadeIn(120, "black");
 
 	// イベント再生後はフェードアウトする
-	this.setFadeOut(120, "black");
+	this.core.scene_manager.setFadeOut(120, "black");
 
 	// BGM 止める
 	this.core.audio_loader.stopBGM();
@@ -53,56 +68,66 @@ SceneDefault.prototype.init = function(){
 	this.initKoishi();
 	this.addObjects([this.eye, this.satori, this.koishi]);
 
-	this._serif.init([
-		{"chara": "satori","serif":"おいで"},
-		{"chara": "satori","serif":"あなたはいい子にならなきゃだめよ"},
-	], false);
-
 	this.black_mist.init();
+
+	this._serif.init([
+		{"chara": "satori","serif":_("おいで")},
+		{"chara": "satori","serif":_("あなたはいい子にならなきゃだめよ")},
+	]);
 };
 
-SceneDefault.prototype.initSatori = function(){
+SceneEventEncounterSatori.prototype.initSatori = function(){
 	this.satori.x(this.width/2);
 	this.satori.y(this.height/2);
 
-	this.satori.setAnime({
+	var anime_config = {
 		default: jsonDataOfSatori1,
-		1: jsonDataOfSatori1,
-		2: jsonDataOfSatori2,
-		3: jsonDataOfSatori3,
-	});
+	};
+	anime_config[SATORI_PULLED_HAND_ANIME] = jsonDataOfSatori1;
+	anime_config[SATORI_WAITING_ANIME]     = jsonDataOfSatori2;
+	anime_config[SATORI_LEAVE_SCENE_ANIME] = jsonDataOfSatori3;
+
+	this.satori.setAnime(anime_config);
+
 	this.satori.init();
 	var ss = this.satori;
 	var serif_manager = this._serif;
-	this.satori.playAnimationOnce(1, function () {
+
+	// さとりが手を引かれるアニメの再生
+	this.satori.playAnimationOnce(SATORI_PULLED_HAND_ANIME, function () {
+		// 再生が終わったらセリフの再生を始める
 		serif_manager.next();
-		ss.playAnimationInfinity(2);
-		/*
-		ss.playAnimationOnce(3);
-		*/
+		// さとりは待機アニメーションへ
+		ss.playAnimationInfinity(SATORI_WAITING_ANIME);
 	});
 
 };
-SceneDefault.prototype.initEye = function(){
+SceneEventEncounterSatori.prototype.initEye = function(){
 	this.eye.x(this.width/2);
 	this.eye.y(this.height/2);
 
-	this.eye.setAnime({
+	var anime_config = {
 		default: jsonDataOfEye1,
-		1: jsonDataOfEye1,
-		2: jsonDataOfEye2,
-		3: jsonDataOfEye3,
-	});
+	};
+	anime_config[EYE_APPEAR_AND_BLINK_ANIME]    = jsonDataOfEye1;
+	anime_config[EYE_WAITING_ANIME]             = jsonDataOfEye2;
+	anime_config[EYE_SEE_RIGHT_AND_BLINK_ANIME] = jsonDataOfEye3;
+
+	this.eye.setAnime(anime_config);
+
 	this.eye.init();
 	var ss = this.eye;
-	this.eye.playAnimationOnce(1, function () {
-		ss.playAnimationInfinity(2);
+
+	// こいしがドアのスキマから目を覗かせる
+	this.eye.playAnimationOnce(EYE_APPEAR_AND_BLINK_ANIME, function () {
+		// 再生後は待機
+		ss.playAnimationInfinity(EYE_WAITING_ANIME);
 	});
 
 };
-SceneDefault.prototype.initKoishi = function(){
+SceneEventEncounterSatori.prototype.initKoishi = function(){
 	this.koishi.x(180);
-	this.koishi.y(540);
+	this.koishi.y(370);
 
 	this.koishi.setAnime({
 		default: jsonDataOfKoishiWait,
@@ -115,38 +140,57 @@ SceneDefault.prototype.initKoishi = function(){
 
 
 
-SceneDefault.prototype.beforeDraw = function(){
+SceneEventEncounterSatori.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
-
-	if(this.core.input_manager.isLeftClickPush()) {
-		if (this._serif.isWaitingNext() && this.eye.current_anime === 2 && this.satori.current_anime === 2) {
-			var satori = this.satori;
-			var serif_manager = this._serif;
-			setTimeout(function () {
-				serif_manager.next();
-			}, 200);
-			setTimeout(function () {
-				satori.playAnimationOnce(3);
-			}, 400);
-			this.eye.playAnimationOnce(3, function () {
-			});
-		}
-		else if (this.eye.current_anime === 3 && this.satori.current_anime === 3) {
-			this.core.audio_loader.playSound("chapter0-mansion_corridor2-event_out");
-			this.core.changeScene("stage", "chapter0_mansion_corridor2");
-			this.core.audio_loader.fadeOutBGM(2);
-		}
-	}
 
 	// BGM 再生
 	if(this.frame_count === 1) {
 		this.core.audio_loader.changeBGM("chapter0-event-encounter_satori");
 	}
 	this.black_mist.beforeDraw();
-};
-SceneDefault.prototype.draw = function(){
-	var ctx = this.core.ctx;
 
+
+
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+		if (this.eye.current_anime === EYE_WAITING_ANIME && this.satori.current_anime === SATORI_WAITING_ANIME) {
+			// 目はさとりの方を見る
+			this.eye.playAnimationOnce(EYE_SEE_RIGHT_AND_BLINK_ANIME);
+
+			var satori = this.satori;
+			var serif_manager = this._serif;
+
+			// セリフを送る
+			this.core.time_manager.setTimeout(function () {
+				serif_manager.next();
+
+			}, 0.2 * 60);
+			// さとりが去っていく
+			this.core.time_manager.setTimeout(function () {
+				satori.playAnimationOnce(SATORI_LEAVE_SCENE_ANIME);
+			}, 0.4 * 60);
+		}
+		else if (this.eye.current_anime === EYE_SEE_RIGHT_AND_BLINK_ANIME && this.satori.current_anime === SATORI_LEAVE_SCENE_ANIME) {
+			// イベント終わりのSE再生
+			this.core.audio_loader.playSound("chapter0-mansion_corridor2-event_out");
+			// BGM をフェードアウト
+			this.core.audio_loader.fadeOutBGM(2);
+			// 次のシーンへ
+			this.core.scene_manager.changeScene("stage", "chapter0_mansion_corridor2");
+		}
+	}
+
+};
+SceneEventEncounterSatori.prototype.draw = function(){
+
+	this._showBackground();
+	// キャラのアニメの表示
+	base_scene.prototype.draw.apply(this, arguments);
+	this._showMessage();
+	this.black_mist.draw();
+};
+
+SceneEventEncounterSatori.prototype._showBackground = function(){
+	var ctx = this.core.ctx;
 	ctx.save();
 
 	var background = this.core.image_loader.getImage("chapter0-mspassage-bg-002_event");
@@ -163,68 +207,31 @@ SceneDefault.prototype.draw = function(){
 	);
 
 	ctx.restore();
-
-	base_scene.prototype.draw.apply(this, arguments);
-
-	this._showMessageWindow();
-	this._showMessage();
-	this.black_mist.draw();
 };
 
-// セリフウィンドウ表示
-SceneDefault.prototype._showMessageWindow = function(){
-	if(!this._serif.getChara()) return;
-	var ctx = this.core.ctx;
-	ctx.save();
+SceneEventEncounterSatori.prototype._showMessage = function(){
+	if(!this._serif.isStart()) return;
 
-	var fukidashi = this.core.image_loader.getImage('fukidashi_gray');
-
-	// ウィンドウの位置
-	var x = 500;
-	var y = 80;
-
-	// ウィンドウの大きさ
-	var scale = 2/3;
-
-	ctx.drawImage(fukidashi,
-		x,
-		y,
-		fukidashi.width * scale,
-		fukidashi.height * scale
-	);
-	ctx.restore();
-};
-
-// セリフ表示
-SceneDefault.prototype._showMessage = function() {
-	var ctx = this.core.ctx;
-
-	// セリフ表示
-	var lines = this._serif.lines();
-
+	// セリフ取得
+	var lines = this._serif.getCurrentPrintedSentences();
 	if (!lines.length) return;
 
-	ctx.save();
+	var width_num = this._serif.getCurrentMaxLengthLetters();
+	var height_num = this._serif.getCurrentSentenceNum();
 
-	// セリフの色
-	var font_color = "white";
+	// メッセージウィンドウ表示
+	var ctx = this.core.ctx;
 	var fukidashi = this.core.image_loader.getImage('fukidashi_gray');
+	DrawSerif.drawWindow(this.serif_position, ctx, fukidashi, lines, width_num, height_num);
 
-	ctx.fillStyle = font_color;
-	ctx.font = "18px 'OradanoGSRR'";
-	var x = 400 + fukidashi.width/4;
-	var y = 80 + fukidashi.height/4;
-
-
-	for(var i = 0, len = lines.length; i < len; i++) {
-		y+= 30;
-		ctx.fillText(lines[i], x, y); // 1行表示
-
-	}
-
-	ctx.restore();
+	// メッセージ表示
+	DrawSerif.drawText(this.serif_position, ctx, lines, width_num, height_num);
 };
 
 
+SceneEventEncounterSatori.prototype.isSerifAutoStart = function() {
+	return false;
+};
 
-module.exports = SceneDefault;
+
+module.exports = SceneEventEncounterSatori;

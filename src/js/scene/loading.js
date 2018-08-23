@@ -58,11 +58,11 @@ SceneLoading.prototype.beforeDraw = function() {
 	if (this.core.isAllLoaded()) {
 		if (CONSTANT.DEBUG.START_SCENE) {
 			// デバッグ用
-			this.core.changeScene.apply(this.core, CONSTANT.DEBUG.START_SCENE);
+			this.core.scene_manager.changeScene.apply(this.core.scene_manager, CONSTANT.DEBUG.START_SCENE);
 		}
 		else {
 			// 本番
-			this.core.changeScene("title");
+			this.core.scene_manager.changeScene("title");
 		}
 	}
 };

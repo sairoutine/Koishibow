@@ -19,11 +19,11 @@ SceneEventBase.prototype.init = function(){
 
 	if (this.isFadeIn()) {
 		// フェードインする
-		this.setFadeIn(120, "black");
+		this.core.scene_manager.setFadeIn(120, "black");
 	}
 	if (this.isFadeOut()) {
 		// イベント再生後はフェードアウトする
-		this.setFadeOut(120, "black");
+		this.core.scene_manager.setFadeOut(120, "black");
 	}
 	if (this.isStopBGM()) {
 		this.core.audio_loader.stopBGM();
@@ -65,7 +65,7 @@ SceneEventBase.prototype.beforeDraw = function(){
 
 			// 命令実行
 			if (command === "change_scene") { // シーン遷移
-				this.core.changeScene.apply(this.core, argument_list);
+				this.core.scene_manager.changeScene.apply(this.core.scene_manager, argument_list);
 			}
 			else if (command === "play_sound") { // SE 再生
 				this.core.audio_loader.playSound.apply(this.core.audio_loader, argument_list);

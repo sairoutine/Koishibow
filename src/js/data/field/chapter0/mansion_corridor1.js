@@ -1,30 +1,32 @@
 'use strict';
+var _ = require('i18n4v')
 // 屋敷の廊下1
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
 	key: "chapter0_mansion_corridor1",
 	chapter: 0,
-	name: "屋敷の廊下1",
 	bgm: "field2",
 	sub_bgms: ["chapter0-mansion_corridor1-wind"],
-	right_start_position: {x: 690, y: 540},
-	left_start_position:  {x: 180, y: 540},
-	right_field: "chapter0_mansion_corridor2",
-	left_field: "chapter0_hospital_corridor2",
+	rightStartPosition: {x: 800, y: 240},
+	leftStartPosition:  {x: 180, y: 370},
+
+	rightField: "chapter0_mansion_corridor2",
+	leftField: "chapter0_hospital_corridor2",
 	background: "chapter0-mansionpas-001",
-	walk_sound: "walking_bare_wood",
+	walkSound: "walking_bare_wood",
 	objects: [
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ランプ",
 			serif: [
-				{"chara": "koishi","serif":"まぶしい"},
+				{"chara": "koishi","serif":_("まぶしい")},
 			],
 			x: 805,
 			y: 65,
 			scale: 0.7,
+			height: 600,
 			anime1: "chapter0-mansion_corridor1-obj-01-01-obj01",
 			anime2: "chapter0-mansion_corridor1-obj-01-01-obj02",
 			anime3: "chapter0-mansion_corridor1-obj-01-01-obj03",
@@ -40,12 +42,12 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "三輪車",
 			serif: [
-				{"chara": "koishi","serif":"あとでのろっと"},
+				{"chara": "koishi","serif":_("あとでのろっと")},
 			],
 			x: 815,
 			y: 515,
-			width: 250,
-			height: 250,
+			width: 200,
+			height: 100,
 			scale: 0.7,
 			anime1: "chapter0-mansion_corridor1-obj-02-01-obj01",
 			anime2: "chapter0-mansion_corridor1-obj-02-01-obj02",
@@ -60,15 +62,28 @@ module.exports = {
 		},
 		{
 			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "三輪車の下",
+			serif: null,
+			width: 200, height: 300,
+			x: 815,
+			y: 715,
+
+		},
+
+
+		{
+			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "カーテン",
 			serif: [
-				{"chara": "koishi","serif":"いまはかくれんぼしてないから\nあとでね！"},
+				{"chara": "koishi","serif":_("いまはかくれんぼしてないから\nあとでね！")},
 			],
 			x: 190,
 			y: 135,
 			width: 300,
-			height: 250,
+			height: 450,
 			scale: 0.7,
 			anime1: "chapter0-mansion_corridor1-obj-03-01-obj01",
 			anime2: "chapter0-mansion_corridor1-obj-03-01-obj02",
@@ -83,7 +98,7 @@ module.exports = {
 
 		{
 			no: ++I,
-			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 600, y: 530, scale: 2/3, picture: "journal004"},
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 600, y: 530, scale: 2/3, journal_id: "journal004"},
 	],
 
 };

@@ -1,18 +1,19 @@
 'use strict';
+var _ = require('i18n4v')
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
 	key: "chapter0_hospital_corridor1",
 	chapter: 0,
-	name: "病院の廊下1",
 	bgm: "field1",
-	right_start_position: {x: 690, y: 540},
-	left_start_position:  {x: 180, y: 540},
-	right_field: "chapter0_hospital_corridor2",
-	left_field: "chapter0_myroom",
+	rightStartPosition: {x: 800, y: 250},
+	leftStartPosition:  {x: 180, y: 380},
+
+	rightField: "chapter0_hospital_corridor2",
+	leftField: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
-	walk_sound: "walking_bare_default",
+	walkSound: "walking_bare_default",
 	objects: [
 		{
 			no: ++I,
@@ -20,7 +21,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ストレッチャー",
 			serif: [
-				{"chara": "koishi","serif": "へんなベッド"},
+				{"chara": "koishi","serif":_("へんなベッド")},
 			],
 			x: 814,
 			y: 608,
@@ -28,8 +29,8 @@ module.exports = {
 			action_name: "touch",
 			sound_name: "chapter0-hospital_corridor1-sound_strecher",
 			position_type: "front",
-			target_x: 650,
-			target_y: 616,
+			width: 400,
+			height: 200,
 		},
 		{
 			no: ++I,
@@ -37,7 +38,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
 			serif: [
-				{"chara": "koishi","serif":"くすりはいらない……"},
+				{"chara": "koishi","serif":_("くすりはいらない……")},
 			],
 			x: 279,
 			y: 378,
@@ -49,8 +50,8 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "救急箱",
 			serif: [
-				{"chara": "koishi","serif": "くーくーばこ！"},
-				{"chara": "koishi","serif": "けがしてないよ！"},
+				{"chara": "koishi","serif":_("くーくーばこ！")},
+				{"chara": "koishi","serif":_("けがしてないよ！")},
 			],
 			x: 281,
 			y: 280,
@@ -65,7 +66,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "メス",
 			serif: [
-				{"chara": "koishi","serif":"ナイフ"},
+				{"chara": "koishi","serif":_("ナイフ")},
 			],
 			x: 853,
 			y: 534,
@@ -75,7 +76,7 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 643, y:425, scale: 2/3, picture: "journal002"},
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 643, y:425, scale: 2/3, journal_id: "journal002"},
 	],
 };
 

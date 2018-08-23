@@ -3,8 +3,7 @@
 var base_scene = require('../../base');
 var Util = require('../../../../hakurei').util;
 
-var CONSTANT = require('../../../../constant');
-
+var CONSTANT_BUTTON = require('../../../../hakurei').constant.button;
 var ObjectChapter0Hat = require('../../../../object/pieces/chapter0_hat');
 
 var SceneEventChapter0GetHat = function(core) {
@@ -34,36 +33,26 @@ SceneEventChapter0GetHat.prototype.init = function(){
 		x: 767, y: 529,
 		scale: 2/3,
 	});
+
+	// まだ帽子あり待機になっているので、帽子なし待機にする
+	this.root().koishi.setWaitAnime();
 };
 
 SceneEventChapter0GetHat.prototype.beforeDraw = function() {
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
-	// 当たり判定チェック
-	this._collisionCheck();
-};
+	// こいしの移動
+	this.root().koishi.moveByInput();
 
-// 当たり判定チェック
-SceneEventChapter0GetHat.prototype._collisionCheck = function(){
-	// マウス座標取得
-	var x = this.core.input_manager.mousePositionX();
-	var y = this.core.input_manager.mousePositionY();
-
-	// フィールドの各種オブジェクトとの当たり判定
-	if(this.hat.checkCollisionWithPosition(x, y)) {
-		return true;
-	}
-
-	// UI と 画面上のオブジェクトの どれとも当たり判定しなかったら
-	if(this.core.input_manager.isLeftClickPush()) {
-		var point = this.core.input_manager.mousePositionPoint(this.root());
-		// こいしを移動
-		this.root().koishi.setMoveTarget(point);
+	if (this.hat.checkIsInTouchArea(this.root().koishi)) {
+		if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+			this.hat.onTouchByKoishi();
+		}
+		else {
+			// TODO: 調べられるよカーソルを表示
+		}
 	}
 };
-
-
-
 
 // 画面更新
 SceneEventChapter0GetHat.prototype.draw = function(){

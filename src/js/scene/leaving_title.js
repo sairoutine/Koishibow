@@ -1,9 +1,10 @@
 'use strict';
 
+// タイトル画面の放置演出
+
 var base_scene = require('../hakurei').scene.base;
 
 var Util = require('../hakurei').util;
-var CONSTANT = require('../constant');
 
 var SceneHowto = function(core) {
 	base_scene.apply(this, arguments);
@@ -23,7 +24,7 @@ SceneHowto.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if (this.frame_count === 85 * 60 - 60) {
-		this.core.changeScene("title");
+		this.core.scene_manager.changeScene("title");
 	}
 };
 

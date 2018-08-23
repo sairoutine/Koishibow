@@ -1,12 +1,12 @@
 'use strict';
 
-// アイテム獲得
+// アイテム獲得 演出
 // TODO: 持ち物がいっぱいだったら、このクラスで持ち物がいっぱいか判定して、
 // それ専用の表示をだす
 
 var base_scene = require('./base');
 var Util = require('../../hakurei').util;
-var ItemConfig = require('../../config/item');
+var ItemMasterRepository = require("../../repository/item");
 
 // アニメまでの待機時間
 var WAIT_COUNT_TO_ANIMATION = 60;
@@ -19,33 +19,32 @@ var WAIT_COUNT_TO_NEXT_SCENE = 60 + WAIT_COUNT_TO_ANIMATION;
 var SceneSubStageGotItem = function(core) {
 	base_scene.apply(this, arguments);
 
-	// 獲得したアイテム オブジェクト
-	this._piece = null;
+	// 獲得したアイテム ID
+	this._item_id = null;
+
+	// 演出後に戻るサブシーン
+	this._sub_scene_name = null;
 };
 Util.inherit(SceneSubStageGotItem, base_scene);
 
-SceneSubStageGotItem.prototype.init = function(item_piece){
+SceneSubStageGotItem.prototype.init = function(item_id, sub_scene_name){
 	base_scene.prototype.init.apply(this, arguments);
 
-	// 獲得したアイテム オブジェクト
-	this._piece = item_piece;
+	// 獲得したアイテム ID
+	this._item_id = item_id;
 
-	this.core.audio_loader.playSound("got_item");
+	// 演出後に戻るサブシーン
+	this._sub_scene_name = sub_scene_name || "play";
+
+	var sound_name = ItemMasterRepository.find(item_id).soundName();
+	this.core.audio_loader.playSound(sound_name);
 };
 
 SceneSubStageGotItem.prototype.beforeDraw = function(){
 	base_scene.prototype.beforeDraw.apply(this, arguments);
 
 	if (this.frame_count > WAIT_COUNT_TO_NEXT_SCENE) {
-
-		// 通常のサブシーンへ戻る
-		this.root().changeSubScene("play");
-
-		// フィールドから該当のオブジェクトを削除
-		this._piece.deleteFromField();
-
-		// アイテム獲得
-		this.core.save_manager.addItem(this._piece.getItemId());
+		this.root().returnSubScene(this._sub_scene_name);
 	}
 };
 
@@ -81,7 +80,8 @@ SceneSubStageGotItem.prototype._showItem = function() {
 
 	ctx.save();
 
-	var picture = this.core.image_loader.getImage(ItemConfig[this._piece.getItemId()].image_name);
+	var image_name = ItemMasterRepository.find(this._item_id).imageName();
+	var picture = this.core.image_loader.getImage(image_name);
 
 	var width = picture.width * 2/3;
 	var height = picture.height * 2/3;
@@ -101,9 +101,23 @@ SceneSubStageGotItem.prototype._showItem = function() {
 		}
 	}
 
-	ctx.globalAlpha = alpha;
 
 	ctx.translate(x, y);
+	ctx.globalAlpha = alpha;
+
+	// 背景の光表示
+	var selected = this.core.image_loader.getImage("item_selected");
+	var selected_width = selected.width * 2/3;
+	var selected_height = selected.height * 2/3;
+
+	ctx.drawImage(selected,
+		-selected_width/2,
+		-selected_height/2,
+		selected_width,
+		selected_height
+	);
+
+	// アイテム画像表示
 	ctx.drawImage(picture,
 		-width/2,
 		-height/2,

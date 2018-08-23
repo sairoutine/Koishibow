@@ -1,7 +1,6 @@
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
-var CONSTANT = require('../../constant');
 
 var ObjectEye = function(core) {
 	base_object.apply(this, arguments);
@@ -12,6 +11,23 @@ ObjectEye.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 	this.setPosition();
 };
+
+ObjectEye.prototype.draw = function() {
+	base_object.prototype.draw.apply(this, arguments);
+
+	// デバッグ用の 3rd eye ゲージ表示
+	if(!this.core.debug_manager.get("is_show_3rdeye_gauge")) return;
+
+	var ctx = this.core.ctx;
+	var gauge = this.scene.koishi.get3rdeyeGauge();
+
+	ctx.save();
+	ctx.fillStyle = "white";
+	ctx.font = "24px 'OradanoGSRR'";
+	ctx.fillText(gauge, this.x(), this.globalDownY());
+	ctx.restore();
+};
+
 
 
 ObjectEye.prototype.isShow = function(){
@@ -30,10 +46,12 @@ ObjectEye.prototype.onCollision = function(obj){
 	}
 };
 
-// クリックしてるときしか onCollision を呼ばない
+
+// 現状、表示UIとしてしか使ってないので、当たり判定不要
 ObjectEye.prototype.isCollision = function() {
-	return this.core.input_manager.isLeftClickPush() ? true : false;
+	return false;
 };
+
 
 ObjectEye.prototype.setPosition = function(){
 	this.x(1320 * 2/3);

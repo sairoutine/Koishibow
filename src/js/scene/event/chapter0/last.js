@@ -37,7 +37,8 @@ SceneDefault.prototype.backgroundSsAnime = function(){
 
 SceneDefault.prototype.afterBackgroundSsAnimeFunction = function(){
 	return function (core) {
-		core.changeScene("event_for_trial_last");
+		// 次のチャプターへ
+		core.scene_manager.changeScene("opening_movie_chapter1");
 
 		core.audio_loader.fadeOutBGM(2);
 	};
@@ -46,7 +47,7 @@ SceneDefault.prototype.afterBackgroundSsAnimeFunction = function(){
 
 SceneDefault.prototype.scriptMap = function(){
 	return {
-		25: [
+		54: [
 			{
 				command: "play_sound",
 				argument_list: ["chapter0-mansion_corridor3-open_and_falldown"],

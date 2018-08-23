@@ -16,39 +16,63 @@ var DATA_INDEX = 0;
 var SsAnimeBase = function(scene) {
 	base_object.apply(this, arguments);
 
+	this.ss = new SsSprite();
+
+	this._is_reflect = false;
+
 	this.current_anime = null;
+	this.anime_frame = 0;
+	this.loop_count = 0;
+
+	this._cache_canvas = {};
 };
 Util.inherit(SsAnimeBase, base_object);
 
 SsAnimeBase.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
+
+	var current_anime = "default";
+
+	// init property
 	this._is_reflect = false;
 
-	this.current_anime = "default";
-
-	var jsonData = this.getJsonData(this.current_anime);
+	var jsonData = this.getJsonData(current_anime);
 	this.imageList = this._getImageList(jsonData[DATA_INDEX].images);
 
-	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
-	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
-
-	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
-
-	this.ss = new SsSprite(this.animation);
+	this.changeAnimation(current_anime);
 };
 
-SsAnimeBase.prototype.changeAnimation = function(name){
+SsAnimeBase.prototype.changeAnimation = function(name) {
 	this.current_anime = name;
+	this.anime_frame = 0;
+	this.loop_count = 0;
 
 	var jsonData = this.getJsonData(name);
 
 	this._canvas_width = jsonData[DATA_INDEX].animation.CanvasWidth;
-	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight + 20; // TODO: なぜかこいしの待機中の帽子のリボンが見切れるので...
+	if(this._canvas_width < jsonData[DATA_INDEX].animation.MarginWidth) {
+		this._canvas_width = jsonData[DATA_INDEX].animation.MarginWidth;
+	}
+	this._canvas_height = jsonData[DATA_INDEX].animation.CanvasHeight;
+	if(this._canvas_height < jsonData[DATA_INDEX].animation.MarginHeight) {
+		this._canvas_height = jsonData[DATA_INDEX].animation.MarginHeight;
+	}
 
 	this.animation = new SsAnimation(jsonData[DATA_INDEX].animation, this.imageList);
 
 	this.ss.setAnimation(this.animation);
+
+	// canvas 内での位置調整
+	this.ss.x = jsonData[DATA_INDEX].animation.MarginWidth * this.scaleWidth();
+	this.ss.y = jsonData[DATA_INDEX].animation.MarginHeight * this.scaleHeight();
+
+	return true;
 };
+
+SsAnimeBase.prototype.isPlaying = function(name){
+	return this.current_anime === name ? true : false;
+};
+
 
 SsAnimeBase.prototype.playAnimationOnce = function(name, _callback){
 	var ss = this.ss;
@@ -65,11 +89,19 @@ SsAnimeBase.prototype.playAnimationOnce = function(name, _callback){
 
 		ss.setEndCallBack(callback);
 	}
+	else {
+		ss.setEndCallBack(null);
+	}
+
 	this.ss.setLoop(1);
 	this.changeAnimation(name);
 };
 
 SsAnimeBase.prototype.playAnimationInfinity = function(name){
+	// 現在と同じアニメーションが指定された場合、何もしない
+	// アニメが初期化されて、アニメに違和感が生じるため
+	if(this.current_anime === name) return false;
+
 	this.ss.setLoop(0);
 	this.changeAnimation(name);
 };
@@ -103,7 +135,7 @@ SsAnimeBase.prototype.getJsonData = function(name) {
 	return map[name];
 };
 SsAnimeBase.prototype.getFrameNo = function(){
-	return this.ss.getFrameNo();
+	return Math.floor(this.anime_frame);
 };
 
 SsAnimeBase.prototype.beforeDraw = function(){
@@ -112,8 +144,6 @@ SsAnimeBase.prototype.beforeDraw = function(){
 	// update ss state
 	this.ss.rootScaleX = this.scaleWidth();
 	this.ss.rootScaleY = this.scaleHeight();
-	this.ss.x = this._canvas_width  /2;
-	this.ss.y = this._canvas_height /2;
 };
 
 // 画面更新
@@ -122,21 +152,8 @@ SsAnimeBase.prototype.draw = function(){
 	if (!this.isShow()) return;
 	var ctx = this.core.ctx;
 
-	// TODO: メモリキャッシュ
-	// create canvas
-	var canvas = document.createElement('canvas');
-	canvas.width  = this._canvas_width;
-	canvas.height = this._canvas_height;
-	var ctx2 = canvas.getContext('2d');
-	// TODO: frame_count に合わせて描画
-	var t = new Date().getTime();
-	this.ss.draw(ctx2, t);
-
-	// 暗くする
-	if (this.darker()) {
-		canvas = CreateDarkerImage.exec(canvas, this.darker());
-	}
-
+	var frame_no = this._getCurrentAnimeFrameNo();
+	var canvas = this._getAnimeImage(frame_no);
 
 	// draw
 	ctx.save();
@@ -144,13 +161,95 @@ SsAnimeBase.prototype.draw = function(){
 	if (this.isReflect()) {
 		ctx.transform(-1, 0, 0, 1, 0, 0);
 	}
-	ctx.drawImage(canvas, -this._canvas_width/2, -this._canvas_height/2);
+	ctx.drawImage(canvas, -this.width()/2, -this.height()/2);
 
 	ctx.restore();
 };
 
+SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
+	var max_frame = this.ss.inner.animation.getFrameCount();
+
+	// 何も表示しないアニメだと、frameの最大数が 0になる(何も描画しなくてよい)
+	if (max_frame === 0) {
+		return null;
+	}
+
+	var max_loop = this.ss.inner.loop;
+	if (max_loop === 0) {
+		this.anime_frame += this.ss.inner.animation.getFPS() / 60;
+		this.anime_frame %= max_frame;
+	}
+	else if(this.loop_count < max_loop) {
+		this.anime_frame += this.ss.inner.animation.getFPS() / 60;
+
+		// 最終フレームを再生し終えたら
+		if (this.anime_frame >= max_frame - 1) {
+			this.loop_count++;
+
+			// 最終ループに達してしまったら
+			if (this.loop_count >= max_loop) {
+				// 停止時コールバック呼び出し
+				if (this.ss.inner.endCallBack != null) {
+					this.ss.inner.endCallBack();
+				}
+			}
+		}
+
+		this.anime_frame %= max_frame;
+	}
+
+	return this.getFrameNo();
+};
+SsAnimeBase.prototype._getAnimeImage = function(frame_no){
+	/*
+	// キャッシュ
+	if(this._cache_canvas[this.current_anime] && this._cache_canvas[this.current_anime][frame_no]) {
+		return this._cache_canvas[this.current_anime][frame_no];
+	}
+	*/
+
+	// create canvas
+	var canvas = document.createElement('canvas');
+	canvas.width  = this.width();
+	canvas.height = this.height();
+	var ctx2 = canvas.getContext('2d');
+
+	// chapter3 の猫の霊を照らして戻すと、なぜかエラーになる
+	if(!this.ss.inner.animation.ssaData.ssa[frame_no]) {
+		return canvas;
+	}
+
+	this.ss.inner.animation.drawFunc(ctx2, frame_no, this.ss.x, this.ss.y, this.ss.flipH, this.ss.flipV, this.ss.inner.partStates, this.ss.rootScaleX, this.ss.rootScaleY);
+
+	// 暗くする
+	if (this.darker()) {
+		canvas = CreateDarkerImage.exec(canvas, this.darker());
+	}
+
+	/*
+	// キャッシュに保存
+	if(!this._cache_canvas[this.current_anime]) {
+		this._cache_canvas[this.current_anime] = [];
+	}
+
+	// 一定確率でキャッシュ
+	if (this.frame_count % 2 === 0) {
+		this._cache_canvas[this.current_anime][frame_no] = canvas;
+	}
+	*/
+
+	return canvas;
+};
+SsAnimeBase.prototype.width = function() {
+	return this._canvas_width * this.scaleWidth();
+};
+SsAnimeBase.prototype.height = function() {
+	return this._canvas_height * this.scaleHeight();
+};
+
 SsAnimeBase.prototype.isShow = function(){
-	return true;
+	// 何も表示しないアニメだと、frameの最大数が 0になる(何も描画しなくてよい)
+	return this.ss.inner.animation.getFrameCount() > 0 ? true : false;
 };
 SsAnimeBase.prototype.isReflect = function(){
 	return this._is_reflect;

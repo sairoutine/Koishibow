@@ -6,8 +6,8 @@
 "fps": 30,
 "CanvasWidth": 1440,
 "CanvasHeight": 1080,
-"MarginWidth": 728,
-"MarginHeight": 548,
+"MarginWidth": 720,
+"MarginHeight": 540,
 "parts": ["root","01"],
 "ssa": [
 [

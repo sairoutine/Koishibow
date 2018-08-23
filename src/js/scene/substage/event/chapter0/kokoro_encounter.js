@@ -29,7 +29,7 @@ SceneSubStageJournal.prototype.init = function(picture_name){
 
 	// アニメの位置指定
 	self.ss.x(780);
-	self.ss.y(510);
+	self.ss.y(340);
 
 	self.ss.setAnime({
 		default: jsonDataOfWait,
@@ -63,13 +63,13 @@ SceneSubStageJournal.prototype.beforeDraw = function(){
 
 SceneSubStageJournal.prototype._playWalkSound = function(){
 	// 足音
-	var walk_sound = "walking_bare_default";
+	var walkSound = "walking_bare_default";
 	// 走るアニメーションに合わせて音を再生
 	if(this.ss.getFrameNo()%10 === 2) {
-		this.core.audio_loader.playSound(walk_sound + "_right");
+		this.core.audio_loader.playSound(walkSound + "_right");
 	}
 	else if(this.ss.getFrameNo()%10 === 4) {
-		this.core.audio_loader.playSound(walk_sound + "_left");
+		this.core.audio_loader.playSound(walkSound + "_left");
 	}
 };
 

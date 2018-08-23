@@ -1,30 +1,30 @@
 'use strict';
+var _ = require('i18n4v')
 // 屋敷の廊下3(家具) 行き止まり (サードアイを使用すると、家具が豹変／床に扉が出現)
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
 	key: "chapter0_mansion_corridor3",
 	chapter: 0,
-	name: "屋敷の廊下3",
 	bgm: "field2",
 	sub_bgms: ["chapter0-mansion_corridor3-clock"],
-	right_start_position: {x: 690, y: 540},
-	left_start_position:  {x: 180, y: 540},
-	right_field: null,
-	left_field: "chapter0_mansion_corridor2",
+	rightStartPosition: {x: 690, y: 380},
+	leftStartPosition:  {x: 180, y: 380},
+	rightField: null,
+	leftField: "chapter0_mansion_corridor2",
 	background: "chapter0-mansionpas-003",
-	walk_sound: "walking_bare_wood",
+	walkSound: "walking_bare_wood",
 	objects: [
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "花瓶",
 			serif: [
-				{"chara": "koishi","serif":"かびん！"},
+				{"chara": "koishi","serif":_("かびん！")},
 			],
 			x: 650,
 			y: 285,
-			width: 200,
+			width: 100,
 			height: 330,
 			target_x: 526, target_y: 417,
 			scale: 2/3,
@@ -42,13 +42,15 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "みずさし",
 			serif: [
-				{"chara": "koishi","serif":"これはかびん……"},
-				{"chara": "koishi","serif": "おおきいから"},
+				{"chara": "koishi","serif":_("これはかびん……")},
+				{"chara": "koishi","serif":_("おおきいから")},
 			],
 
 			x: 715,
 			y: 270,
-			target_x: 526, target_y: 417,
+			width: 100,
+			height: 330,
+
 			scale: 2/3,
 			anime1: "chapter0-mansion_corridor3-obj-07-01-obj01",
 			anime2: "chapter0-mansion_corridor3-obj-07-01-obj02",
@@ -64,7 +66,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "窓",
 			serif: [
-				{"chara": "koishi","serif":"さっきのこいないなー"},
+				{"chara": "koishi","serif":_("さっきのこいないなー")},
 			],
 			x: 900,
 			y: 190,
@@ -85,7 +87,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "振子時計",
 			serif: [
-				{"chara": "koishi","serif":"これうるさいからきらい"},
+				{"chara": "koishi","serif":_("これうるさいからきらい")},
 			],
 			x: 145,
 			y: 230,
@@ -126,8 +128,9 @@ module.exports = {
 			image: "eyedrops",
 			x: 590,
 			y: 290,
+			height: 330,
 			scale: 2/3,
-			item_id: CONSTANT.ITEM.EYEDROPS
+			item_id: "01"
 		},
 
 	],

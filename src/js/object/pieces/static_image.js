@@ -18,7 +18,7 @@ Util.inherit(ObjectStaticImage, base_object);
 
 ObjectStaticImage.prototype.isCollision = function(point) {
 	// サードアイ使用中ならクリックしても調べられないので何もしない
-	return !this.scene.root().isUsingEye();
+	return base_object.prototype.isCollision.apply(this, arguments) && !this.scene.root().isUsingEye();
 };
 
 
@@ -70,9 +70,9 @@ ObjectStaticImage.prototype.setData = function(data) {
 		this._scale = data.scale;
 	}
 };
-
 ObjectStaticImage.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+	if(!this.isShow()) return;
 
 	var ctx = this.core.ctx;
 	var image = this._image;
@@ -107,13 +107,13 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 		return this._image.height * this._scale;
 	}
 };
-
-// こいし移動後の処理
-ObjectStaticImage.prototype.onAfterWalkToHere = function() {
+ObjectStaticImage.prototype.isCheckInTouchArea = function(){
+	return this._action_name || this._sound_name || this._serif;
+};
+// こいしに触られたときの処理
+ObjectStaticImage.prototype.onTouchByKoishi = function() {
 	// こいしのアクション
-	if (this._action_name) {
-		this.scene.root().koishi.actionByObject(this._action_name);
-	}
+	this.scene.root().koishi.actionByObject(this._action_name || "wait");
 
 	// 音を再生
 	if (this._sound_name) {

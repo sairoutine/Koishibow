@@ -8,61 +8,63 @@ var CONSTANT = require('../constant');
 var SceneSubStagePlay = require('./substage/play'); // ゲーム操作可能
 var SceneSubStageTalkWithObject = require('./substage/talk_with_object'); // こいし会話中
 var SceneSubStageMenu = require('./substage/menu'); // アイテムメニュー
+var SceneSubStageGameover = require('./substage/gameover'); // ゲームオーバー
 var SceneSubStageJournal = require('./substage/journal'); // ジャーナル表示
+var SceneSubStageJournalMenu = require('./substage/journal_menu'); // ジャーナル メニュー
 var SceneSubStageGotItem = require('./substage/got_item'); // アイテム獲得
+var SceneSubStageUseItem = require('./substage/use_item'); // アイテム使用
+var SceneSubStageLock = require('./substage/lock');
+var SceneSubStageTouchHashigo = require('./substage/touch_hashigo');
 var SceneSubStagePictureUseEyedrops = require('./substage/picture_use_eyedrops'); // 目薬使用1枚絵
 var SceneSubStageEventChapter0GetHat = require('./substage/event/chapter0/get_hat');
 var SceneSubStagePictureGetHat = require('./substage/picture_get_hat');
+var SceneSubStagePicture = require('./substage/picture');
 var SceneSubStageEventChapter0KokoroEncounter = require('./substage/event/chapter0/kokoro_encounter');
 var SceneSubStageEventChapter0SatoriEncounterBegin = require('./substage/event/chapter0/satori_encounter_begin');
 
-var RightNextFieldButton = require('../object/ui/right_next_field_button');
-var LeftNextFieldButton = require('../object/ui/left_next_field_button');
 var ItemMenuButton = require('../object/ui/item_menu_button');
 var EyeButton = require('../object/ui/eye_button');
 
 // 3rd eye の光
 var Light3rdeye = require('../object/light_3rdeye');
+// フィールド上のオブジェクト一覧
+var PieceContainer = require('../object/piece_container');
 
 var BlackMist = require('../object/black_mist');
+var WhiteMist = require('../object/white_mist');
 
 var Koishi = require('../object/koishi');
 
-var ObjectStaticImage = require('../object/pieces/static_image');
-var ObjectAnimeImage = require('../object/pieces/anime_image');
-var ObjectJournal = require('../object/pieces/journal');
-var ObjectAnimeEventImage = require('../object/pieces/anime_event_image');
-var ObjectItem = require('../object/pieces/item');
+var FieldMasterRepository = require('../repository/field');
 
-var FieldMap = require('../config/field');
+var CommonProcess = require('../logic/common_process');
 
 var SceneStage = function(core) {
 	base_scene.apply(this, arguments);
 
 	// ステージ上のオブジェクト一覧
-	// TODO: 管理がしんどくなってきたら、piece_manager を用意する
-	this.pieces = [];
+	this.piece_container = new PieceContainer(this);
 
 	// 自機
 	this.koishi = new Koishi(this);
-
-	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
-	this._koishi_and_pieces = [];
 
 	// 3rd eye の光
 	this.light_3rdeye = new Light3rdeye(this);
 
 	// 画面の枠
 	this.black_mist = new BlackMist(this);
+	this.white_mist = new WhiteMist(this);
 
 	// UI パーツ
-	this.right_next_field_button = new RightNextFieldButton(this);
-	this.left_next_field_button  = new LeftNextFieldButton(this);
 	this.item_menu_button        = new ItemMenuButton(this);
 	this.eye_button              = new EyeButton(this);
 
 	// 3rd eye 使用中か否か
 	this._is_using_eye = false;
+
+	// 3rd eye ゲージが少なくなってきたときの画面点滅
+	this._3rdeye_red_mask_alpha = 0;
+	this._3rdeye_red_mask_alpha_rev = false;
 
 	// 移動制限範囲
 	this.walk_immovable_areas = [];
@@ -71,19 +73,38 @@ var SceneStage = function(core) {
 	this.addSubScene("play", new SceneSubStagePlay(core));
 	// 会話中
 	this.addSubScene("talk_with_object", new SceneSubStageTalkWithObject(core));
-	// アイテムメニュー
+	// TODO:
+	// menu -> item_menu
+	// journal -> show_journal
+	// アイテム メニュー
 	this.addSubScene("menu", new SceneSubStageMenu(core));
+	// ゲームオーバー
+	this.addSubScene("gameover", new SceneSubStageGameover(core));
+	// ジャーナル メニュー
+	this.addSubScene("journal_menu", new SceneSubStageJournalMenu(core));
 	// ジャーナルを読む
 	this.addSubScene("journal", new SceneSubStageJournal(core));
 	// アイテム獲得
 	this.addSubScene("got_item", new SceneSubStageGotItem(core));
+	// アイテム使用
+	this.addSubScene("use_item", new SceneSubStageUseItem(core));
+	// プレイヤーに何も操作させない
+	this.addSubScene("lock", new SceneSubStageLock(core));
+	this.addSubScene("touch_hashigo", new SceneSubStageTouchHashigo(core));
+
 	// 目薬使用 1枚絵
 	this.addSubScene("picture_use_eyedrops", new SceneSubStagePictureUseEyedrops(core));
 
+	// chapter0 帽子なしの自室
 	this.addSubScene("event_chapter0_get_hat", new SceneSubStageEventChapter0GetHat(core));
+	// chapter0 帽子獲得 1枚絵
 	this.addSubScene("picture_get_hat", new SceneSubStagePictureGetHat(core));
+
 	this.addSubScene("event_chapter0_kokoro_encounter", new SceneSubStageEventChapter0KokoroEncounter(core));
 	this.addSubScene("event_chapter0_satori_encounter_begin", new SceneSubStageEventChapter0SatoriEncounterBegin(core));
+
+	// 1枚絵表示
+	this.addSubScene("picture", new SceneSubStagePicture(core));
 };
 Util.inherit(SceneStage, base_scene);
 
@@ -93,69 +114,65 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	from_field_name = from_field_name || null; // undefined -> null に変換
 
 	// 現在のフィールド
-	this.core.save_manager.setCurrentField(field_name);
-	this.core.save_manager.save();
+	this.core.save_manager.player.setCurrentField(field_name);
+	this.core.save_manager.save(); // シーン遷移時に全てのセーブデータを保存する
 
 	// フィールドの情報
 	var field_data = this.getFieldData();
 
-	// サブシーン設定
-	this.changeInitialSubScene();
-
-	// ステージ上のオブジェクト一覧
-	this._setupPieces();
-
 	// 自機
 	this.koishi.init();
 
-	// こいしとステージ上のオブジェクト(描画のZ軸ソートに使う)
-	this._koishi_and_pieces = this.pieces.concat(this.koishi);
-	// z軸の降順ソート
-	this._koishi_and_pieces.sort(function(a,b){
-		if(a.z() < b.z()) return -1;
-		if(a.z() > b.z()) return 1;
-		return 0;
-	});
+	// ステージ上のオブジェクト一覧
+	this.piece_container.init(this.core.save_manager.player.getCurrentField(), this.koishi);
+
+	// 移動制限範囲
+	this.walk_immovable_areas = this.piece_container.getWalkImmovableAreas();
 
 	// 3rd eye の光
 	this.light_3rdeye.init();
 
 	// 画面の枠
 	this.black_mist.init();
+	this.white_mist.init();
 
 	// UI パーツ
-	this.right_next_field_button.init();
-	this.left_next_field_button.init();
 	this.item_menu_button.init();
 	this.eye_button.init();
 
 	// 3rd eye 使用中か否か
 	this._is_using_eye = false;
 
+	// 3rd eye ゲージが少なくなってきたときの画面点滅
+	this._3rdeye_red_mask_alpha = 0;
+	this._3rdeye_red_mask_alpha_rev = false;
+
 	// フィールド開始時のこいしの初期位置の決定
 	var pos;
-	if (!from_field_name || field_data.left_field === from_field_name) {
+	if (!from_field_name || field_data.leftField() === from_field_name) {
 		// 左のフィールドからきた場合
-		pos = field_data.left_start_position;
+		pos = field_data.leftStartPosition();
 		this.koishi.setPosition(pos.x, pos.y);
 	}
-	else if (field_data.right_field === from_field_name) {
+	else if (field_data.rightField() === from_field_name) {
 		// 右のフィールドからきた場合
-		pos = field_data.right_start_position;
+		pos = field_data.rightStartPosition();
 		this.koishi.setPosition(pos.x, pos.y);
 		this.koishi.setReflect(true);
 	}
 	else {
-		// あり得ない想定
-		throw new Error("illegal field data.");
+		// フィールド遷移オブジェクト等で右でも左でもないところから遷移してきた場合
+		pos = field_data.rightStartPosition();
+		this.koishi.setPosition(pos.x, pos.y);
+		this.koishi.setReflect(true);
 	}
 
 
-	if(this.core.audio_loader.isPlayingBGM(field_data.bgm)) {
-		var sub_bgms = field_data.sub_bgms;
+	if(this.core.audio_loader.isPlayingBGM(field_data.bgm())) {
+		var sub_bgms = field_data.sub_bgms();
 		if (!sub_bgms) sub_bgms = [];
 
-		this.core.audio_loader.stopBGMWithout(field_data.bgm);
+		this.core.audio_loader.stopBGMWithout(field_data.bgm());
 	}
 	else {
 		// BGM 止める
@@ -163,27 +180,29 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	}
 
 	// フィールド移動時にフェードイン／アウトする
-	this.setFadeIn(30,  "black");
-	this.setFadeOut(30, "black");
+	this.core.scene_manager.setFadeIn(30,  "black");
+	this.core.scene_manager.setFadeOut(30, "black");
 
+	this.changeSubScene("play");
+
+	// フィールド固有の初期処理
+	this._executeInitialProcess();
 };
 
-SceneStage.prototype.changeInitialSubScene = function() {
+// フィールド固有の初期処理
+SceneStage.prototype._executeInitialProcess = function() {
 	// フィールドの情報
 	var field_data = this.getFieldData();
 
-	// subscene が設定されていて、未再生ならばそれを使う
-	// そうでなければ通常の play シーン
+	if (!field_data) throw new Error(this.core.save_manager.player.getCurrentField() + " field does not exists");
 
-	var subscene = field_data.event;
-	if (!subscene || this.core.save_manager.isPlayedEvent(subscene)) {
-		this.changeSubScene("play");
-	}
-	else {
-		this.core.save_manager.setPlayedEvent(subscene);
-		this.changeSubScene(subscene);
-	}
+	if(!field_data.initialProcess()) return;
+
+	CommonProcess.exec(this.core, field_data.initialProcess());
 };
+
+
+
 
 SceneStage.prototype.isUsingEye = function() {
 	return this._is_using_eye;
@@ -200,9 +219,7 @@ SceneStage.prototype.switchEyeOn = function() {
 	this.core.audio_loader.addBGM("using_3rdeye");
 
 	// ステージ上のオブジェクトに 3rd eye を使用したことを通知
-	for (var i = 0, len = this.pieces.length; i < len; i++) {
-		this.pieces[i].onUse3rdEye();
-	}
+	this.piece_container.notifyUse3rdEye();
 
 	this.koishi.useEye();
 };
@@ -214,11 +231,29 @@ SceneStage.prototype.switchEyeOff = function() {
 	this.core.audio_loader.unMuteWithFadeInAllBGM(3); // N秒かけてフェードイン
 
 	// ステージ上のオブジェクトに 3rd eye を使用解除したことを通知
-	for (var i = 0, len = this.pieces.length; i < len; i++) {
-		this.pieces[i].onUnUse3rdEye();
-	}
+	this.piece_container.notifyUnUse3rdEye();
 
 	this.koishi.unUseEye();
+};
+
+SceneStage.prototype._playBGM = function() {
+	var field_data = this.getFieldData();
+	if(!this.core.audio_loader.isPlayingBGM(field_data.bgm())) {
+		// メインBGM 再生
+		this.core.audio_loader.changeBGM(field_data.bgm());
+	}
+
+	var sub_bgms = field_data.sub_bgms();
+	if (!sub_bgms) sub_bgms = [];
+
+	// サブBGM
+	for (var i = 0, len = sub_bgms.length; i < len; i++) {
+		var sub_bgm = sub_bgms[i];
+
+		if(!this.core.audio_loader.isPlayingBGM(sub_bgm)) {
+			this.core.audio_loader.addBGM(sub_bgm);
+		}
+	}
 };
 
 SceneStage.prototype.beforeDraw = function() {
@@ -227,29 +262,14 @@ SceneStage.prototype.beforeDraw = function() {
 
 	// BGM 再生
 	if(!this.isUsingEye() && this.frame_count >= 60) {
-		if(!this.core.audio_loader.isPlayingBGM(field_data.bgm)) {
-			// メインBGM 再生
-			this.core.audio_loader.changeBGM(field_data.bgm);
-		}
-
-		var sub_bgms = field_data.sub_bgms;
-		if (!sub_bgms) sub_bgms = [];
-
-		// サブBGM
-		for (i = 0, len = sub_bgms.length; i < len; i++) {
-			var sub_bgm = sub_bgms[i];
-
-			if(!this.core.audio_loader.isPlayingBGM(sub_bgm)) {
-				this.core.audio_loader.addBGM(sub_bgm);
-			}
-		}
+		this._playBGM();
 	}
 
 
 	// chapter 0 で3rd eye を使用していないときのみ
 	// ランダムノイズ再生
 	// N秒ごとにN%の確率で再生
-	if (field_data.chapter === 0 && !this.isUsingEye()) {
+	if (field_data.chapter() === 0 && !this.isUsingEye()) {
 		if(this.core.frame_count % CONSTANT.CHAPTER0.NOISE_SOUND_INTERVAL_COUNT === 0) {
 			if (Util.getRandomInt(100) <= CONSTANT.CHAPTER0.NOISE_SOUND_PROB) {
 				var sound_name = CONSTANT.CHAPTER0.NOISE_SOUND_LIST[ Util.getRandomInt(0, CONSTANT.CHAPTER0.NOISE_SOUND_LIST.length - 1) ];
@@ -269,9 +289,8 @@ SceneStage.prototype.beforeDraw = function() {
 	}
 
 	// ステージ上のオブジェクト一覧
-	for (i = 0, len = this.pieces.length; i < len; i++) {
-		this.pieces[i].beforeDraw();
-	}
+	this.piece_container.beforeDraw();
+
 	// 自機
 	this.koishi.beforeDraw();
 	// 3rd eye の光
@@ -284,9 +303,8 @@ SceneStage.prototype.beforeDraw = function() {
 
 	// 画面の枠
 	this.black_mist.beforeDraw();
+	this.white_mist.beforeDraw();
 	// UI パーツ
-	this.right_next_field_button.beforeDraw();
-	this.left_next_field_button.beforeDraw();
 	this.item_menu_button.beforeDraw();
 	this.eye_button.beforeDraw();
 
@@ -302,7 +320,7 @@ SceneStage.prototype.draw = function(){
 	var ctx = this.core.ctx;
 
 	// 背景描画
-	var bg = this.core.image_loader.getImage(field_data.background);
+	var bg = this.core.image_loader.getImage(field_data.background());
 	ctx.save();
 	ctx.drawImage(bg,
 		0,
@@ -316,19 +334,9 @@ SceneStage.prototype.draw = function(){
 	);
 	ctx.restore();
 
-	// ステージ上のオブジェクト一覧
-	// 自機
-	var obj, i, len;
-	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
-		obj = this._koishi_and_pieces[i];
-		obj.draw();
-	}
-	/*
-	for (var i = 0, len = this.pieces.length; i < len; i++) {
-		this.pieces[i].draw();
-	}
-	this.koishi.draw();
-	*/
+	// ステージ上のオブジェクトと自機の描画
+	// NOTE: オブジェクトとオブジェクトの間に自機がいることもあるので一緒に描画している
+	this.piece_container.draw();
 
 	// 3rd eye の光
 	if (this.isUsingEye()) {
@@ -340,87 +348,82 @@ SceneStage.prototype.draw = function(){
 
 	// 画面の枠
 	this.black_mist.draw();
+	this.white_mist.draw();
 	// UI パーツ
-	this.right_next_field_button.draw();
-	this.left_next_field_button.draw();
 	this.item_menu_button.draw();
 	this.eye_button.draw();
 
-	for (i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
-		obj = this.walk_immovable_areas[i];
+	for (var i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
+		var obj = this.walk_immovable_areas[i];
 		obj.draw();
 	}
 
+	// 3rd eye の使用状況に応じて赤いマスク
+	this._draw3rdEyeEmergencyMask();
 };
 
-// 移動可能かどうか
-SceneStage.prototype.isEnableToMove = function(){
-	// こいし移動中は、再度移動先を設定できない
-	return this.koishi.isMoving() ? false : true;
-};
+var BLINK_COUNT = 240; // 何フレーム毎にブリンクするか
+var BLINK_INC = 20; // 赤く点滅する速度
 
+// 3rd eye の使用状況に応じて赤いマスク
+SceneStage.prototype._draw3rdEyeEmergencyMask = function() {
+	// 充血レベルが最大のときのみ
+	if (this.koishi.get3rdeyeBloodShotLevel() !== 4) return;
+
+	// ブリンク開始
+	if (this.frame_count % BLINK_COUNT === 0) {
+		this._3rdeye_red_mask_alpha = 1;
+		this._3rdeye_red_mask_alpha_rev = false;
+	}
+
+	// ブリンク開始してなければ何もしない
+	if (this._3rdeye_red_mask_alpha <= 0) return;
+
+	// 赤い色の上昇／下降
+	if(this._3rdeye_red_mask_alpha_rev) {
+		this._3rdeye_red_mask_alpha -= BLINK_INC;
+
+		// 下限は0
+		if(this._3rdeye_red_mask_alpha <= 0) {
+			this._3rdeye_red_mask_alpha = 0;
+		}
+	}
+	else {
+		this._3rdeye_red_mask_alpha += BLINK_INC;
+
+		// 折り返し
+		if(this._3rdeye_red_mask_alpha >= 100) {
+			this._3rdeye_red_mask_alpha_rev = true;
+		}
+	}
+
+	var alpha = this._3rdeye_red_mask_alpha / 100;
+
+	var ctx = this.core.ctx;
+	ctx.save();
+
+	ctx.fillStyle = 'red';
+	ctx.globalAlpha = alpha * 0.2;
+	ctx.fillRect(0, 0, this.width, this.height);
+
+	ctx.restore();
+};
 
 SceneStage.prototype.isNoHat = function(){
 	return this.currentSubScene() instanceof SceneSubStageEventChapter0GetHat;
 };
 SceneStage.prototype.getFieldData = function(){
-	return FieldMap[this.core.save_manager.getCurrentField()];
+	return FieldMasterRepository.find(this.core.save_manager.player.getCurrentField());
 };
+SceneStage.prototype.getChapterNo = function(){
+	return this.getFieldData().chapter();
+};
+
 // ステージ上のオブジェクト or 自機を取得
 SceneStage.prototype.getPiece = function(name) {
 	if (name === "koishi") return this.koishi;
 
-	// 自機
-	var obj, i, len;
-	for (i = 0, len = this._koishi_and_pieces.length; i < len; i++) {
-		obj = this._koishi_and_pieces[i];
-		// TODO: O(1)
-		if(obj.no === name) {
-			return obj;
-		}
-	}
-
-	return null;
+	return this.piece_container.get(name);
 };
 
-
-
-
-SceneStage.prototype._setupPieces = function() {
-	var field_data = this.getFieldData();
-
-	this.pieces = [];
-	this.walk_immovable_areas = [];
-
-	var object_data_list = field_data.objects;
-
-	for (var i = 0, len = object_data_list.length; i < len; i++) {
-		var data = object_data_list[i];
-		var object;
-		if (data.type === CONSTANT.STATIC_IMAGE_TYPE) { // 静止オブジェクト
-			object = new ObjectStaticImage(this);
-		}
-		else if (data.type === CONSTANT.ANIME_IMAGE_TYPE) { // サードアイを当てると動くオブジェクト
-			object = new ObjectAnimeImage(this);
-		}
-		else if (data.type === CONSTANT.JOURNAL_TYPE) { // ジャーナル
-			object = new ObjectJournal(this);
-		}
-		else if (data.type === CONSTANT.ANIME_EVENT_IMAGE_TYPE) { // イベント発生オブジェクト
-			object = new ObjectAnimeEventImage(this);
-		}
-		else if (data.type === CONSTANT.ITEM_TYPE) { // アイテム
-			object = new ObjectItem(this);
-		}
-
-		else {
-			throw new Error ("Unknown object type error: " + data.type);
-		}
-		object.init();
-		object.setData(data);
-		this.pieces.push(object);
-
-		this.walk_immovable_areas.push(object.getImmovableArea());
-	}
-};
 module.exports = SceneStage;

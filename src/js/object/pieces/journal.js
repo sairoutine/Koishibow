@@ -1,126 +1,48 @@
 'use strict';
-var base_object = require('./base');
+var base_object = require('./acquirable_base');
 var Util = require('../../hakurei').util;
 var WalkImmovableArea = require('../walk_immovable_area');
 
 var ObjectJournal = function(core) {
 	base_object.apply(this, arguments);
 
-	this._image   = null;
-	this._scale   = 1;
-	this._width   = null;
-	this._height  = null;
-
-	this._picture_name = null;
-
+	this._journal_id = null;
 };
 Util.inherit(ObjectJournal, base_object);
 
 ObjectJournal.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
-	this._image   = null;
-	this._scale   = 1;
-	this._width   = null;
-	this._height  = null;
-
-	this._picture_name = null;
+	this._journal_id = null;
 };
-
-ObjectJournal.prototype.isCollision = function(point) {
-	// サードアイ使用中ならクリックしても調べられないので何もしない
-	return !this.scene.root().isUsingEye();
-};
-
-
 
 ObjectJournal.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
-	// 画像
-	this._image = this.core.image_loader.getImage(data.image);
 
 	// 表示するジャーナル画像
-	this._picture_name = data.picture;
-
-	// 位置
-	this.setPosition(data.x, data.y);
-
-	// サイズ
-	if (data.scale) {
-		this._scale = data.scale;
-	}
-	if (data.width) {
-		this._width  = data.width;
-	}
-	if (data.height) {
-		this._height = data.height;
-	}
+	this._journal_id = data.journal_id;
 };
 
-// 移動後の処理
-ObjectJournal.prototype.onAfterWalkToHere = function() {
+ObjectJournal.prototype.acquire = function() {
+	// ジャーナル獲得
+	this.core.save_manager.journal.addJournal(this._journal_id);
+
 	// ジャーナル画像表示シーンへ遷移
-	this.scene.root().changeSubScene("journal", this._picture_name);
+	this.scene.root().changeSubScene("journal", this._journal_id);
 
 	// 音を再生
 	this.core.audio_loader.playSound("show_journal");
 };
 
-ObjectJournal.prototype.draw = function(){
-	base_object.prototype.draw.apply(this, arguments);
-
-	var ctx = this.core.ctx;
-	var image = this._image;
-
-	var width = image.width * this._scale;
-	var height = image.height * this._scale;
-
-	// 背景描画
-	ctx.save();
-	ctx.translate(this.x(), this.y());
-	ctx.drawImage(image,
-		-width/2,
-		-height/2,
-		width,
-		height
-	);
-	ctx.restore();
-};
-
-
-
-ObjectJournal.prototype.collisionWidth = function(){
-	if(this._width) {
-		return this._width;
-	}
-	else {
-		return this._image.width * this._scale;
-	}
-};
-
-ObjectJournal.prototype.collisionHeight = function(){
-	if(this._height) {
-		return this._height;
-	}
-	else {
-		return this._image.height * this._scale;
-	}
-};
 ObjectJournal.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);
 	area.init();
-	area.setPosition(this.x(), this.y() + this.collisionHeight()/4);
-	// 床の紙なのでサイズなし
+	area.setPosition(this.x(), this.y());
 	area.setSize(0, 0);
-
 	area.setParentID(this.id);
 
 	return area;
 };
-
-
-
-
 
 
 

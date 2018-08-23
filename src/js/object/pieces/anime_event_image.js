@@ -23,16 +23,18 @@ ObjectAnimeEventImage.prototype.setData = function(data) {
 	this._back.click_event = data.action_back_event;
 };
 
-
-// 3rd eye 使用時のみ当たり判定を行う
-ObjectAnimeEventImage.prototype.isCollision = function(point) {
+ObjectAnimeEventImage.prototype.isCheckInTouchArea = function(){
 	return this.scene.root().isUsingEye();
 };
+// 3rd eye 使用時のみ当たり判定を行う
+ObjectAnimeEventImage.prototype.isCollision = function(obj) {
+	return base_object.prototype.isCollision.apply(this, arguments) && this.scene.root().isUsingEye();
+};
 
-// こいし移動後の処理
-ObjectAnimeEventImage.prototype.onAfterWalkToHere = function() {
+// こいしに触られたときの処理
+ObjectAnimeEventImage.prototype.onTouchByKoishi = function() {
 	// イベント発生
-	this.core.changeScene(this._back.click_event);
+	this.core.scene_manager.changeScene(this._back.click_event);
 };
 ObjectAnimeEventImage.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);

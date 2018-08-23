@@ -1,4 +1,5 @@
 'use strict';
+var _ = require('i18n4v');
 
 var base_scene = require('../../talk_with_object');
 var Util = require('../../../../hakurei').util;
@@ -9,10 +10,13 @@ var SceneSubStageObjectTalk = function(core) {
 Util.inherit(SceneSubStageObjectTalk, base_scene);
 
 SceneSubStageObjectTalk.prototype.init = function(){
+
 	var serif_list = [
-		{"chara": "koishi","serif":"あっ"},
+		{"chara": "koishi","serif":_("あっ")},
 	];
-	base_scene.prototype.init.apply(this, [serif_list, null, false]);
+	var obj = null;
+
+	base_scene.prototype.init.apply(this, [serif_list, obj]);
 };
 
 SceneSubStageObjectTalk.prototype.beforeDraw = function(){
@@ -25,21 +29,19 @@ SceneSubStageObjectTalk.prototype.beforeDraw = function(){
 	}
 	else if (this.frame_count === 60) {
 		this.core.audio_loader.playSound("chapter0-mansion_corridor2-event_in");
-		this.root().setFadeOut(120, "black");
-		this.core.changeScene("event_for_chapter0_encounter_satori");
+		this.core.scene_manager.setFadeOut(120, "black");
+		this.core.scene_manager.changeScene("event_for_chapter0_encounter_satori");
 	}
 };
-
-
-SceneSubStageObjectTalk.prototype.afterDraw = function(){
-};
-SceneSubStageObjectTalk.prototype.draw = function(){
-	base_scene.prototype.afterDraw.apply(this, arguments);
-};
-
-
 
 SceneSubStageObjectTalk.prototype.onSerifEnd = function(){
 	this.root().changeSubScene("play");
 };
+
+SceneSubStageObjectTalk.prototype.isSerifAutoStart = function() {
+	return false;
+};
+
+
+
 module.exports = SceneSubStageObjectTalk;

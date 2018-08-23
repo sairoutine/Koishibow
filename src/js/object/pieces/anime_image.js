@@ -22,6 +22,9 @@ var ObjectAnimeImage = function(core) {
 
 	// 裏オブジェクトのパラメータ
 	this._back = {
+		// クリック時のセリフ
+		serif: null,
+
 		// BGM
 		bgm_name: null,
 
@@ -38,6 +41,9 @@ var ObjectAnimeImage = function(core) {
 
 	// 表オブジェクトで既にクリック済かどうか
 	this._is_clicked_in_front = false;
+
+	// 表オブジェクトで既にクリック済かどうか
+	this._is_clicked_in_back = false;
 
 	// 裏オブジェクト中かどうか
 	this._is_in_back = false;
@@ -62,6 +68,9 @@ ObjectAnimeImage.prototype.init = function(){
 
 	// 裏オブジェクトのパラメータ
 	this._back = {
+		// クリック時のセリフ
+		serif: null,
+
 		// BGM
 		bgm_name: null,
 
@@ -73,8 +82,15 @@ ObjectAnimeImage.prototype.init = function(){
 	this._width  = null;
 	this._height = null;
 
+
+	// 何回でもタッチできるかどうか
+	this._loop = false;
+
 	// 表オブジェクトで既にクリック済かどうか
 	this._is_clicked_in_front = false;
+
+	// 表オブジェクトで既にクリック済かどうか
+	this._is_clicked_in_back = false;
 
 	// 裏オブジェクト中かどうか
 	this._is_in_back = false;
@@ -123,6 +139,10 @@ ObjectAnimeImage.prototype.setData = function(data) {
 	// 表オブジェクト クリック時のSE
 	this._front.sound_name  = data.sound_name;
 
+	// 裏オブジェクト クリック時のセリフ
+	this._back.serif = data.serif_back;
+
+
 	// 裏オブジェクト中のBGM
 	this._back.bgm_name  = data.bgm_back;
 
@@ -141,13 +161,29 @@ ObjectAnimeImage.prototype.setData = function(data) {
 	if (data.height) {
 		this._height = data.height;
 	}
+
+	if (data.loop) {
+		this._loop = true;
+	}
+
+	//console.log(data.name + " width: " + this.collisionWidth() + ", height: " + this.collisionHeight() + ",");
 };
 
 
 ObjectAnimeImage.prototype.isCollision = function(point) {
-	// サードアイ使用中ならクリックしても調べられないので何もしない
+	if (!base_object.prototype.isCollision.apply(this, arguments)) {
+		return false;
+	}
+
+	if (this._loop) return true;
+
 	// 一度既にクリックしていれば、二度目はクリックできない
-	return !this.scene.root().isUsingEye() && !this._is_clicked_in_front;
+	if (this.scene.root().isUsingEye()) {
+		return !this._is_clicked_in_back;
+	}
+	else {
+		return !this._is_clicked_in_front;
+	}
 };
 
 // 3rd eye の光と当たり判定する
@@ -205,9 +241,8 @@ ObjectAnimeImage.prototype.onNotCollideWithLightIn3rdEye = function(){
 	// 表オブジェクトになった
 	this._is_in_back = false;
 
-	// 表がクリック済ならクリック済アニメに戻る
-	// 表がクリック前ならクリック前アニメに戻る
-	var front_anime_name = this._is_clicked_in_front ? "front_after_click_anime" : "front_before_click_anime";
+	// 元のアニメを取得
+	var front_anime_name = this._getWaitAnimeName();
 
 	var ss = this.ss;
 	var audio_loader = this.core.audio_loader;
@@ -225,6 +260,11 @@ ObjectAnimeImage.prototype.onNotCollideWithLightIn3rdEye = function(){
 	});
 };
 
+// 表がクリック済ならクリック済アニメに戻る
+// 表がクリック前ならクリック前アニメに戻る
+ObjectAnimeImage.prototype._getWaitAnimeName = function() {
+	return this.ss.hasFrontClickedAnime() && this._is_clicked_in_front ? "front_after_click_anime" : "front_before_click_anime";
+};
 ObjectAnimeImage.prototype.beforeDraw = function() {
 	base_object.prototype.beforeDraw.apply(this, arguments);
 
@@ -235,6 +275,7 @@ ObjectAnimeImage.prototype.beforeDraw = function() {
 
 ObjectAnimeImage.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
+	if(!this.isShow()) return;
 
 	this.ss.draw();
 };
@@ -249,20 +290,35 @@ ObjectAnimeImage.prototype.afterDraw = function(){
 
 ObjectAnimeImage.prototype.collisionWidth = function(){
 	if(this._width) return this._width;
-	return this.ss.MarginWidth() * this._scale;
+	return this.ss.width();
 };
 
 ObjectAnimeImage.prototype.collisionHeight = function(){
 	if(this._height) return this._height;
-	return this.ss.MarginHeight() * this._scale;
+	return this.ss.height();
 };
 
-// こいし移動後の処理
-ObjectAnimeImage.prototype.onAfterWalkToHere = function() {
-	// こいしのアクション
-	if (this._front.action_name) {
-		this.scene.root().koishi.actionByObject(this._front.action_name);
+ObjectAnimeImage.prototype.isCheckInTouchArea = function(){
+	if (this.scene.root().isUsingEye()) {
+		return !!this._back.serif;
 	}
+	else {
+		return this.ss.hasFrontClickedAnime() || this._front.action_name || this._front.sound_name || this._front.serif;
+	}
+};
+
+// こいしに触られたときの処理
+ObjectAnimeImage.prototype.onTouchByKoishi = function() {
+	if (this.scene.root().isUsingEye()) {
+		this._onTouchByKoishiInBack();
+	}
+	else {
+		this._onTouchByKoishiInFront();
+	}
+};
+ObjectAnimeImage.prototype._onTouchByKoishiInFront = function() {
+	// こいしのアクション
+	this.scene.root().koishi.actionByObject(this._front.action_name || "wait");
 
 	// 音を再生
 	if (this._front.sound_name) {
@@ -286,5 +342,36 @@ ObjectAnimeImage.prototype.onAfterWalkToHere = function() {
 	// クリック済に状態変更
 	this._is_clicked_in_front = true;
 };
+
+ObjectAnimeImage.prototype._onTouchByKoishiInBack = function() {
+	// 会話するオブジェクトなので、クリックしたら会話する
+	if (this._back.serif) {
+		this.scene.root().changeSubScene("talk_with_object", this._back.serif, this);
+	}
+
+	// クリック済に状態変更
+	this._is_clicked_in_back = true;
+};
+
+
+
+
+// 会話で発生したリアクション
+ObjectAnimeImage.prototype.actionByObject = function(action_name) {
+	var json = AnimeMap[action_name];
+
+	// アニメのマスタデータを設定 TODO: 最初から定義しておく
+	this.ss.addAnime(action_name, json);
+
+	var ss = this.ss;
+	ss.playAnimationOnce(action_name);
+};
+ObjectAnimeImage.prototype.setWaitAnime = function() {
+	var front_anime_name = this._getWaitAnimeName();
+	var ss = this.ss;
+	ss.playAnimationInfinity(front_anime_name);
+};
+
+
 
 module.exports = ObjectAnimeImage;

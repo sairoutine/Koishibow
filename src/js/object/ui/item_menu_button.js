@@ -1,8 +1,8 @@
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
-var CONSTANT = require('../../constant');
 
+// TODO: ジャーナルメニュー追加したときに大変だったので、なんとかしたい...
 
 var ObjectItemMenuButton = function(core) {
 	base_object.apply(this, arguments);
@@ -15,10 +15,10 @@ ObjectItemMenuButton.prototype.init = function(){
 };
 
 ObjectItemMenuButton.prototype.isShow = function(){
-	// play or menu scene のみ メニューアイコンを表示
+	// メニューアイコンを表示する条件
 	return(
-		this.scene.current_scene === "play" ||
 		this.scene.current_scene === "menu" ||
+		this.scene.current_scene === "journal_menu" ||
 		this.scene.current_scene === "got_item" ?
 		true : false
 	);
@@ -44,14 +44,18 @@ ObjectItemMenuButton.prototype.onCollision = function(obj){
 		// メニューを閉じる
 		this.scene.changeSubScene("play");
 	}
+	else if (scene_name === "journal_menu") {
+		// メニューを閉じる
+		this.scene.changeSubScene("play");
+	}
 	else {
 		// それ以外のサブシーンならなにもしない
 	}
 };
 
-// クリックしてるときしか onCollision を呼ばない
+// 現状、表示UIとしてしか使ってないので、当たり判定不要
 ObjectItemMenuButton.prototype.isCollision = function() {
-	return this.core.input_manager.isLeftClickPush() ? true : false;
+	return false;
 };
 
 ObjectItemMenuButton.prototype.collisionWidth = function(){

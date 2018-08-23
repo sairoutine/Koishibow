@@ -1,19 +1,29 @@
 'use strict';
+var _ = require('i18n4v')
 // 病院の廊下2(こころ)
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
 	key: "chapter0_hospital_corridor2",
 	chapter: 0,
-	name: "病院の廊下2",
 	bgm: "field1",
-	right_start_position: {x: 690, y: 540},
-	left_start_position:  {x: 180, y: 540},
-	right_field: "chapter0_mansion_corridor1",
-	left_field: "chapter0_hospital_corridor1",
+	rightStartPosition: {x: 690, y: 380},
+	leftStartPosition:  {x: 180, y: 380},
+	rightField: "chapter0_mansion_corridor1",
+	leftField: "chapter0_hospital_corridor1",
 	background: "chapter0-hospital2-bg-001",
-	walk_sound: "walking_bare_default",
-	event: "event_chapter0_kokoro_encounter",
+	walkSound: "walking_bare_default",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter0_hospital_corridor2_firstaccess"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playSubEvent", "arguments": ["event_chapter0_kokoro_encounter"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter0_hospital_corridor2_firstaccess"]}
+			],
+		]},
+	],
 	objects: [
 		{
 			no: ++I,
@@ -21,7 +31,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "くつした",
 			serif: [
-				{"chara": "koishi","serif":"やだやだ。"},
+				{"chara": "koishi","serif":_("やだやだ。")},
 			],
 			x: 302,
 			y: 443,
@@ -34,7 +44,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "車イス",
 			serif: [
-				{"chara": "koishi","serif":"あしおれたらのってもいい？"},
+				{"chara": "koishi","serif":_("あしおれたらのってもいい？")},
 			],
 			x: 130,
 			y: 360,
@@ -49,7 +59,7 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 627, y: 689, scale: 2/3, picture: "journal003"},
+			image: "paper", type: CONSTANT.JOURNAL_TYPE, x: 627, y: 689, scale: 2/3, journal_id: "journal003"},
 	],
 
 };
