@@ -31,7 +31,6 @@
     "vinyl-source-stream": "2.0.0"
   },
   "dependencies": {
-    "i18n4v": "0.2.2",
-    "jszip": "3.1.5"
+    "i18n4v": "0.2.2"
   }
 }
