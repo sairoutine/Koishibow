@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 var CONSTANT = require('./constant');
 
 // 多言語変換
@@ -45,3 +45,39 @@ window.changeFullScreen = function () {
 if(window.require) {
 	window.require('electron').webFrame.setVisualZoomLevelLimits(1,1); //zoomさせない
 }
+*/
+var ZipLoader = require('zip-loader');
+
+var loader = new ZipLoader('./assets.zip');
+
+loader.on( 'progress', function ( event ) {
+
+  console.log( 'loading', event.loaded, event.total );
+
+} );
+
+loader.on( 'load', function ( event ) {
+		Object.keys( loader.files ).forEach( ( fileName ) => {
+			if ( loader.files[ fileName ].buffer.length === 0 ) return;
+			console.log(fileName);
+			var blob = loader.extractAsBlobUrl( fileName, guessFileType( fileName ) );
+			console.log(blob);
+		} );
+} );
+
+function guessFileType( fileName ) {
+	return /\.jpe?g$/i.test( fileName ) ? 'image/jpeg' :
+	       /\.png$/i  .test( fileName ) ? 'image/png'  :
+	       /\.gif$/i  .test( fileName ) ? 'image/gif'  :
+	       /\.txt$/i  .test( fileName ) ? 'text/plain' :
+	       /\.js$/i   .test( fileName ) ? 'text/plain' :
+	       /\.json$/i .test( fileName ) ? 'text/plain' :
+	       /\.html$/i .test( fileName ) ? 'text/plain' :
+	       /\.css$/i  .test( fileName ) ? 'text/plain' :
+	       /\.svg$/i  .test( fileName ) ? 'text/plain' :
+	       'application/octet-stream';
+}
+
+
+loader.load();
+
