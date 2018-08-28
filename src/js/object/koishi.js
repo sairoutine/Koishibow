@@ -136,9 +136,10 @@ Koishi.prototype._playWalkSound = function(){
 };
 
 Koishi.prototype.moveByInput = function() {
-	var is_move = false;
 	var add_x = 0;
 	var add_y = 0;
+	var before_x = this.x();
+	var before_y = this.y();
 
 	/* 移動量計算 */
 
@@ -185,21 +186,24 @@ Koishi.prototype.moveByInput = function() {
 		add_y = +SPEED;
 	}
 
-	/* 移動したフラグ */
+	/* x: 移動 */
+	if (add_x !== 0) {
+		this.x(this.x() + add_x);
 
-	if(add_x || add_y) {
-		is_move = true;
+		/* x: オブジェクトとの衝突したら戻す */
+		if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
+			this.x(this.x() - add_x);
+		}
 	}
 
-	/* 移動 */
-	this.x(this.x() + add_x);
-	this.y(this.y() + add_y);
+	/* y: 移動 */
+	if (add_y !== 0) {
+		this.y(this.y() + add_y);
 
-	/* オブジェクトとの衝突したら戻す */
-	if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
-		this.x(this.x() - add_x);
-		this.y(this.y() - add_y);
-		is_move = false;
+		/* y: オブジェクトとの衝突したら戻す */
+		if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
+			this.y(this.y() - add_y);
+		}
 	}
 
 	/* フィールド外に移動したら戻す */
@@ -209,23 +213,18 @@ Koishi.prototype.moveByInput = function() {
 		this.y() < CONSTANT.WALK_DEPTH_LIMIT ||
 		this.y() > this.scene.height - 180
 	) {
-		this.x(this.x() - add_x);
-		this.y(this.y() - add_y);
-		is_move = false;
+		this.x(before_x);
+		this.y(before_y);
 	}
 
 	/* モーション変更 */
-	if (is_move) {
+	if (this.x() !== before_x || this.y() !== before_y) {
 		// 歩きモーションに変更
-		if (!this.isWalking()) {
-			this.setWalkAnime();
-		}
+		this.setWalkAnime();
 	}
 	else {
 		// 歩いてないので待機モーションに変更
-		if (this.isWalking()) {
-			this.setWaitAnime();
-		}
+		this.setWaitAnime();
 	}
 
 
