@@ -9,19 +9,6 @@ AssetsConfig.images = {
 	// タイトル放置案 背景
 	"leaving_title":      "./image/common/leaving_title.png",
 
-
-	// マウスカーソル
-	"ui_icon_pointer_01":            {
-		image: "./image/common/ui_icon_pointer_01.png",
-		scale_width: 2/3,
-		scale_height: 2/3,
-	},
-	"ui_icon_pointer_02":            {
-		image: "./image/common/ui_icon_pointer_02.png",
-		scale_width: 2/3,
-		scale_height: 2/3,
-	},
-
 	// こいし画像
 	"koishi": "./image/common/koishi.png",
 	"koishi_button": "./image/common/koishi_button.png",
