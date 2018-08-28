@@ -76,10 +76,7 @@ SceneEventPlayDoll.prototype.init = function(){
 
 	this.black_mist.init();
 
-	this._time = new TimeManager(this.core);
-	this._time.setFrameCountFunction(function () {
-		return self.frame_count;
-	});
+	this._time = new TimeManager();
 
 	this._serif.init([
 		{"chara": "koishi", "exp": "chapter3-01-event-01-koishi", "serif":_("あれ"), "option": {"sounds": [

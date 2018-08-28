@@ -67,10 +67,7 @@ var SceneSubStageObjectTalk = function(core) {
 
 	// フレーム数によるイベント管理
 	var self = this;
-	this._time = new TimeManager(this.core);
-	this._time.setFrameCountFunction(function () {
-		return self.frame_count;
-	});
+	this._time = new TimeManager();
 
 	// クリック待ちカーソルの状態
 	this._cursor_y = 0; // カーソル位置

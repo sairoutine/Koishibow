@@ -77,10 +77,7 @@ var SceneEventTalk = function(core) {
 
 	// フレーム数によるイベント管理
 	var self = this;
-	this._time = new TimeManager(this.core);
-	this._time.setFrameCountFunction(function () {
-		return self.frame_count;
-	});
+	this._time = new TimeManager();
 
 	// 今、会話のどの選択肢を選んでいるか
 	this._junction_focus_index = 0;
