@@ -9,13 +9,16 @@ body {
 	padding:0;
 	width:960;
 	height:720;
-	/* overflow: hidden; */
 }
 #canvasdiv {
 	background: black;
 	position:relative;
 	width:960px;
-	height:720px
+	height:720px;
+}
+#mainCanvas {
+	left: 0px;
+	top: 0px;
 }
 #mainCanvas:-webkit-full-screen {
 	height: 100%;
@@ -25,7 +28,7 @@ body {
 <body>
 	<div id="debug"></div>
 	<div id="canvasdiv">
-		<canvas id="mainCanvas" width="960" height="720" style="position:absolute;left: 0px;top: 0px;"></canvas>
+		<canvas id="mainCanvas" width="960" height="720"></canvas>
 	</div>
 
 	<!--
