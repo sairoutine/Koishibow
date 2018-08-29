@@ -8,13 +8,22 @@ const globalShortcut = electron.globalShortcut;
 
 let mainWindow;
 
+// 日本語 or 英語
+const IS_JA = false;
+
+const FULLSCREEN_DIALOG_TITLE = IS_JA ? "フルスクリーン起動" : "Full Screen"
+const FULLSCREEN_DIALOG_MESSAGE = IS_JA ? 'フルスクリーンで起動しますか？' : "Do you make the window full screen?"
+const EXIT_DIALOG_TITLE = IS_JA ? "終了" : "Exit"
+const EXIT_DIALOG_MESSAGE = IS_JA ? 'ゲームを終了しますがよろしいですか？' : "Do you exit the game?"
+
+
 function createWindow () {
 	// dialog 表示
 	var fullscreen_answer = dialog.showMessageBox({
 		type: 'question',
 		buttons: ['Yes', 'No'],
-		title: 'フルスクリーン起動',
-		message: 'フルスクリーンで起動しますか？'
+		title: FULLSCREEN_DIALOG_TITLE,
+		message: FULLSCREEN_DIALOG_MESSAGE,
 	});
 	// fullscreen
 	if(fullscreen_answer === 0) {
@@ -47,15 +56,15 @@ function createWindow () {
 
 	var is_show_dialog = false;
 
-	const ret = globalShortcut.register('Escape', function() {
+	globalShortcut.register('Escape', function() {
 		if(is_show_dialog) return;
 
 		is_show_dialog = true;
 		var quit_answer = dialog.showMessageBox({
 			type: 'question',
 			buttons: ['Yes', 'No'],
-			title: '終了',
-			message: 'ゲームを終了しますがよろしいですか？'
+			title: EXIT_DIALOG_TITLE,
+			message: EXIT_DIALOG_MESSAGE
 		});
 		if(quit_answer === 0) {
 			app.quit();
