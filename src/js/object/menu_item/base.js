@@ -51,7 +51,7 @@ ObjectMenuItemBase.prototype.draw = function(){
 	if (this.num() > 1) {
 		ctx.font = "28px 'OradanoGSRR'";
 		//ctx.textAlign = 'center';
-		//ctx.textBaseAlign = 'middle';
+		////ctx.textBaseline = 'middle';
 		ctx.fillStyle = 'rgb( 255, 255, 255 )';
 		ctx.fillText("x" + this.num(),
 			40,

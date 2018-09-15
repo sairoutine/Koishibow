@@ -57,7 +57,7 @@ SceneSubStageJournalMenu.prototype._setupMenuTitle = function() {
 					var ctx = this.core.ctx;
 
 					ctx.save();
-					ctx.textBaseAlign = 'middle';
+					//ctx.textBaseline = 'middle';
 					ctx.font = "28px 'OradanoGSRR'";
 					ctx.fillStyle = 'rgb( 255, 255, 255 )';
 

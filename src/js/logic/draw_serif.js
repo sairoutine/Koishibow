@@ -87,7 +87,7 @@ DrawSerif.drawText = function (obj, ctx, lines, width_num, height_num, option) {
 	ctx.font = font_size.toString() + "px '"+ font_name + "'";
 
 	ctx.textAlign = 'left';
-	ctx.textBaseAlign = 'top';
+	//ctx.textBaseline = 'top';
 
 	for(var i = 0, len = lines.length; i < len; i++) {
 		y += font_size + 12;
@@ -183,7 +183,7 @@ DrawSerif.drawJunction = function (obj, ctx, junction_off, junction_on, junction
 		ctx.font = FONT_SIZE.toString() + "px '" + FONT_NAME + "'";
 
 		ctx.textAlign = 'left';
-		ctx.textBaseAlign = 'middle';
+		//ctx.textBaseline = 'middle';
 
 		ctx.fillText(junction_list[i], -100, 0); // 1行表示
 

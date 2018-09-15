@@ -106,7 +106,7 @@ SceneSubStageMenu.prototype.init = function(){
 			// メニュー文字 表示
 			ctx.font = "24px 'OradanoGSRR'";
 			ctx.textAlign = 'center';
-			ctx.textBaseAlign = 'middle';
+			//ctx.textBaseline = 'middle';
 			ctx.fillStyle = 'rgb( 255, 255, 255 )';
 			ctx.fillText("ジャーナル→",
 				this.getCollisionLeftX() + 85,
@@ -161,7 +161,7 @@ SceneSubStageMenu.prototype._setupMenuButtons = function() {
 					// メニュー文字 表示
 					ctx.font = "24px 'OradanoGSRR'";
 					ctx.textAlign = 'center';
-					ctx.textBaseAlign = 'middle';
+					//ctx.textBaseline = 'middle';
 					ctx.fillStyle = 'rgb( 255, 255, 255 )';
 					ctx.fillText(conf.value,
 						this.getCollisionLeftX() + 85,
