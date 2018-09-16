@@ -12,8 +12,6 @@ Util.inherit(ObjectMenuItemJournalBook, base_object);
 
 // アイテムが使用されたとき
 ObjectMenuItemJournalBook.prototype.use = function(){
-	base_object.prototype.use.apply(this, arguments);
-
 	// ジャーナル一覧画面へ
 	this.scene.root().changeSubScene("journal_menu");
 };
