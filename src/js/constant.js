@@ -5,10 +5,10 @@ var CONSTANT = {
 	DEBUG: {},
 
 	// 体験版モードかどうか
-	TRIAL: true,
+	TRIAL: false,
 
 	// 言語
-	LANGUAGE: "en",
+	LANGUAGE: "ja", // "en",
 
 	// ゲームを最初から始めた場合の最初のフィールド
 	INITIAL_CHAPTER: "opening_movie_chapter0",
