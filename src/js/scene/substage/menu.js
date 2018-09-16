@@ -1,7 +1,6 @@
 'use strict';
 var _ = require('i18n4v')
 
-// TODO: ジャーナルに行くボタン
 var base_scene = require('./base');
 
 var UIParts = require('../../hakurei').object.ui_parts;
@@ -13,6 +12,7 @@ var ItemMasterRepository = require("../../repository/item");
 
 var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
 var ObjectMenuItemNonUsable = require('../../object/menu_item/non_usable');
+var ObjectMenuItemJournalBook = require('../../object/menu_item/journal_book');
 
 // メニュー一覧
 var MENU_BUTTONS = [
@@ -33,14 +33,25 @@ var MENU_BUTTONS = [
 var SceneSubStageMenu = function(core) {
 	base_scene.apply(this, arguments);
 
+	// 現在カーソルをあわせているアイテムのアイテムID
+	this.focus_item_id = null;
+
+	// 現在カーソルをあわせているアイテムの位置(x, y)
 	this._index_item_vertical = 0;
 	this._index_item_horizontal = 0;
 
-	this.menu_ui = [];
-	this._index_ui = 0;
-
+	// 現在アイテムを選択しているかどうか
 	this._is_select_item = false;
 
+	// アイテム一覧
+	this.menu_item_list = [];
+
+	// ボタン一覧
+	this.menu_ui = [];
+	// ボタンのどれを選択中か
+	this._index_ui = 0;
+
+	// 使用できないメッセージ表示の setTimeout ID
 	this._show_unable_to_use_message = 0;
 };
 
@@ -49,24 +60,34 @@ Util.inherit(SceneSubStageMenu, base_scene);
 SceneSubStageMenu.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
-	// 現在カーソルを合わせているアイテム
+	// 現在カーソルをあわせているアイテムのアイテムID
 	this.focus_item_id = null;
 
+	// 現在カーソルをあわせているアイテムの位置(x, y)
 	this._index_item_vertical = 0;
 	this._index_item_horizontal = 0;
 
-	this.menu_ui = [];
-	this._index_ui = 0;
-
+	// 現在アイテムを選択しているかどうか
 	this._is_select_item = false;
 
+	// アイテム一覧
+	this.menu_item_list = [];
+
+	// ボタン一覧
+	this.menu_ui = [];
+	// ボタンのどれを選択中か
+	this._index_ui = 0;
+
+	// 使用できないメッセージ表示の setTimeout ID
 	this._show_unable_to_use_message = 0;
 
 	this.removeAllObject();
 
+	// アイテム一覧object
 	this._setupMenuItems();
 	this.addObjects(flatten(this.menu_item_list));
 
+	// ボタン一覧オブジェクト
 	this._setupMenuButtons();
 	this.menu_ui = [this.use_button, this.examine_button, this.combine_button];
 	this.addObjects(this.menu_ui);
@@ -75,104 +96,6 @@ SceneSubStageMenu.prototype.init = function(){
 	this._cursor_ui = new SelectedCursor(this);
 	this._cursor_ui.init();
 	this.addObjects(this._cursor_ui);
-
-	// ジャーナルへ
-	/*
-	var basePosX = 300;
-	var basePosY = this.root().height - 165 + 105/3;
-	var buttonWidth  = 250*2/3;
-	var buttonHeight = 105*2/3;
-	var buttonMarginWidth  = 15;
-	this.goto_journal_button = new UIParts(
-		this,
-		basePosX + (buttonWidth + buttonMarginWidth) * 3,
-		basePosY,
-		buttonWidth,
-		buttonHeight,
-		function() {
-			var ctx = this.core.ctx;
-
-			// フォーカスを当てると明るくなる
-			var button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu2');
-
-			ctx.save();
-			ctx.drawImage(button_window,
-				this.getCollisionLeftX(),
-				this.getCollisionUpY(),
-				button_window.width*2/3,
-				button_window.height*2/3
-			);
-
-			// メニュー文字 表示
-			ctx.font = "24px 'OradanoGSRR'";
-			ctx.textAlign = 'center';
-			//ctx.textBaseline = 'middle';
-			ctx.fillStyle = 'rgb( 255, 255, 255 )';
-			ctx.fillText("ジャーナル→",
-				this.getCollisionLeftX() + 85,
-				this.getCollisionUpY()   + 40
-			);
-
-			ctx.restore();
-		}
-	);
-	this.addObject(this.goto_journal_button);
-	*/
-};
-
-SceneSubStageMenu.prototype._setupMenuButtons = function() {
-	var basePosX = 300;
-	var basePosY = this.root().height - 165 + 105/3;
-	var buttonWidth  = 250*2/3;
-	var buttonHeight = 105*2/3;
-	var buttonMarginWidth  = 15;
-
-	var self = this;
-	for (var i = 0, len = MENU_BUTTONS.length; i < len; i++) {
-		var conf = MENU_BUTTONS[i];
-
-		(function(conf) {
-			self[conf.property] = new UIParts(
-				self,
-				basePosX + (buttonWidth + buttonMarginWidth) * i,
-				basePosY,
-				buttonWidth,
-				buttonHeight,
-				function() {
-					var ctx = this.core.ctx;
-
-					// フォーカスを当てると明るくなる
-					var button_window;
-					if (this.onfocus) {
-						button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu2');
-					}
-					else {
-						button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
-					}
-
-					ctx.save();
-					ctx.drawImage(button_window,
-						this.getCollisionLeftX(),
-						this.getCollisionUpY(),
-						button_window.width*2/3,
-						button_window.height*2/3
-					);
-
-					// メニュー文字 表示
-					ctx.font = "24px 'OradanoGSRR'";
-					ctx.textAlign = 'center';
-					//ctx.textBaseline = 'middle';
-					ctx.fillStyle = 'rgb( 255, 255, 255 )';
-					ctx.fillText(conf.value,
-						this.getCollisionLeftX() + 85,
-						this.getCollisionUpY()   + 40
-					);
-
-					ctx.restore();
-				}
-			);
-		})(conf);
-	}
 };
 
 SceneSubStageMenu.prototype.beforeDraw = function(){
@@ -215,7 +138,7 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 			this.root().item_menu_button.onCollision();
 			return;
 		}
-		// 選択するアイテムを移動
+		// カーソルをあてているアイテムを移動
 		else if (is_left_push || is_right_push || is_up_push || is_down_push) {
 			// 上
 			if (is_up_push) {
@@ -250,9 +173,11 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 
 		}
 
-		// アイテムを何も所持していないとき、存在しない可能性がある
+		// アイテムを何か1つでも所持していれば
 		if(this.menu_item_list[this._index_item_vertical][this._index_item_horizontal]) {
 			item = this.menu_item_list[this._index_item_vertical][this._index_item_horizontal];
+
+			// カーソルを当てているアイテムに変更があれば
 			if(!this.isFocusItem(item.itemId())) {
 				// アイテム選択 音
 				this.core.audio_loader.playSound("select_item");
@@ -341,16 +266,11 @@ SceneSubStageMenu.prototype.beforeDraw = function(){
 			}
 		}
 	}
-	/*
-	// ジャーナルへ
-	else if(this.goto_journal_button.checkCollisionWithObject(mouse_point)) {
-			this._goToJounarlMenu();
-	}
-	*/
 };
 
 SceneSubStageMenu.prototype.draw = function(){
-
+	// 親の stage scene の後処理(黒いもやもや描画)などより後にメニューUIを表示したいので、
+	// afterDraw で描画処理をおこなう。
 };
 SceneSubStageMenu.prototype.afterDraw = function(){
 	var ctx = this.core.ctx;
@@ -367,7 +287,7 @@ SceneSubStageMenu.prototype.afterDraw = function(){
 	// ウィンドウ表示
 	this._showWindow();
 
-	// アイテム表示
+	// アイテムとメニューボタンを表示
 	base_scene.prototype.draw.apply(this, arguments);
 
 	// メッセージウィンドウ表示
@@ -513,7 +433,8 @@ SceneSubStageMenu.prototype.setFocusItem = function(item_id){
 	this.focus_item_id = item_id;
 };
 
-var TURN_NUM = 5;
+var TURN_NUM = 5; // アイテム5つで折り返す。
+
 SceneSubStageMenu.prototype._setupMenuItems = function() {
 	var item_list = this.core.save_manager.item.getItemList();
 
@@ -533,6 +454,9 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 		}
 		else if (type === CONSTANT.ITEM.NON_USABLE) { // 会話で消費するアイテム
 			menu_item = new ObjectMenuItemNonUsable(this, item_id, num);
+		}
+		else if (type === CONSTANT.ITEM.JOURNAL_BOOK) { // 会話で消費するアイテム
+			menu_item = new ObjectMenuItemJournalBook(this, item_id, num);
 		}
 		else {
 			throw new Error ("Unknown item type error: " + type);
@@ -564,9 +488,60 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 
 };
 
+// ボタン一覧オブジェクトの生成
+SceneSubStageMenu.prototype._setupMenuButtons = function() {
+	var basePosX = 300;
+	var basePosY = this.root().height - 165 + 105/3;
+	var buttonWidth  = 250*2/3;
+	var buttonHeight = 105*2/3;
+	var buttonMarginWidth  = 15;
 
-SceneSubStageMenu.prototype._goToJounarlMenu = function() {
-	this.root().changeSubScene("journal_menu");
+	var self = this;
+	for (var i = 0, len = MENU_BUTTONS.length; i < len; i++) {
+		var conf = MENU_BUTTONS[i];
+
+		(function(conf) {
+			self[conf.property] = new UIParts(
+				self,
+				basePosX + (buttonWidth + buttonMarginWidth) * i,
+				basePosY,
+				buttonWidth,
+				buttonHeight,
+				function() {
+					var ctx = this.core.ctx;
+
+					// フォーカスを当てると明るくなる
+					var button_window;
+					if (this.onfocus) {
+						button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu2');
+					}
+					else {
+						button_window = this.core.image_loader.getImage('ui-common-btn-toolpu-blu1');
+					}
+
+					ctx.save();
+					ctx.drawImage(button_window,
+						this.getCollisionLeftX(),
+						this.getCollisionUpY(),
+						button_window.width*2/3,
+						button_window.height*2/3
+					);
+
+					// メニュー文字 表示
+					ctx.font = "24px 'OradanoGSRR'";
+					ctx.textAlign = 'center';
+					//ctx.textBaseline = 'middle';
+					ctx.fillStyle = 'rgb( 255, 255, 255 )';
+					ctx.fillText(conf.value,
+						this.getCollisionLeftX() + 85,
+						this.getCollisionUpY()   + 40
+					);
+
+					ctx.restore();
+				}
+			);
+		})(conf);
+	}
 };
 
 function flatten (nested_array) {
