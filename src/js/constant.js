@@ -28,9 +28,13 @@ var CONSTANT = {
 
 	// アイテムの種類
 	ITEM: {
-		EYEDROPS: "01",
-		NON_USABLE: "02",
+		EYEDROPS:     "01",
+		NON_USABLE:   "02",
+		JOURNAL_BOOK: "03",
 	},
+
+	// 特殊なアイテムID
+	ITEM_JOURNAL_BOOK_ID: "21",
 
 	// ジャーナルの種類
 	JOURNAL: {

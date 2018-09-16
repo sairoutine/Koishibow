@@ -194,6 +194,7 @@ AssetsConfig.images = {
 	"item_10":            "./image/common/item/icon_item_scarymask01.png",
 	"item_11":            "./image/common/item/icon_item_chocobox01.png",
 	"item_12":            "./image/common/item/icon_item_doll01.png",
+	"item_21":            "./image/common/item/icon_item_journalbook.png",
 
 	// 体験版時のコンティニュー画像
 	"tobecontinued":  "./image/common/tobecontinued.png",

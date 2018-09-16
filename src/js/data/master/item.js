@@ -163,5 +163,14 @@ module.exports = [
 		soundName: "got_item_common",
 		description:_("なんかちょっと気持ち悪い"),
 	},
+	{
+		id: "21",
+		type: CONSTANT.ITEM.JOURNAL_BOOK,
+		name: "ジャーナルをまとめた本",
+		imageName: "item_21",
+		soundName: "got_item_common",
+		description:_(""),
+	},
+
 ];
 

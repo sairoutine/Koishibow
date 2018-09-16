@@ -2,6 +2,7 @@
 var base_object = require('./acquirable_base');
 var Util = require('../../hakurei').util;
 var WalkImmovableArea = require('../walk_immovable_area');
+var CONSTANT = require('../../constant');
 
 var ObjectJournal = function(core) {
 	base_object.apply(this, arguments);
@@ -24,6 +25,11 @@ ObjectJournal.prototype.setData = function(data) {
 };
 
 ObjectJournal.prototype.acquire = function() {
+	// ジャーナルをまとめた本を所持してなければ一緒に獲得
+	if (!this.core.save_manager.item.existsItem(CONSTANT.ITEM_JOURNAL_BOOK_ID)) {
+		this.core.save_manager.item.addItem(CONSTANT.ITEM_JOURNAL_BOOK_ID);
+	}
+
 	// ジャーナル獲得
 	this.core.save_manager.journal.addJournal(this._journal_id);
 
