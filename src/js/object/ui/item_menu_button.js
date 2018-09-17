@@ -18,7 +18,6 @@ ObjectItemMenuButton.prototype.isShow = function(){
 	// メニューアイコンを表示する条件
 	return(
 		this.scene.current_scene === "menu" ||
-		this.scene.current_scene === "journal_menu" ||
 		this.scene.current_scene === "got_item" ?
 		true : false
 	);
@@ -41,10 +40,6 @@ ObjectItemMenuButton.prototype.onCollision = function(obj){
 		this.scene.changeSubScene("menu");
 	}
 	else if (scene_name === "menu") {
-		// メニューを閉じる
-		this.scene.changeSubScene("play");
-	}
-	else if (scene_name === "journal_menu") {
 		// メニューを閉じる
 		this.scene.changeSubScene("play");
 	}
