@@ -262,10 +262,11 @@ AssetsConfig.images = {
 	"picture_chapter1-09-illust-01":   "./image/common/picture/chapter1-09-illust-01.png",
 	"picture_chapter1-10-illust-01":   "./image/common/picture/chapter1-10-illust-01.png",
 
+	// ジャーナル共通素材
 	// 不要
 	//paper_clip:  "./image/common/ui-common-frame-paper_clip.png",
 	//paper_close_button: "./image/common/ui-common-btn-close.png",
-	//paper_open:         "./image/common/ui-common-frame-paper.png",
+	"paper_frame":         "./image/common/ui-common-frame-paper.png",
 };
 
 AssetsConfig.sounds = {
