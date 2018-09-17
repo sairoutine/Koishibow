@@ -70,6 +70,10 @@ SceneSubStageJournalMenu.prototype.beforeDraw = function(){
 			if (this._index_by_all < 0) {
 				this._index_by_all = 0;
 			}
+			else {
+				// 移動してれば音を再生
+				this.core.audio_loader.playSound("show_journal");
+			}
 		}
 		// 下
 		else if (is_down_push) {
@@ -77,6 +81,10 @@ SceneSubStageJournalMenu.prototype.beforeDraw = function(){
 			var all_journal_list = JournalMasterRepository.all();
 			if (this._index_by_all > all_journal_list.length - 1) {
 				this._index_by_all = all_journal_list.length - 1;
+			}
+			else {
+				// 移動してれば音を再生
+				this.core.audio_loader.playSound("show_journal");
 			}
 		}
 	}
