@@ -4,9 +4,9 @@ var base_scene = require('./base');
 
 var UIParts = require('../../hakurei').object.ui_parts;
 var Util = require('../../hakurei').util;
-//var CONSTANT = require('../../constant');
 var JournalMasterRepository = require('../../repository/journal');
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
+var CONSTANT = require('../../constant');
 
 
 
@@ -134,8 +134,83 @@ SceneSubStageJournalMenu.prototype.afterDraw = function(){
 	//
 	this._showText();
 
+	ctx.restore();
+
 	// メニューのテキスト表示
 	base_scene.prototype.draw.apply(this, arguments);
+
+	var journal_id = this.core.save_manager.journal.getJournalList()[0];
+
+	var journal_image_name;
+
+	// 英語版
+	if (CONSTANT.LANGUAGE === 'en') {
+		journal_image_name = JournalMasterRepository.find(journal_id).imageEn();
+	}
+	// 日本語版
+	else {
+		journal_image_name = JournalMasterRepository.find(journal_id).imageJa();
+	}
+	var journal_image = this.core.image_loader.getImage(journal_image_name);
+
+	// 左側リスト部分の背景 ※ジャーナル画像の下に表示させる
+	var frame_image = this.core.image_loader.getImage("ui-common-frame-journal");
+	ctx.save();
+	ctx.translate(412*2/3, 538*2/3);
+	ctx.drawImage(frame_image,
+		-frame_image.width/2*2/3,
+		-frame_image.height/2*2/3,
+		frame_image.width*2/3,
+		frame_image.height*2/3);
+	ctx.restore();
+
+	// ジャーナル画像描画
+	ctx.save();
+	ctx.translate(992*2/3, 530*2/3);
+	ctx.drawImage(journal_image,
+		-journal_image.width/2*2/3,
+		-journal_image.height/2*2/3,
+		journal_image.width*2/3,
+		journal_image.height*2/3);
+	ctx.restore();
+
+	// スクロール部分背景
+	var scrollbar_track_image = this.core.image_loader.getImage("ui-common-scrollbar_01_track");
+	ctx.save();
+	ctx.translate(634*2/3, 543*2/3);
+	ctx.drawImage(scrollbar_track_image,
+		-scrollbar_track_image.width/2*2/3,
+		-scrollbar_track_image.height/2*2/3,
+		scrollbar_track_image.width*2/3,
+		scrollbar_track_image.height*2/3);
+	ctx.restore();
+
+	// スクロール部分ボタン
+	var scrollbar_thumb_image = this.core.image_loader.getImage("ui-common-scrollbar_01_thumb");
+	ctx.save();
+	ctx.translate(634*2/3, 234*2/3);
+	ctx.drawImage(scrollbar_thumb_image,
+		-scrollbar_thumb_image.width/2*2/3,
+		-scrollbar_thumb_image.height/2*2/3,
+		scrollbar_thumb_image.width*2/3,
+		scrollbar_thumb_image.height*2/3);
+	ctx.restore();
+
+	// 左側リスト部分の→アイコン
+	var arrow_image = this.core.image_loader.getImage("ui-common-btn-arrow-lbrn");
+	ctx.save();
+	ctx.translate(127, 144);
+	ctx.drawImage(arrow_image,
+		-arrow_image.width/2*2/3,
+		-arrow_image.height/2*2/3,
+		arrow_image.width*2/3,
+		arrow_image.height*2/3);
+	ctx.restore();
+
+
+
+
+
 
 	/*
 	// メッセージウィンドウ表示
@@ -144,7 +219,6 @@ SceneSubStageJournalMenu.prototype.afterDraw = function(){
 	// メッセージ表示
 	this._showMessage();
 	*/
-	ctx.restore();
 };
 
 SceneSubStageJournalMenu.prototype._showWindow = function() {
@@ -160,7 +234,16 @@ SceneSubStageJournalMenu.prototype._showText = function() {
 	var ctx = this.core.ctx;
 	ctx.save();
 
-	ctx.fillStyle = 'rgb( 255, 255, 255 )';
+	/*
+・文字色アクティブ
+e1d7b6 RGB(225,215,182)
+
+・文字色非アクティブ
+4c422c RGB(76,66,44)
+ーーーーーーーーーーーーーーーーーーーーーーー
+	*/
+
+	ctx.fillStyle = 'rgb( 225, 215, 182 )';
 	ctx.font = "24px 'OradanoGSRR'";
 	// TODO:
 	ctx.fillText("◀", 300, 50);
