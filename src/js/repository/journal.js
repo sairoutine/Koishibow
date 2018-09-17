@@ -6,6 +6,7 @@ var data_list = require("../data/master/journal");
 var JournalMasterRepository = MasterRepositoryGenerator.exec(
 	{
 		id: "string",
+		no: "string",
 		type: "number",
 		title: "string",
 		imageJa: "string",

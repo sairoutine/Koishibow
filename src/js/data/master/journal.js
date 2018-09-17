@@ -5,6 +5,7 @@ var CONSTANT = require('../../constant');
 module.exports = [
 	{
 		id: "journal001",
+		no: "01",
 		type: CONSTANT.JOURNAL.IMAGE,
 		title: _("愛着とは"),
 		imageJa: "journal001_ja",
@@ -12,6 +13,7 @@ module.exports = [
 	},
 	{
 		id: "journal002",
+		no: "02",
 		type: CONSTANT.JOURNAL.IMAGE,
 		title: _("イカれるとは"),
 		imageJa: "journal002_ja",
@@ -19,6 +21,7 @@ module.exports = [
 	},
 	{
 		id: "journal003",
+		no: "03",
 		type: CONSTANT.JOURNAL.IMAGE,
 		title: _("今見ている夢について"),
 		imageJa: "journal003_ja",
@@ -26,6 +29,7 @@ module.exports = [
 	},
 	{
 		id: "journal004",
+		no: "04",
 		type: CONSTANT.JOURNAL.IMAGE,
 		title: _("アクスライン"),
 		imageJa: "journal004_ja",
@@ -33,6 +37,7 @@ module.exports = [
 	},
 	{
 		id: "journal005",
+		no: "05",
 		type: CONSTANT.JOURNAL.IMAGE,
 		title: _("笑う赤ちゃん"),
 		imageJa: "journal005_ja",
@@ -41,6 +46,7 @@ module.exports = [
 
 	{
 		id: "journal006",
+		no: "06",
 		type: CONSTANT.JOURNAL.IMAGE,
 		title: _("子どもと大人"),
 		imageJa: "journal006_ja",
@@ -48,6 +54,7 @@ module.exports = [
 	},
 	{
 		id: "journal007",
+		no: "07",
 		type: CONSTANT.JOURNAL.IMAGE,
 		title: _("ハーロウの実験"),
 		imageJa: "journal007_ja",
@@ -55,6 +62,7 @@ module.exports = [
 	},
 	{
 		id: "journal008",
+		no: "08",
 		type: CONSTANT.JOURNAL.IMAGE,
 		title: _("ハーロウの実験Ⅱ"),
 		imageJa: "journal008_ja",
@@ -62,6 +70,7 @@ module.exports = [
 	},
 	{
 		id: "journal009",
+		no: "09",
 		type: CONSTANT.JOURNAL.IMAGE,
 		title: _("唯名論"),
 		imageJa: "journal009_ja",
@@ -69,10 +78,51 @@ module.exports = [
 	},
 	{
 		id: "journal010",
+		no: "10",
 		type: CONSTANT.JOURNAL.IMAGE,
 		title: _("わたしとあなた"),
 		imageJa: "journal010_ja",
 		imageEn: "journal010_en",
+	},
+	{
+		id: "journal011",
+		no: "11",
+		type: CONSTANT.JOURNAL.IMAGE,
+		title: _("バス時刻表"),
+		imageJa: "journal011_ja",
+		imageEn: "journal011_en",
+	},
+	{
+		id: "journal012",
+		no: "12",
+		type: CONSTANT.JOURNAL.IMAGE,
+		title: _("私の目標"),
+		imageJa: "journal012_ja",
+		imageEn: "journal012_en",
+	},
+	{
+		id: "journal013",
+		no: "13",
+		type: CONSTANT.JOURNAL.IMAGE,
+		title: _("みんなのやくそく"),
+		imageJa: "journal013_ja",
+		imageEn: "journal013_en",
+	},
+	{
+		id: "journal014",
+		no: "14",
+		type: CONSTANT.JOURNAL.IMAGE,
+		title: _("てがみ"),
+		imageJa: "journal014_ja",
+		imageEn: "journal014_en",
+	},
+	{
+		id: "journal015",
+		no: "15",
+		type: CONSTANT.JOURNAL.IMAGE,
+		title: _("親についての意見"),
+		imageJa: "journal015_ja",
+		imageEn: "journal015_en",
 	},
 ];
 
