@@ -7,27 +7,27 @@ var Util = require('../../hakurei').util;
 var WalkImmovableArea = require('../walk_immovable_area');
 var CONSTANT = require('../../constant');
 
-var ObjectJournal = function(core) {
+var ObjectJournalFront = function(core) {
 	base_object.apply(this, arguments);
 
 	this._journal_id = null;
 };
-Util.inherit(ObjectJournal, base_object);
+Util.inherit(ObjectJournalFront, base_object);
 
-ObjectJournal.prototype.init = function(){
+ObjectJournalFront.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
 	this._journal_id = null;
 };
 
-ObjectJournal.prototype.setData = function(data) {
+ObjectJournalFront.prototype.setData = function(data) {
 	base_object.prototype.setData.apply(this, arguments);
 
 	// 表示するジャーナル画像
 	this._journal_id = data.journal_id;
 };
 
-ObjectJournal.prototype.acquire = function() {
+ObjectJournalFront.prototype.acquire = function() {
 	// ジャーナルをまとめた本を所持してなければ一緒に獲得
 	if (!this.core.save_manager.item.existsItem(CONSTANT.ITEM_JOURNAL_BOOK_ID)) {
 		this.core.save_manager.item.addItem(CONSTANT.ITEM_JOURNAL_BOOK_ID);
@@ -43,7 +43,7 @@ ObjectJournal.prototype.acquire = function() {
 	this.core.audio_loader.playSound("show_journal");
 };
 
-ObjectJournal.prototype.getImmovableArea = function() {
+ObjectJournalFront.prototype.getImmovableArea = function() {
 	var area = new WalkImmovableArea(this.scene);
 	area.init();
 	area.setPosition(this.x(), this.y());
@@ -55,4 +55,4 @@ ObjectJournal.prototype.getImmovableArea = function() {
 
 
 
-module.exports = ObjectJournal;
+module.exports = ObjectJournalFront;
