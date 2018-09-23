@@ -20,7 +20,7 @@ var FieldMasterRepository = require('../../../repository/field');
 var CONSTANT = require('../../../constant');
 var ObjectStaticImage      = require('../../../object/pieces/static_image');
 var ObjectAnimeImage       = require('../../../object/pieces/anime_image');
-var ObjectJournal          = require('../../../object/pieces/journal');
+var ObjectJournal          = require('../../../object/pieces/journal_front');
 var ObjectAnimeEventImage  = require('../../../object/pieces/anime_event_image');
 var ObjectItem             = require('../../../object/pieces/item');
 var ObjectFieldChange      = require('../../../object/pieces/field_change');
@@ -417,7 +417,7 @@ SceneEventPlayDoll.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.ANIME_IMAGE_TYPE) { // サードアイを当てると動くオブジェクト
 			object = new ObjectAnimeImage(this);
 		}
-		else if (data.type === CONSTANT.JOURNAL_TYPE) { // ジャーナル
+		else if (data.type === CONSTANT.JOURNAL_FRONT_TYPE) { // ジャーナル
 			object = new ObjectJournal(this);
 		}
 		else if (data.type === CONSTANT.ANIME_EVENT_IMAGE_TYPE) { // イベント発生オブジェクト

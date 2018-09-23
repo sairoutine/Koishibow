@@ -14,17 +14,18 @@ var CONSTANT = {
 	INITIAL_CHAPTER: "opening_movie_chapter0",
 
 	// オブジェクトの種類
-	STATIC_IMAGE_TYPE:      1,
-	ANIME_IMAGE_TYPE:       2,
-	JOURNAL_TYPE:           3,
-	ANIME_EVENT_IMAGE_TYPE: 4, // chapter0 最後のカーペット
-	ITEM_TYPE:              5,
-	FIELD_CHANGE_TYPE:      6,
-	BUTTON_KOISHI_TYPE:     7, // ゲームオーバー用ボタンの目こいし
-	STATIC_EVENT_IMAGE_TYPE:8, // chapter1 ボール
-	FAUSET_TYPE:            9, // chapter1 蛇口
-	SUSPENDED_TREE_TYPE:   10, // chapter1 うさぎが吊るされた木
-	HASHIGO_TYPE:          11, // chapter1 はしごをかけられる場所
+	STATIC_IMAGE_TYPE:       1,
+	ANIME_IMAGE_TYPE:        2,
+	JOURNAL_FRONT_TYPE:      3,
+	JOURNAL_BACK_TYPE:       4,
+	ANIME_EVENT_IMAGE_TYPE:  5,  // chapter0 最後のカーペット
+	ITEM_TYPE:               6,
+	FIELD_CHANGE_TYPE:       7,
+	BUTTON_KOISHI_TYPE:      8,  // ゲームオーバー用ボタンの目こいし
+	STATIC_EVENT_IMAGE_TYPE: 9,  // chapter1 ボール
+	FAUSET_TYPE:             10, // chapter1 蛇口
+	SUSPENDED_TREE_TYPE:     11, // chapter1 うさぎが吊るされた木
+	HASHIGO_TYPE:            12, // chapter1 はしごをかけられる場所
 
 	// アイテムの種類
 	ITEM: {

@@ -1,4 +1,7 @@
 'use strict';
+
+// 3rdeye を使用していないときに獲得できるジャーナル
+
 var base_object = require('./acquirable_base');
 var Util = require('../../hakurei').util;
 var WalkImmovableArea = require('../walk_immovable_area');
