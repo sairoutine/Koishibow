@@ -2,6 +2,7 @@
 // フィールド上での会話・イベント中での会話中に行われる処理と分岐
 
 var ScenarioManager = require('../hakurei').Manager.Scenario;
+var CONSTANT = require('../constant');
 
 // 静的クラス
 var TalkScenario = function() {};
@@ -56,7 +57,9 @@ TalkScenario.generateScenario = function (core) {
 
 
 // セリフオプションに登録された「セリフ以外の処理」を処理
-// NOTE: scene は got_item, use_item, picture サブシーンを登録している必要がある
+// NOTE:
+// scene は talk_with_object, got_item, use_item, picture サブシーンを登録している必要がある
+// かつ現在のsubscene は talk_with_object である必要がある(遷移先サブシーンからtalk_with_objectに戻ってくるため)
 TalkScenario.processSerifOption = function (scene, serif) {
 	var option = serif.getCurrentOption();
 
@@ -132,6 +135,22 @@ TalkScenario.processSerifOption = function (scene, serif) {
 		scene.core.save_manager.item.reduceItem(delete_item_id);
 		return;
 	}
+	// ジャーナル獲得
+	else if (option.getJournal) {
+		// ジャーナルをまとめた本を所持してなければ一緒に獲得
+		if (!scene.core.save_manager.item.existsItem(CONSTANT.ITEM_JOURNAL_BOOK_ID)) {
+			scene.core.save_manager.item.addItem(CONSTANT.ITEM_JOURNAL_BOOK_ID);
+		}
+
+		// ジャーナル獲得
+		scene.core.save_manager.journal.addJournal(option.getJournal);
+
+		// ジャーナル画像表示シーンへ遷移
+		scene.changeSubScene("journal", option.getJournal, "talk_with_object");
+
+		return;
+	}
+
 };
 
 

@@ -43,9 +43,6 @@ ObjectJournalFront.prototype.acquire = function() {
 
 	// ジャーナル画像表示シーンへ遷移
 	this.scene.root().changeSubScene("journal", this._journal_id);
-
-	// 音を再生
-	this.core.audio_loader.playSound("show_journal");
 };
 
 ObjectJournalFront.prototype.getImmovableArea = function() {

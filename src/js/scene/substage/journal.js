@@ -1,5 +1,7 @@
 'use strict';
 
+// ジャーナル表示
+
 var base_scene = require('./base');
 
 var Util = require('../../hakurei').util;
@@ -15,11 +17,14 @@ var SceneSubStageJournal = function(core) {
 };
 Util.inherit(SceneSubStageJournal, base_scene);
 
-SceneSubStageJournal.prototype.init = function(journal_id){
+SceneSubStageJournal.prototype.init = function(journal_id, return_subscene){
 	base_scene.prototype.init.apply(this, arguments);
 
 	// 表示するジャーナル画像名
 	this._picture_name = null;
+
+	// 再生後の戻り先サブシーン
+	this._return_subscene = return_subscene || "play";
 
 	// 英語版
 	if (CONSTANT.LANGUAGE === 'en') {
@@ -29,6 +34,9 @@ SceneSubStageJournal.prototype.init = function(journal_id){
 	else {
 		this._picture_name = JournalMasterRepository.find(journal_id).imageJa();
 	}
+
+	// 音を再生
+	this.core.audio_loader.playSound("show_journal");
 };
 
 SceneSubStageJournal.prototype.beforeDraw = function(){
@@ -37,7 +45,7 @@ SceneSubStageJournal.prototype.beforeDraw = function(){
 	// プレイに戻る
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
 		this.core.audio_loader.playSound("show_journal");
-		this.root().changeSubScene("play");
+		this.root().returnSubScene(this._return_subscene);
 	}
 };
 
