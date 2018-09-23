@@ -27,6 +27,11 @@ ObjectJournalFront.prototype.setData = function(data) {
 	this._journal_id = data.journal_id;
 };
 
+ObjectJournalFront.prototype.isCollision = function(point) {
+	// サードアイ使用中ならクリックしても調べられないので何もしない
+	return base_object.prototype.isCollision.apply(this, arguments) && !this.scene.root().isUsingEye();
+};
+
 ObjectJournalFront.prototype.acquire = function() {
 	// ジャーナルをまとめた本を所持してなければ一緒に獲得
 	if (!this.core.save_manager.item.existsItem(CONSTANT.ITEM_JOURNAL_BOOK_ID)) {

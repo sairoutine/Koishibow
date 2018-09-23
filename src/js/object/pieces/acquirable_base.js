@@ -49,11 +49,6 @@ ObjectAcquirableBase.prototype.setData = function(data) {
 	}
 };
 
-ObjectAcquirableBase.prototype.isCollision = function(point) {
-	// サードアイ使用中ならクリックしても調べられないので何もしない
-	return !this.scene.root().isUsingEye();
-};
-
 // こいしに触られたときの処理
 ObjectAcquirableBase.prototype.onTouchByKoishi = function() {
 	// フィールドから該当のオブジェクトを削除
@@ -109,8 +104,6 @@ ObjectAcquirableBase.prototype.isShow = function() {
 ObjectAcquirableBase.prototype.isCollision = function(obj) {
 	return base_object.prototype.isCollision.apply(this, arguments) && !this._isDeleted();
 };
-
-
 
 ObjectAcquirableBase.prototype.collisionWidth = function(){
 	if(this._width) {

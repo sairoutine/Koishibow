@@ -21,6 +21,11 @@ ObjectItem.prototype.setData = function(data) {
 	this._item_id = data.item_id;
 };
 
+ObjectItem.prototype.isCollision = function(point) {
+	// サードアイ使用中ならクリックしても調べられないので何もしない
+	return base_object.prototype.isCollision.apply(this, arguments) && !this.scene.root().isUsingEye();
+};
+
 ObjectItem.prototype.getItemId = function(data) {
 	return this._item_id;
 };
