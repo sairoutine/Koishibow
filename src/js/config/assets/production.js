@@ -87,6 +87,25 @@ AssetsConfig.images = {
     "chapter3-13-event-04-obj-02":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-obj-02.png",
     "chapter3-13-event-04-bg-001":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-bg-001.jpg",
 
+	// ジャーナル画像(日本語)
+	"journal006_ja":  "./image/production/journal/ja/006.png",
+	"journal007_ja":  "./image/production/journal/ja/007.png",
+	"journal008_ja":  "./image/production/journal/ja/008.png",
+	"journal009_ja":  "./image/production/journal/ja/009.png",
+	"journal010_ja":  "./image/production/journal/ja/010.png",
+	"journal011_ja":  "./image/production/journal/ja/011.png",
+	"journal012_ja":  "./image/production/journal/ja/012.png",
+	"journal013_ja":  "./image/production/journal/ja/013.png",
+	"journal014_ja":  "./image/production/journal/ja/014.png",
+	"journal015_ja":  "./image/production/journal/ja/015.png",
+	"journal016_ja":  "./image/production/journal/ja/016.png",
+	"journal017_ja":  "./image/production/journal/ja/017.png",
+	"journal018_ja":  "./image/production/journal/ja/018.png",
+	"journal019_ja":  "./image/production/journal/ja/019.png",
+	"journal020_ja":  "./image/production/journal/ja/020.png",
+
+	// ジャーナル画像(英語)
+
 	//
 	// フィールドの画像とオブジェクト
 	//
