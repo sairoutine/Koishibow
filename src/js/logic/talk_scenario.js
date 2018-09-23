@@ -137,6 +137,9 @@ TalkScenario.processSerifOption = function (scene, serif) {
 	}
 	// ジャーナル獲得
 	else if (option.getJournal) {
+		// 既にジャーナルを獲得済みであれば何もしない
+		if (scene.core.save_manager.journal.existsJournal(option.getJournal)) return;
+
 		// ジャーナルをまとめた本を所持してなければ一緒に獲得
 		if (!scene.core.save_manager.item.existsItem(CONSTANT.ITEM_JOURNAL_BOOK_ID)) {
 			scene.core.save_manager.item.addItem(CONSTANT.ITEM_JOURNAL_BOOK_ID);

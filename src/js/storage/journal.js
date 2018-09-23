@@ -38,4 +38,23 @@ StorageJournal.prototype.addJournal = function(journal_id){
 	this.set("journal_list", list);
 	return list.length - 1;
 };
+
+// ジャーナルの存在チェック
+StorageJournal.prototype.existsJournal = function(target_journal_id) {
+	var list = this.getJournalList();
+
+	for (var i = 0, len = list.length; i < len; i++) {
+		var journal_id = list[i];
+
+		if (journal_id === target_journal_id) {
+			return true;
+		}
+	}
+
+	return false;
+};
+
+
+
+
 module.exports = StorageJournal;
