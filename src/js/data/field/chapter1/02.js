@@ -43,7 +43,7 @@ module.exports = {
 			],
 			x: 693.50*2/3, y:619.50*2/3,
 			scale: 2/3,
-			action_name: "touch",
+			action_name: null,
 			sound_name: null
 		},
 
