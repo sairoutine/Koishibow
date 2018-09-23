@@ -2,7 +2,7 @@
 
 // オブジェクトとの会話サブシーン
 var base_scene = require('./base');
-var ScenarioManager = require('../../hakurei').Manager.Scenario;
+var TalkScenario = require('../../logic/talk_scenario');
 var TimeManager = require('../../hakurei').Manager.Time;
 var Util = require('../../hakurei').util;
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
@@ -20,53 +20,9 @@ var STATE_END      = 4; // 会話終了
 var SceneSubStageObjectTalk = function(core) {
 	base_scene.apply(this, arguments);
 
-	this._serif = new ScenarioManager(core, {
-		// 会話で使う条件分岐
-		criteria: {
-			// アイテムを持っていれば
-			existsItem: function (core, item_id) {
-				return core.save_manager.item.existsItem(item_id) ? 0 : 1;
-			},
-			// アイテムすべて持っていれば
-			existsItemAll: function (core, item_ids) {
-				var args = Array.prototype.slice.call(arguments); // convert arguments to array
-				core = args.shift();
-				for (var i = 0, len = args.length; i < len; i++) {
-					if(!core.save_manager.item.existsItem(args[i])) { // 1つでも持っていなければ
-						return 1;
-					}
-				}
-
-				return 0;
-			},
-			// id のセリフを再生済かどうか
-			isPlayed: function (core, id) {
-				return core.save_manager.scenario.getPlayedCount(id) ? 0 : 1;
-			},
-
-			// max_num まで1ずつ上昇し、それを超えると最初に戻る
-			circulate: function (core, id, max_num) {
-				var index = core.save_manager.scenario.getPlayedCount(id);
-
-				core.save_manager.scenario.incrementPlayedCount(id);
-
-				return index % max_num;
-			},
-			// max_num まで1ずつ上昇し、それを超えると最大値を返し続ける
-			limit: function (core, id, max_num) {
-				var index = core.save_manager.scenario.getPlayedCount(id);
-
-				if (index >= max_num) return max_num;
-
-				core.save_manager.scenario.incrementPlayedCount(id);
-
-				return index;
-			},
-		}
-	});
+	this._serif = TalkScenario.generateScenario(core);
 
 	// フレーム数によるイベント管理
-	var self = this;
 	this._time = new TimeManager();
 
 	// クリック待ちカーソルの状態
@@ -141,90 +97,12 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 };
 
 // 会話以外の処理
-// 処理がなければ false を返す
 SceneSubStageObjectTalk.prototype._updateProcess = function(){
-	var option = this._serif.getCurrentOption();
-
 	// Z ボタンが押されたら
 	// あるいは空文字 = オプションの内容だけ処理したい
 	if(this._serif.getCurrentMaxLengthLetters() === 0 || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
-		// ムービーを再生
-		if (option.playEventMovie) {
-			var scene_manager = this.core.scene_manager;
-			scene_manager.setFadeOut(0);
-			scene_manager.changeScene("event_movie", option.playEventMovie);
-			return true;
-		}
-		// 別のシーンへ遷移
-		else if (option.changeScene) {
-			this.core.scene_manager.changeScene(option.changeScene);
-			return true;
-		}
-		// 別のフィールドへ遷移
-		else if (option.changeField) {
-			this.core.scene_manager.changeScene("stage", option.changeField);
-			return true;
-		}
-		// 別のイベントを再生
-		else if (option.playEvent) {
-			this.core.scene_manager.setFadeOut(0);
-			this.core.scene_manager.changeScene("event_talk", option.playEvent);
-			return true;
-		}
-		// 別のイベントを再生(旧)
-		else if (option.playEventOld) {
-			this.core.scene_manager.setFadeOut(0);
-			this.core.scene_manager.changeScene("event_talk_old", option.playEventOld);
-			return true;
-		}
-		// アイテム獲得
-		else if (option.getItem) {
-			// アイテム追加
-			this.core.save_manager.item.addItem(option.getItem);
-
-			// アイテム獲得のみ、別のシーンへ遷移と組み合わせられる
-			if (option.changeField) {
-				this.core.scene_manager.changeScene("stage", option.changeField);
-				return true;
-			}
-			else {
-				// アイテム獲得演出へ遷移
-				this.root().changeSubScene("got_item", option.getItem, "talk_with_object");
-				return true;
-			}
-		}
-		// アイテム使用
-		else if (option.useItem) {
-			var use_item_id = option.useItem;
-
-			this.core.save_manager.item.reduceItem(use_item_id);
-
-			// アイテム使用演出へ遷移
-			this.root().changeSubScene("use_item", use_item_id, "talk_with_object");
-			return true;
-		}
-		// 1枚絵を表示
-		else if (option.showPicture) {
-			// セリフ終わり
-			this.root().changeSubScene("picture", option.showPicture, "talk_with_object");
-			return true;
-		}
-		// フラグを下ろす
-		else if (option.resetFlag) {
-			this.core.save_manager.scenario.resetPlayedCount(option.resetFlag);
-			return true;
-		}
-		// アイテムを削除
-		else if (option.deleteItem) {
-			var delete_item_id = option.deleteItem;
-			this.core.save_manager.item.reduceItem(delete_item_id);
-			return true;
-		}
-
-
+		TalkScenario.processSerifOption(this.root(), this._serif);
 	}
-
-	return false;
 };
 
 // 会話の処理
