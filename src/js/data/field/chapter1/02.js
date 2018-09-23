@@ -35,15 +35,16 @@ module.exports = {
 		{
 			no: ++I,
 			image: "chapter1-02-obj-01",
-			type: CONSTANT.STATIC_EVENT_IMAGE_TYPE,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ベンチ",
-			is_acquirable: false,
-			serif: null,
+			serif: [
+				{"chara": "koishi", "serif": "", "option": {"getJournal": "journal015"}},
+				{"chara": "koishi", "serif": "", "option": {"changeScene": "event_for_chapter1_sit_at_busstop"}},
+			],
 			x: 693.50*2/3, y:619.50*2/3,
 			scale: 2/3,
 			action_name: "touch",
-			sound_name: null,
-			action_event: "event_for_chapter1_sit_at_busstop"
+			sound_name: null
 		},
 
 		{
