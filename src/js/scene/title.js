@@ -187,7 +187,10 @@ SceneTitle.prototype.beforeDraw = function(){
 
 	// タイトル放置演出
 	if (this.frame_count === 14400) { // 4分後
-		this.core.scene_manager.changeScene("leaving_title");
+		var scene_manager = this.core.scene_manager;
+		scene_manager.changeScene("movie", "./movie/common/title_ura.mp4", function () {
+			scene_manager.changeScene("title");
+		});
 	}
 };
 

@@ -11,7 +11,6 @@ var StoragePiece   = require('./storage/piece');
 var StoragePlayer  = require('./storage/player');
 
 var SceneTitle = require('./scene/title');
-var SceneLeavingTitle = require('./scene/leaving_title');
 var SceneHowto = require('./scene/howto');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
@@ -38,7 +37,6 @@ var Game = function(canvas) {
 	// シーン一覧
 	this.scene_manager.addScene("loading", new SceneLoading(this));
 	this.scene_manager.addScene("title", new SceneTitle(this));
-	this.scene_manager.addScene("leaving_title", new SceneLeavingTitle(this));
 	this.scene_manager.addScene("howto", new SceneHowto(this));
 	this.scene_manager.addScene("stage", new SceneStage(this));
 	this.scene_manager.addScene("movie", new SceneMovie(this));

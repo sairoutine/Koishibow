@@ -6,8 +6,6 @@ AssetsConfig.images = {
 	// HowTo 画像
 	"howto_ja":            "./image/common/howto_ja.png",
 	"howto_en":            "./image/common/howto_en.png",
-	// タイトル放置案 背景
-	"leaving_title":      "./image/common/leaving_title.png",
 
 	// こいし画像
 	"koishi": "./image/common/koishi.png",
@@ -270,10 +268,6 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
-	leaving_title: {
-		path: "./sound/common/leaving_title.ogg",
-		volume: 1.0,
-	},
 	show_journal:    {
 		path: "./sound/common/show_journal.ogg",
 		volume: 1.0,
