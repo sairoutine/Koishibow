@@ -18,12 +18,7 @@ SceneLoading.prototype.init = function() {
 	// ゲームで使用する画像一覧
 	for (var key in AssetsConfig.images) {
 		var image_conf = AssetsConfig.images[key];
-		if (typeof image_conf === "string") {
-			this.core.image_loader.loadImage(key, image_conf);
-		}
-		else {
-			this.core.image_loader.loadImage(key, image_conf.image, image_conf.scale_width, image_conf.scale_height);
-		}
+		this.core.image_loader.loadImage(key, image_conf);
 	}
 
 	// ゲームで使用するSE一覧
