@@ -13,7 +13,12 @@ var CONSTANT = {
 	// ゲームを最初から始めた場合の最初のフィールド
 	INITIAL_CHAPTER: "opening_movie_chapter0",
 
-	KOISHI_SPEED: 7,
+	// こいしの歩く速度(最高速度)
+	KOISHI_MAX_SPEED: 7,
+	// こいしの歩く速度(初速)
+	KOISHI_INITIAL_SPEED: 2,
+	// こいしの歩く速度(加速度)
+	KOISHI_ACCEL_SPEED: 0.25,
 
 	// オブジェクトの種類
 	STATIC_IMAGE_TYPE:       1,

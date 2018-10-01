@@ -1,16 +1,13 @@
 'use strict';
 var CONSTANT = require('../constant');
 
-// こいしの歩く速度
-var SPEED = CONSTANT.DEBUG.KOISHI_SPEED || CONSTANT.KOISHI_SPEED;
-var SPEED_NANAME = SPEED / Math.sqrt(2);
+var ROOT_OF_TWO = Math.sqrt(2);
 
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
 var DrawSerif = require('../logic/draw_serif');
 var CONSTANT_BUTTON = require('../hakurei').constant.button;
 var KoishiActionMasterRepository = require('../repository/koishi_action');
-
 
 /* 使用用途	リピート	fps	フレーム	時間 */
 // 	待機	可	30	45	1.5秒
@@ -42,6 +39,8 @@ Koishi.prototype.init = function() {
 	// 移動後に実行する callback
 	this._after_move_callback = null;
 
+	// 歩きが継続している時間(歩いてなければ0)
+	this._walking_count = 0;
 
 	this.setVelocity({magnitude:0, theta:0});
 	this.setWaitAnime();
@@ -141,49 +140,62 @@ Koishi.prototype.moveByInput = function() {
 	var before_x = this.x();
 	var before_y = this.y();
 
-	/* 移動量計算 */
+	/* 移動量計算1 */
+	var speed = CONSTANT.KOISHI_INITIAL_SPEED + CONSTANT.KOISHI_ACCEL_SPEED * this._walking_count;
+	speed = (speed > CONSTANT.KOISHI_MAX_SPEED ? CONSTANT.KOISHI_MAX_SPEED : speed);
+	// デバッグ用
+	if(CONSTANT.DEBUG.KOISHI_SPEED) {
+		speed = CONSTANT.DEBUG.KOISHI_SPEED;
+	}
 
+	/* 移動量計算2 */
+
+	var naname_speed;
 	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
 		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
 	) {
-		add_x = -SPEED_NANAME;
-		add_y = -SPEED_NANAME;
+		naname_speed = speed / ROOT_OF_TWO;
+		add_x = -naname_speed;
+		add_y = -naname_speed;
 		this.setReflect(true);
 	}
 	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
 		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
 	) {
-		add_x = -SPEED_NANAME;
-		add_y = +SPEED_NANAME;
+		naname_speed = speed / ROOT_OF_TWO;
+		add_x = -naname_speed;
+		add_y = +naname_speed;
 		this.setReflect(true);
 	}
 	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
 		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
 	) {
-		add_x = +SPEED_NANAME;
-		add_y = -SPEED_NANAME;
+		naname_speed = speed / ROOT_OF_TWO;
+		add_x = +naname_speed;
+		add_y = -naname_speed;
 		this.setReflect(false);
 	}
 	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
 		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
 	) {
-		add_x = +SPEED_NANAME;
-		add_y = +SPEED_NANAME;
+		naname_speed = speed / ROOT_OF_TWO;
+		add_x = +naname_speed;
+		add_y = +naname_speed;
 		this.setReflect(false);
 	}
 	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
-		add_x = -SPEED;
+		add_x = -speed;
 		this.setReflect(true);
 	}
 	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
-		add_x = +SPEED;
+		add_x = +speed;
 		this.setReflect(false);
 	}
 	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
-		add_y = -SPEED;
+		add_y = -speed;
 	}
 	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
-		add_y = +SPEED;
+		add_y = +speed;
 	}
 
 	/* x: 移動 */
@@ -219,10 +231,14 @@ Koishi.prototype.moveByInput = function() {
 
 	/* モーション変更 */
 	if (this.x() !== before_x || this.y() !== before_y) {
+		this._walking_count++;
+
 		// 歩きモーションに変更
 		this.setWalkAnime();
 	}
 	else {
+		this._walking_count = 0;
+
 		// 歩いてないので待機モーションに変更
 		this.setWaitAnime();
 	}
