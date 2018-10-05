@@ -208,9 +208,9 @@ SceneTitle.prototype.draw = function(){
 	var logo = this.core.image_loader.getImage("ui-titlepg-img-logo-1");
 	ctx.globalAlpha = this.getAlpha();
 	ctx.drawImage(logo,
-	(this.width - logo.width*2/3)/2,
-	455,
-	logo.width*2/3, logo.height*2/3);
+		(this.width - logo.width*2/3)/2,
+		455,
+		logo.width*2/3, logo.height*2/3);
 
 	ctx.restore();
 
