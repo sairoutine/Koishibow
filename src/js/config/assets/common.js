@@ -243,6 +243,8 @@ AssetsConfig.images = {
 	"ui-titlepg-btn-con-on":   "./image/common/title/ui-titlepg-btn-con-on.png",
 	"ui-titlepg-btn-ng-off":   "./image/common/title/ui-titlepg-btn-ng-off.png",
 	"ui-titlepg-btn-ng-on":    "./image/common/title/ui-titlepg-btn-ng-on.png",
+	"ui-titlepg-btn-music-off":   "./image/common/title/ui-titlepg-btn-music-off.png",
+	"ui-titlepg-btn-music-on":    "./image/common/title/ui-titlepg-btn-music-on.png",
 	"ui-titlepg-btn-opt-off":  "./image/common/title/ui-titlepg-btn-opt-off.png",
 	"ui-titlepg-btn-opt-on":   "./image/common/title/ui-titlepg-btn-opt-on.png",
 	"ui-titlepg-img-logo-1":   "./image/common/title/ui-titlepg-img-logo-1.png",

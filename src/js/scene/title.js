@@ -25,6 +25,11 @@ var MENU = [
 	}, function (core) {
 		core.scene_manager.changeScene("stage", core.save_manager.player.getCurrentField());
 	}],
+	// music room
+	["ui-titlepg-btn-music", function (core) { return true; }, function (core) {
+		core.scene_manager.changeScene("music");
+	}],
+
 	// config
 	/*
 	["ui-titlepg-btn-opt", function (core) { return true; }, function (core) {
@@ -94,13 +99,9 @@ SceneTitle.prototype._generateMenuUI = function(){
 		var menu = MENU[i];
 
 		(function (menu) {
-			menu_ui.push(new UIParts(self, 380 + i*200, 670, 190, 63, function() {
+			menu_ui.push(new UIParts(self, 300 + i*200, 670, 190, 63, function() {
 				var ctx = this.core.ctx;
 				ctx.save();
-				ctx.textAlign = 'center';
-				ctx.textBaseline = 'middle';
-				ctx.fillStyle = 'rgb( 255, 255, 255 )';
-
 				var logo;
 				if (this.is_big) {
 					logo = this.core.image_loader.getImage(menu[0] + "-on");
