@@ -255,6 +255,19 @@ AssetsConfig.images = {
 	"stain":  "./image/common/title/stain.png",
 	"title":  "./image/common/title/title.jpg",
 
+	// music room
+	"ui-common-btn-back-off":       "./image/common/music/ui-common-btn-back-off.png",
+	"ui-common-btn-back-on":        "./image/common/music/ui-common-btn-back-on.png",
+	"ui-common-btn-back_bg":        "./image/common/music/ui-common-btn-back_bg.png",
+	"ui-musicroom-bg-frame":        "./image/common/music/ui-musicroom-bg-frame.png",
+	"ui-musicroom-bg":              "./image/common/music/ui-musicroom-bg.jpg",
+	"ui-musicroom-btn-play":        "./image/common/music/ui-musicroom-btn-play.png",
+	"ui-musicroom-btn-stop":        "./image/common/music/ui-musicroom-btn-stop.png",
+	"ui-musicroom-listbox01-off":   "./image/common/music/ui-musicroom-listbox01-off.png",
+	"ui-musicroom-listbox01-on":    "./image/common/music/ui-musicroom-listbox01-on.png",
+	"ui-musicroom-scrollbar01-bar": "./image/common/music/ui-musicroom-scrollbar01-bar.png",
+	"ui-musicroom-scrollbar01-box": "./image/common/music/ui-musicroom-scrollbar01-box.png",
+
 	// 1枚絵
 	"picture_get_hat":   "./image/common/picture/illust_01.png",
 	"picture_use_eyedrops":   "./image/common/picture/illust_02.png",
