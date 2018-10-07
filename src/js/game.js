@@ -12,6 +12,7 @@ var StoragePlayer  = require('./storage/player');
 
 var SceneTitle = require('./scene/title');
 var SceneHowto = require('./scene/howto');
+var SceneMusic = require('./scene/music');
 var SceneStage = require('./scene/stage');
 var SceneLoading = require('./scene/loading');
 var SceneMovie = require('./hakurei').scene.movie;
@@ -38,6 +39,7 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("loading", new SceneLoading(this));
 	this.scene_manager.addScene("title", new SceneTitle(this));
 	this.scene_manager.addScene("howto", new SceneHowto(this));
+	this.scene_manager.addScene("music", new SceneMusic(this));
 	this.scene_manager.addScene("stage", new SceneStage(this));
 	this.scene_manager.addScene("movie", new SceneMovie(this));
 	this.scene_manager.addScene("event_talk", new SceneEventTalk(this));
@@ -216,9 +218,9 @@ Game.prototype.setupDebug = function (dom) {
 		field_name_list.push({value: field_list[i].key()});
 	}
 	this.debug_manager.addMenuSelect("フィールド移動", field_name_list,
-	function (game, value) {
-		game.scene_manager.changeScene("stage", value);
-	});
+		function (game, value) {
+			game.scene_manager.changeScene("stage", value);
+		});
 
 	this.debug_manager.addNewLine();
 
