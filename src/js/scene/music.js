@@ -36,8 +36,14 @@ SceneMusic.prototype.beforeDraw = function(){
 SceneMusic.prototype._isPlaying = function(){
 	return true;
 };
+SceneMusic.prototype._focusMusicName = function(){
+	return "あああああいいいいいうううううえええええおおおおおかかかかかききききき";
+};
+SceneMusic.prototype._focusMusicDescription = function(){
+	return "あああああいいいいいうううううえええええおおおおおかかかかかききききき";
+};
 SceneMusic.prototype._isFocusBack = function(){
-	return true;
+	return false;
 };
 SceneMusic.prototype._scrollbarX = function(){
 	return 244*2/3;
@@ -66,6 +72,15 @@ SceneMusic.prototype._drawMusicList = function(){
 			music_bg.width*2/3,
 			music_bg.height*2/3);
 		ctx.restore();
+
+		// 曲名
+		ctx.save();
+		ctx.textAlign = 'left';
+		ctx.fillStyle = focus ? Util.hexToRGBString("#e1d7b6") : Util.hexToRGBString("#4c422c");
+		ctx.font = "20px 'OradanoGSRR'";
+		ctx.fillText(this._focusMusicName(), 196, (232 + i * 60)*2/3);
+		ctx.restore();
+
 	}
 };
 
@@ -166,5 +181,24 @@ SceneMusic.prototype.draw = function(){
 		scrollbar_box.width*2/3,
 		scrollbar_box.height*2/3);
 	ctx.restore();
+
+	// フォーカスされている曲名と説明
+	if (!this._isFocusBack()) {
+		ctx.save();
+		ctx.textAlign = 'left';
+
+		// 曲名
+		ctx.fillStyle = Util.hexToRGBString("#e1d7b6");
+		ctx.font = "24px 'OradanoGSRR'";
+		ctx.fillText(this._focusMusicName(), 196, 100*2/3);
+
+		// 説明
+		ctx.fillStyle = "white";
+		ctx.font = "20px 'OradanoGSRR'";
+		ctx.fillText(this._focusMusicDescription(), 196, 136*2/3);
+
+		ctx.restore();
+	}
+
 };
 module.exports = SceneMusic;
