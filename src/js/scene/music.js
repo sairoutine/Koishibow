@@ -42,6 +42,26 @@ SceneMusic.prototype._focusMusicName = function(){
 SceneMusic.prototype._focusMusicDescription = function(){
 	return "あああああいいいいいうううううえええええおおおおおかかかかかききききき";
 };
+SceneMusic.prototype._playingScrolledSubstr = function(name){
+	if (name.length > 25) {
+		name = name.substring(0, 25) + "...";
+	}
+
+	return name;
+}
+SceneMusic.prototype._focusingScrolledSubstr = function(name, len){
+	if (name.length > len) {
+		name = name.substring(0, len);
+	}
+
+	return name;
+}
+SceneMusic.prototype._focusingScrolledMusicName = function(){
+	return this._focusingScrolledSubstr(this._focusMusicName(), 20);
+};
+SceneMusic.prototype._focusingScrolledMusicDescription = function(name){
+	return this._focusingScrolledSubstr(this._focusMusicDescription(), 25);
+};
 SceneMusic.prototype._isFocusBack = function(){
 	return false;
 };
@@ -53,6 +73,7 @@ SceneMusic.prototype._drawMusicList = function(){
 
 	var music_bg;
 	for (var i = 0, len = 12; i < len; i++) {
+		var no = "01"; // TODO:
 		var focus = i === 0 ? true : false; // TODO:
 
 		// 曲名 背景
@@ -78,12 +99,13 @@ SceneMusic.prototype._drawMusicList = function(){
 		ctx.textAlign = 'left';
 		ctx.fillStyle = focus ? Util.hexToRGBString("#e1d7b6") : Util.hexToRGBString("#4c422c");
 		ctx.font = "20px 'OradanoGSRR'";
-		ctx.fillText(this._focusMusicName(), 196, (232 + i * 60)*2/3);
+		var name = this._focusMusicName();
+		name = this._playingScrolledSubstr(name);
+		ctx.fillText(no + "：" + name, 196, (232 + i * 60)*2/3);
 		ctx.restore();
 
 	}
 };
-
 // 画面更新
 SceneMusic.prototype.draw = function(){
 	BaseScene.prototype.draw.apply(this, arguments);
@@ -116,11 +138,11 @@ SceneMusic.prototype.draw = function(){
 	var status;
 	if (this._isPlaying()) {
 		// 再生中
-		status = this.core.image_loader.getImage("ui-musicroom-btn-play");
+		status = this.core.image_loader.getImage("ui-musicroom-btn-stop");
 	}
 	else {
 		// 停止中
-		status = this.core.image_loader.getImage("ui-musicroom-btn-stop");
+		status = this.core.image_loader.getImage("ui-musicroom-btn-play");
 	}
 	ctx.translate(1118*2/3, 110*2/3);
 	ctx.drawImage(status,
@@ -190,15 +212,14 @@ SceneMusic.prototype.draw = function(){
 		// 曲名
 		ctx.fillStyle = Util.hexToRGBString("#e1d7b6");
 		ctx.font = "24px 'OradanoGSRR'";
-		ctx.fillText(this._focusMusicName(), 196, 100*2/3);
+		ctx.fillText(this._focusingScrolledMusicName(), 196, 100*2/3);
 
 		// 説明
 		ctx.fillStyle = "white";
 		ctx.font = "20px 'OradanoGSRR'";
-		ctx.fillText(this._focusMusicDescription(), 196, 136*2/3);
+		ctx.fillText(this._focusingScrolledMusicDescription(), 196, 136*2/3);
 
 		ctx.restore();
 	}
-
 };
 module.exports = SceneMusic;
