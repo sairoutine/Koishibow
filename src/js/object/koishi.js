@@ -2,7 +2,7 @@
 var CONSTANT = require('../constant');
 
 // こいしの歩く速度
-var SPEED = CONSTANT.DEBUG.KOISHI_SPEED || 2;
+var SPEED = CONSTANT.DEBUG.KOISHI_SPEED || CONSTANT.KOISHI_SPEED;
 var SPEED_NANAME = SPEED / Math.sqrt(2);
 
 var base_object = require('./ss_anime_base');
