@@ -1,18 +1,47 @@
 'use strict';
+var _ = require('i18n4v')
 
 var BaseScene = require('../hakurei').Scene.Base;
-
 var Util = require('../hakurei').Util;
-// var CONSTANT_BUTTON = require('../hakurei').Constant.Button;
+var CONSTANT_BUTTON = require('../hakurei').Constant.Button;
+
+var AssetsConfig = require('../config/assets');
+
+// 画面上に表示する曲の数
+var SHOW_MUSIC_NUM = 12;
+var SHOW_MUSIC_HALF_POINT_NUM = Math.floor(SHOW_MUSIC_NUM/2); // 曲名一覧の中間地点
 
 var SceneMusic = function(core) {
 	BaseScene.apply(this, arguments);
 
+	// 全曲名のうちどのジャーナルを選択しているか
+	this._index_by_all = 0;
+
+	// バックボタンにフォーカスがあるか
+	this._is_focus_back_button = false;
+
+	// 聞いたことのある曲(key: music_id, value: boolean)
+	this._possess_music_map = {};
+
+	// ゲームで使用するBGM一覧
+	this._music_list = [];
+	for (var key in AssetsConfig.bgms) {
+		this._music_list.push(AssetsConfig.bgms[key]);
+	}
 };
 Util.inherit(SceneMusic, BaseScene);
 
 SceneMusic.prototype.init = function(){
 	BaseScene.prototype.init.apply(this, arguments);
+
+	// 全曲名のうちどのジャーナルを選択しているか
+	this._index_by_all = 0;
+
+	// バックボタンにフォーカスがあるか
+	this._is_focus_back_button = false;
+
+	// 聞いたことのある曲(key: music_id, value: boolean)
+	this._possess_music_map = this._generatePossessMusicMap();
 
 	// フェードインする
 	this.core.scene_manager.setFadeIn(60, "black");
@@ -21,16 +50,82 @@ SceneMusic.prototype.init = function(){
 	this.core.scene_manager.setFadeOut(60, "black");
 };
 
-
 SceneMusic.prototype.beforeDraw = function(){
 	BaseScene.prototype.beforeDraw.apply(this, arguments);
 
-	/*
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
-		this.core.audio_loader.playSound("show_journal");
-		this.core.scene_manager.changeScene(CONSTANT.INITIAL_CHAPTER);
+	// 選択
+	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);
+	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN);
+	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_LEFT);
+	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_RIGHT);
+
+
+	// タイトルへ戻る
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+		this.changeScene("title");
 	}
-	*/
+	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		if (this._isFocusMusic()) {
+			// BGM再生
+			this._playBGM();
+		}
+		else if (this._isFocusBack()) {
+			// バックボタンを押したらタイトルへ戻る
+			this.changeScene("title");
+		}
+		else {
+			throw new Error("illegal status.");
+		}
+	}
+	else if(is_up_push || is_down_push) {
+		// 曲名 選択
+		if (this._isFocusMusic()) {
+			// 上
+			if (is_up_push) {
+				this._index_by_all--;
+				if (this._index_by_all < 0) {
+					this._index_by_all = 0;
+
+					// バックボタンへ
+					this._is_focus_back_button = true;
+				}
+			}
+			// 下
+			else if (is_down_push) {
+				this._index_by_all++;
+				if (this._index_by_all > this._music_list.length - 1) {
+					this._index_by_all = this._music_list.length - 1;
+
+					// バックボタンへ
+					this._is_focus_back_button = true;
+				}
+			}
+		}
+		// バックボタンからフォーカスを曲名に戻す
+		else if (this._isFocusBack()) {
+			// 上
+			if (is_up_push) {
+				if (this._index_by_all === this._music_list.length - 1) {
+					// バックボタンからフォーカスを外す
+					this._is_focus_back_button = false;
+				}
+			}
+			// 下
+			else if (is_down_push) {
+				if (this._index_by_all === 0) {
+					// バックボタンからフォーカスを外す
+					this._is_focus_back_button = false;
+				}
+			}
+		}
+		else {
+			throw new Error("illegal status.");
+		}
+	}
+	else if(is_left_push || is_right_push) {
+		// バックボタンにフォーカスを当てる／外す
+		this._is_focus_back_button = !this._is_focus_back_button;
+	}
 };
 // TODO:
 SceneMusic.prototype._isPlaying = function(){
@@ -180,6 +275,7 @@ SceneMusic.prototype.draw = function(){
 		back_button.height*2/3);
 	ctx.restore();
 
+	// 曲一覧
 	this._drawMusicList();
 
 	// スクロールバー背景
@@ -205,7 +301,7 @@ SceneMusic.prototype.draw = function(){
 	ctx.restore();
 
 	// フォーカスされている曲名と説明
-	if (!this._isFocusBack()) {
+	if (this._isFocusMusic()) {
 		ctx.save();
 		ctx.textAlign = 'left';
 
