@@ -9,7 +9,7 @@ const globalShortcut = electron.globalShortcut;
 let mainWindow;
 
 // 日本語 or 英語
-const IS_JA = false;
+const IS_JA = true;
 
 const FULLSCREEN_DIALOG_TITLE = IS_JA ? "フルスクリーン起動" : "Full Screen"
 const FULLSCREEN_DIALOG_MESSAGE = IS_JA ? 'フルスクリーンで起動しますか？' : "Do you make the window full screen?"
@@ -34,7 +34,7 @@ function createWindow () {
 	// not fullscreen
 	else {
 		mainWindow = new BrowserWindow({
-			"width":          960,
+			"width":          1280,
 			"height":         720,
 			"useContentSize": true,  // フレームのサイズをサイズに含まない
 			"resizable":      false, // ウィンドウのリサイズを禁止

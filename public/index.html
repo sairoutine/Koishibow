@@ -7,22 +7,29 @@
 body {
 	margin:0;
 	padding:0;
-	width:960;
+	width:1280;
 	height:720;
 }
 #canvasdiv {
 	cursor: none;
 	background: black;
 	position:relative;
-	width:960px;
+	width:1280px;
 	height:720px;
 }
 #mainCanvas {
-	left: 0px;
 	top: 0px;
+	left: 160px;
+	position: absolute;
 }
 #mainCanvas:-webkit-full-screen {
 	height: 100%;
+	position:relative;
+	top: 0px;
+	left: 0px;
+}
+#backgroundCanvas {
+	position: absolute;
 }
 </style>
 </head>
@@ -30,6 +37,7 @@ body {
 	<div id="debug"></div>
 	<div id="canvasdiv">
 		<canvas id="mainCanvas" width="960" height="720"></canvas>
+		<canvas id="backgroundCanvas" width="1280" height="720"></canvas>
 	</div>
 
 	<!--
