@@ -33,17 +33,17 @@ AssetsConfig.images = {
 	"chapter3-08-event-03-tree":  "./image/production/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-tree.png",
 	"chapter3-08-event-03-bg-001":  "./image/production/chapter3/event/chapter3-08-event-03/chapter3-08-event-03-bg-001.jpg",
     
-    // 3-8-4 【BADEND】
+	// 3-8-4 【BADEND】
 	"chapter3-08-event-04-koishi":  "./image/production/chapter3/event/chapter3-08-event-04/chapter3-08-event-04-koishi.png",
-    "chapter3-08-event-04-cirno":  "./image/production/chapter3/event/chapter3-08-event-04/chapter3-08-event-04-cirno.png",
-    "chapter3-08-event-04-bg-001":  "./image/production/chapter3/event/chapter3-08-event-04/chapter3-08-event-04-bg-001.jpg",
+	"chapter3-08-event-04-cirno":  "./image/production/chapter3/event/chapter3-08-event-04/chapter3-08-event-04-cirno.png",
+	"chapter3-08-event-04-bg-001":  "./image/production/chapter3/event/chapter3-08-event-04/chapter3-08-event-04-bg-001.jpg",
     
-    // 3-9 フランがダイナマイトで爆破
+	// 3-9 フランがダイナマイトで爆破
 	"chapter3-09-event-01-koishi":  "./image/production/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-koishi.png",
-    "chapter3-09-event-01-fran":  "./image/production/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-fran.png",
-    "chapter3-09-event-01-obj-01":  "./image/production/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-obj-01.jpg",
-    "chapter3-09-event-01-obj-02":  "./image/production/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-obj-02.png",
-    "chapter3-09-event-01-obj-03":  "./image/production/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-obj-03.png",
+	"chapter3-09-event-01-fran":  "./image/production/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-fran.png",
+	"chapter3-09-event-01-obj-01":  "./image/production/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-obj-01.jpg",
+	"chapter3-09-event-01-obj-02":  "./image/production/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-obj-02.png",
+	"chapter3-09-event-01-obj-03":  "./image/production/chapter3/event/chapter3-09-event-01/chapter3-09-event-01-obj-03.png",
 	
 	// 3-10 チルノとフランが橋をはさんで言い争う
 	"chapter3-10-event-01-koishi":  "./image/production/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-koishi.png",
@@ -51,7 +51,7 @@ AssetsConfig.images = {
 	"chapter3-10-event-01-fran":  "./image/production/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-fran.png",
 	"chapter3-10-event-01-bg-001":  "./image/production/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-bg-001.jpg",
 	"chapter3-10-event-01-obj-01":  "./image/production/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-obj-01.png",
-    "chapter3-10-event-01-obj-02":  "./image/production/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-obj-02.png",
+	"chapter3-10-event-01-obj-02":  "./image/production/chapter3/event/chapter3-10-event-01/chapter3-10-event-01-obj-02.png",
 	
 	// 3-11 となりのフィールドで爆発、雪崩
 	"chapter3-11-event-01-koishi":  "./image/production/chapter3/event/chapter3-11-event-01/chapter3-11-event-01-koishi.png",
@@ -66,26 +66,26 @@ AssetsConfig.images = {
 	"chapter3-12-event-01-obj-03":  "./image/production/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-obj-03.png",
 	"chapter3-12-event-01-bg-001":  "./image/production/chapter3/event/chapter3-12-event-01/chapter3-12-event-01-bg-001.jpg",
     
-    // 3-13-1 これがいいアイデアなの？
-    "chapter3-13-event-01-koishi":  "./image/production/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-koishi.png",
-    "chapter3-13-event-01-fran":  "./image/production/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-fran.png",
-    "chapter3-13-event-01-cirno":  "./image/production/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-cirno.png",
-    "chapter3-13-event-01-bg-001":  "./image/production/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-bg-001.jpg",
+	// 3-13-1 これがいいアイデアなの？
+	"chapter3-13-event-01-koishi":  "./image/production/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-koishi.png",
+	"chapter3-13-event-01-fran":  "./image/production/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-fran.png",
+	"chapter3-13-event-01-cirno":  "./image/production/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-cirno.png",
+	"chapter3-13-event-01-bg-001":  "./image/production/chapter3/event/chapter3-13-event-01/chapter3-13-event-01-bg-001.jpg",
     
-    // 3-13-3 チルノの首がはねられている？
-    "chapter3-13-event-03-koishi":  "./image/production/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-koishi.png",
-    "chapter3-13-event-03-cirno":  "./image/production/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-cirno.png",
-    "chapter3-13-event-03-fran":  "./image/production/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-fran.png",
-    "chapter3-13-event-03-obj-01":  "./image/production/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-obj-01.png",
-    "chapter3-13-event-03-bg-001":  "./image/production/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-bg-001.jpg",
+	// 3-13-3 チルノの首がはねられている？
+	"chapter3-13-event-03-koishi":  "./image/production/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-koishi.png",
+	"chapter3-13-event-03-cirno":  "./image/production/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-cirno.png",
+	"chapter3-13-event-03-fran":  "./image/production/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-fran.png",
+	"chapter3-13-event-03-obj-01":  "./image/production/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-obj-01.png",
+	"chapter3-13-event-03-bg-001":  "./image/production/chapter3/event/chapter3-13-event-03/chapter3-13-event-03-bg-001.jpg",
 
-    // 3-13-4 チルノの首がはねられている？
-    "chapter3-13-event-04-koishi":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-koishi.png",
-    "chapter3-13-event-04-cirno":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-cirno.png",
-    "chapter3-13-event-04-fran":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-fran.png",
-    "chapter3-13-event-04-obj-01":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-obj-01.png",
-    "chapter3-13-event-04-obj-02":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-obj-02.png",
-    "chapter3-13-event-04-bg-001":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-bg-001.jpg",
+	// 3-13-4 チルノの首がはねられている？
+	"chapter3-13-event-04-koishi":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-koishi.png",
+	"chapter3-13-event-04-cirno":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-cirno.png",
+	"chapter3-13-event-04-fran":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-fran.png",
+	"chapter3-13-event-04-obj-01":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-obj-01.png",
+	"chapter3-13-event-04-obj-02":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-obj-02.png",
+	"chapter3-13-event-04-bg-001":  "./image/production/chapter3/event/chapter3-13-event-04/chapter3-13-event-04-bg-001.jpg",
 
 	// ジャーナル画像(日本語)
 	"journal006_ja":  "./image/production/journal/ja/006.png",
@@ -156,10 +156,10 @@ AssetsConfig.images = {
 	
 	"chapter3-13-bg-001": "./image/production/chapter3/chapter3-13/chapter3-13-bg-001.jpg",
 	"chapter3-13-obj-01": "./image/production/chapter3/chapter3-13/chapter3-13-obj-01.png",
-    "chapter3-13-obj-02": "./image/production/chapter3/chapter3-13/chapter3-13-obj-02.png",
-    "chapter3-13-obj-03": "./image/production/chapter3/chapter3-13/chapter3-13-obj-03.png",
-    "chapter3-13-obj-04": "./image/production/chapter3/chapter3-13/chapter3-13-obj-04.png",
-    "chapter3-13-obj-05": "./image/production/chapter3/chapter3-13/chapter3-13-obj-05.png",
+	"chapter3-13-obj-02": "./image/production/chapter3/chapter3-13/chapter3-13-obj-02.png",
+	"chapter3-13-obj-03": "./image/production/chapter3/chapter3-13/chapter3-13-obj-03.png",
+	"chapter3-13-obj-04": "./image/production/chapter3/chapter3-13/chapter3-13-obj-04.png",
+	"chapter3-13-obj-05": "./image/production/chapter3/chapter3-13/chapter3-13-obj-05.png",
 
 	// アイテム 目薬
 	"item_13":            "./image/production/item/icon_item_cp3_sho.png",
