@@ -32,12 +32,12 @@ SceneLoading.prototype.init = function() {
 	}
 
 	// ゲームで使用するBGM一覧
-	for (var key3 in AssetsConfig.bgms) {
-		var conf3 = AssetsConfig.bgms[key3];
+	for (var i = 0, len = AssetsConfig.bgms.length; i < len; i++) {
+		var conf3 = AssetsConfig.bgms[i];
 		// デバッグ用ミュート
 		var volume3 = CONSTANT.DEBUG.SOUND_OFF ? 0 : conf3.volume;
 
-		this.core.audio_loader.loadBGM(key3, conf3.path, volume3, conf3.loopStart, conf3.loopEnd);
+		this.core.audio_loader.loadBGM(conf3.key, conf3.path, volume3, conf3.loopStart, conf3.loopEnd);
 	}
 
 	// ゲームで使用するフォント

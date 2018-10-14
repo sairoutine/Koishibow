@@ -8,7 +8,7 @@ var CONSTANT = require("../constant");
 var AssetsConfig = {};
 AssetsConfig.images = Util.assign(Common.images, CONSTANT.TRIAL ? {} : Production.images);
 AssetsConfig.sounds = Util.assign(Common.sounds, CONSTANT.TRIAL ? {} : Production.sounds);
-AssetsConfig.bgms   = Util.assign(Common.bgms,   CONSTANT.TRIAL ? {} : Production.bgms);
+AssetsConfig.bgms   = Common.bgms.concat(CONSTANT.TRIAL ? [] : Production.bgms);
 AssetsConfig.fonts  = Util.assign(Common.fonts,  CONSTANT.TRIAL ? {} : Production.fonts);
 
 module.exports = AssetsConfig;

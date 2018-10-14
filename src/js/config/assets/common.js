@@ -1,4 +1,5 @@
 'use strict';
+var _ = require('i18n4v')
 
 var AssetsConfig = {};
 
@@ -546,104 +547,164 @@ AssetsConfig.sounds = {
 	},
 };
 
-AssetsConfig.bgms = {
-	"silent": {
+AssetsConfig.bgms = [
+	{
+		key: "silent",
 		path: "./bgm/common/silent.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
 	},
-	using_3rdeye: {
+	{
+		key: "using_3rdeye",
 		path: "./bgm/common/using_3rdeye.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: true,
+		name: _("サードアイ使用"),
+		description: _("サードアイ使用の説明文"),
 	},
-	title: {
+	{
+		key: "title",
 		path: "./bgm/common/title1.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 0.9,
+		isShowMusicRoom: true,
+		name: _("タイトル"),
+		description: _("タイトルの説明文"),
 	},
-	field1: {
+	{
+		key: "field1",
 		path: "./bgm/common/field1.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 0.9,
+		isShowMusicRoom: true,
+		name: _("field1"),
+		description: _("field1の説明文"),
 	},
-	field2: {
+	{
+		key: "field2",
 		path: "./bgm/common/field2.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 0.9,
+		isShowMusicRoom: true,
+		name: _("field2"),
+		description: _("フィールド2の説明文"),
 	},
-	field3: {
+	{
+		key: "field3",
 		path: "./bgm/common/field3.ogg",
 		//loopStart: 0*60 + 0 + 0.512,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: true,
+		name: _("field3"),
+		description: _("field3の説明文"),
 	},
-
-	field4: {
+	{
+		key: "field4",
 		path: "./bgm/common/field4.ogg",
 		loopStart: 0*60 + 0 + 0.300,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: true,
+		name: _("field4"),
+		description: _("field4の説明文"),
 	},
-	"chapter0-event-encounter_satori": {
+	{
+		key: "chapter0-event-encounter_satori",
 		path: "./bgm/common/chapter0/event/encounter_satori.ogg",
 		volume: 0.6,
+		isShowMusicRoom: true,
+		name: _("さとりとの邂逅"),
+		description: _("さとりとの邂逅説明文"),
 	},
-	"chapter1-event-talk_with_mobu": {
+	{
+		key: "chapter1-event-talk_with_mobu",
 		path: "./bgm/common/chapter1/event/talk_with_mobu.ogg",
 		volume: 0.6,
+		isShowMusicRoom: true,
+		name: _("モブとの会話"),
+		description: _("モブとの会話説明文"),
 	},
-
-
-	"chapter0-mansion_corridor1-tricycle": {
+	{
+		key: "chapter0-mansion_corridor1-tricycle",
 		path: "./bgm/common/chapter0/mansion_corridor1/tricycle.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
 	},
-
-	"chapter0-mansion_corridor1-wind": {
+	{
+		key: "chapter0-mansion_corridor1-wind",
 		path: "./bgm/common/chapter0/mansion_corridor1/wind.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
 	},
-	"chapter0-mansion_corridor3-clock": {
+	{
+		key: "chapter0-mansion_corridor3-clock",
 		path: "./bgm/common/chapter0/mansion_corridor3/clock.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
 	},
-	"chapter1-03-drop_paint": {
+	{
+		key: "chapter1-03-drop_paint",
 		path: "./bgm/common/chapter1/03/drop_paint.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
 	},
-	"chapter1-04-call_phone": {
+	{
+		key: "chapter1-04-call_phone",
 		path: "./bgm/common/chapter1/04/call_phone.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
 	},
-	"chapter1-06-flicker_light": {
+	{
+		key: "chapter1-06-flicker_light",
 		path: "./bgm/common/chapter1/06/flicker_light.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
 	},
-	"chapter1-09-flows_water": {
+	{
+		key: "chapter1-09-flows_water",
 		path: "./bgm/common/chapter1/09/flows_water.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
 	},
-};
+];
 
 AssetsConfig.fonts = {
 	"OradanoGSRR": {

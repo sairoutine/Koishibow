@@ -1,4 +1,5 @@
 'use strict';
+var _ = require('i18n4v')
 
 var AssetsConfig = {};
 
@@ -318,37 +319,57 @@ AssetsConfig.sounds = {
 	},
 };
 
-AssetsConfig.bgms = {
-	field5: {
+AssetsConfig.bgms = [
+	{
+		key: "field5",
 		path: "./bgm/production/field5.ogg",
 		//loopStart: 0*60 + 0 + 0.512,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: true,
+		name: _("field5"),
+		description: _("field5の説明文"),
 	},
-	field6: {
+	{
+		key: "field6",
 		path: "./bgm/production/field6.ogg",
 		//loopStart: 0*60 + 0 + 0.512,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: true,
+		name: _("field6"),
+		description: _("field6の説明文"),
 	},
-	field7: {
+	{
+		key: "field7",
 		path: "./bgm/production/field7.ogg",
 		//loopStart: 0*60 + 0 + 0.512,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: true,
+		name: _("field7"),
+		description: _("field7の説明文"),
 	},
-	field8: {
+	{
+		key: "field8",
 		path: "./bgm/production/field8.ogg",
 		//loopStart: 0*60 + 0 + 0.512,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: true,
+		name: _("field8"),
+		description: _("field8の説明文"),
 	},
-	"chapter3-12-wood": {
+	{
+		key: "chapter3-12-wood",
 		path: "./bgm/production/chapter3/12/wood.ogg",
 		loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
 	},
-};
+];
 
 module.exports = AssetsConfig;
