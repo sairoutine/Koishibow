@@ -15,18 +15,24 @@ var SceneMusic = function(core) {
 	BaseScene.apply(this, arguments);
 
 	// 全曲名のうちどのジャーナルを選択しているか
-	this._index_by_all = 0;
+	this._idx_by_all = 0;
 
 	// バックボタンにフォーカスがあるか
 	this._is_focus_back_button = false;
+
+	// 再生中のBGM(null なら再生停止)
+	this._playing_music_idx = null;
 
 	// 聞いたことのある曲(key: music_id, value: boolean)
 	this._possess_music_map = {};
 
 	// ゲームで使用するBGM一覧
 	this._music_list = [];
-	for (var key in AssetsConfig.bgms) {
-		this._music_list.push(AssetsConfig.bgms[key]);
+	for (var i = 0, len = AssetsConfig.bgms.length; i < len; i++) {
+		var conf = AssetsConfig.bgms[i];
+		if (conf.isShowMusicRoom) {
+			this._music_list.push(conf);
+		}
 	}
 };
 Util.inherit(SceneMusic, BaseScene);
@@ -35,13 +41,19 @@ SceneMusic.prototype.init = function(){
 	BaseScene.prototype.init.apply(this, arguments);
 
 	// 全曲名のうちどのジャーナルを選択しているか
-	this._index_by_all = 0;
+	this._idx_by_all = 0;
 
 	// バックボタンにフォーカスがあるか
 	this._is_focus_back_button = false;
 
+	// 再生中のBGM(null なら再生停止)
+	this._playing_music_idx = null;
+
 	// 聞いたことのある曲(key: music_id, value: boolean)
 	this._possess_music_map = this._generatePossessMusicMap();
+
+	// BGM停止
+	this.core.audio_loader.stopBGM();
 
 	// フェードインする
 	this.core.scene_manager.setFadeIn(60, "black");
@@ -60,18 +72,24 @@ SceneMusic.prototype.beforeDraw = function(){
 	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_RIGHT);
 
 
-	// タイトルへ戻る
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
-		this.changeScene("title");
+		if(this._isPlaying()) {
+			// 曲再生中でなら再生停止
+			this._stopBGM();
+		}
+		else {
+			// 曲再生中でなければタイトルへ戻る
+			this.core.scene_manager.changeScene("title");
+		}
 	}
 	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
 		if (this._isFocusMusic()) {
 			// BGM再生
-			this._playBGM();
+			this._playFocusBGM();
 		}
 		else if (this._isFocusBack()) {
 			// バックボタンを押したらタイトルへ戻る
-			this.changeScene("title");
+			this.core.scene_manager.changeScene("title");
 		}
 		else {
 			throw new Error("illegal status.");
@@ -82,9 +100,9 @@ SceneMusic.prototype.beforeDraw = function(){
 		if (this._isFocusMusic()) {
 			// 上
 			if (is_up_push) {
-				this._index_by_all--;
-				if (this._index_by_all < 0) {
-					this._index_by_all = 0;
+				this._idx_by_all--;
+				if (this._idx_by_all < 0) {
+					this._idx_by_all = 0;
 
 					// バックボタンへ
 					this._is_focus_back_button = true;
@@ -92,9 +110,9 @@ SceneMusic.prototype.beforeDraw = function(){
 			}
 			// 下
 			else if (is_down_push) {
-				this._index_by_all++;
-				if (this._index_by_all > this._music_list.length - 1) {
-					this._index_by_all = this._music_list.length - 1;
+				this._idx_by_all++;
+				if (this._idx_by_all > this._music_list.length - 1) {
+					this._idx_by_all = this._music_list.length - 1;
 
 					// バックボタンへ
 					this._is_focus_back_button = true;
@@ -105,14 +123,14 @@ SceneMusic.prototype.beforeDraw = function(){
 		else if (this._isFocusBack()) {
 			// 上
 			if (is_up_push) {
-				if (this._index_by_all === this._music_list.length - 1) {
+				if (this._idx_by_all === this._music_list.length - 1) {
 					// バックボタンからフォーカスを外す
 					this._is_focus_back_button = false;
 				}
 			}
 			// 下
 			else if (is_down_push) {
-				if (this._index_by_all === 0) {
+				if (this._idx_by_all === 0) {
 					// バックボタンからフォーカスを外す
 					this._is_focus_back_button = false;
 				}
@@ -127,59 +145,98 @@ SceneMusic.prototype.beforeDraw = function(){
 		this._is_focus_back_button = !this._is_focus_back_button;
 	}
 };
-// TODO:
+
 SceneMusic.prototype._isPlaying = function(){
-	return true;
+	return this._playing_music_idx !== null;
 };
-SceneMusic.prototype._focusMusicName = function(){
-	return "あああああいいいいいうううううえええええおおおおおかかかかかききききき";
-};
-SceneMusic.prototype._focusMusicDescription = function(){
-	return "あああああいいいいいうううううえええええおおおおおかかかかかききききき";
-};
-SceneMusic.prototype._playingScrolledSubstr = function(name){
-	if (name.length > 25) {
-		name = name.substring(0, 25) + "...";
-	}
 
-	return name;
-}
-SceneMusic.prototype._focusingScrolledSubstr = function(name, len){
-	if (name.length > len) {
-		name = name.substring(0, len);
-	}
-
-	return name;
-}
 SceneMusic.prototype._focusingScrolledMusicName = function(){
-	return this._focusingScrolledSubstr(this._focusMusicName(), 20);
+	return this._focusingScrolledSubstr(this._music_list[this._idx_by_all].name, 20);
 };
-SceneMusic.prototype._focusingScrolledMusicDescription = function(name){
-	return this._focusingScrolledSubstr(this._focusMusicDescription(), 25);
+
+SceneMusic.prototype._focusingScrolledMusicDescription = function(){
+	return this._focusingScrolledSubstr(this._music_list[this._idx_by_all].description, 25);
 };
+
 SceneMusic.prototype._isFocusBack = function(){
-	return false;
+	return this._is_focus_back_button;
 };
+
+SceneMusic.prototype._isFocusMusic = function(){
+	return !this._is_focus_back_button;
+};
+
+SceneMusic.prototype._isPossess = function(key){
+	return this._possess_music_map[key] ? true : false;
+};
+
+SceneMusic.prototype._playFocusBGM = function() {
+	var name = this._music_list[this._idx_by_all].key
+
+	if (this._isPossess(name)) {
+		this._playing_music_idx = this._idx_by_all;
+
+		this.core.audio_loader.changeBGM(name);
+	}
+};
+
+SceneMusic.prototype._stopBGM = function() {
+	this._playing_music_idx = null;
+
+	this.core.audio_loader.stopBGM();
+};
+
+
+
 SceneMusic.prototype._scrollbarX = function(){
-	return 244*2/3;
+	var len = this._music_list.length <= 1 ? 1 : this._music_list.length - 1; // 0除算を防ぐ
+	var offset = 623*2/3 * this._idx_by_all / len;
+
+	return 244*2/3 + offset;
 };
+
 SceneMusic.prototype._drawMusicList = function(){
 	var ctx = this.core.ctx;
 
-	var music_bg;
-	for (var i = 0, len = 12; i < len; i++) {
-		var no = "01"; // TODO:
-		var focus = i === 0 ? true : false; // TODO:
+	var show_music_list;   // 表示する曲一覧
+	var cursor_index;      // カーソルの表示位置
+	if (this._idx_by_all <= SHOW_MUSIC_HALF_POINT_NUM) {
+		show_music_list = this._music_list.slice(0, SHOW_MUSIC_NUM);
+		cursor_index = this._idx_by_all;
+	}
+	else if (this._idx_by_all <= this._music_list.length - SHOW_MUSIC_HALF_POINT_NUM - 1) {
+		show_music_list = this._music_list.slice(
+			this._idx_by_all - SHOW_MUSIC_HALF_POINT_NUM,
+			SHOW_MUSIC_HALF_POINT_NUM + this._idx_by_all
+		);
+		cursor_index = SHOW_MUSIC_HALF_POINT_NUM;
+	}
+	else {
+		show_music_list = this._music_list.slice(this._music_list.length - SHOW_MUSIC_NUM, this._music_list.length);
+		cursor_index = this._idx_by_all - this._music_list.length + SHOW_MUSIC_NUM;
+	}
 
-		// 曲名 背景
-		if (focus) {
-			// 再生中
+	// 表示する曲一覧を走査
+	for(var i = 0, len = show_music_list.length; i < len; i++) {
+		var conf = show_music_list[i];
+
+		var color, music_bg;
+		if(this._isFocusMusic() && i === cursor_index) {
+			// フォーカスがあたってる
 			music_bg = this.core.image_loader.getImage("ui-musicroom-listbox01-on");
+
+			// 文字色アクティブ
+			color = Util.hexToRGBString("#e1d7b6");
 		}
 		else {
-			// 停止中
+			// フォーカスがあたってない
 			music_bg = this.core.image_loader.getImage("ui-musicroom-listbox01-off");
+
+			// 文字色非アクティブ
+			color = Util.hexToRGBString("#4c422c");
 		}
+
+		// 曲名 背景
 		ctx.save();
 		ctx.translate(690*2/3, (225 + i*60)*2/3);
 		ctx.drawImage(music_bg,
@@ -190,14 +247,21 @@ SceneMusic.prototype._drawMusicList = function(){
 		ctx.restore();
 
 		// 曲名
+		var text;
+		if (this._isPossess(conf.key)) {
+			text = this._playingScrolledSubstr(conf.name);
+		}
+		else {
+			text = _("? ? ?");
+		}
 		ctx.save();
+		ctx.fillStyle = color;
 		ctx.textAlign = 'left';
-		ctx.fillStyle = focus ? Util.hexToRGBString("#e1d7b6") : Util.hexToRGBString("#4c422c");
 		ctx.font = "20px 'OradanoGSRR'";
-		var name = this._focusMusicName();
-		name = this._playingScrolledSubstr(name);
-		ctx.fillText(no + "：" + name, 196, (232 + i * 60)*2/3);
+		ctx.fillText(text, 196, (232 + i * 60)*2/3);
 		ctx.restore();
+	}
+};
 
 	}
 };
