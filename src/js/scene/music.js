@@ -4,12 +4,18 @@ var _ = require('i18n4v')
 var BaseScene = require('../hakurei').Scene.Base;
 var Util = require('../hakurei').Util;
 var CONSTANT_BUTTON = require('../hakurei').Constant.Button;
-
 var AssetsConfig = require('../config/assets');
 
 // 画面上に表示する曲の数
 var SHOW_MUSIC_NUM = 12;
 var SHOW_MUSIC_HALF_POINT_NUM = Math.floor(SHOW_MUSIC_NUM/2); // 曲名一覧の中間地点
+
+// ボックス内の曲名の最大長
+var MAX_MUSIC_NAME_LENGTH = 20;
+// ボックス内の説明文の最大長
+var MAX_DESCRIPTION_LENGTH = 25;
+// リストの曲名の最大長
+var MAX_MUSIC_LIST_NAME_LENGTH = 25;
 
 var SceneMusic = function(core) {
 	BaseScene.apply(this, arguments);
@@ -20,8 +26,13 @@ var SceneMusic = function(core) {
 	// バックボタンにフォーカスがあるか
 	this._is_focus_back_button = false;
 
+	// BGMを再生開始した時刻(null なら再生停止)
+	this._playing_music_frame_count = null;
 	// 再生中のBGM(null なら再生停止)
 	this._playing_music_idx = null;
+
+	// フォーカスを当てた時刻
+	this._focus_frame_count = 0;
 
 	// 聞いたことのある曲(key: music_id, value: boolean)
 	this._possess_music_map = {};
@@ -46,8 +57,13 @@ SceneMusic.prototype.init = function(){
 	// バックボタンにフォーカスがあるか
 	this._is_focus_back_button = false;
 
+	// BGMを再生開始した時刻(null なら再生停止)
+	this._playing_music_frame_count = null;
 	// 再生中のBGM(null なら再生停止)
 	this._playing_music_idx = null;
+
+	// フォーカスを当てた時刻
+	this._focus_frame_count = 0;
 
 	// 聞いたことのある曲(key: music_id, value: boolean)
 	this._possess_music_map = this._generatePossessMusicMap();
@@ -78,8 +94,8 @@ SceneMusic.prototype.beforeDraw = function(){
 			this._stopBGM();
 		}
 		else {
-			// 曲再生中でなければタイトルへ戻る
-			this.core.scene_manager.changeScene("title");
+			// バックボタンへ
+			this._is_focus_back_button = true;
 		}
 	}
 	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
@@ -101,6 +117,10 @@ SceneMusic.prototype.beforeDraw = function(){
 			// 上
 			if (is_up_push) {
 				this._idx_by_all--;
+
+				// フォーカスを当てた時刻
+				this._focus_frame_count = this.frame_count;
+
 				if (this._idx_by_all < 0) {
 					this._idx_by_all = 0;
 
@@ -111,6 +131,10 @@ SceneMusic.prototype.beforeDraw = function(){
 			// 下
 			else if (is_down_push) {
 				this._idx_by_all++;
+
+				// フォーカスを当てた時刻
+				this._focus_frame_count = this.frame_count;
+
 				if (this._idx_by_all > this._music_list.length - 1) {
 					this._idx_by_all = this._music_list.length - 1;
 
@@ -143,6 +167,9 @@ SceneMusic.prototype.beforeDraw = function(){
 	else if(is_left_push || is_right_push) {
 		// バックボタンにフォーカスを当てる／外す
 		this._is_focus_back_button = !this._is_focus_back_button;
+
+		// フォーカスを当てた時刻
+		this._focus_frame_count = this.frame_count;
 	}
 };
 
@@ -151,11 +178,13 @@ SceneMusic.prototype._isPlaying = function(){
 };
 
 SceneMusic.prototype._focusingScrolledMusicName = function(){
-	return this._focusingScrolledSubstr(this._music_list[this._idx_by_all].name, 20);
+	var conf = this._music_list[this._idx_by_all];
+	return this._focusingScrolledSubstr(conf.name, MAX_MUSIC_NAME_LENGTH);
 };
 
 SceneMusic.prototype._focusingScrolledMusicDescription = function(){
-	return this._focusingScrolledSubstr(this._music_list[this._idx_by_all].description, 25);
+	var conf = this._music_list[this._idx_by_all];
+	return this._focusingScrolledSubstr(conf.description, MAX_DESCRIPTION_LENGTH);
 };
 
 SceneMusic.prototype._isFocusBack = function(){
@@ -174,6 +203,7 @@ SceneMusic.prototype._playFocusBGM = function() {
 	var name = this._music_list[this._idx_by_all].key
 
 	if (this._isPossess(name)) {
+		this._playing_music_frame_count = this.frame_count;
 		this._playing_music_idx = this._idx_by_all;
 
 		this.core.audio_loader.changeBGM(name);
@@ -181,12 +211,11 @@ SceneMusic.prototype._playFocusBGM = function() {
 };
 
 SceneMusic.prototype._stopBGM = function() {
+	this._playing_music_frame_count = null;
 	this._playing_music_idx = null;
 
 	this.core.audio_loader.stopBGM();
 };
-
-
 
 SceneMusic.prototype._scrollbarX = function(){
 	var len = this._music_list.length <= 1 ? 1 : this._music_list.length - 1; // 0除算を防ぐ
@@ -249,7 +278,7 @@ SceneMusic.prototype._drawMusicList = function(){
 		// 曲名
 		var text;
 		if (this._isPossess(conf.key)) {
-			text = this._playingScrolledSubstr(conf.name);
+			text = this._playingScrolledSubstr(conf.key, conf.name);
 		}
 		else {
 			text = _("? ? ?");
@@ -263,7 +292,38 @@ SceneMusic.prototype._drawMusicList = function(){
 	}
 };
 
+SceneMusic.prototype._playingScrolledSubstr = function(key, name){
+	// 曲名が長すぎる場合は
+	if (name.length > MAX_MUSIC_LIST_NAME_LENGTH) {
+		var start, end;
+		// 現在再生中の曲ならば
+		if(this._isPlaying() && this._music_list[this._playing_music_idx].key === key) {
+			// 曲名の文字列をスクロールさせる
+			name = this._scrolledSubstr(name, MAX_MUSIC_LIST_NAME_LENGTH, this._playing_music_frame_count);
+		}
+		else {
+			// 末尾を切り取る
+			start = 0;
+			end = MAX_MUSIC_LIST_NAME_LENGTH;
+			name = name.substring(start, end);
+		}
+
+		name = name + "...";
 	}
+
+	return name;
+};
+
+SceneMusic.prototype._scrolledSubstr = function(str, len, start_frame_count){
+
+	var offset = Math.floor((this.frame_count - start_frame_count) / 30) % str.length;
+
+	var start = offset;
+	var end   = offset + len;
+
+	str = str + str
+
+	return str.substring(start, end);
 };
 // 画面更新
 SceneMusic.prototype.draw = function(){
@@ -295,7 +355,7 @@ SceneMusic.prototype.draw = function(){
 	// 再生中ステータス アイコン
 	ctx.save();
 	var status;
-	if (this._isPlaying()) {
+	if (this._isPlaying() && this._idx_by_all === this._playing_music_idx) { // 再生中の曲にフォーカスがあれば
 		// 再生中
 		status = this.core.image_loader.getImage("ui-musicroom-btn-stop");
 	}
