@@ -557,6 +557,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: false,
 		name: _(""),
 		description: _(""),
+		chapter: 0,
 	},
 	{
 		key: "using_3rdeye",
@@ -567,6 +568,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("サードアイ使用"),
 		description: _("サードアイ使用の説明文"),
+		chapter: 0,
 	},
 	{
 		key: "title",
@@ -577,6 +579,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("タイトル"),
 		description: _("タイトルの説明文"),
+		chapter: 0,
 	},
 	{
 		key: "field1",
@@ -587,6 +590,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("field1"),
 		description: _("field1の説明文"),
+		chapter: 0,
 	},
 	{
 		key: "field2",
@@ -597,6 +601,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("field2"),
 		description: _("フィールド2の説明文"),
+		chapter: 0,
 	},
 	{
 		key: "field3",
@@ -607,6 +612,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("field3"),
 		description: _("field3の説明文"),
+		chapter: 1,
 	},
 	{
 		key: "field4",
@@ -617,6 +623,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("field4"),
 		description: _("field4の説明文"),
+		chapter: 1,
 	},
 	{
 		key: "chapter0-event-encounter_satori",
@@ -625,6 +632,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("さとりとの邂逅"),
 		description: _("さとりとの邂逅説明文"),
+		chapter: 0,
 	},
 	{
 		key: "chapter1-event-talk_with_mobu",
@@ -633,6 +641,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("モブとの会話"),
 		description: _("モブとの会話説明文"),
+		chapter: 1,
 	},
 	{
 		key: "chapter0-mansion_corridor1-tricycle",
@@ -643,6 +652,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: false,
 		name: _(""),
 		description: _(""),
+		chapter: 0,
 	},
 	{
 		key: "chapter0-mansion_corridor1-wind",
@@ -653,6 +663,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: false,
 		name: _(""),
 		description: _(""),
+		chapter: 0,
 	},
 	{
 		key: "chapter0-mansion_corridor3-clock",
@@ -663,6 +674,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: false,
 		name: _(""),
 		description: _(""),
+		chapter: 0,
 	},
 	{
 		key: "chapter1-03-drop_paint",
@@ -673,6 +685,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: false,
 		name: _(""),
 		description: _(""),
+		chapter: 1,
 	},
 	{
 		key: "chapter1-04-call_phone",
@@ -683,6 +696,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: false,
 		name: _(""),
 		description: _(""),
+		chapter: 1,
 	},
 	{
 		key: "chapter1-06-flicker_light",
@@ -693,6 +707,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: false,
 		name: _(""),
 		description: _(""),
+		chapter: 1,
 	},
 	{
 		key: "chapter1-09-flows_water",
@@ -703,6 +718,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: false,
 		name: _(""),
 		description: _(""),
+		chapter: 1,
 	},
 ];
 

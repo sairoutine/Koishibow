@@ -6,6 +6,7 @@ var data_list = require("../data/master/chapter");
 var ChapterMasterRepository = MasterRepositoryGenerator.exec(
 	{
 		key:          "string",
+		no:           "number",
 		openingMovie: "string",
 		firstField:   "string",
 	},

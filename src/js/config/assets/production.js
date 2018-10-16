@@ -329,6 +329,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("field5"),
 		description: _("field5の説明文"),
+		chapter: 3,
 	},
 	{
 		key: "field6",
@@ -339,6 +340,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("field6"),
 		description: _("field6の説明文"),
+		chapter: 3,
 	},
 	{
 		key: "field7",
@@ -349,6 +351,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("field7"),
 		description: _("field7の説明文"),
+		chapter: 3,
 	},
 	{
 		key: "field8",
@@ -359,6 +362,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: true,
 		name: _("field8"),
 		description: _("field8の説明文"),
+		chapter: 3,
 	},
 	{
 		key: "chapter3-12-wood",
@@ -369,6 +373,7 @@ AssetsConfig.bgms = [
 		isShowMusicRoom: false,
 		name: _(""),
 		description: _(""),
+		chapter: 3,
 	},
 ];
 

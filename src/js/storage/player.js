@@ -85,6 +85,17 @@ StoragePlayer.prototype.setCurrentField = function(field_name) {
 	this.set("current_field", field_name);
 };
 
+// 現在のチャプターを取得
+StoragePlayer.prototype.getCurrentChapter = function() {
+	var chapter_no = this.get("current_chapter");
+
+	return chapter_no || 0;
+};
+// 現在のチャプターを設定
+StoragePlayer.prototype.setCurrentChapter = function(chapter_no) {
+	this.set("current_chapter", chapter_no);
+};
+
 // 最後にゲームオーバーになったフィールドを取得
 StoragePlayer.prototype.getLastGameoverField = function() {
 	var field_name = this.get("last_gameover_field");

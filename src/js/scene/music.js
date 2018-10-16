@@ -325,6 +325,32 @@ SceneMusic.prototype._scrolledSubstr = function(str, len, start_frame_count){
 
 	return str.substring(start, end);
 };
+
+SceneMusic.prototype._focusingScrolledSubstr = function(name, len){
+	// 文字が長すぎる場合は
+	if (name.length > len) {
+		// 曲名の文字列をスクロールさせる
+		name = this._scrolledSubstr(name, len, this._focus_frame_count);
+		name = name + "...";
+	}
+
+	return name;
+}
+
+SceneMusic.prototype._generatePossessMusicMap = function(){
+	var current_chapter = this.core.save_manager.player.getCurrentChapter();
+	var map = {};
+	for (var i = 0, len = this._music_list.length; i < len; i++) {
+		var conf = this._music_list[i];
+		// 曲が出現するチャプターをクリアしていたら
+		if (current_chapter > conf.chapter) {
+			map[ conf.key ] = true;
+		}
+	}
+
+	return map;
+};
+
 // 画面更新
 SceneMusic.prototype.draw = function(){
 	BaseScene.prototype.draw.apply(this, arguments);
@@ -424,8 +450,8 @@ SceneMusic.prototype.draw = function(){
 		scrollbar_box.height*2/3);
 	ctx.restore();
 
-	// フォーカスされている曲名と説明
-	if (this._isFocusMusic()) {
+	// フォーカスされていて、かつ開放されている曲名と説明
+	if (this._isFocusMusic() && this._isPossess(this._music_list[this._idx_by_all].key)) {
 		ctx.save();
 		ctx.textAlign = 'left';
 
