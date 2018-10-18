@@ -14,13 +14,13 @@ var CONSTANT = {
 	INITIAL_CHAPTER: "opening_movie_chapter0",
 
 	// こいしの歩く速度(最高速度)
-	KOISHI_MAX_SPEED: 7,
+	KOISHI_MAX_SPEED: 12,
 	// こいしの歩く速度(最低速度)
-	KOISHI_MIN_SPEED: 2,
+	KOISHI_MIN_SPEED: 4,
 	// こいしの歩く速度(初速)
-	KOISHI_INITIAL_SPEED: 7,
+	KOISHI_INITIAL_SPEED: 12,
 	// こいしの歩く速度(加速度)
-	KOISHI_ACCEL_SPEED: -0.25,
+	KOISHI_ACCEL_SPEED: -2,
 
 	// オブジェクトの種類
 	STATIC_IMAGE_TYPE:       1,
