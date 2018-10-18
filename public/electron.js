@@ -55,8 +55,7 @@ function createWindow () {
 	}
 
 	var is_show_dialog = false;
-
-	globalShortcut.register('Escape', function() {
+	var close_function = function() {
 		if(is_show_dialog) return;
 
 		is_show_dialog = true;
@@ -70,7 +69,10 @@ function createWindow () {
 			app.quit();
 		}
 		is_show_dialog = false;
-	});
+	};
+
+	globalShortcut.register('Escape', close_function);
+	globalShortcut.register('Alt+F4', close_function);
 
 	mainWindow.on('closed', function () {
 		mainWindow = null;
