@@ -25,6 +25,26 @@ var jsonDataOfWalkInNoHat = require('../data/anime/koishi/nohat_walk_anime_1');
 // ゲームオーバー(しゃがみ込む) 不	80	2.7秒
 var jsonDataOfGameover = require('../data/anime/koishi/gameover_anime_1');
 
+var JSON_ANIME_MAP = {
+	// 静止
+	default:     jsonDataOfWait,
+	wait:        jsonDataOfWait,
+	// 歩く
+	walk:        jsonDataOfWalk,
+
+	// 静止(帽子なし)
+	wait_nohat:        jsonDataOfWaitInNoHat,
+	// 歩く(帽子なし)
+	walk_nohat:        jsonDataOfWalkInNoHat,
+	// 触る(帽子なし)
+	touch_nohat:        jsonDataOfReactionTouchInNoHat,
+
+	// ゲームオーバー(しゃがみ込む)
+	gameover: jsonDataOfGameover,
+	// サードアイ使用
+	use_eye:     jsonDataOfReaction3rdeye,
+};
+
 var Koishi = function (scene) {
 	base_object.apply(this, arguments);
 
@@ -142,7 +162,8 @@ Koishi.prototype.moveByInput = function() {
 
 	/* 移動量計算1 */
 	var speed = CONSTANT.KOISHI_INITIAL_SPEED + CONSTANT.KOISHI_ACCEL_SPEED * this._walking_count;
-	speed = (speed > CONSTANT.KOISHI_MAX_SPEED ? CONSTANT.KOISHI_MAX_SPEED : speed);
+	speed = Util.clamp(speed, CONSTANT.KOISHI_MIN_SPEED, CONSTANT.KOISHI_MAX_SPEED);
+
 	// デバッグ用
 	if(CONSTANT.DEBUG.KOISHI_SPEED) {
 		speed = CONSTANT.DEBUG.KOISHI_SPEED;
@@ -244,26 +265,6 @@ Koishi.prototype.moveByInput = function() {
 	}
 
 
-};
-
-var JSON_ANIME_MAP = {
-	// 静止
-	default:     jsonDataOfWait,
-	wait:        jsonDataOfWait,
-	// 歩く
-	walk:        jsonDataOfWalk,
-
-	// 静止(帽子なし)
-	wait_nohat:        jsonDataOfWaitInNoHat,
-	// 歩く(帽子なし)
-	walk_nohat:        jsonDataOfWalkInNoHat,
-	// 触る(帽子なし)
-	touch_nohat:        jsonDataOfReactionTouchInNoHat,
-
-	// ゲームオーバー(しゃがみ込む)
-	gameover: jsonDataOfGameover,
-	// サードアイ使用
-	use_eye:     jsonDataOfReaction3rdeye,
 };
 
 // KoishiActionMasterRepository の内容も追加
