@@ -261,7 +261,9 @@ Koishi.prototype.moveByInput = function() {
 		this._walking_count = 0;
 
 		// 歩いてないので待機モーションに変更
-		this.setWaitAnime();
+		if (this.isWalking()) { // サードアイ使用中モーションになってる場合もあるので
+			this.setWaitAnime();
+		}
 	}
 
 
