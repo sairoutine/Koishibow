@@ -348,6 +348,14 @@ AssetsConfig.sounds = {
 		path: "./sound/common/gameover/go4.ogg",
 		volume: 1.0,
 	},
+	"event_in":    {
+		path: "./sound/common/event_in.ogg",
+		volume: 1.0,
+	},
+	"event_out":    {
+		path: "./sound/common/event_out.ogg",
+		volume: 1.0,
+	},
 
 	"chapter0-myroom-door_open":    {
 		path: "./sound/common/chapter0/myroom/door_open.ogg",
@@ -407,14 +415,6 @@ AssetsConfig.sounds = {
 		volume: 1.0,
 	},
 
-	"chapter0-mansion_corridor2-event_out":    {
-		path: "./sound/common/chapter0/mansion_corridor2/event/event_out.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor2-event_in":    {
-		path: "./sound/common/chapter0/mansion_corridor2/event/event_in.ogg",
-		volume: 1.0,
-	},
 	"chapter0-mansion_corridor3-ring_clock_back":    {
 		path: "./sound/common/chapter0/mansion_corridor3/ring_clock_back.ogg",
 		volume: 1.0,

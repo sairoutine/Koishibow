@@ -12,10 +12,10 @@ module.exports = {
 	bgm: "chapter0-event-encounter_satori",
 	bg: "chapter3-08-event-01-bg-001",
 	startSounds: [
-		{"name": "chapter0-mansion_corridor2-event_in", "frame": 0},
+		{"name": "event_in", "frame": 0},
 	],
 	endSounds: [
-		{"name": "chapter0-mansion_corridor2-event_out", "frame": 180},
+		{"name": "event_out", "frame": 180},
 	],
 	expAnimes: {
 		"chapter3-08-event-01-obj01": [

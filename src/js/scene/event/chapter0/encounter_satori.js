@@ -171,7 +171,7 @@ SceneEventEncounterSatori.prototype.beforeDraw = function(){
 		}
 		else if (this.eye.current_anime === EYE_SEE_RIGHT_AND_BLINK_ANIME && this.satori.current_anime === SATORI_LEAVE_SCENE_ANIME) {
 			// イベント終わりのSE再生
-			this.core.audio_loader.playSound("chapter0-mansion_corridor2-event_out");
+			this.core.audio_loader.playSound("event_out");
 			// BGM をフェードアウト
 			this.core.audio_loader.fadeOutBGM(2);
 			// 次のシーンへ
