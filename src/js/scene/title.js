@@ -1,14 +1,15 @@
 'use strict';
 
-var base_scene = require('../hakurei').scene.base;
-var util = require('../hakurei').util;
+var base_scene = require('../hakurei').Scene.Base;
+var util = require('../hakurei').Util;
 var SS = require('../object/anime_object');
 var StartAnimeJson = require('../data/anime/title/title01_anime_1');
 var IngAnimeJson = require('../data/anime/title/title02_anime_1');
 var EndAnimeJson = require('../data/anime/title/title03_anime_1');
 
-var CONSTANT_BUTTON = require('../hakurei').constant.button;
-var UIParts = require('../hakurei').object.ui_parts;
+var CONSTANT_BUTTON = require('../hakurei').Constant.Button;
+var CONSTANT = require('../constant');
+var UIParts = require('../hakurei').Object.UIParts;
 
 var MENU = [
 	// game start
@@ -186,8 +187,8 @@ SceneTitle.prototype.beforeDraw = function(){
 		this._menu_clicked_frame_count = this.frame_count;
 	}
 
-	// タイトル放置演出
-	if (this.frame_count === 14400) { // 4分後
+	// タイトル放置演出(完成版のみの演出)
+	if (!CONSTANT.TRIAL && this.frame_count === 14400) { // 4分後
 		var scene_manager = this.core.scene_manager;
 		scene_manager.changeScene("movie", "./movie/common/title_ura.mp4", function () {
 			scene_manager.changeScene("title");
