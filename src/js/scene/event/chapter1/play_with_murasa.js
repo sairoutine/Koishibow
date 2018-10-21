@@ -379,6 +379,8 @@ SceneEventPlayDoll.prototype._updateInTalking = function(){
 				// 正解
 				var scene_manager = this.core.scene_manager;
 				this.core.scene_manager.changeScene("movie", "./movie/common/chapter1ed.mp4", function () {
+					// 体験版を chapter1 で終わらせるならコメントアウトを外す
+					/*
 					if (CONSTANT.TRIAL) {
 						// 体験版ならば chapter1 で終了
 						scene_manager.changeScene("event_for_trial_last");
@@ -386,6 +388,8 @@ SceneEventPlayDoll.prototype._updateInTalking = function(){
 					else {
 						scene_manager.changeScene("opening_movie_chapter3");
 					}
+					*/
+					scene_manager.changeScene("opening_movie_chapter3");
 				});
 			}
 		}

@@ -5,6 +5,7 @@
 
 var base_scene = require('../base');
 var Util = require('../../../hakurei').util;
+var CONSTANT = require('../../../constant');
 
 // カーペットから飛び降りるアニメ
 var jsonDataOfEvent = require('../../../data/anime/chapter0/event/falldown_koishi/event01_anime_1');
@@ -37,8 +38,14 @@ SceneDefault.prototype.backgroundSsAnime = function(){
 
 SceneDefault.prototype.afterBackgroundSsAnimeFunction = function(){
 	return function (core) {
-		// 次のチャプターへ
-		core.scene_manager.changeScene("opening_movie_chapter1");
+		if (CONSTANT.TRIAL) {
+			// 体験版ならば chapter0 で終了
+			core.scene_manager.changeScene("event_for_trial_last");
+		}
+		else {
+			// 次のチャプターへ
+			core.scene_manager.changeScene("opening_movie_chapter1");
+		}
 
 		core.audio_loader.fadeOutBGM(2);
 	};
