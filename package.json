@@ -7,7 +7,7 @@
     "test": "node ./test/headless.js",
     "start": "electron ./public/electron.js",
     "clean": "rm -rf ./releases/*",
-	"update-translation": "./update_translation.sh",
+    "update-translation": "./update_translation.sh",
     "build:js": "node --max-old-space-size=8000 ./node_modules/.bin/gulp build",
     "build:win": "cd public && electron-packager ./ 3rdeye --overwrite --platform=win32  --arch=x64 --version=1.6.0 --icon=icon.ico --out ../releases --ignore '(.m4a)' --asar",
     "build:mac": "cd public && electron-packager ./ 3rdeye --overwrite --platform=darwin --arch=x64 --version=1.6.0 --icon=icon.icns --out ../releases --ignore '(.m4a)' --asar",
@@ -19,6 +19,7 @@
   "devDependencies": {
     "browser-sync": "2.24.6",
     "browserify": "16.2.2",
+    "canvas": "2.1.0",
     "electron-packager": "8.4.0",
     "electron-prebuilt": "1.4.13",
     "gulp": "3.9.1",
