@@ -1,9 +1,9 @@
 'use strict';
-const { createCanvas } = require('canvas');
-const http = require('http');
+var createCanvas = require('canvas').createCanvas;
+var http = require('http');
 
 http.createServer(function (req, res) {
-	const canvas = createCanvas(200, 200)
+	var canvas = createCanvas(200, 200)
 	var ctx = canvas.getContext('2d');
 
 	// 四角形描画
@@ -27,6 +27,6 @@ http.createServer(function (req, res) {
 
 	// 出力
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.end('<a href="https://www.asial.co.jp' + canvas.toDataURL() + ' &mode=1" class="popupimg"><img src="' + canvas.toDataURL() + '"></a>');
+	res.end('<img src="' + canvas.toDataURL() + '">');
 
 }).listen(5000);
