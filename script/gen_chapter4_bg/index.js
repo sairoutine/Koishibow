@@ -2,6 +2,17 @@
 var createCanvas = require('canvas').createCanvas;
 var http = require('http');
 
+/*
+var BASE_DIR_NAME = "output";
+var DIR_NAME = "chapter3-06";
+var FILE_NAME = "chapter3-06-bg-001.jpg";
+*/
+
+// アセット読みこみ
+// 合成
+// 合成アルゴリズム
+// PNGファイル出力
+
 http.createServer(function (req, res) {
 	var canvas = createCanvas(200, 200)
 	var ctx = canvas.getContext('2d');
