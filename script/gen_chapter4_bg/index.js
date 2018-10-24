@@ -1,17 +1,51 @@
 'use strict';
-var createCanvas = require('canvas').createCanvas;
-var http = require('http');
 
+// usage:
+// node index.js
+// node version >= v8.12.0
+
+var createCanvas = require('canvas').createCanvas;
+var Image = require('canvas').Image;
+var http = require('http');
+var path = require('path');
+
+var BASE_INPUT_DIR_NAME = "assets";
 /*
-var BASE_DIR_NAME = "output";
-var DIR_NAME = "chapter3-06";
+var BASE_OUTPUT_DIR_NAME = "output";
+var OUTPUT_DIR_NAME = "chapter3-06";
 var FILE_NAME = "chapter3-06-bg-001.jpg";
+var FIELD_NUM = 22;
 */
 
-// アセット読みこみ
+var ASSETS = {
+	"chapter4-01-bg-001": "chapter4-01-bg-001.jpg",
+	"chapter4-01-obj-01": "chapter4-01-obj-01.png",
+	"chapter4-01-obj-02": "chapter4-01-obj-02.png",
+	"chapter4-01-obj-03": "chapter4-01-obj-03.png",
+	"chapter4-01-obj-04": "chapter4-01-obj-04.png",
+	"chapter4-01-obj-05": "chapter4-01-obj-05.png",
+	"chapter4-01-obj-06": "chapter4-01-obj-06.png",
+	"chapter4-01-obj-07": "chapter4-01-obj-07.png",
+	"chapter4-01-obj-08": "chapter4-01-obj-08.png",
+};
+
 // 合成
 // 合成アルゴリズム
 // PNGファイル出力
+
+// アセット読みこみ
+var images = {};
+for (var name in ASSETS) {
+	var path_to = ASSETS[name];
+
+	var img = new Image();
+	//img.onload = () => ctx.drawImage(img, 0, 0)
+	img.onerror = function(err) { throw err };
+	img.src = path.join(BASE_INPUT_DIR_NAME, path_to);
+
+	images[name] = img;
+}
+
 
 http.createServer(function (req, res) {
 	var canvas = createCanvas(200, 200)
