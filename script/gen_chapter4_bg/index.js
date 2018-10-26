@@ -9,6 +9,8 @@ var Image = require('canvas').Image;
 var http = require('http');
 var path = require('path');
 
+var MAX_WALK_DEPTH_LIMIT = 240 / 0.75;
+var MIN_WALK_DEPTH_LIMIT = MAX_WALK_DEPTH_LIMIT + 150;
 var BASE_INPUT_DIR_NAME = "assets";
 /*
 var BASE_OUTPUT_DIR_NAME = "output";
@@ -17,6 +19,7 @@ var FILE_NAME = "chapter3-06-bg-001.jpg";
 var FIELD_NUM = 22;
 */
 
+var BG_NAME = "chapter4-01-bg-001";
 var ASSETS = {
 	"chapter4-01-bg-001": "chapter4-01-bg-001.jpg",
 	"chapter4-01-obj-01": "chapter4-01-obj-01.png",
@@ -29,9 +32,9 @@ var ASSETS = {
 	"chapter4-01-obj-08": "chapter4-01-obj-08.png",
 };
 
-// 合成
 // 合成アルゴリズム
 // PNGファイル出力
+// フィールド数出力
 
 // アセット読みこみ
 var images = {};
@@ -48,27 +51,22 @@ for (var name in ASSETS) {
 
 
 http.createServer(function (req, res) {
-	var canvas = createCanvas(200, 200)
+	var width = images[BG_NAME].width;
+	var height = images[BG_NAME].height;
+
+	var canvas = createCanvas(width, height)
 	var ctx = canvas.getContext('2d');
 
-	// 四角形描画
-	ctx.fillStyle = 'rgba(0, 0, 255, 0.5)';
-	ctx.fillRect(10, 10, 190, 190);
+	// 背景描画
+	ctx.save();
+	ctx.drawImage(images[BG_NAME],0,0);
+	ctx.restore();
 
-	// テキスト描画
-	var text = "Canvas Test";
-	ctx.font = '30px Impact';
-	ctx.rotate(.1);
-	ctx.fillStyle = 'rgba(0, 0, 0, 1.0)';
-	ctx.fillText(text, 10, 100);
-
-	// アンダーライン描画
-	var te = ctx.measureText(text);
-	ctx.strokeStyle = 'rgba(0,0,0,0.5)';
-	ctx.beginPath();
-	ctx.lineTo(50, 102);
-	ctx.lineTo(50 + te.width, 102);
-	ctx.stroke();
+	// 合成
+	ctx.save();
+	ctx.translate(images["chapter4-01-obj-01"].width/2, -images["chapter4-01-obj-01"].height);
+	ctx.drawImage(images["chapter4-01-obj-01"],0, height - MIN_WALK_DEPTH_LIMIT);
+	ctx.restore();
 
 	// 出力
 	res.writeHead(200, {'Content-Type': 'text/html'});
