@@ -9,6 +9,8 @@ var Image = require('canvas').Image;
 var http = require('http');
 var path = require('path');
 
+var MAX_NUM = 15;
+var MIN_NUM = 8;
 var MAX_WALK_DEPTH_LIMIT = 240 / 0.75;
 var MIN_WALK_DEPTH_LIMIT = MAX_WALK_DEPTH_LIMIT + 150;
 var BASE_INPUT_DIR_NAME = "assets";
@@ -20,6 +22,17 @@ var FIELD_NUM = 22;
 */
 
 var BG_NAME = "chapter4-01-bg-001";
+var COMPONENT_NAMES = [
+	"chapter4-01-obj-01",
+	"chapter4-01-obj-02",
+	"chapter4-01-obj-03",
+	"chapter4-01-obj-04",
+	"chapter4-01-obj-05",
+	"chapter4-01-obj-06",
+	"chapter4-01-obj-07",
+	"chapter4-01-obj-08",
+];
+
 var ASSETS = {
 	"chapter4-01-bg-001": "chapter4-01-bg-001.jpg",
 	"chapter4-01-obj-01": "chapter4-01-obj-01.png",
@@ -63,13 +76,35 @@ http.createServer(function (req, res) {
 	ctx.restore();
 
 	// 合成
-	ctx.save();
-	ctx.translate(images["chapter4-01-obj-01"].width/2, -images["chapter4-01-obj-01"].height);
-	ctx.drawImage(images["chapter4-01-obj-01"],0, height - MIN_WALK_DEPTH_LIMIT);
-	ctx.restore();
+	var count = getRandomInt(MIN_NUM, MAX_NUM);
+	for (var i = 0; i < count; i++) {
+		ctx.save();
+		var x = getRandomInt(0, width);
+		var y = getRandomInt(height - MIN_WALK_DEPTH_LIMIT, height - MAX_WALK_DEPTH_LIMIT);
+		var image = images[ COMPONENT_NAMES[getRandomInt(0, COMPONENT_NAMES.length - 1)] ];
+
+		// 竹の上が見切れるのを防ぐ
+		if (y > image.height) {
+			y = image.height;
+		}
+
+		ctx.translate(image.width/2, -image.height);
+		ctx.drawImage(image, x, y);
+		ctx.restore();
+	}
 
 	// 出力
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.end('<img src="' + canvas.toDataURL() + '">');
 
 }).listen(5000);
+
+function getRandomInt(min, max) {
+	if (arguments.length === 1) {
+		max = arguments[0];
+		min = 1;
+	}
+
+	return Math.floor( Math.random() * (max - min + 1) ) + min;
+}
+
