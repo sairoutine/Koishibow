@@ -77,9 +77,10 @@ http.createServer(function (req, res) {
 
 	// 合成
 	var count = getRandomInt(MIN_NUM, MAX_NUM);
+	var x = 0;
 	for (var i = 0; i < count; i++) {
 		ctx.save();
-		var x = getRandomInt(0, width);
+		x += getRandomInt(width/count/2, width/count);
 		var y = getRandomInt(height - MIN_WALK_DEPTH_LIMIT, height - MAX_WALK_DEPTH_LIMIT);
 		var image = images[ COMPONENT_NAMES[getRandomInt(0, COMPONENT_NAMES.length - 1)] ];
 
