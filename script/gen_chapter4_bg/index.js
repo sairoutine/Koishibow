@@ -17,8 +17,6 @@ var MIN_WALK_DEPTH_LIMIT = MAX_WALK_DEPTH_LIMIT + 150;
 
 var BASE_INPUT_DIR_NAME = "assets";
 var BASE_OUTPUT_DIR_NAME = "output";
-var OUTPUT_DIR_NAME = "chapter3-06";
-var FILE_NAME = "chapter3-06-bg-001.png";
 /*
 var FIELD_NUM = 22;
 */
@@ -62,7 +60,8 @@ for (var name in ASSETS) {
 	images[name] = img;
 }
 
-
+genPNG("chapter3-06");
+function genPNG (field_name) {
 	var width = images[BG_NAME].width;
 	var height = images[BG_NAME].height;
 
@@ -79,7 +78,7 @@ for (var name in ASSETS) {
 	var x = 0;
 	for (var i = 0; i < count; i++) {
 		ctx.save();
-		x += getRandomInt(width/count/2, width/count);
+		x += getRandomInt(width/count/2, width/count); // 竹同士がかぶらないようにする
 		var y = getRandomInt(height - MIN_WALK_DEPTH_LIMIT, height - MAX_WALK_DEPTH_LIMIT);
 		var image = images[ COMPONENT_NAMES[getRandomInt(0, COMPONENT_NAMES.length - 1)] ];
 
@@ -94,17 +93,20 @@ for (var name in ASSETS) {
 	}
 
 	// PNG出力
-	fs.mkdir(path.join(__dirname, BASE_OUTPUT_DIR_NAME, OUTPUT_DIR_NAME), function (error) {
+	var output_dir = field_name;
+	var filename = field_name + "-bg-001.png";
+	fs.mkdir(path.join(__dirname, BASE_OUTPUT_DIR_NAME, output_dir), function (error) {
 		//if (error && error.code !== "EEXIST") {
 		//}
-		var filename = path.join(__dirname, BASE_OUTPUT_DIR_NAME, OUTPUT_DIR_NAME, FILE_NAME);
-		var out = fs.createWriteStream(filename);
+		var path_to = path.join(__dirname, BASE_OUTPUT_DIR_NAME, output_dir, filename);
+		var out = fs.createWriteStream(path_to);
 		var stream = canvas.createPNGStream();
 		stream.pipe(out);
 		out.on('finish', function() {
 			console.log('The PNG file was created.');
 		});
 	});
+}
 
 function getRandomInt(min, max) {
 	if (arguments.length === 1) {
