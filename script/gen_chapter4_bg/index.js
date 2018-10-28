@@ -8,16 +8,18 @@ var createCanvas = require('canvas').createCanvas;
 var Image = require('canvas').Image;
 var http = require('http');
 var path = require('path');
+var fs = require('fs')
 
 var MAX_NUM = 15;
 var MIN_NUM = 8;
 var MAX_WALK_DEPTH_LIMIT = 240 / 0.75;
 var MIN_WALK_DEPTH_LIMIT = MAX_WALK_DEPTH_LIMIT + 150;
+
 var BASE_INPUT_DIR_NAME = "assets";
-/*
 var BASE_OUTPUT_DIR_NAME = "output";
 var OUTPUT_DIR_NAME = "chapter3-06";
-var FILE_NAME = "chapter3-06-bg-001.jpg";
+var FILE_NAME = "chapter3-06-bg-001.png";
+/*
 var FIELD_NUM = 22;
 */
 
@@ -45,8 +47,6 @@ var ASSETS = {
 	"chapter4-01-obj-08": "chapter4-01-obj-08.png",
 };
 
-// 合成アルゴリズム
-// PNGファイル出力
 // フィールド数出力
 
 // アセット読みこみ
@@ -63,7 +63,6 @@ for (var name in ASSETS) {
 }
 
 
-http.createServer(function (req, res) {
 	var width = images[BG_NAME].width;
 	var height = images[BG_NAME].height;
 
@@ -94,11 +93,18 @@ http.createServer(function (req, res) {
 		ctx.restore();
 	}
 
-	// 出力
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.end('<img src="' + canvas.toDataURL() + '">');
-
-}).listen(5000);
+	// PNG出力
+	fs.mkdir(path.join(__dirname, BASE_OUTPUT_DIR_NAME, OUTPUT_DIR_NAME), function (error) {
+		//if (error && error.code !== "EEXIST") {
+		//}
+		var filename = path.join(__dirname, BASE_OUTPUT_DIR_NAME, OUTPUT_DIR_NAME, FILE_NAME);
+		var out = fs.createWriteStream(filename);
+		var stream = canvas.createPNGStream();
+		stream.pipe(out);
+		out.on('finish', function() {
+			console.log('The PNG file was created.');
+		});
+	});
 
 function getRandomInt(min, max) {
 	if (arguments.length === 1) {
