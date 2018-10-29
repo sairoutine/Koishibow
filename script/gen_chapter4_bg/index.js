@@ -6,7 +6,6 @@
 
 var createCanvas = require('canvas').createCanvas;
 var Image = require('canvas').Image;
-var http = require('http');
 var path = require('path');
 var fs = require('fs')
 
