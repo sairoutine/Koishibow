@@ -17,9 +17,8 @@ var MIN_WALK_DEPTH_LIMIT = MAX_WALK_DEPTH_LIMIT + 150;
 
 var BASE_INPUT_DIR_NAME = "assets";
 var BASE_OUTPUT_DIR_NAME = "output";
-/*
+
 var FIELD_NUM = 22;
-*/
 
 var BG_NAME = "chapter4-01-bg-001";
 var COMPONENT_NAMES = [
@@ -60,8 +59,13 @@ for (var name in ASSETS) {
 	images[name] = img;
 }
 
-genPNG("chapter3-06");
-function genPNG (field_name) {
+// フィールド数だけ背景生成
+for (var i = 1; i < FIELD_NUM; i++) {
+	genBG("chapter4-" + ('00' + i).slice(-2));
+}
+
+// 背景生成
+function genBG (field_name) {
 	var width = images[BG_NAME].width;
 	var height = images[BG_NAME].height;
 
@@ -103,7 +107,7 @@ function genPNG (field_name) {
 		var stream = canvas.createPNGStream();
 		stream.pipe(out);
 		out.on('finish', function() {
-			console.log('The PNG file was created.');
+			console.log(path_to + ' was created.');
 		});
 	});
 }
