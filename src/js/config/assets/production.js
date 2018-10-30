@@ -92,7 +92,7 @@ AssetsConfig.images = {
 	"chapter4-00-event-01-koishi":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-koishi.png",
 	"chapter4-00-event-01-satori":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-satori.png",
 	"chapter4-00-event-01-obj-01":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-obj-01.png",
-	"chapter4-00-event-01-bg-001":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-bg-001.png",
+	"chapter4-00-event-01-bg-001":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-bg-001.jpg",
 	"chapter4-00-event-01-bg-002":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-bg-002.png",
 	"chapter4-00-event-01-bg-003":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-bg-003.png",
 	"chapter4-00-event-01-bg-004":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-bg-004.png",
