@@ -60,12 +60,12 @@ module.exports = {
 	],
 	endAnime: "chapter3-13-event-04-obj09",
 	endSounds: [
-			{"name": "chapter3-13-event-04-07", "frame": 0},
-			{"name": "chapter3-13-event-04-08", "frame": 30},
-			{"name": "chapter3-13-event-04-09", "frame": 60},
-			{"name": "chapter3-13-event-04-10", "frame": 90},
-			{"name": "chapter3-13-event-04-11", "frame": 120},
-			{"name": "chapter3-13-event-04-12", "frame": 210},
+		{"name": "chapter3-13-event-04-07", "frame": 0},
+		{"name": "chapter3-13-event-04-08", "frame": 30},
+		{"name": "chapter3-13-event-04-09", "frame": 60},
+		{"name": "chapter3-13-event-04-10", "frame": 90},
+		{"name": "chapter3-13-event-04-11", "frame": 120},
+		{"name": "chapter3-13-event-04-12", "frame": 210},
 	],
 	endProcess: [
 		// 体験版終了

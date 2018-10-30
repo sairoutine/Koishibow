@@ -196,7 +196,7 @@ SceneSubStageObjectTalk.prototype.draw = function(){
 
 // クリック待ちカーソル表示
 SceneSubStageObjectTalk.prototype._showMessageCursor = function(){
-		// TODO:
+	// TODO:
 	/*
 	// クリック待ちカーソル表示
 	if (!this._serif.isEnd() && this._serif.isPrintLetterEnd()) {

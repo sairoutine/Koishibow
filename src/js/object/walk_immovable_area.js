@@ -1,7 +1,6 @@
 'use strict';
 var base_object = require('../hakurei').object.base;
 var Util = require('../hakurei').util;
-var CONSTANT = require('../constant');
 
 var WalkImmovableArea = function(core) {
 	base_object.apply(this, arguments);
@@ -33,8 +32,6 @@ WalkImmovableArea.prototype.collisionHeight = function(){
 
 // オーバーライド
 WalkImmovableArea.prototype.draw = function() {
-	var ctx = this.core.ctx;
-
 	// 移動不可能範囲のデバッグ表示
 	if (this.core.debug_manager.get("is_show_immovable_area")) {
 		this._drawCollisionArea("red");

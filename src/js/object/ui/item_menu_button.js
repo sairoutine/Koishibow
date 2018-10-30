@@ -19,7 +19,7 @@ ObjectItemMenuButton.prototype.isShow = function(){
 	return(
 		this.scene.current_scene === "menu" ||
 		this.scene.current_scene === "got_item" ?
-		true : false
+			true : false
 	);
 };
 

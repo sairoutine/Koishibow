@@ -188,12 +188,12 @@ SceneEventPlayDoll.prototype._gotoNextSerif = function(choice){
 			}
 			else {
 			*/
-				self.koishi.playAnimationOnce(is_next);
-				self.chr.playAnimationOnce(is_next, function () {
-					if (!self._serif.isEnd()) {
-						self._gotoNextSerif(choice);
-					}
-				});
+			self.koishi.playAnimationOnce(is_next);
+			self.chr.playAnimationOnce(is_next, function () {
+				if (!self._serif.isEnd()) {
+					self._gotoNextSerif(choice);
+				}
+			});
 			/*
 			}
 			*/

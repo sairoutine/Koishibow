@@ -47,10 +47,10 @@ SceneSubStageLock.prototype.draw = function(){
 	ctx.save();
 	ctx.translate(x, y);
 	ctx.drawImage(image,
-					-image.width*scale/2,
-					-image.height*scale/2,
-					image.width * scale,
-					image.height * scale);
+		-image.width*scale/2,
+		-image.height*scale/2,
+		image.width * scale,
+		image.height * scale);
 	ctx.restore();
 };
 

@@ -82,10 +82,10 @@ ObjectStaticImage.prototype.draw = function(){
 		ctx.save();
 		ctx.translate(this.x(), this.y());
 		ctx.drawImage(image,
-						-image.width*this._scale/2,
-						-image.height*this._scale/2,
-						image.width * this._scale,
-						image.height * this._scale);
+			-image.width*this._scale/2,
+			-image.height*this._scale/2,
+			image.width * this._scale,
+			image.height * this._scale);
 		ctx.restore();
 	}
 };
