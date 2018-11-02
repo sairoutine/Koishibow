@@ -1,0 +1,4 @@
+# usage
+```
+node index.js
+```
