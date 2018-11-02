@@ -13,6 +13,7 @@ var MAX_NUM = 15;
 var MIN_NUM = 8;
 var MAX_WALK_DEPTH_LIMIT = 240 / 0.75;
 var MIN_WALK_DEPTH_LIMIT = MAX_WALK_DEPTH_LIMIT + 150;
+var MID_WALK_DEPTH_LIMIT = (MAX_WALK_DEPTH_LIMIT + MIN_WALK_DEPTH_LIMIT)/2;
 
 var BASE_INPUT_DIR_NAME = "assets";
 var BASE_OUTPUT_DIR_NAME = "output";
@@ -20,16 +21,19 @@ var BASE_OUTPUT_DIR_NAME = "output";
 var FIELD_NUM = 22;
 
 var BG_NAME = "chapter4-01-bg-001";
-var COMPONENT_NAMES = [
+var COMPONENT_AFTER_MID_NAMES = [
 	"chapter4-01-obj-01",
 	"chapter4-01-obj-02",
 	"chapter4-01-obj-03",
 	"chapter4-01-obj-04",
+];
+var COMPONENT_BEFORE_MID_NAMES = [
 	"chapter4-01-obj-05",
 	"chapter4-01-obj-06",
 	"chapter4-01-obj-07",
 	"chapter4-01-obj-08",
 ];
+
 
 var ASSETS = {
 	"chapter4-01-bg-001": "chapter4-01-bg-001.jpg",
@@ -59,7 +63,7 @@ for (var name in ASSETS) {
 }
 
 // フィールド数だけ背景生成
-for (var i = 1; i < FIELD_NUM; i++) {
+for (var i = 1; i <= FIELD_NUM; i++) {
 	genBG("chapter4-" + ('00' + i).slice(-2));
 }
 
@@ -82,8 +86,16 @@ function genBG (field_name) {
 	for (var i = 0; i < count; i++) {
 		ctx.save();
 		x += getRandomInt(width/count/2, width/count); // 竹同士がかぶらないようにする
-		var y = getRandomInt(height - MIN_WALK_DEPTH_LIMIT, height - MAX_WALK_DEPTH_LIMIT);
-		var image = images[ COMPONENT_NAMES[getRandomInt(0, COMPONENT_NAMES.length - 1)] ];
+
+		var image, y;
+		if (getRandomInt(0,1) === 0) {
+			y = getRandomInt(height - MID_WALK_DEPTH_LIMIT, height - MAX_WALK_DEPTH_LIMIT);
+			image = images[ COMPONENT_AFTER_MID_NAMES[getRandomInt(0, COMPONENT_AFTER_MID_NAMES.length - 1)] ];
+		}
+		else {
+			y = getRandomInt(height - MIN_WALK_DEPTH_LIMIT, height - MID_WALK_DEPTH_LIMIT);
+			image = images[ COMPONENT_BEFORE_MID_NAMES[getRandomInt(0, COMPONENT_BEFORE_MID_NAMES.length - 1)] ];
+		}
 
 		// 竹の上が見切れるのを防ぐ
 		if (y > image.height) {
