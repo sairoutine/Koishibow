@@ -8,6 +8,8 @@ AssetsConfig.images = {
 	"cirno":   "./image/production/cirno.png",
 	// フラン
 	"fran":   "./image/production/fran.png",
+    // メリー
+	"merry":   "./image/production/merry.png",
 
 	// 3-1 こいしが起きる
 	"chapter3-01-event-01-koishi":  "./image/production/chapter3/event/chapter3-01-event-01/chapter3-01-event-01-koishi.png",
