@@ -14,6 +14,8 @@ AssetsConfig.images = {
 	"merry":   "./image/production/renko.png",
     // 優曇華院
 	"reisen":   "./image/production/reisen.png",
+    // てゐリアル
+	"reisen":   "./image/production/tewireal.png",
 
 	// 3-1 こいしが起きる
 	"chapter3-01-event-01-koishi":  "./image/production/chapter3/event/chapter3-01-event-01/chapter3-01-event-01-koishi.png",
