@@ -369,6 +369,14 @@ var anime_map = {
 	"renko-reaction_07":   require('../data/anime/renko/reaction_07_anime_1'),
 	"renko-reaction_08":   require('../data/anime/renko/reaction_08_anime_1'),
 	"renko-reaction_09":   require('../data/anime/renko/reaction_09_anime_1'),
+    
+    /* 優曇華院 */
+	"reisen-wait":          require('../data/anime/reisen/wait_anime_1'),
+	"reisen-reaction_01":   require('../data/anime/reisen/reaction_01_anime_1'),
+	"reisen-reaction_02":   require('../data/anime/reisen/reaction_02_anime_1'),
+	"reisen-reaction_03":   require('../data/anime/reisen/reaction_03_anime_1'),
+	"reisen-reaction_04":   require('../data/anime/reisen/reaction_04_anime_1'),
+    
 };
 
 module.exports = anime_map;
