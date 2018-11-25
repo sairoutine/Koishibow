@@ -357,6 +357,18 @@ var anime_map = {
 	"merry-reaction_11":   require('../data/anime/merry/reaction_11_anime_1'),
 	"merry-reaction_12":   require('../data/anime/merry/reaction_12_anime_1'),
 	"merry-reaction_13":   require('../data/anime/merry/reaction_13_anime_1'),
+    
+    /* 蓮子 */
+	"renko-wait":          require('../data/anime/renko/wait_anime_1'),
+	"renko-reaction_01":   require('../data/anime/renko/reaction_01_anime_1'),
+	"renko-reaction_02":   require('../data/anime/renko/reaction_02_anime_1'),
+	"renko-reaction_03":   require('../data/anime/renko/reaction_03_anime_1'),
+	"renko-reaction_04":   require('../data/anime/renko/reaction_04_anime_1'),
+	"renko-reaction_05":   require('../data/anime/renko/reaction_05_anime_1'),
+	"renko-reaction_06":   require('../data/anime/renko/reaction_06_anime_1'),
+	"renko-reaction_07":   require('../data/anime/renko/reaction_07_anime_1'),
+	"renko-reaction_08":   require('../data/anime/renko/reaction_08_anime_1'),
+	"renko-reaction_09":   require('../data/anime/renko/reaction_09_anime_1'),
 };
 
 module.exports = anime_map;
