@@ -107,6 +107,10 @@ AssetsConfig.images = {
 	"chapter4-00-event-01-bg-005":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-bg-005.png",
 	"chapter4-00-event-01-bg-006":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-bg-006.png",
 
+    // 4-02-1 こいしが目を覚ます。
+	"chapter4-02-event-01-merry":  "./image/production/chapter4/event/chapter4-02-event-01/chapter4-02-event-01-merry.png",
+	"chapter4-02-event-01-bg-001":  "./image/production/chapter4/event/chapter4-02-event-01/chapter4-02-event-01-bg-001.jpg",
+
 	// ジャーナル画像(日本語)
 	"journal006_ja":  "./image/production/journal/ja/006.png",
 	"journal007_ja":  "./image/production/journal/ja/007.png",
