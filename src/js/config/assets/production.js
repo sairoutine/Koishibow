@@ -193,6 +193,8 @@ AssetsConfig.images = {
     
     // chapter3
 	"chapter4-20-obj-01": "./image/production/chapter4/chapter4-20/chapter4-20-obj-01.png",
+    
+	"chapter4-25-obj-01": "./image/production/chapter4/chapter4-25/chapter4-25-obj-01.png",
 
 	// アイテム 目薬
 	"item_13":            "./image/production/item/icon_item_cp3_sho.png",
