@@ -111,6 +111,12 @@ AssetsConfig.images = {
 	"chapter4-02-event-01-merry":  "./image/production/chapter4/event/chapter4-02-event-01/chapter4-02-event-01-merry.png",
 	"chapter4-02-event-01-bg-001":  "./image/production/chapter4/event/chapter4-02-event-01/chapter4-02-event-01-bg-001.jpg",
 
+    // 4-20-1 わたしわかったのよ！。
+	"chapter4-20-event-01-bg-001":  "./image/production/chapter4/event/chapter4-20-event-01/chapter4-20-event-01-bg-001.jpg",
+	"chapter4-20-event-01-koishi":  "./image/production/chapter4/event/chapter4-20-event-01/chapter4-20-event-01-koishi.png",
+	"chapter4-20-event-01-merry":  "./image/production/chapter4/event/chapter4-20-event-01/chapter4-20-event-01-merry.png",
+	"chapter4-20-event-01-renko":  "./image/production/chapter4/event/chapter4-20-event-01/chapter4-20-event-01-renko.png",
+
 	// ジャーナル画像(日本語)
 	"journal006_ja":  "./image/production/journal/ja/006.png",
 	"journal007_ja":  "./image/production/journal/ja/007.png",
