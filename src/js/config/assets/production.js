@@ -110,7 +110,14 @@ AssetsConfig.images = {
     // 4-02-1 こいしが目を覚ます。
 	"chapter4-02-event-01-merry":  "./image/production/chapter4/event/chapter4-02-event-01/chapter4-02-event-01-merry.png",
 	"chapter4-02-event-01-bg-001":  "./image/production/chapter4/event/chapter4-02-event-01/chapter4-02-event-01-bg-001.jpg",
-
+    
+    // 4-07-1 テープ「チャルメラ」再生
+	"chapter4-07-event-01-koishi":  "./image/production/chapter4/event/chapter4-07-event-01/chapter4-07-event-01-koishi.png",
+	"chapter4-07-event-01-merry":  "./image/production/chapter4/event/chapter4-07-event-01/chapter4-07-event-01-merry.png",
+	"chapter4-07-event-01-renko":  "./image/production/chapter4/event/chapter4-07-event-01/chapter4-07-event-01-renko.png",
+	"chapter4-07-event-01-cassette-player":  "./image/production/chapter4/event/chapter4-07-event-01/chapter4-07-event-01-cassette-player.png",
+	"chapter4-07-event-01-bg-001":  "./image/production/chapter4/event/chapter4-07-event-01/chapter4-07-event-01-bg-001.jpg",
+    
     // 4-20-1 わたしわかったのよ！。
 	"chapter4-20-event-01-bg-001":  "./image/production/chapter4/event/chapter4-20-event-01/chapter4-20-event-01-bg-001.jpg",
 	"chapter4-20-event-01-koishi":  "./image/production/chapter4/event/chapter4-20-event-01/chapter4-20-event-01-koishi.png",
