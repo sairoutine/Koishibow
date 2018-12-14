@@ -68,8 +68,8 @@ module.exports = {
 		{"name": "chapter3-13-event-04-12", "frame": 210},
 	],
 	endProcess: [
-		// 体験版終了
-		{"type": "process", "value": "changeSceneWithFadeout", "arguments": ["event_for_trial_last"]},
+		// chapter4 へ
+		{"type": "process", "value": "changeSceneWithFadeout", "arguments": ["opening_movie_chapter4"]},
 	],
 
 };
