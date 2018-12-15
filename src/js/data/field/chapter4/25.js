@@ -16,6 +16,18 @@ module.exports = {
 	initialProcess: [
 	],
 	objects: [
+		{
+			no: ++I,
+			image: "chapter4-25-obj-01",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "死体",
+			serif: [
+			],
+			x: 2140.50*2/3, y: 1143*2/3,
+			scale: 2/3,
+			action_name: null,
+			sound_name: null
+		},
 	],
 };
 
