@@ -186,11 +186,11 @@ var anime_map = {
 	"chapter3-13-obj-01-obj03":  require('../data/anime/chapter3/13/obj-01/obj03_anime_1.json'),
 	"chapter3-13-obj-01-obj04":  require('../data/anime/chapter3/13/obj-01/obj04_anime_1.json'),
     
-    "chapter4-20-obj-01_anime_1":  require('../data/anime/chapter4/20/obj-01/obj01_anime_1.json'),
-    "chapter4-20-obj-01_anime_2":  require('../data/anime/chapter4/20/obj-01/obj02_anime_1.json'),
-    "chapter4-20-obj-01_anime_3":  require('../data/anime/chapter4/20/obj-01/obj03_anime_1.json'),
-    "chapter4-20-obj-01_anime_4":  require('../data/anime/chapter4/20/obj-01/obj04_anime_1.json'),
-    "chapter4-20-obj-01_anime_5":  require('../data/anime/chapter4/20/obj-01/obj05_anime_1.json'),
+	"chapter4-20-obj-01_anime_1":  require('../data/anime/chapter4/20/obj-01/obj01_anime_1.json'),
+	"chapter4-20-obj-01_anime_2":  require('../data/anime/chapter4/20/obj-01/obj02_anime_1.json'),
+	"chapter4-20-obj-01_anime_3":  require('../data/anime/chapter4/20/obj-01/obj03_anime_1.json'),
+	"chapter4-20-obj-01_anime_4":  require('../data/anime/chapter4/20/obj-01/obj04_anime_1.json'),
+	"chapter4-20-obj-01_anime_5":  require('../data/anime/chapter4/20/obj-01/obj05_anime_1.json'),
 
 	/* てぃ */
 	"tewi-wait":          require('../data/anime/tewi/wait_anime_1'),
@@ -348,7 +348,7 @@ var anime_map = {
 	"fran-ura_reaction_05":   require('../data/anime/fran/ura_reaction_05_anime_1'),
 	"fran-ura_reaction_06":   require('../data/anime/fran/ura_reaction_06_anime_1'),
     
-    /* メリー */
+	/* メリー */
 	"merry-wait":          require('../data/anime/merry/wait_anime_1'),
 	"merry-reaction_01":   require('../data/anime/merry/reaction_01_anime_1'),
 	"merry-reaction_02":   require('../data/anime/merry/reaction_02_anime_1'),
@@ -364,7 +364,7 @@ var anime_map = {
 	"merry-reaction_12":   require('../data/anime/merry/reaction_12_anime_1'),
 	"merry-reaction_13":   require('../data/anime/merry/reaction_13_anime_1'),
     
-    /* 蓮子 */
+	/* 蓮子 */
 	"renko-wait":          require('../data/anime/renko/wait_anime_1'),
 	"renko-reaction_01":   require('../data/anime/renko/reaction_01_anime_1'),
 	"renko-reaction_02":   require('../data/anime/renko/reaction_02_anime_1'),
@@ -376,14 +376,14 @@ var anime_map = {
 	"renko-reaction_08":   require('../data/anime/renko/reaction_08_anime_1'),
 	"renko-reaction_09":   require('../data/anime/renko/reaction_09_anime_1'),
     
-    /* 優曇華院 */
+	/* 優曇華院 */
 	"reisen-wait":          require('../data/anime/reisen/wait_anime_1'),
 	"reisen-reaction_01":   require('../data/anime/reisen/reaction_01_anime_1'),
 	"reisen-reaction_02":   require('../data/anime/reisen/reaction_02_anime_1'),
 	"reisen-reaction_03":   require('../data/anime/reisen/reaction_03_anime_1'),
 	"reisen-reaction_04":   require('../data/anime/reisen/reaction_04_anime_1'),
     
-    /* てゐリアル */
+	/* てゐリアル */
 	"tewireal-wait":          require('../data/anime/reisen/wait_anime_1'),
 	"tewireal-reaction_01":   require('../data/anime/reisen/reaction_01_anime_1'),
 	"tewireal-reaction_02":   require('../data/anime/reisen/reaction_02_anime_1'),
