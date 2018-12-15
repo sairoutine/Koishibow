@@ -159,7 +159,7 @@ AssetsConfig.images = {
 	"chapter4-39-event-01-obj1":  "./image/production/chapter4/event/chapter4-39-event-01/chapter4-39-event-01-obj1.png",
     
     // chapter4-switch スイッチハズレ※背景無し
-	"chapter4-switch-event-01":  "./image/production/chapter4/event/chapter4-switch-event-01/chapter4-switch-event-01.png",
+	"chapter4-switch-event-01-koishi":  "./image/production/chapter4/event/chapter4-switch-event-01/chapter4-switch-event-01-koishi.png",
 	"chapter4-switch-event-01-merry":  "./image/production/chapter4/event/chapter4-switch-event-01/chapter4-switch-event-01-merry.png",
 	"chapter4-switch-event-01-renko":  "./image/production/chapter4/event/chapter4-switch-event-01/chapter4-switch-event-01-renko.png",
 
@@ -237,9 +237,43 @@ AssetsConfig.images = {
 	"chapter3-13-obj-04": "./image/production/chapter3/chapter3-13/chapter3-13-obj-04.png",
 	"chapter3-13-obj-05": "./image/production/chapter3/chapter3-13/chapter3-13-obj-05.png",
     
-    // chapter3
+    // chapter4
+	"chapter4-01-bg-001": "./image/production/chapter4/chapter4-01/chapter4-01-bg-001.png",
+	"chapter4-02-bg-001": "./image/production/chapter4/chapter4-02/chapter4-02-bg-001.png",
+	"chapter4-03-bg-001": "./image/production/chapter4/chapter4-03/chapter4-03-bg-001.png",
+	"chapter4-04-bg-001": "./image/production/chapter4/chapter4-04/chapter4-04-bg-001.png",
+	"chapter4-05-bg-001": "./image/production/chapter4/chapter4-05/chapter4-05-bg-001.png",
+	"chapter4-06-bg-001": "./image/production/chapter4/chapter4-06/chapter4-06-bg-001.png",
+	"chapter4-07-bg-001": "./image/production/chapter4/chapter4-07/chapter4-07-bg-001.png",
+	"chapter4-08-bg-001": "./image/production/chapter4/chapter4-08/chapter4-08-bg-001.png",
+	"chapter4-09-bg-001": "./image/production/chapter4/chapter4-09/chapter4-09-bg-001.png",
+	"chapter4-19-bg-001": "./image/production/chapter4/chapter4-19/chapter4-19-bg-001.png",
+	"chapter4-20-bg-001": "./image/production/chapter4/chapter4-20/chapter4-20-bg-001.png",
+	"chapter4-21-bg-001": "./image/production/chapter4/chapter4-21/chapter4-21-bg-001.png",
+	"chapter4-22-bg-001": "./image/production/chapter4/chapter4-22/chapter4-22-bg-001.png",
+	"chapter4-23-bg-001": "./image/production/chapter4/chapter4-23/chapter4-23-bg-001.png",
+	"chapter4-24-bg-001": "./image/production/chapter4/chapter4-24/chapter4-24-bg-001.png",
+	"chapter4-25-bg-001": "./image/production/chapter4/chapter4-25/chapter4-25-bg-001.png",
+	"chapter4-26-bg-001": "./image/production/chapter4/chapter4-26/chapter4-26-bg-001.png",
+	"chapter4-27-bg-001": "./image/production/chapter4/chapter4-27/chapter4-27-bg-001.png",
+	"chapter4-28-bg-001": "./image/production/chapter4/chapter4-28/chapter4-28-bg-001.png",
+	"chapter4-29-bg-001": "./image/production/chapter4/chapter4-29/chapter4-29-bg-001.png",
+	"chapter4-30-bg-001": "./image/production/chapter4/chapter4-30/chapter4-30-bg-001.png",
+	"chapter4-31-bg-001": "./image/production/chapter4/chapter4-31/chapter4-31-bg-001.png",
+	"chapter4-32-bg-001": "./image/production/chapter4/chapter4-32/chapter4-32-bg-001.png",
+	"chapter4-33-bg-001": "./image/production/chapter4/chapter4-33/chapter4-33-bg-001.png",
+	"chapter4-34-bg-001": "./image/production/chapter4/chapter4-34/chapter4-34-bg-001.png",
+	"chapter4-35-bg-001": "./image/production/chapter4/chapter4-35/chapter4-35-bg-001.png",
+	"chapter4-36-bg-001": "./image/production/chapter4/chapter4-36/chapter4-36-bg-001.png",
+	"chapter4-37-bg-001": "./image/production/chapter4/chapter4-37/chapter4-37-bg-001.png",
+	"chapter4-38-bg-001": "./image/production/chapter4/chapter4-38/chapter4-38-bg-001.png",
+	"chapter4-39-bg-001": "./image/production/chapter4/chapter4-39/chapter4-39-bg-001.png",
+	"chapter4-40-bg-001": "./image/production/chapter4/chapter4-40/chapter4-40-bg-001.png",
+	"chapter4-41-bg-001": "./image/production/chapter4/chapter4-41/chapter4-41-bg-001.png",
+	"chapter4-42-bg-001": "./image/production/chapter4/chapter4-42/chapter4-42-bg-001.png",
+	"chapter4-43-bg-001": "./image/production/chapter4/chapter4-43/chapter4-43-bg-001.png",
+
 	"chapter4-20-obj-01": "./image/production/chapter4/chapter4-20/chapter4-20-obj-01.png",
-    
 	"chapter4-25-obj-01": "./image/production/chapter4/chapter4-25/chapter4-25-obj-01.png",
 
 	// アイテム 目薬
