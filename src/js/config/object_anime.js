@@ -384,15 +384,15 @@ var anime_map = {
 	"reisen-reaction_04":   require('../data/anime/reisen/reaction_04_anime_1'),
     
 	/* てゐリアル */
-	"tewireal-wait":          require('../data/anime/reisen/wait_anime_1'),
-	"tewireal-reaction_01":   require('../data/anime/reisen/reaction_01_anime_1'),
-	"tewireal-reaction_02":   require('../data/anime/reisen/reaction_02_anime_1'),
-	"tewireal-reaction_03":   require('../data/anime/reisen/reaction_03_anime_1'),
-	"kanban_wait":                  require('../data/anime/reisen/kanban_wait_anime_1'),
-	"kanban_reaction_01_anime_1":   require('../data/anime/reisen/kanban_reaction_01_anime_1'),
-	"kanban_reaction_02_anime_1":   require('../data/anime/reisen/kanban_reaction_02_anime_1'),
-	"kanban_reaction_03_anime_1":   require('../data/anime/reisen/kanban_reaction_03_anime_1'),
-	"kanban_reaction_04_anime_1":   require('../data/anime/reisen/kanban_reaction_04_anime_1'),
+	"tewireal-wait":          require('../data/anime/tewireal/wait_anime_1'),
+	"tewireal-reaction_01":   require('../data/anime/tewireal/reaction_01_anime_1'),
+	"tewireal-reaction_02":   require('../data/anime/tewireal/reaction_02_anime_1'),
+	"tewireal-reaction_03":   require('../data/anime/tewireal/reaction_03_anime_1'),
+	"kanban_wait":                  require('../data/anime/tewireal/kanban_wait_anime_1'),
+	"kanban_reaction_01_anime_1":   require('../data/anime/tewireal/kanban_reaction_01_anime_1'),
+	"kanban_reaction_02_anime_1":   require('../data/anime/tewireal/kanban_reaction_02_anime_1'),
+	"kanban_reaction_03_anime_1":   require('../data/anime/tewireal/kanban_reaction_03_anime_1'),
+	"kanban_reaction_04_anime_1":   require('../data/anime/tewireal/kanban_reaction_04_anime_1'),
     
 };
 
