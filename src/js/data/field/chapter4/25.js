@@ -1,5 +1,9 @@
 'use strict';
 var _ = require('i18n4v')
+// ・死体蓮子
+// ・死体メリー
+// ・テープ「」
+// ・優曇華院
 
 var CONSTANT = require("../../../constant");
 var I = 0;
@@ -9,7 +13,7 @@ module.exports = {
 	bgm: "silent",
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 180, y: 380},
-	rightField: "chapter4_02",
+	rightField: "chapter4_26",
 	leftField: null,
 	background: "chapter4-25-bg-001",
 	walkSound: "walking_bare_default",

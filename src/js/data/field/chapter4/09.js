@@ -24,7 +24,7 @@ module.exports = {
 			y: 710,
 			width: 960,
 			height: 10,
-			next_field_name: "chapter4_12",
+			next_field_name: "chapter4_24",
 		},
 	],
 };
