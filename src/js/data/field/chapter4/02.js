@@ -18,6 +18,26 @@ module.exports = {
 	initialProcess: [
 	],
 	objects: [
+		{
+			no: ++I,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "メリー",
+			loop: true,
+			serif_back: [],
+			serif: [
+				{"chara": "koishi","serif":_("テスト")},
+			],
+			x: 1060*2/3, y: 505*2/3,
+			anime1: "merry-wait",
+			anime2: null,
+			anime3: null,
+			anime4: null,
+			anime5: null,
+			anime6: null,
+			action_name: null,
+			sound_name: null,
+		},
+
 	],
 };
 
