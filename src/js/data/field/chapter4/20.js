@@ -44,9 +44,9 @@ module.exports = {
 			name: "地蔵",
 			serif: [
 			],
-			x: 1537*2/3, y: 1613*2/3,
-			scale: 0.7,
-			anime1: "chapter4-20-obj-01_anime_1",
+			x: 739.50*2/3, y: 737.50*2/3,
+			scale: 2/3,
+			anime1: "chapter4-20-obj-01_anime_5",
 			action_name: null,
 			sound_name: null,
 		},

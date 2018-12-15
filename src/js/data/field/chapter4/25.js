@@ -11,7 +11,7 @@ module.exports = {
 	key: "chapter4_25",
 	chapter: 4,
 	bgm: "silent",
-	rightStartPosition: {x: 690, y: 380},
+	rightStartPosition: {x: 690, y: 480},
 	leftStartPosition:  {x: 180, y: 380},
 	rightField: "chapter4_26",
 	leftField: null,
@@ -27,7 +27,7 @@ module.exports = {
 			name: "死体",
 			serif: [
 			],
-			x: 2140.50*2/3, y: 1143*2/3,
+			x: 1057.50*2/3, y:648.50*2/3,
 			scale: 2/3,
 			action_name: null,
 			sound_name: null
