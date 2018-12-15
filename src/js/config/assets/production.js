@@ -11,7 +11,7 @@ AssetsConfig.images = {
     // メリー
 	"merry":   "./image/production/merry.png",
     // 蓮子
-	"merry":   "./image/production/renko.png",
+	"renko":   "./image/production/renko.png",
     // 優曇華院
 	"reisen":   "./image/production/reisen.png",
     // てゐリアル
