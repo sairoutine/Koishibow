@@ -1,5 +1,4 @@
 'use strict';
-var _ = require('i18n4v')
 // 「新品のテープ」
 var CONSTANT = require("../../../constant");
 var I = 0;

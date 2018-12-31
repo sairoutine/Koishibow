@@ -8,13 +8,13 @@ AssetsConfig.images = {
 	"cirno":   "./image/production/cirno.png",
 	// フラン
 	"fran":   "./image/production/fran.png",
-    // メリー
+	// メリー
 	"merry":   "./image/production/merry.png",
-    // 蓮子
+	// 蓮子
 	"renko":   "./image/production/renko.png",
-    // 優曇華院
+	// 優曇華院
 	"reisen":   "./image/production/reisen.png",
-    // てゐリアル
+	// てゐリアル
 	"tewireal":   "./image/production/tewireal.png",
 
 	// 3-1 こいしが起きる
@@ -107,50 +107,50 @@ AssetsConfig.images = {
 	"chapter4-00-event-01-bg-005":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-bg-005.png",
 	"chapter4-00-event-01-bg-006":  "./image/production/chapter4/event/chapter4-00-event-01/chapter4-00-event-01-bg-006.png",
 
-    // 4-02-1 こいしが目を覚ます。
+	// 4-02-1 こいしが目を覚ます。
 	"chapter4-02-event-01-merry":  "./image/production/chapter4/event/chapter4-02-event-01/chapter4-02-event-01-merry.png",
 	"chapter4-02-event-01-bg-001":  "./image/production/chapter4/event/chapter4-02-event-01/chapter4-02-event-01-bg-001.jpg",
     
-    // 4-07-1 テープ「チャルメラ」再生
+	// 4-07-1 テープ「チャルメラ」再生
 	"chapter4-07-event-01-koishi":  "./image/production/chapter4/event/chapter4-07-event-01/chapter4-07-event-01-koishi.png",
 	"chapter4-07-event-01-merry":  "./image/production/chapter4/event/chapter4-07-event-01/chapter4-07-event-01-merry.png",
 	"chapter4-07-event-01-renko":  "./image/production/chapter4/event/chapter4-07-event-01/chapter4-07-event-01-renko.png",
 	"chapter4-07-event-01-cassette-player":  "./image/production/chapter4/event/chapter4-07-event-01/chapter4-07-event-01-cassette-player.png",
 	"chapter4-07-event-01-bg-001":  "./image/production/chapter4/event/chapter4-07-event-01/chapter4-07-event-01-bg-001.jpg",
     
-    // 4-19-1 
+	// 4-19-1 
 	"chapter4-19-event-01-bg-001":  "./image/production/chapter4/event/chapter4-19-event-01/chapter4-19-event-01-bg-001.jpg",
 	"chapter4-19-event-01-obj-01":  "./image/production/chapter4/event/chapter4-19-event-01/chapter4-19-event-01-obj-01.png",
 	"chapter4-19-event-01-koishi":  "./image/production/chapter4/event/chapter4-19-event-01/chapter4-19-event-01-koishi.png",
 	"chapter4-19-event-01-reisen":  "./image/production/chapter4/event/chapter4-19-event-01/chapter4-19-event-01-reisen.png",
 	"chapter4-19-event-01-reisen2":  "./image/production/chapter4/event/chapter4-19-event-01/chapter4-19-event-01-reisen2.png",
     
-    // 4-20-1 わたしわかったのよ！。
+	// 4-20-1 わたしわかったのよ！。
 	"chapter4-20-event-01-bg-001":  "./image/production/chapter4/event/chapter4-20-event-01/chapter4-20-event-01-bg-001.jpg",
 	"chapter4-20-event-01-koishi":  "./image/production/chapter4/event/chapter4-20-event-01/chapter4-20-event-01-koishi.png",
 	"chapter4-20-event-01-merry":  "./image/production/chapter4/event/chapter4-20-event-01/chapter4-20-event-01-merry.png",
 	"chapter4-20-event-01-renko":  "./image/production/chapter4/event/chapter4-20-event-01/chapter4-20-event-01-renko.png",
     
-    // 4-24-1 
+	// 4-24-1 
 	"chapter4-24-event-01-bg-001":  "./image/production/chapter4/event/chapter4-24-event-01/chapter4-24-event-01-bg-001.jpg",
 	"chapter4-24-event-01-cassette-player":  "./image/production/chapter4/event/chapter4-24-event-01/chapter4-24-event-01-cassette-player.png",
 	"chapter4-24-event-01-koishi":  "./image/production/chapter4/event/chapter4-24-event-01/chapter4-24-event-01-koishi.png",
 	"chapter4-24-event-01-merry":  "./image/production/chapter4/event/chapter4-24-event-01/chapter4-24-event-01-merry.png",
 	"chapter4-24-event-01-renko":  "./image/production/chapter4/event/chapter4-24-event-01/chapter4-24-event-01-renko.png",
     
-    // 4-29-1 
+	// 4-29-1 
 	"chapter4-29-event-01-bg-001":  "./image/production/chapter4/event/chapter4-29-event-01/chapter4-29-event-01-bg-001.png",
 	"chapter4-29-event-01-koishi":  "./image/production/chapter4/event/chapter4-29-event-01/chapter4-29-event-01-koishi.png",
 	"chapter4-29-event-01-merry":  "./image/production/chapter4/event/chapter4-29-event-01/chapter4-29-event-01-merry.png",
 	"chapter4-29-event-01-renko":  "./image/production/chapter4/event/chapter4-29-event-01/chapter4-29-event-01-renko.png",
     
-    // 4-29-2 
+	// 4-29-2 
 	"chapter4-29-event-02-bg-001":  "./image/production/chapter4/event/chapter4-29-event-02/chapter4-29-event-02-bg-001.png",
 	"chapter4-29-event-02-koishi":  "./image/production/chapter4/event/chapter4-29-event-02/chapter4-29-event-02-koishi.png",
 	"chapter4-29-event-02-merry":  "./image/production/chapter4/event/chapter4-29-event-02/chapter4-29-event-02-merry.png",
 	"chapter4-29-event-02-renko":  "./image/production/chapter4/event/chapter4-29-event-02/chapter4-29-event-02-renko.png",
     
-    // 4-39-1 
+	// 4-39-1 
 	"chapter4-39-event-01-bg-001":  "./image/production/chapter4/event/chapter4-39-event-01/chapter4-39-event-01-bg-001.jpg",
 	"chapter4-39-event-01-bg-002":  "./image/production/chapter4/event/chapter4-39-event-01/chapter4-39-event-01-bg-002.jpg",
 	"chapter4-39-event-01-bg-003":  "./image/production/chapter4/event/chapter4-39-event-01/chapter4-39-event-01-bg-003.jpg",
@@ -158,7 +158,7 @@ AssetsConfig.images = {
 	"chapter4-39-event-01-koishi":  "./image/production/chapter4/event/chapter4-39-event-01/chapter4-39-event-01-koishi.png",
 	"chapter4-39-event-01-obj1":  "./image/production/chapter4/event/chapter4-39-event-01/chapter4-39-event-01-obj1.png",
     
-    // chapter4-switch スイッチハズレ※背景無し
+	// chapter4-switch スイッチハズレ※背景無し
 	"chapter4-switch-event-01-koishi":  "./image/production/chapter4/event/chapter4-switch-event-01/chapter4-switch-event-01-koishi.png",
 	"chapter4-switch-event-01-merry":  "./image/production/chapter4/event/chapter4-switch-event-01/chapter4-switch-event-01-merry.png",
 	"chapter4-switch-event-01-renko":  "./image/production/chapter4/event/chapter4-switch-event-01/chapter4-switch-event-01-renko.png",
@@ -237,7 +237,7 @@ AssetsConfig.images = {
 	"chapter3-13-obj-04": "./image/production/chapter3/chapter3-13/chapter3-13-obj-04.png",
 	"chapter3-13-obj-05": "./image/production/chapter3/chapter3-13/chapter3-13-obj-05.png",
     
-    // chapter4
+	// chapter4
 	"chapter4-01-bg-001": "./image/production/chapter4/chapter4-01/chapter4-01-bg-001.png",
 	"chapter4-02-bg-001": "./image/production/chapter4/chapter4-02/chapter4-02-bg-001.png",
 	"chapter4-03-bg-001": "./image/production/chapter4/chapter4-03/chapter4-03-bg-001.png",

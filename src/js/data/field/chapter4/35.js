@@ -1,6 +1,4 @@
 'use strict';
-var _ = require('i18n4v')
-
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
