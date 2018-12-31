@@ -13,6 +13,9 @@ const js = {
 		filename: 'main.js',
 		publicPath: `/js/`,
 	},
+	externals: [
+		'child_process'
+	],
 	module: {
 		rules: [
 			{
@@ -22,7 +25,7 @@ const js = {
 			},
 			{
 				test: /\.js$/,
-				exclude: /(node_modules)/,
+				exclude: /(node_modules|vendor)/,
 				loader: 'eslint-loader',
 				options: {
 					// fix wrong files automatically
