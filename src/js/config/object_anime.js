@@ -186,6 +186,7 @@ var anime_map = {
 	"chapter3-13-obj-01-obj03":  require('../data/anime/chapter3/13/obj-01/obj03_anime_1.json'),
 	"chapter3-13-obj-01-obj04":  require('../data/anime/chapter3/13/obj-01/obj04_anime_1.json'),
     
+    "chapter4-01-white-mist":    require('../data/anime/chapter1/01/white-mist/eff01_anime_1.json'),
 	"chapter4-20-obj-01_anime_1":  require('../data/anime/chapter4/20/obj-01/obj01_anime_1.json'),
 	"chapter4-20-obj-01_anime_2":  require('../data/anime/chapter4/20/obj-01/obj02_anime_1.json'),
 	"chapter4-20-obj-01_anime_3":  require('../data/anime/chapter4/20/obj-01/obj03_anime_1.json'),
@@ -394,6 +395,8 @@ var anime_map = {
 	"kanban_reaction_03_anime_1":   require('../data/anime/tewireal/kanban_reaction_03_anime_1'),
 	"kanban_reaction_04_anime_1":   require('../data/anime/tewireal/kanban_reaction_04_anime_1'),
     
+    /* ダークミスト */
+    "dark-mist":    require('../data/anime/dark-mist/eff01_anime_1.json'),
 };
 
 module.exports = anime_map;
