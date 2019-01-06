@@ -16,6 +16,24 @@ AssetsConfig.images = {
 	"reisen":   "./image/production/reisen.png",
 	// てゐリアル
 	"tewireal":   "./image/production/tewireal.png",
+	// アライグマ
+	"animal_araiguma":   "./image/production/animal_araiguma.png",
+	// ハリネズミ
+	"animal_hari":   "./image/production/animal_hari.png",
+	// ハシビロコウ
+	"animal_hashi":   "./image/production/animal_hashi.png",
+	// カワウソ
+	"animal_kawa":   "./image/production/animal_kawa.png",
+	// コモドオオトカゲ
+	"animal_komodo":   "./image/production/animal_komodo.png",
+	// クロヒョウ　または　パンサー
+	"animal_kuro":   "./image/production/animal_kuro.png",
+	// モグラ
+	"animal_mogura":   "./image/production/animal_mogura.png",
+	// シバイヌ
+	"animal_shiba":   "./image/production/animal_shiba.png",
+	// ウマ
+	"animal_uma":   "./image/production/animal_uma.png",
 
 	// 3-1 こいしが起きる
 	"chapter3-01-event-01-koishi":  "./image/production/chapter3/event/chapter3-01-event-01/chapter3-01-event-01-koishi.png",
@@ -163,6 +181,35 @@ AssetsConfig.images = {
 	"chapter4-switch-event-01-merry":  "./image/production/chapter4/event/chapter4-switch-event-01/chapter4-switch-event-01-merry.png",
 	"chapter4-switch-event-01-renko":  "./image/production/chapter4/event/chapter4-switch-event-01/chapter4-switch-event-01-renko.png",
 
+	// 5-1-1
+	"chapter5-01-event-01-bg-001":  "./image/production/chapter5/event/chapter5-01-event-01/chapter5-01-event-01-bg-001.jpg",
+	"chapter5-01-event-01-koishi":  "./image/production/chapter5/event/chapter5-01-event-01/chapter5-01-event-01-koishi.png",
+	"chapter5-01-event-01-satori":  "./image/production/chapter5/event/chapter5-01-event-01/chapter5-01-event-01-satori.png",
+	"chapter5-01-event-01-obj-01":  "./image/production/chapter5/event/chapter5-01-event-01/chapter5-01-event-01-obj-01.png",
+    
+	// 5-3-1
+	"chapter5-03-event-01-koishi":  "./image/production/chapter5/event/chapter5-03-event-01/chapter5-07-event-01-koishi.png",
+	"chapter5-03-event-01-animal-shiba":  "./image/production/chapter5/event/chapter5-03-event-01/chapter5-07-event-01-animal-shiba.png",
+    
+	// 5-7-1
+	"chapter5-07-event-01-koishi":  "./image/production/chapter5/event/chapter5-07-event-01/chapter5-03-event-01-koishi.png",
+    
+	// 5-9-1
+	"chapter5-09-event-01-bg-001":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-bg-001.jpg",
+	"chapter5-09-event-01-koishi":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-koishi.png",
+	"chapter5-09-event-01-orin":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-orin.png",
+	"chapter5-09-event-01-oku1":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-oku1.png",
+	"chapter5-09-event-01-oku2":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-oku2.png",
+	"chapter5-09-event-01-oku3":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-oku3.png",
+    
+	// 5-9-2
+	"chapter5-09-event-02-bg-001":  "./image/production/chapter5/event/chapter5-09-event-02/chapter5-09-event-02-bg-001.jpg",
+	"chapter5-09-event-02-bg-002":  "./image/production/chapter5/event/chapter5-09-event-02/chapter5-09-event-02-bg-002.jpg",
+	"chapter5-09-event-02-koishi":  "./image/production/chapter5/event/chapter5-09-event-02/chapter5-09-event-02-koishi.png",
+	"chapter5-09-event-02-orin":  "./image/production/chapter5/event/chapter5-09-event-02/chapter5-09-event-02-orin.png",
+	"chapter5-09-event-02-oku1":  "./image/production/chapter5/event/chapter5-09-event-02/chapter5-09-event-02-oku1.png",
+	"chapter5-09-event-02-oku2":  "./image/production/chapter5/event/chapter5-09-event-02/chapter5-09-event-02-oku2.png",    
+    
 	// ジャーナル画像(日本語)
 	"journal006_ja":  "./image/production/journal/ja/006.png",
 	"journal007_ja":  "./image/production/journal/ja/007.png",
@@ -277,6 +324,21 @@ AssetsConfig.images = {
 	"chapter4-20-obj-01": "./image/production/chapter4/chapter4-20/chapter4-20-obj-01.png",
 	"chapter4-25-obj-01": "./image/production/chapter4/chapter4-25/chapter4-25-obj-01.png",
 
+	// chapter5
+	"chapter5-02-bg-001": "./image/production/chapter5/chapter5-02/chapter5-02-bg-001.png",
+	"chapter5-03-bg-001": "./image/production/chapter5/chapter5-03/chapter5-03-bg-001.png",
+	"chapter5-04-bg-001": "./image/production/chapter5/chapter5-04/chapter5-04-bg-001.png",
+	"chapter5-05-bg-001": "./image/production/chapter5/chapter5-05/chapter5-05-bg-001.png",
+	"chapter5-06-bg-001": "./image/production/chapter5/chapter5-06/chapter5-06-bg-001.png",
+	"chapter5-07-bg-001": "./image/production/chapter5/chapter5-07/chapter5-07-bg-001.png",
+	"chapter5-08-bg-001": "./image/production/chapter5/chapter5-08/chapter5-08-bg-001.png",
+	"chapter5-09-bg-001": "./image/production/chapter5/chapter5-09/chapter5-09-bg-001.png",
+	"chapter5-10-bg-001": "./image/production/chapter5/chapter5-10/chapter5-10-bg-001.png",
+	"chapter5-11-bg-001": "./image/production/chapter5/chapter5-11/chapter5-11-bg-001.png",
+	"chapter5-12-bg-001": "./image/production/chapter5/chapter5-12/chapter5-12-bg-001.png",
+	"chapter5-12-obj-01": "./image/production/chapter5/chapter5-12/chapter5-12-obj-01.png",
+	"chapter5-13-bg-001": "./image/production/chapter5/chapter5-13/chapter5-13-bg-001.png",    
+    
 	// アイテム 目薬
 	"item_13":            "./image/production/item/icon_item_cp3_sho.png",
 	"item_14":            "./image/production/item/icon_item_cp3_jyo.png",

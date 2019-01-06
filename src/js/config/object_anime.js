@@ -192,6 +192,20 @@ var anime_map = {
 	"chapter4-20-obj-01_anime_3":  require('../data/anime/chapter4/20/obj-01/obj03_anime_1.json'),
 	"chapter4-20-obj-01_anime_4":  require('../data/anime/chapter4/20/obj-01/obj04_anime_1.json'),
 	"chapter4-20-obj-01_anime_5":  require('../data/anime/chapter4/20/obj-01/obj05_anime_1.json'),
+    
+	"chapter5-03-bg-01_anime_1":  require('../data/anime/chapter5/03/bg-01/bg01_anime_1.json'),
+	"chapter5-04-bg-01_anime_1":  require('../data/anime/chapter5/04/bg-01/bg01_anime_1.json'),
+	"chapter5-05-bg-01_anime_1":  require('../data/anime/chapter5/05/bg-01/bg01_anime_1.json'),
+	"chapter5-06-bg-01_anime_1":  require('../data/anime/chapter5/06/bg-01/bg01_anime_1.json'),
+	"chapter5-07-bg-01_anime_1":  require('../data/anime/chapter5/07/bg-01/bg01_anime_1.json'),
+	"chapter5-08-bg-01_anime_1":  require('../data/anime/chapter5/08/bg-01/bg01_anime_1.json'),
+	"chapter5-10-bg-01_anime_1":  require('../data/anime/chapter5/10/bg-01/bg01_anime_1.json'),
+	"chapter5-11-bg-01_anime_1":  require('../data/anime/chapter5/11/bg-01/bg01_anime_1.json'),
+	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj01_anime_1.json'),
+	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj02_anime_1.json'),
+	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj03_anime_1.json'),
+	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj04_anime_1.json'),
+	"chapter5-13-bg-01_anime_1":  require('../data/anime/chapter5/13/bg-01/bg01_anime_1.json'),
 
 	/* てぃ */
 	"tewi-wait":          require('../data/anime/tewi/wait_anime_1'),
@@ -394,6 +408,72 @@ var anime_map = {
 	"kanban_reaction_02_anime_1":   require('../data/anime/tewireal/kanban_reaction_02_anime_1'),
 	"kanban_reaction_03_anime_1":   require('../data/anime/tewireal/kanban_reaction_03_anime_1'),
 	"kanban_reaction_04_anime_1":   require('../data/anime/tewireal/kanban_reaction_04_anime_1'),
+    
+	/* アライグマ */
+	"animal_araiguma-wait":          require('../data/anime/animal_araiguma/wait_anime_1'),
+	"animal_araiguma-ura_wait":          require('../data/anime/animal_araiguma/ura_wait_anime_1'),
+	"animal_araiguma-reverse_omote":          require('../data/anime/animal_araiguma/reverse_omote_anime_1'),
+	"animal_araiguma-reverse_ura":          require('../data/anime/animal_araiguma/reverse_ura_anime_1'),
+	"animal_araiguma-ura_reaction_01":          require('../data/anime/animal_araiguma/ura_reaction_01_anime_1'),
+	"animal_araiguma-ura_reaction_02":          require('../data/anime/animal_araiguma/ura_reaction_02_anime_1'),
+    
+	/* ハリネズミ */
+	"animal_hari-wait":          require('../data/anime/animal_hari/wait_anime_1'),
+	"animal_hari-ura_wait":          require('../data/anime/animal_hari/ura_wait_anime_1'),
+	"animal_hari-reverse_omote":          require('../data/anime/animal_hari/reverse_omote_anime_1'),
+	"animal_hari-reverse_ura":          require('../data/anime/animal_hari/reverse_ura_anime_1'),
+	"animal_hari-ura_reaction_01":          require('../data/anime/animal_hari/ura_reaction_01_anime_1'),
+    
+	/* ハシビロコウ */
+	"animal_hashi-wait":          require('../data/anime/animal_hashi/wait_anime_1'),
+	"animal_hashi-ura_wait":          require('../data/anime/animal_hashi/ura_wait_anime_1'),
+	"animal_hashi-reverse_omote":          require('../data/anime/animal_hashi/reverse_omote_anime_1'),
+	"animal_hashi-reverse_ura":          require('../data/anime/animal_hashi/reverse_ura_anime_1'),
+	"animal_hashi-ura_reaction_01":          require('../data/anime/animal_hashi/ura_reaction_01_anime_1'),
+    
+	/* カワウソ */
+	"animal_kawa-wait":          require('../data/anime/animal_kawa/wait_anime_1'),
+	"animal_kawa-ura_wait":          require('../data/anime/animal_kawa/ura_wait_anime_1'),
+	"animal_kawa-reverse_omote":          require('../data/anime/animal_kawa/reverse_omote_anime_1'),
+	"animal_kawa-reverse_ura":          require('../data/anime/animal_kawa/reverse_ura_anime_1'),
+	"animal_kawa-ura_reaction_01":          require('../data/anime/animal_kawa/ura_reaction_01_anime_1'),
+    
+	/* コモドオオトカゲ */
+	"animal_komodo-wait":          require('../data/anime/animal_komodo/wait_anime_1'),
+	"animal_komodo-ura_wait":          require('../data/anime/animal_komodo/ura_wait_anime_1'),
+	"animal_komodo-reverse_omote":          require('../data/anime/animal_komodo/reverse_omote_anime_1'),
+	"animal_komodo-reverse_ura":          require('../data/anime/animal_komodo/reverse_ura_anime_1'),
+	"animal_komodo-ura_reaction_01":          require('../data/anime/animal_komodo/ura_reaction_01_anime_1'),
+	"animal_komodo-ura_reaction_02":          require('../data/anime/animal_komodo/ura_reaction_02_anime_1'),
+    
+	/* クロヒョウ　または　パンサー */
+	"animal_kuro-wait":          require('../data/anime/animal_kuro/wait_anime_1'),
+	"animal_kuro-ura_wait":          require('../data/anime/animal_kuro/ura_wait_anime_1'),
+	"animal_kuro-reverse_omote":          require('../data/anime/animal_kuro/reverse_omote_anime_1'),
+	"animal_kuro-reverse_ura":          require('../data/anime/animal_kanimal_kuroawa/reverse_ura_anime_1'),
+	"animal_kuro-ura_reaction_01":          require('../data/anime/animal_kuro/ura_reaction_01_anime_1'),
+    
+	/* モグラ */
+	"animal_mogura-wait":          require('../data/anime/animal_mogura/wait_anime_1'),
+	"animal_mogura-ura_wait":          require('../data/anime/animal_mogura/ura_wait_anime_1'),
+	"animal_mogura-reverse_omote":          require('../data/anime/animal_mogura/reverse_omote_anime_1'),
+	"animal_mogura-reverse_ura":          require('../data/anime/animal_mogura/reverse_ura_anime_1'),
+	"animal_mogura-ura_reaction_01":          require('../data/anime/animal_mogura/ura_reaction_01_anime_1'),
+    
+	/* シバイヌ */
+	"animal_shiba-wait":          require('../data/anime/animal_shiba/wait_anime_1'),
+	"animal_shiba-ura_wait":          require('../data/anime/animal_shiba/ura_wait_anime_1'),
+	"animal_shiba-reverse_omote":          require('../data/anime/animal_shiba/reverse_omote_anime_1'),
+	"animal_shiba-reverse_ura":          require('../data/anime/animal_shiba/reverse_ura_anime_1'),
+	"animal_shiba-ura_reaction_01":          require('../data/anime/animal_shiba/ura_reaction_01_anime_1'),
+    
+	/* ウマ */
+	"animal_uma-wait":          require('../data/anime/animal_uma/wait_anime_1'),
+	"animal_uma-ura_wait":          require('../data/anime/animal_uma/ura_wait_anime_1'),
+	"animal_uma-reverse_omote":          require('../data/anime/animal_uma/reverse_omote_anime_1'),
+	"animal_uma":          require('../data/anime/animal_shiba/animal_uma'),
+	"animal_uma-reverse_ura":          require('../data/anime/animal_uma/reverse_ura_anime_1'),
+	"animal_uma-ura_reaction_01":          require('../data/anime/animal_uma/ura_reaction_01_anime_1'),
     
     /* ダークミスト */
     "dark-mist":    require('../data/anime/dark-mist/eff01_anime_1.json'),
