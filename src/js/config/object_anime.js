@@ -186,7 +186,7 @@ var anime_map = {
 	"chapter3-13-obj-01-obj03":  require('../data/anime/chapter3/13/obj-01/obj03_anime_1.json'),
 	"chapter3-13-obj-01-obj04":  require('../data/anime/chapter3/13/obj-01/obj04_anime_1.json'),
     
-    "chapter4-01-white-mist":    require('../data/anime/chapter1/01/white-mist/eff01_anime_1.json'),
+	"chapter4-01-white-mist":    require('../data/anime/chapter1/01/white-mist/eff01_anime_1.json'),
 	"chapter4-20-obj-01_anime_1":  require('../data/anime/chapter4/20/obj-01/obj01_anime_1.json'),
 	"chapter4-20-obj-01_anime_2":  require('../data/anime/chapter4/20/obj-01/obj02_anime_1.json'),
 	"chapter4-20-obj-01_anime_3":  require('../data/anime/chapter4/20/obj-01/obj03_anime_1.json'),
@@ -205,7 +205,7 @@ var anime_map = {
 	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj02_anime_1.json'),
 	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj03_anime_1.json'),
 	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj04_anime_1.json'),
-	"chapter5-13-bg-01_anime_1":  require('../data/anime/chapter5/13/bg-01/bg01_anime_1.json'),
+	"chapter5-13-bg-01_anime_1":  require('../data/anime/chapter5/13/bg-001/bg01_anime_1.json'),
 
 	/* てぃ */
 	"tewi-wait":          require('../data/anime/tewi/wait_anime_1'),
@@ -445,14 +445,14 @@ var anime_map = {
 	"animal_komodo-reverse_ura":          require('../data/anime/animal_komodo/reverse_ura_anime_1'),
 	"animal_komodo-ura_reaction_01":          require('../data/anime/animal_komodo/ura_reaction_01_anime_1'),
 	"animal_komodo-ura_reaction_02":          require('../data/anime/animal_komodo/ura_reaction_02_anime_1'),
-    
-	/* クロヒョウ　または　パンサー */
+
+	/* クロヒョウ または パンサー */
 	"animal_kuro-wait":          require('../data/anime/animal_kuro/wait_anime_1'),
 	"animal_kuro-ura_wait":          require('../data/anime/animal_kuro/ura_wait_anime_1'),
 	"animal_kuro-reverse_omote":          require('../data/anime/animal_kuro/reverse_omote_anime_1'),
-	"animal_kuro-reverse_ura":          require('../data/anime/animal_kanimal_kuroawa/reverse_ura_anime_1'),
+	"animal_kuro-reverse_ura":          require('../data/anime/animal_kuro/reverse_ura_anime_1'),
 	"animal_kuro-ura_reaction_01":          require('../data/anime/animal_kuro/ura_reaction_01_anime_1'),
-    
+
 	/* モグラ */
 	"animal_mogura-wait":          require('../data/anime/animal_mogura/wait_anime_1'),
 	"animal_mogura-ura_wait":          require('../data/anime/animal_mogura/ura_wait_anime_1'),
@@ -471,12 +471,12 @@ var anime_map = {
 	"animal_uma-wait":          require('../data/anime/animal_uma/wait_anime_1'),
 	"animal_uma-ura_wait":          require('../data/anime/animal_uma/ura_wait_anime_1'),
 	"animal_uma-reverse_omote":          require('../data/anime/animal_uma/reverse_omote_anime_1'),
-	"animal_uma":          require('../data/anime/animal_shiba/animal_uma'),
+	"animal_uma-reaction_01":          require('../data/anime/animal_uma/reaction_01_anime_1'),
 	"animal_uma-reverse_ura":          require('../data/anime/animal_uma/reverse_ura_anime_1'),
 	"animal_uma-ura_reaction_01":          require('../data/anime/animal_uma/ura_reaction_01_anime_1'),
-    
-    /* ダークミスト */
-    "dark-mist":    require('../data/anime/dark-mist/eff01_anime_1.json'),
+
+	/* ダークミスト */
+	"dark-mist":    require('../data/anime/dark-mist/eff01_anime_1.json'),
 };
 
 module.exports = anime_map;

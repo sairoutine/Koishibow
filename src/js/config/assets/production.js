@@ -26,7 +26,7 @@ AssetsConfig.images = {
 	"animal_kawa":   "./image/production/animal_kawa.png",
 	// コモドオオトカゲ
 	"animal_komodo":   "./image/production/animal_komodo.png",
-	// クロヒョウ　または　パンサー
+	// クロヒョウ または パンサー
 	"animal_kuro":   "./image/production/animal_kuro.png",
 	// モグラ
 	"animal_mogura":   "./image/production/animal_mogura.png",
@@ -285,7 +285,7 @@ AssetsConfig.images = {
 	"chapter3-13-obj-05": "./image/production/chapter3/chapter3-13/chapter3-13-obj-05.png",
     
 	// chapter4
-    "dark-mist": "./image/production/dark-mist.png",
+	"dark-mist": "./image/production/dark-mist.png",
 	"chapter4-01-bg-001": "./image/production/chapter4/chapter4-01/chapter4-01-bg-001.png",
 	"chapter4-02-bg-001": "./image/production/chapter4/chapter4-02/chapter4-02-bg-001.png",
 	"chapter4-03-bg-001": "./image/production/chapter4/chapter4-03/chapter4-03-bg-001.png",
