@@ -91,21 +91,20 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			type: CONSTANT.ANIME_IMAGE_TYPE,
+			image: "chapter3-myroom-obj-05-01",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "まど",
 			serif: [
 				{"chara": "koishi","serif":_("なんなの！")},
 			],
 			x: 5, y: 180,
 			scale: 0.7,
-			anime1: "chapter0-myroom-obj-04-01-obj01",
-			anime2: "chapter0-myroom-obj-04-01-obj02",
-			anime3: "chapter0-myroom-obj-04-01-obj03",
 			action_name: "look_top",
-			sound_name: "chapter0-myroom-sound_window_for_kokoro",
+			sound_name: null,
 			height: 700,
 			target_x: 177, target_y: 531
 		},
+
 		{
 			no: ++I,
 			image: null,
