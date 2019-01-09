@@ -188,11 +188,11 @@ AssetsConfig.images = {
 	"chapter5-01-event-01-obj-01":  "./image/production/chapter5/event/chapter5-01-event-01/chapter5-01-event-01-obj-01.png",
     
 	// 5-3-1
-	"chapter5-03-event-01-koishi":  "./image/production/chapter5/event/chapter5-03-event-01/chapter5-07-event-01-koishi.png",
-	"chapter5-03-event-01-animal-shiba":  "./image/production/chapter5/event/chapter5-03-event-01/chapter5-07-event-01-animal-shiba.png",
+	"chapter5-03-event-01-koishi":  "./image/production/chapter5/event/chapter5-03-event-01/chapter5-03-event-01-koishi.png",
+	"chapter5-03-event-01-animal-shiba":  "./image/production/chapter5/event/chapter5-03-event-01/chapter5-03-event-01-koishi.png",
     
 	// 5-7-1
-	"chapter5-07-event-01-koishi":  "./image/production/chapter5/event/chapter5-07-event-01/chapter5-03-event-01-koishi.png",
+	"chapter5-07-event-01-koishi":  "./image/production/chapter5/event/chapter5-07-event-01/chapter5-07-event-01-koishi.png",
     
 	// 5-9-1
 	"chapter5-09-event-01-bg-001":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-bg-001.jpg",
@@ -325,17 +325,17 @@ AssetsConfig.images = {
 	"chapter4-25-obj-01": "./image/production/chapter4/chapter4-25/chapter4-25-obj-01.png",
 
 	// chapter5
-	"chapter5-02-bg-001": "./image/production/chapter5/chapter5-02/chapter5-02-bg-001.png",
+	"chapter5-02-bg-001": "./image/production/chapter5/chapter5-02/chapter5-02-bg-001.jpg",
 	"chapter5-03-bg-001": "./image/production/chapter5/chapter5-03/chapter5-03-bg-001.png",
 	"chapter5-04-bg-001": "./image/production/chapter5/chapter5-04/chapter5-04-bg-001.png",
 	"chapter5-05-bg-001": "./image/production/chapter5/chapter5-05/chapter5-05-bg-001.png",
 	"chapter5-06-bg-001": "./image/production/chapter5/chapter5-06/chapter5-06-bg-001.png",
 	"chapter5-07-bg-001": "./image/production/chapter5/chapter5-07/chapter5-07-bg-001.png",
 	"chapter5-08-bg-001": "./image/production/chapter5/chapter5-08/chapter5-08-bg-001.png",
-	"chapter5-09-bg-001": "./image/production/chapter5/chapter5-09/chapter5-09-bg-001.png",
+	"chapter5-09-bg-001": "./image/production/chapter5/chapter5-09/chapter5-09-bg-001.jpg",
 	"chapter5-10-bg-001": "./image/production/chapter5/chapter5-10/chapter5-10-bg-001.png",
 	"chapter5-11-bg-001": "./image/production/chapter5/chapter5-11/chapter5-11-bg-001.png",
-	"chapter5-12-bg-001": "./image/production/chapter5/chapter5-12/chapter5-12-bg-001.png",
+	"chapter5-12-bg-001": "./image/production/chapter5/chapter5-12/chapter5-12-bg-001.jpg",
 	"chapter5-12-obj-01": "./image/production/chapter5/chapter5-12/chapter5-12-obj-01.png",
 	"chapter5-13-bg-001": "./image/production/chapter5/chapter5-13/chapter5-13-bg-001.png",    
     
