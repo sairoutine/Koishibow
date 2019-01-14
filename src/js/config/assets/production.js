@@ -340,7 +340,12 @@ AssetsConfig.images = {
 	"chapter5-12-bg-001": "./image/production/chapter5/chapter5-12/chapter5-12-bg-001.jpg",
 	"chapter5-12-obj-01": "./image/production/chapter5/chapter5-12/chapter5-12-obj-01.png",
 	"chapter5-13-bg-001": "./image/production/chapter5/chapter5-13/chapter5-13-bg-001.png",    
-    
+
+	"chapter5-03-obj-01": "./image/production/chapter5/chapter5-03/chapter5-03-obj-01.png",
+	"chapter5-05-obj-01": "./image/production/chapter5/chapter5-05/chapter5-05-obj-01.png",
+	"chapter5-07-obj-01": "./image/production/chapter5/chapter5-07/chapter5-07-obj-01.png",
+	"chapter5-14-obj-01": "./image/production/chapter5/chapter5-14/chapter5-14-obj-01.png",
+
 	// アイテム 目薬
 	"item_13":            "./image/production/item/icon_item_cp3_sho.png",
 	"item_14":            "./image/production/item/icon_item_cp3_jyo.png",
@@ -352,6 +357,8 @@ AssetsConfig.images = {
 	"item_20":            "./image/production/item/icon_item_cp3_cir.png",
 	"item_22":            "./image/production/item/icon_item_cp4_player.png",
 	"item_23":            "./image/production/item/icon_item_cp4_tape.png",
+	"item_24":            "./image/production/item/icon_item_cp5_eye.png",
+	"item_25":            "./image/production/item/icon_item_cp5_key.png",
 
 	// 1枚絵
 	"picture_chapter3-08-illust-01":   "./image/production/picture/chapter3-08-illust-01.png",
