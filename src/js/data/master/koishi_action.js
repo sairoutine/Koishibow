@@ -11,6 +11,8 @@ var jsonDataOfReactionTouch = require('../../data/anime/koishi/reaction_touch_an
 var jsonDataOfReactionYes = require('../../data/anime/koishi/reaction_yes_anime_1');
 //	座る	可能	45	1.5秒
 var jsonDataOfReactionSit = require('../../data/anime/koishi/sit_anime_1');
+// 斧使用(chapter5 用)
+var jsonDataOfAxe = require('../../data/anime/koishi/reaction_ax_anime_1');
 
 module.exports = [
 	// 触る
@@ -47,6 +49,12 @@ module.exports = [
 	{
 		name: "sit",
 		anime: jsonDataOfReactionSit,
+		sound: "",
+	},
+	// 斧使用(chapter5)
+	{
+		name: "use_axe",
+		anime: jsonDataOfAxe,
 		sound: "",
 	},
 ];
