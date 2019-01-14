@@ -70,4 +70,20 @@ module.exports = [
 	require("../../data/field/chapter4/41"),
 	require("../../data/field/chapter4/42"),
 	require("../../data/field/chapter4/43"),
+
+	// chapter5
+	require("../../data/field/chapter5/01"),
+	require("../../data/field/chapter5/02"),
+	require("../../data/field/chapter5/03"),
+	require("../../data/field/chapter5/04"),
+	require("../../data/field/chapter5/05"),
+	require("../../data/field/chapter5/06"),
+	require("../../data/field/chapter5/07"),
+	require("../../data/field/chapter5/08"),
+	require("../../data/field/chapter5/09"),
+	require("../../data/field/chapter5/10"),
+	require("../../data/field/chapter5/11"),
+	require("../../data/field/chapter5/12"),
+	require("../../data/field/chapter5/13"),
+	require("../../data/field/chapter5/14"),
 ];
