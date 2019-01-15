@@ -1,6 +1,8 @@
 'use strict';
 var _ = require('i18n4v')
-// こいしの自室(ベッド／帽子／ドア) 帽子はベッドのふちにかけてある
+// こいしの自室
+// chapter0, chapter3, chapter5 にも自室が存在するので
+// 当たり判定修正時はそちらも修正する
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {

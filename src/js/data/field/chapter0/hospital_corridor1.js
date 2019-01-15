@@ -1,6 +1,8 @@
 'use strict';
 var _ = require('i18n4v')
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
+// chapter0, chapter5 それぞれに存在するので
+// コレを修正する際はほかも修正する
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
@@ -9,7 +11,6 @@ module.exports = {
 	bgm: "field1",
 	rightStartPosition: {x: 800, y: 250},
 	leftStartPosition:  {x: 180, y: 380},
-
 	rightField: "chapter0_hospital_corridor2",
 	leftField: "chapter0_myroom",
 	background: "chapter0-hospital_corridor1-bg-001",
