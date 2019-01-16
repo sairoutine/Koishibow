@@ -72,8 +72,8 @@ module.exports = [
 	require("../../data/field/chapter4/43"),
 
 	// chapter5
-	require("../../data/field/chapter5/01"),
-	require("../../data/field/chapter5/02"),
+	require("../../data/field/chapter5/myroom"),
+	require("../../data/field/chapter5/hospital_carridor1"),
 	require("../../data/field/chapter5/03"),
 	require("../../data/field/chapter5/04"),
 	require("../../data/field/chapter5/05"),
