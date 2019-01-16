@@ -202,9 +202,9 @@ var anime_map = {
 	"chapter5-10-bg-01_anime_1":  require('../data/anime/chapter5/10/bg-01/bg01_anime_1.json'),
 	"chapter5-11-bg-01_anime_1":  require('../data/anime/chapter5/11/bg-01/bg01_anime_1.json'),
 	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj01_anime_1.json'),
-	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj02_anime_1.json'),
-	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj03_anime_1.json'),
-	"chapter5-12-obj-01_anime_1":  require('../data/anime/chapter5/12/obj-01/obj04_anime_1.json'),
+	"chapter5-12-obj-02_anime_1":  require('../data/anime/chapter5/12/obj-01/obj02_anime_1.json'),
+	"chapter5-12-obj-03_anime_1":  require('../data/anime/chapter5/12/obj-01/obj03_anime_1.json'),
+	"chapter5-12-obj-04_anime_1":  require('../data/anime/chapter5/12/obj-01/obj04_anime_1.json'),
 	"chapter5-13-bg-01_anime_1":  require('../data/anime/chapter5/13/bg-001/bg01_anime_1.json'),
 
 	/* てぃ */
