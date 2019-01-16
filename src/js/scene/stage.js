@@ -319,20 +319,23 @@ SceneStage.prototype.draw = function(){
 	var field_data = this.getFieldData();
 	var ctx = this.core.ctx;
 
-	// 背景描画
-	var bg = this.core.image_loader.getImage(field_data.background());
-	ctx.save();
-	ctx.drawImage(bg,
-		0,
-		0,
-		bg.width,
-		bg.height,
-		0,
-		0,
-		this.width,
-		this.height
-	);
-	ctx.restore();
+	// 背景は設定しないこともできる
+	if (field_data.background()) {
+		// 背景描画
+		var bg = this.core.image_loader.getImage(field_data.background());
+		ctx.save();
+		ctx.drawImage(bg,
+			0,
+			0,
+			bg.width,
+			bg.height,
+			0,
+			0,
+			this.width,
+			this.height
+		);
+		ctx.restore();
+	}
 
 	// ステージ上のオブジェクトと自機の描画
 	// NOTE: オブジェクトとオブジェクトの間に自機がいることもあるので一緒に描画している
