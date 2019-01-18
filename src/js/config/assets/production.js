@@ -16,6 +16,10 @@ AssetsConfig.images = {
 	"reisen":   "./image/production/reisen.png",
 	// てゐリアル
 	"tewireal":   "./image/production/tewireal.png",
+	// お燐
+	"orin":   "./image/production/orin.png",
+	// お空
+	"oku":   "./image/production/oku.png",
 	// アライグマ
 	"animal_araiguma":   "./image/production/animal_araiguma.png",
 	// ハリネズミ

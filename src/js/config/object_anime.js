@@ -409,6 +409,21 @@ var anime_map = {
 	"kanban_reaction_03_anime_1":   require('../data/anime/tewireal/kanban_reaction_03_anime_1'),
 	"kanban_reaction_04_anime_1":   require('../data/anime/tewireal/kanban_reaction_04_anime_1'),
     
+	/* お燐 */
+	"orin-wait":          require('../data/anime/orin/wait_anime_1'),
+	"orin-ura_wait":          require('../data/anime/orin/ura_wait_anime_1'),
+	"orin-reverse_omote":          require('../data/anime/orin/reverse_omote_anime_1'),
+	"orin-reverse_ura":          require('../data/anime/orin/reverse_ura_anime_1'),
+	"orin-reaction_01":          require('../data/anime/orin/reaction_01_anime_1'),
+	"orin-ura_reaction_01":          require('../data/anime/orin/ura_reaction_02_anime_1'),
+    
+	/* お空 */
+	"oku-wait":          require('../data/anime/oku/wait_anime_1'),
+	"oku-ura_wait":          require('../data/anime/oku/ura_wait_anime_1'),
+	"oku-reverse_omote":          require('../data/anime/oku/reverse_omote_anime_1'),
+	"oku-reverse_ura":          require('../data/anime/oku/reverse_ura_anime_1'),
+	"oku-ura_reaction_01":          require('../data/anime/oku/ura_reaction_02_anime_1'),
+    
 	/* アライグマ */
 	"animal_araiguma-wait":          require('../data/anime/animal_araiguma/wait_anime_1'),
 	"animal_araiguma-ura_wait":          require('../data/anime/animal_araiguma/ura_wait_anime_1'),
