@@ -1,9 +1,9 @@
 'use strict';
-//var _ = require('i18n4v')
+var _ = require('i18n4v')
 // 地上2階
 // お空が閉じ込められている部屋
-//var CONSTANT = require("../../../constant");
-//var I = 0;
+var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter5_09",
 	chapter: 5,
@@ -17,7 +17,6 @@ module.exports = {
 	initialProcess: [
 	],
 	objects: [
-		/*
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -29,7 +28,7 @@ module.exports = {
 			serif: [
 				{"chara": I, "exp": "oku-wait", "serif":_("test")},
 			],
-			x: 600, y: 300,
+			x: 490, y: 298,
 			scale: 2/3,
 			anime1: "oku-wait",
 			anime2: null,
@@ -42,7 +41,6 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
-		*/
 	],
 };
 

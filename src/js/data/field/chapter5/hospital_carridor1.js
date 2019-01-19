@@ -80,6 +80,17 @@ module.exports = {
 			action_name: "look_front",
 			position_type: "front",
 		},
+
+		{
+			no: ++I,
+			image: "chapter5-02-obj-01",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "ドア",
+			serif: null,
+			x: 60.50*2/3, y: 469.00*2/3,
+			scale: 2/3,
+		},
+
 	],
 };
 

@@ -1,5 +1,5 @@
 'use strict';
-//var _ = require('i18n4v')
+var _ = require('i18n4v')
 // 地上2階
 // さとりの部屋
 var CONSTANT = require("../../../constant");
@@ -17,7 +17,6 @@ module.exports = {
 	initialProcess: [
 	],
 	objects: [
-		/*
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
@@ -29,7 +28,7 @@ module.exports = {
 			serif: [
 				{"chara": I, "exp": "orin-wait", "serif":_("test")},
 			],
-			x: 600, y: 300,
+			x: 800, y: 450,
 			scale: 2/3,
 			anime1: "orin-wait",
 			anime2: null,
@@ -42,7 +41,6 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
-		*/
 		{
 			no: ++I,
 			image: null,
