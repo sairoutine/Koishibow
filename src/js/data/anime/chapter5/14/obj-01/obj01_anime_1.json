@@ -1,0 +1,17 @@
+[
+{
+"images":["chapter5-14-obj-01.png"],
+"name": "obj01_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 80,
+"CanvasHeight": 80,
+"MarginWidth": 48,
+"MarginHeight": 48,
+"parts": ["root","ura","obj"],
+"ssa": [
+
+]
+}
+}
+]
