@@ -2,7 +2,6 @@
 //var _ = require('i18n4v')
 // 地上2階
 // さとりの部屋
-// ・MURDER
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
