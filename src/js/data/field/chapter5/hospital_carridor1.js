@@ -80,7 +80,6 @@ module.exports = {
 			action_name: "look_front",
 			position_type: "front",
 		},
-
 		{
 			no: ++I,
 			image: "chapter5-02-obj-01",
@@ -89,6 +88,27 @@ module.exports = {
 			serif: null,
 			x: 60.50*2/3, y: 469.00*2/3,
 			scale: 2/3,
+		},
+		{
+			no: ++I,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "ジャーナル",
+			serif: null,
+			serif_back: [
+				{"chara": "koishi", "serif":_("test")},
+			],
+			x: 500,
+			y: 640,
+			scale: 2/3,
+			anime1: "chapter5-02-obj-02-obj01",
+			anime2: null,
+			anime3: null,
+			anime4: "chapter5-02-obj-02-obj02",
+			anime5: "chapter5-02-obj-02-obj03",
+			anime6: "chapter5-02-obj-02-obj04",
+			action_name: null,
+			sound_name: null,
+			position_type: "lying",
 		},
 
 	],

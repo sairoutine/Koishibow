@@ -1,4 +1,5 @@
 'use strict';
+var _ = require('i18n4v')
 // 地下2階
 /*
  真っ暗闇
@@ -23,15 +24,25 @@ module.exports = {
 	objects: [
 		{
 			no: ++I,
-			image: "chapter5-14-obj-01",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "鍵",
 			serif: null,
+			serif_back: [
+				{"chara": "koishi", "serif":_("test")},
+			],
 			x: 500,
 			y: 640,
 			scale: 2/3,
-			action_name: "look_bottom",
+
+			anime1: "chapter5-14-obj-01-obj01",
+			anime2: null,
+			anime3: null,
+			anime4: "chapter5-14-obj-01-obj02",
+			anime5: "chapter5-14-obj-01-obj03",
+			anime6: "chapter5-14-obj-01-obj04",
+			action_name: null,
 			sound_name: null,
+			position_type: "lying",
 		},
 	],
 };
