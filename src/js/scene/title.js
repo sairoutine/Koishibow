@@ -21,8 +21,8 @@ var MENU = [
 	}],
 	// continue
 	["ui-titlepg-btn-con", function (core) {
-		// セーブデータがあれば
-		return core.save_manager.player.getCurrentField() ? true : false;
+		// セーブデータがあり、かつ体験版でなければ
+		return( (core.save_manager.player.getCurrentField() ? true : false) && !CONSTANT.TRIAL);
 	}, function (core) {
 		core.scene_manager.changeScene("stage", core.save_manager.player.getCurrentField());
 	}],
@@ -83,8 +83,9 @@ SceneTitle.prototype.init = function(){
 	// メニューボタンがクリックされたときのフレーム数
 	this._menu_clicked_frame_count = null;
 
-	// セーブデータがあれば、コンティニューがデフォルト位置
-	if(this.core.save_manager.player.getCurrentField()) {
+	// セーブデータがあり、かつ体験版でなければ
+	// コンティニューがデフォルト位置
+	if( (this.core.save_manager.player.getCurrentField() ? true : false) && !CONSTANT.TRIAL) {
 		this._index = 1;
 	}
 	else {
