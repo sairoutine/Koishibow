@@ -199,7 +199,6 @@ SceneTitle.prototype.beforeDraw = function(){
 
 // 画面更新
 SceneTitle.prototype.draw = function(){
-	this.core.clearCanvas();
 	var ctx = this.core.ctx;
 
 	ctx.save();
