@@ -17,8 +17,8 @@ SceneSubStageGetHat.prototype.init = function(picture_name){
 
 	this._pos_x = -this.root().width/2;
 };
-SceneSubStageGetHat.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageGetHat.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	if(this.frame_count <= 15) {
 		this._pos_x += this.root().width/15;

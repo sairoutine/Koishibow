@@ -121,9 +121,9 @@ SceneTitle.prototype._generateMenuUI = function(){
 	return menu_ui;
 };
 
-SceneTitle.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
-	this.ss.beforeDraw();
+SceneTitle.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
+	this.ss.update();
 
 	// 選択
 	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_LEFT);

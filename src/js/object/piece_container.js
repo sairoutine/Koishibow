@@ -61,10 +61,10 @@ PieceContainer.prototype.notifyUnUse3rdEye = function() {
 	}
 };
 
-PieceContainer.prototype.beforeDraw = function() {
-	BaseObject.prototype.beforeDraw.apply(this, arguments);
+PieceContainer.prototype.update = function() {
+	BaseObject.prototype.update.apply(this, arguments);
 	for (var i = 0, len = this._pieces.length; i < len; i++) {
-		this._pieces[i].beforeDraw();
+		this._pieces[i].update();
 	}
 };
 

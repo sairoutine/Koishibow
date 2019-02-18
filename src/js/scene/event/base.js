@@ -46,11 +46,11 @@ SceneEventBase.prototype.init = function(){
 	}
 
 };
-SceneEventBase.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneEventBase.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	if (this.ss) {
-		this.ss.beforeDraw();
+		this.ss.update();
 	}
 
 	// スクリプト実行

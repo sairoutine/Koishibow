@@ -54,10 +54,10 @@ SceneSubStageGameover.prototype.init = function(){
 };
 
 
-SceneSubStageGameover.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageGameover.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
-	this.koishi.beforeDraw();
+	this.koishi.update();
 
 	if (this._state === 1) {
 		this._alpha += 0.01;

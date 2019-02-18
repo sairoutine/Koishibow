@@ -265,10 +265,10 @@ ObjectAnimeImage.prototype.onNotCollideWithLightIn3rdEye = function(){
 ObjectAnimeImage.prototype._getWaitAnimeName = function() {
 	return this.ss.hasFrontClickedAnime() && this._is_clicked_in_front ? "front_after_click_anime" : "front_before_click_anime";
 };
-ObjectAnimeImage.prototype.beforeDraw = function() {
-	base_object.prototype.beforeDraw.apply(this, arguments);
+ObjectAnimeImage.prototype.update = function() {
+	base_object.prototype.update.apply(this, arguments);
 
-	this.ss.beforeDraw();
+	this.ss.update();
 };
 
 

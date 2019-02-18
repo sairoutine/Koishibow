@@ -78,8 +78,8 @@ SceneMusic.prototype.init = function(){
 	this.core.scene_manager.setFadeOut(60, "black");
 };
 
-SceneMusic.prototype.beforeDraw = function(){
-	BaseScene.prototype.beforeDraw.apply(this, arguments);
+SceneMusic.prototype.update = function(){
+	BaseScene.prototype.update.apply(this, arguments);
 
 	// 選択
 	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);

@@ -21,8 +21,8 @@ SceneSubStageGetHat.prototype.init = function(picture_name, return_subscene){
 	this._return_subscene = return_subscene || "play"; // 再生後の戻り先サブシーン
 };
 
-SceneSubStageGetHat.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageGetHat.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	if(this.frame_count === 1) {
 		// 小傘

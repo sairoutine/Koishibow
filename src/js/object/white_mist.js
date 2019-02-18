@@ -19,8 +19,8 @@ ObjectBlackMist.prototype.init = function(){
 
 
 
-ObjectBlackMist.prototype.beforeDraw = function(){
-	base_object.prototype.beforeDraw.apply(this, arguments);
+ObjectBlackMist.prototype.update = function(){
+	base_object.prototype.update.apply(this, arguments);
 };
 
 ObjectBlackMist.prototype.setPosition = function(){

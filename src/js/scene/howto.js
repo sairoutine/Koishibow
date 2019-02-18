@@ -25,8 +25,8 @@ SceneHowto.prototype.init = function(){
 };
 
 
-SceneHowto.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneHowto.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
 		this.core.audio_loader.playSound("show_journal");

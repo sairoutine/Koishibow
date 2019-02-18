@@ -138,8 +138,8 @@ SsAnimeBase.prototype.getFrameNo = function(){
 	return Math.floor(this.anime_frame);
 };
 
-SsAnimeBase.prototype.beforeDraw = function(){
-	base_object.prototype.beforeDraw.apply(this, arguments);
+SsAnimeBase.prototype.update = function(){
+	base_object.prototype.update.apply(this, arguments);
 
 	// update ss state
 	this.ss.rootScaleX = this.scaleWidth();

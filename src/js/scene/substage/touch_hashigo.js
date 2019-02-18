@@ -25,8 +25,8 @@ SceneSubStageLock.prototype.init = function(){
 
 
 
-SceneSubStageLock.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageLock.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	if(this.frame_count > 60) {
 		this.root().changeSubScene("got_item", "09", "play"); // 竹とんぼ

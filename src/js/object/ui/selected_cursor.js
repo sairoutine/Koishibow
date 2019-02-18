@@ -36,8 +36,8 @@ ObjectSelectedCursor.prototype.hide = function() {
 	this._is_show = false;
 };
 
-ObjectSelectedCursor.prototype.beforeDraw = function(){
-	base_object.prototype.beforeDraw.apply(this, arguments);
+ObjectSelectedCursor.prototype.update = function(){
+	base_object.prototype.update.apply(this, arguments);
 
 	// カーソルが上下に動く
 	if (Math.floor(this.frame_count/16) % 2 === 0) {

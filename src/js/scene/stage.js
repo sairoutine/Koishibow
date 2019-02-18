@@ -256,7 +256,7 @@ SceneStage.prototype._playBGM = function() {
 	}
 };
 
-SceneStage.prototype.beforeDraw = function() {
+SceneStage.prototype.update = function() {
 	var field_data = this.getFieldData();
 	var i, len;
 
@@ -289,28 +289,28 @@ SceneStage.prototype.beforeDraw = function() {
 	}
 
 	// ステージ上のオブジェクト一覧
-	this.piece_container.beforeDraw();
+	this.piece_container.update();
 
 	// 自機
-	this.koishi.beforeDraw();
+	this.koishi.update();
 	// 3rd eye の光
 	if (this.isUsingEye()) {
-		this.light_3rdeye.beforeDraw();
+		this.light_3rdeye.update();
 	}
 
 	// サブシーン
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+	base_scene.prototype.update.apply(this, arguments);
 
 	// 画面の枠
-	this.black_mist.beforeDraw();
-	this.white_mist.beforeDraw();
+	this.black_mist.update();
+	this.white_mist.update();
 	// UI パーツ
-	this.item_menu_button.beforeDraw();
-	this.eye_button.beforeDraw();
+	this.item_menu_button.update();
+	this.eye_button.update();
 
 	for (i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
 		var obj = this.walk_immovable_areas[i];
-		obj.beforeDraw();
+		obj.update();
 	}
 };
 

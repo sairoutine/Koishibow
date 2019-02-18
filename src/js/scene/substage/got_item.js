@@ -40,8 +40,8 @@ SceneSubStageGotItem.prototype.init = function(item_id, sub_scene_name){
 	this.core.audio_loader.playSound(sound_name);
 };
 
-SceneSubStageGotItem.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageGotItem.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	if (this.frame_count > WAIT_COUNT_TO_NEXT_SCENE) {
 		this.root().returnSubScene(this._sub_scene_name);

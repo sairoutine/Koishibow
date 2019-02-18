@@ -122,8 +122,8 @@ Koishi.prototype.actionByObject = function(action_name) {
 	this.playAnimationOnce(action_name);
 };
 
-Koishi.prototype.beforeDraw = function(){
-	base_object.prototype.beforeDraw.apply(this, arguments);
+Koishi.prototype.update = function(){
+	base_object.prototype.update.apply(this, arguments);
 
 	// 足音
 	this._playWalkSound();

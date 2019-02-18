@@ -35,10 +35,10 @@ SceneEventChapter0GetHat.prototype.init = function(){
 	this.root().koishi.setWaitAnime();
 };
 
-SceneEventChapter0GetHat.prototype.beforeDraw = function() {
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneEventChapter0GetHat.prototype.update = function() {
+	base_scene.prototype.update.apply(this, arguments);
 
-	this._cursor_ui.beforeDraw();
+	this._cursor_ui.update();
 	// こいしの移動
 	this.root().koishi.moveByInput();
 

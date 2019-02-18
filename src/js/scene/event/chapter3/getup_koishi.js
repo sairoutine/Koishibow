@@ -120,13 +120,13 @@ SceneEventPlayDoll.prototype.initKoishi = function(){
 
 
 
-SceneEventPlayDoll.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneEventPlayDoll.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
-	this._time.executeEvents();
+	this._time.update();
 
 	// ステージ上のオブジェクト一覧
-	this.piece_container.beforeDraw();
+	this.piece_container.update();
 
 
 	if(this._state === STATE_TALKING) {
@@ -139,7 +139,7 @@ SceneEventPlayDoll.prototype.beforeDraw = function(){
 		throw new Error("illegal talking state: " + this._state);
 	}
 
-	this.black_mist.beforeDraw();
+	this.black_mist.update();
 };
 // Nフレーム後に次のセリフへ
 SceneEventPlayDoll.prototype._gotoNextSerif = function(choice){

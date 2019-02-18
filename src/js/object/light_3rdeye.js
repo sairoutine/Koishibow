@@ -44,8 +44,8 @@ ObjectLight3rdeye.prototype.init = function(){
 	this._light_y = 0;
 };
 
-ObjectLight3rdeye.prototype.beforeDraw = function(){
-	base_object.prototype.beforeDraw.apply(this, arguments);
+ObjectLight3rdeye.prototype.update = function(){
+	base_object.prototype.update.apply(this, arguments);
 
 	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
 		if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
@@ -107,7 +107,7 @@ ObjectLight3rdeye.prototype.draw = function(){
 	base_object.prototype.draw.apply(this, arguments);
 
 	// ライトの角度、位置 更新
-	// (beforeDraw に置くと、最初1フレームだけ_updateLightPosition が呼ばれないまま draw されるから)
+	// (update に置くと、最初1フレームだけ_updateLightPosition が呼ばれないまま draw されるから)
 	this._updateLightPosition();
 
 	// 画面全体を少し暗くする

@@ -156,8 +156,8 @@ SceneEventTalkWithMobu.prototype.initKoishi = function(){
 
 
 
-SceneEventTalkWithMobu.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneEventTalkWithMobu.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	if(this._state === STATE_TALKING) {
 		this._updateInTalking();
@@ -169,7 +169,7 @@ SceneEventTalkWithMobu.prototype.beforeDraw = function(){
 		throw new Error("illegal talking state: " + this._state);
 	}
 
-	this.black_mist.beforeDraw();
+	this.black_mist.update();
 };
 // Nフレーム後に次のセリフへ
 SceneEventTalkWithMobu.prototype._gotoNextSerif = function(choice){

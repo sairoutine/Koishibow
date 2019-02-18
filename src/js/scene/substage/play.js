@@ -27,10 +27,10 @@ SceneSubStagePlay.prototype.init = function(){
 	this._is_player_use_3rdeye = false;
 };
 
-SceneSubStagePlay.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStagePlay.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
-	this._cursor_ui.beforeDraw();
+	this._cursor_ui.update();
 
 	if (this.root().isUsingEye()) {
 		// サードアイの光の当たり判定

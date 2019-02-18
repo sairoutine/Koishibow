@@ -47,8 +47,8 @@ SceneSubStageJournalMenu.prototype._isPossess = function(journal_id){
 	return this._possess_journal_map[journal_id] ? true : false;
 };
 
-SceneSubStageJournalMenu.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageJournalMenu.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	// 選択
 	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);

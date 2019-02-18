@@ -39,8 +39,8 @@ SceneSubStageJournal.prototype.init = function(journal_id, return_subscene){
 	this.core.audio_loader.playSound("show_journal");
 };
 
-SceneSubStageJournal.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageJournal.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	// プレイに戻る
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {

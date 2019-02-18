@@ -42,10 +42,10 @@ ObjectAnimeDeadKoishi.prototype.isCollision = function(point) {
 	return base_object.prototype.isCollision.apply(this, arguments) && !this.scene.root().isUsingEye();
 };
 
-ObjectAnimeDeadKoishi.prototype.beforeDraw = function() {
-	base_object.prototype.beforeDraw.apply(this, arguments);
+ObjectAnimeDeadKoishi.prototype.update = function() {
+	base_object.prototype.update.apply(this, arguments);
 
-	this.ss.beforeDraw();
+	this.ss.update();
 };
 
 

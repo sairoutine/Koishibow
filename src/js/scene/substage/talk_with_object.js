@@ -60,10 +60,10 @@ SceneSubStageObjectTalk.prototype.init = function(serif_list){
 	}
 };
 
-SceneSubStageObjectTalk.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageObjectTalk.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
-	this._time.executeEvents();
+	this._time.update();
 
 	if(this._state === STATE_TALKING) {
 		this._updateInTalking();

@@ -157,10 +157,10 @@ SceneEventTalk.prototype._startSerif = function(){
 };
 
 
-SceneEventTalk.prototype.beforeDraw = function(){
-	BaseScene.prototype.beforeDraw.apply(this, arguments);
+SceneEventTalk.prototype.update = function(){
+	BaseScene.prototype.update.apply(this, arguments);
 
-	this._time.executeEvents();
+	this._time.update();
 
 	if(this._state === STATE_TALKING) {
 		this._updateInTalking();
@@ -200,7 +200,7 @@ SceneEventTalk.prototype.beforeDraw = function(){
 	}
 
 	// event_talk 固有 start
-	this._black_mist.beforeDraw();
+	this._black_mist.update();
 
 	// 左クリック位置を出力
 	if (CONSTANT.DEBUG.ON) {

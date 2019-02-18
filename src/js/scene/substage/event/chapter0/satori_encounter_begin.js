@@ -19,8 +19,8 @@ SceneSubStageObjectTalk.prototype.init = function(){
 	base_scene.prototype.init.apply(this, [serif_list, obj]);
 };
 
-SceneSubStageObjectTalk.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageObjectTalk.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	if (this.frame_count === 30) {
 		this._serif.next();

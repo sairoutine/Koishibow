@@ -98,8 +98,8 @@ SceneSubStageMenu.prototype.init = function(){
 	this.addObjects(this._cursor_ui);
 };
 
-SceneSubStageMenu.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageMenu.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 	// 選択
 	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);
 	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN);

@@ -140,14 +140,14 @@ SceneEventEncounterSatori.prototype.initKoishi = function(){
 
 
 
-SceneEventEncounterSatori.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneEventEncounterSatori.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
 	// BGM 再生
 	if(this.frame_count === 1) {
 		this.core.audio_loader.changeBGM("chapter0-event-encounter_satori");
 	}
-	this.black_mist.beforeDraw();
+	this.black_mist.update();
 
 
 

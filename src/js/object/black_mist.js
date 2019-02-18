@@ -17,7 +17,7 @@ ObjectBlackMist.prototype.init = function(){
 
 
 
-ObjectBlackMist.prototype.beforeDraw = function(){
+ObjectBlackMist.prototype.update = function(){
 	// 3rd eye 使用中かどうかでアニメーションが違う
 	if (this.scene.isUsingEye() && this.current_anime === "default") {
 		this.playAnimationInfinity("using_eye");
@@ -26,7 +26,7 @@ ObjectBlackMist.prototype.beforeDraw = function(){
 		this.playAnimationInfinity("default");
 	}
 
-	base_object.prototype.beforeDraw.apply(this, arguments);
+	base_object.prototype.update.apply(this, arguments);
 };
 
 ObjectBlackMist.prototype.setPosition = function(){

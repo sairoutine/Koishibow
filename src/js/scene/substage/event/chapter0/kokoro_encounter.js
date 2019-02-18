@@ -45,10 +45,10 @@ SceneSubStageJournal.prototype.init = function(picture_name){
 	});
 
 };
-SceneSubStageJournal.prototype.beforeDraw = function(){
-	base_scene.prototype.beforeDraw.apply(this, arguments);
+SceneSubStageJournal.prototype.update = function(){
+	base_scene.prototype.update.apply(this, arguments);
 
-	this.ss.beforeDraw();
+	this.ss.update();
 
 	if(this.frame_count > 180) {
 		this.root().changeSubScene("play");
