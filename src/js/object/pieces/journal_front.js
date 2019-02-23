@@ -42,7 +42,7 @@ ObjectJournalFront.prototype.acquire = function() {
 	this.core.save_manager.journal.addJournal(this._journal_id);
 
 	// ジャーナル画像表示シーンへ遷移
-	this.scene.root().changeSubScene("journal", this._journal_id);
+	this.scene.root().changeSubScene("show_journal", this._journal_id);
 };
 
 ObjectJournalFront.prototype.getImmovableArea = function() {

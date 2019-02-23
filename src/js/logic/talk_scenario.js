@@ -149,7 +149,7 @@ TalkScenario.processSerifOption = function (scene, serif) {
 		scene.core.save_manager.journal.addJournal(option.getJournal);
 
 		// ジャーナル画像表示シーンへ遷移
-		scene.changeSubScene("journal", option.getJournal, "talk_with_object");
+		scene.changeSubScene("show_journal", option.getJournal, "talk_with_object");
 
 		return;
 	}

@@ -60,7 +60,7 @@ SceneSubStageJournalMenu.prototype.update = function(){
 	}
 	// アイテムメニューへ戻る
 	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
-		this.root().changeSubScene("menu");
+		this.root().changeSubScene("menu_item");
 	}
 	// ジャーナルタイトル 選択
 	else if(is_up_push || is_down_push) {

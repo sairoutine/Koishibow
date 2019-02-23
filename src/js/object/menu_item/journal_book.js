@@ -16,7 +16,7 @@ ObjectMenuItemJournalBook.prototype.use = function(){
 	this.core.audio_loader.playSound("show_journal");
 
 	// ジャーナル一覧画面へ
-	this.scene.root().changeSubScene("journal_menu");
+	this.scene.root().changeSubScene("menu_journal");
 };
 
 module.exports = ObjectMenuItemJournalBook;

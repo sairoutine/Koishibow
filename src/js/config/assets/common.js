@@ -227,16 +227,16 @@ AssetsConfig.images = {
 	"target_arrow":  "./image/common/ui-common-btn-arrow-gry.png",
 
 	// アイテム一覧メニュー
-	"ui-common-bg-toolpu-blk":   "./image/common/menu/ui-common-bg-toolpu-blk.png",
-	"ui-common-btn-toolpu-blu1": "./image/common/menu/ui-common-btn-toolpu-blu1.png",
-	"ui-common-btn-toolpu-blu2": "./image/common/menu/ui-common-btn-toolpu-blu2.png",
-	"ui-common-frame-toolpu":    "./image/common/menu/ui-common-frame-toolpu.png",
+	"ui-common-bg-toolpu-blk":   "./image/common/menu_item/ui-common-bg-toolpu-blk.png",
+	"ui-common-btn-toolpu-blu1": "./image/common/menu_item/ui-common-btn-toolpu-blu1.png",
+	"ui-common-btn-toolpu-blu2": "./image/common/menu_item/ui-common-btn-toolpu-blu2.png",
+	"ui-common-frame-toolpu":    "./image/common/menu_item/ui-common-frame-toolpu.png",
 
 	// ジャーナル一覧メニュー
-	"ui-common-frame-journal":      "./image/common/journal_menu/ui-common-frame-journal.png",
-	"ui-common-scrollbar_01_thumb": "./image/common/journal_menu/ui-common-scrollbar_01_thumb.png",
-	"ui-common-scrollbar_01_track": "./image/common/journal_menu/ui-common-scrollbar_01_track.png",
-	"ui-common-btn-arrow-lbrn":     "./image/common/journal_menu/ui-common-btn-arrow-lbrn.png",
+	"ui-common-frame-journal":      "./image/common/menu_journal/ui-common-frame-journal.png",
+	"ui-common-scrollbar_01_thumb": "./image/common/menu_journal/ui-common-scrollbar_01_thumb.png",
+	"ui-common-scrollbar_01_track": "./image/common/menu_journal/ui-common-scrollbar_01_track.png",
+	"ui-common-btn-arrow-lbrn":     "./image/common/menu_journal/ui-common-btn-arrow-lbrn.png",
 
 
 	// タイトル画面
