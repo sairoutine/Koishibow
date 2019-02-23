@@ -769,5 +769,9 @@ AssetsConfig.fonts = {
 		path: "OradanoGSRR.ttf",
 		format: "truetype",
 	},
+	"SerifFont": {
+		path: "cinecaption226.ttf",
+		format: "truetype",
+	},
 };
 module.exports = AssetsConfig;

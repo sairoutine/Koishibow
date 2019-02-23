@@ -8,7 +8,7 @@ var CONSTANT = require('../constant');
 // 文字の表示サイズ
 var FONT_SIZE = 18;
 // フォント名
-var FONT_NAME = "OradanoGSRR";
+var FONT_NAME = "SerifFont";
 
 
 // セリフ文字の色
