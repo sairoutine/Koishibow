@@ -13,6 +13,9 @@ var jsonDataOfReactionYes = require('../../data/anime/koishi/reaction_yes_anime_
 var jsonDataOfReactionSit = require('../../data/anime/koishi/sit_anime_1');
 // 斧使用(chapter5 用)
 var jsonDataOfAxe = require('../../data/anime/koishi/reaction_ax_anime_1');
+// 目が見えない	不	30	1秒
+var jsonDataOfNo3rdeye = require('../../data/anime/koishi/reaction_no3rdeye_anime_1');
+
 
 module.exports = [
 	// 触る
@@ -49,6 +52,12 @@ module.exports = [
 	{
 		name: "sit",
 		anime: jsonDataOfReactionSit,
+		sound: "",
+	},
+	// 目が見えない
+	{
+		name: "no3rdeye",
+		anime: jsonDataOfNo3rdeye,
 		sound: "",
 	},
 	// 斧使用(chapter5)

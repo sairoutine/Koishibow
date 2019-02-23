@@ -25,6 +25,11 @@ var SceneSubStageEventChapter0SatoriEncounterBegin = require('./substage/event/c
 var ItemMenuButton = require('../object/ui/item_menu_button');
 var EyeButton = require('../object/ui/eye_button');
 
+var EyeButton = require('../object/ui/eye_button');
+
+// サードアイを使用できないときのセリフ
+var CANT_USE_3RDEYE_SERIF_LIST = require('../data/cant_use_3rdeye_serif');
+
 // 3rd eye の光
 var Light3rdeye = require('../object/light_3rdeye');
 // フィールド上のオブジェクト一覧
@@ -234,6 +239,11 @@ SceneStage.prototype.switchEyeOff = function() {
 	this.piece_container.notifyUnUse3rdEye();
 
 	this.koishi.unUseEye();
+};
+
+// サードアイを使用できない動作をこいしがする
+SceneStage.prototype.cantUseEye = function() {
+	this.changeSubScene("talk_with_object", CANT_USE_3RDEYE_SERIF_LIST);
 };
 
 SceneStage.prototype._playBGM = function() {

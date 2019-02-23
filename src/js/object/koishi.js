@@ -24,9 +24,6 @@ var jsonDataOfWaitInNoHat = require('../data/anime/koishi/nohat_wait_anime_1');
 var jsonDataOfWalkInNoHat = require('../data/anime/koishi/nohat_walk_anime_1');
 // ゲームオーバー(しゃがみ込む) 不	80	2.7秒
 var jsonDataOfGameover = require('../data/anime/koishi/gameover_anime_1');
-// 目が見えない	不	30	1秒
-var jsonDataOfNo3rdeye = require('../data/anime/koishi/reaction_no3rdeye_anime_1');
-
 var JSON_ANIME_MAP = {
 	// 静止
 	default:     jsonDataOfWait,
@@ -43,8 +40,6 @@ var JSON_ANIME_MAP = {
 
 	// ゲームオーバー(しゃがみ込む)
 	gameover: jsonDataOfGameover,
-	// 目が見えない
-	no_3rdeye: jsonDataOfNo3rdeye,
 	// サードアイ使用
 	use_eye:     jsonDataOfReaction3rdeye,
 };

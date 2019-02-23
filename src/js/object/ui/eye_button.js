@@ -41,8 +41,15 @@ ObjectEye.prototype.onCollision = function(obj){
 		this.scene.switchEyeOff();
 	}
 	else {
-		// サードアイOn
-		this.scene.switchEyeOn();
+		var field_data = this.scene.getFieldData();
+		if (field_data.chapter() !== 4) {
+			// サードアイOn
+			this.scene.switchEyeOn();
+		}
+		else {
+			// chapter4 では 3rd eye は使用できない
+			this.scene.cantUseEye();
+		}
 	}
 };
 
