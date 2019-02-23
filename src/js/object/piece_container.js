@@ -9,6 +9,7 @@ var ObjectStaticImage = require('../object/pieces/static_image');
 var ObjectAnimeImage = require('../object/pieces/anime_image');
 var ObjectJournalFront = require('../object/pieces/journal_front');
 var ObjectJournalBack = require('../object/pieces/journal_back');
+var ObjectArrowBack = require('../object/pieces/arrow_back');
 var ObjectAnimeEventImage = require('../object/pieces/anime_event_image');
 var ObjectItem = require('../object/pieces/item');
 var ObjectFieldChange = require('../object/pieces/field_change');
@@ -116,6 +117,9 @@ PieceContainer.prototype._setupPieces = function() {
 		}
 		else if (data.type === CONSTANT.JOURNAL_BACK_TYPE) { // ジャーナル(裏)
 			object = new ObjectJournalBack(this.scene);
+		}
+		else if (data.type === CONSTANT.ARROW_BACK_TYPE) { // サードアイを当てると見える矢印
+			object = new ObjectArrowBack(this.scene);
 		}
 		else if (data.type === CONSTANT.ANIME_EVENT_IMAGE_TYPE) { // イベント発生オブジェクト
 			object = new ObjectAnimeEventImage(this.scene);

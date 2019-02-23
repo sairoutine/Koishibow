@@ -40,7 +40,7 @@ ObjectSelectedCursor.prototype.update = function(){
 	base_object.prototype.update.apply(this, arguments);
 
 	// カーソルが上下に動く
-	if (Math.floor(this.frame_count/16) % 2 === 0) {
+	if (((this.frame_count/16)|0) % 2 === 0) {
 		this._move_y += 1;
 	}
 	else {
