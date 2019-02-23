@@ -1,5 +1,7 @@
 'use strict';
 
+// chapter0 こいしが帽子を取る
+
 var base_scene = require('../../base');
 var Util = require('../../../../hakurei').util;
 
