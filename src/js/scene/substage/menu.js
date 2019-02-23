@@ -24,10 +24,6 @@ var MENU_BUTTONS = [
 		property: "examine_button",
 		value: _("調べる"),
 	},
-	{
-		property: "combine_button",
-		value: _("組み合わせる"),
-	}
 ];
 
 var SceneSubStageMenu = function(core) {
@@ -51,8 +47,11 @@ var SceneSubStageMenu = function(core) {
 	// ボタンのどれを選択中か
 	this._index_ui = 0;
 
-	// 使用できないメッセージ表示の setTimeout ID
-	this._show_unable_to_use_message = 0;
+	// アイテムの説明以外のメッセージ表示の setTimeout ID
+	this._show_nondescription_message = 0;
+
+	// アイテムの説明以外のメッセージ表示のテキスト内容
+	this._nondescription_message_text = "";
 };
 
 Util.inherit(SceneSubStageMenu, base_scene);
@@ -78,8 +77,11 @@ SceneSubStageMenu.prototype.init = function(){
 	// ボタンのどれを選択中か
 	this._index_ui = 0;
 
-	// 使用できないメッセージ表示の setTimeout ID
-	this._show_unable_to_use_message = 0;
+	// アイテムの説明以外のメッセージ表示の setTimeout ID
+	this._show_nondescription_message = 0;
+
+	// アイテムの説明以外のメッセージ表示のテキスト内容
+	this._nondescription_message_text = "";
 
 	this.removeAllObject();
 
@@ -89,7 +91,7 @@ SceneSubStageMenu.prototype.init = function(){
 
 	// ボタン一覧オブジェクト
 	this._setupMenuButtons();
-	this.menu_ui = [this.use_button, this.examine_button, this.combine_button];
+	this.menu_ui = [this.use_button, this.examine_button];
 	this.addObjects(this.menu_ui);
 
 	// 選択中カーソル
@@ -205,10 +207,6 @@ SceneSubStageMenu.prototype.update = function(){
 				// アイテム調べる
 				this._examineItem();
 			}
-			else if (ui === this.combine_button) {
-				// アイテム組み合わせる
-				this._combineItem();
-			}
 			return;
 		}
 		// アイテム選択を解除
@@ -217,7 +215,6 @@ SceneSubStageMenu.prototype.update = function(){
 			// 各種ボタン マウスオーバー時 解除
 			this.use_button.setVariable("onfocus", false);
 			this.examine_button.setVariable("onfocus", false);
-			this.combine_button.setVariable("onfocus", false);
 
 			// 選択中カーソル表示
 			item = this.menu_item_list[this._index_item_vertical][this._index_item_horizontal];
@@ -332,21 +329,23 @@ SceneSubStageMenu.prototype._showMessage = function(){
 	if (!this.focus_item_id) return;
 
 	var ctx = this.core.ctx;
-	var item_config = ItemMasterRepository.find(this.focus_item_id);
 
-	var description;
-	if (this._show_unable_to_use_message) {
-		description = _("使用できません");
+	var text;
+	if (this._show_nondescription_message) {
+		// アイテムの説明文以外のテキスト
+		text = this._nondescription_message_text;
 	}
 	else{
-		description = item_config.description();
+		// アイテムの説明文テキスト
+		var item_config = ItemMasterRepository.find(this.focus_item_id);
+		text = item_config.descriptionText();
 	}
 
 	// メニュー文字 表示
 	ctx.font = "24px 'OradanoGSRR'";
 	ctx.fillStyle = 'rgb( 255, 255, 255 )';
 
-	ctx.fillText(description,
+	ctx.fillText(text,
 		235,
 		680
 	);
@@ -371,9 +370,11 @@ SceneSubStageMenu.prototype._useItem = function(){
 				// アイテム使用
 				menu_item.use();
 
-				// メニューの表示から削除
-				this.removeObject(menu_item);
-				this._setupMenuItems();
+				// 使用して数が0になったら、メニューの表示から削除
+				if (menu_item.num() === 0) {
+					this.removeObject(menu_item);
+					this._setupMenuItems();
+				}
 			}
 			else {
 				// TODO: 使用できない音
@@ -383,48 +384,49 @@ SceneSubStageMenu.prototype._useItem = function(){
 			break;
 		}
 	}
+};
 
+// アイテムを調べる
+SceneSubStageMenu.prototype._examineItem = function() {
+
+	// アイテムを選択してなければ何もしない
+	if(!this.focus_item_id) return;
+
+	// TODO: 調べたときの音
+	this._showExamineMessage();
+};
+
+// アイテム説明文でないメッセージを表示する
+SceneSubStageMenu.prototype._showNonDescriptionMessage = function(text, frame_count){
+	// アイテム説明文でないメッセージをまだ表示中だったら、それの表示解除はキャンセル
+	if(this._show_nondescription_message) {
+		this.core.time_manager.clearTimeout(this._show_nondescription_message);
+	}
+
+	this._nondescription_message_text = text;
+
+	// Nフレーム後にメッセージを非表示
+	var _this = this;
+	this._show_nondescription_message = this.core.time_manager.setTimeout(function () {
+		// メッセージをクリア
+		_this._show_nondescription_message = 0;
+		_this._nondescription_message_text = "";
+	}, frame_count);
 };
 
 // 使用できないメッセージを表示
 SceneSubStageMenu.prototype._showUnableToUseMessage = function(){
-	var self = this;
-
-	// 使用できないメッセージをまだ表示中だったら、それの表示解除はキャンセル
-	if(self._show_unable_to_use_message) {
-		self.core.time_manager.clearTimeout(self._show_unable_to_use_message);
-	}
-
-	// Nフレーム後にメッセージを非表示
-	self._show_unable_to_use_message = self.core.time_manager.setTimeout(function () {
-		self._show_unable_to_use_message = 0;
-	}, 60);
-};
-
-// アイテムを調べる
-SceneSubStageMenu.prototype._examineItem = function(){
-	// アイテムを選択してなければ何もしない
-	if(!this.focus_item_id) return;
-
-	//var focus_item_id = this.focus_item_id;
-
-	// TODO:
-};
-
-// アイテムを組み合わせる
-SceneSubStageMenu.prototype._combineItem = function(){
-	// アイテムを選択してなければ何もしない
-	if(!this.focus_item_id) return;
-
-	//var focus_item_id = this.focus_item_id;
-
-	// TODO:
+	this._showNonDescriptionMessage(_("使用できません"), 60);
 };
 
 
+// 調べたときのメッセージを表示
+SceneSubStageMenu.prototype._showExamineMessage = function(){
+	var item_config = ItemMasterRepository.find(this.focus_item_id);
+	var text = item_config.examineText();
 
-
-
+	this._showNonDescriptionMessage(text, 120);
+};
 
 SceneSubStageMenu.prototype.isFocusItem = function(item_id){
 	return this.focus_item_id === item_id;

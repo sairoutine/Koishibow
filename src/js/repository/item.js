@@ -5,12 +5,13 @@ var data_list = require("../data/master/item");
 
 var ItemMasterRepository = MasterRepositoryGenerator.exec(
 	{
-		id:          "number",
-		type:        "number",
-		name:        "string",
-		imageName:   "string",
-		soundName:   "string",
-		description: "string",
+		id:              "number",
+		type:            "number",
+		name:            "string",
+		imageName:       "string",
+		soundName:       "string",
+		descriptionText: "string",
+		examineText:     "string",
 	},
 	{
 		pk: "id",
