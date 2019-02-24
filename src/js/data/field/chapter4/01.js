@@ -1,4 +1,5 @@
 'use strict';
+var _ = require('i18n4v')
 module.exports = {
 	key: "chapter4_01",
 	chapter: 4,
@@ -10,7 +11,23 @@ module.exports = {
 	background: "chapter4-01-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_01_40050"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "koishi", "exp": "look_bottom", "serif":_("疲れた")},
+						{"chara": "koishi", "exp": "look_front", "serif":_("ここはどこ")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_01_40050"]}
+			],
+		]},
 	],
+
+
 	objects: [
 	],
 };
