@@ -21,7 +21,17 @@ for (var i = 0, len = lines.length; i < len; i++) {
 	var chara  = line[4];
 	var reaction  = line[5];
 
-	out.push('{"chara": "' + chara + '", "exp": "' + reaction + '", "serif":_("' + serif1 + '")},');
+	if (reaction.match(/停止/)) {
+		reaction = "null";
+	}
+	else if (chara === "koishi") {
+		reaction = '"' + reaction.replace(/^reaction\_/g , "") + '"';
+	}
+	else {
+		reaction = '"' + chara + "-" + reaction + '"';
+	}
+
+	out.push('{"chara": "' + chara + '", "exp": ' + reaction + ', "serif":_("' + serif1 + '")},');
 }
 
 fs.writeFileSync(OUTPUT_FILE_NAME, out.join("\n"));
