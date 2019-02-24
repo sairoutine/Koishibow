@@ -363,8 +363,8 @@ AssetsConfig.images = {
 	"item_20":            "./image/production/item/icon_item_cp3_cir.png",
 	"item_22":            "./image/production/item/icon_item_cp4_player.png",
 	"item_23":            "./image/production/item/icon_item_cp4_tape.png",
-	"item_24":            "./image/production/item/icon_item_cp5_eye.png",
-	"item_25":            "./image/production/item/icon_item_cp5_key.png",
+	"item_31":            "./image/production/item/icon_item_cp5_eye.png",
+	"item_32":            "./image/production/item/icon_item_cp5_key.png",
 
 	// 1枚絵
 	"picture_chapter3-08-illust-01":   "./image/production/picture/chapter3-08-illust-01.png",

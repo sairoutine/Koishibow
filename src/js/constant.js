@@ -42,6 +42,7 @@ var CONSTANT = {
 		EYEDROPS:     "01",
 		NON_USABLE:   "02",
 		JOURNAL_BOOK: "03",
+		CHAPTER4_TAPE: "03",
 	},
 
 	// 特殊なアイテムID

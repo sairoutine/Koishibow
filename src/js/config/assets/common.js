@@ -180,7 +180,7 @@ AssetsConfig.images = {
 	// 選択中のアイテム背景
 	"item_selected":      "./image/common/item/icon_item_common_light01.png",
 
-	// アイテム 目薬
+	// アイテム
 	"item_01":            "./image/common/item/icon_item_eyedrops01.png",
 	"item_02":            "./image/common/item/icon_item_matches01.png",
 	"item_03":            "./image/common/item/icon_item_wcan01.png",
