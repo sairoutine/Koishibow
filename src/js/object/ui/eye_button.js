@@ -31,8 +31,9 @@ ObjectEye.prototype.draw = function() {
 
 
 ObjectEye.prototype.isShow = function(){
-	// play scene のみ 3rd eye アイコンを表示
-	return this.scene.current_scene === "play" ? true : false;
+	var field_data = this.scene.getFieldData();
+	// play scene のみ 3rd eye アイコンを表示(かつchapter4では表示しない)
+	return (field_data.chapter() !== 4 && this.scene.current_scene === "play") ? true : false;
 };
 
 ObjectEye.prototype.onCollision = function(obj){
@@ -52,7 +53,6 @@ ObjectEye.prototype.onCollision = function(obj){
 		}
 	}
 };
-
 
 // 現状、表示UIとしてしか使ってないので、当たり判定不要
 ObjectEye.prototype.isCollision = function() {
