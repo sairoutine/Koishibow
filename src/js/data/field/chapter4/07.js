@@ -14,6 +14,39 @@ module.exports = {
 	background: "chapter4-07-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_07_40110"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "merry", "exp": "merry-reaction_03", "serif":_("うーんいないわねえ")},
+						{"chara": "koishi", "exp": "look_top", "serif":_("友達？")},
+						{"chara": "merry", "exp": "merry-reaction_06", "serif":_("そう")},
+						{"chara": "merry", "exp": "merry-reaction_08", "serif":_("この辺にいるような気はするんだけどなあ")},
+						{"chara": "merry", "exp": "merry-reaction_05", "serif":_("れんこー、って叫んでくれる？")},
+						{"chara": "merry", "exp": "merry-reaction_09", "serif":_("私喉が悪くて")},
+						{"chara": "koishi", "exp": "yes", "serif":_("いいよ")},
+						{"chara": "koishi", "exp": "look_top", "serif":_("れんこーっ")},
+						{"chara": "koishi", "exp": null, "serif":_("......")},
+						{"chara": "koishi", "exp": "wait", "serif":_("いないね")},
+						{"chara": "merry", "exp": "merry-reaction_03", "serif":_("いないね")},
+						{"chara": "merry", "exp": "merry-reaction_03停止", "serif":_("携帯もないしなあ")},
+						{"chara": "merry", "exp": "merry-reaction_08", "serif":_("なにかいい方法ないかしら")},
+						{"chara": "koishi", "exp": "look_front", "serif":_("あれ？")},
+						{"chara": "koishi", "exp": null, "serif":_("これひょっとして")},
+						{"chara": "merry", "exp": "merry-reaction_05", "serif":_("あ！")},
+						{"chara": "merry", "exp": "merry-reaction_07", "serif":_("それがさっき言ってたものよ")},
+						{"chara": "koishi", "exp": "look_front", "serif":_("お友達？")},
+						{"chara": "merry", "exp": "merry-reaction_09", "serif":_("......そっちじゃなくて")},
+						{"chara": "merry", "exp": "merry-reaction_07", "serif":_("カセットテープを流す機械")},
+						{"chara": "koishi", "exp": "look_front", "serif":_("これがそれ？")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_07_40110"]}
+			],
+		]},
 	],
 	objects: [
 		{
@@ -27,7 +60,7 @@ module.exports = {
 			next_field_name: "chapter4_04",
 		},
 		{
-			no: ++I,
+			no: "merry",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "メリー",
 			loop: true,
