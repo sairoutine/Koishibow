@@ -43,7 +43,7 @@ module.exports = {
 			loop: true,
 			serif_back: [],
 			serif: [
-				{"chara": "koishi","serif":_("テスト")},
+				{"chara": "merry", "exp": "merry-reaction_08", "serif":_("目的地はここから東の方角みたいね")},
 			],
 			x: 1160*2/3, y: 505*2/3,
 			anime1: "merry-wait",

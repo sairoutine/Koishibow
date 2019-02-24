@@ -44,7 +44,7 @@ module.exports = {
 			loop: true,
 			serif_back: [],
 			serif: [
-				{"chara": "koishi","serif":_("テスト")},
+				{"chara": "merry", "exp": "merry-reaction_06", "serif":_("わからなかったらカンでもいいのよ")},
 			],
 			x: 1160*2/3, y: 505*2/3,
 			anime1: "merry-wait",
@@ -63,7 +63,7 @@ module.exports = {
 			loop: true,
 			serif_back: [],
 			serif: [
-				{"chara": "koishi","serif":_("テスト")},
+				{"chara": "renko", "exp": "renko-reaction_06", "serif":_("ここをキャンプ地としましょ")},
 			],
 			x: 960*2/3, y: 505*2/3,
 			anime1: "renko-wait",
