@@ -35,7 +35,9 @@ module.exports = {
 			height: 10,
 			next_field_name: "chapter4_26",
 		},
-
+		/*
+				{"id": "chapter4-23-show_tape4", "save": true},
+				*/
 	],
 };
 

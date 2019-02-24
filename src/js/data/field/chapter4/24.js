@@ -14,6 +14,32 @@ module.exports = {
 	background: "chapter4-24-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_24_40400"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "koishi", "exp": "look_top", "serif":_("木ばっかり！")},
+						{"chara": "merry", "exp": "merry-reaction_09", "serif":_("竹って言うのよ")},
+						{"chara": "merry", "exp": "merry-reaction_03", "serif":_("ちょっと疲れたわ")},
+						{"chara": "merry", "exp": null, "serif":_("休憩しましょ")},
+						{"chara": "koishi", "exp": "yes", "serif":_("うん")},
+						{"chara": "merry", "exp": "merry-reaction_08", "serif":_("そうだわ")},
+						{"chara": "merry", "exp": null, "serif":_("どこかこの辺りにテープを落としたの")},
+						{"chara": "merry", "exp": null, "serif":_("新品の――")},
+						{"chara": "merry", "exp": null, "serif":_("音の入っていないテープよ")},
+						{"chara": "merry", "exp": "merry-reaction_05", "serif":_("もし見つけたら拾っておいて")},
+						{"chara": "koishi", "exp": "yes", "serif":_("わかったー")},
+						{"chara": "koishi", "exp": "look_top", "serif":_("れんこはいいの？")},
+						{"chara": "merry", "exp": "merry-reaction_06", "serif":_("いまはいいわ")},
+						{"chara": "merry", "exp": "merry-reaction_09", "serif":_("好きにさせてあげましょ")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_24_40400"]}
+			],
+		]},
 	],
 	objects: [
 		{
