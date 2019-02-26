@@ -14,6 +14,20 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_03_10110"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "koishi", "exp": "look_front", "serif":_("わー")},
+						{"chara": "koishi", "exp": null, "serif":_("なつかしい")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_03_10110"]}
+			],
+		]},
 	],
 	objects: [
 		{
@@ -39,7 +53,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "斧",
 			serif: [
-				{"chara": "koishi","serif":_("test")},
+				{"chara": "koishi","serif":_("TODO: ")},
 			],
 			x: 282, y: 447,
 			scale: 2/3,

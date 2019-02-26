@@ -23,6 +23,21 @@ module.exports = {
 	leftField: "chapter5_01",
 	background: "chapter5-02-bg-001",
 	walkSound: "walking_bare_default",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_hospital_carridor1_50090"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "koishi", "exp": "look_front", "serif":_("まっくろ！")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_hospital_carridor1_50090"]}
+			],
+		]},
+	],
 	objects: [
 		{
 			no: ++I,
@@ -30,7 +45,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ストレッチャー",
 			serif: [
-				{"chara": "koishi","serif":_("")},
+				{"chara": "koishi","serif":_("死んだ人を運ぶの")},
 			],
 			x: 814,
 			y: 608,
@@ -47,7 +62,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
 			serif: [
-				{"chara": "koishi","serif":_("")},
+				{"chara": "koishi","serif":_("TODO: ")},
 			],
 			x: 279,
 			y: 378,
@@ -59,11 +74,12 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "救急箱",
 			serif: [
-				{"chara": "koishi","serif":_("")},
+				{"chara": "koishi","serif":_("怪我なんてしてないもーん")},
 			],
 			x: 281,
 			y: 280,
 			scale: 0.7,
+			action_name: "look_front",
 			sound_name: "chapter0-hospital_corridor1-sound_aidkit",
 			target_x: 278,
 			target_y: 465
@@ -95,7 +111,7 @@ module.exports = {
 			name: "ジャーナル",
 			serif: null,
 			serif_back: [
-				{"chara": "koishi", "serif":_("test")},
+				{"chara": "koishi", "serif":_("TODO: ")},
 			],
 			x: 500,
 			y: 640,

@@ -56,6 +56,7 @@ module.exports = {
 			height: 350,
 			action_name: null,
 			sound_name: null,
+			show_if_event_true: "chapter5-12-orin_talk1", // お燐との1度目の会話が終わったら登場
 		},
 		{
 			no: ++I,

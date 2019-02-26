@@ -15,18 +15,55 @@ module.exports = {
 	background: "chapter5-12-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_12_10185"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "orin","exp": "orin-wait", "serif": _("うにゃーっ")},
+						{"chara": "koishi","exp": "look_front", "serif": _("ねこちゃん！")},
+						{"chara": "koishi","exp": null, "serif": _("にゃんにゃ")},
+						{"chara": "orin","exp": "orin-wait", "serif": _("んみゃ")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_12_10185"]}
+			],
+		]},
+
+
 	],
 	objects: [
 		{
-			no: ++I,
+			no: "orin",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "おりん",
 			loop: true,
 			serif_back: [
-				{"chara": I, "exp": "orin-ura_reaction_01", "serif":_("test")},
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-orin-limit", 2], "serifs": [
+					[
+						{"chara": "orin","exp": "orin-ura_wait", "serif": _("あら！")},
+						{"chara": "orin","exp": "orin-ura_wait", "serif": _("こいし様おひさしぶりですね")},
+						{"chara": "koishi","exp": "look_front", "serif": _("えっ")},
+						{"chara": "koishi","exp": null, "serif": _("私のこと知ってるの")},
+						{"chara": "orin","exp": "orin-ura_wait", "serif": _("あたりまえじゃないですか")},
+						{"chara": "orin","exp": "orin-ura_wait", "serif": _("おそうじちゅうなんです")},
+						{"chara": "koishi","exp": "yes", "serif": _("そうなんだ")},
+						{"chara": "orin","exp": "orin-ura_reaction_01", "serif": _("ご主人様に御用ですか？")},
+						{"chara": "orin","exp": null, "serif": _("あいにくお出かけされていますが")},
+						{"chara": "koishi","exp": "look_bottom", "serif": _("べつに")},
+						{"id": "chapter5-12-orin_talk1", "save": true}, // お燐との1度目の会話
+					],
+					[
+						{"chara": "koishi","exp": "look_top", "serif": _("ねえ鍵知ってる？")},
+						{"chara": "orin","exp": "orin-ura_reaction_01", "serif": _("なんの鍵ですか？")},
+						{"chara": "orin","exp": null, "serif": _("屋敷の鍵はみんなご主人様が持っているはずですケド")},
+					],
+				]},
 			],
 			serif: [
-				{"chara": I, "exp": "orin-wait", "serif":_("test")},
+				{"chara": "orin","exp": "orin-wait", "serif": _("なーん")},
 			],
 			x: 800, y: 450,
 			scale: 2/3,

@@ -14,6 +14,22 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_06_10130"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "oku", "serif":_("ぐわあ、がー、ぐわあ")},
+						{"chara": "koishi", "exp": "look_front", "serif":_("なんだろ！")},
+						{"chara": "koishi", "exp": "yes", "serif":_("へんなこえ！")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_06_10130"]}
+			],
+		]},
+
 	],
 	objects: [
 		{
@@ -77,6 +93,18 @@ module.exports = {
 			height: 550,
 			next_field_name: "chapter5_05",
 		},
+		{
+			no: "oku",
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "お空(上)",
+			serif: null,
+			width: 0, height: 0,
+			x: 480, y: 0,
+		},
+
+
+
 	],
 };
 
