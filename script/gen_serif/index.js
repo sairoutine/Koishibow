@@ -27,11 +27,21 @@ for (var i = 0, len = lines.length; i < len; i++) {
 	else if (chara === "koishi") {
 		reaction = '"' + reaction.replace(/^reaction\_/g , "") + '"';
 	}
+	else if (chara === "") {
+		reaction = "";
+	}
 	else {
 		reaction = '"' + chara + "-" + reaction + '"';
 	}
 
-	out.push('{"chara": "' + chara + '", "exp": ' + reaction + ', "serif":_("' + serif1 + '")},');
+	chara = '"chara": "' + chara + '",';
+
+	if (reaction !== "") {
+		reaction = '"exp": ' + reaction + ', ' 
+	}
+
+
+	out.push('{' + chara + reaction + '"serif": _("' + serif1 + '")},');
 }
 
 fs.writeFileSync(OUTPUT_FILE_NAME, out.join("\n"));
