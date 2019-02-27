@@ -50,15 +50,34 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
-			no: ++I,
+			no: "animal_hashi",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ハシビロコウ",
 			loop: true,
 			serif_back: [
-				{"chara": I, "exp": "animal_hashi-ura_reaction_01", "serif":_("test")},
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_10-animal_hashi-limit", 2], "serifs": [
+					[
+						{"chara": "koishi","exp": null, "serif": _("すごい顔だね")},
+						{"chara": "animal_hashi","exp": "animal_hashi-ura_reaction_01", "serif": _("なんだお前は")},
+						{"chara": "animal_hashi","exp": null, "serif": _("失礼だな")},
+						{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
+						{"id": "chapter5-06-show_journal", "save": true},
+					],
+					[
+						{"chara": "koishi","exp": null, "serif": _("なんで怒ってるの")},
+						{"chara": "animal_hashi","exp": "animal_hashi-ura_wait", "serif": _("いや......")},
+						{"chara": "animal_hashi","exp": "animal_hashi-ura_wait", "serif": _("別に......")},
+						{"chara": "koishi","exp": "look_front", "serif": _("おこってないのにそんな顔なんですか")},
+						{"chara": "animal_hashi","exp": "animal_hashi-ura_reaction_01", "serif": _("お前失礼だな")},
+						{"chara": "animal_hashi","exp": null, "serif": _("丁寧に聞いても駄目だぞ")},
+						{"chara": "koishi","exp": "yes", "serif": _("はい")},
+					],
+				]},
 			],
 			serif: [
-				{"chara": I, "exp": "animal_hashi-wait", "serif":_("test")},
+				{"chara": "animal_hashi","exp": "animal_hashi-wait", "serif": _("キュウキュウ")},
+				{"chara": "animal_hashi","exp": "animal_hashi-wait", "serif": _("ココココココココ")},
+				{"chara": "koishi","exp": "look_bottom", "serif": _("こわい")},
 			],
 			x: 750, y: 400,
 			scale: 2/3,
@@ -102,9 +121,15 @@ module.exports = {
 			width: 0, height: 0,
 			x: 480, y: 0,
 		},
-
-
-
+		{
+			no: ++I,
+			image: "paper",
+			type: CONSTANT.JOURNAL_FRONT_TYPE,
+			x: 258, y: 689,
+			scale: 2/3,
+			journal_id: "journal0XX", // TODO: ジャーナルを設定
+			show_if_event_true: "chapter5-06-show_journal",
+		},
 	],
 };
 

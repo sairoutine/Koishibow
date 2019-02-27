@@ -14,46 +14,70 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_12_10185"], "process": [
+			// お燐と1度目の会話が済んでいる
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_10_10230"], "process": [
+					// 会話 10230 再生済み
+					[
+					],
+					// 会話 10230 未再生
+					[
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "animal_hari","exp": "animal_hari-wait", "serif": _("ピッ")},
+								{"chara": "koishi","exp": "wait", "serif": _("......")},
+							]
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_10_10230"]}
+					],
+				]},
+			],
+			// お燐と1度目の会話が済んでいない
+			[
+			],
+		]},
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-09-oku_talk1"], "process": [
+			// お空と1度目の会話が済んでいる
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_10_10180"], "process": [
+					// 会話 10180 再生済み
+					[
+					],
+					// 会話 10180 未再生
+					[
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "animal_down","serif": _("わんわん！")},
+								{"chara": "animal_down","serif": _("があっがあっ")},
+								{"chara": "animal_down","serif": _("ぶるるぶるる")},
+								{"chara": "animal_right","serif": _("いいいいいっ")},
+								{"chara": "animal_down","serif": _("うぴゃーっうぴゃーっ")},
+								{"chara": "animal_right","serif": _("ぐるるるるる")},
+								{"chara": "animal_down","serif": _("ぴいーっぴいーっ")},
+								{"chara": "animal_right","serif": _("チチチチイ")},
+								{"chara": "animal_right","serif": _("んなぁお")},
+								{"chara": "koishi","exp": "look_front", "serif": _("うるさい！")},
+								{"chara": "koishi","exp": null, "serif": _("動物の声だわ")},
+								{"chara": "koishi","exp": null, "serif": _("楽しそう！")},
+								{"chara": "oku", "serif": _("があー")},
+								{"chara": "koishi","exp": "yes", "serif": _("まずあの子を助けなきゃ")},
+								{"chara": "koishi","exp": null, "serif": _("あの部屋へ行かなきゃ")},
+								{"chara": "animal_right","serif": _("みゃあぉう")},
+							]
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_10_10180"]}
+					],
+				]},
+			],
+			// お空と1度目の会話が済んでいない
+			[
+			],
+		]},
+
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_10_10140"], "process": [
 			// すでにアクセス済み
 			[
-				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-09-oku_talk1"], "process": [
-					// お空と1度目の会話が済んでいる
-					[
-						{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_10_10140"], "process": [
-							// 会話 10180 再生済み
-							[
-							],
-							// 会話 10180 未再生
-							[
-								{"type": "process", "value": "playTalk", "arguments": [
-									[
-										{"chara": "animal_down","serif": _("わんわん！")},
-										{"chara": "animal_down","serif": _("があっがあっ")},
-										{"chara": "animal_down","serif": _("ぶるるぶるる")},
-										{"chara": "animal_right","serif": _("いいいいいっ")},
-										{"chara": "animal_down","serif": _("うぴゃーっうぴゃーっ")},
-										{"chara": "animal_right","serif": _("ぐるるるるる")},
-										{"chara": "animal_down","serif": _("ぴいーっぴいーっ")},
-										{"chara": "animal_right","serif": _("チチチチイ")},
-										{"chara": "animal_right","serif": _("んなぁお")},
-										{"chara": "koishi","exp": "look_front", "serif": _("うるさい！")},
-										{"chara": "koishi","exp": null, "serif": _("動物の声だわ")},
-										{"chara": "koishi","exp": null, "serif": _("楽しそう！")},
-										{"chara": "oku", "serif": _("があー")},
-										{"chara": "koishi","exp": "yes", "serif": _("まずあの子を助けなきゃ")},
-										{"chara": "koishi","exp": null, "serif": _("あの部屋へ行かなきゃ")},
-										{"chara": "animal_right","serif": _("みゃあぉう")},
-									]
-								]},
-								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_10_10180"]}
-							],
-						]},
-					],
-					// お空と1度目の会話が済んでいない
-					[
-					],
-				]},
 			],
 			// まだ未アクセス
 			[
@@ -88,15 +112,33 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
-			no: ++I,
+			no: "animal_hari",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ハリネズミ",
 			loop: true,
 			serif_back: [
-				{"chara": I, "exp": "animal_hari-ura_reaction_01", "serif":_("test")},
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_10-animal_hari-limit", 2], "serifs": [
+					[
+						{"chara": "animal_hari","exp": "animal_hari-ura_reaction_01", "serif": _("......")},
+						{"chara": "koishi","exp": "look_front", "serif": _("どうしたの")},
+						{"chara": "animal_hari","exp": null, "serif": _("......")},
+						{"chara": "animal_hari","exp": "animal_hari-ura_wait", "serif": _("あなただあれ")},
+						{"chara": "koishi","exp": "yes", "serif": _("こいし")},
+						{"chara": "koishi","exp": null, "serif": _("......")},
+						{"chara": "koishi","exp": null, "serif": _("あなたは？")},
+						{"chara": "animal_hari","exp": "animal_hari-ura_wait", "serif": _("ハリネズミですけども......")},
+						{"chara": "koishi","exp": "yes", "serif": _("そっか")},
+						{"id": "chapter5-10-show_journal", "save": true},
+					],
+					[
+						{"chara": "animal_hari","exp": "animal_hari-ura_reaction_01", "serif": _("そっとしといてください......")},
+						{"chara": "koishi","exp": "look_bottom", "serif": _("ごめん")},
+					],
+				]},
 			],
 			serif: [
-				{"chara": I, "exp": "animal_hari-wait", "serif":_("test")},
+				{"chara": "animal_hari","exp": null, "serif": _("ピピッ")},
+				{"chara": "animal_hari","exp": null, "serif": _("ピィ")},
 			],
 			x: 600, y: 300,
 			scale: 2/3,
@@ -147,6 +189,15 @@ module.exports = {
 			serif: null,
 			width: 0, height: 0,
 			x: 960, y: 360,
+		},
+		{
+			no: ++I,
+			image: "paper",
+			type: CONSTANT.JOURNAL_FRONT_TYPE,
+			x: 258, y: 689,
+			scale: 2/3,
+			journal_id: "journal0XX", // TODO: ジャーナルを設定
+			show_if_event_true: "chapter5-10-show_journal",
 		},
 	],
 };

@@ -14,6 +14,13 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "process", "value": "playTalk", "arguments": [
+			[
+				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("ぅぅぅ")},
+				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わん")},
+				{"chara": "koishi","exp": "look_front", "serif": _("......こわくないけどね")},
+			]
+		]},
 	],
 	objects: [
 		{
@@ -34,15 +41,43 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
-			no: ++I,
+			no: "animal_shiba",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "イヌ",
 			loop: true,
 			serif_back: [
-				{"chara": I, "exp": "animal_shiba-ura_reaction_01", "serif":_("test")},
+				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["34"], "serifs": [
+					// ハシゴを持ってる
+					[
+						{"chara": "koishi","exp": "look_front", "serif": _("犬ちゃん")},
+						{"chara": "animal_shiba","exp": "animal_shiba-ura_wait", "serif": _("犬って何よ")},
+						{"chara": "koishi","exp": "yes", "serif": _("はしご！")},
+						{"chara": "animal_shiba","exp": null, "serif": _("ほんと？"), "option": {"useItem": "34"}},
+						// TODO: 暗転する {"chara": "chapter5-07-event-01","exp": "chapter5-07-event-01-obj01", "serif": _("ほんとだ！")},
+						{"chara": "animal_shiba","exp": null, "serif": _("これでよし！")},
+						{"chara": "animal_shiba","exp": null, "serif": _("助かったわ")},
+						{"chara": "animal_shiba","exp": null, "serif": _("ありがとう、こいしちゃん")},
+						{"chara": "koishi","exp": "look_front", "serif": _("あれー")},
+						{"chara": "koishi","exp": "look_front", "serif": _("名前知ってるの")},
+					],
+					// ハシゴを持ってない
+					[
+						{"chara": "animal_shiba","exp": "animal_shiba-ura_wait", "serif": _("こまったわ")},
+						{"chara": "koishi","exp": "look_front", "serif": _("なにがこまったの")},
+						{"chara": "animal_shiba","exp": "animal_shiba-ura_wait", "serif": _("はしごが無いのよ")},
+						{"chara": "animal_shiba","exp": "animal_shiba-ura_reaction_01", "serif": _("ほんとうはここにかけてあるのに")},
+						{"chara": "koishi","exp": "yes", "serif": _("ふーん")},
+						{"chara": "koishi","exp": null, "serif": _("なんで？")},
+						{"chara": "animal_shiba","exp": "animal_shiba-ura_reaction_01", "serif": _("上に行かなきゃいけないのよー")},
+						{"chara": "koishi","exp": "yes", "serif": _("ふーん")},
+						{"id": "chapter5-07-animal_shiba_ura_talk1", "save": true},
+					],
+				]},
 			],
 			serif: [
-				{"chara": I, "exp": "animal_shiba-wait", "serif":_("test")},
+				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("ぅわん")},
+				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("はフはフ")},
+				{"chara": "koishi","exp": "look_front", "serif": _("かわいー")},
 			],
 			x: 600, y: 300,
 			scale: 2/3,
