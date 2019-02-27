@@ -124,6 +124,26 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
+		{
+			no: ++I,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "本",
+			serif: [
+				{"chara": "koishi","exp": null, "serif": _("日記！")},
+				{"chara": "koishi","exp": null, "serif": _("これお姉ちゃんの")},
+				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
+				{"chara": "koishi","exp": null, "serif": _("死んだんじゃなかったっけ......"), "option": {"getJournal": "journal0XX"}}, // TODO: ジャーナルを設定
+			],
+			x: 340, y: 530,
+			scale: 0.7,
+			anime1: "chapter0-myroom-obj-02-01-obj01",
+			anime2: "chapter0-myroom-obj-02-01-obj02",
+			anime3: "chapter0-myroom-obj-02-01-obj03",
+			width: 80, height: 80,
+			action_name: "look_bottom",
+			sound_name: "chapter0-myroom-open_book",
+			position_type: "lying",
+		},
 
 
 
