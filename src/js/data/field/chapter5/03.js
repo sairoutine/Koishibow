@@ -14,18 +14,30 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_default",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_03_10110"], "process": [
-			// すでにアクセス済み
-			[],
-			// まだ未アクセス
+		{"type": "criteria", "value": "existsItem", "arguments": ["32"], "process": [
+			// 鍵を持っている
 			[
-				{"type": "process", "value": "playTalk", "arguments": [
+				// TODO: イベント表示
+				{"chara": "koishi","exp": "look_bottom", "serif": _("なにかしらこれ")},
+				{"chara": "koishi","exp": null, "serif": _("あっちからきたけど")},
+				{"id": "chapter5-03-event-10630", "save": true}, // アライグマ表示
+			],
+			// 鍵を持っていない
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_03_10110"], "process": [
+					// すでにアクセス済み
+					[],
+					// まだ未アクセス
 					[
-						{"chara": "koishi", "exp": "look_front", "serif":_("わー")},
-						{"chara": "koishi", "exp": null, "serif":_("なつかしい")},
-					]
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "koishi", "exp": "look_front", "serif":_("わー")},
+								{"chara": "koishi", "exp": null, "serif":_("なつかしい")},
+							]
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_03_10110"]}
+					],
 				]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_03_10110"]}
 			],
 		]},
 	],
@@ -52,8 +64,60 @@ module.exports = {
 			image: "chapter5-03-obj-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "斧",
+			serif_back: [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-03-event-10630"], "serifs": [
+					[
+						{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
+						{"chara": "koishi","exp": null, "serif": _("......")},
+						{"chara": "koishi","exp": null, "serif": _("......")},
+					],
+					[
+					],
+				]},
+
+			],
 			serif: [
-				{"chara": "koishi","serif":_("TODO: ")},
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-03-event-10630"], "serifs": [
+					[
+
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-myroom-araiguma_talk1"], "serifs": [
+							// お燐表示済
+							[
+								{"chara": "koishi","serif":"", "junction": ["斧をとる", "とらない"]},
+								{"type": "junction_serif", "serifs": [
+									[
+										{"chara": "koishi","exp": "touch", "serif": _("一応ね")},
+										{"chara": "koishi","exp": "yes", "serif": _("ねんのため......")},
+									],
+									[
+										{"chara": "koishi","exp": "look_bottom", "serif": _("わたしわるいひとかも......")},
+										{"chara": "koishi","exp": null, "serif": _("いばりんぼで")},
+										{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
+									],
+								]},
+							],
+							// お燐未表示
+							[
+								{"chara": "koishi","exp": "yes", "serif": _("いまはそれどころじゃないわ")},
+							],
+						]},
+					],
+					[
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-13-animal_kuro_talk1"], "serifs": [
+							// 豹と会話した後
+							[
+								{"chara": "koishi","exp": "touch", "serif": _("これ！")},
+								{"chara": "koishi","exp": null, "serif": _("すてき"), "option": {"getItem": "33"}},
+								{"chara": "koishi","exp": null, "serif": _("強そうね！")},
+								{"id": "chapter5-07-show_animal_komodo", "save": true},
+							],
+							// 豹と会話した後ではない
+							[
+								{"chara": "koishi","exp": null, "serif": _("あぶないわ")},
+							],
+						]},
+					],
+				]},
 			],
 			x: 282, y: 447,
 			scale: 2/3,

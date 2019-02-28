@@ -30,6 +30,29 @@ module.exports = {
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_myroom_50025"]}
 			],
 		]},
+
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-03-event-10630"], "process": [
+			// アライグマ出現済み
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_myroom_10665"], "process": [
+					// すでにアクセス済み
+					[],
+					// まだ未アクセス
+					[
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "animal_araiguma","exp": "animal_araiguma-wait", "serif": _("くくくくく")},
+								{"chara": "animal_araiguma","exp": "animal_araiguma-wait", "serif": _("キュ")},
+							]
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_myroom_10665"]}
+					],
+				]},
+			],
+			// アライグマ未出現
+			[
+			],
+		]},
 	],
 	objects: [
 		{
@@ -130,6 +153,47 @@ module.exports = {
 			action_name: "look_front",
 			sound_name: null,
 		},
+		{
+			no: "animal_araiguma",
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "アライグマ",
+			loop: true,
+			serif_back: [
+				{"chara": "koishi","exp": "look_front", "serif": _("ちょっと！")},
+				{"chara": "koishi","exp": null, "serif": _("目玉を転がしたのあなた？")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("目玉？")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("知らないよおそんなの")},
+				{"chara": "koishi","exp": "look_top", "serif": _("ほんとう？")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("でも目玉かあ")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01", "serif": _("見せてくれよ")},
+				{"chara": "koishi","exp": "yes", "serif": _("うん"), "option": {"useItem": "31"}},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_02", "serif": _("グシグシグシ")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01", "serif": _("ほら、磨いたぞ！"), "option": {"getItem": "31"}},
+				{"chara": "koishi","exp": "look_front", "serif": _("えぇ")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("この目玉誰から引っこ抜いたんだろうなあ")},
+				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("どこかで見たんだけどなあ")},
+				{"chara": "koishi","exp": null, "serif": _("......")},
+				{"id": "chapter5-myroom-araiguma_talk1", "save": true},
+			],
+			serif: [
+			],
+			x: 600, y: 300,
+			scale: 2/3,
+			anime1: "animal_araiguma-wait",
+			anime2: null,
+			anime3: null,
+			anime4: "animal_araiguma-reverse_ura",
+			anime5: "animal_araiguma-ura_wait",
+			anime6: "animal_araiguma-reverse_omote",
+			width:  150,
+			height: 350,
+			action_name: null,
+			sound_name: null,
+			not_show_if_event_true: "chapter5-03-event-10630",
+		},
+
+
 	],
 };
 

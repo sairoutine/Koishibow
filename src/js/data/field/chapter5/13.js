@@ -17,6 +17,21 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_13_10470"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "animal_kuro","exp": "animal_kuro-wait", "serif": _("......")},
+						{"chara": "animal_kuro","exp": "animal_kuro-wait", "serif": _("......")},
+						{"chara": "animal_kuro","exp": "animal_kuro-wait", "serif": _("ぷごぅ")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_13_10470"]}
+			],
+		]},
 	],
 	objects: [
 		{
@@ -37,15 +52,29 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
-			no: ++I,
+			no: "animal_kuro",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ヒョウ",
 			loop: true,
 			serif_back: [
-				{"chara": I, "exp": "animal_kuro-ura_reaction_01", "serif":_("test")},
+				{"chara": "animal_kuro","exp": "animal_kuro-ura_wait", "serif": _("......")},
+				{"chara": "animal_kuro","exp": "animal_kuro-ura_wait", "serif": _("......")},
+				{"chara": "koishi","exp": "look_front", "serif": _("ぜんぜん喋んない！")},
+				{"chara": "animal_kuro","exp": "animal_kuro-ura_wait", "serif": _("何よ")},
+				{"chara": "koishi","exp": "yes", "serif": _("なんだ")},
+				{"chara": "animal_kuro","exp": "animal_kuro-ura_reaction_01", "serif": _("強い生き物は鳴かないのよ")},
+				{"chara": "koishi","exp": "look_front", "serif": _("かっこいい")},
+				{"chara": "animal_kuro","exp": "animal_kuro-ura_wait", "serif": _("ふふん")},
+				{"chara": "animal_kuro","exp": "animal_kuro-ura_reaction_01", "serif": _("私みたいに女の武器を持てば――")},
+				{"chara": "animal_kuro","exp": null, "serif": _("誰だっていうことを聞くわ")},
+				{"chara": "koishi","exp": "look_front", "serif": _("ほんと！？")},
+				{"chara": "koishi","exp": null, "serif": _("武器かー")},
+				{"id": "chapter5-13-animal_kuro_talk1", "save": true},
 			],
 			serif: [
-				{"chara": I, "exp": "animal_kuro-wait", "serif":_("test")},
+				{"chara": "animal_kuro","exp": "animal_kuro-wait", "serif": _("......")},
+				{"chara": "animal_kuro","exp": "animal_kuro-wait", "serif": _("......")},
+				{"chara": "koishi","exp": "look_front", "serif": _("ぜんぜん鳴かない！")},
 			],
 			x: 700, y: 500,
 			scale: 2/3,

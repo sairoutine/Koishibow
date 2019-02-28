@@ -14,6 +14,31 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-04-show_animal_mogura"], "process": [
+			// もぐら表示済み
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_04_10580"], "process": [
+					// すでにアクセス済み
+					[],
+					// まだ未アクセス
+					[
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "animal_mogura","exp": "animal_mogura-wait", "serif": _("ピぃーっ")},
+								{"chara": "koishi","exp": "look_front", "serif": _("あはは！")},
+								{"chara": "koishi","exp": null, "serif": _("おめめがヘン！")},
+							]
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_04_10580"]}
+					],
+				]},
+			],
+			// もぐら未表示
+			[
+			],
+		]},
+
+
 	],
 	objects: [
 		{
@@ -53,15 +78,39 @@ module.exports = {
 			x: 120, y: 300,
 		},
 		{
-			no: ++I,
+			no: "animal_mogura",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "モグラ",
 			loop: true,
 			serif_back: [
-				{"chara": I, "exp": "animal_mogura-ura_reaction_01", "serif":_("test")},
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_04-animal_mogura-limit", 2], "serifs": [
+					[
+						{"chara": "koishi","exp": "look_front", "serif": _("あなたは？")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("もぐら")},
+						{"chara": "koishi","exp": "yes", "serif": _("もぐらって初めて見た")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("こっちもさ")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("聞いていたよりひどい")},
+						{"chara": "koishi","exp": "look_top", "serif": _("何が？")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_reaction_01", "serif": _("早くいけって")},
+						{"chara": "animal_mogura","exp": null, "serif": _("疲れてるんだ")},
+						{"chara": "koishi","exp": "yes", "serif": _("あ、うん")},
+						{"chara": "koishi","exp": null, "serif": _("おうまさんは")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("あっちへ行って")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("そっちへ走ってった")},
+						{"chara": "koishi","exp": "yes", "serif": _("そっか")},
+						{"chara": "koishi","exp": null, "serif": _("ありがとう")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_reaction_01", "serif": _("とっとと終わらせてくれ")},
+					],
+					[
+						{"chara": "koishi","exp": "look_front", "serif": _("ねえねえ")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("スピーッ")},
+						{"chara": "koishi","exp": "look_bottom", "serif": _("寝ちゃった")},
+					],
+				]},
 			],
 			serif: [
-				{"chara": I, "exp": "animal_mogura-wait", "serif":_("test")},
+				{"chara": "animal_mogura","exp": "animal_mogura-wait", "serif": _("きーきー")},
+				{"chara": "koishi","exp": "look_front", "serif": _("あはは、へんなかおー")},
 			],
 			x: 170, y: 500,
 			scale: 2/3,
@@ -75,11 +124,18 @@ module.exports = {
 			height: 300,
 			action_name: null,
 			sound_name: null,
+			show_if_event_true: "chapter5-04-show_animal_mogura",
 		},
 
-
-
-
+		{
+			no: ++I,
+			image: "paper",
+			type: CONSTANT.JOURNAL_FRONT_TYPE,
+			x: 258, y: 689,
+			scale: 2/3,
+			journal_id: "journal0XX", // TODO: ジャーナルを設定
+			show_if_event_true: "chapter5_04_10580",
+		},
 	],
 };
 

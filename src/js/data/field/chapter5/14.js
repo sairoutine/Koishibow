@@ -28,7 +28,8 @@ module.exports = {
 			name: "鍵",
 			serif: null,
 			serif_back: [
-				{"chara": "koishi", "serif":_("test")},
+				{"chara": "koishi","exp": "look_bottom", "serif": _("あったーっ"), "option": {"getItem": "32"}},
+				{"chara": "koishi","exp": "yes", "serif": _("これで友達を助けられるわ")},
 			],
 			x: 500,
 			y: 640,

@@ -14,6 +14,44 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-13-animal_kuro_talk1"], "process": [
+			// 黒豹との1度目の会話が終わったら
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_11_10495"], "process": [
+					// すでにアクセス済み
+					[
+					],
+					// まだ未アクセス
+					[
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "koishi","exp": "look_front", "serif": _("あ！")},
+								{"chara": "koishi","exp": null, "serif": _("逃げたわね")},
+							]
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_11_10495"]}
+					],
+				]},
+			],
+			// 黒豹との1度目の会話が終わってない
+			[
+			],
+		]},
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_11_10430"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "animal_kawa","exp": "animal_kawa-wait", "serif": _("これ早く隠して")},
+						{"chara": "animal_uma","exp": "animal_uma-wait", "serif": _("わかったわ")},
+						{"chara": "animal_kawa","exp": "animal_kawa-wait", "serif": _("お願いね")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_11_10430"]}
+			],
+		]},
 	],
 	objects: [
 		{
@@ -34,15 +72,32 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
-			no: ++I,
+			no: "animal_shiba",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "イヌ",
 			loop: true,
 			serif_back: [
-				{"chara": I, "exp": "animal_shiba-ura_reaction_01", "serif":_("test")},
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_11-animal_shiba-limit", 2], "serifs": [
+					[
+						{"chara": "koishi","exp": "look_front", "serif": _("なにしてるの")},
+						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait", "serif": _("なにも")},
+					],
+					[
+						{"chara": "animal_shiba","exp": "animal_shiba-ura_wait", "serif": _("なに")},
+						{"chara": "koishi","exp": "look_front", "serif": _("なんで教えてくれないの")},
+						{"chara": "koishi","exp": null, "serif": _("さっき何渡してたの")},
+						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait", "serif": _("......")},
+						{"chara": "animal_kawa","exp": null, "serif": _("言えません！")},
+						{"chara": "animal_kawa","exp": null, "serif": _("ご主人様にとめられているから")},
+						{"chara": "koishi","exp": "look_front", "serif": _("私だってご主人様でしょ")},
+						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait", "serif": _("......")},
+					],
+				]},
 			],
 			serif: [
-				{"chara": I, "exp": "animal_shiba-wait", "serif":_("test")},
+				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わふ")},
+				{"chara": "animal_uma","exp": "animal_uma-wait", "serif": _("イイーン")},
+				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わふぅ")},
 			],
 			x: 600, y: 300,
 			scale: 2/3,
@@ -56,7 +111,37 @@ module.exports = {
 			height: 350,
 			action_name: null,
 			sound_name: null,
+			not_show_if_event_true: "chapter5-13-animal_kuro_talk1", // 黒豹との1度目の会話が終わったら消える
 		},
+		{
+			no: ++I,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "ウマ",
+			loop: true,
+			serif_back: [
+				{"chara": I, "exp": "animal_uma-ura_reaction_01", "serif":_("test")},
+			],
+			serif: [
+				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わふ")},
+				{"chara": "animal_uma","exp": "animal_uma-wait", "serif": _("イイーン")},
+				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わふぅ")},
+			],
+			x: 600, y: 300,
+			scale: 2/3,
+			anime1: "animal_uma-wait",
+			anime2: null,
+			anime3: null,
+			anime4: "animal_uma-reverse_ura",
+			anime5: "animal_uma-ura_wait",
+			anime6: "animal_uma-reverse_omote",
+			width:  150,
+			height: 350,
+			action_name: null,
+			sound_name: null,
+			not_show_if_event_true: "chapter5-13-animal_kuro_talk1", // 黒豹との1度目の会話が終わったら消える
+		},
+
+
 		{
 			no: ++I,
 			image: null,
