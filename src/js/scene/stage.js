@@ -172,14 +172,38 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 
 	if(this.core.audio_loader.isPlayingBGM(field_data.bgm())) {
-		var sub_bgms = field_data.sub_bgms();
-		if (!sub_bgms) sub_bgms = [];
+		// 同じBGMのフィールドに遷移した場合、メインBGMは継続したままになる
 
+		// 元のフィールドのサブBGMだけ止める
 		this.core.audio_loader.stopBGMWithout(field_data.bgm());
+
+		// 今のフィールドのサブBGMだけ再生
+		this._playSubBGM();
 	}
 	else {
-		// BGM 止める
+		// メイン／サブ BGM 止める
 		this.core.audio_loader.stopBGM();
+
+		// メイン／サブ BGM 再生
+		var _this = this;
+		this.core.time_manager.setTimeout(function () {
+			// 60秒経過後にフィールドを移動していた場合、
+			// 移動先フィールドのBGM再生処理に任せる
+			if (_this.getFieldData() !== field_data) return;
+
+			// メインBGM 再生
+			_this.core.audio_loader.addBGM(field_data.bgm());
+
+			// サブBGM 再生
+			_this._playSubBGM();
+
+			// 60秒経つまでの間に、プレイヤーがサードアイを使用していた場合
+			if(_this.isUsingEye()) {
+				// メイン／サブ BGMはミュートにしておく
+				// サードアイを解除したときに再生されるようにするため
+				_this._muteMainAndSubBGM();
+			}
+		}, 60);
 	}
 
 	// フィールド移動時にフェードイン／アウトする
@@ -231,7 +255,7 @@ SceneStage.prototype.switchEyeOff = function() {
 
 	// BGM を通常に戻す
 	this.core.audio_loader.stopBGM("using_3rdeye");
-	this.core.audio_loader.unMuteWithFadeInAllBGM(3); // N秒かけてフェードイン
+	this.core.audio_loader.unMuteAllBGM();
 
 	// ステージ上のオブジェクトに 3rd eye を使用解除したことを通知
 	this.piece_container.notifyUnUse3rdEye();
@@ -244,13 +268,8 @@ SceneStage.prototype.cantUseEye = function() {
 	this.changeSubScene("talk_with_object", CANT_USE_3RDEYE_SERIF_LIST);
 };
 
-SceneStage.prototype._playBGM = function() {
+SceneStage.prototype._playSubBGM = function() {
 	var field_data = this.getFieldData();
-	if(!this.core.audio_loader.isPlayingBGM(field_data.bgm())) {
-		// メインBGM 再生
-		this.core.audio_loader.changeBGM(field_data.bgm());
-	}
-
 	var sub_bgms = field_data.sub_bgms();
 	if (!sub_bgms) sub_bgms = [];
 
@@ -264,15 +283,25 @@ SceneStage.prototype._playBGM = function() {
 	}
 };
 
+SceneStage.prototype._muteMainAndSubBGM = function() {
+	var field_data = this.getFieldData();
+
+	var sub_bgms = field_data.sub_bgms();
+	if (!sub_bgms) sub_bgms = [];
+
+	// サブBGM ミュート
+	for (var i = 0, len = sub_bgms.length; i < len; i++) {
+		var sub_bgm = sub_bgms[i];
+		this.core.audio_loader.muteBGM(sub_bgm);
+	}
+
+	// メインBGM ミュート
+	this.core.audio_loader.muteBGM(field_data.bgm());
+};
+
 SceneStage.prototype.update = function() {
 	var field_data = this.getFieldData();
 	var i, len;
-
-	// BGM 再生
-	if(!this.isUsingEye() && this.frame_count === 60) {
-		this._playBGM();
-	}
-
 
 	// chapter 0 で3rd eye を使用していないときのみ
 	// ランダムノイズ再生
