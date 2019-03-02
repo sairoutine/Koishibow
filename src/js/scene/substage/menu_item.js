@@ -470,7 +470,7 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 		menu_item.init();
 		menu_item.setPosition(
 			180 + index_horizontal*160,
-			180 + 160 * index_vertical
+			110 + 160 * index_vertical
 		);
 
 		// 初期化
