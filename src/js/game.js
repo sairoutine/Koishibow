@@ -30,6 +30,7 @@ var SceneEventForChapter1PlayWithMurasa  = require('./scene/event/chapter1/play_
 var SceneEventForChapter3GetupKoishi     = require('./scene/event/chapter3/getup_koishi');
 
 var FieldMasterRepository = require('./repository/field');
+var ItemMasterRepository = require('./repository/item');
 
 
 var Game = function(canvas) {
@@ -212,6 +213,7 @@ Game.prototype.setupDebug = function (dom) {
 		game.debug_manager.set("is_show_3rdeye_gauge", false);
 	});
 
+	// フィールド一覧生成
 	var field_list = FieldMasterRepository.all()
 	var field_name_list = [];
 	for (var i = 0, len = field_list.length; i < len; i++) {
@@ -222,6 +224,17 @@ Game.prototype.setupDebug = function (dom) {
 			game.scene_manager.changeScene("stage", value);
 		});
 
+	// アイテム一覧生成
+	var item_list = ItemMasterRepository.all()
+	var item_name_list = [];
+	for (var j = 0; j < item_list.length; j++) {
+		item_name_list.push({name: item_list[j].name(), value: item_list[j].id()});
+	}
+	this.debug_manager.addMenuSelect("アイテム獲得", item_name_list,
+		function (game, value) {
+			game.save_manager.item.addItem(value);
+		});
+
 	this.debug_manager.addNewLine();
 
 	this.debug_manager.addUploadFileButton("SE／BGM 挿入", function (game, type, dataurl) {
@@ -229,11 +242,6 @@ Game.prototype.setupDebug = function (dom) {
 
 		game.audio_loader.playSoundByDataURL(dataurl);
 	}, "data_url");
-
-
-
-
-
 };
 
 module.exports = Game;
