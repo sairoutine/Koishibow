@@ -144,6 +144,8 @@ SsAnimeBase.prototype.update = function(){
 	// update ss state
 	this.ss.rootScaleX = this.scaleWidth();
 	this.ss.rootScaleY = this.scaleHeight();
+
+	this._updateCurrentAnimeFrameNo();
 };
 
 // 画面更新
@@ -152,7 +154,7 @@ SsAnimeBase.prototype.draw = function(){
 	if (!this.isShow()) return;
 	var ctx = this.core.ctx;
 
-	var frame_no = this._getCurrentAnimeFrameNo();
+	var frame_no = this.getFrameNo();
 	var canvas = this._getAnimeImage(frame_no);
 
 	// draw
@@ -166,12 +168,12 @@ SsAnimeBase.prototype.draw = function(){
 	ctx.restore();
 };
 
-SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
+SsAnimeBase.prototype._updateCurrentAnimeFrameNo = function() {
 	var max_frame = this.ss.inner.animation.getFrameCount();
 
 	// 何も表示しないアニメだと、frameの最大数が 0になる(何も描画しなくてよい)
 	if (max_frame === 0) {
-		return null;
+		return;
 	}
 
 	var max_loop = this.ss.inner.loop;
@@ -197,9 +199,8 @@ SsAnimeBase.prototype._getCurrentAnimeFrameNo = function() {
 
 		this.anime_frame %= max_frame;
 	}
-
-	return this.getFrameNo();
 };
+
 SsAnimeBase.prototype._getAnimeImage = function(frame_no){
 	/*
 	// キャッシュ
