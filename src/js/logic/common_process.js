@@ -92,6 +92,10 @@ var ProcessList = {
 	resetPlayedFlag: function (core, flag_name) {
 		core.save_manager.scenario.resetPlayedCount(flag_name);
 	},
+	// BGMを再生する
+	playBGM: function (core, bgm) {
+		core.scene_manager.currentScene().playBGM(bgm);
+	},
 };
 
 // 静的クラス

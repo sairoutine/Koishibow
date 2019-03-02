@@ -170,41 +170,7 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 		this.koishi.setReflect(true);
 	}
 
-
-	if(this.core.audio_loader.isPlayingBGM(field_data.bgm())) {
-		// 同じBGMのフィールドに遷移した場合、メインBGMは継続したままになる
-
-		// 元のフィールドのサブBGMだけ止める
-		this.core.audio_loader.stopBGMWithout(field_data.bgm());
-
-		// 今のフィールドのサブBGMだけ再生
-		this._playSubBGM();
-	}
-	else {
-		// メイン／サブ BGM 止める
-		this.core.audio_loader.stopBGM();
-
-		// メイン／サブ BGM 再生
-		var _this = this;
-		this.core.time_manager.setTimeout(function () {
-			// 60秒経過後にフィールドを移動していた場合、
-			// 移動先フィールドのBGM再生処理に任せる
-			if (_this.getFieldData() !== field_data) return;
-
-			// メインBGM 再生
-			_this.core.audio_loader.addBGM(field_data.bgm());
-
-			// サブBGM 再生
-			_this._playSubBGM();
-
-			// 60秒経つまでの間に、プレイヤーがサードアイを使用していた場合
-			if(_this.isUsingEye()) {
-				// メイン／サブ BGMはミュートにしておく
-				// サードアイを解除したときに再生されるようにするため
-				_this._muteMainAndSubBGM();
-			}
-		}, 60);
-	}
+	this.playBGM(field_data.bgm(), field_data.sub_bgms());
 
 	// フィールド移動時にフェードイン／アウトする
 	this.core.scene_manager.setFadeIn(30,  "black");
@@ -268,11 +234,52 @@ SceneStage.prototype.cantUseEye = function() {
 	this.changeSubScene("talk_with_object", CANT_USE_3RDEYE_SERIF_LIST);
 };
 
-SceneStage.prototype._playSubBGM = function() {
-	var field_data = this.getFieldData();
-	var sub_bgms = field_data.sub_bgms();
-	if (!sub_bgms) sub_bgms = [];
 
+
+SceneStage.prototype.playBGM = function(main_bgm, sub_bgms) {
+	var sub_bgms = sub_bgms || [];
+
+	var field_data = this.getFieldData();
+
+	if(this.core.audio_loader.isPlayingBGM(main_bgm)) {
+		// 同じBGMのフィールドに遷移した場合、メインBGMは継続したままになる
+
+		// 元のフィールドのサブBGMだけ止める
+		this.core.audio_loader.stopBGMWithout(main_bgm);
+
+		// 今のフィールドのサブBGMだけ再生
+		this._playSubBGM(sub_bgms);
+	}
+	else {
+		// メイン／サブ BGM 止める
+		this.core.audio_loader.stopBGM();
+
+		// メイン／サブ BGM 再生
+		var _this = this;
+		this.core.time_manager.setTimeout(function () {
+			// 60秒経過後にフィールドを移動していた場合、
+			// 移動先フィールドのBGM再生処理に任せる
+			if (_this.getFieldData() !== field_data) return;
+
+			// メインBGM 再生
+			if (main_bgm) {
+				_this.core.audio_loader.addBGM(main_bgm);
+			}
+
+			// サブBGM 再生
+			_this._playSubBGM(sub_bgms);
+
+			// 60秒経つまでの間に、プレイヤーがサードアイを使用していた場合
+			if(_this.isUsingEye()) {
+				// メイン／サブ BGMはミュートにしておく
+				// サードアイを解除したときに再生されるようにするため
+				_this._muteMainAndSubBGM(main_bgm, sub_bgms);
+			}
+		}, 60);
+	}
+};
+
+SceneStage.prototype._playSubBGM = function(sub_bgms) {
 	// サブBGM
 	for (var i = 0, len = sub_bgms.length; i < len; i++) {
 		var sub_bgm = sub_bgms[i];
@@ -283,12 +290,7 @@ SceneStage.prototype._playSubBGM = function() {
 	}
 };
 
-SceneStage.prototype._muteMainAndSubBGM = function() {
-	var field_data = this.getFieldData();
-
-	var sub_bgms = field_data.sub_bgms();
-	if (!sub_bgms) sub_bgms = [];
-
+SceneStage.prototype._muteMainAndSubBGM = function(main_bgm, sub_bgms) {
 	// サブBGM ミュート
 	for (var i = 0, len = sub_bgms.length; i < len; i++) {
 		var sub_bgm = sub_bgms[i];
@@ -296,7 +298,9 @@ SceneStage.prototype._muteMainAndSubBGM = function() {
 	}
 
 	// メインBGM ミュート
-	this.core.audio_loader.muteBGM(field_data.bgm());
+	if (main_bgm) {
+		this.core.audio_loader.muteBGM(main_bgm);
+	}
 };
 
 SceneStage.prototype.update = function() {
