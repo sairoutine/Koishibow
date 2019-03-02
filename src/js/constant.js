@@ -42,14 +42,15 @@ var CONSTANT = {
 
 	// アイテムの種類
 	ITEM: {
-		EYEDROPS:     "01",
-		NON_USABLE:   "02",
-		JOURNAL_BOOK: "03",
-		CHAPTER4_TAPE: "03",
+		EYEDROPS:          "01",
+		NON_USABLE:        "02",
+		JOURNAL_BOOK:      "03",
+		CHAPTER4_TAPE:     "04",
 	},
 
 	// 特殊なアイテムID
 	ITEM_JOURNAL_BOOK_ID: "21",
+	ITEM_CHAPTER4_RECORDER_ID: "22",
 
 	// ジャーナルの種類
 	JOURNAL: {

@@ -269,7 +269,7 @@ SceneStage.prototype.update = function() {
 	var i, len;
 
 	// BGM 再生
-	if(!this.isUsingEye() && this.frame_count >= 60) {
+	if(!this.isUsingEye() && this.frame_count === 60) {
 		this._playBGM();
 	}
 

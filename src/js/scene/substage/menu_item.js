@@ -13,6 +13,7 @@ var ItemMasterRepository = require("../../repository/item");
 var ObjectMenuItemEyeDrops = require('../../object/menu_item/eyedrops');
 var ObjectMenuItemNonUsable = require('../../object/menu_item/non_usable');
 var ObjectMenuItemJournalBook = require('../../object/menu_item/journal_book');
+var ObjectMenuItemChapter4Tape = require('../../object/menu_item/chapter4_tape');
 
 // メニュー一覧
 var MENU_BUTTONS = [
@@ -364,14 +365,14 @@ SceneSubStageMenu.prototype._useItem = function(){
 		var menu_item = menu_item_list[i];
 		if(menu_item.itemId() === focus_item_id) {
 			if (menu_item.isEnableToUse()) {
-				// 選択中から解除
-				this.focus_item_id = null;
-
 				// アイテム使用
 				menu_item.use();
 
 				// 使用して数が0になったら、メニューの表示から削除
 				if (menu_item.num() === 0) {
+					// 選択中から解除
+					this.focus_item_id = null;
+
 					this.removeObject(menu_item);
 					this._setupMenuItems();
 				}
@@ -457,8 +458,11 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 		else if (type === CONSTANT.ITEM.NON_USABLE) { // 会話で消費するアイテム
 			menu_item = new ObjectMenuItemNonUsable(this, item_id, num);
 		}
-		else if (type === CONSTANT.ITEM.JOURNAL_BOOK) { // 会話で消費するアイテム
+		else if (type === CONSTANT.ITEM.JOURNAL_BOOK) { // ジャーナルブック
 			menu_item = new ObjectMenuItemJournalBook(this, item_id, num);
+		}
+		else if (type === CONSTANT.ITEM.CHAPTER4_TAPE) { // chapter4 テープ
+			menu_item = new ObjectMenuItemChapter4Tape(this, item_id, num);
 		}
 		else {
 			throw new Error ("Unknown item type error: " + type);
