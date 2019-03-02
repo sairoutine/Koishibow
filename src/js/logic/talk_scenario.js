@@ -10,6 +10,7 @@ var TalkScenario = function() {};
 // 分岐条件登録済みの Scenario インスタンスを生成
 TalkScenario.generateScenario = function (core) {
 	return new ScenarioManager(core, {
+		typography_speed: CONSTANT.TYPOGRAPHY_SPEED,
 		// 会話で使う条件分岐
 		criteria: {
 			// アイテムを持っていれば

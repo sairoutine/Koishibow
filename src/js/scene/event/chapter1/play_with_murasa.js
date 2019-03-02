@@ -79,7 +79,10 @@ var SceneEventPlayDoll = function(core) {
 	this.black_mist = new BlackMist(this);
 
 	// セリフ
-	this._serif = new ScenarioManager();
+	this._serif = new ScenarioManager(core, {
+		typography_speed: CONSTANT.TYPOGRAPHY_SPEED,
+	});
+
 
 	// セリフの位置
 	this.serif_position_of_murasa = new ObjectPoint(this);

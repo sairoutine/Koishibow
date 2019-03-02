@@ -13,6 +13,9 @@ var CONSTANT = {
 	// ゲームを最初から始めた場合の最初のフィールド
 	INITIAL_CHAPTER: "opening_movie_chapter0",
 
+	// 会話のタイプ速度
+	TYPOGRAPHY_SPEED: 5,
+
 	// こいしの歩く速度(最高速度)
 	KOISHI_MAX_SPEED: 12,
 	// こいしの歩く速度(最低速度)

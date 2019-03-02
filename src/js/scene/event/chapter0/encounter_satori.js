@@ -5,6 +5,7 @@ var ObjectPoint = require('../../../hakurei').object.point;
 var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
 var CONSTANT_BUTTON = require('../../../hakurei').constant.button;
+var CONSTANT = require('../../../constant');
 var ScenarioManager = require('../../../hakurei').manager.scenario;
 var BlackMist = require('../../../object/black_mist');
 var DrawSerif = require('../../../logic/draw_serif');
@@ -38,7 +39,9 @@ var SceneEventEncounterSatori = function(core) {
 	this.black_mist = new BlackMist(this);
 
 	// セリフ
-	this._serif = new ScenarioManager();
+	this._serif = new ScenarioManager(core, {
+		typography_speed: CONSTANT.TYPOGRAPHY_SPEED,
+	});
 
 	// セリフの位置
 	this.serif_position = new ObjectPoint(this);
