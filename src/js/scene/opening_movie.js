@@ -1,8 +1,11 @@
 'use strict';
 
+/* chapter0 ~ 6 で再生されるオープニング ムービー */
+
 var Util = require('../hakurei').util;
 var BaseScene = require('../hakurei').scene.movie;
 var ChapterMasterRepository = require('../repository/chapter');
+var CONSTANT_BUTTON = require('../hakurei').constant.button;
 
 var SceneOpeningMovie = function(core) {
 	BaseScene.apply(this, arguments);
@@ -38,5 +41,18 @@ SceneOpeningMovie.prototype.init = function(){
 		scene_manager.changeScene("stage", field_name);
 	}]);
 };
+
+SceneOpeningMovie.prototype.update = function(){
+	BaseScene.prototype.update.apply(this, arguments);
+
+	// X ボタンでスキップできる
+	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
+		this.video.pause();
+
+		this.notifyEnd();
+	}
+};
+
+
 
 module.exports = SceneOpeningMovie;
