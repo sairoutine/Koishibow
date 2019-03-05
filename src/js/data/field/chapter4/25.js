@@ -80,9 +80,7 @@ module.exports = {
 			name: "鈴仙",
 			loop: true,
 			serif_back: [],
-			serif: [
-				{"chara": "koishi","serif":_("テスト")},
-			],
+			serif: null,
 			x: 420*2/3, y: 565*2/3,
 			anime1: "reisen-wait",
 			anime2: null,

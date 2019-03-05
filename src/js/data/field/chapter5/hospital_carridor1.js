@@ -61,9 +61,7 @@ module.exports = {
 			image: "chapter0-hospital_corridor1-obj-02-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
-			serif: [
-				{"chara": "koishi","serif":_("TODO: ")},
-			],
+			serif: null,
 			x: 279,
 			y: 378,
 			scale: 0.7

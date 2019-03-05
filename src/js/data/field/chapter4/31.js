@@ -39,7 +39,7 @@ module.exports = {
 		},
 
 		{
-			no: ++I,
+			no: "merry",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "メリー",
 			loop: true,

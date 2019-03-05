@@ -38,7 +38,7 @@ module.exports = {
 		},
 
 		{
-			no: ++I,
+			no: "renko",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "蓮子",
 			loop: true,

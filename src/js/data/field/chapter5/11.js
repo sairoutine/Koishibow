@@ -114,13 +114,11 @@ module.exports = {
 			not_show_if_event_true: "chapter5-13-animal_kuro_talk1", // 黒豹との1度目の会話が終わったら消える
 		},
 		{
-			no: ++I,
+			no: "animal_uma",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ウマ",
 			loop: true,
-			serif_back: [
-				{"chara": I, "exp": "animal_uma-ura_reaction_01", "serif":_("test")},
-			],
+			serif_back: null,
 			serif: [
 				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わふ")},
 				{"chara": "animal_uma","exp": "animal_uma-wait", "serif": _("イイーン")},

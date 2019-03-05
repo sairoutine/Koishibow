@@ -37,7 +37,7 @@ module.exports = {
 			next_field_name: "chapter4_32",
 		},
 		{
-			no: ++I,
+			no: "renko",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "蓮子",
 			loop: true,

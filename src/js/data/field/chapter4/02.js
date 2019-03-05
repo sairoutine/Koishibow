@@ -48,11 +48,6 @@ module.exports = {
 				{"chara": "merry", "exp": "merry-reaction_02", "serif":_("あなたはここの子かしら")},
 				{"chara": "koishi", "exp": "yes", "serif":_("そうだよ")},
 				{"chara": "merry", "exp": "merry-reaction_03", "serif":_("竹林で迷って困ってたの")},
-
-
-
-
-
 				{"chara": "merry", "exp": "merry-reaction_04", "serif":_("へんな薬で頭が痛いし")},
 				{"chara": "koishi", "exp": "look_front", "serif":_("あっこれわたしの！")},
 				{"chara": "koishi", "exp": null, "serif":_("空っぽになってる")},

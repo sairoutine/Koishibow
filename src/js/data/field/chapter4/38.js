@@ -38,7 +38,7 @@ module.exports = {
 			next_field_name: "chapter4_42",
 		},
 		{
-			no: ++I,
+			no: "merry",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "メリー",
 			loop: true,
@@ -57,7 +57,7 @@ module.exports = {
 			sound_name: null,
 		},
 		{
-			no: ++I,
+			no: "renko",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "蓮子",
 			loop: true,

@@ -3,7 +3,6 @@ var _ = require('i18n4v')
 //・てゐ
 //・蓮子
 var CONSTANT = require("../../../constant");
-var I = 0;
 module.exports = {
 	key: "chapter4_27",
 	chapter: 4,
@@ -22,7 +21,7 @@ module.exports = {
 			{"chara": "tewireal", "exp": "tewireal-reaction_03", "serif":_("なんにせよあのちんちくりんの化け物は本当にヤバいぞ")},
 			{"chara": "tewireal", "exp": "tewireal-reaction_01", "serif":_("お前には見えてないみたいだけどな")},
 			{"chara": "tewireal", "exp": null, "serif":_("もしあの娘を助けたかったらお前も空っぽの器に手を突っ込まなくちゃあいけないね")},
-			{"chara": "voice", "exp": "voice-reaction_04", "serif":_("おっかないなあ")},
+			{"chara": "renko", "exp": "renko-reaction_04", "serif":_("おっかないなあ")},
 			{"chara": "renko", "exp": "renko-reaction_02", "serif":_("妖怪は本当にいたのか")},
 			{"chara": "tewireal", "exp": "tewireal-reaction_03", "serif":_("......まあな")},
 			{"chara": "koishi", "exp": "wait", "serif":_("............")},
@@ -31,14 +30,12 @@ module.exports = {
 	],
 	objects: [
 		{
-			no: ++I,
+			no: "renko",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "蓮子",
 			loop: true,
 			serif_back: [],
-			serif: [
-				{"chara": "koishi","serif":_("テスト")},
-			],
+			serif: null,
 			x: 960*2/3, y: 505*2/3,
 			anime1: "renko-wait",
 			anime2: null,
@@ -50,14 +47,12 @@ module.exports = {
 			sound_name: null,
 		},
 		{
-			no: ++I,
+			no: "tewireal",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "てゐ",
 			loop: true,
 			serif_back: [],
-			serif: [
-				{"chara": "koishi","serif":_("テスト")},
-			],
+			serif: null,
 			x: 260*2/3, y: 605*2/3,
 			anime1: "tewireal-wait",
 			anime2: null,

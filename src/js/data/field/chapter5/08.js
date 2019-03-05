@@ -47,7 +47,7 @@ module.exports = {
 			position_type: "lying",
 		},
 		{
-			no: ++I,
+			no: "animal_uma",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ウマ",
 			loop: true,

@@ -65,9 +65,7 @@ module.exports = {
 			name: "メリー",
 			loop: true,
 			serif_back: [],
-			serif: [
-				{"chara": "koishi","serif":_("テスト")},
-			],
+			serif: null,
 			x: 1160*2/3, y: 505*2/3,
 			anime1: "merry-wait",
 			anime2: null,
@@ -84,9 +82,7 @@ module.exports = {
 			name: "蓮子",
 			loop: true,
 			serif_back: [],
-			serif: [
-				{"chara": "koishi","serif":_("テスト")},
-			],
+			serif: null,
 			x: 960*2/3, y: 505*2/3,
 			anime1: "renko-wait",
 			anime2: null,

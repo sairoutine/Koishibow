@@ -147,10 +147,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "おりん",
 			loop: true,
-			serif_back: [
-			],
-			serif: [
-			],
+			serif_back: null,
+			serif: null,
 			x: 800, y: 450,
 			scale: 2/3,
 			anime1: "orin-wait",
