@@ -33,7 +33,7 @@ module.exports = {
 			loop: true,
 			serif_back: [],
 			serif: [
-				{"type": "criteria_serif", "criteria": "circulate", "arguments": ["chapter4_04-tewireal-circulate", 4], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_04-tewireal-limit", 4], "serifs": [
 					[
 						{"chara": "koishi", "exp": "look_front", "serif":_("ねえねえ")},
 						{"chara": "koishi", "exp": null, "serif":_("久しぶり！")},

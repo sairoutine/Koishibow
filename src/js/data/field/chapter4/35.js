@@ -42,7 +42,7 @@ module.exports = {
 			loop: true,
 			serif_back: [],
 			serif: [
-				{"type": "criteria_serif", "criteria": "circulate", "arguments": ["chapter4_35-merry-circulate", 2], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_35-merry-limit", 2], "serifs": [
 					[
 						{"chara": "koishi", "exp": "look_front", "serif":_("ねえ、お友達いっぱいいるの")},
 						{"chara": "merry", "exp": "merry-reaction_09", "serif":_("あんまりいないわね")},

@@ -36,7 +36,7 @@ module.exports = {
 			serif: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["TODO: "], "serifs": [
 					[
-						{"type": "criteria_serif", "criteria": "circulate", "arguments": ["chapter4_19-reisen-circulate1", 2], "serifs": [
+						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_19-reisen-limit1", 2], "serifs": [
 							[
 
 								{"chara": "reisen", "exp": "reisen-reaction_01", "serif":_("あら")},
@@ -72,7 +72,7 @@ module.exports = {
 						]},
 					],
 					[
-						{"type": "criteria_serif", "criteria": "circulate", "arguments": ["chapter4_19-reisen-circulate2", 3], "serifs": [
+						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_19-reisen-limit2", 3], "serifs": [
 							[
 								{"chara": "reisen", "exp": "reisen-reaction_01", "serif":_("あら")},
 								{"chara": "reisen", "exp": null, "serif":_("また会ったね")},

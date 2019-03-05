@@ -25,7 +25,7 @@ module.exports = {
 						{"chara": "koishi", "exp": "look_front", "serif":_("ひとだ！")},
 						{"chara": "merry", "exp": "merry-reaction_01", "serif":_("うーん")},
 						{"chara": "koishi", "exp": "look_front", "serif":_("助けなきゃ")},
-						{"chara": "koishi", "exp": "reaction_yes", "serif":_("たすけたらともだちだもん")},
+						{"chara": "koishi", "exp": "yes", "serif":_("たすけたらともだちだもん")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_02_40070"]}
