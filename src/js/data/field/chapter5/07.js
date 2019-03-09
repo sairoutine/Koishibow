@@ -234,10 +234,10 @@ module.exports = {
 						{"chara": "animal_kawa","exp": "animal_kawa-wait", "serif": _("じゃあわたし上に行くわね！")},
 						{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("ついてこないでね！")},
 						{"chara": "koishi","exp": "look_front", "serif": _("なんで")},
-						{"chara": "animal_kawa","exp": "animal_kawa-wait", "serif": _("......")},
-						{"chara": "animal_kawa","exp": "animal_kawa-wait", "serif": _("故あって......")},
+						{"chara": "animal_shiba","exp": "animal_kawa-wait", "serif": _("......")},
+						{"chara": "animal_shiba","exp": "animal_kawa-wait", "serif": _("故あって......")},
 						{"chara": "koishi","exp": "look_front", "serif": _("なにそれ")},
-						{"chara": "animal_kawa","exp": "animal_kawa-wait", "serif": _("ごめんね")},
+						{"chara": "animal_shiba","exp": "animal_kawa-wait", "serif": _("ごめんね")},
 					],
 					// ハシゴ使用前
 					[
