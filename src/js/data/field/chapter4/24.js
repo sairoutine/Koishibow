@@ -76,7 +76,7 @@ module.exports = {
 						{"chara": "merry", "exp": null, "serif":_("どうもありがとう")},
 						{"chara": "merry", "exp": "merry-reaction_06", "serif":_("それじゃあこれに録音をしましょ")},
 						{"chara": "merry", "exp": "merry-reaction_05", "serif":_("機械を返してちょうだい")},
-						{"chara": "koishi", "exp": "touch", "serif":_("うん")},
+						{"chara": "koishi", "exp": "touch", "serif":_("うん"), "option": {"useItem": "22"}},
 						{"chara": "merry", "exp": "merry-reaction_05", "serif":_("それじゃあお話して？")},
 						{"chara": "koishi", "exp": "look_front", "serif":_("え？")},
 						{"chara": "merry", "exp": "merry-reaction_05", "serif":_("こいしちゃんが話したことがこの中に入るのよ")},
