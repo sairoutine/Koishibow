@@ -213,7 +213,7 @@ module.exports = [
 	{
 		id: "24",
 		type: CONSTANT.ITEM.CHAPTER4_TAPE,
-		name: "カセットテープ2",
+		name: "カセットテープ「チャルメラ」",
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_(""),
@@ -222,7 +222,7 @@ module.exports = [
 	{
 		id: "25",
 		type: CONSTANT.ITEM.CHAPTER4_TAPE,
-		name: "カセットテープ3",
+		name: "テープ「無音」",
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_(""),
@@ -231,7 +231,7 @@ module.exports = [
 	{
 		id: "26",
 		type: CONSTANT.ITEM.CHAPTER4_TAPE,
-		name: "カセットテープ4",
+		name: "新品のテープ",
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_(""),
@@ -240,7 +240,7 @@ module.exports = [
 	{
 		id: "27",
 		type: CONSTANT.ITEM.CHAPTER4_TAPE,
-		name: "カセットテープ5",
+		name: "テープ「お父さんお母さんへ」",
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_(""),
