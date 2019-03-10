@@ -28,13 +28,13 @@ module.exports = [
 		key: "chapter4",
 		no: 4,
 		openingMovie: "./movie/production/chapter4.mp4",
-		firstField: null,
+		firstField: "chapter4_01",
 	},
 	{
 		key: "chapter5",
 		no: 5,
 		openingMovie: "./movie/production/chapter5.mp4",
-		firstField: null,
+		firstField: "chapter5_myroom",
 	},
 	{
 		key: "chapter6",
