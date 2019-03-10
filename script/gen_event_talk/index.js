@@ -29,14 +29,10 @@ var anime_names = {};
 		if(!lines[i]) continue;
 		var line = lines[i].split("\t");
 
-		var chara_utf8 = line[0];
-		var serif1 = line[9];
-		var anime_name1  = line[13];
-		var anime_name2  = line[14];
-
-		if (!chara_utf8 || !serif1 || !anime_name1 || !anime_name2) {
-			throw new Error("Illegal: " + lines[i]);
-		}
+		var chara_utf8 = line[0] || "";
+		var serif1 = line[9] || "";
+		var anime_name1  = line[13] || "";
+		var anime_name2  = line[14] || "";
 
 		var exp;
 		if (anime_name2.match(/停止/)) {
