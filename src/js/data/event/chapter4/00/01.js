@@ -57,11 +57,13 @@ module.exports = {
 		{"exp": "chapter4-00-event-01-obj11", "serif": _("それで？"), "option": {"x": 200, "y": 0, "loop": false}},
 		{"exp": null, "serif": _("何も見えないわ"), "option": {"x": 200, "y": 0, "loop": false}},
 		{"exp": null, "serif": _("ほらそこよ"), "option": {"x": 376, "y": 176, "loop": false}},
-		{"exp": null, "serif": _("そこのずーっと下よ！"), "option": {"x": 376, "y": 176, "loop": false}},	],
+		{"exp": null, "serif": _("そこのずーっと下よ！"), "option": {"x": 376, "y": 176, "loop": false}},
+	],
 	endAnime: null,
 	endSounds: [
 	],
 	endProcess: [
+		{"type": "process", "value": "changeScene", "arguments": ["event_movie", "chapter4-00-event-02"]},
 	],
 };
 

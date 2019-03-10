@@ -11,6 +11,16 @@ module.exports = {
 	background: "chapter4-01-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_01_40010"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_01_40010"]},
+				{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter4-00-event-01"]},
+			],
+		]},
+
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_01_40050"], "process": [
 			// すでにアクセス済み
 			[],
