@@ -9,8 +9,8 @@ var OUTPUT_FILE_NAME = "output.json";
 
 // キャラごとの仮の座標
 var CHARA_UTF8_TO_CHARA_MAP = {
-	"こいし": {x: 888, y: 888},
-	"さとり": {x: 999, y: 999},
+	"こいし": {x: 10000, y: 20000},
+	"さとり": {x: 30000, y: 40000},
 };
 
 
