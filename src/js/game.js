@@ -31,6 +31,7 @@ var SceneEventForChapter3GetupKoishi     = require('./scene/event/chapter3/getup
 
 var FieldMasterRepository = require('./repository/field');
 var ItemMasterRepository = require('./repository/item');
+var EventMasterRepository = require('./repository/event_talk');
 
 
 var Game = function(canvas) {
@@ -222,6 +223,17 @@ Game.prototype.setupDebug = function (dom) {
 	this.debug_manager.addMenuSelect("フィールド移動", field_name_list,
 		function (game, value) {
 			game.scene_manager.changeScene("stage", value);
+		});
+
+	// イベント(システム)一覧生成
+	var event_list = EventMasterRepository.all()
+	var event_name_list = [];
+	for (var k = 0; k < event_list.length; k++) {
+		event_name_list.push({value: event_list[k].key()});
+	}
+	this.debug_manager.addMenuSelect("イベント再生", event_name_list,
+		function (game, value) {
+			game.scene_manager.changeScene("event_talk", value);
 		});
 
 	// アイテム一覧生成
