@@ -11,6 +11,8 @@ var OUTPUT_FILE_NAME = "output.json";
 var CHARA_UTF8_TO_CHARA_MAP = {
 	"こいし": {x: 10000, y: 20000},
 	"さとり": {x: 30000, y: 40000},
+	"メリー": {x: 50000, y: 60000},
+	"蓮子":   {x: 70000, y: 80000},
 };
 
 
@@ -77,8 +79,8 @@ var event_anime_configs = [];
 })();
 
 fs.writeFileSync(OUTPUT_FILE_NAME, 
-	"\t{\n\t\tkey: \"" + key + "\",\n\t},\n" + 
-	"\t[\n" + serifs.join("\n") + "\n\t]\n" + 
+	"{\n\tkey: \"" + key + "\",\n},\n" + 
 	"\t[\n" + event_anime_configs.join("\n") + "\n\t]\n" + 
+	"\t[\n" + serifs.join("\n") + "\n\t]\n" + 
 	"[\n" + event_anime_require.join("\n") + "\n]\n");
 
