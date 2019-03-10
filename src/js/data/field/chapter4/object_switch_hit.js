@@ -13,9 +13,7 @@ module.exports = {
 				{"chara": "koishi", "exp": null, "serif":_("ここじゃないみたいね")},
 			],
 			[
-				{"chara": "koishi", "exp": null, "serif":_("ねー")},
-				{"chara": "koishi", "exp": null, "serif":_("みんな来てー")},
-				// TODO: 40854 イベントを再生
+				{"chara": "koishi","exp": null, "serif": "", "option": {"playEvent": "chapter4-29-event-02"}}, // 40854 イベントを再生
 			],
 		]},
 	],
@@ -23,6 +21,6 @@ module.exports = {
 	x: 480,
 	y: 540,
 	position_type: "lying",
-	not_show_if_event_true: "chapter4-29-event-01", // BAD END ルートのイベント後は表示しない
+	not_show_if_event_true: "chapter4-29-after_examine_switch", // スイッチ調査後のルートでは表示しない
 };
 

@@ -60,7 +60,7 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
-		{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4-29-event-01"]},
+		{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4-29-after_examine_switch"]},
 		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
 	],
 };

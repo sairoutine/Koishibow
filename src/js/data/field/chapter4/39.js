@@ -15,7 +15,8 @@ module.exports = {
 	walkSound: "walking_bare_default",
 	initialProcess: [
 		// BAD END ルートのイベントを見たあと
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4-29-event-01"], "process": [
+		//
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4-29-after_examine_switch"], "process": [
 			// すでにアクセス済み
 			[
 				{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter4-39-event-01"]},

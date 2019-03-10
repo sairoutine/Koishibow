@@ -97,7 +97,7 @@ module.exports = {
 			anime6: null,
 			action_name: null,
 			sound_name: null,
-			not_show_if_event_true: "chapter4-29-event-01", // BAD END ルートのイベント後は表示しない
+			not_show_if_event_true: "chapter4-29-after_examine_switch", // スイッチ調査後のルートでは表示しない
 		},
 		{
 			no: "merry",
@@ -117,7 +117,7 @@ module.exports = {
 			anime6: null,
 			action_name: null,
 			sound_name: null,
-			not_show_if_event_true: "chapter4-29-event-01", // BAD END ルートのイベント後は表示しない
+			not_show_if_event_true: "chapter4-29-after_examine_switch", // スイッチ調査後のルートでは表示しない
 		},
 		SwitchMiss,  //スイッチ(ハズレ)
 	],
