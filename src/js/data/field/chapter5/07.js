@@ -85,7 +85,7 @@ module.exports = {
 						{"chara": "animal_shiba","exp": "animal_shiba-ura_wait", "serif": _("犬って何よ")},
 						{"chara": "koishi","exp": "yes", "serif": _("はしご！")},
 						{"chara": "animal_shiba","exp": null, "serif": _("ほんと？"), "option": {"useItem": "34"}},
-						// TODO: 暗転する {"chara": "chapter5-07-event-01","exp": "chapter5-07-event-01-obj01", "serif": _("ほんとだ！")},
+						{"chara": "koishi","exp": null, "serif": _("ほんとだ！"), "option": {"blackout": true}},
 						{"chara": "animal_shiba","exp": null, "serif": _("これでよし！")},
 						{"chara": "animal_shiba","exp": null, "serif": _("助かったわ")},
 						{"chara": "animal_shiba","exp": null, "serif": _("ありがとう、こいしちゃん")},
