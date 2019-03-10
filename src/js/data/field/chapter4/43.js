@@ -38,6 +38,25 @@ module.exports = {
 			next_field_name: "chapter4_31",
 		},
 		{
+			no: "renko",
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "蓮子(イベント用)",
+			loop: true,
+			serif_back: [],
+			serif: null,
+			x: 960*2/3, y: 505*2/3,
+			anime1: "renko-wait",
+			anime2: null,
+			anime3: null,
+			anime4: null,
+			anime5: null,
+			anime6: null,
+			action_name: null,
+			sound_name: null,
+			show_if_event_true: "chapter4-all-in_ending",
+		},
+
+		{
 			no: "merry",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "メリー",
@@ -55,6 +74,7 @@ module.exports = {
 			anime6: null,
 			action_name: null,
 			sound_name: null,
+			not_show_if_event_true: "chapter4-29-event-01", // BAD END ルートのイベント後は表示しない
 		},
 		SwitchMiss,  //スイッチ(ハズレ)
 	],

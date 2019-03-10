@@ -23,5 +23,6 @@ module.exports = {
 	x: 480,
 	y: 540,
 	position_type: "lying",
+	not_show_if_event_true: "chapter4-29-event-01", // BAD END ルートのイベント後は表示しない
 };
 

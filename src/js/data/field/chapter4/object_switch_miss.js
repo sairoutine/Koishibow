@@ -36,8 +36,7 @@ module.exports = {
 				{"chara": "merry","exp": "merry-reaction_09", "serif": _("でもこれはちっちゃすぎて通れないから私は私のを探すわ")},
 				{"chara": "koishi","exp": "look_front", "serif": _("手伝おうか？")},
 				{"chara": "renko","exp": "renko-reaction_04", "serif": _("ううん大丈夫よ")},
-				{"chara": "merry","exp": "merry-reaction_06", "serif": _("行きましょ"), },
-				// TODO: 40850 イベントを再生
+				{"chara": "merry","exp": "merry-reaction_06", "serif": _("行きましょ"), "option": {"playEvent": "chapter4-29-event-01"}}, // 40850 イベントを再生
 				{"chara": "koishi","exp": null, "serif": "", "option": {"resetFlag": "chapter4-all-in_ending"}},
 			],
 		]},
@@ -46,5 +45,6 @@ module.exports = {
 	x: 480,
 	y: 540,
 	position_type: "lying",
+	not_show_if_event_true: "chapter4-29-event-01", // BAD END ルートのイベント後は表示しない
 };
 

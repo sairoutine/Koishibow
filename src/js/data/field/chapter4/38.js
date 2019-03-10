@@ -39,25 +39,6 @@ module.exports = {
 			next_field_name: "chapter4_42",
 		},
 		{
-			no: "merry",
-			type: CONSTANT.ANIME_IMAGE_TYPE,
-			name: "メリー",
-			loop: true,
-			serif_back: [],
-			serif: [
-				{"chara": "merry", "exp": "merry-reaction_06", "serif":_("わからなかったらカンでもいいのよ")},
-			],
-			x: 1160*2/3, y: 505*2/3,
-			anime1: "merry-wait",
-			anime2: null,
-			anime3: null,
-			anime4: null,
-			anime5: null,
-			anime6: null,
-			action_name: null,
-			sound_name: null,
-		},
-		{
 			no: "renko",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "蓮子",
@@ -75,6 +56,27 @@ module.exports = {
 			anime6: null,
 			action_name: null,
 			sound_name: null,
+			not_show_if_event_true: "chapter4-29-event-01", // BAD END ルートのイベント後は表示しない
+		},
+		{
+			no: "merry",
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "メリー",
+			loop: true,
+			serif_back: [],
+			serif: [
+				{"chara": "merry", "exp": "merry-reaction_06", "serif":_("わからなかったらカンでもいいのよ")},
+			],
+			x: 1160*2/3, y: 505*2/3,
+			anime1: "merry-wait",
+			anime2: null,
+			anime3: null,
+			anime4: null,
+			anime5: null,
+			anime6: null,
+			action_name: null,
+			sound_name: null,
+			not_show_if_event_true: "chapter4-29-event-01", // BAD END ルートのイベント後は表示しない
 		},
 		SwitchMiss,  //スイッチ(ハズレ)
 	],
