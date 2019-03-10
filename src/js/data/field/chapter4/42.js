@@ -43,7 +43,7 @@ module.exports = {
 						{"chara": "koishi", "exp": "look_front", "serif":_("すごーい")},
 						{"chara": "koishi", "exp": null, "serif":_("でも私に任せて")},
 						{"chara": "koishi", "exp": "yes", "serif":_("私が二人をお家に返してあげる！")},
-						{"chara": "koishi", "exp": "3rdeye", "serif":_("私は専門家だから！")},
+						{"chara": "koishi", "exp": "use_eye", "serif":_("私は専門家だから！")},
 						{"chara": "renko", "exp": "renko-reaction_01", "serif":_("なんの？")},
 						{"chara": "koishi", "exp": "look_front", "serif":_("ともだち作ったり仲直りさせたり")},
 						{"chara": "koishi", "exp": null, "serif":_("雪だるまだって名人よ！")},
