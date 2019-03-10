@@ -1,6 +1,7 @@
 'use strict';
 // ゴール
 var CONSTANT = require("../../../constant");
+var SwitchHit = require("./object_switch_hit");
 var I = 0;
 module.exports = {
 	key: "chapter4_29",
@@ -35,7 +36,7 @@ module.exports = {
 			height: 10,
 			next_field_name: "chapter4_33",
 		},
-
+		SwitchHit, //スイッチ(アタリ)
 	],
 };
 

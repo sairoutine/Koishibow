@@ -4,6 +4,7 @@ var _ = require('i18n4v')
 
 var CONSTANT = require("../../../constant");
 var I = 0;
+var SwitchMiss = require("./object_switch_miss");
 module.exports = {
 	key: "chapter4_31",
 	chapter: 4,
@@ -57,6 +58,25 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
+		{
+			no: "renko",
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "蓮子(イベント用)",
+			loop: true,
+			serif_back: [],
+			serif: null,
+			x: 960*2/3, y: 505*2/3,
+			anime1: "renko-wait",
+			anime2: null,
+			anime3: null,
+			anime4: null,
+			anime5: null,
+			anime6: null,
+			action_name: null,
+			sound_name: null,
+			show_if_event_true: "chapter4-all-in_ending",
+		},
+		SwitchMiss,  //スイッチ(ハズレ)
 	],
 };
 

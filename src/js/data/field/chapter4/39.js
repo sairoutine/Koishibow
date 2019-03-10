@@ -1,6 +1,7 @@
 'use strict';
 
 var CONSTANT = require("../../../constant");
+var SwitchMiss = require("./object_switch_miss");
 var I = 0;
 module.exports = {
 	key: "chapter4_39",
@@ -35,8 +36,7 @@ module.exports = {
 			height: 10,
 			next_field_name: "chapter4_43",
 		},
-
-
+		SwitchMiss,  //スイッチ(ハズレ)
 	],
 };
 

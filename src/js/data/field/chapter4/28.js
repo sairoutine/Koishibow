@@ -2,6 +2,7 @@
 var _ = require('i18n4v')
 // 蓮子「北の方角は向こう（右）ね」
 var CONSTANT = require("../../../constant");
+var SwitchMiss = require("./object_switch_miss");
 var I = 0;
 module.exports = {
 	key: "chapter4_28",
@@ -55,8 +56,7 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
-
-
+		SwitchMiss,  //スイッチ(ハズレ)
 	],
 };
 

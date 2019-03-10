@@ -2,6 +2,7 @@
 var _ = require('i18n4v')
 // メリー「ここには境界は無いわ」
 var CONSTANT = require("../../../constant");
+var SwitchMiss = require("./object_switch_miss");
 var I = 0;
 module.exports = {
 	key: "chapter4_34",
@@ -55,6 +56,7 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
+		SwitchMiss,  //スイッチ(ハズレ)
 	],
 };
 
