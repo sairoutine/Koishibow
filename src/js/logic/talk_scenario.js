@@ -154,7 +154,11 @@ TalkScenario.processSerifOption = function (scene, serif) {
 
 		return;
 	}
-
+	// 暗転
+	else if (option.blackout) {
+		scene.changeSubScene("blackout", "talk_with_object");
+		return;
+	}
 };
 
 

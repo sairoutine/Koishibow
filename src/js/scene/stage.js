@@ -19,6 +19,7 @@ var SceneSubStagePictureUseEyedrops = require('./substage/picture_use_eyedrops')
 var SceneSubStageEventChapter0GetHat = require('./substage/event/chapter0/get_hat');
 var SceneSubStagePictureGetHat = require('./substage/picture_get_hat');
 var SceneSubStagePicture = require('./substage/picture');
+var SceneSubStageBlackout = require('./substage/blackout');
 var SceneSubStageEventChapter0KokoroEncounter = require('./substage/event/chapter0/kokoro_encounter');
 var SceneSubStageEventChapter0SatoriEncounterBegin = require('./substage/event/chapter0/satori_encounter_begin');
 
@@ -91,23 +92,22 @@ var SceneStage = function(core) {
 	this.addSubScene("got_item", new SceneSubStageGotItem(core));
 	// アイテム使用
 	this.addSubScene("use_item", new SceneSubStageUseItem(core));
+	// 1枚絵表示
+	this.addSubScene("picture", new SceneSubStagePicture(core));
+	// 暗転
+	this.addSubScene("blackout", new SceneSubStageBlackout(core));
 	// プレイヤーに何も操作させない
 	this.addSubScene("lock", new SceneSubStageLock(core));
-	this.addSubScene("touch_hashigo", new SceneSubStageTouchHashigo(core));
 
+	this.addSubScene("touch_hashigo", new SceneSubStageTouchHashigo(core));
 	// 目薬使用 1枚絵
 	this.addSubScene("picture_use_eyedrops", new SceneSubStagePictureUseEyedrops(core));
-
 	// chapter0 帽子なしの自室
 	this.addSubScene("event_chapter0_get_hat", new SceneSubStageEventChapter0GetHat(core));
 	// chapter0 帽子獲得 1枚絵
 	this.addSubScene("picture_get_hat", new SceneSubStagePictureGetHat(core));
-
 	this.addSubScene("event_chapter0_kokoro_encounter", new SceneSubStageEventChapter0KokoroEncounter(core));
 	this.addSubScene("event_chapter0_satori_encounter_begin", new SceneSubStageEventChapter0SatoriEncounterBegin(core));
-
-	// 1枚絵表示
-	this.addSubScene("picture", new SceneSubStagePicture(core));
 };
 Util.inherit(SceneStage, base_scene);
 
