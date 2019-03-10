@@ -19,32 +19,66 @@ var text = fs.readFileSync(INPUT_FILE_NAME, 'utf-8');
 
 var lines = text.split("\n");
 
-var out = [];
-for (var i = 0, len = lines.length; i < len; i++) {
-	if(!lines[i]) continue;
-	var line = lines[i].split("\t");
+// セリフ設定
+var serifs = [];
+var anime_names = {};
+(function () {
+	for (var i = 0, len = lines.length; i < len; i++) {
+		if(!lines[i]) continue;
+		var line = lines[i].split("\t");
 
-	var chara_utf8 = line[0];
-	var serif1 = line[9];
-	var anime_name1  = line[13];
-	var anime_name2  = line[14];
-	var exp;
-	if (anime_name2.match(/停止/)) {
-		exp = "null";
+		var chara_utf8 = line[0];
+		var serif1 = line[9];
+		var anime_name1  = line[13];
+		var anime_name2  = line[14];
+
+		var exp;
+		if (anime_name2.match(/停止/)) {
+			exp = "null";
+		}
+		else {
+			exp = '"' + anime_name1 + "-" + anime_name2 + '"';
+
+			// イベント一覧に追加
+			anime_names[anime_name1 + "-" + anime_name2] = true;
+		}
+
+		if (exp !== "") {
+			exp = '"exp": ' + exp + ', ';
+		}
+
+		var pos = CHARA_UTF8_TO_CHARA_MAP[chara_utf8] || {x: 0, y: 0};
+		var x = pos.x;
+		var y = pos.y;
+		serifs.push('\t\t{' + exp + '"serif": _("' + serif1 + '"), "option": {"x": ' + x + ', "y": ' + y + ', "loop": false}},');
+
 	}
-	else {
-		exp = '"' + anime_name1 + "-" + anime_name2 + '"';
+})();
+
+
+// イベント設定
+var event_anime_require = [];
+var key = "";
+var event_anime_configs = [];
+(function () {
+	for (var anime_name in anime_names) {
+		var line = anime_name.split("-");
+		var chapter    = line[0];
+		var field      = line[1];
+		var event_name = [chapter, field, line[2],line[3]].join("-");
+		var obj        = line[4];
+
+		event_anime_require.push('\t"' + anime_name + '": require("../data/anime/' + chapter + '/event/' + event_name + '/' +obj + '_anime_1"),');
+		event_anime_configs.push('\t\t"' + anime_name + '",');
+
+
+		key = event_name;
 	}
+})();
 
-	if (exp !== "") {
-		exp = '"exp": ' + exp + ', ';
-	}
-
-	var pos = CHARA_UTF8_TO_CHARA_MAP[chara_utf8] || {x: 0, y: 0};
-	var x = pos.x;
-	var y = pos.y;
-	out.push('\t\t{' + exp + '"serif": _("' + serif1 + '"), "option": {"x": ' + x + ', "y": ' + y + ', "loop": false}},');
-}
-
-fs.writeFileSync(OUTPUT_FILE_NAME, out.join("\n"));
+fs.writeFileSync(OUTPUT_FILE_NAME, 
+	"\t{\n\t\tkey: \"" + key + "\",\n\t},\n" + 
+	"\t[\n" + serifs.join("\n") + "\n\t]\n" + 
+	"\t[\n" + event_anime_configs.join("\n") + "\n\t]\n" + 
+	"[\n" + event_anime_require.join("\n") + "\n]\n");
 
