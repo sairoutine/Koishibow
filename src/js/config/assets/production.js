@@ -203,8 +203,6 @@ AssetsConfig.images = {
 	"chapter5-09-event-01-koishi":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-koishi.png",
 	"chapter5-09-event-01-orin":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-orin.png",
 	"chapter5-09-event-01-oku1":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-oku1.png",
-	"chapter5-09-event-01-oku2":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-oku2.png",
-	"chapter5-09-event-01-oku3":  "./image/production/chapter5/event/chapter5-09-event-01/chapter5-09-event-01-oku3.png",
     
 	// 5-9-2
 	"chapter5-09-event-02-bg-001":  "./image/production/chapter5/event/chapter5-09-event-02/chapter5-09-event-02-bg-001.jpg",
