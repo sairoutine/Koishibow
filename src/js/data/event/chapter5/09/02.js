@@ -38,7 +38,7 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
-		{"type": "process", "value": "changeSceneWithFadeout", "arguments": ["opening_movie_chapter6"]},
+		{"type": "process", "value": "changeScene", "arguments": ["opening_movie_chapter6"]},
 	],
 };
 

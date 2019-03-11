@@ -109,7 +109,6 @@ var anime_map = {
 	"chapter5-09-event-01-obj01": require("../data/anime/chapter5/event/chapter5-09-event-01/obj01_anime_1"),
 	"chapter5-09-event-01-obj02": require("../data/anime/chapter5/event/chapter5-09-event-01/obj02_anime_1"),
 	"chapter5-09-event-01-obj03": require("../data/anime/chapter5/event/chapter5-09-event-01/obj03_anime_1"),
-	"chapter5-09-event-01-obj04": require("../data/anime/chapter5/event/chapter5-09-event-01/obj04_anime_1"),
 
 	"chapter5-09-event-02-obj01": require("../data/anime/chapter5/event/chapter5-09-event-02/obj01_anime_1"),
 	"chapter5-09-event-02-obj02": require("../data/anime/chapter5/event/chapter5-09-event-02/obj02_anime_1"),
