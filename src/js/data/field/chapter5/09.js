@@ -94,8 +94,8 @@ module.exports = {
 
 							],
 							[
-								{"chara": "koishi","exp": "yes", "serif": _("決めたわ")},
-								// TODO: イベント再生 10720
+								// イベント再生 10720
+								{"chara": "koishi","exp": "yes", "serif": _("決めたわ"), "option": {"playEvent": "chapter5-09-event-02"}},
 							],
 						]},
 					],
