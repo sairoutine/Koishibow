@@ -89,8 +89,9 @@ module.exports = {
 						{"chara": "orin","exp": "orin-ura_wait", "serif": _("にゃー"), "junction": ["友達を助ける", "鍵を返す"]},
 						{"type": "junction_serif", "serifs": [
 							[
-								{"chara": "koishi","exp": "yes", "serif": _("決めたわ")},
-								// TODO: イベント再生 10710
+								// イベント再生 10710
+								{"chara": "koishi","exp": "yes", "serif": _("決めたわ"), "option": {"playEvent": "chapter5-09-event-01"}},
+
 							],
 							[
 								{"chara": "koishi","exp": "yes", "serif": _("決めたわ")},
