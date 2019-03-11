@@ -101,6 +101,7 @@ var anime_map = {
 	"chapter5-01-event-01-obj01": require("../data/anime/chapter5/event/chapter5-01-event-01/obj01_anime_1"),
 	"chapter5-01-event-01-obj02": require("../data/anime/chapter5/event/chapter5-01-event-01/obj02_anime_1"),
 
+	"chapter5-03-event-01-obj01": require("../data/anime/chapter5/event/chapter5-03-event-01/obj01_anime_1"),
 
 
 	// 旧イベント

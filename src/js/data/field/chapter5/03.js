@@ -17,7 +17,8 @@ module.exports = {
 		{"type": "criteria", "value": "existsItem", "arguments": ["32"], "process": [
 			// 鍵を持っている
 			[
-				// TODO: イベント表示
+				// イベント表示
+				{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter5-03-event-01"]},
 				{"chara": "koishi","exp": "look_bottom", "serif": _("なにかしらこれ")},
 				{"chara": "koishi","exp": null, "serif": _("あっちからきたけど")},
 				{"id": "chapter5-03-event-10630", "save": true}, // アライグマ表示
