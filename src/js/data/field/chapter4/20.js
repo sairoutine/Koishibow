@@ -112,6 +112,7 @@ module.exports = {
 						{"chara": "renko", "serif":_("とりあえずあたりを調べなきゃね")},
 						{"chara": "renko", "serif":_("......")},
 						{"chara": "renko", "serif":_("喋り続けないと静けさで狂いそうだわ")},
+						{"id": "chapter4-20-jizou_talk1", "save": true},
 					],
 				]}
 			],
