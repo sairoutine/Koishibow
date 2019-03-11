@@ -14,4 +14,5 @@ module.exports = [
 	require("../../data/event/chapter4/29/01"),
 	require("../../data/event/chapter4/29/02"),
 	require("../../data/event/chapter4/39/01"),
+	require("../../data/event/chapter5/01/01"),
 ];

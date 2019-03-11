@@ -15,6 +15,14 @@ module.exports = [
 		path: "./movie/production/chapter4-chikurin-event-01.mp4",
 		isStopBGM: true,
 	},
+	{
+		key: "chapter5-01-event-02",
+		path: "./movie/common/chapter0.mp4",
+		isStopBGM: true,
+	},
+
+
+
 ];
 
 
