@@ -114,6 +114,7 @@ module.exports = {
 								{"chara": "reisen", "exp": "reisen-reaction_03", "serif":_("いいわ")},
 								{"chara": "reisen", "exp": null, "serif":_("それじゃあ")},
 								{"chara": "reisen", "exp": "reisen-reaction_01", "serif":_("試供品をあげましょ"), "option": {"getItem": "27"}},
+								{"chara": "koishi", "exp": null, "serif": "", "option": {"playEvent": "chapter4-19-event-01"}},
 							],
 							[
 								{"chara": "reisen", "exp": "reisen-reaction_01", "serif":_("死ぬってあなたが思っているよりずっとこわいのよ")},
