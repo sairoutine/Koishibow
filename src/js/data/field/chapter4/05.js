@@ -50,7 +50,10 @@ module.exports = {
 			image: "item_23",
 			name: "カセットテープ「チャルメラ」",
 			serif: [
-				{"chara": "koishi", "exp": "touch", "serif":_("またみっけた！	またあった！")},
+				//カセットテープ「チャルメラ」獲得
+				{"chara": "koishi", "exp": "touch", "serif":_("またみっけた！	またあった！"), "option": {"getItem": "24"}},
+				//カセットテープ「チャルメラ」を非表示
+				{"id": "chapter4-03-show_tape2", "save": true},
 				{"chara": "merry", "exp": "merry-reaction_05", "serif":_("竹林の中にテープ？")},
 				{"chara": "koishi", "exp": "yes", "serif":_("へんなの")},
 				{"chara": "koishi", "exp": "look_top", "serif":_("誰かが落としたのかな")},
@@ -78,10 +81,6 @@ module.exports = {
 				{"chara": "koishi", "exp": "yes", "serif":_("いっぱいいるよ")},
 				{"chara": "koishi", "exp": null, "serif":_("......")},
 				{"chara": "merry", "exp": "merry-reaction_09", "serif":_("そうなんだ")},
-				//カセットテープ「チャルメラ」を非表示
-				{"id": "chapter4-03-show_tape2", "save": true},
-				// カセットテープ「チャルメラ」獲得
-				{"chara": "koishi","serif":"", "option": {"getItem": "24"}},
 			],
 			x:359.50*2/3, y:762.*2/3,
 			scale: 2/3,
