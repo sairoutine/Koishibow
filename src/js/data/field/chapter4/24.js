@@ -63,25 +63,6 @@ module.exports = {
 	background: "chapter4-24-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4-20-jizou_talk1"], "process": [
-			// 地蔵と会話済
-			[
-				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_24_40450"], "process": [
-					// すでにアクセス済み
-					[],
-					// まだ未アクセス
-					[
-						// イベント 再生
-						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_24_40450"]},
-						{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter4-24-event-01"]},
-					],
-				]},
-			],
-			// 地蔵と会話まだ
-			[
-			],
-		]},
-
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_24_40400"], "process": [
 			// すでにアクセス済み
 			[
@@ -112,7 +93,7 @@ module.exports = {
 						{"chara": "koishi", "exp": "wait", "serif":_("えっ")},
 						{"chara": "koishi", "exp": "look_bottom", "serif":_("よくわからない")},
 						{"chara": "merry", "exp": "merry-reaction_06", "serif":_("そう")},
-						{"chara": "merry", "exp": "merry-reaction_11", "serif":_("ありがとう")},
+						{"chara": "merry", "exp": "merry-reaction_11", "serif":_("ありがとう"), "option": {"playEvent": "chapter4-24-event-01"}},
 					],
 					// 新品のテープを持ってない
 					[],
