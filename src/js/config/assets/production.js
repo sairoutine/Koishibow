@@ -402,6 +402,7 @@ AssetsConfig.images = {
 	"item_23":            "./image/production/item/icon_item_cp4_tape.png",
 	"item_31":            "./image/production/item/icon_item_cp5_eye.png",
 	"item_32":            "./image/production/item/icon_item_cp5_key.png",
+	"item_35":            "./image/production/item/icon_item_cp6_scissors.png",
 
 	// 1枚絵
 	"picture_chapter3-08-illust-01":   "./image/production/picture/chapter3-08-illust-01.png",
