@@ -214,6 +214,22 @@ var anime_map = {
 	"chapter5-14-obj-01-obj02":  require('../data/anime/chapter5/14/obj-01/obj02_anime_1.json'),
 	"chapter5-14-obj-01-obj03":  require('../data/anime/chapter5/14/obj-01/obj03_anime_1.json'),
 	"chapter5-14-obj-01-obj04":  require('../data/anime/chapter5/14/obj-01/obj04_anime_1.json'),
+    
+	"chapter6-01-obj-01":  require('../data/anime/chapter6/01/obj-01/obj01_anime_1.json'),
+	"chapter6-01-obj-02":  require('../data/anime/chapter6/01/obj-01/obj02_anime_1.json'),
+	"chapter6-01-obj-03":  require('../data/anime/chapter6/01/obj-01/obj03_anime_1.json'),
+	"chapter6-06-obj-01":  require('../data/anime/chapter6/06/obj-01/obj01_anime_1.json'),
+	"chapter6-07-obj-01":  require('../data/anime/chapter6/07/obj-01/obj01_anime_1.json'),
+	"chapter6-10-obj-01":  require('../data/anime/chapter6/10/obj-01/obj01_anime_1.json'),
+	"chapter6-10-obj-01":  require('../data/anime/chapter6/10/obj-01/obj02_anime_1.json'),
+	"chapter6-10-obj-01":  require('../data/anime/chapter6/10/obj-01/obj03_anime_1.json'),
+	"chapter6-10-obj-01":  require('../data/anime/chapter6/10/obj-01/obj04_anime_1.json'),
+	"chapter6-10-obj-02":  require('../data/anime/chapter6/10/obj-02/obj01_anime_1.json'),
+	"chapter6-10-obj-03":  require('../data/anime/chapter6/10/obj-03/obj01_anime_1.json'),
+	"chapter6-10-obj-03":  require('../data/anime/chapter6/10/obj-03/obj02_anime_1.json'),
+	"chapter6-10-obj-03":  require('../data/anime/chapter6/10/obj-03/obj03_anime_1.json'),
+	"chapter6-10-obj-03":  require('../data/anime/chapter6/10/obj-03/obj04_anime_1.json'),
+	"chapter6-10-obj-03":  require('../data/anime/chapter6/10/obj-03/obj05_anime_1.json'),
 
 	/* てぃ */
 	"tewi-wait":          require('../data/anime/tewi/wait_anime_1'),
@@ -497,6 +513,10 @@ var anime_map = {
 	"animal_uma-reaction_01":          require('../data/anime/animal_uma/reaction_01_anime_1'),
 	"animal_uma-reverse_ura":          require('../data/anime/animal_uma/reverse_ura_anime_1'),
 	"animal_uma-ura_reaction_01":      require('../data/anime/animal_uma/ura_reaction_01_anime_1'),
+    
+	/* BM */
+	"animal_uma-wait":                 require('../data/anime/bm/wait_anime_1'),
+	"reaction_01_anime_1":             require('../data/anime/bm/reaction_01_anime_1'),
 
 	/* ダークミスト */
 	"dark-mist":    require('../data/anime/dark-mist/eff01_anime_1.json'),

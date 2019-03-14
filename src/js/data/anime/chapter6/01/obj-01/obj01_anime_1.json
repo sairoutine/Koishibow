@@ -1,0 +1,24 @@
+[
+{
+"images":["chapter6-01-obj-01.png","chapter6-01-obj-bm.png"],
+"name": "obj01_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 1200,
+"CanvasHeight": 1200,
+"MarginWidth": 608,
+"MarginHeight": 608,
+"parts": ["root","Obj","01","03","02","bm","bm_foot_r0","bm_foot_r1","bm_foot_l0","bm_foot_l1","bm_body_all","bm_arm_r0","bm_arm_r1","bm_body","bm_tail1","bm_tail2","bm_tail3","bm_arm_l0","bm_arm_l1","bm_head","bm_head_hear","bm_eye_r1","bm_eye_l1","bm_mouth0","bm_mouth1","bm_mouth1_1","bm_mouth1_0"],
+"ssa": [
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,0.500000,0.500000,169,362],
+[3,0,341,267,353,757,6.0,5.500000,0.0,0.500000,0.500000,176,378]
+],
+[
+[1,0,0,299,339,725,0.0,0.0,0.0,0.500000,0.500000,169,362],
+[3,0,341,267,353,757,6.0,5.500000,0.0,0.500000,0.500000,176,378]
+]
+]
+}
+}
+]
