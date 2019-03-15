@@ -214,41 +214,41 @@ AssetsConfig.images = {
 	"chapter5-09-event-02-oku1":  "./image/production/chapter5/event/chapter5-09-event-02/chapter5-09-event-02-oku1.png",
 	"chapter5-09-event-02-oku2":  "./image/production/chapter5/event/chapter5-09-event-02/chapter5-09-event-02-oku2.png",
     
-    // 6-4-1
+	// 6-4-1
 	"chapter6-04-event-01-bg-001":  "./image/production/chapter6/event/chapter6-04-event-01/chapter6-04-event-01-bg-001.jpg",
 	"chapter6-04-event-01-bm":  "./image/production/chapter6/event/chapter6-04-event-01/chapter6-04-event-01-bm.png",
 	"chapter6-04-event-01-koishi":  "./image/production/chapter6/event/chapter6-04-event-01/chapter6-04-event-01-koishi.png",
     
-    // 6-12-1
+	// 6-12-1
 	"chapter6-12-event-01-bg-001":  "./image/production/chapter6/event/chapter6-12-event-01/chapter6-12-event-01-bg-001.jpg",
 	"chapter6-12-event-01":  "./image/production/chapter6/event/chapter6-12-event-01/chapter6-12-event-01.png",
 	"chapter6-12-event-01-bm":  "./image/production/chapter6/event/chapter6-12-event-01/chapter6-12-event-01-bm.png",
 	"chapter6-12-event-01-koishi":  "./image/production/chapter6/event/chapter6-12-event-01/chapter6-12-event-01-koishi.png",
     
-    // chapter6-event-ending01-2
+	// chapter6-event-ending01-2
 	"chapter6-event-ending01-2-obj-01":  "./image/production/chapter6/event/chapter6-event-ending01-2/chapter6-event-ending01-2-obj-01.png",
 	"chapter6-event-ending01-2-koishi":  "./image/production/chapter6/event/chapter6-event-ending01-2/chapter6-event-ending01-2-koishi.png",
 	"chapter6-event-ending01-2-satori":  "./image/production/chapter6/event/chapter6-event-ending01-2/chapter6-event-ending01-2-satori.png",
     
-    // chapter6-event-ending02-1
+	// chapter6-event-ending02-1
 	"chapter6-event-ending02-1-obj-01":  "./image/production/chapter6/event/chapter6-event-ending02-1/chapter6-event-ending02-1-obj-01.png",
 	"chapter6-event-ending02-1-obj-02":  "./image/production/chapter6/event/chapter6-event-ending02-1/chapter6-event-ending02-1-obj-02.png",
 	"chapter6-event-ending02-1-koishi":  "./image/production/chapter6/event/chapter6-event-ending02-1/chapter6-event-ending02-1-koishi.png",
     
-    // chapter6-event-ending02-2
+	// chapter6-event-ending02-2
 	"chapter6-event-ending02-2-bg-001":  "./image/production/chapter6/event/chapter6-event-ending02-2/chapter6-event-ending02-2-bg-001.jpg",
 	"chapter6-event-ending02-2-obj-01":  "./image/production/chapter6/event/chapter6-event-ending02-2/chapter6-event-ending02-2-obj-01.png",
 	"chapter6-event-ending02-2-koishi":  "./image/production/chapter6/event/chapter6-event-ending02-2/chapter6-event-ending02-2-koishi.png",
 	"chapter6-event-ending02-2-satori":  "./image/production/chapter6/event/chapter6-event-ending02-2/chapter6-event-ending02-2-satori.png",
     
-    // chapter6-event-ending03-1
+	// chapter6-event-ending03-1
 	"chapter6-event-ending03-1-obj-01":  "./image/production/chapter6/event/chapter6-event-ending03-1/chapter6-event-ending03-1-obj-01.png",
 	"chapter6-event-ending03-1-obj-02":  "./image/production/chapter6/event/chapter6-event-ending03-1/chapter6-event-ending03-1-obj-02.png",
 	"chapter6-event-ending03-1-koishi":  "./image/production/chapter6/event/chapter6-event-ending03-1/chapter6-event-ending03-1-koishi.png",
     
-    // chapter6-event-ending03-2
+	// chapter6-event-ending03-2
 	"chapter6-event-ending03-2-bg-001":  "./image/production/chapter6/event/chapter6-event-ending03-2/chapter6-event-ending03-2-bg-001.jpg",
-	"chapter6-event-ending03-2-koishi":  "./image/production/chapter6/event/chapter6-event-ending03-2/chapter6-event-ending03-2-koishi.png,
+	"chapter6-event-ending03-2-koishi":  "./image/production/chapter6/event/chapter6-event-ending03-2/chapter6-event-ending03-2-koishi.png",
     
     
 	// ジャーナル画像(日本語)

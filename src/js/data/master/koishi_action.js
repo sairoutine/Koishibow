@@ -15,7 +15,8 @@ var jsonDataOfReactionSit = require('../../data/anime/koishi/sit_anime_1');
 var jsonDataOfAxe = require('../../data/anime/koishi/reaction_ax_anime_1');
 // 目が見えない	不	30	1秒
 var jsonDataOfNo3rdeye = require('../../data/anime/koishi/reaction_no3rdeye_anime_1');
-
+// 怖がる
+var jsonDataOfAfraid = require('../../data/anime/koishi/reaction_afraid_anime_1');
 
 module.exports = [
 	// 触る
@@ -64,6 +65,12 @@ module.exports = [
 	{
 		name: "use_axe",
 		anime: jsonDataOfAxe,
+		sound: "",
+	},
+	// 怖がる
+	{
+		name: "afraid",
+		anime: jsonDataOfAfraid,
 		sound: "",
 	},
 ];
