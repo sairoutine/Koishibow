@@ -9,7 +9,7 @@ var I = 0;
 module.exports = {
 	key: "chapter5_05",
 	chapter: 5,
-	bgm: "silent",
+	bgm: "field12",
 	rightStartPosition: {x: 640, y: 480},
 	leftStartPosition:  {x: 220, y: 350},
 	rightField: null,
