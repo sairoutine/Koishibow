@@ -12,7 +12,7 @@ module.exports = {
 	rightField: "chapter4_36",
 	leftField: "chapter4_42",
 	background: "chapter4-39-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_sand",
 	initialProcess: [
 		// BAD END ルートのイベントを見たあと
 		//

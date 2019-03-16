@@ -518,11 +518,19 @@ AssetsConfig.sounds = {
 	},
 
 	walking_bare_snow_right:    {
-		path: "./sound/common/walking/walking_bare_snow_right.ogg",
+		path: "./sound/common/walking/bare_snow_right.ogg",
 		volume: 1.0,
 	},
 	walking_bare_snow_left:    {
-		path: "./sound/common/walking/walking_bare_snow_left.ogg",
+		path: "./sound/common/walking/bare_snow_left.ogg",
+		volume: 1.0,
+	},
+	walking_bare_sand_right:    {
+		path: "./sound/common/walking/bare_sand_right.ogg",
+		volume: 1.0,
+	},
+	walking_bare_sand_left:    {
+		path: "./sound/common/walking/bare_sand_left.ogg",
 		volume: 1.0,
 	},
 	noise1:    {

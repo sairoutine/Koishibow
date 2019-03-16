@@ -15,7 +15,7 @@ module.exports = {
 	rightField: "chapter5_02",
 	leftField: null,
 	background: "chapter0-myroom-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wood",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_01_50010"], "process": [
 			// すでにアクセス済み

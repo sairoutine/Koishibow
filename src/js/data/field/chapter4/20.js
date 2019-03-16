@@ -14,7 +14,7 @@ module.exports = {
 	rightField: "chapter4_21",
 	leftField: "chapter4_19",
 	background: "chapter4-20-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_sand",
 	initialProcess: [
 		{"type": "criteria", "value": "existsItem", "arguments": ["27"], "process": [
 			// テープ「お父さんお母さんへ」を持っている

@@ -13,7 +13,7 @@ module.exports = {
 	rightField: "chapter5_07",
 	leftField: "chapter5_06",
 	background: null,
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wood",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-07-animal_komodo_talk1"], "process": [
 			// コモドとの会話が終わったら

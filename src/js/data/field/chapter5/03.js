@@ -12,7 +12,7 @@ module.exports = {
 	rightField: null,
 	leftField: "chapter5_02",
 	background: null,
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wood",
 	initialProcess: [
 		{"type": "criteria", "value": "existsItem", "arguments": ["32"], "process": [
 			// 鍵を持っている

@@ -12,7 +12,7 @@ module.exports = {
 	rightField: null,
 	leftField: "chapter4_22",
 	background: "chapter4-23-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_sand",
 	initialProcess: [
 	],
 	objects: [

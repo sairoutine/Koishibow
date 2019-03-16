@@ -12,7 +12,7 @@ module.exports = {
 	rightField: null,
 	leftField: null,
 	background: "chapter4-07-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_sand",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_07_40110"], "process": [
 			// すでにアクセス済み

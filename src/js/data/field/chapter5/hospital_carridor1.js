@@ -22,7 +22,7 @@ module.exports = {
 	rightField: "chapter5_03",
 	leftField: "chapter5_01",
 	background: "chapter5-02-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wood",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_hospital_carridor1_50090"], "process": [
 			// すでにアクセス済み

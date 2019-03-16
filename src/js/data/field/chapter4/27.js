@@ -12,7 +12,7 @@ module.exports = {
 	rightField: null,
 	leftField: "chapter4_26",
 	background: "chapter4-27-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_sand",
 	initialProcess: [
 		{"type": "process", "value": "playTalk", "arguments": [
 			{"chara": "tewireal", "exp": "tewireal-reaction_01", "serif":_("言っとくがあっちには本当に何もないぞ")},

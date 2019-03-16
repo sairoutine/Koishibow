@@ -12,7 +12,7 @@ module.exports = {
 	rightField: "chapter5_09",
 	leftField: null,
 	background: null,
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wood",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_12_10185"], "process": [
 			// お燐と1度目の会話が済んでいる

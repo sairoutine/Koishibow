@@ -13,7 +13,7 @@ module.exports = {
 	rightField: "chapter4_03",
 	leftField: "chapter4_01",
 	background: "chapter4-02-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_sand",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_02_40070"], "process": [
 			// すでにアクセス済み

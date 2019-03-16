@@ -15,7 +15,7 @@ module.exports = {
 	rightField: null,
 	leftField: null,
 	background: null,
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wood",
 	initialProcess: [
 		{"type": "process", "value": "playTalk", "arguments": [
 			[

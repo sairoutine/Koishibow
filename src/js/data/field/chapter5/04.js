@@ -12,7 +12,7 @@ module.exports = {
 	rightField: "chapter5_14",
 	leftField: null,
 	background: null,
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wood",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-04-show_animal_mogura"], "process": [
 			// もぐら表示済み
