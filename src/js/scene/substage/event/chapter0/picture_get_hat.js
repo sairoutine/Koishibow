@@ -3,9 +3,8 @@
 // TODO: use_eyedrops だけでなく、picture クラス(指定の1枚絵を表示する)
 // としてしまっていいかも
 
-var base_scene = require('./base');
-
-var Util = require('../../hakurei').util;
+var base_scene = require('../../base');
+var Util = require('../../../../hakurei').util;
 
 var SceneSubStageGetHat = function(core) {
 	base_scene.apply(this, arguments);

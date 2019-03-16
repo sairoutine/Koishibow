@@ -5,23 +5,23 @@ var Util = require('../hakurei').util;
 
 var CONSTANT = require('../constant');
 
-var SceneSubStagePlay = require('./substage/play'); // ゲーム操作可能
-var SceneSubStageTalkWithObject = require('./substage/talk_with_object'); // こいし会話中
-var SceneSubStageMenuItem = require('./substage/menu_item'); // アイテムメニュー
-var SceneSubStageGameover = require('./substage/gameover'); // ゲームオーバー
-var SceneSubStageShowJournal = require('./substage/show_journal'); // ジャーナル表示
-var SceneSubStageMenuJournal = require('./substage/menu_journal'); // ジャーナル メニュー
-var SceneSubStageGotItem = require('./substage/got_item'); // アイテム獲得
-var SceneSubStageUseItem = require('./substage/use_item'); // アイテム使用
-var SceneSubStageLock = require('./substage/lock');
-var SceneSubStageTouchHashigo = require('./substage/touch_hashigo');
-var SceneSubStagePictureUseEyedrops = require('./substage/picture_use_eyedrops'); // 目薬使用1枚絵
-var SceneSubStageEventChapter0GetHat = require('./substage/event/chapter0/get_hat');
-var SceneSubStagePictureGetHat = require('./substage/picture_get_hat');
-var SceneSubStagePicture = require('./substage/picture');
-var SceneSubStageBlackout = require('./substage/blackout');
-var SceneSubStageEventChapter0KokoroEncounter = require('./substage/event/chapter0/kokoro_encounter');
+var SceneSubStagePlay                              = require('./substage/play'); // ゲーム操作可能
+var SceneSubStageTalkWithObject                    = require('./substage/talk_with_object'); // こいし会話中
+var SceneSubStageMenuItem                          = require('./substage/menu_item'); // アイテムメニュー
+var SceneSubStageGameover                          = require('./substage/gameover'); // ゲームオーバー
+var SceneSubStageShowJournal                       = require('./substage/show_journal'); // ジャーナル表示
+var SceneSubStageMenuJournal                       = require('./substage/menu_journal'); // ジャーナル メニュー
+var SceneSubStageGotItem                           = require('./substage/got_item'); // アイテム獲得
+var SceneSubStageUseItem                           = require('./substage/use_item'); // アイテム使用
+var SceneSubStageLock                              = require('./substage/lock');
+var SceneSubStagePictureUseEyedrops                = require('./substage/picture_use_eyedrops'); // 目薬使用1枚絵
+var SceneSubStagePicture                           = require('./substage/picture');
+var SceneSubStageBlackout                          = require('./substage/blackout');
+var SceneSubStageEventChapter0PictureGetHat        = require('./substage/event/chapter0/picture_get_hat');
+var SceneSubStageEventChapter0GetHat               = require('./substage/event/chapter0/get_hat');
+var SceneSubStageEventChapter0KokoroEncounter      = require('./substage/event/chapter0/kokoro_encounter');
 var SceneSubStageEventChapter0SatoriEncounterBegin = require('./substage/event/chapter0/satori_encounter_begin');
+var SceneSubStageEventChapter1TouchHashigo         = require('./substage/event/chapter1/touch_hashigo');
 
 var ItemMenuButton = require('../object/ui/item_menu_button');
 var EyeButton = require('../object/ui/eye_button');
@@ -79,7 +79,6 @@ var SceneStage = function(core) {
 	this.addSubScene("play", new SceneSubStagePlay(core));
 	// 会話中
 	this.addSubScene("talk_with_object", new SceneSubStageTalkWithObject(core));
-
 	// アイテム メニュー
 	this.addSubScene("menu_item", new SceneSubStageMenuItem(core));
 	// ゲームオーバー
@@ -98,16 +97,17 @@ var SceneStage = function(core) {
 	this.addSubScene("blackout", new SceneSubStageBlackout(core));
 	// プレイヤーに何も操作させない
 	this.addSubScene("lock", new SceneSubStageLock(core));
-
-	this.addSubScene("touch_hashigo", new SceneSubStageTouchHashigo(core));
 	// 目薬使用 1枚絵
 	this.addSubScene("picture_use_eyedrops", new SceneSubStagePictureUseEyedrops(core));
+
 	// chapter0 帽子なしの自室
 	this.addSubScene("event_chapter0_get_hat", new SceneSubStageEventChapter0GetHat(core));
 	// chapter0 帽子獲得 1枚絵
-	this.addSubScene("picture_get_hat", new SceneSubStagePictureGetHat(core));
+	this.addSubScene("picture_get_hat", new SceneSubStageEventChapter0PictureGetHat(core));
+
 	this.addSubScene("event_chapter0_kokoro_encounter", new SceneSubStageEventChapter0KokoroEncounter(core));
 	this.addSubScene("event_chapter0_satori_encounter_begin", new SceneSubStageEventChapter0SatoriEncounterBegin(core));
+	this.addSubScene("touch_hashigo", new SceneSubStageEventChapter1TouchHashigo(core));
 };
 Util.inherit(SceneStage, base_scene);
 
