@@ -7,7 +7,7 @@ var CONSTANT = require("../../../constant");
 module.exports = {
 	key: "chapter4_02",
 	chapter: 4,
-	bgm: "silent",
+	bgm: null,
 	rightStartPosition: {x: 790, y: 480},
 	leftStartPosition:  {x: 140, y: 480},
 	rightField: "chapter4_03",
@@ -15,6 +15,16 @@ module.exports = {
 	background: "chapter4-02-bg-001",
 	walkSound: "walking_bare_sand",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4-02-merry_talk1"], "process": [
+			// メリーと喋る前のBGM
+			[
+				{"type": "process", "value": "playBGM", "arguments": ["field9"]},
+			],
+			// メリーと喋った後のBGM
+			[
+				{"type": "process", "value": "playBGM", "arguments": ["field10"]},
+			],
+		]},
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_02_40070"], "process": [
 			// すでにアクセス済み
 			[],

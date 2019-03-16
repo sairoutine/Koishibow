@@ -3,7 +3,7 @@ var _ = require('i18n4v')
 module.exports = {
 	key: "chapter4_01",
 	chapter: 4,
-	bgm: "silent",
+	bgm: "field9",
 	rightStartPosition: {x: 790, y: 480},
 	leftStartPosition:  {x: 140, y: 480},
 	rightField: "chapter4_02",
