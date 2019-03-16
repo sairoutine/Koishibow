@@ -303,21 +303,46 @@ SceneStage.prototype._muteMainAndSubBGM = function(main_bgm, sub_bgms) {
 	}
 };
 
-SceneStage.prototype.update = function() {
-	var field_data = this.getFieldData();
-	var i, len;
 
-	// chapter 0 で3rd eye を使用していないときのみ
+// chapter に応じたノイズ再生
+SceneStage.prototype._playNoise = function() {
+	// chapter 0 or 4 で3rd eye を使用していないときのみ
 	// ランダムノイズ再生
 	// N秒ごとにN%の確率で再生
-	if (field_data.chapter() === 0 && !this.isUsingEye()) {
-		if(this.core.frame_count % CONSTANT.CHAPTER0.NOISE_SOUND_INTERVAL_COUNT === 0) {
-			if (Util.getRandomInt(100) <= CONSTANT.CHAPTER0.NOISE_SOUND_PROB) {
-				var sound_name = CONSTANT.CHAPTER0.NOISE_SOUND_LIST[ Util.getRandomInt(0, CONSTANT.CHAPTER0.NOISE_SOUND_LIST.length - 1) ];
-				this.core.audio_loader.playSound(sound_name);
-			}
+
+	// 3rd eye を使用していれば再生しない
+	if(this.isUsingEye()) return;
+
+	var field_data = this.getFieldData();
+
+	var interval, prob, list;
+	if (field_data.chapter() === 0) {
+		interval = CONSTANT.CHAPTER0.NOISE_SOUND_INTERVAL_COUNT
+		prob     = CONSTANT.CHAPTER0.NOISE_SOUND_PROB
+		list     = CONSTANT.CHAPTER0.NOISE_SOUND_LIST
+	}
+	else if (field_data.chapter() === 4) {
+		interval = CONSTANT.CHAPTER4.NOISE_SOUND_INTERVAL_COUNT
+		prob     = CONSTANT.CHAPTER4.NOISE_SOUND_PROB
+		list     = CONSTANT.CHAPTER4.NOISE_SOUND_LIST
+	}
+	else {
+		// chapter0, 4 以外では再生しない
+		return;
+	}
+
+	if(this.core.frame_count % interval  === 0) {
+		if (Util.getRandomInt(100) <= prob) {
+			var sound_name = list[ Util.getRandomInt(0, list.length - 1) ];
+			this.core.audio_loader.playSound(sound_name);
 		}
 	}
+};
+
+
+SceneStage.prototype.update = function() {
+	// chapter に応じたノイズ再生
+	this._playNoise();
 
 	// 左クリック位置を出力
 	if (CONSTANT.DEBUG.ON) {
@@ -349,7 +374,7 @@ SceneStage.prototype.update = function() {
 	this.item_menu_button.update();
 	this.eye_button.update();
 
-	for (i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
+	for (var i = 0, len = this.walk_immovable_areas.length; i < len; i++) {
 		var obj = this.walk_immovable_areas[i];
 		obj.update();
 	}

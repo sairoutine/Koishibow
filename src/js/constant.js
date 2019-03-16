@@ -73,7 +73,12 @@ var CONSTANT = {
 
 	// フィールドでランダムに流れるノイズ
 	CHAPTER0: {
-		NOISE_SOUND_LIST: ["noise1", "noise2", "noise3", "noise4", "noise5"],
+		NOISE_SOUND_LIST: ["chapter0_noise1", "chapter0_noise2", "chapter0_noise3", "chapter0_noise4", "chapter0_noise5"],
+		NOISE_SOUND_INTERVAL_COUNT: 1200,
+		NOISE_SOUND_PROB: 50,
+	},
+	CHAPTER4: {
+		NOISE_SOUND_LIST: ["chapter4_noise1", "chapter4_noise2", "chapter4_noise3", "chapter4_noise4"],
 		NOISE_SOUND_INTERVAL_COUNT: 1200,
 		NOISE_SOUND_PROB: 50,
 	}

@@ -533,24 +533,40 @@ AssetsConfig.sounds = {
 		path: "./sound/common/walking/bare_sand_left.ogg",
 		volume: 1.0,
 	},
-	noise1:    {
-		path: "./sound/common/noise/noise1.ogg",
+	chapter0_noise1:    {
+		path: "./sound/common/noise/chapter0/noise1.ogg",
 		volume: 1.0,
 	},
-	noise2:    {
-		path: "./sound/common/noise/noise2.ogg",
+	chapter0_noise2:    {
+		path: "./sound/common/noise/chapter0/noise2.ogg",
 		volume: 1.0,
 	},
-	noise3:    {
-		path: "./sound/common/noise/noise3.ogg",
+	chapter0_noise3:    {
+		path: "./sound/common/noise/chapter0/noise3.ogg",
 		volume: 1.0,
 	},
-	noise4:    {
-		path: "./sound/common/noise/noise4.ogg",
+	chapter0_noise4:    {
+		path: "./sound/common/noise/chapter0/noise4.ogg",
 		volume: 1.0,
 	},
-	noise5:    {
-		path: "./sound/common/noise/noise5.ogg",
+	chapter0_noise5:    {
+		path: "./sound/common/noise/chapter0/noise5.ogg",
+		volume: 1.0,
+	},
+	chapter4_noise1:    {
+		path: "./sound/common/noise/chapter4/noise1.ogg",
+		volume: 1.0,
+	},
+	chapter4_noise2:    {
+		path: "./sound/common/noise/chapter4/noise2.ogg",
+		volume: 1.0,
+	},
+	chapter4_noise3:    {
+		path: "./sound/common/noise/chapter4/noise3.ogg",
+		volume: 1.0,
+	},
+	chapter4_noise4:    {
+		path: "./sound/common/noise/chapter4/noise4.ogg",
 		volume: 1.0,
 	},
 };
