@@ -641,6 +641,10 @@ AssetsConfig.sounds = {
 		path: "./sound/production/chapter4/event/chapter4-39-event-01/02.ogg",
 		volume: 1.0,
 	},
+	"chapter5-03-event-01-01":    {
+		path: "./sound/production/chapter5/event/chapter5-03-event-01/01.ogg",
+		volume: 1.0,
+	},
 	"chapter5-09-event-01-01":    {
 		path: "./sound/production/chapter5/event/chapter5-09-event-01/01.ogg",
 		volume: 1.0,
@@ -695,10 +699,6 @@ AssetsConfig.sounds = {
 	},
 	"chapter4-20-fall_jizo":    {
 		path: "./sound/production/chapter4/20/fall_jizo.ogg",
-		volume: 1.0,
-	},
-	"chapter5-03-medama":    {
-		path: "./sound/production/chapter5/03/medama.ogg",
 		volume: 1.0,
 	},
 	"chapter5-07-hashigo":    {
