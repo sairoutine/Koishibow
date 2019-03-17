@@ -96,7 +96,7 @@ module.exports = {
 			anime5: null,
 			anime6: null,
 			action_name: null,
-			sound_name: null,
+			sound_name: "chapter4-04-penki",
 		},
 		{
 			no: "merry",
