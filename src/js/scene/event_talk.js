@@ -379,6 +379,14 @@ SceneEventTalk.prototype._showJunction = function() {
 // アニメ
 SceneEventTalk.prototype._actionExpression = function(callback) {
 	callback = callback || function () {};
+
+	// SE 再生
+	var option = this._serif.getCurrentOption();
+
+	// sound 再生
+	var sounds = option.sounds;
+	this._playSounds(sounds);
+
 	// 表情
 	var expression = this._serif.getCurrentCharaExpressionByPosition();
 	if(!expression) {
@@ -388,12 +396,6 @@ SceneEventTalk.prototype._actionExpression = function(callback) {
 		}, NEXT_TO_SERIF_WAITING_COUNT);
 		return;
 	}
-
-	var option = this._serif.getCurrentOption();
-
-	// sound 再生
-	var sounds = this._serif.getCurrentOption().sounds;
-	this._playSounds(sounds);
 
 	if (option.loop) {
 		this.ss.playAnimationInfinity(expression);
