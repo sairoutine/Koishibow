@@ -60,13 +60,13 @@ ObjectStaticImage.prototype.setData = function(data) {
 		this._action_name  = data.action_name;
 	}
 
-	if (data.width) {
+	if ("width" in data) {
 		this._width  = data.width;
 	}
-	if (data.height) {
+	if ("height" in data) {
 		this._height = data.height;
 	}
-	if (data.scale) {
+	if ("scale" in data) {
 		this._scale = data.scale;
 	}
 };
@@ -91,7 +91,7 @@ ObjectStaticImage.prototype.draw = function(){
 };
 
 ObjectStaticImage.prototype.collisionWidth = function(){
-	if(this._width) {
+	if(this._width !== null) {
 		return this._width;
 	}
 	else {
@@ -100,7 +100,7 @@ ObjectStaticImage.prototype.collisionWidth = function(){
 };
 
 ObjectStaticImage.prototype.collisionHeight = function(){
-	if(this._height) {
+	if(this._height !== null) {
 		return this._height;
 	}
 	else {

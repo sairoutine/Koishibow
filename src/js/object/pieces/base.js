@@ -121,7 +121,14 @@ ObjectBase.prototype.getImmovableArea = function() {
 ObjectBase.prototype.onTouchByKoishi = function() {
 };
 
-
+// 待機アニメーション
+ObjectBase.prototype.setWaitAnime = function() {
+	throw new Error(this.no.toString() + " has not setWaitAnime method.");
+};
+// 表情変更
+ObjectBase.prototype.actionByObject = function() {
+	throw new Error(this.no.toString() + " has not actionByObject method.");
+};
 
 ObjectBase.prototype.isShow = function(){
 	return this._existsByData();
