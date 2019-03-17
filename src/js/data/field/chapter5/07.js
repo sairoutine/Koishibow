@@ -248,7 +248,7 @@ module.exports = {
 			//width: 200,
 			//height: 200,
 			scale: 2/3,
-			action_name: null,
+			action_name: "chapter5-07-hashigo",
 			sound_name: null
 		},
 		// はしご当たり判定
