@@ -197,7 +197,7 @@ module.exports = [
 		type: CONSTANT.ITEM.NON_USABLE,
 		name: "カセットプレーヤー",
 		imageName: "item_22",
-		soundName: "got_item_common",
+		soundName: "got_item_tapeplayer",
 		descriptionText:_("がちゃがちゃ鳴っておもしろい！"),
 		examineText:_(""),
 	},

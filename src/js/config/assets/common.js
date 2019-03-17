@@ -300,6 +300,10 @@ AssetsConfig.sounds = {
 		path: "./sound/common/got_item/radder.ogg",
 		volume: 1.0,
 	},
+	got_item_tapeplayer:    {
+		path: "./sound/common/got_item/tapeplayer.ogg",
+		volume: 1.0,
+	},
 	open_menu:    {
 		path: "./sound/common/open_menu.ogg",
 		volume: 1.0,
