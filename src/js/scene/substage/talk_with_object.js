@@ -279,7 +279,6 @@ SceneSubStageObjectTalk.prototype._actionExpression = function() {
 	var obj = this.root().getPiece(chara_name);
 	if(!obj) throw new Error(chara_name + " doesn't exist");
 
-	// TODO: 基底クラスに必要であることを定義したい
 	// アニメ実行
 	if(expression) {
 		// TODO: 文字の直指定やめたい
