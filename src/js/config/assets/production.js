@@ -707,16 +707,16 @@ AssetsConfig.sounds = {
 	},
 
 	// カセットテープ
-	"chapter4-tape1":    {
-		path: "./sound/production/chapter4/tape/cass1.ogg",
+	"chapter4-tape_24":    {
+		path: "./sound/production/chapter4/tape/24.ogg",
 		volume: 1.0,
 	},
-	"chapter4-tape2":    {
-		path: "./sound/production/chapter4/tape/cass2.ogg",
+	"chapter4-tape_27":    {
+		path: "./sound/production/chapter4/tape/27.ogg",
 		volume: 1.0,
 	},
-	"chapter4-tape5":    {
-		path: "./sound/production/chapter4/tape/cass5.ogg",
+	"chapter4-tape_23":    {
+		path: "./sound/production/chapter4/tape/23.ogg",
 		volume: 1.0,
 	},
 };
