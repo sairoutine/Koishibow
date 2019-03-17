@@ -1,6 +1,6 @@
 'use strict';
 
-// chapter4のみ画面全体を覆う黒い霧
+// chapter4 or フィールド chapter5_02 のみ画面全体を覆う黒い霧
 
 var base_object = require('./ss_anime_base');
 var Util = require('../hakurei').util;
@@ -42,7 +42,7 @@ ObjectBlackMist.prototype.scaleHeight = function(){
 };
 
 ObjectBlackMist.prototype.isShow = function(){
-	return this.scene.getChapterNo() === 4;
+	return this.scene.getChapterNo() === 4 || this.scene.getFieldData().key() === "chapter5_02";
 };
 
 module.exports = ObjectBlackMist;
