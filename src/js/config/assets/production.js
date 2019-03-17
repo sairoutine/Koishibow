@@ -673,10 +673,6 @@ AssetsConfig.sounds = {
 		path: "./sound/production/chapter5/event/chapter5-09-event-01/07.ogg",
 		volume: 1.0,
 	},
-	"chapter5-09-event-03-oku":    {
-		path: "./sound/production/chapter5/event/chapter5-09-event-03/oku.ogg",
-		volume: 1.0,
-	},
 	"chapter3-mansion_corridor3-breaked_clock":    {
 		path: "./sound/production/chapter3/mansion_corridor3/breaked_clock.ogg",
 		volume: 1.0,
