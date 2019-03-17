@@ -533,6 +533,150 @@ AssetsConfig.sounds = {
 		path: "./sound/production/chapter3/event/chapter3-13-event-04/12.ogg",
 		volume: 1.0,
 	},
+	"chapter4-00-event-01-01":    {
+		path: "./sound/production/chapter4/event/chapter4-00-event-01/01.ogg",
+		volume: 1.0,
+	},
+	"chapter4-00-event-01-02":    {
+		path: "./sound/production/chapter4/event/chapter4-00-event-01/02.ogg",
+		volume: 1.0,
+	},
+	"chapter4-00-event-01-03":    {
+		path: "./sound/production/chapter4/event/chapter4-00-event-01/03.ogg",
+		volume: 1.0,
+	},
+	"chapter4-00-event-01-04":    {
+		path: "./sound/production/chapter4/event/chapter4-00-event-01/04.ogg",
+		volume: 1.0,
+	},
+	"chapter4-00-event-01-05":    {
+		path: "./sound/production/chapter4/event/chapter4-00-event-01/05.ogg",
+		volume: 1.0,
+	},
+	"chapter4-00-event-01-06":    {
+		path: "./sound/production/chapter4/event/chapter4-00-event-01/06.ogg",
+		volume: 1.0,
+	},
+	"chapter4-00-event-01-07":    {
+		path: "./sound/production/chapter4/event/chapter4-00-event-01/07.ogg",
+		volume: 1.0,
+	},
+	"chapter4-02-event-01-01":    {
+		path: "./sound/production/chapter4/event/chapter4-02-event-01/01.ogg",
+		volume: 1.0,
+	},
+	"chapter4-02-event-01-02":    {
+		path: "./sound/production/chapter4/event/chapter4-02-event-01/02.ogg",
+		volume: 1.0,
+	},
+	"chapter4-02-event-01-03":    {
+		path: "./sound/production/chapter4/event/chapter4-02-event-01/03.ogg",
+		volume: 1.0,
+	},
+	"chapter4-02-event-01-04":    {
+		path: "./sound/production/chapter4/event/chapter4-02-event-01/04.ogg",
+		volume: 1.0,
+	},
+	"chapter4-02-event-01-05":    {
+		path: "./sound/production/chapter4/event/chapter4-02-event-01/05.ogg",
+		volume: 1.0,
+	},
+	"chapter4-19-event-01-01":    {
+		path: "./sound/production/chapter4/event/chapter4-19-event-01/01.ogg",
+		volume: 1.0,
+	},
+	"chapter4-19-event-01-02":    {
+		path: "./sound/production/chapter4/event/chapter4-19-event-01/02.ogg",
+		volume: 1.0,
+	},
+	"chapter4-19-event-01-03":    {
+		path: "./sound/production/chapter4/event/chapter4-19-event-01/03.ogg",
+		volume: 1.0,
+	},
+	"chapter4-19-event-01-04":    {
+		path: "./sound/production/chapter4/event/chapter4-19-event-01/04.ogg",
+		volume: 1.0,
+	},
+	"chapter4-19-event-01-05":    {
+		path: "./sound/production/chapter4/event/chapter4-19-event-01/05.ogg",
+		volume: 1.0,
+	},
+	"chapter4-24-event-01-01":    {
+		path: "./sound/production/chapter4/event/chapter4-24-event-01/01.ogg",
+		volume: 1.0,
+	},
+	"chapter4-24-event-01-02":    {
+		path: "./sound/production/chapter4/event/chapter4-24-event-01/02.ogg",
+		volume: 1.0,
+	},
+	"chapter4-24-event-01-03":    {
+		path: "./sound/production/chapter4/event/chapter4-24-event-01/03.ogg",
+		volume: 1.0,
+	},
+	"chapter4-24-event-01-04":    {
+		path: "./sound/production/chapter4/event/chapter4-24-event-01/04.ogg",
+		volume: 1.0,
+	},
+	"chapter4-24-event-01-05":    {
+		path: "./sound/production/chapter4/event/chapter4-24-event-01/05.ogg",
+		volume: 1.0,
+	},
+	"chapter4-24-event-01-06":    {
+		path: "./sound/production/chapter4/event/chapter4-24-event-01/06.ogg",
+		volume: 1.0,
+	},
+	"chapter4-24-event-01-07":    {
+		path: "./sound/production/chapter4/event/chapter4-24-event-01/07.ogg",
+		volume: 1.0,
+	},
+	"chapter4-24-event-01-08":    {
+		path: "./sound/production/chapter4/event/chapter4-24-event-01/08.ogg",
+		volume: 1.0,
+	},
+	"chapter4-39-event-01-01":    {
+		path: "./sound/production/chapter4/event/chapter4-39-event-01/01.ogg",
+		volume: 1.0,
+	},
+	"chapter4-39-event-01-02":    {
+		path: "./sound/production/chapter4/event/chapter4-39-event-01/02.ogg",
+		volume: 1.0,
+	},
+	"chapter5-09-event-01-01":    {
+		path: "./sound/production/chapter5/event/chapter5-09-event-01/01.ogg",
+		volume: 1.0,
+	},
+	"chapter5-09-event-01-02":    {
+		path: "./sound/production/chapter5/event/chapter5-09-event-01/02.ogg",
+		volume: 1.0,
+	},
+	"chapter5-09-event-01-03":    {
+		path: "./sound/production/chapter5/event/chapter5-09-event-01/03.ogg",
+		volume: 1.0,
+	},
+	"chapter5-09-event-01-03":    {
+		path: "./sound/production/chapter5/event/chapter5-09-event-01/03.ogg",
+		volume: 1.0,
+	},
+	"chapter5-09-event-01-04":    {
+		path: "./sound/production/chapter5/event/chapter5-09-event-01/04.ogg",
+		volume: 1.0,
+	},
+	"chapter5-09-event-01-05":    {
+		path: "./sound/production/chapter5/event/chapter5-09-event-01/05.ogg",
+		volume: 1.0,
+	},
+	"chapter5-09-event-01-06":    {
+		path: "./sound/production/chapter5/event/chapter5-09-event-01/06.ogg",
+		volume: 1.0,
+	},
+	"chapter5-09-event-01-07":    {
+		path: "./sound/production/chapter5/event/chapter5-09-event-01/07.ogg",
+		volume: 1.0,
+	},
+	"chapter5-09-event-03-oku":    {
+		path: "./sound/production/chapter5/event/chapter5-09-event-03/oku.ogg",
+		volume: 1.0,
+	},
 	"chapter3-mansion_corridor3-breaked_clock":    {
 		path: "./sound/production/chapter3/mansion_corridor3/breaked_clock.ogg",
 		volume: 1.0,
@@ -547,6 +691,36 @@ AssetsConfig.sounds = {
 	},
 	"chapter3-12-touch_toybox":    {
 		path: "./sound/production/chapter3/12/touch_toybox.ogg",
+		volume: 1.0,
+	},
+	"chapter4-04-penki":    {
+		path: "./sound/production/chapter4/04/penki.ogg",
+		volume: 1.0,
+	},
+	"chapter4-20-fall_jizo":    {
+		path: "./sound/production/chapter4/20/fall_jizo.ogg",
+		volume: 1.0,
+	},
+	"chapter5-03-medama":    {
+		path: "./sound/production/chapter5/03/medama.ogg",
+		volume: 1.0,
+	},
+	"chapter5-07-hashigo":    {
+		path: "./sound/production/chapter5/07/hashigo.ogg",
+		volume: 1.0,
+	},
+
+	// カセットテープ
+	"chapter4-tape1":    {
+		path: "./sound/production/chapter4/tape/cass1.ogg",
+		volume: 1.0,
+	},
+	"chapter4-tape2":    {
+		path: "./sound/production/chapter4/tape/cass2.ogg",
+		volume: 1.0,
+	},
+	"chapter4-tape5":    {
+		path: "./sound/production/chapter4/tape/cass5.ogg",
 		volume: 1.0,
 	},
 };
@@ -651,6 +825,15 @@ AssetsConfig.bgms = [
 		name: _(""),
 		description: _(""),
 		chapter: 3,
+	},
+	{
+		key: "chapter5-event-oku",
+		path: "./bgm/production/chapter5/event/oku.ogg",
+		volume: 1.0,
+		isShowMusicRoom: true,
+		name: _('「flashback3」 東方地霊殿"業火マントル"'),
+		description: _("回想シーン"),
+		chapter: 5,
 	},
 ];
 
