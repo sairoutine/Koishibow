@@ -16,7 +16,9 @@ module.exports = {
 		{"exp": null, "serif": _("どうしたの？"), "option": {"x": 479, "y": 50, "loop": false}},
 		{"exp": null, "serif": _("ごめんね"), "option": {"x": 420, "y": 130, "loop": false}},
 		{"exp": null, "serif": _("お姉ちゃんが決めたことだから"), "option": {"x": 420, "y": 130, "loop": false}},
-		{"exp": "chapter5-09-event-02-obj02", "serif": _("やだあ！"), "option": {"x": 479, "y": 50, "loop": true}},
+		{"exp": "chapter5-09-event-02-obj02", "serif": _("やだあ！"), "option": {"x": 479, "y": 50, "loop": true, "sounds": [
+			{"name": "chapter5-09-event-01-03", "frame": 0},
+		]}},
 		{"exp": null, "serif": _("わたしもボールであそぶの！"), "option": {"x": 479, "y": 50, "loop": false}},
 		{"exp": null, "serif": _("わたしも友達とお出かけするのお！"), "option": {"x": 479, "y": 50, "loop": false}},
 		{"exp": null, "serif": _("ごめんね"), "option": {"x": 420, "y": 130, "loop": false}},

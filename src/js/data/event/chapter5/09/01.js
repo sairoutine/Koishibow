@@ -10,7 +10,6 @@ module.exports = {
 	],
 	serifs: [
 		{"exp": "chapter5-09-event-01-obj01", "serif": _("いま出してあげるわ！"), "option": {"x": 470, "y": 130, "loop": false, "sounds": [
-			{"name": "chapter5-09-event-01-03", "frame": 210},
 			{"name": "chapter5-09-event-01-01", "frame": 240},
 			{"name": "chapter5-09-event-01-02", "frame": 340},
 		]}},
