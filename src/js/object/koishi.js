@@ -218,29 +218,13 @@ Koishi.prototype.moveByInput = function() {
 		add_y = +speed;
 	}
 
-	var collided_add_x = 0;
-	var collided_add_y = 0;
-
 	/* x: 移動 */
 	if (add_x !== 0) {
 		this.x(this.x() + add_x);
 
 		/* x: オブジェクトとの衝突したら戻す */
-		var x_collided_object = checkCollisionWithObjects(this, this.scene.walk_immovable_areas)
-		if (x_collided_object !== null) {
-			// 戻す
+		if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
 			this.x(this.x() - add_x);
-
-			// 壁ずれ用に移動距離を保存
-			if (this.y() + 90 > x_collided_object.y()) {
-				collided_add_y = speed;
-			}
-			else {
-				collided_add_y = -speed;
-			}
-
-			// 移動しなかったので移動距離は0
-			add_x = 0;
 		}
 	}
 
@@ -249,55 +233,8 @@ Koishi.prototype.moveByInput = function() {
 		this.y(this.y() + add_y);
 
 		/* y: オブジェクトとの衝突したら戻す */
-		var y_collided_object = checkCollisionWithObjects(this, this.scene.walk_immovable_areas)
-		if (y_collided_object !== null) {
-			// 戻す
+		if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
 			this.y(this.y() - add_y);
-
-			// 壁ずれ用に移動距離を保存
-			if (this.x() > y_collided_object.x()) {
-				collided_add_x = speed;
-			}
-			else {
-				collided_add_x = -speed;
-			}
-
-			// 移動しなかったので移動距離は0
-			add_y = 0;
-		}
-
-	}
-
-	/* x: 壁ずれ移動 */
-	if (add_x === 0 && collided_add_y === 0 && collided_add_x !== 0) {
-		this.x(this.x() + collided_add_x);
-
-		/* x: オブジェクトとの衝突したら戻す */
-		if(checkCollisionWithObjects(this, this.scene.walk_immovable_areas) !== null) {
-			this.x(this.x() - collided_add_x);
-		}
-		else {
-			// 移動できたら、向きを正しくする
-			if (collided_add_x > 0) {
-				this.setReflect(false);
-			}
-			else {
-				this.setReflect(true);
-			}
-		}
-	}
-
-	/* y: 壁ずれ移動 */
-	if (add_y === 0 && collided_add_x === 0 && collided_add_y !== 0) {
-		this.y(this.y() + collided_add_y);
-
-		/* y: オブジェクトとの衝突したら戻す */
-		if (checkCollisionWithObjects(this, this.scene.walk_immovable_areas) !== null) {
-			this.y(this.y() - add_y);
-		}
-		else {
-			// 移動できたら
-			// Y移動では特になにもしない
 		}
 	}
 
@@ -415,20 +352,6 @@ Koishi.prototype.collisionWidth = function(){
 Koishi.prototype.collisionHeight = function(){
 	return 1;
 };
-
-function checkCollisionWithObjects(obj1, objs) {
-	for(var i = 0; i < objs.length; i++) {
-		var obj2 = objs[i];
-		if(obj1.intersect(obj2)) {
-			obj1.onCollision(obj2);
-			obj2.onCollision(obj1);
-			return obj2;
-		}
-	}
-
-	return null;
-};
-
 
 
 
