@@ -14,6 +14,7 @@ var SceneTitle = require('./scene/title');
 var SceneHowto = require('./scene/howto');
 var SceneMusic = require('./scene/music');
 var SceneStage = require('./scene/stage');
+var SceneGameover = require('./scene/gameover');
 var SceneLoading = require('./scene/loading');
 var SceneMovie = require('./hakurei').scene.movie;
 var SceneOpeningMovie = require('./scene/opening_movie');
@@ -43,6 +44,7 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("howto", new SceneHowto(this));
 	this.scene_manager.addScene("music", new SceneMusic(this));
 	this.scene_manager.addScene("stage", new SceneStage(this));
+	this.scene_manager.addScene("gameover", new SceneGameover(this));
 	this.scene_manager.addScene("movie", new SceneMovie(this));
 	this.scene_manager.addScene("event_talk", new SceneEventTalk(this));
 	this.scene_manager.addScene("event_talk_old", new SceneEventTalkOld(this));
