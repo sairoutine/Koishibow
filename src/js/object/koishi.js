@@ -154,69 +154,31 @@ Koishi.prototype._playWalkSound = function(){
 };
 
 Koishi.prototype.moveByInput = function() {
-	var add_x = 0;
-	var add_y = 0;
+	var move, add_x, add_y;
+
+	if(this.core.input_manager.isGamepadConnected(0)) {
+		// 1P がコントローラ接続されていればそちらの入力を取得する
+		move = this._calcMoveByGamepad();
+		add_x = move.x;
+		add_y = move.y;
+	}
+	else {
+		// 1P がコントローラ接続されていなければキーボードの入力取得
+		move = this._calcMoveByKeyboard();
+		add_x = move.x;
+		add_y = move.y;
+	}
+
+	/* こいし反転 */
+	if (add_x < 0) {
+		this.setReflect(true);
+	}
+	else if (add_x > 0) {
+		this.setReflect(false);
+	}
+
 	var before_x = this.x();
 	var before_y = this.y();
-
-	/* 移動量計算1 */
-	var speed = CONSTANT.KOISHI_INITIAL_SPEED + CONSTANT.KOISHI_ACCEL_SPEED * this._walking_count;
-	speed = Util.clamp(speed, CONSTANT.KOISHI_MIN_SPEED, CONSTANT.KOISHI_MAX_SPEED);
-
-	// デバッグ用
-	if(CONSTANT.DEBUG.KOISHI_SPEED) {
-		speed = CONSTANT.DEBUG.KOISHI_SPEED;
-	}
-
-	/* 移動量計算2 */
-
-	var naname_speed;
-	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
-		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
-	) {
-		naname_speed = speed / ROOT_OF_TWO;
-		add_x = -naname_speed;
-		add_y = -naname_speed;
-		this.setReflect(true);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT) &&
-		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
-	) {
-		naname_speed = speed / ROOT_OF_TWO;
-		add_x = -naname_speed;
-		add_y = +naname_speed;
-		this.setReflect(true);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
-		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)
-	) {
-		naname_speed = speed / ROOT_OF_TWO;
-		add_x = +naname_speed;
-		add_y = -naname_speed;
-		this.setReflect(false);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT) &&
-		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)
-	) {
-		naname_speed = speed / ROOT_OF_TWO;
-		add_x = +naname_speed;
-		add_y = +naname_speed;
-		this.setReflect(false);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_LEFT)) {
-		add_x = -speed;
-		this.setReflect(true);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_RIGHT)) {
-		add_x = +speed;
-		this.setReflect(false);
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
-		add_y = -speed;
-	}
-	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
-		add_y = +speed;
-	}
 
 	/* x: 移動 */
 	if (add_x !== 0) {
@@ -264,9 +226,101 @@ Koishi.prototype.moveByInput = function() {
 			this.setWaitAnime();
 		}
 	}
-
-
 };
+
+Koishi.prototype._calcMoveByKeyboard = function() {
+	var add_x = 0;
+	var add_y = 0;
+
+	/* 移動量計算1 */
+	var speed = CONSTANT.KOISHI_INITIAL_SPEED + CONSTANT.KOISHI_ACCEL_SPEED * this._walking_count;
+	speed = Util.clamp(speed, CONSTANT.KOISHI_MIN_SPEED, CONSTANT.KOISHI_MAX_SPEED);
+
+	// デバッグ用
+	if(CONSTANT.DEBUG.KOISHI_SPEED) {
+		speed = CONSTANT.DEBUG.KOISHI_SPEED;
+	}
+
+	/* 移動量計算2 */
+
+	var naname_speed;
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.LEFT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.UP)
+	) {
+		naname_speed = speed / ROOT_OF_TWO;
+		add_x = -naname_speed;
+		add_y = -naname_speed;
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.LEFT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.DOWN)
+	) {
+		naname_speed = speed / ROOT_OF_TWO;
+		add_x = -naname_speed;
+		add_y = +naname_speed;
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.RIGHT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.UP)
+	) {
+		naname_speed = speed / ROOT_OF_TWO;
+		add_x = +naname_speed;
+		add_y = -naname_speed;
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.RIGHT) &&
+		this.core.input_manager.isKeyDown(CONSTANT_BUTTON.DOWN)
+	) {
+		naname_speed = speed / ROOT_OF_TWO;
+		add_x = +naname_speed;
+		add_y = +naname_speed;
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.LEFT)) {
+		add_x = -speed;
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.RIGHT)) {
+		add_x = +speed;
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.UP)) {
+		add_y = -speed;
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.DOWN)) {
+		add_y = +speed;
+	}
+
+	return {x: add_x, y: add_y};
+};
+
+
+Koishi.prototype._calcMoveByGamepad = function() {
+	var add_x = 0;
+	var add_y = 0;
+
+	// 1Pコン
+	var pad = this.core.input_manager.getGamepad(0);
+
+	var rad_x  = pad.getAxisX();
+	var rad_y = pad.getAxisY();
+
+	if (rad_x === 0 && rad_y === 0) {
+		return {x: add_x, y: add_y};
+	}
+
+	/* 移動量計算1 */
+	var speed = CONSTANT.KOISHI_INITIAL_SPEED + CONSTANT.KOISHI_ACCEL_SPEED * this._walking_count;
+	speed = Util.clamp(speed, CONSTANT.KOISHI_MIN_SPEED, CONSTANT.KOISHI_MAX_SPEED);
+
+	// デバッグ用
+	if(CONSTANT.DEBUG.KOISHI_SPEED) {
+		speed = CONSTANT.DEBUG.KOISHI_SPEED;
+	}
+
+	/* 移動量計算2 */
+
+	add_x = speed * rad_x;
+	add_y = speed * rad_y;
+
+	return {x: add_x, y: add_y};
+};
+
+
 
 // KoishiActionMasterRepository の内容も追加
 var koishi_action_list = KoishiActionMasterRepository.all();
