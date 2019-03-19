@@ -28,7 +28,7 @@ SceneHowto.prototype.init = function(){
 SceneHowto.prototype.update = function(){
 	base_scene.prototype.update.apply(this, arguments);
 
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.B)) {
 		this.core.audio_loader.playSound("show_journal");
 		this.core.scene_manager.changeScene(CONSTANT.INITIAL_CHAPTER);
 	}

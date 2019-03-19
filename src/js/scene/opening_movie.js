@@ -46,7 +46,7 @@ SceneOpeningMovie.prototype.update = function(){
 	BaseScene.prototype.update.apply(this, arguments);
 
 	// X ボタンでスキップできる
-	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
+	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.B)) {
 		this.video.pause();
 
 		this.notifyEnd();

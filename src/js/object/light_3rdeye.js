@@ -47,11 +47,11 @@ ObjectLight3rdeye.prototype.init = function(){
 ObjectLight3rdeye.prototype.update = function(){
 	base_object.prototype.update.apply(this, arguments);
 
-	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
-		if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_UP)) {
+	if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.B)) {
+		if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.UP)) {
 			this._light_y-=10;
 		}
-		else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_DOWN)) {
+		else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.DOWN)) {
 			this._light_y+=10;
 		}
 	}

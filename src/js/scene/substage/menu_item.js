@@ -104,13 +104,13 @@ SceneSubStageMenu.prototype.init = function(){
 SceneSubStageMenu.prototype.update = function(){
 	base_scene.prototype.update.apply(this, arguments);
 	// 選択
-	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);
-	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN);
-	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_LEFT);
-	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_RIGHT);
+	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.UP);
+	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.DOWN);
+	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.LEFT);
+	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.RIGHT);
 
 	// アイテムメニューを閉じる(共通)
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_SPACE)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.X)) {
 		this.root().item_menu_button.onCollision();
 		return;
 	}
@@ -121,7 +121,7 @@ SceneSubStageMenu.prototype.update = function(){
 	// アイテム未選択時
 	if (!this._is_select_item) {
 		// アイテムを選択
-		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 
 			// 何もアイテムを所持していなければ何もしない
 			if(!this.menu_item_list[this._index_item_vertical][this._index_item_horizontal]) return;
@@ -137,7 +137,7 @@ SceneSubStageMenu.prototype.update = function(){
 			return;
 		}
 		// メニューを閉じる
-		else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+		else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.B)) {
 			this.root().item_menu_button.onCollision();
 			return;
 		}
@@ -197,7 +197,7 @@ SceneSubStageMenu.prototype.update = function(){
 	// アイテム選択時
 	else {
 		// アイテムを使用／調べる／組み合わせる
-		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+		if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 			ui = this.menu_ui[this._index_ui];
 
 			if (ui === this.use_button) {
@@ -211,7 +211,7 @@ SceneSubStageMenu.prototype.update = function(){
 			return;
 		}
 		// アイテム選択を解除
-		else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+		else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.B)) {
 			this._is_select_item = false;
 			// 各種ボタン マウスオーバー時 解除
 			this.use_button.setVariable("onfocus", false);

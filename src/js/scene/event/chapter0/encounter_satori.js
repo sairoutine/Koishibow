@@ -154,7 +154,7 @@ SceneEventEncounterSatori.prototype.update = function(){
 
 
 
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.B)) {
 		if (this.eye.current_anime === EYE_WAITING_ANIME && this.satori.current_anime === SATORI_WAITING_ANIME) {
 			// 目はさとりの方を見る
 			this.eye.playAnimationOnce(EYE_SEE_RIGHT_AND_BLINK_ANIME);

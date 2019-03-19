@@ -79,7 +79,7 @@ SceneSubStagePlay.prototype.update = function(){
 
 		// こいしとオブジェクトがタッチ可能な範囲にいるかどうか
 		if (piece.checkIsInTouchArea(this.root().koishi)) {
-			if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+			if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 				piece.onTouchByKoishi();
 			}
 			else {
@@ -105,7 +105,7 @@ SceneSubStagePlay.prototype.update = function(){
 		this.root().eye_button.onCollision();
 	}
 	// メニュー開く
-	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_SPACE)) {
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.X)) {
 		this.root().item_menu_button.onCollision();
 	}
 
@@ -118,11 +118,11 @@ SceneSubStagePlay.prototype._isPlayerUse3rdEye = function(){
 // TODO: リファクタ
 SceneSubStagePlay.prototype._durationButtonXDownCount = function(){
 	this._is_player_use_3rdeye = false;
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.B)) {
 		// first count
 		this._key_down_count_of_button_x = 1;
 	}
-	else if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.BUTTON_X)) {
+	else if(this.core.input_manager.isKeyDown(CONSTANT_BUTTON.B)) {
 		// isKeyPush されていた場合は経過秒数をカウント
 		//
 		// NOTE:

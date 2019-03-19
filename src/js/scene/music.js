@@ -82,13 +82,13 @@ SceneMusic.prototype.update = function(){
 	BaseScene.prototype.update.apply(this, arguments);
 
 	// 選択
-	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);
-	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN);
-	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_LEFT);
-	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_RIGHT);
+	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.UP);
+	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.DOWN);
+	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.LEFT);
+	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.RIGHT);
 
 
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.B)) {
 		if(this._isPlaying()) {
 			// 曲再生中でなら再生停止
 			this._stopBGM();
@@ -98,7 +98,7 @@ SceneMusic.prototype.update = function(){
 			this._is_focus_back_button = true;
 		}
 	}
-	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 		if (this._isFocusMusic()) {
 			// BGM再生
 			this._playFocusBGM();

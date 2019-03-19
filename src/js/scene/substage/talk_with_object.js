@@ -100,7 +100,7 @@ SceneSubStageObjectTalk.prototype._updateInTalking = function(){
 SceneSubStageObjectTalk.prototype._updateProcess = function(){
 	// Z ボタンが押されたら
 	// あるいは空文字 = オプションの内容だけ処理したい
-	if(this._serif.getCurrentMaxLengthLetters() === 0 || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	if(this._serif.getCurrentMaxLengthLetters() === 0 || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 		TalkScenario.processSerifOption(this.root(), this._serif);
 	}
 };
@@ -109,7 +109,7 @@ SceneSubStageObjectTalk.prototype._updateProcess = function(){
 SceneSubStageObjectTalk.prototype._updateTalk = function(){
 	// Z ボタンが押されたら
 	// あるいは空文字 = オプションの内容だけ処理したい
-	if(this._serif.getCurrentMaxLengthLetters() === 0 || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	if(this._serif.getCurrentMaxLengthLetters() === 0 || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
 			this._state = STATE_END;
@@ -150,7 +150,7 @@ SceneSubStageObjectTalk.prototype._gotoNextSerif = function(choice){
 // 会話 選択肢の処理
 SceneSubStageObjectTalk.prototype._updateInJunction = function(){
 	// Zボタン 選択肢の決定
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 		// Nフレーム後に次のセリフへ
 		this._gotoNextSerif(this._junction_focus_index);
 
@@ -158,11 +158,11 @@ SceneSubStageObjectTalk.prototype._updateInJunction = function(){
 		this._junction_focus_index = 0;
 	}
 	// ↑ボタン 選択肢の移動
-	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP)) {
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.UP)) {
 		this._junction_focus_index--;
 	}
 	// ↓ボタン 選択肢の移動
-	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN)) {
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.DOWN)) {
 		this._junction_focus_index++;
 	}
 

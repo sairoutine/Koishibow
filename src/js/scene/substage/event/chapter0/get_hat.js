@@ -47,7 +47,7 @@ SceneEventChapter0GetHat.prototype.update = function() {
 	// タッチできるオブジェクトであることを示すカーソル表示
 	this._showSelectedCursor(this.hat);
 
-	if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 		if (this.hat.checkIsInTouchArea(this.root().koishi)) {
 			this.hat.onTouchByKoishi();
 		}

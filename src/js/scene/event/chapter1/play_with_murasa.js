@@ -315,7 +315,7 @@ SceneEventPlayDoll.prototype._updateInPicture = function(){
 // 会話 選択肢の処理
 SceneEventPlayDoll.prototype._updateInJunction = function(){
 	// Zボタン 選択肢の決定
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 		// Nフレーム後に次のセリフへ
 		this._gotoNextSerif(this._junction_focus_index);
 
@@ -323,11 +323,11 @@ SceneEventPlayDoll.prototype._updateInJunction = function(){
 		this._junction_focus_index = 0;
 	}
 	// ↑ボタン 選択肢の移動
-	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP)) {
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.UP)) {
 		this._junction_focus_index--;
 	}
 	// ↓ボタン 選択肢の移動
-	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN)) {
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.DOWN)) {
 		this._junction_focus_index++;
 	}
 
@@ -370,7 +370,7 @@ SceneEventPlayDoll.prototype.draw = function(){
 // 会話中の処理
 SceneEventPlayDoll.prototype._updateInTalking = function(){
 	// Z ボタンが押されたら
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
 			if (this._is_gameover) {

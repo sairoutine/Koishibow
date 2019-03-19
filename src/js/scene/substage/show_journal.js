@@ -43,7 +43,7 @@ SceneSubStageJournal.prototype.update = function(){
 	base_scene.prototype.update.apply(this, arguments);
 
 	// プレイに戻る
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A) || this.core.input_manager.isKeyPush(CONSTANT_BUTTON.B)) {
 		this.core.audio_loader.playSound("show_journal");
 		this.root().returnSubScene(this._return_subscene);
 	}

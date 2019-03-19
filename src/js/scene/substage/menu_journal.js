@@ -51,15 +51,15 @@ SceneSubStageJournalMenu.prototype.update = function(){
 	base_scene.prototype.update.apply(this, arguments);
 
 	// 選択
-	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_UP);
-	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_DOWN);
+	var is_up_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.UP);
+	var is_down_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.DOWN);
 
 	// アイテムメニューを閉じる
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_SPACE)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.X)) {
 		this.root().changeSubScene("play");
 	}
 	// アイテムメニューへ戻る
-	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_X)) {
+	else if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.B)) {
 		this.root().changeSubScene("menu_item");
 	}
 	// ジャーナルタイトル 選択

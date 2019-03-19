@@ -225,7 +225,7 @@ SceneEventTalkWithMobu.prototype.draw = function(){
 // 会話中の処理
 SceneEventTalkWithMobu.prototype._updateInTalking = function(){
 	// Z ボタンが押されたら
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
 			this._state = STATE_WAITING;

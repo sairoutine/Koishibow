@@ -126,8 +126,8 @@ SceneTitle.prototype.update = function(){
 	this.ss.update();
 
 	// 選択
-	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_LEFT);
-	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_RIGHT);
+	var is_left_push  = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.LEFT);
+	var is_right_push = this.core.input_manager.isKeyPush(CONSTANT_BUTTON.RIGHT);
 	if (is_left_push || is_right_push) {
 		var before_index = this._index;
 		// 左
@@ -171,7 +171,7 @@ SceneTitle.prototype.update = function(){
 	}
 
 	// 決定
-	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.BUTTON_Z)) {
+	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 		// SE 再生
 		this.core.audio_loader.playSound("select_title");
 
