@@ -2,22 +2,21 @@
 
 // プレイヤーに何も操作させない
 
-var base_scene = require('./base');
-var Util = require('../../hakurei').util;
-var SS = require('../../object/anime_object');
+var base_scene = require('../hakurei').scene.base;
+var Util = require('../hakurei').util;
+var SS = require('../object/anime_object');
 // ゲームオーバー(しゃがみ込む) 不	80	2.7秒
-var jsonDataOfGameover = require('../../data/anime/koishi/gameover_anime_1');
+var jsonDataOfGameover = require('../data/anime/koishi/gameover_anime_1');
 
-
-var SceneSubStageGameover = function(core) {
+var SceneGameover = function(core) {
 	base_scene.apply(this, arguments);
 
 	this._state = 0;
 	this._alpha = 0.0;
 };
-Util.inherit(SceneSubStageGameover, base_scene);
+Util.inherit(SceneGameover, base_scene);
 
-SceneSubStageGameover.prototype.init = function(){
+SceneGameover.prototype.init = function(koishi_x, koishi_y){
 	base_scene.prototype.init.apply(this, arguments);
 
 	this._state = 0;
@@ -28,8 +27,8 @@ SceneSubStageGameover.prototype.init = function(){
 
 	// こいしが膝をつくアニメ再生
 	this.koishi = new SS(this); // TODO: constructor におきたいが、おくと二回目の再生時にplayanimationonce してくれない
-	this.koishi.x(this.root().koishi.x());
-	this.koishi.y(this.root().koishi.y());
+	this.koishi.x(koishi_x);
+	this.koishi.y(koishi_y);
 
 	this.koishi.setAnime({
 		default: jsonDataOfGameover,
@@ -54,7 +53,7 @@ SceneSubStageGameover.prototype.init = function(){
 };
 
 
-SceneSubStageGameover.prototype.update = function(){
+SceneGameover.prototype.update = function(){
 	base_scene.prototype.update.apply(this, arguments);
 
 	this.koishi.update();
@@ -74,7 +73,7 @@ SceneSubStageGameover.prototype.update = function(){
 	}
 };
 
-SceneSubStageGameover.prototype.draw = function(){
+SceneGameover.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 	var ctx = this.core.ctx;
 
@@ -97,4 +96,4 @@ SceneSubStageGameover.prototype.draw = function(){
 
 };
 
-module.exports = SceneSubStageGameover;
+module.exports = SceneGameover;

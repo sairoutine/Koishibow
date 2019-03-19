@@ -53,7 +53,7 @@ SceneSubStagePlay.prototype.update = function(){
 
 			this.core.scene_manager.setFadeOut(0);
 
-			this.root().changeSubScene("gameover");
+			this.core.scene_manager.changeScene("gameover", this.root().koishi.x(), this.root().koishi.y());
 		}
 	}
 
