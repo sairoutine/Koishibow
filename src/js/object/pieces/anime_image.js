@@ -86,6 +86,10 @@ ObjectAnimeImage.prototype.init = function(){
 	// 何回でもタッチできるかどうか
 	this._loop = false;
 
+	// タッチしたときにこいしの方を向くか
+	this._turn_toward_me = false;
+	this._turn_not_toward_me = false;
+
 	// 表オブジェクトで既にクリック済かどうか
 	this._is_clicked_in_front = false;
 
@@ -164,6 +168,19 @@ ObjectAnimeImage.prototype.setData = function(data) {
 
 	if (data.loop) {
 		this._loop = true;
+	}
+
+	// アニメによってデフォが右向き・左向き両方あるので、
+	// 右向きは turn_toward_me 左向きは turn_not_toward_me を使う
+	if (data.turn_toward_me) {
+		this._turn_toward_me = true;
+	}
+	else if (data.turn_not_toward_me) {
+		this._turn_not_toward_me = true;
+	}
+
+	if (data.turn_not_toward_me && data.turn_toward_me) {
+		throw new Error("Can't set turn_not_toward_me and turn_toward_me together.");
 	}
 
 	//console.log(data.name + " width: " + this.collisionWidth() + ", height: " + this.collisionHeight() + ",");
@@ -309,6 +326,25 @@ ObjectAnimeImage.prototype.isCheckInTouchArea = function(){
 
 // こいしに触られたときの処理
 ObjectAnimeImage.prototype.onTouchByKoishi = function() {
+	// こいしの方を向くオブジェクトであれば、こいしの方を向く
+	if(this._turn_toward_me) {
+		if (this.x() < this.scene.root().koishi.x()) {
+			this.ss.setReflect(false);
+		}
+		else {
+			this.ss.setReflect(true);
+		}
+	}
+	else if(this._turn_not_toward_me) {
+		if (this.x() > this.scene.root().koishi.x()) {
+			this.ss.setReflect(false);
+		}
+		else {
+			this.ss.setReflect(true);
+		}
+	}
+
+	// サードアイのON/OFFで触られたときの処理分岐
 	if (this.scene.root().isUsingEye()) {
 		this._onTouchByKoishiInBack();
 	}
