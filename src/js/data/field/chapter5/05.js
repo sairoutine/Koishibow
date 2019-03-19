@@ -68,6 +68,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "カワウソ",
 			loop: true,
+			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
 
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-05-hashigo_ura_talk"], "serifs": [

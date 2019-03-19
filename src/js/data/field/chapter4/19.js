@@ -32,6 +32,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "鈴仙",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["TODO: "], "serifs": [

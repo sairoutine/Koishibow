@@ -92,6 +92,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "てゐ",
+			turn_toward_me: true, // こいしの方を向く
 			loop: true, // 何回でもタッチできる
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_03-" + I + "-_useItem-10"], "serifs": [

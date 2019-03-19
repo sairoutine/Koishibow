@@ -31,6 +31,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "てゐ",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_04-tewireal-limit", 4], "serifs": [
@@ -103,6 +104,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "メリー",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: null,
 			x: 1060*2/3, y: 505*2/3,

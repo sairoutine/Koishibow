@@ -49,6 +49,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "小傘",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_10-" + I + "-talk01"], "serifs": [
 					[

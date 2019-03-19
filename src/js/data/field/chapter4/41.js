@@ -41,6 +41,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "蓮子(イベント用)",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: null,
 			x: 960*2/3, y: 505*2/3,
@@ -59,6 +60,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "メリー(イベント)",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: null,
 			x: 1160*2/3, y: 505*2/3,

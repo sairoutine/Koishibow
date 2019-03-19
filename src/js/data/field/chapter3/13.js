@@ -189,6 +189,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "チルノ",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif: serifOfFranAndCirno,
 			serif_back: [
 				{"chara": "cirno", "exp": "cirno-ura_reaction_06", "serif":_("だいくさんごっこ？")},
@@ -218,6 +219,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "フラン",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif: serifOfFranAndCirno,
 			serif_back:[
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-fran-_uraFirst"], "serifs": [

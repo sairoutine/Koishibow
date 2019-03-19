@@ -77,6 +77,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "おくう",
 			loop: true,
+			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-myroom-araiguma_talk1"], "serifs": [
 					// お燐表示済
@@ -148,6 +149,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "おりん",
 			loop: true,
+			turn_toward_me: true, // こいしの方を向く
 			serif_back: null,
 			serif: null,
 			x: 800, y: 450,

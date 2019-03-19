@@ -43,6 +43,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "蓮子",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
 				{"chara": "renko", "exp": "renko-reaction_06", "serif":_("ここをキャンプ地としましょ")},
@@ -63,6 +64,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "メリー",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
 				{"chara": "merry", "exp": "merry-reaction_06", "serif":_("わからなかったらカンでもいいのよ")},

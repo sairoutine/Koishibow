@@ -76,6 +76,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "イヌ",
 			loop: true,
+			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_11-animal_shiba-limit", 2], "serifs": [
 					[
@@ -118,6 +119,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ウマ",
 			loop: true,
+			turn_toward_me: true, // こいしの方を向く
 			serif_back: null,
 			serif: [
 				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わふ")},

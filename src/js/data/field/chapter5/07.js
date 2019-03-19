@@ -77,6 +77,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "イヌ",
 			loop: true,
+			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["34"], "serifs": [
 					// ハシゴを持ってる
@@ -143,6 +144,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "コモドオオトカゲ",
 			loop: true,
+			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"chara": "koishi","exp": "look_front", "serif": _("へんなかおー")},
 				{"chara": "animal_komodo","exp": "animal_komodo-ura_wait", "serif": _("なんだよー")},

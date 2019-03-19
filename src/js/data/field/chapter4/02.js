@@ -99,6 +99,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "メリー(立ち)",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
 				{"chara": "koishi","exp": null, "serif": _("ねえねえ、友達っていい子？")},

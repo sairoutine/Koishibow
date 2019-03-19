@@ -56,6 +56,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ヒョウ",
 			loop: true,
+			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"chara": "animal_kuro","exp": "animal_kuro-ura_wait", "serif": _("......")},
 				{"chara": "animal_kuro","exp": "animal_kuro-ura_wait", "serif": _("......")},

@@ -132,6 +132,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "フラン",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_12-Event-_30310"], "serifs": [
 					// good root

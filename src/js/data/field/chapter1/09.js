@@ -73,6 +73,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "村紗",
 			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":_("う............")},
 				{"chara": I, "exp": "murasa-ura_reaction_01", "serif":_("みんなわたしのこときらいだって")},
