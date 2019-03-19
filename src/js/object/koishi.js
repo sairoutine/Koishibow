@@ -186,7 +186,11 @@ Koishi.prototype.moveByInput = function() {
 
 		/* x: オブジェクトとの衝突したら戻す */
 		if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
-			this.x(this.x() - add_x);
+			this.x(before_x);
+		}
+		/* x: フィールド外に移動したら戻す */
+		else if (this.x() < 0 || this.x() > this.scene.width) {
+			this.x(before_x);
 		}
 	}
 
@@ -196,19 +200,12 @@ Koishi.prototype.moveByInput = function() {
 
 		/* y: オブジェクトとの衝突したら戻す */
 		if (this.checkCollisionWithObjects(this.scene.walk_immovable_areas)) {
-			this.y(this.y() - add_y);
+			this.y(before_y);
 		}
-	}
-
-	/* フィールド外に移動したら戻す */
-	if (
-		this.x() < 0 ||
-		this.x() > this.scene.width ||
-		this.y() < CONSTANT.WALK_DEPTH_LIMIT ||
-		this.y() > this.scene.height - 180
-	) {
-		this.x(before_x);
-		this.y(before_y);
+		/* y: フィールド外に移動したら戻す */
+		else if (this.y() < CONSTANT.WALK_DEPTH_LIMIT || this.y() > this.scene.height - 180) {
+			this.y(before_y);
+		}
 	}
 
 	/* モーション変更 */
