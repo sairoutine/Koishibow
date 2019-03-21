@@ -56,9 +56,10 @@ ObjectFieldChange.prototype.onCollision = function(obj){
 	// 歩きモーション解除
 	this.scene.koishi.setWaitAnime();
 
-
-	// chapter 0 の自室であれば遷移前／遷移先の際に、ドアを開ける音を鳴らす
-	if (current_field_name === "chapter0_myroom" || this._next_field_name === "chapter0_myroom") {
+	// chapter 0,3,5 の自室であれば遷移前／遷移先の際に、ドアを開ける音を鳴らす
+	if (current_field_name === "chapter0_myroom" || this._next_field_name === "chapter0_myroom" ||
+		current_field_name === "chapter3_01" || this._next_field_name === "chapter3_01" ||
+		current_field_name === "chapter5_01" || this._next_field_name === "chapter5_01") {
 		this.core.audio_loader.playSound("chapter0-myroom-door_open");
 	}
 
