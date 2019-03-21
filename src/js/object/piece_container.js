@@ -161,6 +161,8 @@ PieceContainer.prototype._getObjectDataByFieldData = function() {
 	var field_data = this._field_master;
 	var object_data_list = Array.prototype.concat.apply([], field_data.objects()); // shallow copy
 
+	// NOTE: SceneSubStagePlay._changeFieldByInput にて、no 指定で参照しているので、
+	// オブジェクトの no を変えるときは、そちらも修正する
 	if(field_data.rightField()) {
 		object_data_list.push({
 			no: "rightField",

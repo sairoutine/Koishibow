@@ -5,8 +5,11 @@ var CONSTANT_BUTTON = require('../../hakurei').constant.button;
 var SelectedCursor = require('../../object/ui/selected_cursor');
 var ObjectFieldChange = require('../../object/pieces/field_change');
 var ChapterMasterRepository = require('../../repository/chapter');
-
 var Util = require('../../hakurei').util;
+
+var SCALE = 1/3;
+var RAD_TO_REG = Math.PI / 180;
+
 
 var SceneSubStagePlay = function(core) {
 	base_scene.apply(this, arguments);
@@ -57,8 +60,11 @@ SceneSubStagePlay.prototype.update = function(){
 		}
 	}
 
-	// こいしの移動
-	this.root().koishi.moveByInput();
+	// フィールド移動
+	if (!this._changeFieldByInput()) {
+		// フィールド移動してなければ、こいしを移動
+		this.root().koishi.moveByInput();
+	}
 
 	// フィールドの各種オブジェクトとの当たり判定
 	var is_collide_with_piece = false;
@@ -142,6 +148,40 @@ SceneSubStagePlay.prototype._durationButtonXDownCount = function(){
 	}
 };
 
+
+// フィールド移動
+SceneSubStagePlay.prototype._changeFieldByInput = function(){
+	// Y + 方向キーでフィールドをすぐ移動
+	if (!this.core.input_manager.isKeyDown(CONSTANT_BUTTON.Y)) return false;
+
+	var piece;
+	if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.RIGHT)) {
+		piece = this.root().getPiece("rightField")
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.LEFT)) {
+		piece = this.root().getPiece("leftField")
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.UP)) {
+		piece = this.root().getPiece("upField")
+	}
+	else if (this.core.input_manager.isKeyDown(CONSTANT_BUTTON.DOWN)) {
+		piece = this.root().getPiece("downField")
+	}
+	else {
+		piece = null;
+	}
+
+	if (piece) {
+		// change field オブジェクトを発火させる
+		piece.onCollision();
+
+		return true;
+	}
+
+	return false;
+}
+
+
 SceneSubStagePlay.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 
@@ -150,8 +190,6 @@ SceneSubStagePlay.prototype.draw = function(){
 	this._cursor_ui.draw();
 };
 
-var SCALE = 1/3;
-var RAD_TO_REG = Math.PI / 180;
 // 移動できるフィールドへ矢印を表示
 SceneSubStagePlay.prototype._drawArrow = function(){
 	var ctx = this.core.ctx;
@@ -227,9 +265,5 @@ SceneSubStagePlay.prototype._showSelectedCursor = function(piece) {
 SceneSubStagePlay.prototype._hideSelectedCursor = function() {
 	this._cursor_ui.hide();
 };
-
-
-
-
 
 module.exports = SceneSubStagePlay;
