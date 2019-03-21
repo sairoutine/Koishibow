@@ -10,8 +10,12 @@ module.exports = {
 	bgm: null,
 	rightStartPosition: {x: 790, y: 480},
 	leftStartPosition:  {x: 140, y: 480},
+	upStartPosition:    {x: 480, y: 720 - CONSTANT.WALK_DEPTH_LIMIT - 140},
+	downStartPosition:    {x: 480, y: 530},
 	rightField: "chapter4_03",
 	leftField: "chapter4_01",
+	upField:    null,
+	downField:  null,
 	background: "chapter4-02-bg-001",
 	walkSound: "walking_bare_sand",
 	initialProcess: [

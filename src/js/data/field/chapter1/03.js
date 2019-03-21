@@ -10,8 +10,12 @@ module.exports = {
 	sub_bgms: ["chapter1-03-drop_paint"],
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 146, y: 320},
+	upStartPosition:    null,
+	downStartPosition:  null,
 	rightField: "chapter1_04",
 	leftField: "chapter1_02",
+	upField: null,
+	downField: null,
 	background: "chapter1-03-bg-001",
 	walkSound: "walking_bare_outside",
 	objects: [

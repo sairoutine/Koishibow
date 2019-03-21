@@ -203,7 +203,7 @@ Koishi.prototype.moveByInput = function() {
 			this.y(before_y);
 		}
 		/* y: フィールド外に移動したら戻す */
-		else if (this.y() < CONSTANT.WALK_DEPTH_LIMIT || this.y() > this.scene.height - 180) {
+		else if (this.y() < CONSTANT.WALK_DEPTH_LIMIT || this.y() > this.scene.height - 160) {
 			this.y(before_y);
 		}
 	}

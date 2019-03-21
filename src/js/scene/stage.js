@@ -163,6 +163,18 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 		this.koishi.setPosition(pos.x, pos.y);
 		this.koishi.setReflect(true);
 	}
+	else if (field_data.upField() === from_field_name) {
+		// 上のフィールドからきた場合
+		pos = field_data.upStartPosition();
+		this.koishi.setPosition(pos.x, pos.y);
+		this.koishi.setReflect(true);
+	}
+	else if (field_data.downField() === from_field_name) {
+		// 上のフィールドからきた場合
+		pos = field_data.downStartPosition();
+		this.koishi.setPosition(pos.x, pos.y);
+		this.koishi.setReflect(true);
+	}
 	else {
 		// フィールド遷移オブジェクト等で右でも左でもないところから遷移してきた場合
 		pos = field_data.rightStartPosition();

@@ -2,7 +2,6 @@
 var _ = require('i18n4v')
 // メリー
 var CONSTANT = require("../../../constant");
-var I = 0;
 
 var RENKO_MERRY_SERIF = {"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter4-24-event-01"], "serifs": [
 	// イベント再生済
@@ -58,8 +57,12 @@ module.exports = {
 	bgm: "field10",
 	rightStartPosition: {x: 790, y: 480},
 	leftStartPosition:  {x: 140, y: 480},
+	upStartPosition:    {x: 480, y: 720 - CONSTANT.WALK_DEPTH_LIMIT - 140},
+	downStartPosition:    {x: 480, y: 530},
 	rightField: null,
-	leftField: null,
+	leftField:  null,
+	upField:    "chapter4_21",
+	downField:  null,
 	background: "chapter4-24-bg-001",
 	walkSound: "walking_bare_sand",
 	initialProcess: [
@@ -124,16 +127,6 @@ module.exports = {
 		]},
 	],
 	objects: [
-		{
-			no: ++I,
-			type: CONSTANT.FIELD_CHANGE_TYPE,
-			name: "上へのフィールド移動",
-			x: 480,
-			y: 720 - CONSTANT.WALK_DEPTH_LIMIT,
-			width: 960,
-			height: 10,
-			next_field_name: "chapter4_21",
-		},
 		{
 			no: "merry",
 			type: CONSTANT.ANIME_IMAGE_TYPE,

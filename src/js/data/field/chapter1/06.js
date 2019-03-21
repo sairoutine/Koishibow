@@ -9,8 +9,12 @@ module.exports = {
 	sub_bgms: ["chapter1-06-flicker_light"],
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 180, y: 380},
+	upStartPosition:    null,
+	downStartPosition:  null,
 	rightField: null,
 	leftField: "chapter1_05",
+	upField: null,
+	downField: null,
 	background: "chapter1-06-bg-001",
 	walkSound: "walking_bare_outside",
 	objects: [

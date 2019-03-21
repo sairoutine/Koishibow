@@ -10,8 +10,12 @@ module.exports = {
 	sub_bgms: ["chapter3-12-wood"],
 	rightStartPosition: {x: 690, y: 450},
 	leftStartPosition:  {x: 200, y: 450},
+	upStartPosition:    null,
+	downStartPosition:  null,
 	rightField: "chapter3_13",
 	leftField: "chapter3_11",
+	upField: null,
+	downField: null,
 	background: "chapter3-12-bg-001",
 	walkSound: "walking_bare_snow",
 	initialProcess: [

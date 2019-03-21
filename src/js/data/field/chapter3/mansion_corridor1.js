@@ -10,8 +10,12 @@ module.exports = {
 	sub_bgms: ["chapter0-mansion_corridor1-wind"],
 	rightStartPosition: {x: 800, y: 240},
 	leftStartPosition:  {x: 180, y: 370},
+	upStartPosition:    null,
+	downStartPosition:  null,
 	rightField: "chapter3_05",
 	leftField: "chapter3_03",
+	upField: null,
+	downField: null,
 	background: "chapter0-mansionpas-001",
 	walkSound: "walking_bare_wood",
 	objects: [

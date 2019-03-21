@@ -185,6 +185,30 @@ PieceContainer.prototype._getObjectDataByFieldData = function() {
 			next_field_name: field_data.leftField(),
 		});
 	}
+	if(field_data.upField()) {
+		object_data_list.push({
+			no: "upField",
+			type: CONSTANT.FIELD_CHANGE_TYPE,
+			name: "上へのフィールド移動",
+			x: this.scene.width/2,
+			y: this.scene.height - CONSTANT.WALK_DEPTH_LIMIT,
+			width: this.scene.width,
+			height: 10,
+			next_field_name: field_data.upField(),
+		});
+	}
+	if(field_data.downField()) {
+		object_data_list.push({
+			no: "downField",
+			type: CONSTANT.FIELD_CHANGE_TYPE,
+			name: "下へのフィールド移動",
+			x: this.scene.width/2,
+			y: this.scene.height - 10,
+			width: this.scene.width,
+			height: 10,
+			next_field_name: field_data.downField(),
+		});
+	}
 
 	// ゲームオーバー用ボタンの目こいし
 	if (this.core.save_manager.player.getLastGameoverField() === field_data.key()) {

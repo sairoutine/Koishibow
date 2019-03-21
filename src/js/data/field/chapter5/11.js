@@ -9,8 +9,12 @@ module.exports = {
 	bgm: "field11",
 	rightStartPosition: {x: 830, y: 450},
 	leftStartPosition:  {x: 140, y: 480},
+	upStartPosition:    null,
+	downStartPosition:  null,
 	rightField: "chapter5_13",
 	leftField: null,
+	upField: null,
+	downField: null,
 	background: null,
 	walkSound: "walking_bare_wood",
 	initialProcess: [

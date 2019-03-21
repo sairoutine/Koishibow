@@ -10,23 +10,17 @@ module.exports = {
 	bgm: "field10",
 	rightStartPosition: {x: 790, y: 480},
 	leftStartPosition:  {x: 140, y: 480},
+	upStartPosition:    {x: 480, y: 720 - CONSTANT.WALK_DEPTH_LIMIT - 140},
+	downStartPosition:    {x: 480, y: 530},
 	rightField: "chapter4_06",
 	leftField: "chapter4_04",
+	upField:    null,
+	downField:  "chapter4_08",
 	background: "chapter4-05-bg-001",
 	walkSound: "walking_bare_sand",
 	initialProcess: [
 	],
 	objects: [
-		{
-			no: ++I,
-			type: CONSTANT.FIELD_CHANGE_TYPE,
-			name: "下へのフィールド移動",
-			x: 480,
-			y: 710,
-			width: 960,
-			height: 10,
-			next_field_name: "chapter4_08",
-		},
 		{
 			no: "merry",
 			type: CONSTANT.ANIME_IMAGE_TYPE,

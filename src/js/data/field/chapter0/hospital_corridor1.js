@@ -11,8 +11,12 @@ module.exports = {
 	bgm: "field1",
 	rightStartPosition: {x: 800, y: 250},
 	leftStartPosition:  {x: 180, y: 380},
+	upStartPosition:    null,
+	downStartPosition:  null,
 	rightField: "chapter0_hospital_corridor2",
 	leftField: "chapter0_myroom",
+	upField: null,
+	downField: null,
 	background: "chapter0-hospital_corridor1-bg-001",
 	walkSound: "walking_bare_default",
 	objects: [

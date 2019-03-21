@@ -1,13 +1,18 @@
 'use strict';
 var _ = require('i18n4v')
+var CONSTANT = require("../../../constant");
 module.exports = {
 	key: "chapter4_01",
 	chapter: 4,
 	bgm: "field9",
 	rightStartPosition: {x: 790, y: 480},
 	leftStartPosition:  {x: 140, y: 480},
+	upStartPosition:    {x: 480, y: 720 - CONSTANT.WALK_DEPTH_LIMIT - 140},
+	downStartPosition:  {x: 480, y: 530},
 	rightField: "chapter4_02",
-	leftField: null,
+	leftField:  null,
+	upField:    null,
+	downField:  null,
 	background: "chapter4-01-bg-001",
 	walkSound: "walking_bare_sand",
 	initialProcess: [
