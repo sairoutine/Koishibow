@@ -39,7 +39,7 @@ AssetsConfig.images = {
 	// ウマ
 	"animal_uma":   "./image/production/animal_uma.png",
 	// BM
-	"animal_uma":   "./image/production/bm.png",
+	"bm":   "./image/production/bm.png",
 
 	// 3-1 こいしが起きる
 	"chapter3-01-event-01-koishi":  "./image/production/chapter3/event/chapter3-01-event-01/chapter3-01-event-01-koishi.png",
@@ -388,6 +388,23 @@ AssetsConfig.images = {
 	"chapter5-05-obj-01": "./image/production/chapter5/chapter5-05/chapter5-05-obj-01.png",
 	"chapter5-07-obj-01": "./image/production/chapter5/chapter5-07/chapter5-07-obj-01.png",
 	"chapter5-14-obj-01": "./image/production/chapter5/chapter5-14/chapter5-14-obj-01.png",
+
+	"chapter6-01-obj-01": "./image/production/chapter6/chapter6-01/chapter6-01-obj-01.png",
+	"chapter6-01-obj-bm": "./image/production/chapter6/chapter6-01/chapter6-01-obj-bm.png",
+	"chapter6-04-bg-001": "./image/production/chapter6/chapter6-04/chapter6-04-bg-001.jpg",
+	"chapter6-06-bg-001": "./image/production/chapter6/chapter6-06/chapter6-06-bg-001.png",
+	"chapter6-06-bg-002": "./image/production/chapter6/chapter6-06/chapter6-06-bg-002.png",
+	"chapter6-06-obj-01": "./image/production/chapter6/chapter6-06/chapter6-06-obj-01.png",
+	"chapter6-07-bg-001": "./image/production/chapter6/chapter6-07/chapter6-07-bg-001.jpg",
+	"chapter6-07-obj01": "./image/production/chapter6/chapter6-07/chapter6-07-obj01.png",
+	"chapter6-10-bg-001": "./image/production/chapter6/chapter6-10/chapter6-10-bg-001.jpg",
+	"chapter6-10-obj01": "./image/production/chapter6/chapter6-10/chapter6-10-obj01.png",
+	"chapter6-10-obj02": "./image/production/chapter6/chapter6-10/chapter6-10-obj02.png",
+	"chapter6-10-obj03": "./image/production/chapter6/chapter6-10/chapter6-10-obj03.png",
+	"chapter6-12-bg-001": "./image/production/chapter6/chapter6-12/chapter6-12-bg-001.jpg",
+	"chapter6-12-obj-01": "./image/production/chapter6/chapter6-12/chapter6-12-obj-01.png",
+	"chapter6-12-obj-02": "./image/production/chapter6/chapter6-12/chapter6-12-obj-02.png",
+	"chapter6-12-obj-03": "./image/production/chapter6/chapter6-12/chapter6-12-obj-03.png",
 
 	// アイテム 目薬
 	"item_13":            "./image/production/item/icon_item_cp3_sho.png",
