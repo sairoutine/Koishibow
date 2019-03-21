@@ -6,31 +6,21 @@ var _ = require('i18n4v')
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
-	key: "chapter0_myroom",
-	chapter: 0,
-	bgm: "field1",
+	key: "chapter6_01",
+	chapter: 6,
+	bgm: "silent",
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 180, y: 380},
 	upStartPosition:    null,
 	downStartPosition:  null,
-	rightField: "chapter0_hospital_corridor1",
+	rightField: "chapter6_02",
 	leftField: null,
 	upField: null,
 	downField: null,
 	background: "chapter0-myroom-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter0_myroom_firstaccess"], "process": [
-			// すでにアクセス済み
-			[],
-			// まだ未アクセス
-			[
-				{"type": "process", "value": "playSubEvent", "arguments": ["event_chapter0_get_hat"]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter0_myroom_firstaccess"]}
-			],
-		]},
 	],
-
 	objects: [
 		{
 			no: ++I,
@@ -38,7 +28,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ベッド",
 			serif: [
-				{"chara": "koishi","serif":_("まだねむたくないもん")},
+				{"chara": "koishi","serif":_("まだあったかい！")},
 			],
 			x: 258, y: 389,
 			scale: 0.7,
@@ -51,7 +41,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
 			serif: [
-				{"chara": "koishi","serif":_("あけない")},
+				{"chara": "koishi","serif":_("まだしまっとこっと")},
 			],
 			x: 59, y: 496,
 			scale: 0.7,
@@ -82,8 +72,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "クレヨン",
 			serif: [
-				{"chara": "koishi","serif":_("くれおん！")},
-				{"chara": "koishi","serif":_("ピンクなくなっちゃったなー")},
+				{"chara": "koishi","serif":_("ピンク色が欲しいな")},
 			],
 			x: 600, y: 530,
 			scale: 0.7,
@@ -100,13 +89,14 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "まど",
 			serif: [
-				{"chara": "koishi","serif":_("なにかいる！")},
+				{"chara": "koishi","serif":_("また来てる！")},
+				{"chara": "koishi","serif":_("誰？")},
 			],
 			x: 5, y: 180,
 			scale: 0.7,
-			anime1: "chapter0-myroom-obj-04-01-obj01",
-			anime2: "chapter0-myroom-obj-04-01-obj02",
-			anime3: "chapter0-myroom-obj-04-01-obj03",
+			anime1: "chapter6-01-obj-01",
+			anime2: "chapter6-01-obj-02",
+			anime3: "chapter6-01-obj-03",
 			action_name: "look_top",
 			sound_name: "chapter0-myroom-sound_window_for_kokoro",
 			height: 700,
@@ -118,18 +108,20 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "部屋の隅",
 			serif: [
-				{"chara": "koishi","serif":_("ここジョンのばしょ！")},
-				{"chara": "koishi","serif":_("いいこいいこ！")},
-				{"chara": "koishi","serif":_("ばいばい")},
+				{"chara": "koishi","serif":_("ジョン、出てこないの？")},
+				{"chara": "koishi","serif":_("寒いもんね")},
+				{"chara": "koishi","serif":_("またあとでね")},
 			],
 			width: 150, height: 200,
 			x: 670, y: 300,
 			scale: 2/3,
 			target_x: 532, target_y: 418
 		},
+		/*
 		{
 			no: ++I,
 			image: "paper", type: CONSTANT.JOURNAL_FRONT_TYPE, x: 258, y: 689, scale: 2/3, journal_id: "journal001"},
+		*/
 	],
 };
 

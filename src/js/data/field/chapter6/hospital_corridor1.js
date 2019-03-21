@@ -6,15 +6,15 @@ var _ = require('i18n4v')
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
-	key: "chapter0_hospital_corridor1",
-	chapter: 0,
-	bgm: "field1",
+	key: "chapter6_02",
+	chapter: 6,
+	bgm: "silent",
 	rightStartPosition: {x: 800, y: 250},
 	leftStartPosition:  {x: 180, y: 380},
 	upStartPosition:    null,
 	downStartPosition:  null,
-	rightField: "chapter0_hospital_corridor2",
-	leftField: "chapter0_myroom",
+	rightField: "chapter6_03",
+	leftField: "chapter6_01",
 	upField: null,
 	downField: null,
 	background: "chapter0-hospital_corridor1-bg-001",

@@ -1,34 +1,25 @@
 'use strict';
 var _ = require('i18n4v')
-// 病院の廊下2(こころ)
+// 病院の廊下2
 // chapter0, chapter6 それぞれに存在するので
 // コレを修正する際はほかも修正する
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
-	key: "chapter0_hospital_corridor2",
+	key: "chapter6_03",
 	chapter: 0,
 	bgm: "field1",
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 180, y: 380},
 	upStartPosition:    null,
 	downStartPosition:  null,
-	rightField: "chapter0_mansion_corridor1",
-	leftField: "chapter0_hospital_corridor1",
+	rightField: "chapter6_04",
+	leftField: "chapter6_02",
 	upField: null,
 	downField: null,
 	background: "chapter0-hospital2-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter0_hospital_corridor2_firstaccess"], "process": [
-			// すでにアクセス済み
-			[],
-			// まだ未アクセス
-			[
-				{"type": "process", "value": "playSubEvent", "arguments": ["event_chapter0_kokoro_encounter"]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter0_hospital_corridor2_firstaccess"]}
-			],
-		]},
 	],
 	objects: [
 		{
