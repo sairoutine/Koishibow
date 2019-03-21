@@ -144,7 +144,73 @@ SceneSubStagePlay.prototype._durationButtonXDownCount = function(){
 
 SceneSubStagePlay.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
+
+	this._drawArrow();
+
 	this._cursor_ui.draw();
+};
+
+var SCALE = 1/3;
+var RAD_TO_REG = Math.PI / 180;
+// 移動できるフィールドへ矢印を表示
+SceneSubStagePlay.prototype._drawArrow = function(){
+	var ctx = this.core.ctx;
+
+	var field_data = this.parent.getFieldData();
+
+	var image = this.core.image_loader.getImage("arrow");
+
+	var width = image.width * SCALE;
+	var height = image.height * SCALE;
+
+	if(field_data.rightField()) {
+		ctx.save();
+		ctx.translate(this.parent.width - 48, this.parent.height/2);
+		ctx.rotate(0 * RAD_TO_REG);
+		ctx.drawImage(image,
+			-width/2,
+			-height/2,
+			width,
+			height
+		);
+		ctx.restore();
+	}
+	if(field_data.leftField()) {
+		ctx.save();
+		ctx.translate(48, this.parent.height/2);
+		ctx.rotate(180 * RAD_TO_REG);
+		ctx.drawImage(image,
+			-width/2,
+			-height/2,
+			width,
+			height
+		);
+		ctx.restore();
+	}
+	if(field_data.upField()) {
+		ctx.save();
+		ctx.translate(this.parent.width/2, 48);
+		ctx.rotate(270 * RAD_TO_REG);
+		ctx.drawImage(image,
+			-width/2,
+			-height/2,
+			width,
+			height
+		);
+		ctx.restore();
+	}
+	if(field_data.downField()) {
+		ctx.save();
+		ctx.translate(this.parent.width/2, this.parent.height - 48);
+		ctx.rotate(90 * RAD_TO_REG);
+		ctx.drawImage(image,
+			-width/2,
+			-height/2,
+			width,
+			height
+		);
+		ctx.restore();
+	}
 };
 
 SceneSubStagePlay.prototype.afterDraw = function(){

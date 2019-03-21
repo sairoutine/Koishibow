@@ -129,12 +129,6 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			type: CONSTANT.ARROW_BACK_TYPE,
-			x: 850, y: 300,
-			rotate: 0,
-		},
-		{
-			no: ++I,
 			image: "paper", type: CONSTANT.JOURNAL_FRONT_TYPE, x: 258, y: 689, scale: 2/3, journal_id: "journal001"},
 	],
 };
