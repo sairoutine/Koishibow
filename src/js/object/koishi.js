@@ -296,7 +296,7 @@ Koishi.prototype._calcMoveByGamepad = function() {
 	var rad_x  = pad.getAxisX();
 	var rad_y = pad.getAxisY();
 
-	if (rad_x === 0 && rad_y === 0) {
+	if (-0.1 < rad_x && rad_x < 0.1 && -0.1 < rad_y && rad_y < 0.1) {
 		return {x: add_x, y: add_y};
 	}
 
