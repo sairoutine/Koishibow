@@ -89,6 +89,7 @@ module.exports = [
 	require("../../data/field/chapter5/14"),
 
 	// chapter6
+	require("../../data/field/chapter6/myroom_before_get_hat"),
 	require("../../data/field/chapter6/myroom"),
 	require("../../data/field/chapter6/hospital_corridor1"),
 	require("../../data/field/chapter6/hospital_corridor2"),

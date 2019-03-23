@@ -1,11 +1,12 @@
 'use strict';
+var _ = require('i18n4v')
 // こいしの自室
 // chapter0(帽子あり・なし), chapter3, chapter5, chapter6(帽子あり・なし) にも自室が存在するので
 // 当たり判定修正時はそちらも修正する
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
-	key: "chapter0_myroom_before_get_hat",
+	key: "chapter6_myroom_before_get_hat",
 	chapter: 0,
 	bgm: "field1",
 	rightStartPosition: {x: 690, y: 380},
@@ -19,6 +20,11 @@ module.exports = {
 	background: "chapter0-myroom-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "process", "value": "playTalk", "arguments": [
+			[
+				{"chara": "koishi", "exp": null, "serif":_("お出かけよ！")},
+			]
+		]},
 	],
 	objects: [
 		{
@@ -114,9 +120,10 @@ module.exports = {
 			image: "chapter0-myroom-obj-07-01",
 			type: CONSTANT.KOISHI_HAT_TYPE,
 			name: "帽子",
-			x: 767, y: 529,
+			x: 258, y: 330,
+			height: 400,
 			scale: 2/3,
-			next_field: "chapter0_myroom",
+			next_field: "chapter6_01",
 			action_name: "touch_nohat",
 		},
 	],
