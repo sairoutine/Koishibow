@@ -116,6 +116,14 @@ var anime_map = {
 	"chapter5-09-event-02-obj04": require("../data/anime/chapter5/event/chapter5-09-event-02/obj04_anime_1"),
 	"chapter5-09-event-02-obj05": require("../data/anime/chapter5/event/chapter5-09-event-02/obj05_anime_1"),
 
+	"chapter6-04-event-01-obj01": require("../data/anime/chapter6/event/chapter6-04-event-01/obj01_anime_1"),
+	"chapter6-04-event-01-obj02": require("../data/anime/chapter6/event/chapter6-04-event-01/obj02_anime_1"),
+	"chapter6-04-event-01-obj03": require("../data/anime/chapter6/event/chapter6-04-event-01/obj03_anime_1"),
+	"chapter6-04-event-01-obj04": require("../data/anime/chapter6/event/chapter6-04-event-01/obj04_anime_1"),
+
+	"chapter6-12-event-01-obj01": require("../data/anime/chapter6/event/chapter6-12-event-01/obj01_anime_1"),
+	"chapter6-12-event-01-obj02": require("../data/anime/chapter6/event/chapter6-12-event-01/obj02_anime_1"),
+
 	// 旧イベント
 	"chapter3-08-event-01-obj-01": require('../data/anime/chapter3/event/chapter3-08-event-01/obj-01/obj01_anime_1'),
 	"chapter3-08-event-01-obj-02": require('../data/anime/chapter3/event/chapter3-08-event-01/obj-02/obj01_anime_1'),

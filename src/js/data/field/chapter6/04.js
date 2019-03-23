@@ -36,19 +36,21 @@ module.exports = {
 	objects: [
 		{
 			no: ++I,
-			type: CONSTANT.ITEM_TYPE,
-			name: "目薬",
 			image: "eyedrops",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "目薬",
+			serif: [
+				{"chara": "koishi","exp": null, "serif": "", "option": {"playEvent": "chapter6-04-event-01"}},
+			],
 			x: 589*2/3, y: 281.50*2/3,
 			scale: 2/3,
-			item_id: "01",
 			show_if_event_true: "chapter6-04-show_eyedrops",
 		},
 		{
 			no: ++I,
 			image: null,
 			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "部屋の隅",
+			name: "掲示板",
 			serif: [
 				{"chara": "koishi","exp": "look_bottom", "serif": _("なにこれ"), "option": {"getJournal": "journalXXX"}}, // TODO: ジャーナル指定
 				{"chara": "koishi","exp": null, "serif": _("......"), "option": {"changeField": "chapter6_10"}},

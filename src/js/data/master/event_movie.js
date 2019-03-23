@@ -20,9 +20,11 @@ module.exports = [
 		path: "./movie/common/chapter0.mp4",
 		isStopBGM: true,
 	},
-
-
-
+	{
+		key: "chapter6-06-event-01",
+		path: "./movie/common/chapter0.mp4",
+		isStopBGM: false,
+	},
 ];
 
 
