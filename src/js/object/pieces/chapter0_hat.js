@@ -11,6 +11,8 @@ var ObjectChapter0Hat = function(core) {
 	this._scale = 1;
 	this._width  = null;
 	this._height = null;
+	this._action_name = null;
+	this._sound_name = null;
 };
 Util.inherit(ObjectChapter0Hat, base_object);
 
@@ -27,6 +29,8 @@ ObjectChapter0Hat.prototype.init = function(){
 	this._scale = 1;
 	this._width  = null;
 	this._height = null;
+	this._action_name = null;
+	this._sound_name = null;
 };
 
 // パラメータをオブジェクトに設定する
@@ -47,6 +51,12 @@ ObjectChapter0Hat.prototype.setData = function(data) {
 	}
 	if (data.scale) {
 		this._scale = data.scale;
+	}
+	if (data.action_name) {
+		this._action_name = data.action_name;
+	}
+	if (data.sound_name) {
+		this._sound_name = data.sound_name;
 	}
 };
 
@@ -93,6 +103,14 @@ ObjectChapter0Hat.prototype.collisionHeight = function(){
 
 // こいしに触られたときの処理
 ObjectChapter0Hat.prototype.onTouchByKoishi = function() {
+	// こいしのアクション
+	this.scene.root().koishi.actionByObject(this._action_name || "wait_nohat");
+
+	// 音を再生
+	if (this._sound_name) {
+		this.core.audio_loader.playSound(this._front.sound_name);
+	}
+
 	this.scene.root().changeSubScene("picture_get_hat", this._next_field);
 };
 
