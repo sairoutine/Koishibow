@@ -35,10 +35,11 @@ var CONSTANT = {
 	ITEM_TYPE:               7,
 	FIELD_CHANGE_TYPE:       8,
 	BUTTON_KOISHI_TYPE:      9,  // ゲームオーバー用ボタンの目こいし
-	STATIC_EVENT_IMAGE_TYPE: 10, // chapter1 ボール
-	FAUSET_TYPE:             11, // chapter1 蛇口
-	SUSPENDED_TREE_TYPE:     12, // chapter1 うさぎが吊るされた木
-	HASHIGO_TYPE:            13, // chapter1 はしごをかけられる場所
+	KOISHI_HAT_TYPE:         10, // chapter0,6 こいしの帽子
+	STATIC_EVENT_IMAGE_TYPE: 11, // chapter1 ボール
+	FAUSET_TYPE:             12, // chapter1 蛇口
+	SUSPENDED_TREE_TYPE:     13, // chapter1 うさぎが吊るされた木
+	HASHIGO_TYPE:            14, // chapter1 はしごをかけられる場所
 
 	// アイテムの種類
 	ITEM: {

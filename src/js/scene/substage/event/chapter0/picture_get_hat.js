@@ -11,8 +11,11 @@ var SceneSubStageGetHat = function(core) {
 };
 Util.inherit(SceneSubStageGetHat, base_scene);
 
-SceneSubStageGetHat.prototype.init = function(picture_name){
+SceneSubStageGetHat.prototype.init = function(next_field){
 	base_scene.prototype.init.apply(this, arguments);
+
+	// picture 表示後の遷移先フィールド
+	this._next_field = next_field;
 
 	this._pos_x = -this.root().width/2;
 };
@@ -33,7 +36,7 @@ SceneSubStageGetHat.prototype.update = function(){
 	}
 	// プレイに戻る
 	else if(this.frame_count > 120) {
-		this.core.scene_manager.changeScene("stage", "chapter0_myroom");
+		this.core.scene_manager.changeScene("stage", this._next_field);
 	}
 };
 

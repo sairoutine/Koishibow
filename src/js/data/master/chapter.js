@@ -4,7 +4,7 @@ module.exports = [
 		key: "chapter0",
 		no: 0,
 		openingMovie: "./movie/common/chapter0.mp4",
-		firstField: "chapter0_myroom",
+		firstField: "chapter0_myroom_before_get_hat",
 	},
 	{
 		key: "chapter1",
@@ -40,7 +40,7 @@ module.exports = [
 		key: "chapter6",
 		no: 6,
 		openingMovie: "./movie/production/chapter6.mp4",
-		firstField: null,
+		firstField: "chapter6_myroom_before_get_hat",
 	},
 ];
 

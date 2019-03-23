@@ -14,6 +14,7 @@ var RAD_TO_REG = Math.PI / 180;
 var SceneSubStagePlay = function(core) {
 	base_scene.apply(this, arguments);
 
+	// タッチできるオブジェクトであることを示すカーソル
 	this._cursor_ui = new SelectedCursor(this);
 
 	this._key_down_count_of_button_x = 0;
@@ -24,6 +25,7 @@ Util.inherit(SceneSubStagePlay, base_scene);
 SceneSubStagePlay.prototype.init = function(){
 	base_scene.prototype.init.apply(this, arguments);
 
+	// タッチできるオブジェクトであることを示すカーソル
 	this._cursor_ui.init();
 
 	this._key_down_count_of_button_x = 0;
@@ -33,8 +35,30 @@ SceneSubStagePlay.prototype.init = function(){
 SceneSubStagePlay.prototype.update = function(){
 	base_scene.prototype.update.apply(this, arguments);
 
+	// タッチできるオブジェクトであることを示すカーソル
 	this._cursor_ui.update();
 
+	if (this.root().isNoHat()) {
+		// こいしが帽子を未獲得のとき
+		this._updateWithNoHat();
+	}
+	else {
+		// こいしが帽子を獲得済のとき
+		this._updateWithHat();
+	}
+};
+
+// こいしが帽子を未獲得のときの update
+SceneSubStagePlay.prototype._updateWithNoHat = function(){
+	// こいし移動
+	this.root().koishi.moveByInput();
+
+	// オブジェクトとの当たり判定を行う
+	this._checkCollideWithObjects();
+};
+
+// こいしが帽子を獲得済のときの update
+SceneSubStagePlay.prototype._updateWithHat = function(){
 	if (this.root().isUsingEye()) {
 		// サードアイの光の当たり判定
 		this.root().light_3rdeye.checkCollisionWithPieces(this.root().piece_container.getAll());
@@ -66,6 +90,23 @@ SceneSubStagePlay.prototype.update = function(){
 		this.root().koishi.moveByInput();
 	}
 
+	// オブジェクトとの当たり判定を行う
+	this._checkCollideWithObjects();
+
+	this._durationButtonXDownCount();
+	// サードアイ使用／使用解除
+	if (this._isPlayerUse3rdEye()) {
+		this.root().eye_button.onCollision();
+	}
+	// メニュー開く
+	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.X)) {
+		this.root().item_menu_button.onCollision();
+	}
+
+};
+
+// オブジェクトとの当たり判定を行う
+SceneSubStagePlay.prototype._checkCollideWithObjects = function(){
 	// フィールドの各種オブジェクトとの当たり判定
 	var is_collide_with_piece = false;
 
@@ -104,17 +145,6 @@ SceneSubStagePlay.prototype.update = function(){
 		// タッチできるオブジェクトであることを示すカーソル隠す
 		this._hideSelectedCursor();
 	}
-
-	this._durationButtonXDownCount();
-	// サードアイ使用／使用解除
-	if (this._isPlayerUse3rdEye()) {
-		this.root().eye_button.onCollision();
-	}
-	// メニュー開く
-	else if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.X)) {
-		this.root().item_menu_button.onCollision();
-	}
-
 };
 
 // プレイヤーが3rdeye使用を押下したかどうか
@@ -185,8 +215,10 @@ SceneSubStagePlay.prototype._changeFieldByInput = function(){
 SceneSubStagePlay.prototype.draw = function(){
 	base_scene.prototype.draw.apply(this, arguments);
 
+	// 移動できるフィールドへ矢印を表示
 	this._drawArrow();
 
+	// タッチできるオブジェクトであることを示すカーソル描画
 	this._cursor_ui.draw();
 };
 

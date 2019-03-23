@@ -17,7 +17,6 @@ var SceneSubStagePictureUseEyedrops                = require('./substage/picture
 var SceneSubStagePicture                           = require('./substage/picture');
 var SceneSubStageBlackout                          = require('./substage/blackout');
 var SceneSubStageEventChapter0PictureGetHat        = require('./substage/event/chapter0/picture_get_hat');
-var SceneSubStageEventChapter0GetHat               = require('./substage/event/chapter0/get_hat');
 var SceneSubStageEventChapter0KokoroEncounter      = require('./substage/event/chapter0/kokoro_encounter');
 var SceneSubStageEventChapter0SatoriEncounterBegin = require('./substage/event/chapter0/satori_encounter_begin');
 var SceneSubStageEventChapter1TouchHashigo         = require('./substage/event/chapter1/touch_hashigo');
@@ -99,8 +98,6 @@ var SceneStage = function(core) {
 	// 目薬使用 1枚絵
 	this.addSubScene("picture_use_eyedrops", new SceneSubStagePictureUseEyedrops(core));
 
-	// chapter0 帽子なしの自室
-	this.addSubScene("event_chapter0_get_hat", new SceneSubStageEventChapter0GetHat(core));
 	// chapter0 帽子獲得 1枚絵
 	this.addSubScene("picture_get_hat", new SceneSubStageEventChapter0PictureGetHat(core));
 
@@ -121,6 +118,10 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// フィールドの情報
 	var field_data = this.getFieldData();
+
+	if (!field_data) {
+		throw new Error("Can't find field data. field key: " + this.core.save_manager.player.getCurrentField());
+	}
 
 	// 自機
 	this.koishi.init();
@@ -493,8 +494,10 @@ SceneStage.prototype._draw3rdEyeEmergencyMask = function() {
 };
 
 SceneStage.prototype.isNoHat = function(){
-	return this.currentSubScene() instanceof SceneSubStageEventChapter0GetHat;
+	var field = this.getFieldData();
+	return field.key() === "chapter0_myroom_before_get_hat" || field.key() === "chapter6_myroom_before_get_hat";
 };
+
 SceneStage.prototype.getFieldData = function(){
 	return FieldMasterRepository.find(this.core.save_manager.player.getCurrentField());
 };

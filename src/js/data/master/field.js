@@ -1,6 +1,7 @@
 'use strict';
 module.exports = [
 	// chapter0
+	require("../../data/field/chapter0/myroom_before_get_hat"),
 	require("../../data/field/chapter0/myroom"),
 	require("../../data/field/chapter0/hospital_corridor1"),
 	require("../../data/field/chapter0/hospital_corridor2"),

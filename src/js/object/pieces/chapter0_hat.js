@@ -1,6 +1,7 @@
 'use strict';
 var base_object = require('./base');
 var Util = require('../../hakurei').util;
+var WalkImmovableArea = require('../walk_immovable_area');
 
 var ObjectChapter0Hat = function(core) {
 	base_object.apply(this, arguments);
@@ -34,6 +35,9 @@ ObjectChapter0Hat.prototype.setData = function(data) {
 	this.setPosition(data.x, data.y);
 
 	this._image = this.core.image_loader.getImage(data.image);
+
+	// 帽子をとったあとに遷移するフィールド
+	this._next_field = data.next_field;
 
 	if (data.width) {
 		this._width  = data.width;
@@ -89,7 +93,17 @@ ObjectChapter0Hat.prototype.collisionHeight = function(){
 
 // こいしに触られたときの処理
 ObjectChapter0Hat.prototype.onTouchByKoishi = function() {
-	this.scene.root().changeSubScene("picture_get_hat");
+	this.scene.root().changeSubScene("picture_get_hat", this._next_field);
+};
+
+ObjectChapter0Hat.prototype.getImmovableArea = function() {
+	var area = new WalkImmovableArea(this.scene);
+	area.init();
+	area.setPosition(this.x(), this.y());
+	area.setSize(0, 0);
+	area.setParentID(this.id);
+
+	return area;
 };
 
 module.exports = ObjectChapter0Hat;

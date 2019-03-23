@@ -1,7 +1,7 @@
 'use strict';
 var _ = require('i18n4v')
 // こいしの自室
-// chapter0, chapter3, chapter5, chapter6 にも自室が存在するので
+// chapter0(帽子あり・なし), chapter3, chapter5, chapter6(帽子あり・なし) にも自室が存在するので
 // 当たり判定修正時はそちらも修正する
 var CONSTANT = require("../../../constant");
 var I = 0;
@@ -19,18 +19,7 @@ module.exports = {
 	downField: null,
 	background: "chapter0-myroom-bg-001",
 	walkSound: "walking_bare_default",
-	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter0_myroom_firstaccess"], "process": [
-			// すでにアクセス済み
-			[],
-			// まだ未アクセス
-			[
-				{"type": "process", "value": "playSubEvent", "arguments": ["event_chapter0_get_hat"]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter0_myroom_firstaccess"]}
-			],
-		]},
-	],
-
+	initialProcess: [],
 	objects: [
 		{
 			no: ++I,

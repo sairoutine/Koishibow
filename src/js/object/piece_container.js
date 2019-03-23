@@ -17,6 +17,7 @@ var ObjectAnimeDeadKoishi = require('../object/pieces/anime_dead_koishi');
 var ObjectStaticEventImage = require('../object/pieces/static_event_image');
 var ObjectFaucet = require('../object/pieces/faucet');
 var ObjectSuspendedTree = require('../object/pieces/suspended_tree');
+var ObjectChapter0Hat = require('../object/pieces/chapter0_hat');
 var ObjectChapter1Hashigo = require('../object/pieces/chapter1_hashigo');
 var FieldMasterRepository = require('../repository/field');
 
@@ -133,6 +134,9 @@ PieceContainer.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.BUTTON_KOISHI_TYPE) {
 			object = new ObjectAnimeDeadKoishi(this.scene);
 		}
+		else if (data.type === CONSTANT.KOISHI_HAT_TYPE) {
+			object = new ObjectChapter0Hat(this.scene);
+		}
 		else if (data.type === CONSTANT.STATIC_EVENT_IMAGE_TYPE) {
 			object = new ObjectStaticEventImage(this.scene);
 		}
@@ -145,7 +149,6 @@ PieceContainer.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.HASHIGO_TYPE) {
 			object = new ObjectChapter1Hashigo(this.scene);
 		}
-
 		else {
 			throw new Error ("Unknown object type error: " + data.type);
 		}
