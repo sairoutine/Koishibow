@@ -19,6 +19,50 @@ module.exports = {
 	downField: null,
 	background: "chapter0-hospital_corridor1-bg-001",
 	walkSound: "walking_bare_default",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6_hospital_corridor1_firstaccess"], "process": [
+			// 1度目アクセス済み
+			[
+			],
+			// 1度目まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "bm", "exp": null, "serif":_("ォギャーッ")},
+						{"chara": "koishi", "exp": "look_top", "serif":_("なに！？")},
+						{"id": "chapter6-01-show_bm", "save": true},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_hospital_corridor1_firstaccess"]}
+			],
+		]},
+
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6-01-seen_bm"], "process": [
+			// BMを自室で見た
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6_hospital_corridor1_secondaccess"], "process": [
+					// 2度目アクセス済み
+					[
+					],
+					// 2度目まだ未アクセス
+					[
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "koishi","exp": "afraid", "serif": _("なにあれ")},
+								{"chara": "bm","exp": null, "serif": _("ア˝ー！")},
+								{"chara": "koishi","exp": "look_bottom", "serif": _("こわい")},
+							]
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_hospital_corridor1_secondaccess"]}
+					],
+				]},
+			],
+			// BMを自室でまだ見てない
+			[
+			],
+		]},
+
+	],
 	objects: [
 		{
 			no: ++I,
@@ -80,8 +124,17 @@ module.exports = {
 			position_type: "front",
 		},
 		{
+			no: "bm",
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "BM(左)",
+			serif: null,
+			width: 0, height: 0,
+			x: 0, y: 360,
+		},
+		{
 			no: ++I,
-			image: "paper", type: CONSTANT.JOURNAL_FRONT_TYPE, x: 643, y:425, scale: 2/3, journal_id: "journal002"},
+			image: "paper", type: CONSTANT.JOURNAL_FRONT_TYPE, x: 258, y: 689, scale: 2/3, journal_id: "journalXXX"}, // TODO: ジャーナルを設定
 	],
 };
 

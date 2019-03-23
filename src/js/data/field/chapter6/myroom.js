@@ -20,6 +20,21 @@ module.exports = {
 	background: "chapter0-myroom-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6-01-show_bm"], "process": [
+			// BM登場済み
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "bm","exp": "chapter6-01-obj-01-obj03", "serif": _("ギャーッ")},
+						{"id": "chapter6-01-seen_bm", "save": true},
+						{"chara": "koishi","exp": "look_bottom", "serif": _("ア゛ー"), "option": {"changeField": "chapter6_02"}},
+					]
+				]},
+			],
+			// まだ未登場
+			[
+			],
+		]},
 	],
 	objects: [
 		{
@@ -96,12 +111,33 @@ module.exports = {
 			scale: 0.7,
 			anime1: "chapter6-01-obj-01",
 			anime2: "chapter6-01-obj-02",
-			anime3: "chapter6-01-obj-03",
+			anime3: "chapter6-01-obj-02",
 			action_name: "look_top",
 			sound_name: "chapter0-myroom-sound_window_for_kokoro",
 			height: 700,
-			target_x: 177, target_y: 531
+			target_x: 177, target_y: 531,
+			not_show_if_event_true: "chapter6-01-show_bm",
 		},
+		{
+			no: "bm",
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "BM",
+			serif: [
+				{"chara": "koishi","serif":_("また来てる！")},
+				{"chara": "koishi","serif":_("誰？")},
+			],
+			x: 5, y: 180,
+			scale: 0.7,
+			anime1: "chapter6-03-obj-01",
+			anime2: null,
+			anime3: null,
+			action_name: "look_top",
+			sound_name: "chapter0-myroom-sound_window_for_kokoro",
+			height: 700,
+			target_x: 177, target_y: 531,
+			show_if_event_true: "chapter6-01-show_bm",
+		},
+
 		{
 			no: ++I,
 			image: null,
