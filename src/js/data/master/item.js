@@ -309,5 +309,14 @@ module.exports = [
 		descriptionText:_(""),
 		examineText:_(""),
 	},
+	{
+		id: "35",
+		type: CONSTANT.ITEM.NON_USABLE,
+		name: "はさみ",
+		imageName: "item_35",
+		soundName: "got_item_common",
+		descriptionText:_(""),
+		examineText:_(""),
+	},
 ];
 

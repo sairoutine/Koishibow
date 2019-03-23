@@ -1,6 +1,8 @@
 'use strict';
 var _ = require('i18n4v')
 // バス停
+// chapter1, chapter6 にもバス停が存在するので
+// 当たり判定修正時はそちらも修正する
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {

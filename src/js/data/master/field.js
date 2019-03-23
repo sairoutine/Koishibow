@@ -102,4 +102,5 @@ module.exports = [
 	require("../../data/field/chapter6/14"),
 	require("../../data/field/chapter6/15"),
 	require("../../data/field/chapter6/16"),
+	require("../../data/field/chapter6/17"),
 ];
