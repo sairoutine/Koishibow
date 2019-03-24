@@ -1,5 +1,6 @@
 'use strict';
-var _ = require('i18n4v')
+var _ = require('i18n4v');
+// GOOD ルート
 module.exports = {
 	key: "chapter4-29-event-02",
 	serifWindow: "fukidashi",

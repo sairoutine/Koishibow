@@ -96,6 +96,10 @@ var ProcessList = {
 	playBGM: function (core, bgm) {
 		core.scene_manager.currentScene().playBGM(bgm);
 	},
+	// 発達度+1
+	growUp: function (core) {
+		core.save_manager.player.growUp();
+	},
 };
 
 // 静的クラス

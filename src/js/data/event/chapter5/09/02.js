@@ -40,6 +40,9 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
+		// 発達度+1
+		{"type": "process", "value": "growUp", "arguments": []},
+		// GOOD END
 		{"type": "process", "value": "changeScene", "arguments": ["opening_movie_chapter6"]},
 	],
 };

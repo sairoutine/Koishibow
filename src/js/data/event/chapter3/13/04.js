@@ -68,6 +68,9 @@ module.exports = {
 		{"name": "chapter3-13-event-04-12", "frame": 210},
 	],
 	endProcess: [
+		// GOOD END
+		// 発達度 +1
+		{"type": "process", "value": "growUp", "arguments": []},
 		// chapter4 へ
 		{"type": "process", "value": "changeSceneWithFadeout", "arguments": ["opening_movie_chapter4"]},
 	],

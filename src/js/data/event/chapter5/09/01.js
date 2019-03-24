@@ -37,6 +37,7 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
+		// BAD END
 		{"type": "process", "value": "changeScene", "arguments": ["opening_movie_chapter6"]},
 	],
 };

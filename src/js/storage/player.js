@@ -111,4 +111,17 @@ StoragePlayer.prototype.deleteLastGameoverField = function() {
 	this.remove("last_gameover_field");
 };
 
+// 現在の発達度を取得
+StoragePlayer.prototype.getGrowth = function() {
+	var growth = this.get("growth");
+
+	return growth || 1;
+};
+
+// 現在の発達度を+1 上昇して保存する
+StoragePlayer.prototype.growUp = function() {
+	this.set("growth", this.getGrowth() + 1);
+	return this.save();
+};
+
 module.exports = StoragePlayer;

@@ -321,10 +321,19 @@ SceneEventPlayDoll.prototype._updateInTalking = function(){
 	if(this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
 		// 会話がもう終わりなら
 		if(this._serif.isEnd()) {
+			var scene_manager = this.core.scene_manager;
 			if (this._is_gameover) {
 				// 間違い
-				this.core.save_manager.reload();
-				this.core.scene_manager.changeScene("title");
+				this.core.scene_manager.changeScene("movie", "./movie/common/chapter1ed.mp4", function () {
+					if (CONSTANT.TRIAL) {
+						// 体験版ならば chapter1 で終了
+						scene_manager.changeScene("event_for_trial_last");
+					}
+					else {
+						// 次のチャプターへ
+						scene_manager.changeScene("opening_movie_chapter3");
+					}
+				});
 			}
 			else {
 				// 正解
