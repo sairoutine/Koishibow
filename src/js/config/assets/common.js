@@ -69,11 +69,21 @@ AssetsConfig.images = {
 	"chapter1-09-event-01-koishi":  "./image/common/chapter1/event/play_with_murasa/chapter1-09-event-01-koishi.png",
 
 	// ジャーナル画像(日本語)
-	"journal001_ja":  "./image/common/journal/ja/001.png",
-	"journal002_ja":  "./image/common/journal/ja/002.png",
-	"journal003_ja":  "./image/common/journal/ja/003.png",
-	"journal004_ja":  "./image/common/journal/ja/004.png",
-	"journal005_ja":  "./image/common/journal/ja/005.png",
+	"journal001_ja":  "./image/common/journal/ja/journal001.png",
+	"journal002_ja":  "./image/common/journal/ja/journal002.png",
+	"journal003_ja":  "./image/common/journal/ja/journal003.png",
+	"journal004_ja":  "./image/common/journal/ja/journal004.png",
+	"journal005_ja":  "./image/common/journal/ja/journal005.png",
+	"journal006_ja":  "./image/common/journal/ja/journal006.png",
+	"journal007_ja":  "./image/common/journal/ja/journal007.png",
+	"journal008_ja":  "./image/common/journal/ja/journal008.png",
+	"journal009_ja":  "./image/common/journal/ja/journal009.png",
+	"journal010_ja":  "./image/common/journal/ja/journal010.png",
+	"journal011_ja":  "./image/common/journal/ja/journal011.png",
+	"journal012_ja":  "./image/common/journal/ja/journal012.png",
+	"journal013_ja":  "./image/common/journal/ja/journal013.png",
+	"journal014_ja":  "./image/common/journal/ja/journal014.png",
+	"journal015_ja":  "./image/common/journal/ja/journal015.png",
 
 	// ジャーナル画像(英語)
 	"journal001_en":  "./image/common/journal/en/001.png",
