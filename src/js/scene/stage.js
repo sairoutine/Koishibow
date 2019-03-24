@@ -5,21 +5,24 @@ var Util = require('../hakurei').util;
 
 var CONSTANT = require('../constant');
 
+// stage scene 専用 sub scene
 var SceneSubStagePlay                              = require('./substage/play'); // ゲーム操作可能
 var SceneSubStageTalkWithObject                    = require('./substage/talk_with_object'); // こいし会話中
 var SceneSubStageMenuItem                          = require('./substage/menu_item'); // アイテムメニュー
-var SceneSubStageShowJournal                       = require('./substage/show_journal'); // ジャーナル表示
 var SceneSubStageMenuJournal                       = require('./substage/menu_journal'); // ジャーナル メニュー
-var SceneSubStageGotItem                           = require('./substage/got_item'); // アイテム獲得
-var SceneSubStageUseItem                           = require('./substage/use_item'); // アイテム使用
 var SceneSubStageLock                              = require('./substage/lock');
 var SceneSubStagePictureUseEyedrops                = require('./substage/picture_use_eyedrops'); // 目薬使用1枚絵
-var SceneSubStagePicture                           = require('./substage/picture');
-var SceneSubStageBlackout                          = require('./substage/blackout');
 var SceneSubStageEventChapter0PictureGetHat        = require('./substage/event/chapter0/picture_get_hat');
 var SceneSubStageEventChapter0KokoroEncounter      = require('./substage/event/chapter0/kokoro_encounter');
 var SceneSubStageEventChapter0SatoriEncounterBegin = require('./substage/event/chapter0/satori_encounter_begin');
 var SceneSubStageEventChapter1TouchHashigo         = require('./substage/event/chapter1/touch_hashigo');
+
+// event_talk scene と共通の sub scene
+var SceneSubStageShowJournal                       = require('./subcommon/show_journal'); // ジャーナル表示
+var SceneSubStageGotItem                           = require('./subcommon/got_item'); // アイテム獲得
+var SceneSubStageUseItem                           = require('./subcommon/use_item'); // アイテム使用
+var SceneSubStagePicture                           = require('./subcommon/picture');
+var SceneSubStageBlackout                          = require('./subcommon/blackout');
 
 var ItemMenuButton = require('../object/ui/item_menu_button');
 var EyeButton = require('../object/ui/eye_button');

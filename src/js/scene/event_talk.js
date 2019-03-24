@@ -14,6 +14,16 @@ var ObjectPoint = require('../hakurei').object.point;
 var SS = require('../object/anime_object');
 var BlackMist = require('../object/black_mist');
 
+// event_talk scene 専用 sub scene
+var SceneSubStagePlay        = require('./subeventtalk/play'); // ゲーム操作可能
+
+// stage scene と共通の sub scene
+var SceneSubStageShowJournal = require('./subcommon/show_journal'); // ジャーナル表示
+var SceneSubStageGotItem     = require('./subcommon/got_item'); // アイテム獲得
+var SceneSubStageUseItem     = require('./subcommon/use_item'); // アイテム使用
+var SceneSubStagePicture     = require('./subcommon/picture');
+var SceneSubStageBlackout    = require('./subcommon/blackout');
+
 // クリックしてから次のセリフに移るまでの待機カウント
 var NEXT_TO_SERIF_WAITING_COUNT = 6;
 
@@ -29,6 +39,19 @@ var SceneEventTalk = function(core) {
 	BaseScene.apply(this, arguments);
 
 	// event_talk 固有 start
+	// 通常
+	this.addSubScene("play", new SceneSubStagePlay(core));
+	// ジャーナルを読む
+	this.addSubScene("show_journal", new SceneSubStageShowJournal(core));
+	// アイテム獲得
+	this.addSubScene("got_item", new SceneSubStageGotItem(core));
+	// アイテム使用
+	this.addSubScene("use_item", new SceneSubStageUseItem(core));
+	// 1枚絵表示
+	this.addSubScene("picture", new SceneSubStagePicture(core));
+	// 暗転
+	this.addSubScene("blackout", new SceneSubStageBlackout(core));
+
 	this.ss = new SS(this);
 	// セリフ表示位置
 	this._serif_position = new ObjectPoint(this);
@@ -99,6 +122,8 @@ SceneEventTalk.prototype.init = function(event_name){
 
 	// event_talk 固有 start
 	this._startSerif();
+
+	this.changeSubScene("play");
 	// event_talk 固有 end
 };
 
@@ -161,6 +186,13 @@ SceneEventTalk.prototype.update = function(){
 	BaseScene.prototype.update.apply(this, arguments);
 
 	this._time.update();
+
+	// event_talk 固有 start
+	// play sub scene でなければプレイヤーの入力を受け付けない
+	if (!(this.currentSubScene() instanceof SceneSubStagePlay)) {
+		return;
+	}
+	// event_talk 固有 end
 
 	if(this._state === STATE_TALKING) {
 		this._updateInTalking();
