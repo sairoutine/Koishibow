@@ -12,7 +12,7 @@ module.exports = {
 	upStartPosition:    null,
 	downStartPosition:  null,
 	rightField: null,
-	leftField: null,
+	leftField: "chapter6_18",
 	upField: null,
 	downField: null,
 	background: "chapter5-09-bg-001",

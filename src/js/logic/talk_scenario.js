@@ -52,6 +52,11 @@ TalkScenario.generateScenario = function (core) {
 
 				return index;
 			},
+			// アイテムを持っていれば
+			growth: function (core) {
+				return core.save_manager.player.getGrowth() - 1;
+			},
+
 		}
 	});
 };
@@ -63,17 +68,23 @@ TalkScenario.generateScenario = function (core) {
 // かつ現在のsubscene は talk_with_object である必要がある(遷移先サブシーンからtalk_with_objectに戻ってくるため)
 TalkScenario.processSerifOption = function (scene, serif) {
 	var option = serif.getCurrentOption();
+	var scene_manager = scene.core.scene_manager;
 
-	// ムービーを再生
+	// ムービーイベントを再生
 	if (option.playEventMovie) {
-		var scene_manager = scene.core.scene_manager;
 		scene_manager.setFadeOut(0);
 		scene_manager.changeScene("event_movie", option.playEventMovie);
 		return;
 	}
 	// 別のシーンへ遷移
 	else if (option.changeScene) {
-		scene.core.scene_manager.changeScene(option.changeScene);
+		if (option.changeScene instanceof Array) {
+			scene.core.scene_manager.changeScene.apply(scene.core.scene_manager, option.changeScene);
+		}
+		else {
+			scene.core.scene_manager.changeScene(option.changeScene);
+		}
+
 		return;
 	}
 	// 別のフィールドへ遷移

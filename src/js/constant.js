@@ -40,6 +40,7 @@ var CONSTANT = {
 	FAUSET_TYPE:             12, // chapter1 蛇口
 	SUSPENDED_TREE_TYPE:     13, // chapter1 うさぎが吊るされた木
 	HASHIGO_TYPE:            14, // chapter1 はしごをかけられる場所
+	CHAPTER6_LAST_JUNCTION:  15, // chapter6 最後の選択肢
 
 	// アイテムの種類
 	ITEM: {

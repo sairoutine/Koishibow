@@ -25,6 +25,11 @@ module.exports = [
 		path: "./movie/production/chapter6-06-event-01.mp4",
 		isStopBGM: false,
 	},
+	{
+		key: "chapter6-event-ending1-1",
+		path: "./movie/production/chapter6-event-ending1-1.mp4",
+		isStopBGM: false,
+	},
 ];
 
 

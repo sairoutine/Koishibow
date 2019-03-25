@@ -19,6 +19,7 @@ var ObjectFaucet = require('../object/pieces/faucet');
 var ObjectSuspendedTree = require('../object/pieces/suspended_tree');
 var ObjectChapter0Hat = require('../object/pieces/chapter0_hat');
 var ObjectChapter1Hashigo = require('../object/pieces/chapter1_hashigo');
+var ObjectChapter6LastJunction = require('../object/pieces/chapter6_last_junction');
 var FieldMasterRepository = require('../repository/field');
 
 var PieceContainer = function(scene) {
@@ -148,6 +149,9 @@ PieceContainer.prototype._setupPieces = function() {
 		}
 		else if (data.type === CONSTANT.HASHIGO_TYPE) {
 			object = new ObjectChapter1Hashigo(this.scene);
+		}
+		else if (data.type === CONSTANT.CHAPTER6_LAST_JUNCTION) {
+			object = new ObjectChapter6LastJunction(this.scene);
 		}
 		else {
 			throw new Error ("Unknown object type error: " + data.type);
