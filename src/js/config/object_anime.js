@@ -515,8 +515,8 @@ var anime_map = {
 	"animal_uma-ura_reaction_01":      require('../data/anime/animal_uma/ura_reaction_01_anime_1'),
     
 	/* BM */
-	"animal_uma-wait":                 require('../data/anime/bm/wait_anime_1'),
-	"reaction_01_anime_1":             require('../data/anime/bm/reaction_01_anime_1'),
+	"bm-wait":        require('../data/anime/bm/wait_anime_1'),
+	"bm-reaction_01": require('../data/anime/bm/reaction_01_anime_1'),
 
 	/* ダークミスト */
 	"dark-mist":    require('../data/anime/dark-mist/eff01_anime_1.json'),
