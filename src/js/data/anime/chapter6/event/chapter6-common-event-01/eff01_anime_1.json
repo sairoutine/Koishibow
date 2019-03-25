@@ -1,0 +1,22 @@
+[
+{
+"images":["chapter6-common-event-01.jpg"],
+"name": "eff01_anime_1",
+"animation": {
+"fps": 30,
+"CanvasWidth": 1440,
+"CanvasHeight": 1080,
+"MarginWidth": 728,
+"MarginHeight": 548,
+"parts": ["root","black"],
+"ssa": [
+[
+[0,0,0,0,128,128,0.0,0.0,0.0,12.156000,8.938000,64,64]
+],
+[
+[0,0,0,0,128,128,0.0,0.0,0.0,12.156000,8.938000,64,64]
+]
+]
+}
+}
+]

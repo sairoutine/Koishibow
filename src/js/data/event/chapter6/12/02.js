@@ -4,9 +4,10 @@ module.exports = {
 	key: "chapter6-04-event-02",
 	serifWindow: "fukidashi",
 	expAnimes: [
+		"chapter6-common-event-01-obj01",
 	],
 	serifs: [
-		{"exp": null, "serif": _("さとり"), "option": {"x": 480, "y": 360, "loop": false}},
+		{"exp": "chapter6-common-event-01-obj01", "serif": _("さとり"), "option": {"x": 480, "y": 360, "loop": false}},
 		{"exp": null, "serif": _("お前はいいこだ"), "option": {"x": 480, "y": 360, "loop": false}},
 		{"exp": null, "serif": _("賢い"), "option": {"x": 480, "y": 360, "loop": false}},
 		{"exp": null, "serif": _("かわいい"), "option": {"x": 480, "y": 360, "loop": false}},

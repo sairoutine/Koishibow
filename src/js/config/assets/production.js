@@ -224,7 +224,10 @@ AssetsConfig.images = {
 	"chapter6-12-event-01":  "./image/production/chapter6/event/chapter6-12-event-01/chapter6-12-event-01.png",
 	"chapter6-12-event-01-bm":  "./image/production/chapter6/event/chapter6-12-event-01/chapter6-12-event-01-bm.png",
 	"chapter6-12-event-01-koishi":  "./image/production/chapter6/event/chapter6-12-event-01/chapter6-12-event-01-koishi.png",
-    
+ 
+	// 6 共通 黒子
+	"chapter6-common-event-01":  "./image/production/chapter6/event/chapter6-common-event-01/chapter6-common-event-01.jpg",
+
 	// chapter6-event-ending01-2
 	"chapter6-event-ending01-2-obj-01":  "./image/production/chapter6/event/chapter6-event-ending01-2/chapter6-event-ending01-2-obj-01.png",
 	"chapter6-event-ending01-2-koishi":  "./image/production/chapter6/event/chapter6-event-ending01-2/chapter6-event-ending01-2-koishi.png",
