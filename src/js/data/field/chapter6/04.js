@@ -48,15 +48,15 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			image: null,
+			image: "paper",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "掲示板",
 			serif: [
-				{"chara": "koishi","exp": "look_bottom", "serif": _("なにこれ"), "option": {"getJournal": "journalXXX"}}, // TODO: ジャーナル指定
+				{"chara": "koishi","exp": "look_front", "serif": _("なにこれ"), "option": {"getJournal": "journalXXX"}}, // TODO: ジャーナル指定
 				{"chara": "koishi","exp": null, "serif": _("......"), "option": {"changeField": "chapter6_10"}},
 			],
-			width: 150, height: 200,
-			x: 670, y: 300,
+			width: 150, height: 400,
+			x: 670, y: 210,
 			scale: 2/3,
 			target_x: 532, target_y: 418
 		},
