@@ -1,8 +1,8 @@
 'use strict';
+var _ = require('i18n4v');
 // 病院の外
 var CONSTANT = require("../../../constant");
 var I = 0;
-
 module.exports = {
 	key: "chapter6_07",
 	chapter: 6,
@@ -18,6 +18,19 @@ module.exports = {
 	background: "chapter6-07-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6_07_firstaccess"], "process": [
+			// 1度目アクセス済み
+			[
+			],
+			// 1度目まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[ {"chara": "koishi", "exp": "look_top", "serif":_("そとだ！")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_07_firstaccess"]}
+			],
+		]},
 	],
 	objects: [
 		{
@@ -37,6 +50,22 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
+		{
+			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "電灯",
+			serif: [
+				{"chara": "koishi","exp": "look_top", "serif": _("なにこれ")},
+				{"chara": "koishi","exp": "look_top", "serif": _("気持ち悪い")},
+				{"chara": I,"exp": "look_top", "serif": _("あばぶ")},
+				{"id": "chapter6-07-show_decision", "save": true},
+			],
+			width: 100, height: 500,
+			x: 430, y: 150,
+		},
+
+
 	],
 };
 

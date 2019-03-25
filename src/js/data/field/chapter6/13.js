@@ -89,7 +89,7 @@ module.exports = {
 				{"chara": "koishi","exp": null, "serif": _("チョコレートさんありがとう！")},
 				{"chara": "koishi","exp": "look_top", "serif": _("へへへ")},
 				{"chara": "bm","exp": null, "serif": _("あぶぶぶ")},
-				{"chara": "koishi","exp": "look_front", "serif": _("！"), "option": {"changeField": "TODO: "}},
+				{"chara": "koishi","exp": "look_front", "serif": _("！"), "option": {"playEvent": "chapter6-13-event-01"}},
 			],
 			x:858.50*2/3, y:592*2/3,
 			scale: 2/3,

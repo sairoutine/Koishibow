@@ -376,7 +376,7 @@ SceneEventPlayDoll.prototype._updateInTalking = function(){
 			var scene_manager = this.core.scene_manager;
 			if (this._is_gameover) {
 				// 間違い
-				this.core.scene_manager.changeScene("movie", "./movie/common/chapter1ed.mp4", function () {
+				this.core.scene_manager.changeScene("movie", "./movie/common/chapter1ed.mp4", function (core) {
 					if (CONSTANT.TRIAL) {
 						// 体験版ならば chapter1 で終了
 						scene_manager.changeScene("event_for_trial_last");
@@ -393,7 +393,7 @@ SceneEventPlayDoll.prototype._updateInTalking = function(){
 				// 発達度 +1
 				this.core.save_manager.player.growUp();
 
-				this.core.scene_manager.changeScene("movie", "./movie/common/chapter1ed.mp4", function () {
+				this.core.scene_manager.changeScene("movie", "./movie/common/chapter1ed.mp4", function (core) {
 					if (CONSTANT.TRIAL) {
 						// 体験版ならば chapter1 で終了
 						scene_manager.changeScene("event_for_trial_last");

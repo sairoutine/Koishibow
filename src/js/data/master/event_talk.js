@@ -23,4 +23,10 @@ module.exports = [
 	require("../../data/event/chapter6/04/02"),
 	require("../../data/event/chapter6/12/01"),
 	require("../../data/event/chapter6/12/02"),
+	require("../../data/event/chapter6/13/01"),
+	require("../../data/event/chapter6/ending01-2"),
+	require("../../data/event/chapter6/ending02-1"),
+	require("../../data/event/chapter6/ending02-2"),
+	require("../../data/event/chapter6/ending03-1"),
+	require("../../data/event/chapter6/ending03-2"),
 ];

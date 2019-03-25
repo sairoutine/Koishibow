@@ -34,7 +34,29 @@ module.exports = {
 			],
 		]},
 
-
+		{"type": "criteria", "value": "isPlayed", "arguments": ["after_chapter6-13-event-01"], "process": [
+			// chapter6-13-event-01 後
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6_06_secondaccess"], "process": [
+					// 2度目アクセス済み
+					[
+					],
+					// 2度目まだ未アクセス
+					[
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "koishi", "exp": "look_bottom", "serif":_("うー")},
+								{"chara": "koishi", "exp": "look_bottom", "serif":_("あたまいてて")},
+							]
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_06_secondaccess"]}
+					],
+				]},
+			],
+			// chapter6-13-event-01 前
+			[
+			],
+		]},
 	],
 	objects: [
 		{
@@ -78,7 +100,21 @@ module.exports = {
 			width: 0, height: 0,
 			x: 480, y: 0,
 		},
-
+		{
+			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "窓",
+			serif: [
+				{"chara": "koishi","exp": "look_front", "serif": _("なにしてるの")},
+			],
+			serif_back: [
+				{"chara": "koishi","exp": null, "serif": _("なにあれ")},
+				{"chara": "koishi","exp": null, "serif": _("気持ち悪い")},
+			],
+			width: 100, height: 500,
+			x: 430, y: 150,
+		},
 	],
 };
 
