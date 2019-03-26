@@ -84,7 +84,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "チョコレート箱",
 			serif: [
-				{"chara": "koishi","exp": "touch", "serif": _("はさみ！"), "option": {"getItem": "35"}},
+				{"chara": "koishi","exp": "touch", "serif": _("はさみ！"), "option": {"getItem": "36"}},
 				{"chara": "koishi","exp": "yes", "serif": _("いい武器！")},
 				{"chara": "koishi","exp": null, "serif": _("チョコレートさんありがとう！")},
 				{"chara": "koishi","exp": "look_top", "serif": _("へへへ")},

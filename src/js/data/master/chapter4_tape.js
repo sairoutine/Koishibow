@@ -11,11 +11,11 @@ module.exports = [
 	},
 	{
 		id: "25",
-		audioName: "silent",
+		audioName: "chapter4-tape_25",
 	},
 	{
 		id: "26",
-		audioName: "silent",
+		audioName: "chapter4-tape_26",
 	},
 	{
 		id: "27",
@@ -23,15 +23,19 @@ module.exports = [
 	},
 	{
 		id: "28",
-		audioName: "silent",
+		audioName: "chapter4-tape_28",
 	},
 	{
 		id: "29",
-		audioName: "silent",
+		audioName: "chapter4-tape_29",
 	},
 	{
 		id: "30",
-		audioName: "silent",
+		audioName: "chapter4-tape_30",
+	},
+	{
+		id: "30",
+		audioName: "chapter4-tape_31",
 	},
 ];
 

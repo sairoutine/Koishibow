@@ -18,7 +18,7 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_wood",
 	initialProcess: [
-		{"type": "criteria", "value": "existsItem", "arguments": ["32"], "process": [
+		{"type": "criteria", "value": "existsItem", "arguments": ["33"], "process": [
 			// 鍵を持っている
 			[
 				// イベント表示
@@ -112,7 +112,7 @@ module.exports = {
 							// 豹と会話した後
 							[
 								{"chara": "koishi","exp": "touch", "serif": _("これ！")},
-								{"chara": "koishi","exp": null, "serif": _("すてき"), "option": {"getItem": "33"}},
+								{"chara": "koishi","exp": null, "serif": _("すてき"), "option": {"getItem": "34"}},
 								{"chara": "koishi","exp": null, "serif": _("強そうね！")},
 								{"id": "chapter5-07-show_animal_komodo", "save": true},
 							],

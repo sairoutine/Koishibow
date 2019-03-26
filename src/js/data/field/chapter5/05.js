@@ -127,7 +127,7 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-07-animal_shiba_ura_talk1"], "serifs": [
 					// イヌと喋った
 					[
-						{"chara": "koishi","exp": "touch", "serif": _("これいる"), "option": {"getItem": "34"}}, // ハシゴ獲得
+						{"chara": "koishi","exp": "touch", "serif": _("これいる"), "option": {"getItem": "35"}}, // ハシゴ獲得
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_reaction_01", "serif": _("あー！！！！")},
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_reaction_01", "serif": _("アーッ")},
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait", "serif": _("だめなんだぞだめなんだぞ")},

@@ -431,9 +431,9 @@ AssetsConfig.images = {
 	"item_20":            "./image/production/item/icon_item_cp3_cir.png",
 	"item_22":            "./image/production/item/icon_item_cp4_player.png",
 	"item_23":            "./image/production/item/icon_item_cp4_tape.png",
-	"item_31":            "./image/production/item/icon_item_cp5_eye.png",
-	"item_32":            "./image/production/item/icon_item_cp5_key.png",
-	"item_35":            "./image/production/item/icon_item_cp6_scissors.png",
+	"item_32":            "./image/production/item/icon_item_cp5_eye.png",
+	"item_33":            "./image/production/item/icon_item_cp5_key.png",
+	"item_36":            "./image/production/item/icon_item_cp6_scissors.png",
 
 	// 1枚絵
 	"picture_chapter3-08-illust-01":   "./image/production/picture/chapter3-08-illust-01.png",
@@ -738,16 +738,40 @@ AssetsConfig.sounds = {
 	},
 
 	// カセットテープ
+	"chapter4-tape_23":    {
+		path: "./sound/production/chapter4/tape/23.ogg",
+		volume: 1.0,
+	},
 	"chapter4-tape_24":    {
 		path: "./sound/production/chapter4/tape/24.ogg",
+		volume: 1.0,
+	},
+	"chapter4-tape_25":    {
+		path: "./sound/production/chapter4/tape/25.ogg",
+		volume: 1.0,
+	},
+	"chapter4-tape_26":    {
+		path: "./sound/production/chapter4/tape/26.ogg",
 		volume: 1.0,
 	},
 	"chapter4-tape_27":    {
 		path: "./sound/production/chapter4/tape/27.ogg",
 		volume: 1.0,
 	},
-	"chapter4-tape_23":    {
-		path: "./sound/production/chapter4/tape/23.ogg",
+	"chapter4-tape_28":    {
+		path: "./sound/production/chapter4/tape/28.ogg",
+		volume: 1.0,
+	},
+	"chapter4-tape_29":    {
+		path: "./sound/production/chapter4/tape/29.ogg",
+		volume: 1.0,
+	},
+	"chapter4-tape_30":    {
+		path: "./sound/production/chapter4/tape/30.ogg",
+		volume: 1.0,
+	},
+	"chapter4-tape_31":    {
+		path: "./sound/production/chapter4/tape/31.ogg",
 		volume: 1.0,
 	},
 };

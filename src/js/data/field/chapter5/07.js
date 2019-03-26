@@ -83,13 +83,13 @@ module.exports = {
 			loop: true,
 			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["34"], "serifs": [
+				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["35"], "serifs": [
 					// ハシゴを持ってる
 					[
 						{"chara": "koishi","exp": "look_front", "serif": _("犬ちゃん")},
 						{"chara": "animal_shiba","exp": "animal_shiba-ura_wait", "serif": _("犬って何よ")},
 						{"chara": "koishi","exp": "yes", "serif": _("はしご！")},
-						{"chara": "animal_shiba","exp": null, "serif": _("ほんと？"), "option": {"useItem": "34"}},
+						{"chara": "animal_shiba","exp": null, "serif": _("ほんと？"), "option": {"useItem": "35"}},
 						{"chara": "koishi","exp": null, "serif": _("ほんとだ！"), "option": {"blackout": true}},
 						{"chara": "animal_shiba","exp": null, "serif": _("これでよし！")},
 						{"chara": "animal_shiba","exp": null, "serif": _("助かったわ")},
