@@ -57,7 +57,6 @@ module.exports = {
 			sound_name: null,
 			show_if_event_true: "chapter4-all-in_ending",
 		},
-
 		SwitchMiss,  //スイッチ(ハズレ)
 	],
 };

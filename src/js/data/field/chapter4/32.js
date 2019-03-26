@@ -2,6 +2,7 @@
 
 var CONSTANT = require("../../../constant");
 var SwitchMiss = require("./object_switch_miss");
+var I = 0;
 module.exports = {
 	key: "chapter4_32",
 	chapter: 4,
@@ -56,6 +57,18 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 			show_if_event_true: "chapter4-all-in_ending",
+		},
+		//『天地創造』
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "カセットテープ",
+			image: "item_23",
+			x: 615,
+			y: 650,
+			scale: 2/3,
+			item_id: "31",
+			position_type: "lying",
 		},
 		SwitchMiss,  //スイッチ(ハズレ)
 	],

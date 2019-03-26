@@ -3,6 +3,7 @@ var _ = require('i18n4v')
 //メリー「この辺りはメビウス環がねじれているわ」
 var CONSTANT = require("../../../constant");
 var SwitchMiss = require("./object_switch_miss");
+var I = 0;
 module.exports = {
 	key: "chapter4_43",
 	chapter: 4,
@@ -60,6 +61,18 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 			not_show_if_event_true: "chapter4-29-after_examine_switch", // スイッチ調査後のルートでは表示しない
+		},
+		//『1968年6月10日 E県B村』
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "カセットテープ",
+			image: "item_23",
+			x: 615,
+			y: 650,
+			scale: 2/3,
+			item_id: "28",
+			position_type: "lying",
 		},
 		SwitchMiss,  //スイッチ(ハズレ)
 	],

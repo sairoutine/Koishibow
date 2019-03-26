@@ -2,6 +2,7 @@
 var _ = require('i18n4v')
 // メリー
 var CONSTANT = require("../../../constant");
+var I = 0;
 
 var RENKO_MERRY_SERIF = {"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter4-24-event-01"], "serifs": [
 	// イベント再生済
@@ -167,6 +168,19 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
+		//『unwelcome to the jungle』
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "カセットテープ",
+			image: "item_23",
+			x: 615,
+			y: 650,
+			scale: 2/3,
+			item_id: "30",
+			position_type: "lying",
+		},
+
 
 
 	],
