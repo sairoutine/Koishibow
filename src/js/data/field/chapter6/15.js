@@ -116,7 +116,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "BM",
 			serif: null,
-			x:480, y:360,
+			x:1638*2/3, y:1080*2/3,
 			scale: 2/3,
 			anime1: "bm-reaction_01",
 			anime2: null,
