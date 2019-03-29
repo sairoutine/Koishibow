@@ -101,7 +101,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "まど",
 			serif: [
-				{"chara": "koishi","serif":_("なんなの！")},
+				{"chara": "koishi","serif":_("真っ白だわ！")},
 			],
 			x: 5, y: 180,
 			scale: 0.7,
