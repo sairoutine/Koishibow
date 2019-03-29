@@ -33,7 +33,8 @@ var LAST_JUNCTION_SERIF = [
 				[
 					{"chara": "koishi", "exp": "look_top", "serif":_("待ってってば")},
 					{"chara": "koishi", "exp": "look_top", "serif":_("私決めたの！")},
-					{"chara": "koishi", "exp": null, "serif": "わたしのことは自分で決めるわ", "option": {"changeScene": ["./movie/production/chapter6_staffroll.mp4", function (core) {
+					{"chara": "koishi", "exp": null, "serif": "わたしのことは自分で決めるわ", "option": {"playEventMovie": "chapter6-event-ending01-1"}},
+					{"chara": "koishi", "exp": null, "serif": "", "option": {"changeScene": ["./movie/production/chapter6_staffroll.mp4", function (core) {
 						core.scene_manager.changeScene("event_talk", "chapter6-event-ending01-2");
 					}]}},
 				],
