@@ -79,12 +79,6 @@ module.exports = {
 			action_name: null,
 			sound_name:      "chapter0-mansion_corridor2-open_door",
 		},
-
-		/*
-		{
-			no: ++I,
-			image: "paper", type: CONSTANT.JOURNAL_FRONT_TYPE, x: 177, y: 400, scale: 2/3, journal_id: "journal005"},
-		*/
 	],
 
 

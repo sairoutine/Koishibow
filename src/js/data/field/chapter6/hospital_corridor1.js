@@ -134,7 +134,10 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			image: "paper", type: CONSTANT.JOURNAL_FRONT_TYPE, x: 258, y: 689, scale: 2/3, journal_id: "journalXXX"}, // TODO: ジャーナルを設定
+			type: CONSTANT.JOURNAL_FRONT_TYPE,
+			x: 258, y: 689,
+			journal_id: "journalXXX",
+		}, // TODO: ジャーナルを設定
 	],
 };
 

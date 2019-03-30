@@ -197,10 +197,8 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			image: "paper",
 			type: CONSTANT.JOURNAL_FRONT_TYPE,
 			x: 258, y: 689,
-			scale: 2/3,
 			journal_id: "journal0XX", // TODO: ジャーナルを設定
 			show_if_event_true: "chapter5-10-show_journal",
 		},

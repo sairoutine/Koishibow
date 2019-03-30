@@ -54,9 +54,6 @@ module.exports = {
 			width: 258,
 			height: 280
 		},
-		{
-			no: ++I,
-			image: "paper", type: CONSTANT.JOURNAL_FRONT_TYPE, x: 627, y: 689, scale: 2/3, journal_id: "journal003"},
 	],
 
 };
