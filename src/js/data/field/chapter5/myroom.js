@@ -104,7 +104,7 @@ module.exports = {
 			serif: [
 				{"chara": "koishi","serif":_("この日記")},
 				{"chara": "koishi","serif":_("ページなくなっちゃってる！")},
-				{"chara": "koishi","serif":_("だれがとったの！？"), "option": {"getJournal": "journal0XX"}}, // TODO: ジャーナルを設定
+				{"chara": "koishi","serif":_("だれがとったの！？"), "option": {"getJournal": "journal021"}},
 			],
 			x: 340, y: 530,
 			scale: 0.7,
