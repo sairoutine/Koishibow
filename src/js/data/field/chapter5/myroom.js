@@ -188,7 +188,7 @@ module.exports = {
 				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("この目玉誰から引っこ抜いたんだろうなあ")},
 				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
 				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("どこかで見たんだけどなあ")},
-				{"chara": "koishi","exp": null, "serif": _("......")},
+				{"chara": "koishi","exp": null, "serif": _("......"), "option": {"getJournal": "journal033"}},
 				{"id": "chapter5-myroom-araiguma_talk1", "save": true},
 			],
 			serif: [

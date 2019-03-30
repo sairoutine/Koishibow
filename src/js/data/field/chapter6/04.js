@@ -52,14 +52,24 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "掲示板",
 			serif: [
-				{"chara": "koishi","exp": "look_front", "serif": _("なにこれ"), "option": {"getJournal": "journalXXX"}}, // TODO: ジャーナル指定
+				{"chara": "koishi","exp": "look_front", "serif": _("なにこれ"), "option": {"getJournal": "journal034"}},
+				{"id": "chapter6-04-not_show_paper", "save": true},
 				{"chara": "koishi","exp": null, "serif": _("......"), "option": {"changeField": "chapter6_10"}},
 			],
 			width: 150, height: 400,
 			x: 670, y: 210,
 			scale: 2/3,
-			target_x: 532, target_y: 418
+			target_x: 532, target_y: 418,
+			not_show_if_event_true: "chapter6-04-not_show_paper",
 		},
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 150, y: 400,
+			journal_id: "journal037",
+		},
+
+
 	],
 };
 

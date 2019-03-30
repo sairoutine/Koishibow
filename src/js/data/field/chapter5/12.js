@@ -29,7 +29,7 @@ module.exports = {
 						{"chara": "orin","exp": "orin-wait", "serif": _("うにゃーっ")},
 						{"chara": "koishi","exp": "look_front", "serif": _("ねこちゃん！")},
 						{"chara": "koishi","exp": null, "serif": _("にゃんにゃ")},
-						{"chara": "orin","exp": "orin-wait", "serif": _("んみゃ")},
+						{"chara": "orin","exp": "orin-wait", "serif": _("んみゃ"), "option": {"getJournal": "journal029"}},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_12_10185"]}
@@ -137,7 +137,7 @@ module.exports = {
 				{"chara": "koishi","exp": null, "serif": _("日記！")},
 				{"chara": "koishi","exp": null, "serif": _("これお姉ちゃんの")},
 				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
-				{"chara": "koishi","exp": null, "serif": _("死んだんじゃなかったっけ......"), "option": {"getJournal": "journal0XX"}}, // TODO: ジャーナルを設定
+				{"chara": "koishi","exp": null, "serif": _("死んだんじゃなかったっけ......"), "option": {"getJournal": "journal023"}},
 			],
 			x: 340, y: 530,
 			scale: 0.7,
@@ -149,9 +149,12 @@ module.exports = {
 			sound_name: "chapter0-myroom-open_book",
 			position_type: "lying",
 		},
-
-
-
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 100, y: 600,
+			journal_id: "journal040",
+		},
 	],
 };
 

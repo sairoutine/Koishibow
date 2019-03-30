@@ -135,9 +135,10 @@ module.exports = {
 		{
 			no: ++I,
 			type: CONSTANT.JOURNAL_FRONT_TYPE,
-			x: 258, y: 689,
-			journal_id: "journalXXX",
-		}, // TODO: ジャーナルを設定
+			x: 600, y: 530,
+			journal_id: "journal035",
+		},
+
 	],
 };
 

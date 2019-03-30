@@ -130,7 +130,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.JOURNAL_FRONT_TYPE,
 			x: 258, y: 689,
-			journal_id: "journal0XX", // TODO: ジャーナルを設定
+			journal_id: "journal025",
 			show_if_event_true: "chapter5-06-show_journal",
 		},
 	],

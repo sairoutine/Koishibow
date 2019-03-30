@@ -109,24 +109,9 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			type: CONSTANT.ANIME_IMAGE_TYPE,
-			name: "ジャーナル",
-			serif: null,
-			serif_back: [
-				{"chara": "koishi", "serif":_("TODO: ")},
-			],
-			x: 500,
-			y: 640,
-			scale: 2/3,
-			anime1: "chapter5-02-obj-02-obj01",
-			anime2: null,
-			anime3: null,
-			anime4: "chapter5-02-obj-02-obj02",
-			anime5: "chapter5-02-obj-02-obj03",
-			anime6: "chapter5-02-obj-02-obj04",
-			action_name: null,
-			sound_name: null,
-			position_type: "lying",
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 643, y:425, // chapter0 と同じ場所
+			journal_id: "journal022",
 		},
 
 	],
