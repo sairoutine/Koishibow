@@ -42,7 +42,7 @@ module.exports = {
 			name: "キャビネット",
 			serif: [
 				{"chara": "koishi","serif":_("風邪じゃないよ！")},
-				{"chara": "koishi","serif":_("お薬飲みたくないから")},
+				{"chara": "koishi","serif":_("お薬飲みたくないから"), "option": {"getJournal": "journal017"}},
 			],
 			x: 279,
 			y: 378,

@@ -84,7 +84,14 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
-
+		{
+			no: ++I,
+			image: "paper",
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 820, y: 450,
+			scale: 2/3,
+			journal_id: "journal018",
+		},
 	],
 };
 

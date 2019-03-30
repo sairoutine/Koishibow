@@ -246,8 +246,14 @@ module.exports = {
 			sound_name: null,
 			show_if_event_true: "chapter3-09-show_hole",
 		},
-
-
+		{
+			no: ++I,
+			image: "paper",
+			type: CONSTANT.JOURNAL_FRONT_TYPE,
+			x: 820, y: 450,
+			scale: 2/3,
+			journal_id: "journal016",
+		},
 	],
 };
 
