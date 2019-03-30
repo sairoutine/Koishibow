@@ -6,6 +6,8 @@ var BaseObject = require('./acquirable_base');
 var Util = require('../../hakurei').util;
 var WalkImmovableArea = require('../walk_immovable_area');
 var CONSTANT = require('../../constant');
+var SS = require('../anime_object');
+var AnimeMap = require('../../config/object_anime');
 
 var ObjectJournalBack = function(core) {
 	BaseObject.apply(this, arguments);
@@ -14,6 +16,9 @@ var ObjectJournalBack = function(core) {
 
 	// 表示中かどうか
 	this._is_in_back = false;
+
+	// アニメ
+	this.ss = new SS(this.scene);
 };
 Util.inherit(ObjectJournalBack, BaseObject);
 
@@ -24,14 +29,65 @@ ObjectJournalBack.prototype.init = function(){
 
 	// 表示中かどうか
 	this._is_in_back = false;
+
 };
 
 ObjectJournalBack.prototype.setData = function(data) {
-	BaseObject.prototype.setData.apply(this, arguments);
+	data = Util.shallowCopyHash(data);
+	data.image = "paper"; // サイズ取得用にpaper画像を設定しておく
+	data.scale = 2/3;
+
+	BaseObject.prototype.setData.apply(this, [data]);
+
+	// 位置
+	this.setPosition(data.x, data.y);
 
 	// 表示するジャーナル画像
 	this._journal_id = data.journal_id;
+
+	// アニメの設定
+	this.ss.setAnime({
+		// 表
+		// クリック前のアニメ
+		default:             AnimeMap["chapter5-02-obj-02-obj01"],
+
+		// 裏
+		// サードアイで照らした際の開始アニメ
+		lighted_start_anime: AnimeMap["chapter5-02-obj-02-obj02"],
+		// サードアイで照らした最中のアニメ
+		lighting_anime:      AnimeMap["chapter5-02-obj-02-obj03"],
+		// サードアイで照らした際の終了アニメ
+		lighted_end_anime:   AnimeMap["chapter5-02-obj-02-obj04"],
+	});
+	this.ss.init();
 };
+
+ObjectJournalBack.prototype.setPosition = function(x, y) {
+	BaseObject.prototype.setPosition.apply(this, arguments);
+
+	// update sprite
+	this.ss.x(this.x());
+	this.ss.y(this.y());
+};
+
+ObjectJournalBack.prototype.update = function() {
+	BaseObject.prototype.update.apply(this, arguments);
+
+	this.ss.update();
+};
+
+ObjectJournalBack.prototype.draw = function(){
+	if (!this.isShow()) return;
+	this.ss.draw();
+};
+
+ObjectJournalBack.prototype.afterDraw = function(){
+	BaseObject.prototype.afterDraw.apply(this, arguments);
+
+	this.ss.afterDraw();
+};
+
+
 
 ObjectJournalBack.prototype.acquire = function() {
 	// ジャーナルをまとめた本を所持してなければ一緒に獲得
@@ -67,6 +123,13 @@ ObjectJournalBack.prototype.onCollideWithLightIn3rdEye = function(){
 
 	// 表示
 	this._is_in_back = true;
+
+	// 照らされた際の開始アニメーション 再生
+	var ss = this.ss;
+	this.ss.playAnimationOnce("lighted_start_anime", function () {
+		// 照らしてる最中のアニメーション再生
+		ss.playAnimationInfinity("lighting_anime");
+	});
 };
 
 // 3rd eye を使用解除した場合に呼ばれる
@@ -82,11 +145,13 @@ ObjectJournalBack.prototype.onNotCollideWithLightIn3rdEye = function(){
 
 	// 表オブジェクトになった
 	this._is_in_back = false;
-};
 
-// サードアイに照らされているときのみ表示される
-ObjectJournalBack.prototype.isShow = function() {
-	return BaseObject.prototype.isShow.apply(this, arguments) && this._is_in_back;
+	// 表オブジェクトに戻る際のアニメ再生
+	var ss = this.ss;
+	this.ss.playAnimationOnce("lighted_end_anime", function (){
+		// 表オブジェクトのアニメに戻る
+		ss.playAnimationInfinity("default");
+	});
 };
 
 ObjectJournalBack.prototype.isCollision = function(point) {
