@@ -40,6 +40,7 @@ var PieceContainer = require('../object/piece_container');
 var BlackMist = require('../object/black_mist');
 var WhiteMist = require('../object/white_mist');
 var DarkMist = require('../object/dark_mist');
+var SnowMist = require('../object/snow_mist');
 
 var Koishi = require('../object/koishi');
 
@@ -63,6 +64,7 @@ var SceneStage = function(core) {
 	this.black_mist = new BlackMist(this);
 	this.white_mist = new WhiteMist(this);
 	this.dark_mist  = new DarkMist(this);
+	this.snow_mist  = new SnowMist(this);
 
 	// UI パーツ
 	this.item_menu_button        = new ItemMenuButton(this);
@@ -142,6 +144,7 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	this.black_mist.init();
 	this.white_mist.init();
 	this.dark_mist.init();
+	this.snow_mist.init();
 
 	// UI パーツ
 	this.item_menu_button.init();
@@ -387,6 +390,7 @@ SceneStage.prototype.update = function() {
 	this.black_mist.update();
 	this.white_mist.update();
 	this.dark_mist.update();
+	this.snow_mist.update();
 	// UI パーツ
 	this.item_menu_button.update();
 	this.eye_button.update();
@@ -436,6 +440,7 @@ SceneStage.prototype.draw = function(){
 	this.black_mist.draw();
 	this.white_mist.draw();
 	this.dark_mist.draw();
+	this.snow_mist.draw();
 	// UI パーツ
 	this.item_menu_button.draw();
 	this.eye_button.draw();
