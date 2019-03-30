@@ -427,11 +427,11 @@ var anime_map = {
 	"tewireal-reaction_01":   require('../data/anime/tewireal/reaction_01_anime_1'),
 	"tewireal-reaction_02":   require('../data/anime/tewireal/reaction_02_anime_1'),
 	"tewireal-reaction_03":   require('../data/anime/tewireal/reaction_03_anime_1'),
-	"kanban_wait":            require('../data/anime/tewireal/kanban_wait_anime_1'),
-	"kanban_reaction_01":   require('../data/anime/tewireal/kanban_reaction_01_anime_1'),
-	"kanban_reaction_02":   require('../data/anime/tewireal/kanban_reaction_02_anime_1'),
-	"kanban_reaction_03":   require('../data/anime/tewireal/kanban_reaction_03_anime_1'),
-	"kanban_reaction_04":   require('../data/anime/tewireal/kanban_reaction_04_anime_1'),
+	"kanban-wait":            require('../data/anime/tewireal/kanban_wait_anime_1'),
+	"kanban-reaction_01":   require('../data/anime/tewireal/kanban_reaction_01_anime_1'),
+	"kanban-reaction_02":   require('../data/anime/tewireal/kanban_reaction_02_anime_1'),
+	"kanban-reaction_03":   require('../data/anime/tewireal/kanban_reaction_03_anime_1'),
+	"kanban-reaction_04":   require('../data/anime/tewireal/kanban_reaction_04_anime_1'),
     
 	/* お燐 */
 	"orin-wait":                       require('../data/anime/orin/wait_anime_1'),
