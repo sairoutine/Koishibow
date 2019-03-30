@@ -67,7 +67,7 @@ module.exports = {
 		{"exp": null, "serif":_("私も雪だるま作るの"), "option": {"x": 400, "y": 250, "loop": false}},
 		{"exp": null, "serif":_("............"), "option": {"x": 400, "y": 250, "loop": false}},
 		{"exp": null, "serif":_("そうなんだ"), "option": {"x": 400, "y": 250, "loop": false}},
-		{"exp": null, "serif":_("じゃあこれ貸してあげる"), "option": {"x": 400, "y": 250, "loop": false, "getItem": "13"}},
+		{"exp": null, "serif":_("じゃあこれ貸してあげる"), "option": {"x": 400, "y": 250, "loop": false}},// , "getItem": "13"}},
 		{"exp": null, "serif":_("ありがとう！"), "option": {"x": 280, "y": 250, "loop": false}},
 		{"exp": null, "serif":_("ゆきだるまいっしょにやる？"), "option": {"x": 280, "y": 250, "loop": false}},
 		{"exp": null, "serif":_("やる！"), "option": {"x": 400, "y": 250, "loop": false}},

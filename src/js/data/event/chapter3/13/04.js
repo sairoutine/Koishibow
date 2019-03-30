@@ -51,11 +51,11 @@ module.exports = {
 		{"exp": "chapter3-13-event-04-obj07", "serif":_("これあげる！"), "option": {"x": 200, "y": 50, "loop": false, "sounds": [
 			{"name": "chapter3-13-event-04-05", "frame": 45},
 			{"name": "chapter3-13-event-04-06", "frame": 210},
-		], "getItem": "19"}},
+		]}},
 		{"exp": null, "serif":_("いいの？"), "option": {"x": 350, "y": 120, "loop": false}},
 		{"exp": null, "serif":_("友達だから！"), "option": {"x": 200, "y": 50, "loop": false}},
 		{"exp": null, "serif":_("また遊ぼうね"), "option": {"x": 200, "y": 50, "loop": false}},
-		{"exp": null, "serif":_("うん"), "option": {"x": 350, "y": 120, "loop": false}},
+		{"exp": null, "serif":_("うん"), "option": {"x": 350, "y": 120, "loop": false, "getItem": "19"}},
 		{"exp": "chapter3-13-event-04-obj08", "serif":_("きれい"), "option": {"x": 470, "y": 50, "loop": false}},
 	],
 	endAnime: "chapter3-13-event-04-obj09",

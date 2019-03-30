@@ -40,7 +40,7 @@ var SceneEventTalk = function(core) {
 
 	// event_talk 固有 start
 	// 通常
-	this.addSubScene("play", new SceneSubStagePlay(core));
+	this.addSubScene("talk_with_object", new SceneSubStagePlay(core));
 	// ジャーナルを読む
 	this.addSubScene("show_journal", new SceneSubStageShowJournal(core));
 	// アイテム獲得
@@ -123,7 +123,7 @@ SceneEventTalk.prototype.init = function(event_name){
 	// event_talk 固有 start
 	this._startSerif();
 
-	this.changeSubScene("play");
+	this.changeSubScene("talk_with_object");
 	// event_talk 固有 end
 };
 
