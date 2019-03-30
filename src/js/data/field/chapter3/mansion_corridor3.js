@@ -50,6 +50,14 @@ module.exports = {
 			action_name: "touch",
 			x: 600, y: 300,
 		},
+		{
+			no: ++I,
+			image: "paper",
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 320, y: 500,
+			scale: 2/3,
+			journal_id: "journal019",
+		},
 	],
 };
 
