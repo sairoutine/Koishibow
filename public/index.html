@@ -7,19 +7,19 @@
 body {
 	margin:0;
 	padding:0;
-	width:1280;
+	width:960;
 	height:720;
 }
 #canvasdiv {
 	cursor: none;
 	background: black;
 	position:relative;
-	width:1280px;
+	width:960px;
 	height:720px;
 }
 #mainCanvas {
 	top: 0px;
-	left: 160px;
+	left: 0px;
 	position: absolute;
 }
 #mainCanvas:-webkit-full-screen {
@@ -28,18 +28,13 @@ body {
 	top: 0px;
 	left: 0px;
 }
-#backgroundCanvas {
-	position: absolute;
-}
 </style>
 </head>
 <body>
 	<div id="debug"></div>
 	<div id="canvasdiv">
-		<canvas id="backgroundCanvas" width="1280" height="720"></canvas>
 		<canvas id="mainCanvas" width="960" height="720"></canvas>
 	</div>
-
 	<script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>

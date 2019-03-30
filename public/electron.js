@@ -34,7 +34,7 @@ function createWindow () {
 	// not fullscreen
 	else {
 		mainWindow = new BrowserWindow({
-			"width":          1280,
+			"width":          960,
 			"height":         720,
 			"useContentSize": true,  // フレームのサイズをサイズに含まない
 			"resizable":      false, // ウィンドウのリサイズを禁止
