@@ -295,6 +295,7 @@ AssetsConfig.images = {
 
 	// chapter3
 
+	"snow_mist": "./image/production/snow_mist.png",
 	"chapter3-myroom-obj-05-01": "./image/production/chapter3/myroom/chapter3-myroom-obj-05-01.png",
 	"chapter3-06-bg-001": "./image/production/chapter3/chapter3-06/chapter3-06-bg-001.jpg",
 	"chapter3-mspassage-obj-01": "./image/production/chapter3/chapter3-06/chapter3-mspassage-obj-01.png",
