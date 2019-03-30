@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:js": "MODE=production node --max-old-space-size=16000 ./node_modules/.bin/webpack --progress --colors",
+    "build:js": "node --max-old-space-size=16000 ./node_modules/.bin/webpack --progress --colors",
+    "build:js:production": "MODE=production node --max-old-space-size=16000 ./node_modules/.bin/webpack --progress --colors",
     "watch": "webpack-dev-server",
     "test": "node ./test/headless.js",
     "start": "electron ./public/electron.js",
