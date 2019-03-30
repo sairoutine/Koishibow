@@ -49,7 +49,7 @@ module.exports = {
 							[
 								{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("ぅぅぅ")},
 								{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わん")},
-								{"chara": "koishi","exp": "look_front", "serif": _("......こわくないけどね")},
+								{"chara": "koishi","exp": "look_front", "serif": _("......こわくないけどね"), "option": {"getJournal": "journal027"}},
 							]
 						]},
 						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_07_10340"]}
@@ -270,11 +270,9 @@ module.exports = {
 
 		{
 			no: ++I,
-			image: "paper",
 			type: CONSTANT.JOURNAL_FRONT_TYPE,
 			x: 258, y: 689,
-			scale: 2/3,
-			journal_id: "journal0XX", // TODO: ジャーナルを設定
+			journal_id: "journal031",
 			show_if_event_true: "chapter5-07-show_journal",
 		},
 	],

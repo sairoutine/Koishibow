@@ -110,13 +110,6 @@ module.exports = {
 			action_name: "look_top",
 			sound_back: "chapter0-mansion_corridor1-open_curtain"
 		},
-
-
-		/*
-		{
-			no: ++I,
-			image: "paper", type: CONSTANT.JOURNAL_FRONT_TYPE, x: 600, y: 530, scale: 2/3, journal_id: "journal004"},
-		*/
 	],
 
 };

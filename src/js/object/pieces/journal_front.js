@@ -21,7 +21,11 @@ ObjectJournalFront.prototype.init = function(){
 };
 
 ObjectJournalFront.prototype.setData = function(data) {
-	base_object.prototype.setData.apply(this, arguments);
+	data = Util.shallowCopyHash(data);
+	data.image = "paper";
+	data.scale = 2/3;
+
+	base_object.prototype.setData.apply(this, [data]);
 
 	// 表示するジャーナル画像
 	this._journal_id = data.journal_id;

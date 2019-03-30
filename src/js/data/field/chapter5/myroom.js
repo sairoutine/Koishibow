@@ -104,7 +104,7 @@ module.exports = {
 			serif: [
 				{"chara": "koishi","serif":_("この日記")},
 				{"chara": "koishi","serif":_("ページなくなっちゃってる！")},
-				{"chara": "koishi","serif":_("だれがとったの！？"), "option": {"getJournal": "journal0XX"}}, // TODO: ジャーナルを設定
+				{"chara": "koishi","serif":_("だれがとったの！？"), "option": {"getJournal": "journal021"}},
 			],
 			x: 340, y: 530,
 			scale: 0.7,
@@ -188,7 +188,7 @@ module.exports = {
 				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("この目玉誰から引っこ抜いたんだろうなあ")},
 				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
 				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("どこかで見たんだけどなあ")},
-				{"chara": "koishi","exp": null, "serif": _("......")},
+				{"chara": "koishi","exp": null, "serif": _("......"), "option": {"getJournal": "journal033"}},
 				{"id": "chapter5-myroom-araiguma_talk1", "save": true},
 			],
 			serif: [

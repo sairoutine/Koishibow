@@ -30,7 +30,7 @@ module.exports = {
 					[
 						{"chara": "animal_kuro","exp": "animal_kuro-wait", "serif": _("......")},
 						{"chara": "animal_kuro","exp": "animal_kuro-wait", "serif": _("......")},
-						{"chara": "animal_kuro","exp": "animal_kuro-wait", "serif": _("ぷごぅ")},
+						{"chara": "animal_kuro","exp": "animal_kuro-wait", "serif": _("ぷごぅ"), "option": {"getJournal": "journal030"}},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_13_10470"]}
@@ -103,6 +103,13 @@ module.exports = {
 			width: 330, height: 665,
 			x: 800, y: 275,
 		},
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 100, y: 400,
+			journal_id: "journal041",
+		},
+
 	],
 };
 

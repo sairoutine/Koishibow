@@ -56,7 +56,11 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			image: "paper", type: CONSTANT.JOURNAL_FRONT_TYPE, x: 627, y: 689, scale: 2/3, journal_id: "journal003"},
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 627, y: 689,
+			journal_id: "journal036",
+		},
+
 	],
 
 };

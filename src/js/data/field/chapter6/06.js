@@ -115,6 +115,21 @@ module.exports = {
 			width: 100, height: 500,
 			x: 430, y: 150,
 		},
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_FRONT_TYPE,
+			x: 730, y: 420,
+			journal_id: "journal038",
+		},
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 650, y: 420,
+			journal_id: "journal039",
+		},
+
+
+
 	],
 };
 

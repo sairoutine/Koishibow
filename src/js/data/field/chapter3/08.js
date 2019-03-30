@@ -55,7 +55,6 @@ module.exports = {
 			sound_name: null,
 			position_type: "lying",
 		},
-
 		{
 			no: ++I,
 			image: "chapter3-08-obj-02",
@@ -260,6 +259,14 @@ module.exports = {
 			action_name: "touch",
 			sound_name: null
 		},
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_FRONT_TYPE,
+			x: 370, y: 450,
+			journal_id: "journal020",
+		},
+
+
 	],
 };
 

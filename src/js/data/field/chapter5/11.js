@@ -128,7 +128,7 @@ module.exports = {
 			serif: [
 				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わふ")},
 				{"chara": "animal_uma","exp": "animal_uma-wait", "serif": _("イイーン")},
-				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わふぅ")},
+				{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("わふぅ"), "option": {"getJournal": "journal028"}},
 			],
 			x: 600, y: 300,
 			scale: 2/3,

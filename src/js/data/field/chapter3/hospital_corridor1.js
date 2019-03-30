@@ -77,11 +77,6 @@ module.exports = {
 			action_name: "look_front",
 			position_type: "front",
 		},
-		/*
-		{
-			no: ++I,
-			image: "paper", type: CONSTANT.JOURNAL_FRONT_TYPE, x: 643, y:425, scale: 2/3, journal_id: "journal002"},
-		*/
 	],
 };
 
