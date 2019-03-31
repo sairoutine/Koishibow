@@ -6,7 +6,7 @@ var I = 0;
 module.exports = {
 	key: "chapter3_12",
 	chapter: 3,
-	bgm: "field8",
+	bgm: null,
 	sub_bgms: ["chapter3-12-wood"],
 	rightStartPosition: {x: 690, y: 450},
 	leftStartPosition:  {x: 200, y: 450},
@@ -19,6 +19,18 @@ module.exports = {
 	background: "chapter3-12-bg-001",
 	walkSound: "walking_bare_snow",
 	initialProcess: [
+		// BGM 再生
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12-play_fran_bgm"], "process": [
+			[
+				// フランBGM
+				{"type": "process", "value": "playBGM", "arguments": ["field8"]},
+			],
+			[
+				// 通常BGM
+				{"type": "process", "value": "playBGM", "arguments": ["field7"]},
+			],
+		]},
+
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12_Event_30210"], "process": [
 			// すでにアクセス済み
 			[],
@@ -171,6 +183,7 @@ module.exports = {
 						{"chara": "koishi","serif":_("じゃあ丘の上でね")},
 						{"chara": "fran", "exp": "fran-reaction_06", "serif":_("ん")},
 						{"chara": "fran", "exp": "fran-reaction_03", "serif":_("わかった")},
+						{"id": "chapter3_12-play_fran_bgm", "save": true},
 					],
 					[
 						{"chara": "fran", "exp": "fran-reaction_01", "serif":_("はやく作りましょ！")},

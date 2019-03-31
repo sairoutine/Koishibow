@@ -5,7 +5,7 @@ var I = 0;
 module.exports = {
 	key: "chapter3_10",
 	chapter: 3,
-	bgm: "field7",
+	bgm: null,
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 200, y: 450},
 	upStartPosition:    null,
@@ -17,6 +17,19 @@ module.exports = {
 	background: "chapter3-10-bg-001",
 	walkSound: "walking_bare_snow",
 	initialProcess: [
+		// BGM 再生
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_12-play_fran_bgm"], "process": [
+			[
+				// フランBGM
+				{"type": "process", "value": "playBGM", "arguments": ["field8"]},
+			],
+			[
+				// 通常BGM
+				{"type": "process", "value": "playBGM", "arguments": ["field7"]},
+			],
+		]},
+
+
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter3_08-Event-_30060"], "process": [
 			// チルノを救出している
 			[
