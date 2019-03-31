@@ -66,6 +66,7 @@ allFileList.forEach((file) => {
 
 	var new_text = text.replace(/"serif"\s*:\s*_\(['"](.+?)['"]\)/g, function (match, p1, offset, string) {
 		if (!serif_to_serif_list[p1]) {
+			console.log("not exists: " + p1);
 			return '"serif": _("' + p1 + '")';
 		}
 		else {
