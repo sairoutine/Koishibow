@@ -65,8 +65,7 @@ module.exports = {
 						{"chara": "koishi","exp": null, "serif": _("すごい顔だね")},
 						{"chara": "animal_hashi","exp": "animal_hashi-ura_reaction_01", "serif": _("なんだお前は")},
 						{"chara": "animal_hashi","exp": null, "serif": _("失礼だな")},
-						{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
-						{"id": "chapter5-06-show_journal", "save": true},
+						{"chara": "koishi","exp": "look_bottom", "serif": _("......"), "option": {"getJournal": "journal025"}},
 					],
 					[
 						{"chara": "koishi","exp": null, "serif": _("なんで怒ってるの")},
@@ -125,13 +124,6 @@ module.exports = {
 			serif: null,
 			width: 0, height: 0,
 			x: 480, y: 0,
-		},
-		{
-			no: ++I,
-			type: CONSTANT.JOURNAL_FRONT_TYPE,
-			x: 258, y: 689,
-			journal_id: "journal025",
-			show_if_event_true: "chapter5-06-show_journal",
 		},
 	],
 };

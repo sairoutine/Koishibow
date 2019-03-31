@@ -95,8 +95,7 @@ module.exports = {
 						{"chara": "koishi","exp": "yes", "serif": _("こいし")},
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait", "serif": _("へえーっ小石ね")},
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_reaction_01", "serif": _("名前通りのコロコロしたやつだぜ")},
-						{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
-						{"id": "chapter5-05-show_journal", "save": true},
+						{"chara": "koishi","exp": "look_bottom", "serif": _("......"), "option": {"getJournal": "journal026"}},
 					],
 				]},
 			],
@@ -185,13 +184,6 @@ module.exports = {
 			scale: 2/3,
 			action_name: "look_bottom",
 			sound_name: null
-		},
-		{
-			no: ++I,
-			type: CONSTANT.JOURNAL_FRONT_TYPE,
-			x: 258, y: 689,
-			journal_id: "journal026",
-			show_if_event_true: "chapter5-05-show_journal",
 		},
 	],
 };

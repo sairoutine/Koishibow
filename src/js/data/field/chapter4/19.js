@@ -28,7 +28,8 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["TODO: "], "serifs": [
+				// 新品のカセットテープが出現していたら
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter4-23-show_tape4"], "serifs": [
 					[
 						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_19-reisen-limit1", 2], "serifs": [
 							[

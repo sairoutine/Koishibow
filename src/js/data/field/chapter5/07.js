@@ -30,8 +30,7 @@ module.exports = {
 							[
 								{"chara": "animal_komodo","exp": "animal_komodo-wait", "serif": _("ぶぅおー")},
 								{"chara": "animal_komodo","exp": "animal_komodo-wait", "serif": _("ぐもー")},
-								{"chara": "koishi","exp": "look_front", "serif": _("怪獣がいるわ")},
-								{"id": "chapter5-07-show_journal", "save": true},
+								{"chara": "koishi","exp": "look_front", "serif": _("怪獣がいるわ"), "option": {"getJournal": "journal031"}},
 							]
 						]},
 						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_07_10530"]}
@@ -266,14 +265,6 @@ module.exports = {
 			width: 130,
 			height: 361,
 			next_field_name: "chapter5_11",
-		},
-
-		{
-			no: ++I,
-			type: CONSTANT.JOURNAL_FRONT_TYPE,
-			x: 258, y: 689,
-			journal_id: "journal031",
-			show_if_event_true: "chapter5-07-show_journal",
 		},
 	],
 };
