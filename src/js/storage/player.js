@@ -5,6 +5,9 @@ var base_class = require('../hakurei').storage.base;
 var Util = require('../hakurei').util;
 var CONSTANT = require('../constant');
 
+var MAX_GROWTH = 4;
+var MIN_GROWTH = 1;
+
 var StoragePlayer = function() {
 	base_class.apply(this, arguments);
 };
@@ -115,12 +118,29 @@ StoragePlayer.prototype.deleteLastGameoverField = function() {
 StoragePlayer.prototype.getGrowth = function() {
 	var growth = this.get("growth");
 
-	return growth || 1;
+	return growth || MIN_GROWTH;
 };
 
 // 現在の発達度を+1 上昇して保存する
 StoragePlayer.prototype.growUp = function() {
-	this.set("growth", this.getGrowth() + 1);
+	var growth = this.getGrowth() + 1;
+	if (growth > MAX_GROWTH) {
+		growth = MAX_GROWTH;
+	}
+
+	this.set("growth", growth);
+
+	return this.save();
+};
+
+// デバッグ用
+StoragePlayer.prototype.growDown = function() {
+	var growth = this.getGrowth() - 1;
+	if (growth < MIN_GROWTH) {
+		growth = MIN_GROWTH;
+	}
+
+	this.set("growth", growth);
 	return this.save();
 };
 

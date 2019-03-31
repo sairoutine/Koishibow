@@ -452,7 +452,27 @@ SceneStage.prototype.draw = function(){
 
 	// 3rd eye の使用状況に応じて赤いマスク
 	this._draw3rdEyeEmergencyMask();
+
+	// デバッグ用の発達度表示
+	this._drawDebugGrowth();
 };
+
+// デバッグ用の発達度表示
+SceneStage.prototype._drawDebugGrowth = function() {
+	if(!this.core.debug_manager.get("is_show_growth")) return;
+
+	var growth = this.core.save_manager.player.getGrowth();
+
+	var ctx = this.core.ctx;
+	ctx.save();
+	ctx.fillStyle = "white";
+	ctx.font = "24px 'MyFont'";
+	ctx.fillText("発達度" + growth, 0, this.height - 10);
+	ctx.restore();
+};
+
+
+
 
 var BLINK_COUNT = 240; // 何フレーム毎にブリンクするか
 var BLINK_INC = 20; // 赤く点滅する速度

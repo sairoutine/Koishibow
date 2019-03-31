@@ -216,6 +216,21 @@ Game.prototype.setupDebug = function (dom) {
 		game.debug_manager.set("is_show_3rdeye_gauge", false);
 	});
 
+	this.debug_manager.addMenuButton("発達度+1", function (game) {
+		game.save_manager.player.growUp();
+	});
+	this.debug_manager.addMenuButton("発達度-1", function (game) {
+		game.save_manager.player.growDown();
+	});
+	this.debug_manager.addMenuButton("発達度 表示", function (game) {
+		game.debug_manager.set("is_show_growth", true);
+	});
+	this.debug_manager.addMenuButton("発達度 非表示", function (game) {
+		game.debug_manager.set("is_show_growth", false);
+	});
+
+	this.debug_manager.addNewLine();
+
 	// フィールド一覧生成
 	var field_list = FieldMasterRepository.all()
 	var field_name_list = [];
