@@ -41,17 +41,17 @@ SceneSubStageGetHat.prototype.update = function(){
 	if(this.frame_count <= 15) {
 		this._pos_x += this.root().width/15;
 	}
-	else if(this.frame_count < 90) {
+	else if(this.frame_count < 150) {
 		// 何もしない
 	}
-	else if(this.frame_count === 90) {
+	else if(this.frame_count === 150) {
 		this.core.audio_loader.playSound("chapter1-event-play_wipe_out_common");
 	}
-	else if(this.frame_count <= 105) {
+	else if(this.frame_count <= 165) {
 		this._pos_x += this.root().width/15;
 	}
 	// 前のサブシーンに戻る
-	else if(this.frame_count > 120) {
+	else if(this.frame_count > 180) {
 		this.root().returnSubScene(this._return_subscene);
 	}
 };

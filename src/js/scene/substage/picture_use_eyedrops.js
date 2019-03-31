@@ -26,14 +26,14 @@ SceneSubStageJournal.prototype.update = function(){
 	else if(this.frame_count === 30) {
 		this.core.audio_loader.playSound("use_eyedrops");
 	}
-	else if(this.frame_count <= 90) {
+	else if(this.frame_count <= 150) {
 		// 何もしない
 	}
-	else if(this.frame_count <= 105) {
+	else if(this.frame_count <= 165) {
 		this._pos_x += this.root().width/15;
 	}
 	// プレイに戻る
-	else if(this.frame_count > 120) {
+	else if(this.frame_count > 180) {
 		this.root().changeSubScene("play");
 	}
 };

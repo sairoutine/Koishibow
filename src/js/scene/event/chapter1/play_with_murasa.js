@@ -294,17 +294,17 @@ SceneEventPlayDoll.prototype._updateInPicture = function(){
 	else if(this.frame_count_of_pic === 30) {
 		this.core.audio_loader.playSound("touch");
 	}
-	else if(this.frame_count_of_pic < 90) {
+	else if(this.frame_count_of_pic < 150) {
 		// 何もしない
 	}
-	else if(this.frame_count === 90) {
+	else if(this.frame_count === 150) {
 		this.core.audio_loader.playSound("chapter1-event-play_wipe_out_common");
 	}
-	else if(this.frame_count_of_pic <= 105) {
+	else if(this.frame_count_of_pic <= 165) {
 		this._pos_x += this.root().width/15;
 	}
 	// プレイに戻る
-	else if(this.frame_count_of_pic > 120) {
+	else if(this.frame_count_of_pic > 180) {
 		this._state = STATE_TALKING;
 
 		this._gotoNextSerif();
