@@ -12,6 +12,7 @@ var text = fs.readFileSync(INPUT_FILE_NAME, 'utf-8');
 var lines = text.split("\n");
 
 var serif_to_serif_list = {};
+var exists_serif1 = [];
 for (var i = 0, len = lines.length; i < len; i++) {
 	if(!lines[i]) continue;
 	var line = lines[i].split("\t");
@@ -28,6 +29,7 @@ for (var i = 0, len = lines.length; i < len; i++) {
 			serif_to_serif_list[serif1][2] !== serif3 ||
 			serif_to_serif_list[serif1][3] !== serif4
 		) {
+			exists_serif1.push(serif1);
 			continue;
 
 			console.log({
@@ -47,6 +49,11 @@ for (var i = 0, len = lines.length; i < len; i++) {
 		serif4,
 	];
 }
+
+exists_serif1.forEach((serif) => {
+	delete serif_to_serif_list[serif];
+});
+
 
 let allFileList = [];
 const basedir = "../../src/js/data/field/";
