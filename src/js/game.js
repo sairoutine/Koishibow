@@ -45,10 +45,20 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("music", new SceneMusic(this));
 	this.scene_manager.addScene("stage", new SceneStage(this));
 	this.scene_manager.addScene("gameover", new SceneGameover(this));
-	this.scene_manager.addScene("movie", new SceneMovie(this));
+	if(CONSTANT.DEBUG.SOUND_OFF) {
+		this.scene_manager.addScene("movie", new SceneMovie(this).mute());
+	}
+	else {
+		this.scene_manager.addScene("movie", new SceneMovie(this));
+	}
 	this.scene_manager.addScene("event_talk", new SceneEventTalk(this));
 	this.scene_manager.addScene("event_talk_old", new SceneEventTalkOld(this));
-	this.scene_manager.addScene("event_movie", new SceneEventMovie(this));
+	if(CONSTANT.DEBUG.SOUND_OFF) {
+		this.scene_manager.addScene("event_movie", new SceneEventMovie(this).mute());
+	}
+	else {
+		this.scene_manager.addScene("event_movie", new SceneEventMovie(this));
+	}
 
 	// chapter 開始時のmovie
 	this.scene_manager.addScene("opening_movie_chapter0", new SceneOpeningMovie(this).setArgs("chapter0"));

@@ -19,6 +19,10 @@ SceneEventMovie.prototype.setArgs = function(event_name){
 SceneEventMovie.prototype.init = function(event_name){
 	var chapter_data = EventMovieMasterRepository.find(event_name);
 
+	if (!chapter_data) {
+		throw new Error("Can't find movie event: " + event_name);
+	}
+
 	var path = chapter_data.path();
 
 	var scene_manager = this.core.scene_manager;

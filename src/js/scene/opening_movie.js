@@ -6,6 +6,7 @@ var Util = require('../hakurei').util;
 var BaseScene = require('../hakurei').scene.movie;
 var ChapterMasterRepository = require('../repository/chapter');
 var CONSTANT_BUTTON = require('../hakurei').constant.button;
+var CONSTANT = require('../constant');
 
 var SceneOpeningMovie = function(core) {
 	BaseScene.apply(this, arguments);
@@ -25,6 +26,12 @@ SceneOpeningMovie.prototype.setArgs = function(chapter_name){
 	this._field_name = chapter_data.firstField();
 	// chapter No
 	this._chapter_no = chapter_data.no();
+
+	// デバッグ用ミュート
+	if(CONSTANT.DEBUG.SOUND_OFF) {
+		this.mute();
+	}
+
 	return this;
 };
 
