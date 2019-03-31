@@ -6,7 +6,8 @@ var ObjectStaticImage = function(core) {
 	base_object.apply(this, arguments);
 
 	this._image = null;
-	this._serif = null;
+	this._serif_front = null;
+	this._serif_back  = null;
 	this._sound_name  = null;
 	this._action_name = null;
 
@@ -17,18 +18,16 @@ var ObjectStaticImage = function(core) {
 Util.inherit(ObjectStaticImage, base_object);
 
 ObjectStaticImage.prototype.isCollision = function(point) {
-	// サードアイ使用中ならクリックしても調べられないので何もしない
-	return base_object.prototype.isCollision.apply(this, arguments) && !this.scene.root().isUsingEye();
+	return base_object.prototype.isCollision.apply(this, arguments);
 };
-
-
-
 
 ObjectStaticImage.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
 	this._image = null;
-	this._serif = null;
+	this._serif_front = null;
+	this._serif_back  = null;
+
 	this._sound_name  = null;
 	this._action_name = null;
 
@@ -46,9 +45,13 @@ ObjectStaticImage.prototype.setData = function(data) {
 		this._image = this.core.image_loader.getImage(data.image);
 	}
 
-	// クリックした際のセリフ
+	// クリックした際のセリフ(表)
 	if (data.serif) {
-		this._serif = data.serif;
+		this._serif_front = data.serif;
+	}
+	// クリックした際のセリフ(裏)
+	if (data.serif) {
+		this._serif_back = data.serif_back;
 	}
 
 	// クリックした際のSE
@@ -107,22 +110,39 @@ ObjectStaticImage.prototype.collisionHeight = function(){
 		return this._image.height * this._scale;
 	}
 };
-ObjectStaticImage.prototype.isCheckInTouchArea = function(){
-	return this._action_name || this._sound_name || this._serif;
+ObjectStaticImage.prototype.isCheckInTouchArea = function() {
+
+	if(this.scene.root().isUsingEye()) {
+		// サードアイ使用中
+		return this._serif_back;
+	}
+	else {
+		// サードアイ未使用中
+		return this._action_name || this._sound_name || this._serif_front;
+	}
 };
 // こいしに触られたときの処理
 ObjectStaticImage.prototype.onTouchByKoishi = function() {
-	// こいしのアクション
-	this.scene.root().koishi.actionByObject(this._action_name || "wait");
-
-	// 音を再生
-	if (this._sound_name) {
-		this.core.audio_loader.playSound(this._sound_name);
+	if(this.scene.root().isUsingEye()) {
+		// サードアイ使用中
+		// 会話するオブジェクトなので、クリックしたら会話する
+		if (this._serif_back) {
+			this.scene.root().changeSubScene("talk_with_object", this._serif_back, this);
+		}
 	}
+	else {
+		// こいしのアクション
+		this.scene.root().koishi.actionByObject(this._action_name || "wait");
 
-	// 会話するオブジェクトなので、クリックしたら会話する
-	if (this._serif) {
-		this.scene.root().changeSubScene("talk_with_object", this._serif, this);
+		// 音を再生
+		if (this._sound_name) {
+			this.core.audio_loader.playSound(this._sound_name);
+		}
+
+		// 会話するオブジェクトなので、クリックしたら会話する
+		if (this._serif_front) {
+			this.scene.root().changeSubScene("talk_with_object", this._serif_front, this);
+		}
 	}
 };
 
