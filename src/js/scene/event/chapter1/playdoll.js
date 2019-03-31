@@ -9,7 +9,7 @@ var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
 var CONSTANT_BUTTON = require('../../../hakurei').constant.button;
 var CONSTANT = require('../../../constant');
-var ScenarioManager = require('../../../hakurei').manager.scenario;
+var TalkScenario = require('../../../logic/talk_scenario');
 var BlackMist = require('../../../object/black_mist');
 var DrawSerif = require('../../../logic/draw_serif');
 
@@ -61,9 +61,7 @@ var SceneEventPlayDoll = function(core) {
 	this.black_mist = new BlackMist(this);
 
 	// セリフ
-	this._serif = new ScenarioManager(core, {
-		typography_speed: CONSTANT.TYPOGRAPHY_SPEED,
-	});
+	this._serif = TalkScenario.generateScenario(core);
 
 
 	// セリフの位置

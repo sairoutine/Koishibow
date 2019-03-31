@@ -8,8 +8,7 @@ var ObjectPoint = require('../../../hakurei').object.point;
 var SS = require('../../../object/anime_object');
 var Util = require('../../../hakurei').util;
 var CONSTANT_BUTTON = require('../../../hakurei').constant.button;
-var CONSTANT = require('../../../constant');
-var ScenarioManager = require('../../../hakurei').manager.scenario;
+var TalkScenario = require('../../../logic/talk_scenario');
 var BlackMist = require('../../../object/black_mist');
 var DrawSerif = require('../../../logic/draw_serif');
 var TimeManager = require('../../../hakurei').Manager.Time;
@@ -41,10 +40,7 @@ var SceneEventPlayDoll = function(core) {
 	this.black_mist = new BlackMist(this);
 
 	// セリフ
-	this._serif = new ScenarioManager(core, {
-		typography_speed: CONSTANT.TYPOGRAPHY_SPEED,
-	});
-
+	this._serif = TalkScenario.generateScenario(core);
 
 	// セリフの位置
 	this.serif_position_of_koishi = new ObjectPoint(this);

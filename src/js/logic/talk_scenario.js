@@ -1,7 +1,7 @@
 'use strict';
 // フィールド上での会話・イベント中での会話中に行われる処理と分岐
 
-var ScenarioManager = require('../hakurei').Manager.Scenario;
+var ScenarioManager = require('../logic/scenario_manager');
 var CONSTANT = require('../constant');
 
 // 静的クラス
