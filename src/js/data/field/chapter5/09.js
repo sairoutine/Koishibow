@@ -28,7 +28,7 @@ module.exports = {
 					[
 						{"chara": "koishi", "exp": "look_front", "serif":_("まあ！")},
 						{"chara": "koishi", "exp": null, "serif":_("あなたどうしたの")},
-						{"chara": "oku", "exp": "oku-wait", "serif":_("があ、があ")},
+						{"chara": "oku", "exp": "oku-wait", "serif":_("があ、があ"), "option": {"playEvent": "chapter5-09-event-03"}},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_09_10150"]}
