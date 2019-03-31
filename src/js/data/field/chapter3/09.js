@@ -69,8 +69,8 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "レミリアの墓",
 			serif: [
-				{"chara": "koishi","serif":_("大きいなあ")},
-				{"chara": "koishi","serif":_("誰のお墓なんだろう？")},
+				{"chara": "koishi", serif1: _("大きいなあ"), serif2: _("立派！"), serif3: _("立派！"), serif4: _("立派！")},
+				{"chara": "koishi", serif1: _("誰のお墓なんだろう？"), serif2: _("誰のお墓かしら"), serif3: _("誰のお墓かしら"), serif4: _("誰のお墓かしら")},
 			],
 			x:1041.50*2/3, y: 519*2/3,
 			scale: 2/3,
@@ -92,9 +92,9 @@ module.exports = {
 						{"chara": "koishi", "serif": "", "option": {"playEvent": "chapter3-09-event-01"}},
 					],
 					[
-						{"chara": "koishi","serif":_("うわー")},
-						{"chara": "koishi","serif":_("なんかへんなの")},
-						{"chara": "koishi","serif":_("わるもの？")},
+						{"chara": "koishi", serif1: _("うわー"), serif2: _("うわー"), serif3: _("うわー"), serif4: _("うわー")},
+						{"chara": "koishi", serif1: _("なんかへんなの"), serif2: _("誰だろう？"), serif3: _("誰だろう？"), serif4: _("誰だろう？")},
+						{"chara": "koishi", serif1: _("わるもの？"), serif2: _("なんでしんだの？"), serif3: _("なんでしんだの？"), serif4: _("なんでしんだの？")},
 					],
 				]},
 			],
@@ -122,14 +122,14 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getruby"], "serifs": [
 					// ルビー獲得後
 					[
-						{"chara": "koishi","serif":_("やっぱりちょっと気持ち悪い")},
+						{"chara": "koishi", serif1: _("やっぱりちょっと気持ち悪い"), serif2: _("あんまり触りたくない"), serif3: _("あんまり触りたくない"), serif4: _("あんまり触りたくない")},
 					],
 					// ルビー獲得前
 					[
 						{"id": "chapter3_09_getruby", "save": true},
 						// ルビー獲得
-						{"chara": "koishi","serif":_("やっぱりここにあった！"), "option": {"getItem": "17"}},
-						{"chara": "koishi","serif":_("ありがとう！")},
+						{"chara": "koishi", serif1: _("やっぱりここにあった！"), serif2: _("やっぱりここにあった！"), serif3: _("やっぱりここにあった！"), serif4: _("やっぱりここにあった！"), "option": {"getItem": "17"}},
+						{"chara": "koishi", serif1: _("ありがとう！"), serif2: _("ありがとう！"), serif3: _("ありがとう！"), serif4: _("ありがとう！")},
 					],
 				]},
 			],
@@ -153,8 +153,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "胸像",
 			serif: [
-				{"chara": "koishi","serif":_("まっしろだわ！")},
-				{"chara": "koishi","serif":_("これスノーマンかしら")},
+				{"chara": "koishi", serif1: _("まっしろだわ！"), serif2: _("まっしろだわ！"), serif3: _("まっしろだわ！"), serif4: _("まっしろだわ！")},
+				{"chara": "koishi", serif1: _("これスノーマンかしら"), serif2: _("これスノーマンかしら"), serif3: _("これスノーマンかしら"), serif4: _("これスノーマンかしら")},
 			],
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_13-Event-_30370"], "serifs": [
@@ -163,10 +163,10 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09-Event-_30360"], "serifs": [
 							// 爆破イベント後
 							[
-								{"chara": I,"serif":_("責任についてどう思っているんだ")},
-								{"chara": "koishi","serif":_("なにが")},
-								{"chara": I,"serif":_("約束や責任を何だと思っているんだ！")},
-								{"chara": "koishi","serif":_("しらなーい")},
+								{"chara": I, serif1: _("責任についてどう思っているんだ"), serif2: _("責任についてどう思っているんだ"), serif3: _("責任についてどう思っているんだ"), serif4: _("責任についてどう思っているんだ")},
+								{"chara": "koishi", serif1: _("なにが"), serif2: _("なんのこと"), serif3: _("なんのこと"), serif4: _("なんのこと")},
+								{"chara": I, serif1: _("約束や責任を何だと思っているんだ！"), serif2: _("約束や責任を何だと思っているんだ！"), serif3: _("約束や責任を何だと思っているんだ！"), serif4: _("約束や責任を何だと思っているんだ！")},
+								{"chara": "koishi", serif1: _("しらなーい"), serif2: _("どうでもいいわ"), serif3: _("どうでもいいわ"), serif4: _("どうでもいいわ")},
 							],
 							// 爆破イベント前
 							[
@@ -179,10 +179,10 @@ module.exports = {
 						]},
 					],
 					[
-						{"chara": I,"serif":_("責任についてどう思っているんだ")},
-						{"chara": "koishi","serif":_("なにが")},
-						{"chara": I,"serif":_("約束や責任を何だと思っているんだ！")},
-						{"chara": "koishi","serif":_("しらなーい")},
+						{"chara": I, serif1: _("責任についてどう思っているんだ"), serif2: _("責任についてどう思っているんだ"), serif3: _("責任についてどう思っているんだ"), serif4: _("責任についてどう思っているんだ")},
+						{"chara": "koishi", serif1: _("なにが"), serif2: _("なんのこと"), serif3: _("なんのこと"), serif4: _("なんのこと")},
+						{"chara": I, serif1: _("約束や責任を何だと思っているんだ！"), serif2: _("約束や責任を何だと思っているんだ！"), serif3: _("約束や責任を何だと思っているんだ！"), serif4: _("約束や責任を何だと思っているんだ！")},
+						{"chara": "koishi", serif1: _("しらなーい"), serif2: _("どうでもいいわ"), serif3: _("どうでもいいわ"), serif4: _("どうでもいいわ")},
 					],
 				]},
 			],

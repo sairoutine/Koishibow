@@ -27,7 +27,7 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "koishi", "exp": "look_top", "serif":_("なんなの！")},
+						{"chara": "koishi", "exp": "look_top",  serif1: _("なんなの！"), serif2: _("なんなの！"), serif3: _("なんなの！"), serif4: _("なんなの！")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_06_firstaccess"]}
@@ -45,8 +45,8 @@ module.exports = {
 					[
 						{"type": "process", "value": "playTalk", "arguments": [
 							[
-								{"chara": "koishi", "exp": "look_bottom", "serif":_("うー")},
-								{"chara": "koishi", "exp": "look_bottom", "serif":_("あたまいてて")},
+								{"chara": "koishi", "exp": "look_bottom", "serif": _("うー")},
+								{"chara": "koishi", "exp": "look_bottom",  serif1: _("あたまいてて"), serif2: _("あたまいてて"), serif3: _("あたまいてて"), serif4: _("頭が痛いわ")},
 							]
 						]},
 						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_06_secondaccess"]}
@@ -82,9 +82,9 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ジャーナル",
 			serif: [
-				{"chara": "koishi","exp": "look_bottom", "serif": _("なにかしら")},
+				{"chara": "koishi","exp": "look_bottom",  serif1: _("なにかしら"), serif2: _("なにかしら"), serif3: _("なにかしら"), serif4: _("なにかしら")},
 				{"chara": "koishi","exp": null, "serif": _("......")},
-				{"chara": "bm","exp": null, "serif": _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), "option": {"playEventMovie": "chapter6-06-event-01"}},
+				{"chara": "bm","exp": null,  serif1: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif2: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif3: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif4: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), "option": {"playEventMovie": "chapter6-06-event-01"}},
 				{"chara": "koishi","exp": null, "serif": "", "option": {"changeField": "chapter6_10"}},
 			],
 			x: 258, y: 689,

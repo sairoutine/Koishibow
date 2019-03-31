@@ -25,9 +25,9 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "振子時計",
 			serif: [
-				{"chara": "koishi","serif":_("あれ？")},
-				{"chara": "koishi","serif":_("動いてないな")},
-				{"chara": "koishi","serif":_("寝ちゃったの？")},
+				{"chara": "koishi","serif": _("あれ？")},
+				{"chara": "koishi", serif1: _("動いてないな"), serif2: _("なんで動いてないんだろう？"), serif3: _("なんで動いてないんだろう？"), serif4: _("なんで動いてないんだろう？")},
+				{"chara": "koishi", serif1: _("寝ちゃったの？"), serif2: _("お姉ちゃんがネジ巻き忘れたのかな"), serif3: _("お姉ちゃんがネジ巻き忘れたのかな"), serif4: _("お姉ちゃんがネジ巻き忘れたのかな")},
 			],
 			x: 145,
 			y: 230,
@@ -43,8 +43,8 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "雪",
 			serif: [
-				{"chara": "koishi","serif":_("雪！")},
-				{"chara": "koishi","serif":_("つめたーい"), "option": {"changeField": "chapter3_07"}},
+				{"chara": "koishi", serif1: _("雪！"), serif2: _("雪！"), serif3: _("雪！"), serif4: _("雪！")},
+				{"chara": "koishi", serif1: _("つめたーい"), serif2: _("寒いはずだわ"), serif3: _("寒いはずだわ"), serif4: _("寒いはずだわ"), "option": {"changeField": "chapter3_07"}},
 			],
 			width: 400, height: 1000,
 			action_name: "touch",

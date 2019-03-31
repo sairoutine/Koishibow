@@ -23,7 +23,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ほこりの積もった観葉植物",
 			serif: [
-				{"chara": "koishi","serif":_("ほこりだらけ！")},
+				{"chara": "koishi", serif1: _("ほこりだらけ！"), serif2: _("ほこりだらけ！"), serif3: _("ほこりだらけ！"), serif4: _("ほこりだらけ！")},
 			],
 			x: 840,
 			y: 305,
@@ -46,7 +46,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "壁かけの斧",
 			serif: [
-				{"chara": "koishi","serif":_("だれかとって！")},
+				{"chara": "koishi", serif1: _("だれかとって！"), serif2: _("だれかとって！"), serif3: _("だれかとって！"), serif4: _("だれかとって！")},
 			],
 			x: 310,
 			y: 102,
@@ -66,7 +66,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ドア",
 			serif: [
-				{"chara": "koishi","serif":_("だれかじゅんびちゅう？")},
+				{"chara": "koishi", serif1: _("だれかじゅんびちゅう？"), serif2: _("だれかじゅんびちゅう？"), serif3: _("だれかじゅんびちゅう？"), serif4: _("だれかじゅんびちゅう？")},
 			],
 			x: 610,
 			y: 245,

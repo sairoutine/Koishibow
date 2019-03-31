@@ -47,7 +47,7 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
-				{"chara": "merry", "exp": "merry-reaction_08", "serif":_("目的地はここから東の方角みたいね")},
+				{"chara": "merry", "exp": "merry-reaction_08",  serif1: _("目的地はここから東の方角みたいね"), serif2: _("目的地はここから東の方角みたいね"), serif3: _("目的地はここから東の方角みたいね"), serif4: _("目的地はここから東の方角みたいね")},
 			],
 			x: 1160*2/3, y: 505*2/3,
 			anime1: "merry-wait",

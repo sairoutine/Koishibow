@@ -37,8 +37,8 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "koishi","serif":_("わあー")},
-						{"chara": "koishi","serif":_("真っ白ね")},
+						{"chara": "koishi", serif1: _("わあー"), serif2: _("わあー"), serif3: _("わあー"), serif4: _("わあー")},
+						{"chara": "koishi", serif1: _("真っ白ね"), serif2: _("すごい雪"), serif3: _("すごい雪"), serif4: _("すごい雪")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_07_30040"]}
@@ -84,7 +84,7 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_07-getItem-15"], "serifs": [
 					// アイテム獲得済み
 					[
-						{"chara": "koishi","serif":_("まだ生きてるのに変なの")},
+						{"chara": "koishi", serif1: _("まだ生きてるのに変なの"), serif2: _("誰のお墓かしら"), serif3: _("誰のお墓かしら"), serif4: _("誰のお墓かしら")},
 					],
 					// アイテム未獲得
 					[
@@ -92,12 +92,12 @@ module.exports = {
 							// しゃべる持ってる
 							[
 								{"id": "chapter3_07-getItem-15", "save": true},
-								{"chara": "koishi","serif":_("あった！"), "option": {"getItem": "15"}},
-								{"chara": "koishi","serif":_("シャベル持ってきてよかった")},
+								{"chara": "koishi","serif": _("あった！"), "option": {"getItem": "15"}},
+								{"chara": "koishi", serif1: _("シャベル持ってきてよかった"), serif2: _("シャベルもらってよかった"), serif3: _("シャベルもらってよかった"), serif4: _("シャベルもらってよかった")},
 							],
 							// しゃべる持ってない
 							[
-								{"chara": "koishi","serif":_("まだ生きてるのに変なの")},
+								{"chara": "koishi", serif1: _("まだ生きてるのに変なの"), serif2: _("誰のお墓かしら"), serif3: _("誰のお墓かしら"), serif4: _("誰のお墓かしら")},
 							],
 						]},
 					],
@@ -116,7 +116,7 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_07-getItem-14"], "serifs": [
 					// アイテム獲得済み
 					[
-						{"chara": "koishi","serif":_("誰？")},
+						{"chara": "koishi","serif": _("誰？")},
 					],
 					// アイテム未獲得
 					[
@@ -124,12 +124,12 @@ module.exports = {
 							// しゃべる持ってる
 							[
 								{"id": "chapter3_07-getItem-14", "save": true},
-								{"chara": "koishi","serif":_("あった！"), "option": {"getItem": "14"}},
-								{"chara": "koishi","serif":_("思ったより重たい")},
+								{"chara": "koishi","serif": _("あった！"), "option": {"getItem": "14"}},
+								{"chara": "koishi", serif1: _("思ったより重たい"), serif2: _("思ったより重たい"), serif3: _("思ったより重たい"), serif4: _("思ったより重たい")},
 							],
 							// しゃべる持ってない
 							[
-								{"chara": "koishi","serif":_("誰？")},
+								{"chara": "koishi","serif": _("誰？")},
 							],
 						]},
 					],
@@ -154,7 +154,7 @@ module.exports = {
 			name: "猫の霊",
 			serif: null,
 			serif_back: [
-				{"chara": "koishi","serif":_("わーっ、ジョン！")},
+				{"chara": "koishi", serif1: _("わーっ、ジョン！"), serif2: _("いままでどこにいたのかしら！"), serif3: _("いままでどこにいたのかしら！"), serif4: _("いままでどこにいたのかしら！")},
 			],
 			x: 579.50*2/3, y: 695.50*2/3,
 			scale: 2/3,

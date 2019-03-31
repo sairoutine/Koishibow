@@ -26,8 +26,8 @@ module.exports = {
 			image: "item_23",
 			name: "新品のテープ",
 			serif: [
-				{"chara": "koishi", "exp": "touch", "serif":_("これね！"), "option": {"getItem": "26"}},
-				{"chara": "koishi", "exp": "yes", "serif":_("メリーがまってるわ！"), "option": {"resetFlag": "chapter4-23-show_tape4"}},
+				{"chara": "koishi", "exp": "touch",  serif1: _("これね！"), serif2: _("これね！"), serif3: _("これね！"), serif4: _("これね！"), "option": {"getItem": "26"}},
+				{"chara": "koishi", "exp": "yes",  serif1: _("メリーがまってるわ！"), serif2: _("メリーがまってるわ！"), serif3: _("メリーがまってるわ！"), serif4: _("メリーがまってるわ！"), "option": {"resetFlag": "chapter4-23-show_tape4"}},
 			],
 			x:359.50*2/3, y:762.*2/3,
 			scale: 2/3,

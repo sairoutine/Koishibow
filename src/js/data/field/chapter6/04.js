@@ -26,7 +26,7 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "koishi", "exp": "look_front", "serif":_("なにここ")},
+						{"chara": "koishi", "exp": "look_front",  serif1: _("なにここ"), serif2: _("どこだ"), serif3: _("どこだ"), serif4: _("帰りたいんだけど")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_04_firstaccess"]}

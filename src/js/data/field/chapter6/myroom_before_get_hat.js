@@ -22,7 +22,7 @@ module.exports = {
 	initialProcess: [
 		{"type": "process", "value": "playTalk", "arguments": [
 			[
-				{"chara": "koishi", "exp": null, "serif":_("お出かけよ！")},
+				{"chara": "koishi", "exp": null,  serif1: _("お出かけよ！"), serif2: _("お散歩に行きましょ"), serif3: _("お散歩に行きましょ"), serif4: _("でかけてきまーす！")},
 			]
 		]},
 	],

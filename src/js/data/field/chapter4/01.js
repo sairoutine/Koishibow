@@ -44,8 +44,8 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "koishi", "exp": "look_bottom", "serif":_("疲れた")},
-						{"chara": "koishi", "exp": "look_front", "serif":_("ここはどこ")},
+						{"chara": "koishi", "exp": "look_bottom",  serif1: _("疲れた"), serif2: _("疲れたわ"), serif3: _("やっちゃった"), serif4: _("やっちゃった")},
+						{"chara": "koishi", "exp": "look_front",  serif1: _("ここはどこ"), serif2: _("どこかしら"), serif3: _("どこかしら"), serif4: _("どこかしら")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_01_40050"]}

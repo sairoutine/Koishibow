@@ -24,7 +24,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ランプ",
 			serif: [
-				{"chara": "koishi","serif":_("まぶしい")},
+				{"chara": "koishi","serif": _("まぶしい")},
 			],
 			x: 805,
 			y: 65,
@@ -45,7 +45,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "三輪車",
 			serif: [
-				{"chara": "koishi","serif":_("あとでのろっと")},
+				{"chara": "koishi", serif1: _("あとでのろっと"), serif2: _("あとでのろっと"), serif3: _("あとでのろっと"), serif4: _("あとでのろっと")},
 			],
 			x: 815,
 			y: 515,
@@ -81,7 +81,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "カーテン",
 			serif: [
-				{"chara": "koishi","serif":_("いまはかくれんぼしてないから\nあとでね！")},
+				{"chara": "koishi","serif": _("いまはかくれんぼしてないから\nあとでね！")},
 			],
 			x: 190,
 			y: 135,

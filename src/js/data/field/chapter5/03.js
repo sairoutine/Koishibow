@@ -23,8 +23,8 @@ module.exports = {
 			[
 				// イベント表示
 				{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter5-03-event-01"]},
-				{"chara": "koishi","exp": "look_bottom", "serif": _("なにかしらこれ")},
-				{"chara": "koishi","exp": null, "serif": _("あっちからきたけど")},
+				{"chara": "koishi","exp": "look_bottom",  serif1: _("なにかしらこれ"), serif2: _("なにかしらこれ"), serif3: _("なにかしらこれ"), serif4: _("なにかしらこれ")},
+				{"chara": "koishi","exp": null,  serif1: _("あっちからきたけど"), serif2: _("あっちからきたけど"), serif3: _("誰なの？"), serif4: _("誰なの？")},
 				{"id": "chapter5-03-event-10630", "save": true}, // アライグマ表示
 			],
 			// 鍵を持っていない
@@ -36,8 +36,8 @@ module.exports = {
 					[
 						{"type": "process", "value": "playTalk", "arguments": [
 							[
-								{"chara": "koishi", "exp": "look_front", "serif":_("わー")},
-								{"chara": "koishi", "exp": null, "serif":_("なつかしい")},
+								{"chara": "koishi", "exp": "look_front",  serif1: _("わー"), serif2: _("わー"), serif3: _("わー"), serif4: _("わー")},
+								{"chara": "koishi", "exp": null,  serif1: _("なつかしい"), serif2: _("なつかしい"), serif3: _("ちょっとなつかしい"), serif4: _("ちょっとなつかしい")},
 							]
 						]},
 						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_03_10110"]}
@@ -91,19 +91,19 @@ module.exports = {
 								{"chara": "koishi","serif":"", "junction": ["斧をとる", "とらない"]},
 								{"type": "junction_serif", "serifs": [
 									[
-										{"chara": "koishi","exp": "touch", "serif": _("一応ね")},
-										{"chara": "koishi","exp": "yes", "serif": _("ねんのため......")},
+										{"chara": "koishi","exp": "touch",  serif1: _("一応ね"), serif2: _("一応ね"), serif3: _("一応ね"), serif4: _("一応ね")},
+										{"chara": "koishi","exp": "yes",  serif1: _("ねんのため......"), serif2: _("ねんのため......"), serif3: _("ねんのため......"), serif4: _("ねんのため......")},
 									],
 									[
-										{"chara": "koishi","exp": "look_bottom", "serif": _("わたしわるいひとかも......")},
-										{"chara": "koishi","exp": null, "serif": _("いばりんぼで")},
+										{"chara": "koishi","exp": "look_bottom",  serif1: _("わたしわるいひとかも......"), serif2: _("わたしわるいひとかも......"), serif3: _("わたしわるいひとかも......"), serif4: _("わたしわるいひとかも......")},
+										{"chara": "koishi","exp": null,  serif1: _("いばりんぼで"), serif2: _("いばりんぼで"), serif3: _("いばりんぼで"), serif4: _("いばりんぼで")},
 										{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
 									],
 								]},
 							],
 							// お燐未表示
 							[
-								{"chara": "koishi","exp": "yes", "serif": _("いまはそれどころじゃないわ")},
+								{"chara": "koishi","exp": "yes",  serif1: _("いまはそれどころじゃないわ"), serif2: _("いまはそれどころじゃないわ"), serif3: _("いまはそれどころじゃないわ"), serif4: _("いまはそれどころじゃないわ")},
 							],
 						]},
 					],
@@ -111,14 +111,14 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-13-animal_kuro_talk1"], "serifs": [
 							// 豹と会話した後
 							[
-								{"chara": "koishi","exp": "touch", "serif": _("これ！")},
-								{"chara": "koishi","exp": null, "serif": _("すてき"), "option": {"getItem": "34"}},
-								{"chara": "koishi","exp": null, "serif": _("強そうね！")},
+								{"chara": "koishi","exp": "touch",  serif1: _("これ！"), serif2: _("これ！"), serif3: _("これがいいわ"), serif4: _("これがいいわ")},
+								{"chara": "koishi","exp": null,  serif1: _("すてき"), serif2: _("すてき"), serif3: _("すてき"), serif4: _("すてき"), "option": {"getItem": "34"}},
+								{"chara": "koishi","exp": null,  serif1: _("強そうね！"), serif2: _("強そうね！"), serif3: _("強そうね！"), serif4: _("強そうね！")},
 								{"id": "chapter5-07-show_animal_komodo", "save": true},
 							],
 							// 豹と会話した後ではない
 							[
-								{"chara": "koishi","exp": null, "serif": _("あぶないわ")},
+								{"chara": "koishi","exp": null,  serif1: _("あぶないわ"), serif2: _("あぶないわ"), serif3: _("だれが外したの？"), serif4: _("だれが外したの？")},
 							],
 						]},
 					],

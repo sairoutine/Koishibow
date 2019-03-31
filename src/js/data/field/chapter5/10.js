@@ -29,7 +29,7 @@ module.exports = {
 					[
 						{"type": "process", "value": "playTalk", "arguments": [
 							[
-								{"chara": "animal_hari","exp": "animal_hari-wait", "serif": _("ピッ")},
+								{"chara": "animal_hari","exp": "animal_hari-wait",  serif1: _("ピッ"), serif2: _("ピッ"), serif3: _("ピッ"), serif4: _("ピッ")},
 								{"chara": "koishi","exp": "wait", "serif": _("......")},
 							]
 						]},
@@ -52,22 +52,22 @@ module.exports = {
 					[
 						{"type": "process", "value": "playTalk", "arguments": [
 							[
-								{"chara": "animal_down","serif": _("わんわん！")},
-								{"chara": "animal_down","serif": _("があっがあっ")},
-								{"chara": "animal_down","serif": _("ぶるるぶるる")},
-								{"chara": "animal_right","serif": _("いいいいいっ")},
-								{"chara": "animal_down","serif": _("うぴゃーっうぴゃーっ")},
-								{"chara": "animal_right","serif": _("ぐるるるるる")},
-								{"chara": "animal_down","serif": _("ぴいーっぴいーっ")},
-								{"chara": "animal_right","serif": _("チチチチイ")},
-								{"chara": "animal_right","serif": _("んなぁお")},
-								{"chara": "koishi","exp": "look_front", "serif": _("うるさい！")},
-								{"chara": "koishi","exp": null, "serif": _("動物の声だわ")},
-								{"chara": "koishi","exp": null, "serif": _("楽しそう！")},
-								{"chara": "oku", "serif": _("があー")},
-								{"chara": "koishi","exp": "yes", "serif": _("まずあの子を助けなきゃ")},
-								{"chara": "koishi","exp": null, "serif": _("あの部屋へ行かなきゃ")},
-								{"chara": "animal_right","serif": _("みゃあぉう")},
+								{"chara": "animal_down", serif1: _("わんわん！"), serif2: _("わんわん！"), serif3: _("わんわん！"), serif4: _("わんわん！")},
+								{"chara": "animal_down", serif1: _("があっがあっ"), serif2: _("があっがあっ"), serif3: _("があっがあっ"), serif4: _("があっがあっ")},
+								{"chara": "animal_down", serif1: _("ぶるるぶるる"), serif2: _("ぶるるぶるる"), serif3: _("ぶるるぶるる"), serif4: _("ぶるるぶるる")},
+								{"chara": "animal_right", serif1: _("いいいいいっ"), serif2: _("いいいいいっ"), serif3: _("いいいいいっ"), serif4: _("いいいいいっ")},
+								{"chara": "animal_down", serif1: _("うぴゃーっうぴゃーっ"), serif2: _("うぴゃーっうぴゃーっ"), serif3: _("うぴゃーっうぴゃーっ"), serif4: _("うぴゃーっうぴゃーっ")},
+								{"chara": "animal_right", serif1: _("ぐるるるるる"), serif2: _("ぐるるるるる"), serif3: _("ぐるるるるる"), serif4: _("ぐるるるるる")},
+								{"chara": "animal_down", serif1: _("ぴいーっぴいーっ"), serif2: _("ぴいーっぴいーっ"), serif3: _("ぴいーっぴいーっ"), serif4: _("ぴいーっぴいーっ")},
+								{"chara": "animal_right", serif1: _("チチチチイ"), serif2: _("チチチチイ"), serif3: _("チチチチイ"), serif4: _("チチチチイ")},
+								{"chara": "animal_right", serif1: _("んなぁお"), serif2: _("んなぁお"), serif3: _("んなぁお"), serif4: _("んなぁお")},
+								{"chara": "koishi","exp": "look_front",  serif1: _("うるさい！"), serif2: _("うるさい！"), serif3: _("うるさい！"), serif4: _("うるさい！")},
+								{"chara": "koishi","exp": null,  serif1: _("動物の声だわ"), serif2: _("動物の声だわ"), serif3: _("動物の声だわ"), serif4: _("動物の声だわ")},
+								{"chara": "koishi","exp": null,  serif1: _("楽しそう！"), serif2: _("楽しそう！"), serif3: _("楽しそう！"), serif4: _("楽しそう！")},
+								{"chara": "oku",  serif1: _("があー"), serif2: _("があー"), serif3: _("があー"), serif4: _("があー")},
+								{"chara": "koishi","exp": "yes",  serif1: _("まずあの子を助けなきゃ"), serif2: _("まずあの子を助けなきゃ"), serif3: _("まずあの子を助けなきゃ"), serif4: _("まずあの子を助けなきゃ")},
+								{"chara": "koishi","exp": null,  serif1: _("あの部屋へ行かなきゃ"), serif2: _("あの部屋へ行かなきゃ"), serif3: _("奥だったわね"), serif4: _("奥だったわね")},
+								{"chara": "animal_right", serif1: _("みゃあぉう"), serif2: _("みゃあぉう"), serif3: _("みゃあぉう"), serif4: _("みゃあぉう")},
 							]
 						]},
 						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_10_10180"]}
@@ -87,10 +87,10 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "oku", "serif":_("があ、があ")},
-						{"chara": "oku", "serif":_("ぐわあ")},
-						{"chara": "koishi", "exp": "look_front", "serif":_("こっち！")},
-						{"chara": "koishi", "exp": null, "serif":_("びょーきなのかな")},
+						{"chara": "oku",  serif1: _("があ、があ"), serif2: _("があ、があ"), serif3: _("があ、があ"), serif4: _("があ、があ")},
+						{"chara": "oku",  serif1: _("ぐわあ"), serif2: _("ぐわあ"), serif3: _("ぐわあ"), serif4: _("ぐわあ")},
+						{"chara": "koishi", "exp": "look_front",  serif1: _("こっち！"), serif2: _("こっち！"), serif3: _("こっちね！"), serif4: _("こっちね！")},
+						{"chara": "koishi", "exp": null,  serif1: _("びょーきなのかな"), serif2: _("びょーきなのかな"), serif3: _("苦しそうだわ"), serif4: _("苦しそうだわ")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_10_10140"]}
@@ -125,25 +125,25 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_10-animal_hari-limit", 2], "serifs": [
 					[
 						{"chara": "animal_hari","exp": "animal_hari-ura_reaction_01", "serif": _("......")},
-						{"chara": "koishi","exp": "look_front", "serif": _("どうしたの")},
+						{"chara": "koishi","exp": "look_front",  serif1: _("どうしたの"), serif2: _("どうしたの"), serif3: _("どうしたの"), serif4: _("どうしたの")},
 						{"chara": "animal_hari","exp": null, "serif": _("......")},
-						{"chara": "animal_hari","exp": "animal_hari-ura_wait", "serif": _("あなただあれ")},
+						{"chara": "animal_hari","exp": "animal_hari-ura_wait",  serif1: _("あなただあれ"), serif2: _("あなただあれ"), serif3: _("あなただあれ"), serif4: _("あなただあれ")},
 						{"chara": "koishi","exp": "yes", "serif": _("こいし")},
 						{"chara": "koishi","exp": null, "serif": _("......")},
-						{"chara": "koishi","exp": null, "serif": _("あなたは？")},
-						{"chara": "animal_hari","exp": "animal_hari-ura_wait", "serif": _("ハリネズミですけども......")},
+						{"chara": "koishi","exp": null,  serif1: _("あなたは？"), serif2: _("あなたは？"), serif3: _("あなたは？"), serif4: _("あなたは？")},
+						{"chara": "animal_hari","exp": "animal_hari-ura_wait",  serif1: _("ハリネズミですけども......"), serif2: _("ハリネズミですけども......"), serif3: _("ハリネズミですけども......"), serif4: _("ハリネズミですけども......")},
 						{"chara": "koishi","exp": "yes", "serif": _("そっか")},
 						{"id": "chapter5-10-show_journal", "save": true},
 					],
 					[
-						{"chara": "animal_hari","exp": "animal_hari-ura_reaction_01", "serif": _("そっとしといてください......")},
-						{"chara": "koishi","exp": "look_bottom", "serif": _("ごめん")},
+						{"chara": "animal_hari","exp": "animal_hari-ura_reaction_01",  serif1: _("そっとしといてください......"), serif2: _("そっとしといてください......"), serif3: _("そっとしといてください......"), serif4: _("そっとしといてください......")},
+						{"chara": "koishi","exp": "look_bottom",  serif1: _("ごめん"), serif2: _("ごめん"), serif3: _("ごめん"), serif4: _("ごめん")},
 					],
 				]},
 			],
 			serif: [
-				{"chara": "animal_hari","exp": null, "serif": _("ピピッ")},
-				{"chara": "animal_hari","exp": null, "serif": _("ピィ")},
+				{"chara": "animal_hari","exp": null,  serif1: _("ピピッ"), serif2: _("ピピッ"), serif3: _("ピピッ"), serif4: _("ピピッ")},
+				{"chara": "animal_hari","exp": null,  serif1: _("ピィ"), serif2: _("ピィ"), serif3: _("ピィ"), serif4: _("ピィ")},
 			],
 			x: 600, y: 300,
 			scale: 2/3,

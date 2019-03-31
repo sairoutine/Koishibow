@@ -24,15 +24,15 @@ module.exports = {
 				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4-07-event-40140"], "process": [
 					// すでにアクセス済み
 					[
-						{"chara": "renko", "exp": "renko-reaction_01", "serif":_("ねえ大丈夫なの？")},
-						{"chara": "merry", "exp": "merry-reaction_09", "serif":_("なにが？")},
-						{"chara": "renko", "exp": "renko-reaction_01", "serif":_("なんだか変よ")},
-						{"chara": "merry", "exp": "merry-reaction_08", "serif":_("そうかしら")},
-						{"chara": "renko", "exp": "renko-wait", "serif":_("まあいいわ、先に進みましょ")},
-						{"chara": "koishi", "exp": "look_front", "serif":_("わたしもいい？")},
-						{"chara": "merry", "exp": "merry-reaction_06", "serif":_("いいわよ")},
-						{"chara": "renko", "exp": "renko-wait", "serif":_("......")},
-						{"chara": "renko", "exp": "renko-wait", "serif":_("私先に行くわね"), "option": {"changeField": "chapter4_24"}},
+						{"chara": "renko", "exp": "renko-reaction_01",  serif1: _("ねえ大丈夫なの？"), serif2: _("ねえ大丈夫なの？"), serif3: _("ねえ大丈夫なの？"), serif4: _("ねえ大丈夫なの？")},
+						{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("なにが？"), serif2: _("なにが？"), serif3: _("なにが？"), serif4: _("なにが？")},
+						{"chara": "renko", "exp": "renko-reaction_01",  serif1: _("なんだか変よ"), serif2: _("なんだか変よ"), serif3: _("なんだか変よ"), serif4: _("なんだか変よ")},
+						{"chara": "merry", "exp": "merry-reaction_08",  serif1: _("そうかしら"), serif2: _("そうかしら"), serif3: _("そうかしら"), serif4: _("そうかしら")},
+						{"chara": "renko", "exp": "renko-wait",  serif1: _("まあいいわ、先に進みましょ"), serif2: _("まあいいわ、先に進みましょ"), serif3: _("まあいいわ、先に進みましょ"), serif4: _("まあいいわ、先に進みましょ")},
+						{"chara": "koishi", "exp": "look_front",  serif1: _("わたしもいい？"), serif2: _("ついて行ってもいい？"), serif3: _("ついて行ってもいい？"), serif4: _("ついて行ってもいい？")},
+						{"chara": "merry", "exp": "merry-reaction_06",  serif1: _("いいわよ"), serif2: _("いいわよ"), serif3: _("いいわよ"), serif4: _("いいわよ")},
+						{"chara": "renko", "exp": "renko-wait", "serif": _("......")},
+						{"chara": "renko", "exp": "renko-wait",  serif1: _("私先に行くわね"), serif2: _("私先に行くわね"), serif3: _("私先に行くわね"), serif4: _("私先に行くわね"), "option": {"changeField": "chapter4_24"}},
 					],
 					// まだ未アクセス
 					[
@@ -41,11 +41,11 @@ module.exports = {
 			],
 			// まだ未アクセス
 			[
-				{"chara": "merry", "exp": "merry-reaction_05", "serif":_("ちょっと待って")},
-				{"chara": "koishi", "exp": "look_front", "serif":_("なに？")},
-				{"chara": "merry", "exp": "merry-reaction_09", "serif":_("蓮子を見つけないと")},
-				{"chara": "merry", "exp": "merry-reaction_03", "serif":_("これ以上進むとはぐれたところからどんどん離れちゃう")},
-				{"chara": "koishi", "exp": "yes", "serif":_("わかった")},
+				{"chara": "merry", "exp": "merry-reaction_05",  serif1: _("ちょっと待って"), serif2: _("ちょっと待って"), serif3: _("ちょっと待って"), serif4: _("ちょっと待って")},
+				{"chara": "koishi", "exp": "look_front", "serif": _("なに？")},
+				{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("蓮子を見つけないと"), serif2: _("蓮子を見つけないと"), serif3: _("蓮子を見つけないと"), serif4: _("蓮子を見つけないと")},
+				{"chara": "merry", "exp": "merry-reaction_03",  serif1: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif2: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif3: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif4: _("これ以上進むとはぐれたところからどんどん離れちゃう")},
+				{"chara": "koishi", "exp": "yes", "serif": _("わかった")},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_09_40130"]}
 			],
 		]},

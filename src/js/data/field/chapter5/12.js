@@ -26,10 +26,10 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "orin","exp": "orin-wait", "serif": _("うにゃーっ")},
-						{"chara": "koishi","exp": "look_front", "serif": _("ねこちゃん！")},
-						{"chara": "koishi","exp": null, "serif": _("にゃんにゃ")},
-						{"chara": "orin","exp": "orin-wait", "serif": _("んみゃ"), "option": {"getJournal": "journal029"}},
+						{"chara": "orin","exp": "orin-wait",  serif1: _("うにゃーっ"), serif2: _("うにゃーっ"), serif3: _("うにゃーっ"), serif4: _("うにゃーっ")},
+						{"chara": "koishi","exp": "look_front",  serif1: _("ねこちゃん！"), serif2: _("ねこちゃん！"), serif3: _("猫だ！"), serif4: _("猫だ！")},
+						{"chara": "koishi","exp": null,  serif1: _("にゃんにゃ"), serif2: _("にゃんにゃ"), serif3: _("にゃんにゃ"), serif4: _("にゃんにゃ")},
+						{"chara": "orin","exp": "orin-wait",  serif1: _("んみゃ"), serif2: _("んみゃ"), serif3: _("んみゃ"), serif4: _("んみゃ"), "option": {"getJournal": "journal029"}},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_12_10185"]}
@@ -48,27 +48,27 @@ module.exports = {
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-orin-limit", 2], "serifs": [
 					[
-						{"chara": "orin","exp": "orin-ura_wait", "serif": _("あら！")},
-						{"chara": "orin","exp": "orin-ura_wait", "serif": _("こいし様おひさしぶりですね")},
+						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("あら！"), serif2: _("あら！"), serif3: _("あら！"), serif4: _("あら！")},
+						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("こいし様おひさしぶりですね"), serif2: _("こいし様おひさしぶりですね"), serif3: _("こいし様おひさしぶりですね"), serif4: _("こいし様おひさしぶりですね")},
 						{"chara": "koishi","exp": "look_front", "serif": _("えっ")},
-						{"chara": "koishi","exp": null, "serif": _("私のこと知ってるの")},
-						{"chara": "orin","exp": "orin-ura_wait", "serif": _("あたりまえじゃないですか")},
-						{"chara": "orin","exp": "orin-ura_wait", "serif": _("おそうじちゅうなんです")},
-						{"chara": "koishi","exp": "yes", "serif": _("そうなんだ")},
-						{"chara": "orin","exp": "orin-ura_reaction_01", "serif": _("ご主人様に御用ですか？")},
-						{"chara": "orin","exp": null, "serif": _("あいにくお出かけされていますが")},
-						{"chara": "koishi","exp": "look_bottom", "serif": _("べつに")},
+						{"chara": "koishi","exp": null,  serif1: _("私のこと知ってるの"), serif2: _("私のこと知ってるの"), serif3: _("何してるの"), serif4: _("何してるの")},
+						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("あたりまえじゃないですか"), serif2: _("あたりまえじゃないですか"), serif3: _("あたりまえじゃないですか"), serif4: _("あたりまえじゃないですか")},
+						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("おそうじちゅうなんです"), serif2: _("おそうじちゅうなんです"), serif3: _("おそうじちゅうなんです"), serif4: _("おそうじちゅうなんです")},
+						{"chara": "koishi","exp": "yes",  serif1: _("そうなんだ"), serif2: _("そうなんだ"), serif3: _("そうなんだ"), serif4: _("そうなんだ")},
+						{"chara": "orin","exp": "orin-ura_reaction_01",  serif1: _("ご主人様に御用ですか？"), serif2: _("ご主人様に御用ですか？"), serif3: _("ご主人様に御用ですか？"), serif4: _("ご主人様に御用ですか？")},
+						{"chara": "orin","exp": null,  serif1: _("あいにくお出かけされていますが"), serif2: _("あいにくお出かけされていますが"), serif3: _("あいにくお出かけされていますが"), serif4: _("あいにくお出かけされていますが")},
+						{"chara": "koishi","exp": "look_bottom",  serif1: _("べつに"), serif2: _("べつに"), serif3: _("ううんいいの"), serif4: _("ううんいいの")},
 						{"id": "chapter5-12-orin_talk1", "save": true}, // お燐との1度目の会話
 					],
 					[
-						{"chara": "koishi","exp": "look_top", "serif": _("ねえ鍵知ってる？")},
-						{"chara": "orin","exp": "orin-ura_reaction_01", "serif": _("なんの鍵ですか？")},
-						{"chara": "orin","exp": null, "serif": _("屋敷の鍵はみんなご主人様が持っているはずですケド")},
+						{"chara": "koishi","exp": "look_top",  serif1: _("ねえ鍵知ってる？"), serif2: _("ねえ鍵知ってる？"), serif3: _("ねえ鍵知ってる？"), serif4: _("ねえ鍵知ってる？")},
+						{"chara": "orin","exp": "orin-ura_reaction_01",  serif1: _("なんの鍵ですか？"), serif2: _("なんの鍵ですか？"), serif3: _("なんの鍵ですか？"), serif4: _("なんの鍵ですか？")},
+						{"chara": "orin","exp": null,  serif1: _("屋敷の鍵はみんなご主人様が持っているはずですケド"), serif2: _("屋敷の鍵はみんなご主人様が持っているはずですケド"), serif3: _("屋敷の鍵はみんなご主人様が持っているはずですケド"), serif4: _("屋敷の鍵はみんなご主人様が持っているはずですケド")},
 					],
 				]},
 			],
 			serif: [
-				{"chara": "orin","exp": "orin-wait", "serif": _("なーん")},
+				{"chara": "orin","exp": "orin-wait",  serif1: _("なーん"), serif2: _("なーん"), serif3: _("なーん"), serif4: _("なーん")},
 			],
 			x: 800, y: 450,
 			scale: 2/3,
@@ -134,10 +134,10 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "本",
 			serif: [
-				{"chara": "koishi","exp": null, "serif": _("日記！")},
-				{"chara": "koishi","exp": null, "serif": _("これお姉ちゃんの")},
+				{"chara": "koishi","exp": null,  serif1: _("日記！"), serif2: _("日記！"), serif3: _("日記だわ！"), serif4: _("日記だわ！")},
+				{"chara": "koishi","exp": null,  serif1: _("これお姉ちゃんの"), serif2: _("これお姉ちゃんの"), serif3: _("これお姉ちゃんの"), serif4: _("これお姉ちゃんの")},
 				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
-				{"chara": "koishi","exp": null, "serif": _("死んだんじゃなかったっけ......"), "option": {"getJournal": "journal023"}},
+				{"chara": "koishi","exp": null,  serif1: _("死んだんじゃなかったっけ......"), serif2: _("死んだんじゃなかったっけ......"), serif3: _("死んだんじゃなかったっけ......"), serif4: _("死んだんじゃなかったっけ......"), "option": {"getJournal": "journal023"}},
 			],
 			x: 340, y: 530,
 			scale: 0.7,

@@ -27,7 +27,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ベッド",
 			serif: [
-				{"chara": "koishi","serif":_("まだねむたくないもん")},
+				{"chara": "koishi", serif1: _("まだねむたくないもん"), serif2: _("まだねむたくないもん"), serif3: _("まだねむたくないもん"), serif4: _("まだねむたくないもん")},
 			],
 			x: 258, y: 389,
 			scale: 0.7,
@@ -40,7 +40,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
 			serif: [
-				{"chara": "koishi","serif":_("あけない")},
+				{"chara": "koishi", serif1: _("あけない"), serif2: _("あけない"), serif3: _("あけない"), serif4: _("あけない")},
 			],
 			x: 59, y: 496,
 			scale: 0.7,
@@ -53,8 +53,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "本",
 			serif: [
-				{"chara": "koishi","serif":_("にっきさんひさしぶり！")},
-				{"chara": "koishi","serif":_("またね！")},
+				{"chara": "koishi","serif": _("にっきさんひさしぶり！")},
+				{"chara": "koishi","serif": _("またね！")},
 			],
 			x: 340, y: 530,
 			scale: 0.7,
@@ -71,8 +71,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "クレヨン",
 			serif: [
-				{"chara": "koishi","serif":_("くれおん！")},
-				{"chara": "koishi","serif":_("ピンクなくなっちゃったなー")},
+				{"chara": "koishi", serif1: _("くれおん！"), serif2: _("くれおん！"), serif3: _("くれおん！"), serif4: _("くれおん！")},
+				{"chara": "koishi","serif": _("ピンクなくなっちゃったなー")},
 			],
 			x: 600, y: 530,
 			scale: 0.7,
@@ -89,7 +89,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "まど",
 			serif: [
-				{"chara": "koishi","serif":_("なにかいる！")},
+				{"chara": "koishi", serif1: _("なにかいる！"), serif2: _("なにかいる！"), serif3: _("なにかいる！"), serif4: _("なにかいる！")},
 			],
 			x: 5, y: 180,
 			scale: 0.7,
@@ -107,9 +107,9 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "部屋の隅",
 			serif: [
-				{"chara": "koishi","serif":_("ここジョンのばしょ！")},
-				{"chara": "koishi","serif":_("いいこいいこ！")},
-				{"chara": "koishi","serif":_("ばいばい")},
+				{"chara": "koishi", serif1: _("ここジョンのばしょ！"), serif2: _("ここジョンのばしょ！"), serif3: _("ここジョンのばしょ！"), serif4: _("ここジョンのばしょ！")},
+				{"chara": "koishi", serif1: _("いいこいいこ！"), serif2: _("いいこいいこ！"), serif3: _("いいこいいこ！"), serif4: _("いいこいいこ！")},
+				{"chara": "koishi", serif1: _("ばいばい"), serif2: _("ばいばい"), serif3: _("ばいばい"), serif4: _("ばいばい")},
 			],
 			width: 150, height: 200,
 			x: 670, y: 300,

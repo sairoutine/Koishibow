@@ -29,7 +29,7 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
-				{"chara": "renko", "exp": "renko-reaction_06", "serif":_("ここをキャンプ地としましょ")},
+				{"chara": "renko", "exp": "renko-reaction_06",  serif1: _("ここをキャンプ地としましょ"), serif2: _("ここをキャンプ地としましょ"), serif3: _("ここをキャンプ地としましょ"), serif4: _("ここをキャンプ地としましょ")},
 			],
 			x: 960*2/3, y: 505*2/3,
 			anime1: "renko-wait",
@@ -50,7 +50,7 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
-				{"chara": "merry", "exp": "merry-reaction_06", "serif":_("わからなかったらカンでもいいのよ")},
+				{"chara": "merry", "exp": "merry-reaction_06",  serif1: _("わからなかったらカンでもいいのよ"), serif2: _("わからなかったらカンでもいいのよ"), serif3: _("わからなかったらカンでもいいのよ"), serif4: _("わからなかったらカンでもいいのよ")},
 			],
 			x: 1160*2/3, y: 505*2/3,
 			anime1: "merry-wait",

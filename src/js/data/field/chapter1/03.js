@@ -56,7 +56,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ペンキ",
 			serif: [
-				{"chara": "koishi","serif":_("これさわるといろがかわるんだよ！")},
+				{"chara": "koishi", serif1: _("これさわるといろがかわるんだよ！"), serif2: _("これさわるといろがかわるんだよ！"), serif3: _("これさわるといろがかわるんだよ！"), serif4: _("これさわるといろがかわるんだよ！")},
 			],
 			x:887*2/3, y:715*2/3,
 			scale: 2/3,
@@ -82,7 +82,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ハシゴ",
 			serif: [
-				{"chara": "koishi","serif":_("おつきさまとれるかな")},
+				{"chara": "koishi", serif1: _("おつきさまとれるかな"), serif2: _("おつきさまとれるかな"), serif3: _("おつきさまとれるかな"), serif4: _("おつきさまとれるかな")},
 			],
 			x:1053*2/3, y:484*2/3,
 			scale: 2/3,
@@ -101,13 +101,13 @@ module.exports = {
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_03-" + I + "-_useItem-10"], "serifs": [
 					[
-						{"chara": I,        "exp": "tewi-ura_reaction_02", "serif":_("うう、なんとかなった......")},
-						{"chara": I,        "exp": "tewi-ura_reaction_02", "serif":_("今度はもっと計画的にやろう")},
+						{"chara": I,        "exp": "tewi-ura_reaction_02",  serif1: _("うう、なんとかなった......"), serif2: _("うう、なんとかなった......"), serif3: _("うう、なんとかなった......"), serif4: _("うう、なんとかなった......")},
+						{"chara": I,        "exp": "tewi-ura_reaction_02",  serif1: _("今度はもっと計画的にやろう"), serif2: _("今度はもっと計画的にやろう"), serif3: _("今度はもっと計画的にやろう"), serif4: _("今度はもっと計画的にやろう")},
 					],
 					[
-						{"chara": I,        "exp": "tewi-ura_reaction_01", "serif":_("お仕事しなきゃなあ")},
-						{"chara": I,        "exp": "tewi-ura_reaction_01", "serif":_("でもしたくないなあ")},
-						{"chara": I,        "exp": "tewi-ura_reaction_01", "serif":_("別に怒られないしあとでいっか......")},
+						{"chara": I,        "exp": "tewi-ura_reaction_01",  serif1: _("お仕事しなきゃなあ"), serif2: _("お仕事しなきゃなあ"), serif3: _("お仕事しなきゃなあ"), serif4: _("お仕事しなきゃなあ")},
+						{"chara": I,        "exp": "tewi-ura_reaction_01",  serif1: _("でもしたくないなあ"), serif2: _("でもしたくないなあ"), serif3: _("でもしたくないなあ"), serif4: _("でもしたくないなあ")},
+						{"chara": I,        "exp": "tewi-ura_reaction_01",  serif1: _("別に怒られないしあとでいっか......"), serif2: _("別に怒られないしあとでいっか......"), serif3: _("別に怒られないしあとでいっか......"), serif4: _("別に怒られないしあとでいっか......")},
 					],
 
 				]}
@@ -117,12 +117,12 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["10"], "serifs": [
 					[
 						{"id": "chapter1_03-" + I + "-_useItem-10", "save": true},
-						{"chara": I,        "exp": "tewi-reaction_04", "serif":_("げえっ！"), "option": {"useItem": "10"}},
-						{"chara": I,        "exp": "back", "serif":_("い、いつからそこに")},
-						{"chara": "koishi", "exp": "back", "serif":_(".............")},
-						{"chara": I,        "exp": "tewi-reaction_01", "serif":_("わかりました！")},
-						{"chara": I,        "exp": "tewi-reaction_03", "serif":_("わかりましたよ！")},
-						{"chara": I,        "exp": "tewi-reaction_01", "serif":_("いまやるから、もうちょっとまっててくれよ")},
+						{"chara": I,        "exp": "tewi-reaction_04",  serif1: _("げえっ！"), serif2: _("げえっ！"), serif3: _("げえっ！"), serif4: _("げえっ！"), "option": {"useItem": "10"}},
+						{"chara": I,        "exp": "back",  serif1: _("い、いつからそこに"), serif2: _("い、いつからそこに"), serif3: _("い、いつからそこに"), serif4: _("い、いつからそこに")},
+						{"chara": "koishi", "exp": "back", "serif": _(".............")},
+						{"chara": I,        "exp": "tewi-reaction_01",  serif1: _("わかりました！"), serif2: _("わかりました！"), serif3: _("わかりました！"), serif4: _("わかりました！")},
+						{"chara": I,        "exp": "tewi-reaction_03",  serif1: _("わかりましたよ！"), serif2: _("わかりましたよ！"), serif3: _("わかりましたよ！"), serif4: _("わかりましたよ！")},
+						{"chara": I,        "exp": "tewi-reaction_01",  serif1: _("いまやるから、もうちょっとまっててくれよ"), serif2: _("いまやるから、もうちょっとまっててくれよ"), serif3: _("いまやるから、もうちょっとまっててくれよ"), serif4: _("いまやるから、もうちょっとまっててくれよ")},
 						{"chara": "koishi", "serif": "", "option": {"getItem": "05"}},
 						{"id": "chapter1_03-afterWork", "save": true},
 						{"chara": "koishi", "serif": "", "option": {"changeField": "chapter1_03"}},
@@ -130,32 +130,32 @@ module.exports = {
 					[
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1_03-" + I + "-_useItem-10"], "serifs": [
 							[
-								{"chara": I,        "exp": "tewi-reaction_02", "serif":_("フーっ、まいったぜ……")},
-								{"chara": "koishi", "exp": "back", "serif":_("何が？")},
-								{"chara": I,        "exp": "tewi-wait", "serif":_("いやこっちの話")},
-								{"chara": I,        "exp": "tewi-reaction_02", "serif":_("とにかく疲れちまったから放っておいてくれ")},
+								{"chara": I,        "exp": "tewi-reaction_02",  serif1: _("フーっ、まいったぜ……"), serif2: _("フーっ、まいったぜ……"), serif3: _("フーっ、まいったぜ……"), serif4: _("フーっ、まいったぜ……")},
+								{"chara": "koishi", "exp": "back",  serif1: _("何が？"), serif2: _("何が？"), serif3: _("何が？"), serif4: _("何が？")},
+								{"chara": I,        "exp": "tewi-wait",  serif1: _("いやこっちの話"), serif2: _("いやこっちの話"), serif3: _("いやこっちの話"), serif4: _("いやこっちの話")},
+								{"chara": I,        "exp": "tewi-reaction_02",  serif1: _("とにかく疲れちまったから放っておいてくれ"), serif2: _("とにかく疲れちまったから放っておいてくれ"), serif3: _("とにかく疲れちまったから放っておいてくれ"), serif4: _("とにかく疲れちまったから放っておいてくれ")},
 							],
 							[
 								{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter1_03-" + I + "limit-01", 1], "serifs": [
 									[
 										// 1-4
-										{"chara": I,        "exp": "tewi-reaction_01", "serif":_("なんだい！")},
-										{"chara": "koishi", "exp": "look_front", "serif":_("なにしてるの？")},
-										{"chara": I,        "exp": "back", "serif":_("なにもしてないんだよ")},
-										{"chara": "koishi", "exp": "back", "serif":_("へんなの")},
-										{"chara": I,        "exp": "back", "serif":_("みせものじゃないんだ、いきな！")},
+										{"chara": I,        "exp": "tewi-reaction_01",  serif1: _("なんだい！"), serif2: _("なんだい！"), serif3: _("なんだい！"), serif4: _("なんだい！")},
+										{"chara": "koishi", "exp": "look_front",  serif1: _("なにしてるの？"), serif2: _("なにしてるの？"), serif3: _("なにしてるの？"), serif4: _("なにしてるの？")},
+										{"chara": I,        "exp": "back",  serif1: _("なにもしてないんだよ"), serif2: _("なにもしてないんだよ"), serif3: _("なにもしてないんだよ"), serif4: _("なにもしてないんだよ")},
+										{"chara": "koishi", "exp": "back", "serif": _("へんなの")},
+										{"chara": I,        "exp": "back",  serif1: _("みせものじゃないんだ、いきな！"), serif2: _("みせものじゃないんだ、いきな！"), serif3: _("みせものじゃないんだ、いきな！"), serif4: _("みせものじゃないんだ、いきな！")},
 									],
 
 									[
-										{"chara": I,        "exp": "tewi-reaction_02", "serif":_("おまえひまなのか？")},
-										{"chara": I,        "exp": "tewi-reaction_02", "serif":_("あのなあ")},
-										{"chara": "koishi", "exp": "back", "serif":_("なに？")},
-										{"chara": I,        "exp": "tewi-wait", "serif":_("おまえやることないのか？")},
-										{"chara": "koishi", "exp": "back", "serif":_("えっと、あるよ")},
-										{"chara": I,        "exp": "tewi-reaction_01", "serif":_("じゃーとっとと行きな！")},
-										{"chara": "koishi", "exp": "back", "serif":_("でも、わたしなにをしなきゃいけないんだっけ")},
-										{"chara": I,        "exp": "tewi-reaction_03", "serif":_("わたしが知るもんか！")},
-										{"chara": "koishi", "exp": "back", "serif":_("……")},
+										{"chara": I,        "exp": "tewi-reaction_02",  serif1: _("おまえひまなのか？"), serif2: _("おまえひまなのか？"), serif3: _("おまえひまなのか？"), serif4: _("おまえひまなのか？")},
+										{"chara": I,        "exp": "tewi-reaction_02",  serif1: _("あのなあ"), serif2: _("あのなあ"), serif3: _("あのなあ"), serif4: _("あのなあ")},
+										{"chara": "koishi", "exp": "back", "serif": _("なに？")},
+										{"chara": I,        "exp": "tewi-wait",  serif1: _("おまえやることないのか？"), serif2: _("おまえやることないのか？"), serif3: _("おまえやることないのか？"), serif4: _("おまえやることないのか？")},
+										{"chara": "koishi", "exp": "back",  serif1: _("えっと、あるよ"), serif2: _("えっと、あるよ"), serif3: _("えっと、あるよ"), serif4: _("えっと、あるよ")},
+										{"chara": I,        "exp": "tewi-reaction_01",  serif1: _("じゃーとっとと行きな！"), serif2: _("じゃーとっとと行きな！"), serif3: _("じゃーとっとと行きな！"), serif4: _("じゃーとっとと行きな！")},
+										{"chara": "koishi", "exp": "back",  serif1: _("でも、わたしなにをしなきゃいけないんだっけ"), serif2: _("でも、わたしなにをしなきゃいけないんだっけ"), serif3: _("でも、わたしなにをしなきゃいけないんだっけ"), serif4: _("でも、わたしなにをしなきゃいけないんだっけ")},
+										{"chara": I,        "exp": "tewi-reaction_03",  serif1: _("わたしが知るもんか！"), serif2: _("わたしが知るもんか！"), serif3: _("わたしが知るもんか！"), serif4: _("わたしが知るもんか！")},
+										{"chara": "koishi", "exp": "back",  serif1: _("……"), serif2: _("……"), serif3: _("……"), serif4: _("……")},
 									],
 								]}
 							],

@@ -28,7 +28,7 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
-				{"chara": "renko", "exp": "renko-reaction_09", "serif":_("キャンプ地はあっちよ")},
+				{"chara": "renko", "exp": "renko-reaction_09",  serif1: _("キャンプ地はあっちよ"), serif2: _("キャンプ地はあっちよ"), serif3: _("キャンプ地はあっちよ"), serif4: _("キャンプ地はあっちよ")},
 			],
 			x: 960*2/3, y: 505*2/3,
 			anime1: "renko-wait",

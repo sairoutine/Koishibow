@@ -39,7 +39,7 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "koishi", "exp": "yes", "serif":_("よく寝た！")},
+						{"chara": "koishi", "exp": "yes",  serif1: _("よく寝た！"), serif2: _("よく寝た！"), serif3: _("よく寝た！"), serif4: _("よく寝た！")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_myroom_50025"]}
@@ -56,8 +56,8 @@ module.exports = {
 					[
 						{"type": "process", "value": "playTalk", "arguments": [
 							[
-								{"chara": "animal_araiguma","exp": "animal_araiguma-wait", "serif": _("くくくくく")},
-								{"chara": "animal_araiguma","exp": "animal_araiguma-wait", "serif": _("キュ"), "option": {"getJournal": "journal033"}},
+								{"chara": "animal_araiguma","exp": "animal_araiguma-wait",  serif1: _("くくくくく"), serif2: _("くくくくく"), serif3: _("くくくくく"), serif4: _("くくくくく")},
+								{"chara": "animal_araiguma","exp": "animal_araiguma-wait",  serif1: _("キュ"), serif2: _("キュ"), serif3: _("キュ"), serif4: _("キュ"), "option": {"getJournal": "journal033"}},
 							]
 						]},
 						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_myroom_10665"]}
@@ -76,7 +76,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ベッド",
 			serif: [
-				{"chara": "koishi", "serif":_("もう一杯寝た！")},
+				{"chara": "koishi",  serif1: _("もう一杯寝た！"), serif2: _("もう一杯寝た！"), serif3: _("もう寝ていられないわ"), serif4: _("もう寝ていられないわ")},
 			],
 			x: 258, y: 389,
 			scale: 0.7,
@@ -89,7 +89,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
 			serif: [
-				{"chara": "koishi","serif":_("あけたくない")},
+				{"chara": "koishi", serif1: _("あけたくない"), serif2: _("あけたくない"), serif3: _("ここおっきな蜘蛛がいるのよ！"), serif4: _("ここおっきな蜘蛛がいるのよ！")},
 			],
 			x: 59, y: 496,
 			scale: 0.7,
@@ -102,9 +102,9 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "本",
 			serif: [
-				{"chara": "koishi","serif":_("この日記")},
-				{"chara": "koishi","serif":_("ページなくなっちゃってる！")},
-				{"chara": "koishi","serif":_("だれがとったの！？"), "option": {"getJournal": "journal021"}},
+				{"chara": "koishi", serif1: _("この日記"), serif2: _("この日記"), serif3: _("この日記"), serif4: _("この日記")},
+				{"chara": "koishi", serif1: _("ページなくなっちゃってる！"), serif2: _("ページなくなっちゃってる！"), serif3: _("ページなくなっちゃってる！"), serif4: _("ページなくなっちゃってる！")},
+				{"chara": "koishi", serif1: _("だれがとったの！？"), serif2: _("だれがとったの！？"), serif3: _("だれがとったの！？"), serif4: _("だれがとったの！？"), "option": {"getJournal": "journal021"}},
 			],
 			x: 340, y: 530,
 			scale: 0.7,
@@ -121,8 +121,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "クレヨン",
 			serif: [
-				{"chara": "koishi","serif":_("あはは")},
-				{"chara": "koishi","serif":_("もういらないもーん")},
+				{"chara": "koishi","serif": _("あはは")},
+				{"chara": "koishi", serif1: _("もういらないもーん"), serif2: _("もういらないもーん"), serif3: _("今は緑色が欲しい！"), serif4: _("今は緑色が欲しい！")},
 			],
 			x: 600, y: 530,
 			scale: 0.7,
@@ -139,8 +139,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "まど",
 			serif: [
-				{"chara": "koishi","serif":_("また来てる！")},
-				{"chara": "koishi","serif":_("誰？")},
+				{"chara": "koishi", serif1: _("また来てる！"), serif2: _("また来てる！"), serif3: _("あの子なんなんだろう"), serif4: _("あの子なんなんだろう")},
+				{"chara": "koishi","serif": _("誰？")},
 			],
 			x: 5, y: 180,
 			scale: 0.7,
@@ -158,8 +158,8 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "部屋の隅",
 			serif: [
-				{"chara": "koishi","serif":_("じょーん")},
-				{"chara": "koishi","serif":_("出てこないなー")},
+				{"chara": "koishi", serif1: _("じょーん"), serif2: _("じょーん"), serif3: _("ジョンまだ帰ってこない"), serif4: _("ジョンまだ帰ってこない")},
+				{"chara": "koishi", serif1: _("出てこないなー"), serif2: _("出てこないなー"), serif3: _("出てこないなー"), serif4: _("出てこないなー")},
 			],
 			width: 150, height: 200,
 			x: 670, y: 300,
@@ -174,20 +174,20 @@ module.exports = {
 			name: "アライグマ",
 			loop: true,
 			serif_back: [
-				{"chara": "koishi","exp": "look_front", "serif": _("ちょっと！")},
-				{"chara": "koishi","exp": null, "serif": _("目玉を転がしたのあなた？")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("目玉？")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("知らないよおそんなの")},
-				{"chara": "koishi","exp": "look_top", "serif": _("ほんとう？")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("でも目玉かあ")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01", "serif": _("見せてくれよ")},
+				{"chara": "koishi","exp": "look_front",  serif1: _("ちょっと！"), serif2: _("ちょっと！"), serif3: _("ちょっと！"), serif4: _("ちょっと！")},
+				{"chara": "koishi","exp": null,  serif1: _("目玉を転がしたのあなた？"), serif2: _("目玉を転がしたのあなた？"), serif3: _("目玉を転がしたのあなた？"), serif4: _("目玉を転がしたのあなた？")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("目玉？"), serif2: _("目玉？"), serif3: _("目玉？"), serif4: _("目玉？")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("知らないよおそんなの"), serif2: _("知らないよおそんなの"), serif3: _("知らないよおそんなの"), serif4: _("知らないよおそんなの")},
+				{"chara": "koishi","exp": "look_top",  serif1: _("ほんとう？"), serif2: _("ほんとう？"), serif3: _("ほんとう？"), serif4: _("ほんとう？")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("でも目玉かあ"), serif2: _("でも目玉かあ"), serif3: _("でも目玉かあ"), serif4: _("でも目玉かあ")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01",  serif1: _("見せてくれよ"), serif2: _("見せてくれよ"), serif3: _("見せてくれよ"), serif4: _("見せてくれよ")},
 				{"chara": "koishi","exp": "yes", "serif": _("うん"), "option": {"useItem": "32"}},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_02", "serif": _("グシグシグシ")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01", "serif": _("ほら、磨いたぞ！"), "option": {"getItem": "32"}},
-				{"chara": "koishi","exp": "look_front", "serif": _("えぇ")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("この目玉誰から引っこ抜いたんだろうなあ")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_02",  serif1: _("グシグシグシ"), serif2: _("グシグシグシ"), serif3: _("グシグシグシ"), serif4: _("グシグシグシ")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01",  serif1: _("ほら、磨いたぞ！"), serif2: _("ほら、磨いたぞ！"), serif3: _("ほら、磨いたぞ！"), serif4: _("ほら、磨いたぞ！"), "option": {"getItem": "32"}},
+				{"chara": "koishi","exp": "look_front",  serif1: _("えぇ"), serif2: _("えぇ"), serif3: _("えぇ"), serif4: _("えぇ")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("この目玉誰から引っこ抜いたんだろうなあ"), serif2: _("この目玉誰から引っこ抜いたんだろうなあ"), serif3: _("この目玉誰から引っこ抜いたんだろうなあ"), serif4: _("この目玉誰から引っこ抜いたんだろうなあ")},
 				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait", "serif": _("どこかで見たんだけどなあ")},
+				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("どこかで見たんだけどなあ"), serif2: _("どこかで見たんだけどなあ"), serif3: _("どこかで見たんだけどなあ"), serif4: _("どこかで見たんだけどなあ")},
 				{"chara": "koishi","exp": null, "serif": _("......")},
 				{"id": "chapter5-myroom-araiguma_talk1", "save": true},
 			],

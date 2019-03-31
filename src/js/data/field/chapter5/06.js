@@ -25,9 +25,9 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "oku", "serif":_("ぐわあ、がー、ぐわあ")},
-						{"chara": "koishi", "exp": "look_front", "serif":_("なんだろ！")},
-						{"chara": "koishi", "exp": "yes", "serif":_("へんなこえ！")},
+						{"chara": "oku",  serif1: _("ぐわあ、がー、ぐわあ"), serif2: _("ぐわあ、がー、ぐわあ"), serif3: _("ぐわあ、がー、ぐわあ"), serif4: _("ぐわあ、がー、ぐわあ")},
+						{"chara": "koishi", "exp": "look_front",  serif1: _("なんだろ！"), serif2: _("なんだろ！"), serif3: _("なにかしら"), serif4: _("なにかしら")},
+						{"chara": "koishi", "exp": "yes",  serif1: _("へんなこえ！"), serif2: _("へんなこえ！"), serif3: _("いってみましょ"), serif4: _("いってみましょ")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_06_10130"]}
@@ -62,25 +62,25 @@ module.exports = {
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_10-animal_hashi-limit", 2], "serifs": [
 					[
-						{"chara": "koishi","exp": null, "serif": _("すごい顔だね")},
-						{"chara": "animal_hashi","exp": "animal_hashi-ura_reaction_01", "serif": _("なんだお前は")},
-						{"chara": "animal_hashi","exp": null, "serif": _("失礼だな")},
+						{"chara": "koishi","exp": null,  serif1: _("すごい顔だね"), serif2: _("すごい顔だね"), serif3: _("すごい顔だね"), serif4: _("すごい顔だね")},
+						{"chara": "animal_hashi","exp": "animal_hashi-ura_reaction_01",  serif1: _("なんだお前は"), serif2: _("なんだお前は"), serif3: _("なんだお前は"), serif4: _("なんだお前は")},
+						{"chara": "animal_hashi","exp": null,  serif1: _("失礼だな"), serif2: _("失礼だな"), serif3: _("失礼だな"), serif4: _("失礼だな")},
 						{"chara": "koishi","exp": "look_bottom", "serif": _("......"), "option": {"getJournal": "journal025"}},
 					],
 					[
-						{"chara": "koishi","exp": null, "serif": _("なんで怒ってるの")},
-						{"chara": "animal_hashi","exp": "animal_hashi-ura_wait", "serif": _("いや......")},
-						{"chara": "animal_hashi","exp": "animal_hashi-ura_wait", "serif": _("別に......")},
-						{"chara": "koishi","exp": "look_front", "serif": _("おこってないのにそんな顔なんですか")},
-						{"chara": "animal_hashi","exp": "animal_hashi-ura_reaction_01", "serif": _("お前失礼だな")},
-						{"chara": "animal_hashi","exp": null, "serif": _("丁寧に聞いても駄目だぞ")},
+						{"chara": "koishi","exp": null,  serif1: _("なんで怒ってるの"), serif2: _("なんで怒ってるの"), serif3: _("何かあったの"), serif4: _("何かあったの")},
+						{"chara": "animal_hashi","exp": "animal_hashi-ura_wait",  serif1: _("いや......"), serif2: _("いや......"), serif3: _("いや......"), serif4: _("いや......")},
+						{"chara": "animal_hashi","exp": "animal_hashi-ura_wait",  serif1: _("別に......"), serif2: _("別に......"), serif3: _("別に......"), serif4: _("別に......")},
+						{"chara": "koishi","exp": "look_front",  serif1: _("おこってないのにそんな顔なんですか"), serif2: _("おこってないのにそんな顔なんですか"), serif3: _("おこってないのにそんな顔なんですか"), serif4: _("おこってないのにそんな顔なんですか")},
+						{"chara": "animal_hashi","exp": "animal_hashi-ura_reaction_01",  serif1: _("お前失礼だな"), serif2: _("お前失礼だな"), serif3: _("お前失礼だな"), serif4: _("お前失礼だな")},
+						{"chara": "animal_hashi","exp": null,  serif1: _("丁寧に聞いても駄目だぞ"), serif2: _("丁寧に聞いても駄目だぞ"), serif3: _("丁寧に聞いても駄目だぞ"), serif4: _("丁寧に聞いても駄目だぞ")},
 						{"chara": "koishi","exp": "yes", "serif": _("はい")},
 					],
 				]},
 			],
 			serif: [
-				{"chara": "animal_hashi","exp": "animal_hashi-wait", "serif": _("キュウキュウ")},
-				{"chara": "animal_hashi","exp": "animal_hashi-wait", "serif": _("ココココココココ")},
+				{"chara": "animal_hashi","exp": "animal_hashi-wait",  serif1: _("キュウキュウ"), serif2: _("キュウキュウ"), serif3: _("キュウキュウ"), serif4: _("キュウキュウ")},
+				{"chara": "animal_hashi","exp": "animal_hashi-wait",  serif1: _("ココココココココ"), serif2: _("ココココココココ"), serif3: _("ココココココココ"), serif4: _("ココココココココ")},
 				{"chara": "koishi","exp": "look_bottom", "serif": _("こわい")},
 			],
 			x: 750, y: 400,

@@ -35,7 +35,7 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "koishi", "exp": "look_front", "serif":_("まっくろ！")},
+						{"chara": "koishi", "exp": "look_front",  serif1: _("まっくろ！"), serif2: _("まっくろ！"), serif3: _("まっくら！"), serif4: _("まっくら！")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_hospital_carridor1_50090"]}
@@ -49,7 +49,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ストレッチャー",
 			serif: [
-				{"chara": "koishi","serif":_("死んだ人を運ぶの")},
+				{"chara": "koishi", serif1: _("死んだ人を運ぶの"), serif2: _("死んだ人を運ぶの"), serif3: _("死んだ人を運ぶの"), serif4: _("死んだ人を運ぶの")},
 			],
 			x: 814,
 			y: 608,
@@ -76,7 +76,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "救急箱",
 			serif: [
-				{"chara": "koishi","serif":_("怪我なんてしてないもーん")},
+				{"chara": "koishi", serif1: _("怪我なんてしてないもーん"), serif2: _("怪我なんてしてないもーん"), serif3: _("メリーと蓮子大丈夫かな"), serif4: _("メリーと蓮子大丈夫かな")},
 			],
 			x: 281,
 			y: 280,

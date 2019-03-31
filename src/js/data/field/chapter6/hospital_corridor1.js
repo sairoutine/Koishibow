@@ -28,8 +28,8 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "bm", "exp": null, "serif":_("ォギャーッ")},
-						{"chara": "koishi", "exp": "look_top", "serif":_("なに！？")},
+						{"chara": "bm", "exp": null,  serif1: _("ォギャーッ"), serif2: _("ォギャーッ"), serif3: _("ォギャーッ"), serif4: _("ォギャーッ")},
+						{"chara": "koishi", "exp": "look_top",  serif1: _("なに！？"), serif2: _("えっ"), serif3: _("えっ"), serif4: _("なにかしら......")},
 						{"id": "chapter6-01-show_bm", "save": true},
 					]
 				]},
@@ -49,7 +49,7 @@ module.exports = {
 						{"type": "process", "value": "playTalk", "arguments": [
 							[
 								{"chara": "koishi","exp": "afraid", "serif": _("なにあれ")},
-								{"chara": "bm","exp": null, "serif": _("ア˝ー！")},
+								{"chara": "bm","exp": null,  serif1: _("ア˝ー！"), serif2: _("ア˝ー！"), serif3: _("ア˝ー！"), serif4: _("ア˝ー！")},
 								{"chara": "koishi","exp": "look_bottom", "serif": _("こわい")},
 							]
 						]},
@@ -70,7 +70,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ストレッチャー",
 			serif: [
-				{"chara": "koishi","serif":_("へんなベッド")},
+				{"chara": "koishi", serif1: _("へんなベッド"), serif2: _("へんなベッド"), serif3: _("へんなベッド"), serif4: _("へんなベッド")},
 			],
 			x: 814,
 			y: 608,
@@ -87,7 +87,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
 			serif: [
-				{"chara": "koishi","serif":_("くすりはいらない……")},
+				{"chara": "koishi", serif1: _("くすりはいらない……"), serif2: _("くすりはいらない……"), serif3: _("くすりはいらない……"), serif4: _("くすりはいらない……")},
 			],
 			x: 279,
 			y: 378,
@@ -99,8 +99,8 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "救急箱",
 			serif: [
-				{"chara": "koishi","serif":_("くーくーばこ！")},
-				{"chara": "koishi","serif":_("けがしてないよ！")},
+				{"chara": "koishi","serif": _("くーくーばこ！")},
+				{"chara": "koishi","serif": _("けがしてないよ！")},
 			],
 			x: 281,
 			y: 280,
@@ -115,7 +115,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "メス",
 			serif: [
-				{"chara": "koishi","serif":_("ナイフ")},
+				{"chara": "koishi","serif": _("ナイフ")},
 			],
 			x: 853,
 			y: 534,

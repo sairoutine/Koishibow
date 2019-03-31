@@ -29,7 +29,7 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "koishi", "exp": "look_top", "serif":_("目が回ってきた")},
+						{"chara": "koishi", "exp": "look_top",  serif1: _("目が回ってきた"), serif2: _("目が回ってきた"), serif3: _("目が回ってきた"), serif4: _("目が回ってきた")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_13_firstaccess"]}
@@ -61,16 +61,16 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ベンチ",
 			serif: [
-				{"chara": "chocolate_box","exp": null, "serif": _("やあ")},
+				{"chara": "chocolate_box","exp": null,  serif1: _("やあ"), serif2: _("やあ"), serif3: _("やあ"), serif4: _("やあ")},
 				{"chara": "koishi","exp": "look_front", "serif": _("なに")},
-				{"chara": "chocolate_box","exp": null, "serif": _("ここまで旅してきてどうだった？")},
-				{"chara": "koishi","exp": "look_front", "serif": _("どういうこと？")},
-				{"chara": "chocolate_box","exp": null, "serif": _("人生はチョコレートの箱")},
-				{"chara": "chocolate_box","exp": null, "serif": _("どんな素敵なものが詰まっているか――")},
-				{"chara": "chocolate_box","exp": null, "serif": _("開けなければわからない")},
-				{"chara": "koishi","exp": "look_top", "serif": _("ぜんぜんわかんないんだけど")},
-				{"chara": "chocolate_box","exp": null, "serif": _("君は早く”目を開けて”中身を見ないとね")},
-				{"chara": "chocolate_box","exp": null, "serif": _("僕を開けて！")},
+				{"chara": "chocolate_box","exp": null,  serif1: _("ここまで旅してきてどうだった？"), serif2: _("ここまで旅してきてどうだった？"), serif3: _("ここまで旅してきてどうだった？"), serif4: _("ここまで旅してきてどうだった？")},
+				{"chara": "koishi","exp": "look_front",  serif1: _("どういうこと？"), serif2: _("どういうこと？"), serif3: _("どういうこと？"), serif4: _("どういうこと？")},
+				{"chara": "chocolate_box","exp": null,  serif1: _("人生はチョコレートの箱"), serif2: _("人生はチョコレートの箱"), serif3: _("人生はチョコレートの箱"), serif4: _("人生はチョコレートの箱")},
+				{"chara": "chocolate_box","exp": null,  serif1: _("どんな素敵なものが詰まっているか――"), serif2: _("どんな素敵なものが詰まっているか――"), serif3: _("どんな素敵なものが詰まっているか――"), serif4: _("どんな素敵なものが詰まっているか――")},
+				{"chara": "chocolate_box","exp": null,  serif1: _("開けなければわからない"), serif2: _("開けなければわからない"), serif3: _("開けなければわからない"), serif4: _("開けなければわからない")},
+				{"chara": "koishi","exp": "look_top",  serif1: _("ぜんぜんわかんないんだけど"), serif2: _("ぜんぜんわかんないんだけど"), serif3: _("ぜんぜんわかんないんだけど"), serif4: _("......そうかしら")},
+				{"chara": "chocolate_box","exp": null,  serif1: _("君は早く”目を開けて”中身を見ないとね"), serif2: _("君は早く”目を開けて”中身を見ないとね"), serif3: _("君は早く”目を開けて”中身を見ないとね"), serif4: _("君は早く”目を開けて”中身を見ないとね")},
+				{"chara": "chocolate_box","exp": null,  serif1: _("僕を開けて！"), serif2: _("僕を開けて！"), serif3: _("僕を開けて！"), serif4: _("僕を開けて！")},
 			],
 			x: 693.50*2/3, y:619.50*2/3,
 			scale: 2/3,
@@ -84,12 +84,12 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "チョコレート箱",
 			serif: [
-				{"chara": "koishi","exp": "touch", "serif": _("はさみ！"), "option": {"getItem": "36"}},
-				{"chara": "koishi","exp": "yes", "serif": _("いい武器！")},
-				{"chara": "koishi","exp": null, "serif": _("チョコレートさんありがとう！")},
-				{"chara": "koishi","exp": "look_top", "serif": _("へへへ")},
-				{"chara": "bm","exp": null, "serif": _("あぶぶぶ")},
-				{"chara": "koishi","exp": "look_front", "serif": _("！"), "option": {"playEvent": "chapter6-13-event-01"}},
+				{"chara": "koishi","exp": "touch",  serif1: _("はさみ！"), serif2: _("はさみ！"), serif3: _("はさみ！"), serif4: _("はさみ！"), "option": {"getItem": "36"}},
+				{"chara": "koishi","exp": "yes",  serif1: _("いい武器！"), serif2: _("いい武器！"), serif3: _("いい武器！"), serif4: _("はさみでなにをしたらいいのかしら")},
+				{"chara": "koishi","exp": null,  serif1: _("チョコレートさんありがとう！"), serif2: _("チョコレートさんありがとう！"), serif3: _("チョコレートさんありがとう！"), serif4: _("......")},
+				{"chara": "koishi","exp": "look_top",  serif1: _("へへへ"), serif2: _("へへへ"), serif3: _("へへへ"), serif4: _("自分で考えなきゃダメ？")},
+				{"chara": "bm","exp": null,  serif1: _("あぶぶぶ"), serif2: _("あぶぶぶ"), serif3: _("あぶぶぶ"), serif4: _("あぶぶぶ")},
+				{"chara": "koishi","exp": "look_front",  serif1: _("！"), serif2: _("！"), serif3: _("！"), serif4: _("！"), "option": {"playEvent": "chapter6-13-event-01"}},
 			],
 			x:858.50*2/3, y:592*2/3,
 			scale: 2/3,

@@ -48,17 +48,17 @@ module.exports = {
 			serif: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_35-merry-limit", 2], "serifs": [
 					[
-						{"chara": "koishi", "exp": "look_front", "serif":_("ねえ、お友達いっぱいいるの")},
-						{"chara": "merry", "exp": "merry-reaction_09", "serif":_("あんまりいないわね")},
-						{"chara": "koishi", "exp": "look_front", "serif":_("私はたくさんいるよ")},
-						{"chara": "merry", "exp": "merry-reaction_06", "serif":_("素敵ね")},
-						{"chara": "merry", "exp": null, "serif":_("なんて子？")},
-						{"chara": "koishi", "exp": "look_top", "serif":_("なにが？")},
-						{"chara": "merry", "exp": "merry-reaction_09", "serif":_("お友達の名前は？")},
+						{"chara": "koishi", "exp": "look_front",  serif1: _("ねえ、お友達いっぱいいるの"), serif2: _("ねえ、お友達いっぱいいるの"), serif3: _("ねえ、お友達いっぱいいるの"), serif4: _("ねえ、お友達いっぱいいるの")},
+						{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("あんまりいないわね"), serif2: _("あんまりいないわね"), serif3: _("あんまりいないわね"), serif4: _("あんまりいないわね")},
+						{"chara": "koishi", "exp": "look_front",  serif1: _("私はたくさんいるよ"), serif2: _("私はたくさんいるよ"), serif3: _("私はたくさんいるよ"), serif4: _("私はたくさんいるよ")},
+						{"chara": "merry", "exp": "merry-reaction_06",  serif1: _("素敵ね"), serif2: _("素敵ね"), serif3: _("素敵ね"), serif4: _("素敵ね")},
+						{"chara": "merry", "exp": null,  serif1: _("なんて子？"), serif2: _("なんて子？"), serif3: _("なんて子？"), serif4: _("なんて子？")},
+						{"chara": "koishi", "exp": "look_top",  serif1: _("なにが？"), serif2: _("なにが？"), serif3: _("なにが？"), serif4: _("なにが？")},
+						{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("お友達の名前は？"), serif2: _("お友達の名前は？"), serif3: _("お友達の名前は？"), serif4: _("お友達の名前は？")},
 					],
 					[
-						{"chara": "merry", "exp": "merry-reaction_10", "serif":_("どうしたの")},
-						{"chara": "koishi", "exp": "look_bottom", "serif":_("なんでもない")},
+						{"chara": "merry", "exp": "merry-reaction_10",  serif1: _("どうしたの"), serif2: _("どうしたの"), serif3: _("どうしたの"), serif4: _("どうしたの")},
+						{"chara": "koishi", "exp": "look_bottom",  serif1: _("なんでもない"), serif2: _("なんでもない"), serif3: _("なんでもない"), serif4: _("なんでもない")},
 					],
 				]},
 			],

@@ -59,7 +59,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "チョコレート箱",
 			serif: [
-				{"chara": "koishi","serif":_("からっぽ！")},
+				{"chara": "koishi", serif1: _("からっぽ！"), serif2: _("からっぽ！"), serif3: _("からっぽ！"), serif4: _("からっぽ！")},
 			],
 			x:858.50*2/3, y:592*2/3,
 			scale: 2/3,
@@ -86,7 +86,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "バス停",
 			serif: [
-				{"chara": "koishi","serif":_("わかんない")},
+				{"chara": "koishi", serif1: _("わかんない"), serif2: _("わかんない"), serif3: _("わかんない"), serif4: _("わかんない")},
 			],
 			x:1188.50*2/3, y:419.50*2/3,
 			scale: 2/3,

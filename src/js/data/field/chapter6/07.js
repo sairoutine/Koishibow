@@ -22,17 +22,17 @@ var LAST_JUNCTION_SERIF = [
 		[
 			{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter6_07-growth4-limit", 4], "serifs": [
 				[
-					{"chara": "koishi", "exp": "look_top", "serif":_("わたしはどうしたらいいの")},
+					{"chara": "koishi", "exp": "look_top",  serif1: _("わたしはどうしたらいいの"), serif2: _("わたしはどうしたらいいの"), serif3: _("わたしはどうしたらいいの"), serif4: _("わたしはどうしたらいいの")},
 				],
 				[
-					{"chara": "koishi", "exp": "look_top", "serif":_("ちょっと待って")},
+					{"chara": "koishi", "exp": "look_top",  serif1: _("ちょっと待って"), serif2: _("ちょっと待って"), serif3: _("ちょっと待って"), serif4: _("ちょっと待って")},
 				],
 				[
-					{"chara": "koishi", "exp": "look_top", "serif":_("待ってよ")},
+					{"chara": "koishi", "exp": "look_top",  serif1: _("待ってよ"), serif2: _("待ってよ"), serif3: _("待ってよ"), serif4: _("待ってよ")},
 				],
 				[
-					{"chara": "koishi", "exp": "look_top", "serif":_("待ってってば")},
-					{"chara": "koishi", "exp": "look_top", "serif":_("私決めたの！")},
+					{"chara": "koishi", "exp": "look_top",  serif1: _("待ってってば"), serif2: _("待ってってば"), serif3: _("待ってってば"), serif4: _("待ってってば")},
+					{"chara": "koishi", "exp": "look_top",  serif1: _("私決めたの！"), serif2: _("私決めたの！"), serif3: _("私決めたの！"), serif4: _("私決めたの！")},
 					{"chara": "koishi", "exp": null, "serif": "わたしのことは自分で決めるわ", "option": {"playEventMovie": "chapter6-event-ending01-1"}},
 					{"chara": "koishi", "exp": null, "serif": "", "option": {"changeScene": ["./movie/production/chapter6_staffroll.mp4", function (core) {
 						core.scene_manager.changeScene("event_talk", "chapter6-event-ending01-2");
@@ -66,7 +66,7 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "koishi", "exp": "look_top", "serif":_("そとだ！")},
+						{"chara": "koishi", "exp": "look_top",  serif1: _("そとだ！"), serif2: _("そとだ！"), serif3: _("そとだ！"), serif4: _("そとだ！")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_07_firstaccess"]}
@@ -79,12 +79,12 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "電灯",
 			serif: [
-				{"chara": "koishi","exp": "look_top", "serif": _("あかりだ")},
+				{"chara": "koishi","exp": "look_top",  serif1: _("あかりだ"), serif2: _("あかりだ"), serif3: _("あかりだ"), serif4: _("あかるい......")},
 			],
 			serif_back: [
 				{"chara": "koishi","exp": "look_top", "serif": _("なにこれ")},
 				{"chara": "koishi","exp": "look_top", "serif": _("気持ち悪い")},
-				{"chara": I,"exp": null, "serif": _("あばぶ"), "id": "chapter6-07-show_last_junction", "save": true},
+				{"chara": I,"exp": null,  serif1: _("あばぶ"), serif2: _("あばぶ"), serif3: _("あばぶ"), serif4: _("あばぶ"), "id": "chapter6-07-show_last_junction", "save": true},
 			],
 			x: 236*2/3, y: 369*2/3,
 			width: 100,

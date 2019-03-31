@@ -28,9 +28,9 @@ module.exports = {
 					[
 						{"type": "process", "value": "playTalk", "arguments": [
 							[
-								{"chara": "animal_mogura","exp": "animal_mogura-wait", "serif": _("ピぃーっ")},
-								{"chara": "koishi","exp": "look_front", "serif": _("あはは！")},
-								{"chara": "koishi","exp": null, "serif": _("おめめがヘン！")},
+								{"chara": "animal_mogura","exp": "animal_mogura-wait",  serif1: _("ピぃーっ"), serif2: _("ピぃーっ"), serif3: _("ピぃーっ"), serif4: _("ピぃーっ")},
+								{"chara": "koishi","exp": "look_front",  serif1: _("あはは！"), serif2: _("あはは！"), serif3: _("あはは！"), serif4: _("あはは！")},
+								{"chara": "koishi","exp": null,  serif1: _("おめめがヘン！"), serif2: _("おめめがヘン！"), serif3: _("おめめがヘン！"), serif4: _("おめめがヘン！")},
 							]
 						]},
 						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_04_10580"]}
@@ -90,32 +90,32 @@ module.exports = {
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_04-animal_mogura-limit", 2], "serifs": [
 					[
-						{"chara": "koishi","exp": "look_front", "serif": _("あなたは？")},
-						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("もぐら")},
-						{"chara": "koishi","exp": "yes", "serif": _("もぐらって初めて見た")},
-						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("こっちもさ")},
-						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("聞いていたよりひどい")},
-						{"chara": "koishi","exp": "look_top", "serif": _("何が？")},
-						{"chara": "animal_mogura","exp": "animal_mogura-ura_reaction_01", "serif": _("早くいけって")},
-						{"chara": "animal_mogura","exp": null, "serif": _("疲れてるんだ")},
-						{"chara": "koishi","exp": "yes", "serif": _("あ、うん")},
-						{"chara": "koishi","exp": null, "serif": _("おうまさんは")},
-						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("あっちへ行って")},
-						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("そっちへ走ってった")},
+						{"chara": "koishi","exp": "look_front",  serif1: _("あなたは？"), serif2: _("あなたは？"), serif3: _("あなたは？"), serif4: _("あなたは？")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait",  serif1: _("もぐら"), serif2: _("もぐら"), serif3: _("もぐら"), serif4: _("もぐら")},
+						{"chara": "koishi","exp": "yes",  serif1: _("もぐらって初めて見た"), serif2: _("もぐらって初めて見た"), serif3: _("もぐらって初めて見た"), serif4: _("もぐらって初めて見た")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait",  serif1: _("こっちもさ"), serif2: _("こっちもさ"), serif3: _("こっちもさ"), serif4: _("こっちもさ")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait",  serif1: _("聞いていたよりひどい"), serif2: _("聞いていたよりひどい"), serif3: _("聞いていたよりひどい"), serif4: _("聞いていたよりひどい")},
+						{"chara": "koishi","exp": "look_top",  serif1: _("何が？"), serif2: _("何が？"), serif3: _("何が？"), serif4: _("何が？")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_reaction_01",  serif1: _("早くいけって"), serif2: _("早くいけって"), serif3: _("早くいけって"), serif4: _("早くいけって")},
+						{"chara": "animal_mogura","exp": null,  serif1: _("疲れてるんだ"), serif2: _("疲れてるんだ"), serif3: _("疲れてるんだ"), serif4: _("疲れてるんだ")},
+						{"chara": "koishi","exp": "yes",  serif1: _("あ、うん"), serif2: _("あ、うん"), serif3: _("あ、うん"), serif4: _("あ、うん")},
+						{"chara": "koishi","exp": null,  serif1: _("おうまさんは"), serif2: _("おうまさんは"), serif3: _("おうまさんは"), serif4: _("おうまさんは")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait",  serif1: _("あっちへ行って"), serif2: _("あっちへ行って"), serif3: _("あっちへ行って"), serif4: _("あっちへ行って")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait",  serif1: _("そっちへ走ってった"), serif2: _("そっちへ走ってった"), serif3: _("そっちへ走ってった"), serif4: _("そっちへ走ってった")},
 						{"chara": "koishi","exp": "yes", "serif": _("そっか")},
 						{"chara": "koishi","exp": null, "serif": _("ありがとう")},
-						{"chara": "animal_mogura","exp": "animal_mogura-ura_reaction_01", "serif": _("とっとと終わらせてくれ")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_reaction_01",  serif1: _("とっとと終わらせてくれ"), serif2: _("とっとと終わらせてくれ"), serif3: _("とっとと終わらせてくれ"), serif4: _("とっとと終わらせてくれ")},
 					],
 					[
 						{"chara": "koishi","exp": "look_front", "serif": _("ねえねえ")},
-						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait", "serif": _("スピーッ")},
-						{"chara": "koishi","exp": "look_bottom", "serif": _("寝ちゃった")},
+						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait",  serif1: _("スピーッ"), serif2: _("スピーッ"), serif3: _("スピーッ"), serif4: _("スピーッ")},
+						{"chara": "koishi","exp": "look_bottom",  serif1: _("寝ちゃった"), serif2: _("寝ちゃった"), serif3: _("寝ちゃった"), serif4: _("寝ちゃった")},
 					],
 				]},
 			],
 			serif: [
-				{"chara": "animal_mogura","exp": "animal_mogura-wait", "serif": _("きーきー")},
-				{"chara": "koishi","exp": "look_front", "serif": _("あはは、へんなかおー")},
+				{"chara": "animal_mogura","exp": "animal_mogura-wait",  serif1: _("きーきー"), serif2: _("きーきー"), serif3: _("きーきー"), serif4: _("きーきー")},
+				{"chara": "koishi","exp": "look_front",  serif1: _("あはは、へんなかおー"), serif2: _("あはは、へんなかおー"), serif3: _("あはは、へんなかおー"), serif4: _("あはは、へんなかおー")},
 			],
 			x: 170, y: 500,
 			scale: 2/3,

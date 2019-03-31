@@ -27,10 +27,10 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "bm","exp": "bm-reaction_01", "serif": _("バアアアア！！")},
-						{"chara": "koishi","exp": "afraid", "serif": _("嫌！")},
-						{"chara": "koishi","exp": null, "serif": _("こないで！")},
-						{"chara": "koishi","exp": null, "serif": _("私悪くないでしょ！")},
+						{"chara": "bm","exp": "bm-reaction_01",  serif1: _("バアアアア！！"), serif2: _("バアアアア！！"), serif3: _("バアアアア！！"), serif4: _("バアアアア！！")},
+						{"chara": "koishi","exp": "afraid",  serif1: _("嫌！"), serif2: _("嫌！"), serif3: _("嫌！"), serif4: _("嫌！")},
+						{"chara": "koishi","exp": null,  serif1: _("こないで！"), serif2: _("こないで！"), serif3: _("こないで！"), serif4: _("こないで！")},
+						{"chara": "koishi","exp": null,  serif1: _("私悪くないでしょ！"), serif2: _("私悪くないでしょ！"), serif3: _("私悪くないでしょ！"), serif4: _("私悪くないでしょ！")},
 					],
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_15_firstaccess"]}
