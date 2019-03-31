@@ -22,7 +22,7 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
-		{"type": "process", "value": "changeScene", "arguments": ["stage", "chapter6-12"]},
+		{"type": "process", "value": "changeScene", "arguments": ["stage", "chapter6_12"]},
 	],
 };
 

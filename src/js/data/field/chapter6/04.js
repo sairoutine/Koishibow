@@ -43,6 +43,7 @@ module.exports = {
 				{"chara": "koishi","exp": null, "serif": "", "option": {"playEvent": "chapter6-04-event-01"}},
 			],
 			x: 589*2/3, y: 281.50*2/3,
+			height: 400,
 			scale: 2/3,
 			show_if_event_true: "chapter6-04-show_eyedrops",
 		},

@@ -25,7 +25,7 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "bm","exp": "chapter6-01-obj-01-obj03",  serif1: _("ギャーッ"), serif2: _("ギャーッ"), serif3: _("ギャーッ"), serif4: _("ギャーッ")},
+						{"chara": "bm","exp": null,  serif1: _("ギャーッ"), serif2: _("ギャーッ"), serif3: _("ギャーッ"), serif4: _("ギャーッ")},
 						{"id": "chapter6-01-seen_bm", "save": true},
 						{"chara": "koishi","exp": "look_bottom",  serif1: _("ア゛ー"), serif2: _("なにこれ！"), serif3: _("なにこれ！"), serif4: _("きもちわるい！"), "option": {"changeField": "chapter6_02"}},
 					]
@@ -122,10 +122,7 @@ module.exports = {
 			no: "bm",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "BM",
-			serif: [
-				{"chara": "koishi", serif1: _("また来てる！"), serif2: _("また来てる！"), serif3: _("あの子なんなんだろう"), serif4: _("あの子なんなんだろう")},
-				{"chara": "koishi","serif": _("誰？")},
-			],
+			serif: null,
 			x: 5, y: 180,
 			scale: 0.7,
 			anime1: "chapter6-01-obj-03",
@@ -133,8 +130,7 @@ module.exports = {
 			anime3: null,
 			action_name: "look_top",
 			sound_name: "chapter0-myroom-sound_window_for_kokoro",
-			height: 700,
-			target_x: 177, target_y: 531,
+			height: 300,
 			show_if_event_true: "chapter6-01-show_bm",
 		},
 

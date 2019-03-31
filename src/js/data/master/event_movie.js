@@ -26,7 +26,7 @@ module.exports = [
 		isStopBGM: false,
 	},
 	{
-		key: "chapter6-event-ending1-1",
+		key: "chapter6-event-ending01-1",
 		path: "./movie/production/chapter6-event-ending1-1.mp4",
 		isStopBGM: false,
 	},

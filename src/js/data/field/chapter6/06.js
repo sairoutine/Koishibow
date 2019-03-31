@@ -19,6 +19,7 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		/* ゲーム上、セリフに違和感があるので廃止した
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6_06_firstaccess"], "process": [
 			// 1度目アクセス済み
 			[
@@ -33,6 +34,7 @@ module.exports = {
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_06_firstaccess"]}
 			],
 		]},
+		*/
 
 		{"type": "criteria", "value": "isPlayed", "arguments": ["after_chapter6-13-event-01"], "process": [
 			// chapter6-13-event-01 後
@@ -87,9 +89,10 @@ module.exports = {
 				{"chara": "bm","exp": null,  serif1: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif2: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif3: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif4: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), "option": {"playEventMovie": "chapter6-06-event-01"}},
 				{"chara": "koishi","exp": null, "serif": "", "option": {"changeField": "chapter6_10"}},
 			],
-			x: 258, y: 689,
+			x: 480, y: 560,
 			scale: 2/3,
 			position_type: "lying",
+			show_if_event_true: "chapter6-06-show_journal",
 		},
 		{
 			no: "bm",

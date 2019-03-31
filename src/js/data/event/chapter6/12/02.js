@@ -1,7 +1,7 @@
 'use strict';
 var _ = require('i18n4v')
 module.exports = {
-	key: "chapter6-04-event-02",
+	key: "chapter6-12-event-02",
 	serifWindow: "fukidashi",
 	expAnimes: [
 		"chapter6-common-event-01-obj01",
@@ -22,7 +22,12 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
-		{"type": "process", "value": "changeScene", "arguments": ["stage", "chapter6-12"]},
+		// chapter6_04 の目薬の表示をOFFにする
+		{"type": "process", "value": "resetPlayedFlag", "arguments": ["chapter6-04-show_eyedrops"]},
+		// chapter6_06 のジャーナルの表示をONにする
+		{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6-06-show_journal"]},
+
+		{"type": "process", "value": "changeScene", "arguments": ["stage", "chapter6_04"]},
 	],
 };
 

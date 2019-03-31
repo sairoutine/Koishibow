@@ -128,6 +128,16 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
+		{
+			no: "bm",
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "BM(ベンチの下)",
+			serif: null,
+			width: 0, height: 0,
+			x: 481, y: 390,
+		},
+
 	],
 };
 

@@ -16,8 +16,11 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
+		// chapter6_06 のジャーナルの表示をOFFにする
+		{"type": "process", "value": "resetPlayedFlag", "arguments": ["chapter6-06-show_journal"]},
+
 		{"type": "process", "value": "incrementPlayedFlag", "arguments": ["after_chapter6-13-event-01"]},
-		{"type": "process", "value": "changeScene", "arguments": ["stage", "chapter6-06"]},
+		{"type": "process", "value": "changeScene", "arguments": ["stage", "chapter6_06"]},
 	],
 };
 

@@ -85,7 +85,8 @@ module.exports = {
 				{"chara": "koishi","exp": "look_top", "serif": _("うわ！")},
 				{"chara": "koishi","exp": null, "serif": _("やめて！")},
 				{"chara": I, "exp": null,  serif1: _("こいし？"), serif2: _("こいし？"), serif3: _("こいし？"), serif4: _("こいし？")},
-				{"chara": I, "exp": null,  serif1: _("あなたなのね？"), serif2: _("あなたなのね？"), serif3: _("あなたなのね？"), serif4: _("あなたなのね？"), "option": {"playEvent": "chapter6-12-event-01"}},
+				{"chara": I, "exp": null,  serif1: _("あなたなのね？"), serif2: _("あなたなのね？"), serif3: _("あなたなのね？"), serif4: _("あなたなのね？")},
+				{"chara": "koishi","exp": "look_top",  serif1: _("誰よ！"), serif2: _("誰よ！"), serif3: _("誰よ！"), serif4: _("この声―-"), "option": {"playEvent": "chapter6-12-event-01"}},
 			],
 			x: 1252*2/3, y: 457*2/3,
 			scale: 2/3,
@@ -100,7 +101,7 @@ module.exports = {
 			name: "BM(左)",
 			serif: null,
 			width: 0, height: 0,
-			x: 960, y: 360,
+			x: 760, y: 360,
 		},
 
 	],

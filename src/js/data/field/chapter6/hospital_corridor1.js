@@ -28,9 +28,9 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
+						{"id": "chapter6-01-show_bm", "save": true},
 						{"chara": "bm", "exp": null,  serif1: _("ォギャーッ"), serif2: _("ォギャーッ"), serif3: _("ォギャーッ"), serif4: _("ォギャーッ")},
 						{"chara": "koishi", "exp": "look_top",  serif1: _("なに！？"), serif2: _("えっ"), serif3: _("えっ"), serif4: _("なにかしら......")},
-						{"id": "chapter6-01-show_bm", "save": true},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_hospital_corridor1_firstaccess"]}
@@ -130,7 +130,7 @@ module.exports = {
 			name: "BM(左)",
 			serif: null,
 			width: 0, height: 0,
-			x: 0, y: 360,
+			x: 200, y: 80,
 		},
 		{
 			no: ++I,

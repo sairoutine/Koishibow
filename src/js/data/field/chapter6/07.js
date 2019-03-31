@@ -12,11 +12,11 @@ var LAST_JUNCTION_SERIF = [
 		],
 		// 発達度2
 		[
-			{"chara": "koishi", "exp": null, "serif": "", "option": {"playEvent": "chapter6-event-ending2-1"}},
+			{"chara": "koishi", "exp": null, "serif": "", "option": {"playEvent": "chapter6-event-ending02-1"}},
 		],
 		// 発達度3
 		[
-			{"chara": "koishi", "exp": null, "serif": "", "option": {"playEvent": "chapter6-event-ending2-1"}},
+			{"chara": "koishi", "exp": null, "serif": "", "option": {"playEvent": "chapter6-event-ending02-1"}},
 		],
 		// 発達度4
 		[
@@ -34,7 +34,7 @@ var LAST_JUNCTION_SERIF = [
 					{"chara": "koishi", "exp": "look_top",  serif1: _("待ってってば"), serif2: _("待ってってば"), serif3: _("待ってってば"), serif4: _("待ってってば")},
 					{"chara": "koishi", "exp": "look_top",  serif1: _("私決めたの！"), serif2: _("私決めたの！"), serif3: _("私決めたの！"), serif4: _("私決めたの！")},
 					{"chara": "koishi", "exp": null, "serif": "わたしのことは自分で決めるわ", "option": {"playEventMovie": "chapter6-event-ending01-1"}},
-					{"chara": "koishi", "exp": null, "serif": "", "option": {"changeScene": ["./movie/production/chapter6_staffroll.mp4", function (core) {
+					{"chara": "koishi", "exp": null, "serif": "", "option": {"changeScene": ["movie", "./movie/production/chapter6_staffroll.mp4", function (core) {
 						core.scene_manager.changeScene("event_talk", "chapter6-event-ending01-2");
 					}]}},
 				],
@@ -51,8 +51,8 @@ module.exports = {
 	leftStartPosition:  {x: 180, y: 380},
 	upStartPosition:    null,
 	downStartPosition:  null,
-	rightField: null,
-	leftField: "chapter6_06",
+	rightField: "chapter6_06",
+	leftField: null,
 	upField: null,
 	downField: null,
 	background: "chapter6-07-bg-001",
@@ -84,7 +84,14 @@ module.exports = {
 			serif_back: [
 				{"chara": "koishi","exp": "look_top", "serif": _("なにこれ")},
 				{"chara": "koishi","exp": "look_top", "serif": _("気持ち悪い")},
-				{"chara": I,"exp": null,  serif1: _("あばぶ"), serif2: _("あばぶ"), serif3: _("あばぶ"), serif4: _("あばぶ"), "id": "chapter6-07-show_last_junction", "save": true},
+
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["after_chapter6-13-event-01"], "serifs": [
+					[
+						{"chara": I,"exp": null,  serif1: _("あばぶ"), serif2: _("あばぶ"), serif3: _("あばぶ"), serif4: _("あばぶ"), "id": "chapter6-07-show_last_junction", "save": true},
+					],
+					[
+					],
+				]},
 			],
 			x: 236*2/3, y: 369*2/3,
 			width: 100,

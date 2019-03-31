@@ -17,17 +17,15 @@ module.exports = {
 		{"exp": null, "serif": _("私が導いてあげたのに"), "option": {"x": 479, "y": 200, "loop": false}},
 		{"exp": "chapter6-event-ending02-2-obj03", "serif": _("失敗ばっかりして！"), "option": {"x": 479, "y": 200, "loop": false}},
 		{"exp": null, "serif": _("私を困らせないで......"), "option": {"x": 479, "y": 200, "loop": false}},
+		// コンティニューしたときの戻り先を chapter6_18 にしないようにする
 		{"exp": null, "serif": _("あ゛あ゛"), "option": {"x": 478, "y": 330, "loop": false}},
 	],
 	endAnime: null,
 	endSounds: [
 	],
 	endProcess: [
-		// スタッフロールへ
-		{"type": "process", "value": "changeScene", "arguments": ["movie", "./movie/production/chapter6_staffroll.mp4", function (core) {
-			// タイトルへ
-			core.scene_manager.changeScene("title");
-		}]},
+		// タイトルへ
+		{"type": "process", "value": "changeScene", "arguments": ["title"]},
 	],
 };
 
