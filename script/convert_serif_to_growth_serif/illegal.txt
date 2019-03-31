@@ -1,0 +1,435 @@
+{ serif1: 'わかった',
+  serif2: 'ごめんなさい',
+  serif3: 'ごめんなさい',
+  serif4: 'ごめんなさい' }
+{ serif1: 'わかった', serif2: 'わかった', serif3: 'わかった', serif4: 'わかった' }
+{ serif1: 'うん', serif2: 'うん', serif3: 'うん', serif4: 'うん' }
+{ serif1: 'うん', serif2: 'ねえ', serif3: 'ねえ', serif4: 'ねえ' }
+{ serif1: 'うん', serif2: 'ねえ', serif3: 'ねえ', serif4: 'ねえ' }
+{ serif1: 'うん', serif2: 'うん', serif3: 'うん', serif4: 'うん' }
+{ serif1: 'わかった', serif2: 'わかった', serif3: 'わかった', serif4: 'わかった' }
+{ serif1: 'わかった', serif2: 'うんうん', serif3: 'うんうん', serif4: 'うんうん' }
+{ serif1: 'わかった', serif2: 'うんうん', serif3: 'うんうん', serif4: 'うんうん' }
+{ serif1: 'わかった', serif2: 'わかった', serif3: 'わかった', serif4: 'わかった' }
+{ serif1: 'なんで',
+  serif2: 'なんで作るの',
+  serif3: 'なんで作るの',
+  serif4: 'なんで作るの' }
+{ serif1: 'なんで', serif2: 'なんで', serif3: 'なんで', serif4: 'なんで' }
+{ serif1: 'ごめんなさい',
+  serif2: 'しかたないでしょ',
+  serif3: 'しかたないでしょ',
+  serif4: 'しかたないでしょ' }
+{ serif1: 'ごめんなさい',
+  serif2: 'ごめんなさい',
+  serif3: 'ごめんなさい',
+  serif4: 'ごめんなさい' }
+{ serif1: 'あ！', serif2: 'あ！', serif3: 'あ！', serif4: 'あ！' }
+{ serif1: 'あ！', serif2: 'あら', serif3: 'あら', serif4: 'あら' }
+{ serif1: 'なにこれ', serif2: 'なにこれ', serif3: 'なにこれ', serif4: 'なにこれ' }
+{ serif1: 'なにこれ',
+  serif2: 'なにかな',
+  serif3: 'なんだろう',
+  serif4: 'なんだろう' }
+{ serif1: '友達？', serif2: '誰の事', serif3: '誰の事', serif4: '誰の事' }
+{ serif1: '友達？', serif2: '友達？', serif3: '友達？', serif4: '友達？' }
+{ serif1: 'あ！', serif2: 'あら', serif3: 'あら', serif4: 'あら' }
+{ serif1: 'あ！', serif2: 'あ！', serif3: 'あ！', serif4: 'あ！' }
+{ serif1: 'お友達？', serif2: 'お友達？', serif3: 'お友達？', serif4: 'お友達？' }
+{ serif1: 'お友達？',
+  serif2: 'これが友達なの？',
+  serif3: 'これが友達なの？',
+  serif4: 'これが友達なの？' }
+{ serif1: 'そうよ', serif2: 'そうよ', serif3: 'そうよ', serif4: 'そうよ' }
+{ serif1: 'そうよ',
+  serif2: 'そう',
+  serif3: 'そうだと思う',
+  serif4: 'そうだと思う' }
+{ serif1: 'ねえねえ', serif2: 'ねえねえ', serif3: 'ねえねえ', serif4: 'ねえねえ' }
+{ serif1: 'ねえねえ', serif2: 'ねえねえ', serif3: 'ねえ', serif4: 'ねえ' }
+{ serif1: 'うん', serif2: 'うん', serif3: 'うん', serif4: 'うん' }
+{ serif1: 'うん',
+  serif2: 'わかった',
+  serif3: '近くを見てくるね',
+  serif4: '近くを見てくるね' }
+{ serif1: 'こいし', serif2: 'こいし', serif3: 'こいし', serif4: 'こいし' }
+{ serif1: 'こいし', serif2: 'こいしよ', serif3: 'こいしよ', serif4: 'こいしよ' }
+{ serif1: '違うよ',
+  serif2: '私は迷子じゃないよ',
+  serif3: '友達が迷子なの',
+  serif4: '友達が迷子なの' }
+{ serif1: '違うよ', serif2: '違うよ！', serif3: 'いいえ', serif4: 'いいえ' }
+{ serif1: 'なにこれ',
+  serif2: 'なにかな',
+  serif3: 'なんだろう',
+  serif4: 'なんだろう' }
+{ serif1: 'なにこれ', serif2: 'なにこれ', serif3: 'なにこれ', serif4: 'なにこれ' }
+{ serif1: 'なに？', serif2: 'なに？', serif3: 'なに？', serif4: 'なに？' }
+{ serif1: 'なに？',
+  serif2: 'わかんない',
+  serif3: 'どういうこと？',
+  serif4: 'どういうこと？' }
+{ serif1: 'あった！', serif2: '見つけた', serif3: '見つけた', serif4: '見つけた' }
+{ serif1: 'あった！', serif2: 'あった！', serif3: 'あった！', serif4: 'あった！' }
+{ serif1: 'うん',
+  serif2: 'わかった',
+  serif3: '近くを見てくるね',
+  serif4: '近くを見てくるね' }
+{ serif1: 'うん', serif2: 'うん', serif3: 'うん', serif4: 'うん' }
+{ serif1: 'こいし', serif2: 'こいしよ', serif3: 'こいしよ', serif4: 'こいしよ' }
+{ serif1: 'こいし',
+  serif2: 'こいしです',
+  serif3: 'こいしです',
+  serif4: 'こいしです' }
+{ serif1: 'ねえねえ', serif2: 'ねえねえ', serif3: 'ねえ', serif4: 'ねえ' }
+{ serif1: 'ねえねえ', serif2: 'ねえねえ', serif3: 'ねえねえ', serif4: 'ねえねえ' }
+{ serif1: 'ごめんなさい',
+  serif2: 'ごめんなさい',
+  serif3: 'ごめんなさい',
+  serif4: 'ごめんなさい' }
+{ serif1: 'ごめんなさい', serif2: 'ごめん', serif3: 'ごめん', serif4: 'ごめん' }
+{ serif1: 'よくわかんない',
+  serif2: 'よくわかんない',
+  serif3: 'よくわかんない',
+  serif4: 'よくわかんない' }
+{ serif1: 'よくわかんない',
+  serif2: 'それはわかるけど',
+  serif3: 'それはわかるけど',
+  serif4: 'それはわかるけど' }
+{ serif1: 'なあに', serif2: 'なあに', serif3: 'なあに', serif4: 'なあに' }
+{ serif1: 'なあに',
+  serif2: 'だって邪魔なんだもの',
+  serif3: 'だって邪魔なんだもの',
+  serif4: 'だって邪魔なんだもの' }
+{ serif1: 'そう！',
+  serif2: 'なにが',
+  serif3: 'どういうこと？',
+  serif4: 'どういうこと？' }
+{ serif1: 'そう！', serif2: 'そうよ！', serif3: 'そうよ！', serif4: 'そうよ！' }
+{ serif1: 'えー', serif2: 'えー', serif3: 'えー', serif4: 'えー' }
+{ serif1: 'えー',
+  serif2: 'えー',
+  serif3: '達人だからよ！',
+  serif4: '達人だからよ！' }
+{ serif1: 'えー',
+  serif2: 'えー',
+  serif3: '達人だからよ！',
+  serif4: '達人だからよ！' }
+{ serif1: 'えー',
+  serif2: 'えー',
+  serif3: 'ほかにも面白いのあるのよ',
+  serif4: 'ほかにも面白いのあるのよ' }
+{ serif1: '誰？', serif2: '誰？', serif3: '誰？', serif4: '誰？' }
+{ serif1: '誰？', serif2: '誰？', serif3: '変な子！', serif4: '変な子！' }
+{ serif1: 'えっ', serif2: 'えっ', serif3: 'えっ', serif4: 'えっ' }
+{ serif1: 'えっ', serif2: 'えっ', serif3: 'えっ、うん', serif4: 'えっ、うん' }
+{ serif1: 'こいし',
+  serif2: 'こいしです',
+  serif3: 'こいしです',
+  serif4: 'こいしです' }
+{ serif1: 'こいし', serif2: 'こいし', serif3: 'こいしです', serif4: 'こいしです' }
+{ serif1: 'そっか', serif2: 'そっか', serif3: 'そっか', serif4: 'そっか' }
+{ serif1: 'そっか',
+  serif2: 'そっか',
+  serif3: 'そっか......',
+  serif4: 'そっか......' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '......',
+  serif4: '......' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: 'ごめん',
+  serif4: 'ごめん' }
+{ serif1: 'はい', serif2: 'はい', serif3: 'はい', serif4: 'はい' }
+{ serif1: 'はい', serif2: 'はい', serif3: 'ごめんなさい', serif4: 'ごめんなさい' }
+{ serif1: 'うるさいなあ',
+  serif2: 'うるさいなあ',
+  serif3: 'うるさいなあ',
+  serif4: 'うるさいなあ' }
+{ serif1: 'うるさいなあ',
+  serif2: 'うるさいわねえ',
+  serif3: 'うるさいわねえ',
+  serif4: 'うるさいわねえ' }
+{ serif1: 'こいし', serif2: 'こいし', serif3: 'こいしです', serif4: 'こいしです' }
+{ serif1: 'こいし',
+  serif2: 'こいし',
+  serif3: 'わたしはこいし',
+  serif4: 'わたしはこいし' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: 'ごめん',
+  serif4: 'ごめん' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '失礼ね',
+  serif4: '失礼ね' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '失礼ね',
+  serif4: '失礼ね' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: 'こわい',
+  serif4: 'こわい' }
+{ serif1: 'はしご！',
+  serif2: 'はしご！',
+  serif3: 'これはしごね！',
+  serif4: 'これはしごね！' }
+{ serif1: 'はしご！',
+  serif2: 'はしご！',
+  serif3: 'はしごだわ！',
+  serif4: 'はしごだわ！' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: 'こわい',
+  serif4: 'こわい' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: 'うるさいな',
+  serif4: 'うるさいな' }
+{ serif1: 'はい', serif2: 'はい', serif3: 'ごめんなさい', serif4: 'ごめんなさい' }
+{ serif1: 'はい', serif2: 'はい', serif3: 'じゃあいい', serif4: 'じゃあいい' }
+{ serif1: 'なんで？', serif2: 'なんで？', serif3: 'なんで？', serif4: 'なんで？' }
+{ serif1: 'なんで？',
+  serif2: 'なんで？',
+  serif3: '上にはなにがあるの？',
+  serif4: '上にはなにがあるの？' }
+{ serif1: 'ふーん', serif2: 'ふーん', serif3: 'ふーん', serif4: 'ふーん' }
+{ serif1: 'ふーん',
+  serif2: 'ふーん',
+  serif3: 'わたしにまかせて',
+  serif4: 'わたしにまかせて' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: 'うるさいな',
+  serif4: 'うるさいな' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '......',
+  serif4: '......' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '......',
+  serif4: '......' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: 'うるさい！',
+  serif4: 'うるさい！' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: 'うるさい！',
+  serif4: 'うるさい！' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: 'ごめんね',
+  serif4: 'ごめんね' }
+{ serif1: 'うん', serif2: 'うん', serif3: 'うん', serif4: 'うん' }
+{ serif1: 'うん',
+  serif2: 'うん',
+  serif3: 'ちょっとかしてね',
+  serif4: 'ちょっとかしてね' }
+{ serif1: 'はしご！',
+  serif2: 'はしご！',
+  serif3: 'はしごだわ！',
+  serif4: 'はしごだわ！' }
+{ serif1: 'はしご！',
+  serif2: 'はしご！',
+  serif3: 'ハシゴ持ってきたのよ',
+  serif4: 'ハシゴ持ってきたのよ' }
+{ serif1: 'なんで', serif2: 'なんで', serif3: 'なんで', serif4: 'なんで' }
+{ serif1: 'なんで', serif2: 'なんで', serif3: 'どうして？', serif4: 'どうして？' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: 'ごめんね',
+  serif4: 'ごめんね' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '......',
+  serif4: '......' }
+{ serif1: 'なにそれ', serif2: 'なにそれ', serif3: 'なにそれ', serif4: 'なにそれ' }
+{ serif1: 'なにそれ',
+  serif2: 'なにそれ',
+  serif3: 'いじわるね',
+  serif4: 'いじわるね' }
+{ serif1: 'あ！', serif2: 'あ！', serif3: 'あ！', serif4: 'あ！' }
+{ serif1: 'あ！', serif2: 'あ！', serif3: 'まあ！', serif4: 'まあ！' }
+{ serif1: 'あはは', serif2: 'あはは', serif3: 'あはは', serif4: 'あはは' }
+{ serif1: 'あはは', serif2: 'あはは', serif3: 'えへへ', serif4: 'えへへ' }
+{ serif1: 'うん',
+  serif2: 'うん',
+  serif3: 'ちょっとかしてね',
+  serif4: 'ちょっとかしてね' }
+{ serif1: 'うん', serif2: 'うん', serif3: 'うん', serif4: 'うん' }
+{ serif1: 'えっ', serif2: 'えっ', serif3: 'えっ、うん', serif4: 'えっ、うん' }
+{ serif1: 'えっ', serif2: 'えっ', serif3: 'えっ', serif4: 'えっ' }
+{ serif1: 'なんで', serif2: 'なんで', serif3: 'どうして？', serif4: 'どうして？' }
+{ serif1: 'なんで', serif2: 'なんで', serif3: 'なんで', serif4: 'なんで' }
+{ serif1: 'やだ！', serif2: 'やだ！', serif3: 'やだ！', serif4: 'やだ！' }
+{ serif1: 'やだ！', serif2: 'やだ！', serif3: 'なにそれ', serif4: 'なにそれ' }
+{ serif1: 'わかった', serif2: 'わかった', serif3: 'わかった', serif4: 'わかった' }
+{ serif1: 'わかった',
+  serif2: 'わかった',
+  serif3: 'わかったわ',
+  serif4: 'わかったわ' }
+{ serif1: 'ありがとう',
+  serif2: 'ありがとう',
+  serif3: 'ありがとう',
+  serif4: 'ありがとう' }
+{ serif1: 'ありがとう',
+  serif2: 'ありがとう',
+  serif3: 'いいこね！',
+  serif4: 'いいこね！' }
+{ serif1: '行かなきゃ',
+  serif2: '行かなきゃ',
+  serif3: '行かなきゃ',
+  serif4: '行かなきゃ' }
+{ serif1: '行かなきゃ',
+  serif2: '行かなきゃ',
+  serif3: 'さっき渡したのね',
+  serif4: 'さっき渡したのね' }
+{ serif1: 'そっか',
+  serif2: 'そっか',
+  serif3: 'そっか......',
+  serif4: 'そっか......' }
+{ serif1: 'そっか', serif2: 'そっか', serif3: 'そっか', serif4: 'そっか' }
+{ serif1: 'ありがとう',
+  serif2: 'ありがとう',
+  serif3: 'いいこね！',
+  serif4: 'いいこね！' }
+{ serif1: 'ありがとう',
+  serif2: 'ありがとう',
+  serif3: 'ありがとう',
+  serif4: 'ありがとう' }
+{ serif1: 'うん', serif2: 'うん', serif3: 'うん', serif4: 'うん' }
+{ serif1: 'うん', serif2: 'うん', serif3: 'いいよ', serif4: 'いいよ' }
+{ serif1: 'あ！', serif2: 'あ！', serif3: 'まあ！', serif4: 'まあ！' }
+{ serif1: 'あ！', serif2: 'あ！', serif3: 'あ！', serif4: 'あ！' }
+{ serif1: 'ごめんなさい', serif2: 'ごめん', serif3: 'ごめん', serif4: 'ごめん' }
+{ serif1: 'ごめんなさい',
+  serif2: 'ごめんなさい',
+  serif3: 'ごめんなさい',
+  serif4: 'ごめんなさい' }
+{ serif1: 'こわい',
+  serif2: 'こわい',
+  serif3: 'ちょっとこわいな',
+  serif4: 'ちょっとこわいな' }
+{ serif1: 'こわい', serif2: 'こわい', serif3: 'こわい', serif4: 'こわい' }
+{ serif1: 'なにこれ', serif2: 'なにこれ', serif3: 'なにこれ', serif4: 'なにこれ' }
+{ serif1: 'なにこれ',
+  serif2: '......',
+  serif3: '......',
+  serif4: '......' }
+{ serif1: 'いや！', serif2: 'いや！', serif3: 'いや！', serif4: 'なに？' }
+{ serif1: 'いや！', serif2: 'いや！', serif3: 'いや！', serif4: 'いや！' }
+{ serif1: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif2: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif3: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif4: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛' }
+{ serif1: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif2: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif3: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif4: 'いや！' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '......',
+  serif4: '......' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '......',
+  serif4: '”なにもない”しかない' }
+{ serif1: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif2: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif3: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif4: 'いや！' }
+{ serif1: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif2: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif3: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛',
+  serif4: 'あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '......',
+  serif4: '”なにもない”しかない' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '......',
+  serif4: '電話なら誰か呼べる！' }
+{ serif1: 'うわ！', serif2: 'うわ！', serif3: 'うわ！', serif4: 'うわ！' }
+{ serif1: 'うわ！', serif2: 'うわ！', serif3: 'うわ！', serif4: '電話よ！' }
+{ serif1: 'やめて！', serif2: 'やめて！', serif3: 'やめて！', serif4: 'やめて！' }
+{ serif1: 'やめて！', serif2: 'やめて！', serif3: 'やめて！', serif4: '誰？' }
+{ serif1: 'いや！', serif2: 'いや！', serif3: 'いや！', serif4: 'いや！' }
+{ serif1: 'いや！', serif2: 'いや！', serif3: 'いや！', serif4: '大丈夫？' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '......',
+  serif4: '電話なら誰か呼べる！' }
+{ serif1: '......',
+  serif2: '......',
+  serif3: '......',
+  serif4: '......' }
+{ serif1: 'なに', serif2: 'なに', serif3: 'なに', serif4: 'なに' }
+{ serif1: 'なに', serif2: 'なに', serif3: 'なに', serif4: 'こんにちは' }
+{ serif1: 'うー', serif2: 'うう', serif3: 'うう', serif4: 'うう' }
+{ serif1: 'うー', serif2: 'うー', serif3: 'うー', serif4: 'うー' }
+{ serif1: 'なにあれ',
+  serif2: 'なんだったの',
+  serif3: 'なんだったの',
+  serif4: 'なんだったの' }
+{ serif1: 'なにあれ',
+  serif2: 'なにあれ',
+  serif3: 'なにあれ',
+  serif4: 'ちいさいこどもがいる' }
+{ serif1: 'なにしてるの',
+  serif2: 'なにしてるの',
+  serif3: 'なにしてるの',
+  serif4: 'なにしてるの' }
+{ serif1: 'なにしてるの',
+  serif2: 'なにしてるの',
+  serif3: 'なにしてるの',
+  serif4: 'なにやってるんだろう' }
+{ serif1: 'なにこれ',
+  serif2: '......',
+  serif3: '......',
+  serif4: '......' }
+{ serif1: 'なにこれ', serif2: 'なにこれ', serif3: 'なにこれ', serif4: 'なにこれ' }
+{ serif1: '気持ち悪い',
+  serif2: '気持ち悪い',
+  serif3: '気持ち悪い',
+  serif4: 'みんなどこいくの！' }
+{ serif1: '気持ち悪い',
+  serif2: '気持ち悪い',
+  serif3: '気持ち悪い',
+  serif4: '気持ち悪い' }
+{ serif1: 'うん', serif2: 'うん', serif3: 'いいよ', serif4: 'いいよ' }
+{ serif1: 'うん', serif2: 'うん', serif3: 'うん', serif4: 'うん' }
+{ serif1: 'ナイフ', serif2: 'ナイフ', serif3: 'ナイフ', serif4: 'ナイフ' }
+{ serif1: 'ナイフ', serif2: 'ナイフだ', serif3: 'ナイフだ', serif4: 'ナイフだ' }
+{ serif1: 'まぶしい', serif2: 'まぶしい', serif3: 'まぶしい', serif4: 'まぶしい' }
+{ serif1: 'まぶしい',
+  serif2: 'ギラギラする',
+  serif3: 'ギラギラする',
+  serif4: 'ギラギラする' }
+{ serif1: 'あれ？', serif2: 'あれ？', serif3: 'あれ？', serif4: 'あれ？' }
+{ serif1: 'あれ？',
+  serif2: 'おかしいな',
+  serif3: 'おかしいな',
+  serif4: 'おかしいな' }
+{ serif1: '誰？', serif2: '誰？', serif3: '変な子！', serif4: '変な子！' }
+{ serif1: '誰？',
+  serif2: 'あの子のことかな',
+  serif3: 'あの子のことかな',
+  serif4: 'あの子のことかな' }
+{ serif1: 'へんなの', serif2: 'へんなの', serif3: 'へんなの', serif4: 'へんなの' }
+{ serif1: 'へんなの',
+  serif2: 'これ死体？',
+  serif3: 'これ死体？',
+  serif4: 'これ死体？' }
+{ serif1: 'きれい！',
+  serif2: '立派なお墓ね！',
+  serif3: '立派なお墓ね！',
+  serif4: '立派なお墓ね！' }
+{ serif1: 'きれい！',
+  serif2: 'うちでもやりたいな',
+  serif3: 'うちでもやりたいな',
+  serif4: 'うちでもやりたいな' }
