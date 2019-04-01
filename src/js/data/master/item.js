@@ -9,8 +9,8 @@ module.exports = [
 		name: "目薬",
 		imageName: "item_01",
 		soundName: "got_item_common",
-		descriptionText:_("おめめがよくなるお薬。ちょっとこわい"),
-		examineText:_(""),
+		descriptionText:_("効能：眼精疲労の緩和"),
+		examineText:_("おめめがよくなる！"),
 	},
 	{
 		id: "02",
@@ -19,7 +19,7 @@ module.exports = [
 		imageName: "item_02",
 		soundName: "got_item_common",
 		descriptionText:_("よいこは火遊びしてはいけません。"),
-		examineText:_(""),
+		examineText:_("火事になったら"),
 	},
 	{
 		id: "03",
@@ -27,7 +27,7 @@ module.exports = [
 		name: "じょうろ",
 		imageName: "item_03",
 		soundName: "got_item_common",
-		descriptionText:_("からっぽ。"),
+		descriptionText:_("水をためることができる。"),
 		examineText:_(""),
 	},
 	{
@@ -36,7 +36,7 @@ module.exports = [
 		name: "じょうろ",
 		imageName: "item_04",
 		soundName: "got_item_common",
-		descriptionText:_("まんぱん。"),
+		descriptionText:_("水をまける。"),
 		examineText:_(""),
 	},
 	{
@@ -45,7 +45,7 @@ module.exports = [
 		name: "はしご",
 		imageName: "item_05",
 		soundName: "got_item_radder",
-		descriptionText:_("はしごのしたをくぐってはいけません。"),
+		descriptionText:_("ハシゴの下をくぐってはならない。"),
 		examineText:_(""),
 	},
 	{
@@ -54,7 +54,7 @@ module.exports = [
 		name: "みどりいろのぐねぐね",
 		imageName: "item_06",
 		soundName: "got_item_common",
-		descriptionText:_("ひんやり"),
+		descriptionText:_("光沢があって生き生きしている。"),
 		examineText:_(""),
 	},
 	{
@@ -63,7 +63,7 @@ module.exports = [
 		name: "マイク",
 		imageName: "item_07",
 		soundName: "got_item_boombox",
-		descriptionText:_("大きな音！うるさい！"),
+		descriptionText:_("小さい声の女の子もスターになれる。"),
 		examineText:_(""),
 	},
 	{
@@ -72,7 +72,7 @@ module.exports = [
 		name: "熊手",
 		imageName: "item_08",
 		soundName: "got_item_common",
-		descriptionText:_("おっきなフォーク"),
+		descriptionText:_("落ち葉を集めるのに便利な"),
 		examineText:_(""),
 	},
 	{
@@ -81,7 +81,7 @@ module.exports = [
 		name: "竹とんぼ",
 		imageName: "item_09",
 		soundName: "got_item_common",
-		descriptionText:_("よくとぶよ"),
+		descriptionText:_("竹細工の玩具。よく飛ぶ。"),
 		examineText:_(""),
 	},
 	{
@@ -90,7 +90,7 @@ module.exports = [
 		name: "こわいおめん",
 		imageName: "item_10",
 		soundName: "got_item_common",
-		descriptionText:_("こわい"),
+		descriptionText:_("恐怖の権現を模した仮面。"),
 		examineText:_(""),
 	},
 	{
@@ -100,7 +100,7 @@ module.exports = [
 		imageName: "item_11",
 		soundName: "got_item_common",
 		descriptionText:_("”人生はチョコレートの箱”"),
-		examineText:_(""),
+		examineText:_("ざんねん空っぽ"),
 	},
 	{
 		id: "12",
@@ -108,8 +108,8 @@ module.exports = [
 		name: "人形",
 		imageName: "item_12",
 		soundName: "got_item_common",
-		descriptionText:_("へんな子！"),
-		examineText:_(""),
+		descriptionText:_("手作りのぬいぐるみ"),
+		examineText:_("へんな子！"),
 	},
 	{
 		id: "13",
@@ -117,7 +117,7 @@ module.exports = [
 		name: "シャベル",
 		imageName: "item_13",
 		soundName: "got_item_common",
-		descriptionText:_("これは……スコップ！"),
+		descriptionText:_("シャベル"),
 		examineText:_(""),
 	},
 	{
@@ -126,7 +126,7 @@ module.exports = [
 		name: "上腕骨",
 		imageName: "item_14",
 		soundName: "got_item_common",
-		descriptionText:_("骨だ！おっきいから足だと思う"),
+		descriptionText:_("上腕骨"),
 		examineText:_(""),
 	},
 	{
@@ -135,7 +135,7 @@ module.exports = [
 		name: "前腕骨",
 		imageName: "item_15",
 		soundName: "got_item_common",
-		descriptionText:_("これは骨！ジョンにあげようかな"),
+		descriptionText:_("前腕骨"),
 		examineText:_(""),
 	},
 	{
@@ -144,7 +144,7 @@ module.exports = [
 		name: "サファイアの宝飾品",
 		imageName: "item_16",
 		soundName: "got_item_common",
-		descriptionText:_("きれい！海みたい"),
+		descriptionText:_("サファイアの宝飾品"),
 		examineText:_(""),
 	},
 	{
@@ -153,7 +153,7 @@ module.exports = [
 		name: "ルビーの宝飾品",
 		imageName: "item_17",
 		soundName: "got_item_common",
-		descriptionText:_("きれい！太陽みたい"),
+		descriptionText:_("ルビーの宝飾品"),
 		examineText:_(""),
 	},
 	{
@@ -162,7 +162,7 @@ module.exports = [
 		name: "斧",
 		imageName: "item_18",
 		soundName: "got_item_common",
-		descriptionText:_("おっきい！大人も殺せちゃう"),
+		descriptionText:_("斧。オーバールック謹製"),
 		examineText:_(""),
 	},
 	{
@@ -171,8 +171,8 @@ module.exports = [
 		name: "オーナメント",
 		imageName: "item_19",
 		soundName: "got_item_common",
-		descriptionText:_("宝物もらっちゃった！"),
-		examineText:_(""),
+		descriptionText:_("異教徒の儀式に使われる装飾品。"),
+		examineText:_("宝物もらっちゃった！"),
 	},
 	{
 		id: "20",
@@ -180,7 +180,7 @@ module.exports = [
 		name: "チルノの頭",
 		imageName: "item_20",
 		soundName: "got_item_common",
-		descriptionText:_("なんかちょっと気持ち悪い"),
+		descriptionText:_("要冷凍。割れ物。"),
 		examineText:_(""),
 	},
 	{
@@ -189,8 +189,8 @@ module.exports = [
 		name: "ジャーナルをまとめた本",
 		imageName: "item_21",
 		soundName: "got_item_common",
-		descriptionText:_(""),
-		examineText:_(""),
+		descriptionText:_("”人が受け継ぐのは遺伝子ではなく文字だ”"),
+		examineText:_("文字ばっかり！やんなっちゃう"),
 	},
 	{
 		id: "22",
@@ -198,7 +198,7 @@ module.exports = [
 		name: "カセットプレーヤー",
 		imageName: "item_22",
 		soundName: "got_item_tapeplayer",
-		descriptionText:_("がちゃがちゃ鳴っておもしろい！"),
+		descriptionText:_(""),
 		examineText:_(""),
 	},
 	{
@@ -208,7 +208,7 @@ module.exports = [
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_("『イデアの遊星』"),
-		examineText:_(""),
+		examineText:_("置いて行かれそうになっちゃう"),
 	},
 	{
 		id: "24",
@@ -253,7 +253,7 @@ module.exports = [
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_("『1968年6月10日 E県B村』"),
-		examineText:_(""),
+		examineText:_("へーんなの！"),
 	},
 	{
 		id: "29",
@@ -262,7 +262,7 @@ module.exports = [
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_("『Le secret labo.』"),
-		examineText:_(""),
+		examineText:_("この人だれ？このひとすき！"),
 	},
 	{
 		id: "30",
@@ -271,7 +271,7 @@ module.exports = [
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_("『unwelcome to the jungle』"),
-		examineText:_(""),
+		examineText:_("私帰ったほうがいいの？"),
 	},
 	{
 		id: "31",
@@ -280,7 +280,7 @@ module.exports = [
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_("『天地創造』"),
-		examineText:_(""),
+		examineText:_("むかし聞いたことある！"),
 	},
 	{
 		id: "32",
@@ -288,7 +288,7 @@ module.exports = [
 		name: "目玉",
 		imageName: "item_32",
 		soundName: "got_item_common",
-		descriptionText:_("ガラス玉みたい！"),
+		descriptionText:_(""),
 		examineText:_(""),
 	},
 	{
@@ -297,8 +297,8 @@ module.exports = [
 		name: "鍵",
 		imageName: "item_33",
 		soundName: "got_item_common",
-		descriptionText:_("はやくあの小鳥を助けなきゃ！"),
-		examineText:_(""),
+		descriptionText:_("鳥かごの鍵"),
+		examineText:_("はやくあの小鳥を助けなきゃ！"),
 	},
 	{
 		id: "34",
@@ -306,7 +306,7 @@ module.exports = [
 		name: "斧",
 		imageName: "item_18",
 		soundName: "got_item_common",
-		descriptionText:_("使いみちはひとつ！"),
+		descriptionText:_("鋭く砥がれた斧"),
 		examineText:_(""),
 	},
 	{
@@ -315,7 +315,7 @@ module.exports = [
 		name: "はしご",
 		imageName: "item_05",
 		soundName: "got_item_common",
-		descriptionText:_(""),
+		descriptionText:_("高く上るための道具"),
 		examineText:_(""),
 	},
 	{
@@ -324,8 +324,8 @@ module.exports = [
 		name: "はさみ",
 		imageName: "item_36",
 		soundName: "got_item_common",
-		descriptionText:_(""),
-		examineText:_(""),
+		descriptionText:_("”上手に使いましょう”"),
+		examineText:_("......"),
 	},
 ];
 
