@@ -82,14 +82,15 @@ module.exports = {
 				{"chara": "koishi","exp": "look_top",  serif1: _("あかりだ"), serif2: _("あかりだ"), serif3: _("あかりだ"), serif4: _("あかるい......")},
 			],
 			serif_back: [
-				{"chara": "koishi","exp": "look_top", "serif": _("なにこれ")},
-				{"chara": "koishi","exp": "look_top", "serif": _("気持ち悪い")},
-
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["after_chapter6-13-event-01"], "serifs": [
 					[
+						{"chara": "koishi","exp": "look_top", "serif": _("なにこれ")},
+						{"chara": "koishi","exp": "look_top", "serif": _("気持ち悪い")},
 						{"chara": I,"exp": null,  serif1: _("あばぶ"), serif2: _("あばぶ"), serif3: _("あばぶ"), serif4: _("あばぶ"), "id": "chapter6-07-show_last_junction", "save": true},
 					],
 					[
+						{"chara": "koishi","exp": "look_top", "serif": _("なにこれ")},
+						{"chara": "koishi","exp": "look_top", "serif": _("気持ち悪い")},
 					],
 				]},
 			],
