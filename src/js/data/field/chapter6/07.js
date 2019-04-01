@@ -102,8 +102,8 @@ module.exports = {
 			anime4: null,
 			anime5: null,
 			anime6: null,
-			action_name: null,
-			sound_name: null,
+			action_name: "look_top",
+			sound_name: "chapter6-07-laugh_baby",
 		},
 		{
 			no: ++I,

@@ -25,6 +25,7 @@ module.exports = {
 			],
 			// 1度目まだ未アクセス
 			[
+				{"type": "process", "value": "playSound", "arguments": ["chapter6-02-bark_bm"]},
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
 						{"chara": "bm","exp": "bm-reaction_01",  serif1: _("バアアアア！！"), serif2: _("バアアアア！！"), serif3: _("バアアアア！！"), serif4: _("バアアアア！！")},

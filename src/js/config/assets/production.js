@@ -714,6 +714,34 @@ AssetsConfig.sounds = {
 		path: "./sound/production/chapter5/event/chapter5-09-event-01/07.ogg",
 		volume: 1.0,
 	},
+	"chapter6-04-event-01-01":    {
+		path: "./sound/production/chapter6/event/chapter6-04-event-01/01.ogg",
+		volume: 1.0,
+	},
+	"chapter6-04-event-common-noise":    {
+		path: "./sound/production/chapter6/event/noise.ogg",
+		volume: 1.0,
+	},
+	"chapter6-12-event-01-01":    {
+		path: "./sound/production/chapter6/event/chapter6-12-event-01/01.ogg",
+		volume: 1.0,
+	},
+	"chapter6-12-event-01-02":    {
+		path: "./sound/production/chapter6/event/chapter6-12-event-01/02.ogg",
+		volume: 1.0,
+	},
+	"chapter6-12-event-01-03":    {
+		path: "./sound/production/chapter6/event/chapter6-12-event-01/03.ogg",
+		volume: 1.0,
+	},
+	"chapter6-12-event-01-04":    {
+		path: "./sound/production/chapter6/event/chapter6-12-event-01/04.ogg",
+		volume: 1.0,
+	},
+	"chapter6-12-event-01-05":    {
+		path: "./sound/production/chapter6/event/chapter6-12-event-01/05.ogg",
+		volume: 1.0,
+	},
 	"chapter3-mansion_corridor3-breaked_clock":    {
 		path: "./sound/production/chapter3/mansion_corridor3/breaked_clock.ogg",
 		volume: 1.0,
@@ -754,6 +782,21 @@ AssetsConfig.sounds = {
 		path: "./sound/production/chapter6/02/bark_bm.ogg",
 		volume: 1.0,
 	},
+	"chapter6-07-laugh_baby":    {
+		path: "./sound/production/chapter6/07/laugh_baby.ogg",
+		volume: 1.0,
+	},
+	"chapter6-13-touch_chocolatebox":    {
+		path: "./sound/production/chapter6/13/touch_chocolatebox.ogg",
+		volume: 1.0,
+	},
+	"chapter6-06-look_window":    {
+		path: "./sound/production/chapter6/06/look_window.ogg",
+		volume: 1.0,
+	},
+
+
+
 	// カセットテープ
 	"chapter4-tape_23":    {
 		path: "./sound/production/chapter4/tape/23.ogg",
@@ -894,6 +937,18 @@ AssetsConfig.bgms = [
 		description: _(""),
 		chapter: 6,
 	},
+	{
+		key: "field14",
+		path: "./bgm/production/field14.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
+		chapter: 6,
+	},
+
 
 	{
 		key: "chapter3-12-wood",

@@ -7,7 +7,7 @@ var _ = require('i18n4v')
 module.exports = {
 	key: "chapter6_06",
 	chapter: 6,
-	bgm: "silent",
+	bgm: "field14",
 	rightStartPosition: {x: 690, y: 380},
 	leftStartPosition:  {x: 180, y: 380},
 	upStartPosition:    null,
@@ -85,7 +85,7 @@ module.exports = {
 			name: "ジャーナル",
 			serif: [
 				{"chara": "koishi","exp": "look_bottom",  serif1: _("なにかしら"), serif2: _("なにかしら"), serif3: _("なにかしら"), serif4: _("なにかしら")},
-				{"chara": "koishi","exp": null, "serif": _("......")},
+				{"chara": "koishi","exp": null, "serif": _("......"), "option": {"playSound": "chapter6-02-bark_bm"}},
 				{"chara": "bm","exp": null,  serif1: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif2: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif3: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif4: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), "option": {"playEventMovie": "chapter6-06-event-01"}},
 				{"chara": "koishi","exp": null, "serif": "", "option": {"changeField": "chapter6_10"}},
 			],
@@ -117,6 +117,7 @@ module.exports = {
 			],
 			width: 100, height: 500,
 			x: 430, y: 150,
+			sound_name: "chapter6-06-look_window",
 		},
 		{
 			no: ++I,
@@ -130,9 +131,6 @@ module.exports = {
 			x: 650, y: 420,
 			journal_id: "journal039",
 		},
-
-
-
 	],
 };
 

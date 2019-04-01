@@ -17,6 +17,8 @@ module.exports = {
 	background: "chapter6-10-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "process", "value": "playSound", "arguments": ["event_in"]},
+
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6_10_firstaccess"], "process": [
 			// 1度目アクセス済み
 			[
@@ -47,6 +49,7 @@ module.exports = {
 								{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj04",  serif1: _("誰が悪いのかしら"), serif2: _("誰が悪いのかしら"), serif3: _("誰が悪いのかしら"), serif4: _("誰が悪いのかしら"), "option": {"changeField": "chapter6_13"}},
 							]
 						]},
+						{"type": "process", "value": "playSound", "arguments": ["event_out"]},
 						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_10_secondaccess"]}
 					],
 				]},
@@ -88,6 +91,7 @@ module.exports = {
 						{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj02",  serif1: _("ママ？"), serif2: _("ママ？"), serif3: _("ママ？"), serif4: _("ママ？"), "option": {"changeField": "chapter6_04"}},
 					]
 				]},
+				{"type": "process", "value": "playSound", "arguments": ["event_out"]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter6_10_firstaccess"]}
 			],
 		]},
