@@ -742,7 +742,18 @@ AssetsConfig.sounds = {
 		path: "./sound/production/chapter5/07/hashigo.ogg",
 		volume: 1.0,
 	},
-
+	"chapter6-01-knock_window":    {
+		path: "./sound/production/chapter6/01/knock_window.ogg",
+		volume: 1.0,
+	},
+	"chapter6-01-bark_bm":    {
+		path: "./sound/production/chapter6/01/bark_bm.ogg",
+		volume: 1.0,
+	},
+	"chapter6-02-bark_bm":    {
+		path: "./sound/production/chapter6/02/bark_bm.ogg",
+		volume: 1.0,
+	},
 	// カセットテープ
 	"chapter4-tape_23":    {
 		path: "./sound/production/chapter4/tape/23.ogg",
@@ -872,6 +883,18 @@ AssetsConfig.bgms = [
 		description: _(""),
 		chapter: 5,
 	},
+	{
+		key: "field13",
+		path: "./bgm/production/field13.ogg",
+		loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
+		chapter: 6,
+	},
+
 	{
 		key: "chapter3-12-wood",
 		path: "./bgm/production/chapter3/12/wood.ogg",

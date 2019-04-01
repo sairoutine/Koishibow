@@ -23,6 +23,7 @@ module.exports = {
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6-01-show_bm"], "process": [
 			// BM登場済み
 			[
+				{"type": "process", "value": "playSound", "arguments": ["chapter6-01-bark_bm"]},
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
 						{"chara": "bm","exp": null,  serif1: _("ギャーッ"), serif2: _("ギャーッ"), serif3: _("ギャーッ"), serif4: _("ギャーッ")},
@@ -113,7 +114,7 @@ module.exports = {
 			anime2: "chapter6-01-obj-02",
 			anime3: "chapter6-01-obj-01",
 			action_name: "look_top",
-			sound_name: "chapter0-myroom-sound_window_for_kokoro",
+			sound_name: "chapter6-01-knock_window",
 			height: 700,
 			target_x: 177, target_y: 531,
 			not_show_if_event_true: "chapter6-01-show_bm",

@@ -170,6 +170,12 @@ TalkScenario.processSerifOption = function (scene, serif) {
 		scene.changeSubScene("blackout", "talk_with_object");
 		return;
 	}
+	// SE再生
+	else if (option.playSound) {
+		scene.core.audio_loader.playSound(option.playSound);
+		return;
+	}
+
 };
 
 

@@ -3,6 +3,7 @@ var _ = require('i18n4v')
 module.exports = {
 	key: "chapter5-09-event-03",
 	serifWindow: "fukidashi",
+	bgm: "chapter5-event-oku",
 	expAnimes: [
 		"chapter5-09-event-03-obj01",
 		"chapter5-09-event-03-obj02",
@@ -23,7 +24,11 @@ module.exports = {
 		{"exp": "chapter5-09-event-03-obj05", "serif": _("......"), "option": {"x": 630, "y": 380, "loop": false}},
 	],
 	endAnime: null,
+	startSounds: [
+		{"name": "event_in", "frame": 0},
+	],
 	endSounds: [
+		{"name": "event_out", "frame": 180},
 	],
 	endProcess: [
 		{"type": "process", "value": "returnScene", "arguments": ["stage"]},

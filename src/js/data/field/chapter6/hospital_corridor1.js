@@ -26,6 +26,7 @@ module.exports = {
 			],
 			// 1度目まだ未アクセス
 			[
+				{"type": "process", "value": "playSound", "arguments": ["chapter6-02-bark_bm"]},
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
 						{"id": "chapter6-01-show_bm", "save": true},

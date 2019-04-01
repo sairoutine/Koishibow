@@ -96,6 +96,10 @@ var ProcessList = {
 	playBGM: function (core, bgm) {
 		core.scene_manager.currentScene().playBGM(bgm);
 	},
+	// SE再生
+	playSound: function(core, sound) {
+		core.audio_loader.playSound(sound);
+	},
 	// 発達度+1
 	growUp: function (core) {
 		core.save_manager.player.growUp();
