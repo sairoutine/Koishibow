@@ -547,6 +547,14 @@ AssetsConfig.sounds = {
 		path: "./sound/common/walking/bare_sand_left.ogg",
 		volume: 1.0,
 	},
+	walking_bare_flesh_right:    {
+		path: "./sound/common/walking/bare_flesh_right.ogg",
+		volume: 1.0,
+	},
+	walking_bare_flesh_left:    {
+		path: "./sound/common/walking/bare_flesh_left.ogg",
+		volume: 1.0,
+	},
 	chapter0_noise1:    {
 		path: "./sound/common/noise/chapter0/noise1.ogg",
 		volume: 1.0,

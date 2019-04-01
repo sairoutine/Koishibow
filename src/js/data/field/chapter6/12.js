@@ -17,7 +17,7 @@ module.exports = {
 	upField: null,
 	downField: null,
 	background: "chapter6-12-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_outside",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6_12_firstaccess"], "process": [
 			// 1度目アクセス済み

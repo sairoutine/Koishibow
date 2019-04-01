@@ -16,7 +16,7 @@ module.exports = {
 	upField: null,
 	downField: null,
 	background: "chapter5-09-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wood",
 	initialProcess: [
 	],
 	objects: [

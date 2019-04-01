@@ -17,7 +17,7 @@ module.exports = {
 	upField: null,
 	downField: null,
 	background: null,
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_flesh",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6_15_firstaccess"], "process": [
 			// 1度目アクセス済み
