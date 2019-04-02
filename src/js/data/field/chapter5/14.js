@@ -20,7 +20,6 @@ module.exports = {
 	leftField: "chapter5_04",
 	upField: null,
 	downField: null,
-	background: null,
 	background: "chapter5-02-bg-001",
 	walkSound: "walking_bare_wood",
 	initialProcess: [

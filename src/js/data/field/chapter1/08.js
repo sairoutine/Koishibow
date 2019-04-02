@@ -22,7 +22,6 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ぶら下がった二人",
 			serif: null,
-			x: 960/2, y: 720/2,
 			x: 735*2/3, y: 392*2/3,
 			scale: 2/3,
 			anime1: "chapter1-08-obj-01-obj00",
