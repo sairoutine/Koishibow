@@ -10,7 +10,7 @@ module.exports = {
 	key: "chapter5_05",
 	chapter: 5,
 	bgm: "field12",
-	rightStartPosition: {x: 640, y: 480},
+	rightStartPosition: {x: 600, y: 480},
 	leftStartPosition:  {x: 220, y: 350},
 	upStartPosition:    null,
 	downStartPosition:  null,
@@ -72,7 +72,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "カワウソ",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
 
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-05-hashigo_ura_talk"], "serifs": [
@@ -104,7 +104,7 @@ module.exports = {
 				{"chara": "animal_kawa","exp": "animal_kawa-ura_wait",  serif1: _("ケケケケ"), serif2: _("ケケケケ"), serif3: _("ケケケケ"), serif4: _("ケケケケ")},
 				{"chara": "koishi","exp": "look_front",  serif1: _("ほんとうにうるさい！"), serif2: _("ほんとうにうるさい！"), serif3: _("ほんとうにうるさい！"), serif4: _("ほんとうにうるさい！")},
 			],
-			x: 800, y: 500,
+			x: 750, y: 500,
 			scale: 2/3,
 			anime1: "animal_kawa-wait",
 			anime2: null,
