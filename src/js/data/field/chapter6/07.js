@@ -20,7 +20,7 @@ var LAST_JUNCTION_SERIF = [
 		],
 		// 発達度4
 		[
-			{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter6_07-growth4-limit", 4], "serifs": [
+			{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter6_07-growth4-limit", 3], "serifs": [
 				[
 					{"chara": "koishi", "exp": "look_top",  serif1: _("わたしはどうしたらいいの"), serif2: _("わたしはどうしたらいいの"), serif3: _("わたしはどうしたらいいの"), serif4: _("わたしはどうしたらいいの")},
 				],

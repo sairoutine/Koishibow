@@ -46,7 +46,7 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_35-merry-limit", 2], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_35-merry-limit", 1], "serifs": [
 					[
 						{"chara": "koishi", "exp": "look_front",  serif1: _("ねえ、お友達いっぱいいるの"), serif2: _("ねえ、お友達いっぱいいるの"), serif3: _("ねえ、お友達いっぱいいるの"), serif4: _("ねえ、お友達いっぱいいるの")},
 						{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("あんまりいないわね"), serif2: _("あんまりいないわね"), serif3: _("あんまりいないわね"), serif4: _("あんまりいないわね")},

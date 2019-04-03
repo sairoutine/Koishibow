@@ -82,7 +82,7 @@ module.exports = {
 			loop: true,
 			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_11-animal_shiba-limit", 2], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_11-animal_shiba-limit", 1], "serifs": [
 					[
 						{"chara": "koishi","exp": "look_front", "serif": _("なにしてるの")},
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait",  serif1: _("なにも"), serif2: _("なにも"), serif3: _("なにも"), serif4: _("なにも")},

@@ -88,7 +88,7 @@ module.exports = {
 			loop: true,
 			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_04-animal_mogura-limit", 2], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_04-animal_mogura-limit", 1], "serifs": [
 					[
 						{"chara": "koishi","exp": "look_front",  serif1: _("あなたは？"), serif2: _("あなたは？"), serif3: _("あなたは？"), serif4: _("あなたは？")},
 						{"chara": "animal_mogura","exp": "animal_mogura-ura_wait",  serif1: _("もぐら"), serif2: _("もぐら"), serif3: _("もぐら"), serif4: _("もぐら")},

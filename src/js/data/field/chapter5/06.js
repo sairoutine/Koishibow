@@ -58,9 +58,9 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ハシビロコウ",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_10-animal_hashi-limit", 2], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_10-animal_hashi-limit", 1], "serifs": [
 					[
 						{"chara": "koishi","exp": null,  serif1: _("すごい顔だね"), serif2: _("すごい顔だね"), serif3: _("すごい顔だね"), serif4: _("すごい顔だね")},
 						{"chara": "animal_hashi","exp": "animal_hashi-ura_reaction_01",  serif1: _("なんだお前は"), serif2: _("なんだお前は"), serif3: _("なんだお前は"), serif4: _("なんだお前は")},

@@ -8,7 +8,7 @@ var RENKO_MERRY_SERIF = {"type": "criteria_serif", "criteria": "isPlayed", "argu
 	// イベント再生済
 	[
 
-		{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_24-renko-merry-limit", 2], "serifs": [
+		{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_24-renko-merry-limit", 1], "serifs": [
 			[
 				{"chara": "renko", "exp": "renko-reaction_01",  serif1: _("じゃああなたもあの薬を浴びてからあの子が見えたの？"), serif2: _("じゃああなたもあの薬を浴びてからあの子が見えたの？"), serif3: _("じゃああなたもあの薬を浴びてからあの子が見えたの？"), serif4: _("じゃああなたもあの薬を浴びてからあの子が見えたの？")},
 				{"chara": "merry", "exp": "merry-reaction_06",  serif1: _("そう"), serif2: _("そう"), serif3: _("そう"), serif4: _("そう")},

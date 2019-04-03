@@ -46,7 +46,7 @@ module.exports = {
 			loop: true,
 			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-orin-limit", 2], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-orin-limit", 1], "serifs": [
 					[
 						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("あら！"), serif2: _("あら！"), serif3: _("あら！"), serif4: _("あら！")},
 						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("こいし様おひさしぶりですね"), serif2: _("こいし様おひさしぶりですね"), serif3: _("こいし様おひさしぶりですね"), serif4: _("こいし様おひさしぶりですね")},

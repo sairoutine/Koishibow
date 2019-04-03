@@ -122,7 +122,7 @@ module.exports = {
 			loop: true,
 			turn_toward_me: true, // こいしの方を向く
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_10-animal_hari-limit", 2], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_10-animal_hari-limit", 1], "serifs": [
 					[
 						{"chara": "animal_hari","exp": "animal_hari-ura_reaction_01", "serif": _("......")},
 						{"chara": "koishi","exp": "look_front",  serif1: _("どうしたの"), serif2: _("どうしたの"), serif3: _("どうしたの"), serif4: _("どうしたの")},

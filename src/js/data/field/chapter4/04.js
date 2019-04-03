@@ -27,7 +27,7 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_04-tewireal-limit", 4], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_04-tewireal-limit", 3], "serifs": [
 					[
 						{"chara": "koishi", "exp": "look_front", "serif": _("ねえねえ")},
 						{"chara": "koishi", "exp": null,  serif1: _("久しぶり！"), serif2: _("久しぶり！"), serif3: _("久しぶり！"), serif4: _("久しぶり！")},

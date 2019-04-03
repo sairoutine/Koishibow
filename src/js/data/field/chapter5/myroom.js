@@ -191,8 +191,7 @@ module.exports = {
 				{"chara": "koishi","exp": null, "serif": _("......")},
 				{"id": "chapter5-myroom-araiguma_talk1", "save": true},
 			],
-			serif: [
-			],
+			serif: null,
 			x: 600, y: 300,
 			scale: 2/3,
 			anime1: "animal_araiguma-wait",
@@ -205,7 +204,7 @@ module.exports = {
 			height: 350,
 			action_name: null,
 			sound_name: null,
-			not_show_if_event_true: "chapter5-03-event-10630",
+			show_if_event_true: "chapter5-03-event-10630",
 		},
 
 

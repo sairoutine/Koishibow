@@ -57,7 +57,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "死体",
 			serif: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_25-" + I + "-limit", 2], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_25-" + I + "-limit", 1], "serifs": [
 					[
 						{"chara": "koishi", "exp": "touch",  serif1: _("手がかりがあるかも！"), serif2: _("お手紙とかないかな"), serif3: _("お手紙とかないかな"), serif4: _("お手紙とかないかな")},
 						{"chara": "reisen", "exp": "reisen-reaction_03",  serif1: _("自殺ならあるかもね"), serif2: _("自殺ならあるかもね"), serif3: _("自殺ならあるかもね"), serif4: _("自殺ならあるかもね")},

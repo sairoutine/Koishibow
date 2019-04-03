@@ -55,10 +55,11 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ウマ",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
+				{"id": "chapter5-04-show_animal_mogura", "save": true}, // もぐら表示
 				{"chara": "animal_uma","exp": "animal_uma-ura_wait",  serif1: _("なんなの"), serif2: _("なんなの"), serif3: _("なんなの"), serif4: _("なんなの")},
-				{"chara": "koishi","exp": "ax", "serif": _("......")},
+				{"chara": "koishi","exp": "use_axe", "serif": _("......")},
 				{"chara": "koishi","exp": null, "serif": _("......")},
 				{"chara": "animal_uma","exp": "animal_uma-ura_reaction_01",  serif1: _("うう......"), serif2: _("うう......"), serif3: _("うう......"), serif4: _("うう......")},
 				{"chara": "koishi","exp": null, "serif": _("......")},
@@ -74,7 +75,6 @@ module.exports = {
 				{"chara": "koishi","exp": null,  serif1: _("いいこね"), serif2: _("いいこね"), serif3: _("いいこね"), serif4: _("いいこね")},
 				{"chara": "animal_uma","exp": "animal_uma-ura_reaction_01", "serif": _("......")},
 				{"chara": "koishi","exp": null,  serif1: _("ご褒美にクッキー焼いてあげる"), serif2: _("ご褒美にクッキー焼いてあげる"), serif3: _("ご褒美にクッキー焼いてあげる"), serif4: _("ご褒美にクッキー焼いてあげる")},
-				{"id": "chapter5-04-show_animal_mogura", "save": true}, // もぐら表示
 			],
 			serif: [
 				{"chara": "animal_uma","exp": "animal_uma-reaction_01",  serif1: _("ぶぃっ"), serif2: _("ぶぃっ"), serif3: _("ぶぃっ"), serif4: _("ぶぃっ")},
@@ -93,6 +93,7 @@ module.exports = {
 			height: 350,
 			action_name: null,
 			sound_name: null,
+			show_if_event_true: "chapter5-07-animal_komodo_talk1",
 		},
 
 

@@ -18,16 +18,15 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_wood",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-07-show_animal_komodo"], "process": [
-			// コモドがいる
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_07_10530"], "process": [
+			// コモドがいる場合
 			[
-				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_07_10530"], "process": [
-					// すでにアクセス済み
-					[],
-					// まだ未アクセス
+				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"type": "process", "value": "playTalk", "arguments": [
+						{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-07-show_animal_komodo"], "process": [
+							// コモド会話
 							[
+
 								{"chara": "animal_komodo","exp": "animal_komodo-wait",  serif1: _("ぶぅおー"), serif2: _("ぶぅおー"), serif3: _("ぶぅおー"), serif4: _("ぶぅおー")},
 								{"chara": "animal_komodo","exp": "animal_komodo-wait",  serif1: _("ぐもー"), serif2: _("ぐもー"), serif3: _("ぐもー"), serif4: _("ぐもー")},
 								{"chara": "koishi","exp": "look_front",  serif1: _("怪獣がいるわ"), serif2: _("怪獣がいるわ"), serif3: _("怪獣がいるわ"), serif4: _("怪獣がいるわ"), "option": {"getJournal": "journal031"}},
@@ -37,7 +36,11 @@ module.exports = {
 					],
 				]},
 			],
-			// コモドがいない
+			// コモドがいない場合
+			[],
+		]},
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-12-orin_talk1"], "process": [
+			// 柴犬がいる場合
 			[
 				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_07_10340"], "process": [
 					// すでにアクセス済み
@@ -55,6 +58,8 @@ module.exports = {
 					],
 				]},
 			],
+			// 柴犬がいない場合
+			[],
 		]},
 	],
 	objects: [
@@ -226,6 +231,7 @@ module.exports = {
 			height: 550,
 			next_field_name: "chapter5_03",
 		},
+		/*
 		// はしごを使って 5-11へ
 		{
 			no: ++I,
@@ -266,6 +272,7 @@ module.exports = {
 			height: 361,
 			next_field_name: "chapter5_11",
 		},
+		*/
 	],
 };
 

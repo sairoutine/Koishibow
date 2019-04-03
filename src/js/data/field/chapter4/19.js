@@ -31,7 +31,7 @@ module.exports = {
 				// 新品のカセットテープが出現していたら
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter4-23-show_tape4"], "serifs": [
 					[
-						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_19-reisen-limit1", 2], "serifs": [
+						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_19-reisen-limit1", 1], "serifs": [
 							[
 
 								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("あら"), serif2: _("あら"), serif3: _("あら"), serif4: _("あら")},
@@ -67,7 +67,7 @@ module.exports = {
 						]},
 					],
 					[
-						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_19-reisen-limit2", 3], "serifs": [
+						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_19-reisen-limit2", 2], "serifs": [
 							[
 								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("あら"), serif2: _("あら"), serif3: _("あら"), serif4: _("あら")},
 								{"chara": "reisen", "exp": null,  serif1: _("また会ったね"), serif2: _("また会ったね"), serif3: _("また会ったね"), serif4: _("また会ったね")},
