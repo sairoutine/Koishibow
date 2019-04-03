@@ -159,7 +159,7 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// フィールド開始時のこいしの初期位置の決定
 	var pos;
-	if (!from_field_name || field_data.leftField() === from_field_name) {
+	if (field_data.leftField() === from_field_name) {
 		// 左のフィールドからきた場合
 		pos = field_data.leftStartPosition();
 		this.koishi.setPosition(pos.x, pos.y);
@@ -184,9 +184,13 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	}
 	else {
 		// フィールド遷移オブジェクト等で右でも左でもないところから遷移してきた場合
-		pos = field_data.rightStartPosition();
+		// セーブしてゲームを開始した場合
+		pos = field_data.defaultStartPosition();
 		this.koishi.setPosition(pos.x, pos.y);
-		this.koishi.setReflect(true);
+
+		if (pos.isTowardLeft) {
+			this.koishi.setReflect(true);
+		}
 	}
 
 	this.playBGM(field_data.bgm(), field_data.sub_bgms());
