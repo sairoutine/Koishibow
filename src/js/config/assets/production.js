@@ -694,10 +694,6 @@ AssetsConfig.sounds = {
 		path: "./sound/production/chapter5/event/chapter5-09-event-01/03.ogg",
 		volume: 1.0,
 	},
-	"chapter5-09-event-01-03":    {
-		path: "./sound/production/chapter5/event/chapter5-09-event-01/03.ogg",
-		volume: 1.0,
-	},
 	"chapter5-09-event-01-04":    {
 		path: "./sound/production/chapter5/event/chapter5-09-event-01/04.ogg",
 		volume: 1.0,
