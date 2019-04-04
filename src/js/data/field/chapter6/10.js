@@ -103,7 +103,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "さとりとこいし",
 			serif: null,
-			x: 60.5*2/3, y: 469.00*2/3,
+			x: 1207.50*2/3 , y:828*2/3,
 			width: 100,
 			scale: 2/3,
 			anime1: "chapter6-10-obj01-obj01",
