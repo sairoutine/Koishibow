@@ -56,19 +56,19 @@ module.exports = {
 								{"chara": "animal_down", serif1: _("わんわん！"), serif2: _("わんわん！"), serif3: _("わんわん！"), serif4: _("わんわん！")},
 								{"chara": "animal_down", serif1: _("があっがあっ"), serif2: _("があっがあっ"), serif3: _("があっがあっ"), serif4: _("があっがあっ")},
 								{"chara": "animal_down", serif1: _("ぶるるぶるる"), serif2: _("ぶるるぶるる"), serif3: _("ぶるるぶるる"), serif4: _("ぶるるぶるる")},
-								{"chara": "animal_right", serif1: _("いいいいいっ"), serif2: _("いいいいいっ"), serif3: _("いいいいいっ"), serif4: _("いいいいいっ")},
+								{"chara": "animal_left", serif1: _("いいいいいっ"), serif2: _("いいいいいっ"), serif3: _("いいいいいっ"), serif4: _("いいいいいっ")},
 								{"chara": "animal_down", serif1: _("うぴゃーっうぴゃーっ"), serif2: _("うぴゃーっうぴゃーっ"), serif3: _("うぴゃーっうぴゃーっ"), serif4: _("うぴゃーっうぴゃーっ")},
-								{"chara": "animal_right", serif1: _("ぐるるるるる"), serif2: _("ぐるるるるる"), serif3: _("ぐるるるるる"), serif4: _("ぐるるるるる")},
+								{"chara": "animal_left", serif1: _("ぐるるるるる"), serif2: _("ぐるるるるる"), serif3: _("ぐるるるるる"), serif4: _("ぐるるるるる")},
 								{"chara": "animal_down", serif1: _("ぴいーっぴいーっ"), serif2: _("ぴいーっぴいーっ"), serif3: _("ぴいーっぴいーっ"), serif4: _("ぴいーっぴいーっ")},
-								{"chara": "animal_right", serif1: _("チチチチイ"), serif2: _("チチチチイ"), serif3: _("チチチチイ"), serif4: _("チチチチイ")},
-								{"chara": "animal_right", serif1: _("んなぁお"), serif2: _("んなぁお"), serif3: _("んなぁお"), serif4: _("んなぁお")},
+								{"chara": "animal_left", serif1: _("チチチチイ"), serif2: _("チチチチイ"), serif3: _("チチチチイ"), serif4: _("チチチチイ")},
+								{"chara": "animal_left", serif1: _("んなぁお"), serif2: _("んなぁお"), serif3: _("んなぁお"), serif4: _("んなぁお")},
 								{"chara": "koishi","exp": "look_front",  serif1: _("うるさい！"), serif2: _("うるさい！"), serif3: _("うるさい！"), serif4: _("うるさい！")},
 								{"chara": "koishi","exp": null,  serif1: _("動物の声だわ"), serif2: _("動物の声だわ"), serif3: _("動物の声だわ"), serif4: _("動物の声だわ")},
 								{"chara": "koishi","exp": null,  serif1: _("楽しそう！"), serif2: _("楽しそう！"), serif3: _("楽しそう！"), serif4: _("楽しそう！")},
 								{"chara": "oku",  serif1: _("があー"), serif2: _("があー"), serif3: _("があー"), serif4: _("があー")},
 								{"chara": "koishi","exp": "yes",  serif1: _("まずあの子を助けなきゃ"), serif2: _("まずあの子を助けなきゃ"), serif3: _("まずあの子を助けなきゃ"), serif4: _("まずあの子を助けなきゃ")},
 								{"chara": "koishi","exp": null,  serif1: _("あの部屋へ行かなきゃ"), serif2: _("あの部屋へ行かなきゃ"), serif3: _("奥だったわね"), serif4: _("奥だったわね")},
-								{"chara": "animal_right", serif1: _("みゃあぉう"), serif2: _("みゃあぉう"), serif3: _("みゃあぉう"), serif4: _("みゃあぉう")},
+								{"chara": "animal_left", serif1: _("みゃあぉう"), serif2: _("みゃあぉう"), serif3: _("みゃあぉう"), serif4: _("みゃあぉう")},
 							]
 						]},
 						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_10_10180"]}
@@ -121,7 +121,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ハリネズミ",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_10-animal_hari-limit", 1], "serifs": [
 					[
@@ -133,8 +133,7 @@ module.exports = {
 						{"chara": "koishi","exp": null, "serif": _("......")},
 						{"chara": "koishi","exp": null,  serif1: _("あなたは？"), serif2: _("あなたは？"), serif3: _("あなたは？"), serif4: _("あなたは？")},
 						{"chara": "animal_hari","exp": "animal_hari-ura_wait",  serif1: _("ハリネズミですけども......"), serif2: _("ハリネズミですけども......"), serif3: _("ハリネズミですけども......"), serif4: _("ハリネズミですけども......")},
-						{"chara": "koishi","exp": "yes", "serif": _("そっか")},
-						{"id": "chapter5-10-show_journal", "save": true},
+						{"chara": "koishi","exp": "yes", "serif": _("そっか"), "option": {"getJournal": "journal024"}},
 					],
 					[
 						{"chara": "animal_hari","exp": "animal_hari-ura_reaction_01",  serif1: _("そっとしといてください......"), serif2: _("そっとしといてください......"), serif3: _("そっとしといてください......"), serif4: _("そっとしといてください......")},
@@ -176,7 +175,7 @@ module.exports = {
 			name: "お空(左)",
 			serif: null,
 			width: 0, height: 0,
-			x: 0, y: 360,
+			x: 760, y: 360,
 		},
 		{
 			no: "animal_down",
@@ -188,20 +187,13 @@ module.exports = {
 			x: 480, y: 720,
 		},
 		{
-			no: "animal_right",
+			no: "animal_left",
 			image: null,
 			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "動物(右)",
+			name: "動物(左)",
 			serif: null,
 			width: 0, height: 0,
-			x: 960, y: 360,
-		},
-		{
-			no: ++I,
-			type: CONSTANT.JOURNAL_FRONT_TYPE,
-			x: 258, y: 689,
-			journal_id: "journal024",
-			show_if_event_true: "chapter5-10-show_journal",
+			x: 200, y: 360,
 		},
 	],
 };

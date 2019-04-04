@@ -175,6 +175,7 @@ module.exports = {
 			name: "アライグマ",
 			loop: true,
 			serif_back: [
+				{"id": "chapter5-myroom-araiguma_talk1", "save": true},
 				{"chara": "koishi","exp": "look_front",  serif1: _("ちょっと！"), serif2: _("ちょっと！"), serif3: _("ちょっと！"), serif4: _("ちょっと！")},
 				{"chara": "koishi","exp": null,  serif1: _("目玉を転がしたのあなた？"), serif2: _("目玉を転がしたのあなた？"), serif3: _("目玉を転がしたのあなた？"), serif4: _("目玉を転がしたのあなた？")},
 				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("目玉？"), serif2: _("目玉？"), serif3: _("目玉？"), serif4: _("目玉？")},
@@ -190,7 +191,6 @@ module.exports = {
 				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
 				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("どこかで見たんだけどなあ"), serif2: _("どこかで見たんだけどなあ"), serif3: _("どこかで見たんだけどなあ"), serif4: _("どこかで見たんだけどなあ")},
 				{"chara": "koishi","exp": null, "serif": _("......")},
-				{"id": "chapter5-myroom-araiguma_talk1", "save": true},
 			],
 			serif: null,
 			x: 600, y: 300,

@@ -22,14 +22,23 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_wood",
 	initialProcess: [
-		{"type": "process", "value": "playTalk", "arguments": [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_myroom_10290"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
 			[
-				{"chara": "animal_kawa","exp": "animal_kawa-wait",  serif1: _("キィーッ"), serif2: _("キィーッ"), serif3: _("キィーッ"), serif4: _("キィーッ")},
-				{"chara": "animal_kawa","exp": "animal_kawa-wait",  serif1: _("ピャー"), serif2: _("ピャー"), serif3: _("ピャー"), serif4: _("ピャー")},
-				{"chara": "koishi","exp": "look_front",  serif1: _("うわーっ"), serif2: _("うわーっ"), serif3: _("うわーっ"), serif4: _("うわーっ")},
-				{"chara": "koishi","exp": null,  serif1: _("うるさい！"), serif2: _("うるさい！"), serif3: _("うるさい！"), serif4: _("うるさい！")},
-			]
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "animal_kawa","exp": "animal_kawa-wait",  serif1: _("キィーッ"), serif2: _("キィーッ"), serif3: _("キィーッ"), serif4: _("キィーッ")},
+						{"chara": "animal_kawa","exp": "animal_kawa-wait",  serif1: _("ピャー"), serif2: _("ピャー"), serif3: _("ピャー"), serif4: _("ピャー")},
+						{"chara": "koishi","exp": "look_front",  serif1: _("うわーっ"), serif2: _("うわーっ"), serif3: _("うわーっ"), serif4: _("うわーっ")},
+						{"chara": "koishi","exp": null,  serif1: _("うるさい！"), serif2: _("うるさい！"), serif3: _("うるさい！"), serif4: _("うるさい！")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_myroom_10290"]}
+			],
 		]},
+
 	],
 	objects: [
 		{
@@ -128,6 +137,7 @@ module.exports = {
 					// イヌと喋った
 					[
 						{"chara": "koishi","exp": "touch",  serif1: _("これいる"), serif2: _("これいる"), serif3: _("やっぱりこれがいるわ"), serif4: _("やっぱりこれがいるわ"), "option": {"getItem": "35"}}, // ハシゴ獲得
+						{"id": "chapter5-05-hashigo_ura_talk", "save": true},
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_reaction_01",  serif1: _("あー！！！！"), serif2: _("あー！！！！"), serif3: _("あー！！！！"), serif4: _("あー！！！！")},
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_reaction_01",  serif1: _("アーッ"), serif2: _("アーッ"), serif3: _("アーッ"), serif4: _("アーッ")},
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait",  serif1: _("だめなんだぞだめなんだぞ"), serif2: _("だめなんだぞだめなんだぞ"), serif3: _("だめなんだぞだめなんだぞ"), serif4: _("だめなんだぞだめなんだぞ")},
@@ -166,7 +176,6 @@ module.exports = {
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait",  serif1: _("イーッ"), serif2: _("イーッ"), serif3: _("イーッ"), serif4: _("イーッ")},
 						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait",  serif1: _("イッイッイッ"), serif2: _("イッイッイッ"), serif3: _("イッイッイッ"), serif4: _("イッイッイッ")},
 						{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
-						{"id": "chapter5-05-hashigo_ura_talk", "save": true},
 					],
 					// イヌと喋ってない
 					[
@@ -184,7 +193,8 @@ module.exports = {
 			x: 282, y: 600,
 			scale: 2/3,
 			action_name: "look_bottom",
-			sound_name: null
+			sound_name: null,
+			not_show_if_event_true: "chapter5-05-hashigo_ura_talk",
 		},
 	],
 };

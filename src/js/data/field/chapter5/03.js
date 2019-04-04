@@ -9,7 +9,7 @@ module.exports = {
 	bgm: "field11",
 	rightStartPosition:   {x: 700, y: 480},
 	leftStartPosition:    {x: 140, y: 480},
-	defaultStartPosition: {x: 140, y: 480, isTowardLeft: false},
+	defaultStartPosition: {x: 700, y: 480, isTowardLeft: true},
 	upStartPosition:    null,
 	downStartPosition:  null,
 	rightField: null,
@@ -22,11 +22,26 @@ module.exports = {
 		{"type": "criteria", "value": "existsItem", "arguments": ["33"], "process": [
 			// 鍵を持っている
 			[
-				// イベント表示
-				{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter5-03-event-01"]},
-				{"chara": "koishi","exp": "look_bottom",  serif1: _("なにかしらこれ"), serif2: _("なにかしらこれ"), serif3: _("なにかしらこれ"), serif4: _("なにかしらこれ")},
-				{"chara": "koishi","exp": null,  serif1: _("あっちからきたけど"), serif2: _("あっちからきたけど"), serif3: _("誰なの？"), serif4: _("誰なの？")},
-				{"id": "chapter5-03-event-10630", "save": true}, // アライグマ表示
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5_03_10630"], "process": [
+					// すでにアクセス済み
+					[],
+					// まだ未アクセス
+					[
+						// アライグマ表示
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5-03-event-10630"]},
+						// イベント表示
+						{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter5-03-event-01"]},
+						// こいし会話
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "koishi","exp": "look_bottom",  serif1: _("なにかしらこれ"), serif2: _("なにかしらこれ"), serif3: _("なにかしらこれ"), serif4: _("なにかしらこれ")},
+								{"chara": "koishi","exp": null,  serif1: _("あっちからきたけど"), serif2: _("あっちからきたけど"), serif3: _("誰なの？"), serif4: _("誰なの？")},
+							],
+						]},
+						// 再生済フラグを立てる
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_03_10630"]}
+					],
+				]},
 			],
 			// 鍵を持っていない
 			[

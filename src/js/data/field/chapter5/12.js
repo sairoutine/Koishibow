@@ -45,10 +45,11 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "おりん",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-orin-limit", 1], "serifs": [
 					[
+						{"id": "chapter5-12-orin_talk1", "save": true}, // お燐との1度目の会話
 						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("あら！"), serif2: _("あら！"), serif3: _("あら！"), serif4: _("あら！")},
 						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("こいし様おひさしぶりですね"), serif2: _("こいし様おひさしぶりですね"), serif3: _("こいし様おひさしぶりですね"), serif4: _("こいし様おひさしぶりですね")},
 						{"chara": "koishi","exp": "look_front", "serif": _("えっ")},
@@ -59,7 +60,6 @@ module.exports = {
 						{"chara": "orin","exp": "orin-ura_reaction_01",  serif1: _("ご主人様に御用ですか？"), serif2: _("ご主人様に御用ですか？"), serif3: _("ご主人様に御用ですか？"), serif4: _("ご主人様に御用ですか？")},
 						{"chara": "orin","exp": null,  serif1: _("あいにくお出かけされていますが"), serif2: _("あいにくお出かけされていますが"), serif3: _("あいにくお出かけされていますが"), serif4: _("あいにくお出かけされていますが")},
 						{"chara": "koishi","exp": "look_bottom",  serif1: _("べつに"), serif2: _("べつに"), serif3: _("ううんいいの"), serif4: _("ううんいいの")},
-						{"id": "chapter5-12-orin_talk1", "save": true}, // お燐との1度目の会話
 					],
 					[
 						{"chara": "koishi","exp": "look_top",  serif1: _("ねえ鍵知ってる？"), serif2: _("ねえ鍵知ってる？"), serif3: _("ねえ鍵知ってる？"), serif4: _("ねえ鍵知ってる？")},
@@ -71,7 +71,7 @@ module.exports = {
 			serif: [
 				{"chara": "orin","exp": "orin-wait",  serif1: _("なーん"), serif2: _("なーん"), serif3: _("なーん"), serif4: _("なーん")},
 			],
-			x: 800, y: 450,
+			x: 750, y: 450,
 			scale: 2/3,
 			anime1: "orin-wait",
 			anime2: null,
@@ -135,6 +135,15 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "本",
 			serif: [
+				// 初回のみ鍵を表示する
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-book-limit", 1], "serifs": [
+					[
+						{"id": "chapter5-14-show_key", "save": true}, // 鍵を表示する
+					],
+					[
+					],
+				]},
+
 				{"chara": "koishi","exp": null,  serif1: _("日記！"), serif2: _("日記！"), serif3: _("日記だわ！"), serif4: _("日記だわ！")},
 				{"chara": "koishi","exp": null,  serif1: _("これお姉ちゃんの"), serif2: _("これお姉ちゃんの"), serif3: _("これお姉ちゃんの"), serif4: _("これお姉ちゃんの")},
 				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},

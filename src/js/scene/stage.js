@@ -115,7 +115,9 @@ Util.inherit(SceneStage, base_scene);
 SceneStage.prototype.init = function(field_name, from_field_name){
 	base_scene.prototype.init.apply(this, arguments);
 
-	from_field_name = from_field_name || null; // undefined -> null に変換
+	// null にすると、upStartPosition に null が設定されている場合があるので、
+	// そのif 分岐が true になってしまう。そのため undefined
+	from_field_name = from_field_name || undefined;
 
 	// 現在のフィールド
 	this.core.save_manager.player.setCurrentField(field_name);

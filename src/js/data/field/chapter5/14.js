@@ -33,7 +33,7 @@ module.exports = {
 			serif: null,
 			serif_back: [
 				{"chara": "koishi","exp": "look_bottom",  serif1: _("あったーっ"), serif2: _("あったーっ"), serif3: _("あったーっ"), serif4: _("あったーっ"), "option": {"getItem": "33"}},
-				{"chara": "koishi","exp": "yes",  serif1: _("これで友達を助けられるわ"), serif2: _("これで友達を助けられるわ"), serif3: _("これで友達を助けられるわ"), serif4: _("これで友達を助けられるわ")},
+				{"chara": "koishi","exp": "yes",  serif1: _("これで友達を助けられるわ"), serif2: _("これで友達を助けられるわ"), serif3: _("これで友達を助けられるわ"), serif4: _("これで友達を助けられるわ"), "option": {"resetFlag": "chapter5-14-show_key"}},
 			],
 			x: 500,
 			y: 640,
@@ -48,6 +48,7 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 			position_type: "lying",
+			show_if_event_true: "chapter5-14-show_key",
 		},
 	],
 };

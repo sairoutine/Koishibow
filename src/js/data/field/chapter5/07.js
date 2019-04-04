@@ -9,7 +9,7 @@ module.exports = {
 	bgm: "field11",
 	rightStartPosition:   {x: 700, y: 480},
 	leftStartPosition:    {x: 140, y: 480},
-	defaultStartPosition: {x: 140, y: 480, isTowardLeft: false},
+	defaultStartPosition: {x: 700, y: 480, isTowardLeft: true},
 	upStartPosition:    null,
 	downStartPosition:  null,
 	rightField: null,
@@ -86,7 +86,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "イヌ",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["35"], "serifs": [
 					// ハシゴを持ってる
@@ -114,6 +114,7 @@ module.exports = {
 							],
 							// ハシゴ使用前
 							[
+								{"id": "chapter5-07-animal_shiba_ura_talk1", "save": true},
 								{"chara": "animal_shiba","exp": "animal_shiba-ura_wait",  serif1: _("こまったわ"), serif2: _("こまったわ"), serif3: _("こまったわ"), serif4: _("こまったわ")},
 								{"chara": "koishi","exp": "look_front",  serif1: _("なにがこまったの"), serif2: _("なにがこまったの"), serif3: _("どうしたの"), serif4: _("どうしたの")},
 								{"chara": "animal_shiba","exp": "animal_shiba-ura_wait",  serif1: _("はしごが無いのよ"), serif2: _("はしごが無いのよ"), serif3: _("はしごが無いのよ"), serif4: _("はしごが無いのよ")},
@@ -122,7 +123,6 @@ module.exports = {
 								{"chara": "koishi","exp": null, "serif": _("なんで？")},
 								{"chara": "animal_shiba","exp": "animal_shiba-ura_reaction_01",  serif1: _("上に行かなきゃいけないのよー"), serif2: _("上に行かなきゃいけないのよー"), serif3: _("上に行かなきゃいけないのよー"), serif4: _("上に行かなきゃいけないのよー")},
 								{"chara": "koishi","exp": "yes", "serif": _("ふーん")},
-								{"id": "chapter5-07-animal_shiba_ura_talk1", "save": true},
 
 							],
 						]},

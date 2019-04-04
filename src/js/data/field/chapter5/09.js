@@ -3,7 +3,6 @@ var _ = require('i18n4v')
 // 地上2階
 // お空が閉じ込められている部屋
 var CONSTANT = require("../../../constant");
-var I = 0;
 module.exports = {
 	key: "chapter5_09",
 	chapter: 5,
@@ -82,7 +81,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "おくう",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_toward_me: false, // こいしの方を向かない(檻ごと向いてしまうため)
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-myroom-araiguma_talk1"], "serifs": [
 					// お燐表示済
@@ -127,7 +126,6 @@ module.exports = {
 						{"chara": "oku", "exp": "oku-ura_wait",  serif1: _("ご主人様の部屋は奥のほう"), serif2: _("ご主人様の部屋は奥のほう"), serif3: _("ご主人様の部屋は奥のほう"), serif4: _("ご主人様の部屋は奥のほう")},
 						{"chara": "koishi", "exp": "yes", "serif": _("そっか")},
 						{"chara": "koishi", "exp": null,  serif1: _("じゃあ行ってくるね！"), serif2: _("じゃあ行ってくるね！"), serif3: _("じゃあ行ってくるね！"), serif4: _("じゃあ行ってくるね！")},
-						{"id": "chapter5-09-oku_talk1", "save": true}, // お空との1度目の会話
 					],
 				]},
 			],
@@ -171,18 +169,6 @@ module.exports = {
 			sound_name: null,
 			show_if_event_true: "chapter5-myroom-araiguma_talk1", // アライグマとの会話後に表示
 		},
-
-		{
-			no: ++I,
-			image: null,
-			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "茨",
-			serif: null,
-			width: 300, height: 550,
-			x: 960, y: 720,
-			not_show_if_event_true: "chapter5-09-oku_talk1", // お空との1度目の会話が終わったら消える
-		},
-
 	],
 };
 
