@@ -59,6 +59,16 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"id": "chapter5-04-show_animal_mogura", "save": true}, // もぐら表示
+
+				// 初回のみ鍵を表示する
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-book-limit", 1], "serifs": [
+					[
+						{"id": "chapter5-14-show_key", "save": true}, // 鍵を表示する
+					],
+					[
+					],
+				]},
+
 				{"chara": "animal_uma","exp": "animal_uma-ura_wait",  serif1: _("なんなの"), serif2: _("なんなの"), serif3: _("なんなの"), serif4: _("なんなの")},
 				{"chara": "koishi","exp": "use_axe", "serif": _("......")},
 				{"chara": "koishi","exp": null, "serif": _("......")},

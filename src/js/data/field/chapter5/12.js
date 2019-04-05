@@ -135,15 +135,6 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "本",
 			serif: [
-				// 初回のみ鍵を表示する
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-book-limit", 1], "serifs": [
-					[
-						{"id": "chapter5-14-show_key", "save": true}, // 鍵を表示する
-					],
-					[
-					],
-				]},
-
 				{"chara": "koishi","exp": null,  serif1: _("日記！"), serif2: _("日記！"), serif3: _("日記だわ！"), serif4: _("日記だわ！")},
 				{"chara": "koishi","exp": null,  serif1: _("これお姉ちゃんの"), serif2: _("これお姉ちゃんの"), serif3: _("これお姉ちゃんの"), serif4: _("これお姉ちゃんの")},
 				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
