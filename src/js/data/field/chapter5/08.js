@@ -21,11 +21,20 @@ module.exports = {
 	walkSound: "walking_bare_wood",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-07-animal_komodo_talk1"], "process": [
-			// コモドとの会話が終わったら
+			// コモドとの会話が終わったら(ウマが表示済なら)
 			[
-				{"type": "process", "value": "playTalk", "arguments": [
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-08-event-10550"], "process": [
+					// すでにアクセス済み
+					[],
+					// まだ未アクセス
 					[
-						{"chara": "koishi","exp": "look_front",  serif1: _("みっけ！"), serif2: _("みっけ！"), serif3: _("みっけ！"), serif4: _("みっけ！")},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5-08-event-10550"]},
+
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "koishi","exp": "look_front",  serif1: _("みっけ！"), serif2: _("みっけ！"), serif3: _("みっけ！"), serif4: _("みっけ！")},
+							],
+						]},
 					],
 				]},
 			],

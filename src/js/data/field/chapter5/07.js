@@ -96,12 +96,12 @@ module.exports = {
 						{"chara": "koishi","exp": "yes", "serif": _("はしご！")},
 						{"chara": "animal_shiba","exp": null,  serif1: _("ほんと？"), serif2: _("ほんと？"), serif3: _("ほんと？"), serif4: _("ほんと？"), "option": {"useItem": "35"}},
 						{"chara": "koishi","exp": null,  serif1: _("ほんとだ！"), serif2: _("ほんとだ！"), serif3: _("ほんとだ！"), serif4: _("ほんとだ！"), "option": {"blackout": true}},
+						{"id": "chapter5-07-animal_shiba_ura_talk2", "save": true},
 						{"chara": "animal_shiba","exp": null,  serif1: _("これでよし！"), serif2: _("これでよし！"), serif3: _("これでよし！"), serif4: _("これでよし！")},
 						{"chara": "animal_shiba","exp": null,  serif1: _("助かったわ"), serif2: _("助かったわ"), serif3: _("助かったわ"), serif4: _("助かったわ")},
 						{"chara": "animal_shiba","exp": null,  serif1: _("ありがとう、こいしちゃん"), serif2: _("ありがとう、こいしちゃん"), serif3: _("ありがとう、こいしちゃん"), serif4: _("ありがとう、こいしちゃん")},
 						{"chara": "koishi","exp": "look_front",  serif1: _("あれー"), serif2: _("あれー"), serif3: _("あら"), serif4: _("あら")},
 						{"chara": "koishi","exp": "look_front",  serif1: _("名前知ってるの"), serif2: _("名前知ってるの"), serif3: _("名前知ってるの"), serif4: _("名前知ってるの")},
-						{"id": "chapter5-07-animal_shiba_ura_talk2", "save": true},
 					],
 					// ハシゴを持ってない
 					[
@@ -146,15 +146,16 @@ module.exports = {
 			height: 350,
 			action_name: null,
 			sound_name: null,
-			show_if_event_true: "chapter5-12-orin_talk1", // お燐との1度目の会話が終わったら登場
+			show_if_event_true: "chapter5-07-show_shiba", // お燐との1度目の会話が終わったら登場
 		},
 		{
 			no: "animal_komodo",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "コモドオオトカゲ",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
+				{"id": "chapter5-07-animal_komodo_talk1", "save": true}, // コモドとの会話
 				{"chara": "koishi","exp": "look_front",  serif1: _("へんなかおー"), serif2: _("へんなかおー"), serif3: _("へんなかおー"), serif4: _("へんなかおー")},
 				{"chara": "animal_komodo","exp": "animal_komodo-ura_wait",  serif1: _("なんだよー"), serif2: _("なんだよー"), serif3: _("なんだよー"), serif4: _("なんだよー")},
 				{"chara": "animal_komodo","exp": "animal_komodo-ura_wait",  serif1: _("なんなんだよー"), serif2: _("なんなんだよー"), serif3: _("なんなんだよー"), serif4: _("なんなんだよー")},
@@ -189,7 +190,7 @@ module.exports = {
 				{"chara": "koishi","exp": "look_front",  serif1: _("鍵はどこなの"), serif2: _("鍵はどこなの"), serif3: _("鍵はどこなの"), serif4: _("鍵はどこなの")},
 				{"chara": "animal_komodo","exp": "animal_komodo-ura_reaction_01",  serif1: _("でも......"), serif2: _("でも......"), serif3: _("でも......"), serif4: _("でも......")},
 				{"chara": "animal_komodo","exp": null,  serif1: _("だめって言ってたから"), serif2: _("だめって言ってたから"), serif3: _("だめって言ってたから"), serif4: _("だめって言ってたから")},
-				{"chara": "koishi","exp": "ax",  serif1: _("分からない子ね！"), serif2: _("分からない子ね！"), serif3: _("分からない子ね！"), serif4: _("分からない子ね！")},
+				{"chara": "koishi","exp": "use_axe",  serif1: _("分からない子ね！"), serif2: _("分からない子ね！"), serif3: _("分からない子ね！"), serif4: _("分からない子ね！")},
 				{"chara": "koishi","exp": null,  serif1: _("おしおきよ！"), serif2: _("おしおきよ！"), serif3: _("おしおきよ！"), serif4: _("おしおきよ！")},
 				{"chara": "animal_komodo","exp": "animal_komodo-ura_reaction_02",  serif1: _("ぶぅお！"), serif2: _("ぶぅお！"), serif3: _("ぶぅお！"), serif4: _("ぶぅお！")},
 				{"chara": "animal_komodo","exp": "animal_komodo-ura_reaction_02",  serif1: _("わかった！わかりました！"), serif2: _("わかった！わかりました！"), serif3: _("わかった！わかりました！"), serif4: _("わかった！わかりました！")},
@@ -200,7 +201,6 @@ module.exports = {
 				{"chara": "koishi","exp": null, "serif": _("ありがとう")},
 				{"chara": "koishi","exp": null, "serif": _("行かなきゃ")},
 				{"chara": "koishi","exp": null,  serif1: _("武器ってすごいわ！"), serif2: _("武器ってすごいわ！"), serif3: _("武器ってすごいわ！"), serif4: _("武器ってすごいわ！")},
-				{"id": "chapter5-07-animal_komodo_talk1", "save": true}, // コモドとの会話
 			],
 			serif: [
 				{"chara": "animal_komodo","exp": "animal_komodo-wait",  serif1: _("ぶおっぶおっ"), serif2: _("ぶおっぶおっ"), serif3: _("ぶおっぶおっ"), serif4: _("ぶおっぶおっ")},
@@ -232,7 +232,6 @@ module.exports = {
 			height: 550,
 			next_field_name: "chapter5_03",
 		},
-		/*
 		// はしごを使って 5-11へ
 		{
 			no: ++I,
@@ -240,40 +239,30 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "はしご",
 			serif: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-07-animal_shiba_ura_talk2"], "serifs": [
-					// ハシゴ使用後
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-07-10420"], "serifs": [
 					[
-						{"chara": "animal_kawa","exp": "animal_kawa-wait",  serif1: _("じゃあわたし上に行くわね！"), serif2: _("じゃあわたし上に行くわね！"), serif3: _("じゃあわたし上に行くわね！"), serif4: _("じゃあわたし上に行くわね！")},
+					],
+					[
+						{"id": "chapter5-07-10420", "save": true},
+						{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("じゃあわたし上に行くわね！"), serif2: _("じゃあわたし上に行くわね！"), serif3: _("じゃあわたし上に行くわね！"), serif4: _("じゃあわたし上に行くわね！")},
 						{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("ついてこないでね！"), serif2: _("ついてこないでね！"), serif3: _("ついてこないでね！"), serif4: _("ついてこないでね！")},
 						{"chara": "koishi","exp": "look_front", "serif": _("なんで")},
-						{"chara": "animal_shiba","exp": "animal_kawa-wait", "serif": _("......")},
-						{"chara": "animal_shiba","exp": "animal_kawa-wait",  serif1: _("故あって......"), serif2: _("故あって......"), serif3: _("故あって......"), serif4: _("故あって......")},
+						{"chara": "animal_shiba","exp": "animal_shiba-wait", "serif": _("......")},
+						{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("故あって......"), serif2: _("故あって......"), serif3: _("故あって......"), serif4: _("故あって......")},
 						{"chara": "koishi","exp": "look_front", "serif": _("なにそれ")},
-						{"chara": "animal_shiba","exp": "animal_kawa-wait",  serif1: _("ごめんね"), serif2: _("ごめんね"), serif3: _("ごめんね"), serif4: _("ごめんね")},
-					],
-					// ハシゴ使用前
-					[
+						{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("ごめんね"), serif2: _("ごめんね"), serif3: _("ごめんね"), serif4: _("ごめんね"), "option": {"resetFlag": "chapter5-07-show_shiba"}},
 					],
 				]},
+				{"chara": "koishi","exp": null, "serif": "", "option": {"changeField": "chapter5_11"}},
 			],
-			x:40, y:240,
+			x:90, y:240,
 			//width: 200,
 			//height: 200,
-			scale: 2/3,
-			action_name: "chapter5-07-hashigo",
-			sound_name: null
+			scale: 4/5,
+			action_name: null,
+			sound_name: null,
+			show_if_event_true: "chapter5-07-animal_shiba_ura_talk2", // 柴犬にはしごを使ったあと
 		},
-		// はしご当たり判定
-		{
-			no: ++I,
-			type: CONSTANT.FIELD_CHANGE_TYPE,
-			name: "はしご",
-			x:40, y:240,
-			width: 130,
-			height: 361,
-			next_field_name: "chapter5_11",
-		},
-		*/
 	],
 };
 

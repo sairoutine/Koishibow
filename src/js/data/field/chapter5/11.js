@@ -49,9 +49,9 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "animal_kawa","exp": "animal_kawa-wait",  serif1: _("これ早く隠して"), serif2: _("これ早く隠して"), serif3: _("これ早く隠して"), serif4: _("これ早く隠して")},
+						{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("これ早く隠して"), serif2: _("これ早く隠して"), serif3: _("これ早く隠して"), serif4: _("これ早く隠して")},
 						{"chara": "animal_uma","exp": "animal_uma-wait",  serif1: _("わかったわ"), serif2: _("わかったわ"), serif3: _("わかったわ"), serif4: _("わかったわ")},
-						{"chara": "animal_kawa","exp": "animal_kawa-wait",  serif1: _("お願いね"), serif2: _("お願いね"), serif3: _("お願いね"), serif4: _("お願いね")},
+						{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("お願いね"), serif2: _("お願いね"), serif3: _("お願いね"), serif4: _("お願いね")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_11_10430"]}
@@ -81,22 +81,22 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "イヌ",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_11-animal_shiba-limit", 1], "serifs": [
 					[
 						{"chara": "koishi","exp": "look_front", "serif": _("なにしてるの")},
-						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait",  serif1: _("なにも"), serif2: _("なにも"), serif3: _("なにも"), serif4: _("なにも")},
+						{"chara": "animal_shiba","exp": "animal_shiba-ura_wait",  serif1: _("なにも"), serif2: _("なにも"), serif3: _("なにも"), serif4: _("なにも")},
 					],
 					[
 						{"chara": "animal_shiba","exp": "animal_shiba-ura_wait", "serif": _("なに")},
 						{"chara": "koishi","exp": "look_front",  serif1: _("なんで教えてくれないの"), serif2: _("なんで教えてくれないの"), serif3: _("なんで教えてくれないの"), serif4: _("なんで教えてくれないの")},
 						{"chara": "koishi","exp": null,  serif1: _("さっき何渡してたの"), serif2: _("さっき何渡してたの"), serif3: _("さっき何渡してたの"), serif4: _("さっき何渡してたの")},
-						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait", "serif": _("......")},
-						{"chara": "animal_kawa","exp": null,  serif1: _("言えません！"), serif2: _("言えません！"), serif3: _("言えません！"), serif4: _("言えません！")},
-						{"chara": "animal_kawa","exp": null,  serif1: _("ご主人様にとめられているから"), serif2: _("ご主人様にとめられているから"), serif3: _("ご主人様にとめられているから"), serif4: _("ご主人様にとめられているから")},
+						{"chara": "animal_shiba","exp": "animal_shiba-ura_wait", "serif": _("......")},
+						{"chara": "animal_shiba","exp": null,  serif1: _("言えません！"), serif2: _("言えません！"), serif3: _("言えません！"), serif4: _("言えません！")},
+						{"chara": "animal_shiba","exp": null,  serif1: _("ご主人様にとめられているから"), serif2: _("ご主人様にとめられているから"), serif3: _("ご主人様にとめられているから"), serif4: _("ご主人様にとめられているから")},
 						{"chara": "koishi","exp": "look_front",  serif1: _("私だってご主人様でしょ"), serif2: _("私だってご主人様でしょ"), serif3: _("ふぅん"), serif4: _("ふぅん")},
-						{"chara": "animal_kawa","exp": "animal_kawa-ura_wait", "serif": _("......")},
+						{"chara": "animal_shiba","exp": "animal_shiba-ura_wait", "serif": _("......")},
 					],
 				]},
 			],
@@ -105,7 +105,7 @@ module.exports = {
 				{"chara": "animal_uma","exp": "animal_uma-wait",  serif1: _("イイーン"), serif2: _("イイーン"), serif3: _("イイーン"), serif4: _("イイーン")},
 				{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("わふぅ"), serif2: _("わふぅ"), serif3: _("わふぅ"), serif4: _("わふぅ")},
 			],
-			x: 600, y: 300,
+			x: 500, y: 300,
 			scale: 2/3,
 			anime1: "animal_shiba-wait",
 			anime2: null,
@@ -124,7 +124,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ウマ",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: null,
 			serif: [
 				{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("わふ"), serif2: _("わふ"), serif3: _("わふ"), serif4: _("わふ")},

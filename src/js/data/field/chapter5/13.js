@@ -61,8 +61,9 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ヒョウ",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
+				{"id": "chapter5-13-animal_kuro_talk1", "save": true},
 				{"chara": "animal_kuro","exp": "animal_kuro-ura_wait", "serif": _("......")},
 				{"chara": "animal_kuro","exp": "animal_kuro-ura_wait", "serif": _("......")},
 				{"chara": "koishi","exp": "look_front",  serif1: _("ぜんぜん喋んない！"), serif2: _("ぜんぜん喋んない！"), serif3: _("ぜんぜん喋んない！"), serif4: _("ぜんぜん喋んない！")},
@@ -75,7 +76,6 @@ module.exports = {
 				{"chara": "animal_kuro","exp": null,  serif1: _("誰だっていうことを聞くわ"), serif2: _("誰だっていうことを聞くわ"), serif3: _("誰だっていうことを聞くわ"), serif4: _("誰だっていうことを聞くわ")},
 				{"chara": "koishi","exp": "look_front",  serif1: _("ほんと！？"), serif2: _("ほんと！？"), serif3: _("そうなの！？"), serif4: _("そうなの！？")},
 				{"chara": "koishi","exp": null,  serif1: _("武器かー"), serif2: _("武器かー"), serif3: _("武器を探さなくちゃ"), serif4: _("武器を探さなくちゃ")},
-				{"id": "chapter5-13-animal_kuro_talk1", "save": true},
 			],
 			serif: [
 				{"chara": "animal_kuro","exp": "animal_kuro-wait", "serif": _("......")},

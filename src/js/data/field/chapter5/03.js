@@ -93,6 +93,9 @@ module.exports = {
 						{"chara": "koishi","exp": null, "serif": _("......")},
 					],
 					[
+						{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
+						{"chara": "koishi","exp": null, "serif": _("......")},
+						{"chara": "koishi","exp": null, "serif": _("......")},
 					],
 				]},
 
@@ -127,10 +130,12 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-13-animal_kuro_talk1"], "serifs": [
 							// 豹と会話した後
 							[
-								{"chara": "koishi","exp": "touch",  serif1: _("これ！"), serif2: _("これ！"), serif3: _("これがいいわ"), serif4: _("これがいいわ")},
-								{"chara": "koishi","exp": null,  serif1: _("すてき"), serif2: _("すてき"), serif3: _("すてき"), serif4: _("すてき"), "option": {"getItem": "34"}},
-								{"chara": "koishi","exp": null,  serif1: _("強そうね！"), serif2: _("強そうね！"), serif3: _("強そうね！"), serif4: _("強そうね！")},
 								{"id": "chapter5-07-show_animal_komodo", "save": true},
+								{"chara": "koishi","exp": "touch",  serif1: _("これ！"), serif2: _("これ！"), serif3: _("これがいいわ"), serif4: _("これがいいわ")},
+								// 斧を獲得
+								{"chara": "koishi","exp": null,  serif1: _("すてき"), serif2: _("すてき"), serif3: _("すてき"), serif4: _("すてき"), "option": {"getItem": "34"}},
+								{"id": "chapter5-07-got_axe", "save": true},
+								{"chara": "koishi","exp": null,  serif1: _("強そうね！"), serif2: _("強そうね！"), serif3: _("強そうね！"), serif4: _("強そうね！")},
 							],
 							// 豹と会話した後ではない
 							[
@@ -143,7 +148,8 @@ module.exports = {
 			x: 282, y: 447,
 			scale: 2/3,
 			action_name: "look_bottom",
-			sound_name: null
+			sound_name: null,
+			not_show_if_event_true: "chapter5-07-got_axe",
 		},
 		{
 			no: ++I,

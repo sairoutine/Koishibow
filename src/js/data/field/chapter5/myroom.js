@@ -173,6 +173,7 @@ module.exports = {
 			no: "animal_araiguma",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "アライグマ",
+			turn_not_toward_me: true, // こいしの方を向く
 			loop: true,
 			serif_back: [
 				{"id": "chapter5-myroom-araiguma_talk1", "save": true},

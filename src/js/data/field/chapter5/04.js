@@ -31,7 +31,7 @@ module.exports = {
 							[
 								{"chara": "animal_mogura","exp": "animal_mogura-wait",  serif1: _("ピぃーっ"), serif2: _("ピぃーっ"), serif3: _("ピぃーっ"), serif4: _("ピぃーっ")},
 								{"chara": "koishi","exp": "look_front",  serif1: _("あはは！"), serif2: _("あはは！"), serif3: _("あはは！"), serif4: _("あはは！")},
-								{"chara": "koishi","exp": null,  serif1: _("おめめがヘン！"), serif2: _("おめめがヘン！"), serif3: _("おめめがヘン！"), serif4: _("おめめがヘン！")},
+								{"chara": "koishi","exp": null,  serif1: _("おめめがヘン！"), serif2: _("おめめがヘン！"), serif3: _("おめめがヘン！"), serif4: _("おめめがヘン！"), "option": {"getJournal": "journal032"}},
 							]
 						]},
 						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_04_10580"]}
@@ -87,7 +87,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "モグラ",
 			loop: true,
-			turn_toward_me: true, // こいしの方を向く
+			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_04-animal_mogura-limit", 1], "serifs": [
 					[
@@ -131,14 +131,6 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 			show_if_event_true: "chapter5-04-show_animal_mogura",
-		},
-
-		{
-			no: ++I,
-			type: CONSTANT.JOURNAL_FRONT_TYPE,
-			x: 258, y: 689,
-			journal_id: "journal032",
-			show_if_event_true: "chapter5_04_10580",
 		},
 	],
 };

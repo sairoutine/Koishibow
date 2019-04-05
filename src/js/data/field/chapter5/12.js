@@ -49,6 +49,7 @@ module.exports = {
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-orin-limit", 1], "serifs": [
 					[
+						{"id": "chapter5-07-show_shiba", "save": true}, // 柴犬を登場させる
 						{"id": "chapter5-12-orin_talk1", "save": true}, // お燐との1度目の会話
 						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("あら！"), serif2: _("あら！"), serif3: _("あら！"), serif4: _("あら！")},
 						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("こいし様おひさしぶりですね"), serif2: _("こいし様おひさしぶりですね"), serif3: _("こいし様おひさしぶりですね"), serif4: _("こいし様おひさしぶりですね")},
@@ -83,6 +84,7 @@ module.exports = {
 			height: 350,
 			action_name: null,
 			sound_name: null,
+			not_show_if_event_true: "chapter5-myroom-araiguma_talk1", // アライグマとの会話後に 5-9 へ移動する
 		},
 		{
 			no: ++I,
