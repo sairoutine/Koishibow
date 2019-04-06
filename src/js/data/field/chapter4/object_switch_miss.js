@@ -30,7 +30,7 @@ module.exports = {
 				{"chara": "merry","exp": "merry-reaction_10", "serif": _("......")},
 				{"chara": "merry","exp": "merry-reaction_07",  serif1: _("そうよ！"), serif2: _("そうよ！"), serif3: _("そうよ！"), serif4: _("そうよ！")},
 				{"chara": "merry","exp": null,  serif1: _("おめでとう"), serif2: _("おめでとう"), serif3: _("おめでとう"), serif4: _("おめでとう")},
-				{"chara": "koishi","exp": "touch",  serif1: _("頑張ったわね"), serif2: _("頑張ったわね"), serif3: _("頑張ったわね"), serif4: _("頑張ったわね")},
+				{"chara": "merry","exp": null,  serif1: _("頑張ったわね"), serif2: _("頑張ったわね"), serif3: _("頑張ったわね"), serif4: _("頑張ったわね")},
 				{"chara": "renko","exp": "renko-reaction_01",  serif1: _("ちょっと"), serif2: _("ちょっと"), serif3: _("ちょっと"), serif4: _("ちょっと")},
 				{"chara": "merry","exp": "merry-reaction_06",  serif1: _("いいのよ"), serif2: _("いいのよ"), serif3: _("いいのよ"), serif4: _("いいのよ")},
 				{"chara": "merry","exp": "merry-reaction_09",  serif1: _("でもこれはちっちゃすぎて通れないから私は私のを探すわ"), serif2: _("でもこれはちっちゃすぎて通れないから私は私のを探すわ"), serif3: _("でもこれはちっちゃすぎて通れないから私は私のを探すわ"), serif4: _("でもこれはちっちゃすぎて通れないから私は私のを探すわ")},

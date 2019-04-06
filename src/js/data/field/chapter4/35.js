@@ -9,7 +9,7 @@ module.exports = {
 	rightStartPosition:   {x: 790, y: 480},
 	leftStartPosition:    {x: 140, y: 480},
 	defaultStartPosition: {x: 140, y: 480, isTowardLeft: false},
-	upStartPosition:      {x: 480, y: 720 - CONSTANT.WALK_DEPTH_LIMIT - 140},
+	upStartPosition:      {x: 400, y: 720 - CONSTANT.WALK_DEPTH_LIMIT - 140},
 	downStartPosition:    {x: 480, y: 530},
 	rightField: "chapter4_32",
 	leftField: "chapter4_34",

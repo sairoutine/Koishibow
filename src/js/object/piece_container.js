@@ -200,9 +200,9 @@ PieceContainer.prototype._getObjectDataByFieldData = function() {
 			type: CONSTANT.FIELD_CHANGE_TYPE,
 			name: "上へのフィールド移動",
 			x: this.scene.width/2,
-			y: this.scene.height - CONSTANT.WALK_DEPTH_LIMIT,
+			y: this.scene.height - CONSTANT.WALK_DEPTH_LIMIT - 15,
 			width: this.scene.width,
-			height: 10,
+			height: 30,
 			next_field_name: field_data.upField(),
 		});
 	}
