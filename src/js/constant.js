@@ -60,6 +60,8 @@ var CONSTANT = {
 
 	},
 
+	// 指定のフィールドでカセットテープ「チャルメラ」を使ったときに立つフラグ
+	ITEM_ID_24_EVENT_NAME: "chapter4-07-event-01_played",
 
 	// こいしの歩ける範囲の上 上限(px)
 	WALK_DEPTH_LIMIT: 240,

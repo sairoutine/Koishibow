@@ -33,6 +33,7 @@ module.exports = {
 			[],
 			// まだ未アクセス
 			[
+				// メリーが目薬を拾うイベント再生
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_01_40040"]},
 				{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter4-02-event-01"]},
 			],

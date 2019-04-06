@@ -7,8 +7,6 @@ var Util = require('../../hakurei').util;
 var CONSTANT = require('../../constant');
 var Chapter4TapeMasterRepository = require('../../repository/chapter4_tape');
 
-var ITEM_ID_24_EVENT_NAME = "chapter4-07-event-01_played";
-
 var ObjectMenuItemChapter4Tape = function(scene, item_id, num) {
 	base_object.apply(this, arguments);
 };
@@ -20,12 +18,10 @@ ObjectMenuItemChapter4Tape.prototype.use = function() {
 
 	var field_data = this.scene.parent.getFieldData();
 
-
-	console.log();
 	// チャルメラを chapter4 のフィールド 07 ではじめて使ったら
 	if (field_data.chapter() === 4 && field_data.key() === "chapter4_07"
-		&& item_id === "24" && this.core.save_manager.scenario.getPlayedCount(ITEM_ID_24_EVENT_NAME) === 0) {
-		this.core.save_manager.scenario.incrementPlayedCount(ITEM_ID_24_EVENT_NAME);
+		&& item_id === "24" && this.core.save_manager.scenario.getPlayedCount(CONSTANT.ITEM_ID_24_EVENT_NAME) === 0) {
+		this.core.save_manager.scenario.incrementPlayedCount(CONSTANT.ITEM_ID_24_EVENT_NAME);
 
 		// 蓮子登場イベント
 		this.core.scene_manager.changeScene("event_talk", "chapter4-07-event-01");
@@ -35,7 +31,7 @@ ObjectMenuItemChapter4Tape.prototype.use = function() {
 		var master = Chapter4TapeMasterRepository.find(item_id);
 
 		// サウンド再生
-		this.core.audio_loader.playBGM(master.audioName());
+		this.core.audio_loader.playSound(master.audioName());
 	}
 };
 

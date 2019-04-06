@@ -38,14 +38,6 @@ module.exports = {
 						{"chara": "merry", "exp": "merry-reaction_03",  serif1: _("いないね"), serif2: _("いないね"), serif3: _("いないね"), serif4: _("いないね")},
 						{"chara": "merry", "exp": null,  serif1: _("携帯もないしなあ"), serif2: _("携帯もないしなあ"), serif3: _("携帯もないしなあ"), serif4: _("携帯もないしなあ")},
 						{"chara": "merry", "exp": "merry-reaction_08",  serif1: _("なにかいい方法ないかしら"), serif2: _("なにかいい方法ないかしら"), serif3: _("なにかいい方法ないかしら"), serif4: _("なにかいい方法ないかしら")},
-						{"chara": "koishi", "exp": "look_front", "serif": _("あれ？")},
-						{"chara": "koishi", "exp": null,  serif1: _("これひょっとして"), serif2: _("これひょっとして"), serif3: _("これひょっとして"), serif4: _("これひょっとして")},
-						{"chara": "merry", "exp": "merry-reaction_05", "serif": _("あ！")},
-						{"chara": "merry", "exp": "merry-reaction_07",  serif1: _("それがさっき言ってたものよ"), serif2: _("それがさっき言ってたものよ"), serif3: _("それがさっき言ってたものよ"), serif4: _("それがさっき言ってたものよ")},
-						{"chara": "koishi", "exp": "look_front", "serif": _("お友達？")},
-						{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("......そっちじゃなくて"), serif2: _("......そっちじゃなくて"), serif3: _("......そっちじゃなくて"), serif4: _("......そっちじゃなくて")},
-						{"chara": "merry", "exp": "merry-reaction_07",  serif1: _("カセットテープを流す機械"), serif2: _("カセットテープを流す機械"), serif3: _("カセットテープを流す機械"), serif4: _("カセットテープを流す機械")},
-						{"chara": "koishi", "exp": "look_front",  serif1: _("これがそれ？"), serif2: _("これがそれ？"), serif3: _("これがそれ？"), serif4: _("これがそれ？")},
 					]
 				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_07_40110"]}
@@ -71,8 +63,6 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
-
-
 	],
 };
 

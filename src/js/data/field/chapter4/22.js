@@ -25,7 +25,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "てゐ",
 			loop: true,
-			turn_not_toward_me: true, // こいしの方を向く
+			turn_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
 				{"chara": "koishi", "exp": "look_front",  serif1: _("こんにちは"), serif2: _("こんにちは"), serif3: _("こんにちは"), serif4: _("こんにちは")},

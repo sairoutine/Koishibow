@@ -26,7 +26,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "鈴仙",
 			loop: true,
-			turn_not_toward_me: true, // こいしの方を向く
+			turn_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
 				// 新品のカセットテープが出現していたら
@@ -113,8 +113,8 @@ module.exports = {
 								{"chara": "koishi", "exp": null, "serif": "", "option": {"playEvent": "chapter4-19-event-01"}},
 							],
 							[
-								{"chara": "reisen", "exp": "reisen-reaction_01", "serif": _("死ぬってあなたが思っているよりずっとこわいのよ")},
-								{"chara": "reisen", "exp": null, "serif": _("地平線の向こう側を目指すように残酷な旅が続くだけなの")},
+								{"chara": "reisen", "exp": "reisen-reaction_01", "serif": _("死ぬってすごくこわいのよ")},
+								{"chara": "reisen", "exp": null, "serif": _("死は残酷な旅の始まりなの")},
 							],
 						]}
 					],

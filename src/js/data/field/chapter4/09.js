@@ -14,16 +14,14 @@ module.exports = {
 	rightField: null,
 	leftField:  "chapter4_08",
 	upField:    null,
-	downField:  "chapter4_24",
+	downField:  null,
 	background: "chapter4-09-bg-001",
 	walkSound: "walking_bare_sand",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_09_40130"], "process": [
-			// すでにアクセス済み
+		{"type": "criteria", "value": "isPlayed", "arguments": [CONSTANT.ITEM_ID_24_EVENT_NAME], "process": [
+			// event 40140(蓮子と遭遇) を再生済かどうか
 			[
-				// event 40140 を再生済かどうか
-				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4-07-event-40140"], "process": [
-					// すでにアクセス済み
+				{"type": "process", "value": "playTalk", "arguments": [
 					[
 						{"chara": "renko", "exp": "renko-reaction_01",  serif1: _("ねえ大丈夫なの？"), serif2: _("ねえ大丈夫なの？"), serif3: _("ねえ大丈夫なの？"), serif4: _("ねえ大丈夫なの？")},
 						{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("なにが？"), serif2: _("なにが？"), serif3: _("なにが？"), serif4: _("なにが？")},
@@ -35,22 +33,30 @@ module.exports = {
 						{"chara": "renko", "exp": "renko-wait", "serif": _("......")},
 						{"chara": "renko", "exp": "renko-wait",  serif1: _("私先に行くわね"), serif2: _("私先に行くわね"), serif3: _("私先に行くわね"), serif4: _("私先に行くわね"), "option": {"changeField": "chapter4_24"}},
 					],
+				]},
+			],
+			// event 40140(蓮子と遭遇) をまだ未再生
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_09_40130"], "process": [
+					// すでにアクセス済み
+					[
+					],
 					// まだ未アクセス
 					[
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "merry", "exp": "merry-reaction_05",  serif1: _("ちょっと待って"), serif2: _("ちょっと待って"), serif3: _("ちょっと待って"), serif4: _("ちょっと待って")},
+								{"chara": "koishi", "exp": "look_front", "serif": _("なに？")},
+								{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("蓮子を見つけないと"), serif2: _("蓮子を見つけないと"), serif3: _("蓮子を見つけないと"), serif4: _("蓮子を見つけないと")},
+								{"chara": "merry", "exp": "merry-reaction_03",  serif1: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif2: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif3: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif4: _("これ以上進むとはぐれたところからどんどん離れちゃう")},
+								{"chara": "koishi", "exp": "yes", "serif": _("わかった")},
+							],
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_09_40130"]},
 					],
 				]},
 			],
-			// まだ未アクセス
-			[
-				{"chara": "merry", "exp": "merry-reaction_05",  serif1: _("ちょっと待って"), serif2: _("ちょっと待って"), serif3: _("ちょっと待って"), serif4: _("ちょっと待って")},
-				{"chara": "koishi", "exp": "look_front", "serif": _("なに？")},
-				{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("蓮子を見つけないと"), serif2: _("蓮子を見つけないと"), serif3: _("蓮子を見つけないと"), serif4: _("蓮子を見つけないと")},
-				{"chara": "merry", "exp": "merry-reaction_03",  serif1: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif2: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif3: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif4: _("これ以上進むとはぐれたところからどんどん離れちゃう")},
-				{"chara": "koishi", "exp": "yes", "serif": _("わかった")},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_09_40130"]}
-			],
 		]},
-
 	],
 	objects: [
 		{
@@ -88,10 +94,8 @@ module.exports = {
 			anime6: null,
 			action_name: null,
 			sound_name: null,
+			show_if_event_true: CONSTANT.ITEM_ID_24_EVENT_NAME,
 		},
-
-
-
 	],
 };
 
