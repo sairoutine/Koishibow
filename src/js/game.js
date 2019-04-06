@@ -157,56 +157,6 @@ Game.prototype.setupDebug = function (dom) {
 		game.debug_manager.setShowingFpsOff();
 	});
 
-
-	/*
-	this.debug_manager.addMenuSelect("ライトの合成方法", [
-		{value: "source-over"},
-		{value: "destination-over"},
-		{value: "source-in"},
-		{value: "destination-in"},
-		{value: "source-out"},
-		{value: "destination-out"},
-		{value: "source-atop"},
-		{value: "destination-atop"},
-		{value: "lighter"},
-		{value: "xor"},
-		{value: "copy"},
-		{value: "normal"},
-		{value: "multiply"},
-		{value: "screen"},
-		{value: "overlay"},
-		{value: "darken"},
-		{value: "lighten"},
-		{value: "color-dodge"},
-		{value: "color-burn"},
-		{value: "hard-light"},
-		{value: "soft-light"},
-		{value: "difference"},
-		{value: "exclusion"},
-		{value: "hue"},
-		{value: "saturation"},
-		{value: "color"},
-		{value: "luminosity"}
-	], function (game, value) {
-		game.debug_manager.set("light_global_composite", value);
-	});
-	*/
-	this.debug_manager.addMenuSelect("こいし暗度", [
-		{value: "0.0"},
-		{value: "0.1"},
-		{value: "0.2"},
-		{value: "0.3"},
-		{value: "0.4"},
-		{value: "0.5"},
-		{value: "0.6"},
-		{value: "0.7"},
-		{value: "0.8"},
-		{value: "0.9"},
-		{value: "1.0"},
-	], function (game, value) {
-		game.debug_manager.set("koishi_alpha", value);
-	});
-
 	this.debug_manager.addNewLine();
 
 	var amount = Math.floor(CONSTANT.MAX_3RDEYE_GAUGE/4);
