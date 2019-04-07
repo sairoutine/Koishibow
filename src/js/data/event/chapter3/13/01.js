@@ -29,8 +29,8 @@ module.exports = {
 
 		{"exp": null, "serif":_("これがいいアイデアなの？"), "option": {"x": 470, "y": 200, "loop": false}},
 		{"exp": null, "serif":_("この子と一緒にやるの？"), "option": {"x": 470, "y": 200, "loop": false}},
-		{"exp": null, "serif":_("うん"), "option": {"x": 250, "y": 283, "loop": false}},
-		{"exp": "chapter3-13-event-01-obj02", "serif":_("だって作り方知らないから"), "option": {"x": 250, "y": 283, "loop": false}},
+		{"exp": null, "serif":_("うん"), "option": {"x": 250, "y": 283, "loop": false, "is_koishi": true}},
+		{"exp": "chapter3-13-event-01-obj02", "serif":_("だって作り方知らないから"), "option": {"x": 250, "y": 283, "loop": false, "is_koishi": true}},
 		{"exp": "chapter3-13-event-01-obj03", "serif":_("わかったわよ！"), "option": {"x": 470, "y": 200, "loop": false}},
 		{"exp": null, "serif":_("じゃあほら、とっととやりましょう"), "option": {"x": 470, "y": 200, "loop": false}},
 		{"exp": null, "serif":_("でもせかいいちなのよ！\nせかいいち、作れるの？"), "option": {"x": 470, "y": 200, "loop": false}},

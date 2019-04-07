@@ -18,11 +18,11 @@ module.exports = {
 		],
 	},
 	serifs: [
-		{"exp": "chapter3-11-event-01-obj01", "serif":_("うわーっ"), "option": {"x": 470, "y": 300, "loop": false, "sounds": [
+		{"exp": "chapter3-11-event-01-obj01", "serif":_("うわーっ"), "option": {"x": 470, "y": 300, "loop": false, "is_koishi": true, "sounds": [
 			{"name": "chapter3-11-event-01-01", "frame": 120},
 			{"name": "chapter3-11-event-01-02", "frame": 30},
 		]}},
-		{"exp": null, "serif":_("だめだこりゃ"), "option": {"x": 470, "y": 300, "loop": false}},
+		{"exp": null, "serif":_("だめだこりゃ"), "option": {"x": 470, "y": 300, "loop": false, "is_koishi": true}},
 	],
 	endProcess: [
 		// 3-11に戻される

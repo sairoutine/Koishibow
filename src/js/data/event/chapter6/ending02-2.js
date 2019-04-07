@@ -17,8 +17,8 @@ module.exports = {
 		{"exp": null, "serif": _("私が導いてあげたのに"), "option": {"x": 479, "y": 200, "loop": false}},
 		{"exp": "chapter6-event-ending02-2-obj03", "serif": _("失敗ばっかりして！"), "option": {"x": 479, "y": 200, "loop": false}},
 		{"exp": null, "serif": _("私を困らせないで......"), "option": {"x": 479, "y": 200, "loop": false}},
-		// コンティニューしたときの戻り先を chapter6_18 にしないようにする
-		{"exp": null, "serif": _("あ゛あ゛"), "option": {"x": 478, "y": 330, "loop": false}},
+		// TODO: コンティニューしたときの戻り先を chapter6_18 にしないようにする
+		{"exp": null, "serif": _("あ゛あ゛"), "option": {"x": 478, "y": 330, "loop": false, "is_koishi": true}},
 	],
 	endAnime: null,
 	endSounds: [

@@ -9,11 +9,11 @@ module.exports = {
 		"chapter6-event-ending02-1-obj03",
 	],
 	serifs: [
-		{"exp": "chapter6-event-ending02-1-obj01", "serif": _("うう"), "option": {"x": 529, "y": 237, "loop": false}},
-		{"exp": "chapter6-event-ending02-1-obj02", "serif": _("なにこれ"), "option": {"x": 529, "y": 237, "loop": false}},
-		{"exp": "chapter6-event-ending02-1-obj02", "serif": _("えっと"), "option": {"x": 529, "y": 237, "loop": false}},
-		{"exp": "chapter6-event-ending02-1-obj02", "serif": _("ねえ！"), "option": {"x": 529, "y": 237, "loop": false}},
-		{"exp": "chapter6-event-ending02-1-obj02", "serif": _("だれか！"), "option": {"x": 529, "y": 237, "loop": false}},
+		{"exp": "chapter6-event-ending02-1-obj01", "serif": _("うう"), "option": {"x": 529, "y": 237, "loop": false, "is_koishi": true}},
+		{"exp": "chapter6-event-ending02-1-obj02", "serif": _("なにこれ"), "option": {"x": 529, "y": 237, "loop": false, "is_koishi": true}},
+		{"exp": "chapter6-event-ending02-1-obj02", "serif": _("えっと"), "option": {"x": 529, "y": 237, "loop": false, "is_koishi": true}},
+		{"exp": "chapter6-event-ending02-1-obj02", "serif": _("ねえ！"), "option": {"x": 529, "y": 237, "loop": false, "is_koishi": true}},
+		{"exp": "chapter6-event-ending02-1-obj02", "serif": _("だれか！"), "option": {"x": 529, "y": 237, "loop": false, "is_koishi": true}},
 	],
 	endAnime: "chapter6-event-ending02-1-obj03",
 	endSounds: [

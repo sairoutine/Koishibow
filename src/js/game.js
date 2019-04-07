@@ -33,6 +33,7 @@ var SceneEventForChapter3GetupKoishi     = require('./scene/event/chapter3/getup
 var FieldMasterRepository = require('./repository/field');
 var ItemMasterRepository = require('./repository/item');
 var EventMasterRepository = require('./repository/event_talk');
+var OldEventMasterRepository = require('./repository/event_talk_old');
 
 
 var Game = function(canvas) {
@@ -202,7 +203,7 @@ Game.prototype.setupDebug = function (dom) {
 			game.scene_manager.changeScene("stage", value);
 		});
 
-	// イベント(システム)一覧生成
+	// イベント(システム)(新)一覧生成
 	var event_list = EventMasterRepository.all()
 	var event_name_list = [];
 	for (var k = 0; k < event_list.length; k++) {
@@ -212,6 +213,19 @@ Game.prototype.setupDebug = function (dom) {
 		function (game, value) {
 			game.scene_manager.changeScene("event_talk", value);
 		});
+
+	// イベント(システム)(旧)一覧生成
+	var event_list = OldEventMasterRepository.all()
+	var event_name_list = [];
+	for (var l = 0; l < event_list.length; l++) {
+		event_name_list.push({value: event_list[l].key()});
+	}
+	this.debug_manager.addMenuSelect("イベント(旧)再生", event_name_list,
+		function (game, value) {
+			game.scene_manager.changeScene("event_talk_old", value);
+		});
+
+
 
 	// アイテム一覧生成
 	var item_list = ItemMasterRepository.all()

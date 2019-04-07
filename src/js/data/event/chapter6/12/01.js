@@ -12,7 +12,7 @@ module.exports = {
 			{"name": "chapter6-12-event-01-01", "frame": 15},
 			{"name": "chapter6-12-event-01-02", "frame": 90},
 		]}},
-		{"exp": null, "serif": _("いや！"), "option": {"x": 650, "y": 250, "loop": false}},
+		{"exp": null, "serif": _("いや！"), "option": {"x": 650, "y": 250, "loop": false, "is_koishi": true}},
 	],
 	endAnime: "chapter6-12-event-01-obj02",
 	endSounds: [

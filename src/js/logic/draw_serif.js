@@ -41,8 +41,8 @@ DrawSerif.drawWindow = function (
 
 	// ウィンドウの大きさ
 	var scale = {
-		width: 0.75,
-		height: 0.75,
+		width: 2/3,
+		height: 2/3,
 	};
 
 	// ウィンドウ画像が中央からちょっとズレてるので位置調整

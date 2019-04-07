@@ -24,18 +24,18 @@ module.exports = {
 		"chapter3-08-event-04-obj04",
 	],
 	serifs: [
-		{"exp": "chapter3-08-event-04-obj01", "serif":_("おまたせ"), "option": {"x": 470, "y": 200, "loop": false}},
+		{"exp": "chapter3-08-event-04-obj01", "serif":_("おまたせ"), "option": {"x": 470, "y": 200, "loop": false, "is_koishi": true}},
 		{"exp": "chapter3-08-event-04-obj01", "serif":_("ええ！"), "option": {"x": 270, "y": 200, "loop": false}},
 		{"exp": null, "serif":_("全然足りないじゃない！"), "option": {"x": 270, "y": 200, "loop": false}},
 		{"exp": null, "serif":_("ボタンが足りない！"), "option": {"x": 270, "y": 200, "loop": false}},
 		{"exp": null, "serif":_("見つからない"), "option": {"x": 270, "y": 200, "loop": false}},
-		{"exp": "chapter3-08-event-04-obj01", "serif":_("ごめんなさい"), "option": {"x": 470, "y": 200, "loop": false}},
+		{"exp": "chapter3-08-event-04-obj01", "serif":_("ごめんなさい"), "option": {"x": 470, "y": 200, "loop": false, "is_koishi": true}},
 		{"exp": "chapter3-08-event-04-obj02", "serif":_("やだ！"), "option": {"x": 270, "y": 200, "loop": false}},
 		{"exp": null, "serif":_("やだ！やだ！"), "option": {"x": 270, "y": 200, "loop": false}},
 		{"exp": null, "serif":_("ちゃんととってこれないんだったら"), "option": {"x": 270, "y": 200, "loop": false}},
 		{"exp": null, "serif":_("わたし帰るから！"), "option": {"x": 270, "y": 200, "loop": false}},
-		{"exp": null, "serif":_("ごめん"), "option": {"x": 470, "y": 200, "loop": false}},
-		{"exp": "chapter3-08-event-04-obj03", "serif":_("............"), "option": {"x": 470, "y": 200, "loop": false}},
+		{"exp": null, "serif":_("ごめん"), "option": {"x": 470, "y": 200, "loop": false, "is_koishi": true}},
+		{"exp": "chapter3-08-event-04-obj03", "serif":_("............"), "option": {"x": 470, "y": 200, "loop": false, "is_koishi": true}},
 		/*
 		// こいし
 		{"exp": "chapter3-08-event-04-obj01", "serif":_("おまたせ"), "option": {"x": 470, "y": 200, "loop": false}},

@@ -23,7 +23,7 @@ module.exports = {
 		// フラン
 		{"exp": "chapter3-13-event-04-obj02", "serif":_("22222222"), "option": {"x": 625, "y": 165, "loop": false}},
 		*/
-		{"exp": "chapter3-13-event-04-obj01", "serif":_("えーい"), "option": {"x": 350, "y": 120, "loop": false, "sounds": [
+		{"exp": "chapter3-13-event-04-obj01", "serif":_("えーい"), "option": {"x": 350, "y": 120, "loop": false, "is_koishi": true, "sounds": [
 			{"name": "chapter3-13-event-04-01", "frame": 10},
 			{"name": "chapter3-13-event-04-02", "frame": 30},
 		]}},
@@ -41,21 +41,21 @@ module.exports = {
 		{"exp": null, "serif":_("いいよ"), "option": {"x": 625, "y": 165, "loop": false}},
 		{"exp": null, "serif":_("ごめんね"), "option": {"x": 625, "y": 165, "loop": false}},
 		{"exp": "chapter3-13-event-04-obj06", "serif":_("いいよ"), "option": {"x": 470, "y": 50, "loop": false}},
-		{"exp": "chapter3-13-event-04-obj03", "serif":_("もう帰らなきゃ"), "option": {"x": 350, "y": 120, "loop": false, "sounds": [
+		{"exp": "chapter3-13-event-04-obj03", "serif":_("もう帰らなきゃ"), "option": {"x": 350, "y": 120, "loop": false, "is_koishi": true, "sounds": [
 			{"name": "chapter3-13-event-04-04", "frame": 0},
 		]}},
 		{"exp": null, "serif":_("私も！"), "option": {"x": 625, "y": 165, "loop": false}},
-		{"exp": null, "serif":_("うん"), "option": {"x": 350, "y": 120, "loop": false}},
-		{"exp": null, "serif":_("じゃあね"), "option": {"x": 350, "y": 120, "loop": false}},
+		{"exp": null, "serif":_("うん"), "option": {"x": 350, "y": 120, "loop": false, "is_koishi": true}},
+		{"exp": null, "serif":_("じゃあね"), "option": {"x": 350, "y": 120, "loop": false, "is_koishi": true}},
 		{"exp": null, "serif":_("またねー"), "option": {"x": 470, "y": 50, "loop": false}},
 		{"exp": "chapter3-13-event-04-obj07", "serif":_("これあげる！"), "option": {"x": 200, "y": 50, "loop": false, "sounds": [
 			{"name": "chapter3-13-event-04-05", "frame": 45},
 			{"name": "chapter3-13-event-04-06", "frame": 210},
 		]}},
-		{"exp": null, "serif":_("いいの？"), "option": {"x": 350, "y": 120, "loop": false}},
+		{"exp": null, "serif":_("いいの？"), "option": {"x": 350, "y": 120, "loop": false, "is_koishi": true}},
 		{"exp": null, "serif":_("友達だから！"), "option": {"x": 200, "y": 50, "loop": false}},
 		{"exp": null, "serif":_("また遊ぼうね"), "option": {"x": 200, "y": 50, "loop": false}},
-		{"exp": null, "serif":_("うん"), "option": {"x": 350, "y": 120, "loop": false, "getItem": "19"}},
+		{"exp": null, "serif":_("うん"), "option": {"x": 350, "y": 120, "loop": false, "is_koishi": true, "getItem": "19"}},
 		{"exp": "chapter3-13-event-04-obj08", "serif":_("きれい"), "option": {"x": 470, "y": 50, "loop": false}},
 	],
 	endAnime: "chapter3-13-event-04-obj09",

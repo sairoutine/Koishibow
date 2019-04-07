@@ -374,6 +374,15 @@ SceneEventTalk.prototype._showMessage = function(){
 	var option = this._serif.getCurrentOption();
 	this._serif_position.setPosition(option.x, option.y);
 
+	// 応急処置 TODO: option にセリフウィンドウ指定をしたい
+	// こいしのセリフウインドウ: brown
+	// それ以外のセリフウインドウ: darkbrown
+	// にする
+	var fukidashi = this._master.serifWindow();
+	if (fukidashi === "fukidashi_brown" && typeof option.is_koishi === "undefined") {
+		fukidashi = "fukidashi_darkbrown";
+	}
+
 	// セリフ取得
 	var lines = this._serif.getCurrentPrintedSentences();
 	var width = this._serif.getCurrentMaxLengthLetters();
@@ -382,7 +391,7 @@ SceneEventTalk.prototype._showMessage = function(){
 	if (!lines.length) return;
 
 	var ctx = this.core.ctx;
-	DrawSerif.drawWindow(this._serif_position, ctx, this._master.serifWindow(), lines, width, height);
+	DrawSerif.drawWindow(this._serif_position, ctx, fukidashi, lines, width, height);
 	DrawSerif.drawText(this._serif_position, ctx, lines, width, height,
 		// オプション
 		{

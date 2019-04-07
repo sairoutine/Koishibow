@@ -18,7 +18,7 @@ module.exports = {
 		*/
 		{"exp": "chapter3-09-event-01-obj01", "serif":_("どうしたの？"), "option": {"x": 550, "y": 240, "loop": false}},
 		{"exp": null, "serif":_("この下が気になるの？"), "option": {"x": 550, "y": 240, "loop": false}},
-		{"exp": null, "serif":_("そうなの"), "option": {"x": 470, "y": 240, "loop": false}},
+		{"exp": null, "serif":_("そうなの"), "option": {"x": 470, "y": 240, "loop": false, "is_koishi": true}},
 		{"exp": null, "serif":_("じゃあねー"), "option": {"x": 550, "y": 240, "loop": false}},
 		{"exp": null, "serif":_("はいこれ！"), "option": {"x": 550, "y": 240, "loop": false}},
 	],
