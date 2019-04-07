@@ -37,7 +37,7 @@ ObjectChapter6LastJunction.prototype.isShow = function() {
 ObjectChapter6LastJunction.prototype.init = function(){
 	base_object.prototype.init.apply(this, arguments);
 
-	this._image = this.core.image_loader.getImage("fukidashi_brown");
+	this._image = this.core.image_loader.getImage("fukidashi_brown_center");
 
 	this._scale      = 1;
 	this._width      = null;
