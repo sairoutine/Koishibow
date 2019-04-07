@@ -223,10 +223,19 @@ AssetsConfig.images = {
 	"eye3":  "./image/common/ui-common-btn-eye-3.png",
 	"eye4":  "./image/common/ui-common-btn-eye-4.png",
 
-	// ふきだし
-	"fukidashi":  "./image/common/ui-common-frame-talk1-brn.png",
+	// ふきだし(こいし用)
+	"fukidashi_brown_center":     "./image/common/ui-common-frame-talk1-brn.png",
+	"fukidashi_brown_left":       "./image/common/ui-common-frame-talk2-brn.png",
+	// ふきだし(回想用)
+	"fukidashi_black_center":     "./image/common/ui-common-frame-talk1-blk.png",
+	"fukidashi_black_left":       "./image/common/ui-common-frame-talk2-blk.png",
+	// ふきだし(キャラ用)
+	"fukidashi_darkbrown_center": "./image/common/ui-common-frame-talk1-dbrn.png",
+	"fukidashi_darkbrown_left":   "./image/common/ui-common-frame-talk2-dbrn.png",
+
+	// chapter1さとりと母の回想シーン 専用
 	"fukidashi_gray":  "./image/common/ui-common-frame-talk1-gry.png",
-	"fukidashi_dark":  "./image/common/ui-common-frame-talk1-dark.png",
+
 	"fukidashi_arrow":  "./image/common/ui-common-btn-arrow-brn.png",
 
 	// 会話選択肢 ふきだし
