@@ -5,9 +5,10 @@ var data_list = require("../data/master/event_movie");
 
 var EventMovieMasterRepository = MasterRepositoryGenerator.exec(
 	{
-		key:          "string",
-		path: "string",
-		isStopBGM:   "string",
+		key:       "string",
+		path:      "string",
+		isStopBGM: "string",
+		nextField: "string",
 	},
 	{
 		pk: "key",

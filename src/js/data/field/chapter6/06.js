@@ -88,7 +88,6 @@ module.exports = {
 				{"chara": "koishi","exp": "look_bottom",  serif1: _("なにかしら"), serif2: _("なにかしら"), serif3: _("なにかしら"), serif4: _("なにかしら")},
 				{"chara": "koishi","exp": null, "serif": _("......"), "option": {"playSound": "chapter6-02-bark_bm"}},
 				{"chara": "bm","exp": null,  serif1: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif2: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif3: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif4: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), "option": {"playEventMovie": "chapter6-06-event-01"}},
-				{"chara": "koishi","exp": null, "serif": "", "option": {"changeField": "chapter6_10"}},
 			],
 			x: 480, y: 560,
 			scale: 2/3,

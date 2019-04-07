@@ -24,11 +24,18 @@ SceneEventMovie.prototype.init = function(event_name){
 	}
 
 	var path = chapter_data.path();
+	var next_field = chapter_data.nextField(); // イベント再生後の遷移先フィールド
 
 	var scene_manager = this.core.scene_manager;
-	var callback =  function () {
-		scene_manager.returnScene("stage");
-	};
+	var callback =  next_field ?
+		// 遷移先が設定されていれば遷移先フィールドへ
+		function () {
+			scene_manager.changeScene("stage", next_field);
+		}:
+		// 遷移先が設定されてなければ stage へ戻る
+		function () {
+			scene_manager.returnScene("stage");
+		};
 
 	if(chapter_data.isStopBGM() === false) {
 		this._is_stop_bgm = false;
