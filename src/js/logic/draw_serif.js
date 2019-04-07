@@ -19,7 +19,15 @@ var SERIF_FONT_COLOR = Util.hexToRGBString("#d4c9aa");
 var DrawSerif = function() {};
 
 // @param: {ObjectBase} obj
-DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_num, option) {
+DrawSerif.drawWindow = function (
+	obj,        // セリフを喋るオブジェクト
+	ctx,        // 描画対象の Canvas オブジェクト
+	fukidashi,  // 吹き出しウィンドウの名前(例: fukidashi_brown)
+	lines,      // セリフ文字列
+	width_num,  // セリフの横の長さ
+	height_num, // セリフの縦の長さ
+	option
+) {
 	option = option || {};
 
 	// セリフがなければ何も表示しない
@@ -33,8 +41,8 @@ DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_n
 
 	// ウィンドウの大きさ
 	var scale = {
-		width: 2/4,
-		height: 2/4,
+		width: 0.75,
+		height: 0.75,
 	};
 
 	// ウィンドウ画像が中央からちょっとズレてるので位置調整
@@ -49,12 +57,13 @@ DrawSerif.drawWindow = function (obj, ctx, fukidashi, lines, width_num, height_n
 		ctx.transform(-1, 0, 0, 1, 0, 0);
 	}
 
+	var fukidashi_img = obj.core.image_loader.getImage(fukidashi + "_left"); // TODO: obj を参照しない
 	// x,y座標は中央が基準位置
-	ctx.drawImage(fukidashi,
-		-fukidashi.width * scale.width/2,
-		-fukidashi.height*scale.height/2,
-		fukidashi.width * scale.width,
-		fukidashi.height * scale.height
+	ctx.drawImage(fukidashi_img,
+		-fukidashi_img.width * scale.width/2,
+		-fukidashi_img.height*scale.height/2,
+		fukidashi_img.width * scale.width,
+		fukidashi_img.height * scale.height
 	);
 	ctx.restore();
 
