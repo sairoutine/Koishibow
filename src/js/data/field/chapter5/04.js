@@ -9,7 +9,7 @@ module.exports = {
 	bgm: "field11",
 	rightStartPosition:   {x: 790, y: 480},
 	leftStartPosition:    {x: 350, y: 350},
-	defaultStartPosition: {x: 350, y: 350, isTowardLeft: false},
+	defaultStartPosition: {x: 790, y: 480, isTowardLeft: true},
 	upStartPosition:    null,
 	downStartPosition:  null,
 	rightField: "chapter5_14",
@@ -132,6 +132,20 @@ module.exports = {
 			sound_name: null,
 			show_if_event_true: "chapter5-04-show_animal_mogura",
 		},
+
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "目薬",
+			image: "eyedrops",
+			x: 870,
+			y: 530,
+			scale: 2/3,
+			item_id: "01",
+			position_type: "lying",
+		},
+
+
 	],
 };
 

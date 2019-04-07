@@ -131,6 +131,20 @@ module.exports = {
 			x: 650, y: 420,
 			journal_id: "journal039",
 		},
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "目薬",
+			image: "eyedrops",
+			x: 870,
+			y: 295,
+			height: 300,
+			scale: 2/3,
+			item_id: "01",
+			position_type: "lying",
+		},
+
+
 	],
 };
 

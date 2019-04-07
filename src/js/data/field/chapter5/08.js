@@ -115,6 +115,19 @@ module.exports = {
 			sound_name: null,
 			show_if_event_true: "chapter5-07-animal_komodo_talk1",
 		},
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "目薬",
+			image: "eyedrops",
+			x: 140,
+			y: 400,
+			scale: 2/3,
+			item_id: "01",
+			position_type: "lying",
+		},
+
+
 
 
 	],
