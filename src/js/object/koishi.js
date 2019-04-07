@@ -375,9 +375,7 @@ Koishi.prototype.showMessage = function(text_lines, width_num, height_num, optio
 // セリフウィンドウ表示
 Koishi.prototype._showMessageWindow = function(lines, width_num, height_num, option){
 	var ctx = this.core.ctx;
-	var fukidashi = this.core.image_loader.getImage('fukidashi');
-
-	DrawSerif.drawWindow(this, ctx, fukidashi, lines, width_num, height_num, option);
+	DrawSerif.drawWindow(this, ctx, "fukidashi_brown", lines, width_num, height_num, option);
 };
 // セリフテキスト表示
 Koishi.prototype._showText = function(lines, width_num, height_num, option) {

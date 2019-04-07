@@ -382,8 +382,7 @@ SceneEventTalk.prototype._showMessage = function(){
 	if (!lines.length) return;
 
 	var ctx = this.core.ctx;
-	var fukidashi = this.core.image_loader.getImage(this._master.serifWindow());
-	DrawSerif.drawWindow(this._serif_position, ctx, fukidashi, lines, width, height);
+	DrawSerif.drawWindow(this._serif_position, ctx, this._master.serifWindow(), lines, width, height);
 	DrawSerif.drawText(this._serif_position, ctx, lines, width, height,
 		// オプション
 		{

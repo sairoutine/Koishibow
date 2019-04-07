@@ -336,8 +336,7 @@ SceneEventPlayDoll.prototype._showMessage = function(){
 	if (!lines.length) return;
 
 	var ctx = this.core.ctx;
-	var fukidashi = this.core.image_loader.getImage('fukidashi');
-	DrawSerif.drawWindow(obj, ctx, fukidashi, lines, width, height);
+	DrawSerif.drawWindow(obj, ctx, "fukidashi_brown", lines, width, height);
 	DrawSerif.drawText(obj, ctx, lines, width, height);
 };
 

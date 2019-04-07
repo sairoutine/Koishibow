@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
 	key: "chapter4-19-event-01",
-	serifWindow: "fukidashi",
+	serifWindow: "fukidashi_brown",
 	expAnimes: [
 		"chapter4-19-event-01-obj01",
 		"chapter4-19-event-01-obj02",

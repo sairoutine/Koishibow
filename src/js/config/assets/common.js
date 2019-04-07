@@ -234,7 +234,7 @@ AssetsConfig.images = {
 	"fukidashi_darkbrown_left":   "./image/common/ui-common-frame-talk2-dbrn.png",
 
 	// chapter1さとりと母の回想シーン 専用
-	"fukidashi_gray":  "./image/common/ui-common-frame-talk1-gry.png",
+	"fukidashi_gray_left":  "./image/common/ui-common-frame-talk1-gry.png",
 
 	"fukidashi_arrow":  "./image/common/ui-common-btn-arrow-brn.png",
 

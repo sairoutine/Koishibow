@@ -221,8 +221,7 @@ SceneEventEncounterSatori.prototype._showMessage = function(){
 
 	// メッセージウィンドウ表示
 	var ctx = this.core.ctx;
-	var fukidashi = this.core.image_loader.getImage('fukidashi_gray');
-	DrawSerif.drawWindow(this.serif_position, ctx, fukidashi, lines, width_num, height_num);
+	DrawSerif.drawWindow(this.serif_position, ctx, "fukidashi_gray", lines, width_num, height_num);
 
 	// メッセージ表示
 	DrawSerif.drawText(this.serif_position, ctx, lines, width_num, height_num);

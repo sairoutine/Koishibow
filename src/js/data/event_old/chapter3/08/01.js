@@ -7,7 +7,7 @@ var _ = require('i18n4v')
 
 module.exports = {
 	key: "chapter3-08-event-01",
-	serifWindow: "fukidashi_dark",
+	serifWindow: "fukidashi_black",
 	animeNum: 4,
 	bgm: "chapter0-event-encounter_satori",
 	bg: "chapter3-08-event-01-bg-001",

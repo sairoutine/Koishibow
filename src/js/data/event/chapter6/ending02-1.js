@@ -2,7 +2,7 @@
 var _ = require('i18n4v')
 module.exports = {
 	key: "chapter6-event-ending02-1",
-	serifWindow: "fukidashi",
+	serifWindow: "fukidashi_brown",
 	expAnimes: [
 		"chapter6-event-ending02-1-obj01",
 		"chapter6-event-ending02-1-obj02",

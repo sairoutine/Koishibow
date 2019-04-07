@@ -269,8 +269,7 @@ SceneEventTalkWithMobu.prototype._showMessage = function(){
 	if (!lines.length) return;
 
 	var ctx = this.core.ctx;
-	var fukidashi = this.core.image_loader.getImage('fukidashi_dark');
-	DrawSerif.drawWindow(obj, ctx, fukidashi, lines, width, height);
+	DrawSerif.drawWindow(obj, ctx, "fukidashi_black", lines, width, height);
 	DrawSerif.drawText(obj, ctx, lines, width, height);
 };
 

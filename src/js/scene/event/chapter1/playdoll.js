@@ -358,18 +358,22 @@ SceneEventPlayDoll.prototype._showMessage = function(){
 	// 現在喋っているオブジェクト名(こいしの場合は koishi)
 	var chara_name = this._serif.getCurrentCharaNameByPosition();
 	// オブジェクトを取得
-	var obj;
+	var obj, fukidashi;
 	if (chara_name === "koishi") {
 		obj = this.serif_position_of_koishi;
+		fukidashi = "fukidashi_brown";
 	}
 	else if (chara_name === "kogasa") {
 		obj = this.serif_position_of_kogasa;
+		fukidashi = "fukidashi_darkbrown";
 	}
 	else if (chara_name === "murasa") {
 		obj = this.serif_position_of_murasa;
+		fukidashi = "fukidashi_darkbrown";
 	}
 	else if (chara_name === "kyoko") {
 		obj = this.serif_position_of_kyoko;
+		fukidashi = "fukidashi_darkbrown";
 	}
 	else {
 		return;
@@ -383,7 +387,6 @@ SceneEventPlayDoll.prototype._showMessage = function(){
 	if (!lines.length) return;
 
 	var ctx = this.core.ctx;
-	var fukidashi = this.core.image_loader.getImage('fukidashi');
 	DrawSerif.drawWindow(obj, ctx, fukidashi, lines, width, height);
 	DrawSerif.drawText(obj, ctx, lines, width, height);
 };
