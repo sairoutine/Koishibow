@@ -359,6 +359,16 @@ Koishi.prototype.gain3rdeyeGaugeMax = function() {
 	return this.core.save_manager.player.gain3rdeyeGauge(CONSTANT.MAX_3RDEYE_GAUGE);
 };
 
+// オブジェクトの方向に向く
+Koishi.prototype.towardPiece = function(piece) {
+	if (piece.x() < this.x()) {
+		this.setReflect(true);
+	}
+	else {
+		this.setReflect(false);
+	}
+};
+
 
 Koishi.prototype.z = function(){
 	return 100; //TODO: 固定値やめる

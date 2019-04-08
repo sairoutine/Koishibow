@@ -282,6 +282,27 @@ ObjectAnimeImage.prototype.onNotCollideWithLightIn3rdEye = function(){
 ObjectAnimeImage.prototype._getWaitAnimeName = function() {
 	return this.ss.hasFrontClickedAnime() && this._is_clicked_in_front ? "front_after_click_anime" : "front_before_click_anime";
 };
+
+// こいしの方を向くオブジェクトであれば、こいしの方を向く
+ObjectAnimeImage.prototype._towardKoishi = function() {
+	if(this._turn_toward_me) {
+		if (this.x() < this.scene.root().koishi.x()) {
+			this.ss.setReflect(false);
+		}
+		else {
+			this.ss.setReflect(true);
+		}
+	}
+	else if(this._turn_not_toward_me) {
+		if (this.x() > this.scene.root().koishi.x()) {
+			this.ss.setReflect(false);
+		}
+		else {
+			this.ss.setReflect(true);
+		}
+	}
+};
+
 ObjectAnimeImage.prototype.update = function() {
 	base_object.prototype.update.apply(this, arguments);
 
@@ -327,22 +348,7 @@ ObjectAnimeImage.prototype.isCheckInTouchArea = function(){
 // こいしに触られたときの処理
 ObjectAnimeImage.prototype.onTouchByKoishi = function() {
 	// こいしの方を向くオブジェクトであれば、こいしの方を向く
-	if(this._turn_toward_me) {
-		if (this.x() < this.scene.root().koishi.x()) {
-			this.ss.setReflect(false);
-		}
-		else {
-			this.ss.setReflect(true);
-		}
-	}
-	else if(this._turn_not_toward_me) {
-		if (this.x() > this.scene.root().koishi.x()) {
-			this.ss.setReflect(false);
-		}
-		else {
-			this.ss.setReflect(true);
-		}
-	}
+	this._towardKoishi();
 
 	// サードアイのON/OFFで触られたときの処理分岐
 	if (this.scene.root().isUsingEye()) {

@@ -126,9 +126,15 @@ SceneSubStagePlay.prototype._checkCollideWithObjects = function(){
 
 		// こいしとオブジェクトがタッチ可能な範囲にいるかどうか
 		if (piece.checkIsInTouchArea(this.root().koishi)) {
+			// 調べるボタンが押された
 			if (this.core.input_manager.isKeyPush(CONSTANT_BUTTON.A)) {
+				// オブジェクトの方向に向く
+				this.root().koishi.towardPiece(piece);
+
+				// 調べたときの処理を実行
 				piece.onTouchByKoishi();
 			}
+			// 調べるボタンが押されてない
 			else {
 				// タッチできるオブジェクトであることを示すカーソル表示
 				this._showSelectedCursor(piece);
