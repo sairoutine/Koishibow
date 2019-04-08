@@ -9,8 +9,8 @@ module.exports = {
 		"chapter5-01-event-01-obj02",
 	],
 	serifs: [
-		{"exp": "chapter5-01-event-01-obj01", "serif": _("おやすみ"), "option": {"x": 253, "y": 150, "loop": false, "is_koishi": true}},
-		{"exp": "chapter5-01-event-01-obj02", "serif": _("こんどはうまくいきますように"), "option": {"x": 253, "y": 150, "loop": false, "is_koishi": true}},
+		{"exp": "chapter5-01-event-01-obj01", "serif": _("おやすみ"), "option": {"x": 700, "y": 200, "loop": false}},
+		{"exp": "chapter5-01-event-01-obj02", "serif": _("こんどはうまくいきますように"), "option": {"x": 700, "y": 190, "loop": false}},
 	],
 	endAnime: null,
 	endSounds: [

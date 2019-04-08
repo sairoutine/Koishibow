@@ -76,7 +76,6 @@ module.exports = {
 			bgm_back: "chapter0-mansion_corridor1-tricycle",
 			position_type: "front",
 		},
-		*/
 		{
 			no: ++I,
 			image: null,
@@ -88,6 +87,7 @@ module.exports = {
 			y: 715,
 
 		},
+		*/
 
 
 		{

@@ -207,7 +207,7 @@ module.exports = [
 		id: "21",
 		type: CONSTANT.ITEM.JOURNAL_BOOK,
 		name: "ジャーナルをまとめた本",
-		isShowChapter4: true,
+		isShowChapter4: false,
 		imageName: "item_21",
 		soundName: "got_item_common",
 		descriptionText:_("”人が受け継ぐのは遺伝子ではなく文字だ”"),

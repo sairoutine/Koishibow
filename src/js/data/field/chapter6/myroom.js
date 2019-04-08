@@ -29,7 +29,7 @@ module.exports = {
 					[
 						{"chara": "bm","exp": null,  serif1: _("ギャーッ"), serif2: _("ギャーッ"), serif3: _("ギャーッ"), serif4: _("ギャーッ")},
 						{"id": "chapter6-01-seen_bm", "save": true},
-						{"chara": "koishi","exp": "look_bottom",  serif1: _("ア゛ー"), serif2: _("なにこれ！"), serif3: _("なにこれ！"), serif4: _("きもちわるい！"), "option": {"changeField": "chapter6_02"}},
+						{"chara": "koishi","exp": "afraid",  serif1: _("ア゛ー"), serif2: _("なにこれ！"), serif3: _("なにこれ！"), serif4: _("きもちわるい！"), "option": {"changeField": "chapter6_02"}},
 					]
 				]},
 			],
