@@ -1,7 +1,7 @@
 'use strict';
 
 // セーブデータ
-var base_class = require('../hakurei').storage.base;
+var base_class = require('./base');
 var Util = require('../hakurei').util;
 
 var StorageJournal = function() {

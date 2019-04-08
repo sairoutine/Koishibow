@@ -4,6 +4,9 @@ var DEBUG = require("./debug_constant");
 var CONSTANT = {
 	DEBUG: {},
 
+	// バージョン
+	VERSION: "1.0.0",
+
 	// 体験版モードかどうか
 	TRIAL: false,
 
