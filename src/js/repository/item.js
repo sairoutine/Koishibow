@@ -8,6 +8,7 @@ var ItemMasterRepository = MasterRepositoryGenerator.exec(
 		id:              "number",
 		type:            "number",
 		name:            "string",
+		isShowChapter4:  "boolean",
 		imageName:       "string",
 		soundName:       "string",
 		descriptionText: "string",

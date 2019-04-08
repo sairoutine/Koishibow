@@ -436,12 +436,34 @@ SceneSubStageMenu.prototype.setFocusItem = function(item_id){
 	this.focus_item_id = item_id;
 };
 
+SceneSubStageMenu.prototype._isInChapter4 = function(){
+	return this.parent.getChapterNo() === 4;
+};
+
+
+
+
+
 var TURN_NUM = 5; // アイテム5つで折り返す。
 
 SceneSubStageMenu.prototype._setupMenuItems = function() {
-	var item_list = this.core.save_manager.item.getItemList();
-
 	this.menu_item_list = [];
+
+	// アイテム一覧を取得
+	var _item_list = this.core.save_manager.item.getItemList();
+	var item_list = [];
+	for (var j = 0, leng = _item_list.length; j < leng; j++) {
+		var item_master = ItemMasterRepository.find(_item_list[j].item_id);
+		// chapter4 で表示しないマスタ設定のアイテムは表示しない
+		// そのため絞る
+		if (this._isInChapter4() && !item_master.isShowChapter4()) {
+			continue;
+		}
+
+		item_list.push(_item_list[j]);
+	}
+
+	// メニューセットアップ
 	for (var i = 0, len = item_list.length; i < len; i++) {
 		var item_data = item_list[i];
 		var item_id = item_data.item_id;

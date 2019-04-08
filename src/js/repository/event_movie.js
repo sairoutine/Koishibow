@@ -7,7 +7,7 @@ var EventMovieMasterRepository = MasterRepositoryGenerator.exec(
 	{
 		key:       "string",
 		path:      "string",
-		isStopBGM: "string",
+		isStopBGM: "boolean",
 		nextField: "string",
 	},
 	{
