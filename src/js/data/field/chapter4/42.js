@@ -36,7 +36,7 @@ module.exports = {
 						{"chara": "merry", "exp": "merry-reaction_03", "serif": _("......")},
 						{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("境界を探すのよ"), serif2: _("境界を探すのよ"), serif3: _("境界を探すのよ"), serif4: _("境界を探すのよ")},
 						{"chara": "merry", "exp": "merry-reaction_06",  serif1: _("私はそれを見ればそれとわかる"), serif2: _("私はそれを見ればそれとわかる"), serif3: _("私はそれを見ればそれとわかる"), serif4: _("私はそれを見ればそれとわかる")},
-						{"chara": "renko", "exp": "renko-reaction_02", "serif": _("ここに来た時もそこを通じて来たからこのあたりのはずよ")},
+						{"chara": "renko", "exp": "renko-reaction_02", "serif": _("来た時もそこを通じて来たからこのあたりよ")},
 						{"chara": "merry", "exp": "merry-reaction_07",  serif1: _("私はその気配を感じ取れる"), serif2: _("私はその気配を感じ取れる"), serif3: _("私はその気配を感じ取れる"), serif4: _("私はその気配を感じ取れる")},
 						{"chara": "renko", "exp": "renko-reaction_06",  serif1: _("私は緯度と経度がわかる"), serif2: _("私は緯度と経度がわかる"), serif3: _("私は緯度と経度がわかる"), serif4: _("私は緯度と経度がわかる")},
 						{"chara": "koishi", "exp": "look_top",  serif1: _("けーどって何"), serif2: _("井戸は知ってるけど......"), serif3: _("井戸は知ってるけど......"), serif4: _("井戸は知ってるけど......")},
@@ -54,7 +54,7 @@ module.exports = {
 						{"chara": "koishi", "exp": "yes",  serif1: _("クッキーだって作れる"), serif2: _("クッキーだって作れる"), serif3: _("クッキーだって作れる"), serif4: _("クッキーだって作れる")},
 						{"chara": "merry", "exp": "merry-reaction_05",  serif1: _("ねえ"), serif2: _("ねえ"), serif3: _("ねえ"), serif4: _("ねえ")},
 						{"chara": "merry", "exp": "merry-reaction_10",  serif1: _("一回だけチャンスをあげましょ"), serif2: _("一回だけチャンスをあげましょ"), serif3: _("一回だけチャンスをあげましょ"), serif4: _("一回だけチャンスをあげましょ")},
-						{"chara": "renko", "exp": "renko-reaction_04", "serif": _("あのね、あなた帰りたいんだったら”自分の足で歩く”のよ")},
+						{"chara": "renko", "exp": "renko-reaction_04", "serif": _("あのね、あなた”自分の足で歩く”のよ")},
 						{"chara": "merry", "exp": "merry-reaction_10",  serif1: _("それは彼女も一緒でしょ"), serif2: _("それは彼女も一緒でしょ"), serif3: _("それは彼女も一緒でしょ"), serif4: _("それは彼女も一緒でしょ")},
 						{"chara": "koishi", "exp": "look_front",  serif1: _("はやくはじめましょ！"), serif2: _("はやくはじめましょ！"), serif3: _("はやくはじめましょ！"), serif4: _("はやくはじめましょ！")},
 					]

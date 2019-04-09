@@ -63,7 +63,7 @@ module.exports = {
 				{"chara": "koishi", "exp": null,  serif1: _("使ってみて！"), serif2: _("やってみて！"), serif3: _("やってみて！"), serif4: _("やってみて！")},
 				{"chara": "merry", "exp": "merry-wait",  serif1: _("いまはできないわ"), serif2: _("いまはできないわ"), serif3: _("いまはできないわ"), serif4: _("いまはできないわ")},
 				{"chara": "koishi", "exp": "look_front",  serif1: _("どうして？"), serif2: _("どうして？"), serif3: _("どうして？"), serif4: _("どうして？")},
-				{"chara": "merry", "exp": "merry-reaction_05", "serif": _("レコードも円盤だけじゃなくて蓄音機がいるでしょ？")},
+				{"chara": "merry", "exp": "merry-reaction_05", "serif": _("レコードも円盤だけじゃなくて\n蓄音機がいるでしょ？")},
 				{"chara": "merry", "exp": null,  serif1: _("これは蓄音機。円盤がいるの"), serif2: _("これは蓄音機。円盤がいるの"), serif3: _("これは蓄音機。円盤がいるの"), serif4: _("これは蓄音機。円盤がいるの")},
 				{"chara": "koishi", "exp": "look_top",  serif1: _("もってないの？"), serif2: _("もってないの？"), serif3: _("もってないの？"), serif4: _("もってないの？")},
 				{"chara": "merry", "exp": "merry-wait",  serif1: _("いまは持ってないわ"), serif2: _("いまは持ってないわ"), serif3: _("いまは持ってないわ"), serif4: _("いまは持ってないわ")},

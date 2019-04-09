@@ -3,6 +3,7 @@ var _ = require('i18n4v')
 // 優曇華院
 
 var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter4_19",
 	chapter: 4,
@@ -78,7 +79,7 @@ module.exports = {
 								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("持っているわよ"), serif2: _("持っているわよ"), serif3: _("持っているわよ"), serif4: _("持っているわよ")},
 								{"chara": "reisen", "exp": null,  serif1: _("例えばこの風邪薬は一粒飲むと風邪が治る"), serif2: _("例えばこの風邪薬は一粒飲むと風邪が治る"), serif3: _("例えばこの風邪薬は一粒飲むと風邪が治る"), serif4: _("例えばこの風邪薬は一粒飲むと風邪が治る")},
 								{"chara": "reisen", "exp": null,  serif1: _("十粒飲むと死ぬ"), serif2: _("十粒飲むと死ぬ"), serif3: _("十粒飲むと死ぬ"), serif4: _("十粒飲むと死ぬ")},
-								{"chara": "reisen", "exp": "reisen-reaction_03", "serif": _("おんなじ物を飲んでもいいようになるか悪いようになるかはその人次第よ")},
+								{"chara": "reisen", "exp": "reisen-reaction_03", "serif": _("それに効き目は人次第")},
 								{"chara": "koishi", "exp": "wait", "serif": _("ふーん")},
 								{"chara": "reisen", "exp": "reisen-reaction_02",  serif1: _("なんで毒が欲しいの"), serif2: _("なんで毒が欲しいの"), serif3: _("なんで毒が欲しいの"), serif4: _("なんで毒が欲しいの")},
 								{"chara": "koishi", "exp": "look_front",  serif1: _("眠れる薬とかないの"), serif2: _("眠れる薬とかないの"), serif3: _("眠れる薬とかないの"), serif4: _("眠れる薬とかないの")},
@@ -109,7 +110,9 @@ module.exports = {
 								{"chara": "koishi", "exp": null,  serif1: _("これって虚無？"), serif2: _("これって虚無？"), serif3: _("生きてても死んでても同じよ"), serif4: _("生きてても死んでても同じよ")},
 								{"chara": "reisen", "exp": "reisen-reaction_03",  serif1: _("いいわ"), serif2: _("いいわ"), serif3: _("いいわ"), serif4: _("いいわ")},
 								{"chara": "reisen", "exp": null,  serif1: _("それじゃあ"), serif2: _("それじゃあ"), serif3: _("それじゃあ"), serif4: _("それじゃあ")},
-								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("試供品をあげましょ"), serif2: _("試供品をあげましょ"), serif3: _("試供品をあげましょ"), serif4: _("試供品をあげましょ"), "option": {"getItem": "27"}},
+								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("試供品をあげましょ"), serif2: _("試供品をあげましょ"), serif3: _("試供品をあげましょ"), serif4: _("試供品をあげましょ")},
+
+								{"id": "chapter4-19-show_tape1", "save": true},
 								{"chara": "koishi", "exp": null, "serif": "", "option": {"playEvent": "chapter4-19-event-01"}},
 							],
 							[
@@ -130,7 +133,16 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
-
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "テープ「お父さんお母さんへ」",
+			image: "item_23",
+			x:359.50*2/3, y:900*2/3,
+			scale: 2/3,
+			item_id: "27",
+			show_if_event_true: "chapter4-19-show_tape1",
+		},
 
 	],
 };
