@@ -118,8 +118,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "レミリアの死骸(常に表示されている)",
-			serif: null,
-			serif_back: [
+			serif: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_09_getruby"], "serifs": [
 					// ルビー獲得後
 					[
@@ -134,6 +133,7 @@ module.exports = {
 					],
 				]},
 			],
+			serif_back: null,
 			x:865*2/3, y:742.50*2/3,
 			scale: 2/3,
 			anime1: "chapter3-09-obj-03-obj03",
