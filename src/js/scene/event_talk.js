@@ -90,7 +90,7 @@ SceneEventTalk.prototype.init = function(event_name){
 
 	// BGM再生
 	if (this._master.bgm()) {
-		this.core.audio_loader.changeBGM(this._master.bgm());
+		this.core.audio_loader.playBGM(this._master.bgm());
 	}
 
 	// チャプター開始時のSE再生
