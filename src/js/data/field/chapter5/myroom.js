@@ -176,25 +176,36 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			loop: true,
 			serif_back: [
-				// 5-9のお燐表示＆お空とのイベント発生
-				{"id": "chapter5-myroom-araiguma_talk1", "save": true},
-				{"chara": "koishi","exp": "look_front",  serif1: _("ちょっと！"), serif2: _("ちょっと！"), serif3: _("ちょっと！"), serif4: _("ちょっと！"), "option": {"resetFlag": "chapter5-12-show_orin"}}, // 5-12のお燐非表示
-				{"chara": "koishi","exp": null,  serif1: _("目玉を転がしたのあなた？"), serif2: _("目玉を転がしたのあなた？"), serif3: _("目玉を転がしたのあなた？"), serif4: _("目玉を転がしたのあなた？")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("目玉？"), serif2: _("目玉？"), serif3: _("目玉？"), serif4: _("目玉？")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("知らないよおそんなの"), serif2: _("知らないよおそんなの"), serif3: _("知らないよおそんなの"), serif4: _("知らないよおそんなの")},
-				{"chara": "koishi","exp": "look_top",  serif1: _("ほんとう？"), serif2: _("ほんとう？"), serif3: _("ほんとう？"), serif4: _("ほんとう？")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("でも目玉かあ"), serif2: _("でも目玉かあ"), serif3: _("でも目玉かあ"), serif4: _("でも目玉かあ")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01",  serif1: _("見せてくれよ"), serif2: _("見せてくれよ"), serif3: _("見せてくれよ"), serif4: _("見せてくれよ")},
-				{"chara": "koishi","exp": "yes", "serif": _("うん"), "option": {"useItem": "32"}},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_02",  serif1: _("グシグシグシ"), serif2: _("グシグシグシ"), serif3: _("グシグシグシ"), serif4: _("グシグシグシ")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01",  serif1: _("ほら、磨いたぞ！"), serif2: _("ほら、磨いたぞ！"), serif3: _("ほら、磨いたぞ！"), serif4: _("ほら、磨いたぞ！"), "option": {"getItem": "32"}},
-				{"chara": "koishi","exp": "look_front",  serif1: _("えぇ"), serif2: _("えぇ"), serif3: _("えぇ"), serif4: _("えぇ")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("この目玉誰から引っこ抜いたんだろうなあ"), serif2: _("この目玉誰から引っこ抜いたんだろうなあ"), serif3: _("この目玉誰から引っこ抜いたんだろうなあ"), serif4: _("この目玉誰から引っこ抜いたんだろうなあ")},
-				{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
-				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("どこかで見たんだけどなあ"), serif2: _("どこかで見たんだけどなあ"), serif3: _("どこかで見たんだけどなあ"), serif4: _("どこかで見たんだけどなあ")},
-				{"chara": "koishi","exp": null, "serif": _("......")},
+				   {"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-myroom-araiguma_talk1"], "serifs": [
+					[
+						{"chara": "animal_araiguma", "exp": null, "serif": _("その目の持ち主さあ")},
+						{"chara": "animal_araiguma", "exp": null, "serif": _("目が三つ以上あればいいけど")},
+					],
+					[
+						// 5-9のお燐表示＆お空とのイベント発生
+						{"id": "chapter5-myroom-araiguma_talk1", "save": true},
+						{"chara": "koishi","exp": "look_front",  serif1: _("ちょっと！"), serif2: _("ちょっと！"), serif3: _("ちょっと！"), serif4: _("ちょっと！"), "option": {"resetFlag": "chapter5-12-show_orin"}}, // 5-12のお燐非表示
+						{"chara": "koishi","exp": null,  serif1: _("目玉を転がしたのあなた？"), serif2: _("目玉を転がしたのあなた？"), serif3: _("目玉を転がしたのあなた？"), serif4: _("目玉を転がしたのあなた？")},
+						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("目玉？"), serif2: _("目玉？"), serif3: _("目玉？"), serif4: _("目玉？")},
+						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("知らないよおそんなの"), serif2: _("知らないよおそんなの"), serif3: _("知らないよおそんなの"), serif4: _("知らないよおそんなの")},
+						{"chara": "koishi","exp": "look_top",  serif1: _("ほんとう？"), serif2: _("ほんとう？"), serif3: _("ほんとう？"), serif4: _("ほんとう？")},
+						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("でも目玉かあ"), serif2: _("でも目玉かあ"), serif3: _("でも目玉かあ"), serif4: _("でも目玉かあ")},
+						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01",  serif1: _("見せてくれよ"), serif2: _("見せてくれよ"), serif3: _("見せてくれよ"), serif4: _("見せてくれよ")},
+						{"chara": "koishi","exp": "yes", "serif": _("うん"), "option": {"useItem": "32"}},
+						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_02",  serif1: _("グシグシグシ"), serif2: _("グシグシグシ"), serif3: _("グシグシグシ"), serif4: _("グシグシグシ")},
+						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01",  serif1: _("ほら、磨いたぞ！"), serif2: _("ほら、磨いたぞ！"), serif3: _("ほら、磨いたぞ！"), serif4: _("ほら、磨いたぞ！"), "option": {"getItem": "32"}},
+						{"chara": "koishi","exp": "look_front",  serif1: _("えぇ"), serif2: _("えぇ"), serif3: _("えぇ"), serif4: _("えぇ")},
+						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("この目玉誰から引っこ抜いたんだろうなあ"), serif2: _("この目玉誰から引っこ抜いたんだろうなあ"), serif3: _("この目玉誰から引っこ抜いたんだろうなあ"), serif4: _("この目玉誰から引っこ抜いたんだろうなあ")},
+						{"chara": "koishi","exp": "look_bottom", "serif": _("......")},
+						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("どこかで見たんだけどなあ"), serif2: _("どこかで見たんだけどなあ"), serif3: _("どこかで見たんだけどなあ"), serif4: _("どこかで見たんだけどなあ")},
+						{"chara": "koishi","exp": null, "serif": _("......")},
+					],
+				]},
 			],
-			serif: null,
+			serif: [
+				{"chara": "animal_araiguma", "exp": null, "serif": _("ききききき")},
+				{"chara": "koishi","exp": null, "serif": _("なんだっけこれ")},
+			],
 			x: 600, y: 300,
 			scale: 2/3,
 			anime1: "animal_araiguma-wait",
