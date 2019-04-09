@@ -28,7 +28,7 @@ module.exports = {
 		{"exp": null, "serif": _("ああああ！"), "option": {"x": 460, "y": 350, "loop": false}},
 		{"exp": null, "serif": _("いたい！！"), "option": {"x": 460, "y": 350, "loop": false}},
 		{"exp": null, "serif": _("あっあう、ああああ！！"), "option": {"x": 460, "y": 350, "loop": false}},
-		{"exp": null, "serif": _("どうしよう"), "option": {"x": 360, "y": 200, "loop": false, "is_koishi": true}},
+		{"exp": null, "serif": _("足が！そんな！"), "option": {"x": 360, "y": 200, "loop": false, "is_koishi": true}},
 		{"exp": null, "serif": _("どうしよう"), "option": {"x": 360, "y": 200, "loop": false, "is_koishi": true}},
 		{"exp": "chapter5-09-event-01-obj03", "serif": _("ごめんなさい"), "option": {"x": 360, "y": 240, "loop": false, "is_koishi": true}},
 		{"exp": null, "serif": _("ごめんなさい......"), "option": {"x": 360, "y": 240, "loop": false, "is_koishi": true}},

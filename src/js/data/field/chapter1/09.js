@@ -85,7 +85,7 @@ module.exports = {
 				{"chara": I, "exp": "murasa-ura_reaction_01", "serif": _("わたしもみんなみたいになりたい......")},
 				{"chara": I, "exp": "murasa-ura_reaction_01", "serif": _("すきでこうなったわけじゃないのに.....")},
 				{"chara": I, "exp": "murasa-ura_reaction_02",  serif1: _("もういや……"), serif2: _("もういや……"), serif3: _("もういや……"), serif4: _("もういや……")},
-				{"chara": I, "exp": "murasa-ura_reaction_02", "serif": _("ひみつきちだって私だけは入れない……")},
+				{"chara": I, "exp": "murasa-ura_reaction_02", "serif": _("ひみつきちだって\n私だけは入れない……")},
 			],
 			serif: [
 				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["12"], "serifs": [
