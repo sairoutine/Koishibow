@@ -31,7 +31,7 @@ module.exports = {
 		{"name": "event_out", "frame": 180},
 	],
 	endProcess: [
-		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
+		{"type": "process", "value": "changeScene", "arguments": ["stage", "chapter5_09"]},
 	],
 };
 

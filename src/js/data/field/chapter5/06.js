@@ -6,7 +6,7 @@ var I = 0;
 module.exports = {
 	key: "chapter5_06",
 	chapter: 5,
-	bgm: "field11",
+	bgm: "field12",
 	rightStartPosition:   {x: 790, y: 480},
 	leftStartPosition:    {x: 250, y: 480},
 	defaultStartPosition: {x: 250, y: 480, isTowardLeft: false},
@@ -84,7 +84,7 @@ module.exports = {
 				{"chara": "animal_hashi","exp": "animal_hashi-wait",  serif1: _("ココココココココ"), serif2: _("ココココココココ"), serif3: _("ココココココココ"), serif4: _("ココココココココ")},
 				{"chara": "koishi","exp": "look_bottom", "serif": _("こわい")},
 			],
-			x: 750, y: 400,
+			x: 500, y: 280,
 			scale: 2/3,
 			anime1: "animal_hashi-wait",
 			anime2: null,

@@ -51,7 +51,7 @@ module.exports = {
 						{"type": "process", "value": "playTalk", "arguments": [
 							[
 								{"chara": "koishi","exp": "afraid", "serif": _("なにあれ")},
-								{"chara": "bm","exp": null,  serif1: _("ア˝ー！"), serif2: _("ア˝ー！"), serif3: _("ア˝ー！"), serif4: _("ア˝ー！")},
+								{"chara": "bm","exp": null,  serif1: _("ア゛ー！"), serif2: _("ア゛ー！"), serif3: _("ア゛ー！"), serif4: _("ア゛ー！")},
 								{"chara": "koishi","exp": "look_bottom", "serif": _("こわい")},
 							]
 						]},

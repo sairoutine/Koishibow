@@ -118,6 +118,17 @@ module.exports = {
 		},
 		{
 			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "移動不可壁",
+			serif: null,
+			width: 960, height: 100,
+			x: 480, y: 420,
+		},
+
+
+		{
+			no: ++I,
 			type: CONSTANT.CHAPTER6_LAST_JUNCTION,
 			name: "過去を葬る",
 			text: _("過去を葬る"),

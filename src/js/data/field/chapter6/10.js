@@ -44,8 +44,8 @@ module.exports = {
 								{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj05",  serif1: _("しずかにして！"), serif2: _("しずかにして！"), serif3: _("しずかにして！"), serif4: _("しずかにして！")},
 								{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj05",  serif1: _("私は悪くないのに！"), serif2: _("私は悪くないのに！"), serif3: _("私は悪くないのに！"), serif4: _("私は悪くないのに！")},
 								{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj03",  serif1: _("う"), serif2: _("う"), serif3: _("う"), serif4: _("う")},
-								{"chara": "chapter6-10-obj01","exp": null,  serif1: _("あ˝あ˝"), serif2: _("あ˝あ˝"), serif3: _("あ˝あ˝"), serif4: _("あ˝あ˝")},
-								{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj03",  serif1: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif2: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif3: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝"), serif4: _("あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝あ˝")},
+								{"chara": "chapter6-10-obj01","exp": null,  serif1: _("あ゛あ゛"), serif2: _("あ゛あ゛"), serif3: _("あ゛あ゛"), serif4: _("あ゛あ゛")},
+								{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj03",  serif1: _("あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛"), serif2: _("あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛"), serif3: _("あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛"), serif4: _("あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛")},
 								{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj05",  serif1: _("ううう"), serif2: _("ううう"), serif3: _("ううう"), serif4: _("ううう")},
 								{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj04",  serif1: _("誰が悪いのかしら"), serif2: _("誰が悪いのかしら"), serif3: _("誰が悪いのかしら"), serif4: _("誰が悪いのかしら"), "option": {"changeField": "chapter6_13"}},
 							]
