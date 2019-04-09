@@ -1,5 +1,4 @@
 'use strict';
-var _ = require('i18n4v')
 // 病院の廊下2
 // chapter0, chapter6 それぞれに存在するので
 // コレを修正する際はほかも修正する
@@ -28,9 +27,7 @@ module.exports = {
 			image: "chapter0-hospital2-obj-02-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "くつした",
-			serif: [
-				{"chara": "koishi", serif1: _("やだやだ。"), serif2: _("やだやだ。"), serif3: _("やだやだ。"), serif4: _("やだやだ。")},
-			],
+			serif: null,
 			x: 302,
 			y: 443,
 			scale: 0.7,
@@ -41,9 +38,7 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "車イス",
-			serif: [
-				{"chara": "koishi", serif1: _("あしおれたらのってもいい？"), serif2: _("あしおれたらのってもいい？"), serif3: _("あしおれたらのってもいい？"), serif4: _("あしおれたらのってもいい？")},
-			],
+			serif: null,
 			x: 130,
 			y: 360,
 			scale: 0.7,

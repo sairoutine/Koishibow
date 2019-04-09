@@ -84,7 +84,7 @@ module.exports = {
 			turn_toward_me: false, // こいしの方を向かない(檻ごと向いてしまうため)
 			serif_back: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-myroom-araiguma_talk1"], "serifs": [
-					// お燐表示済
+					// このフィールドにお燐表示済
 					[
 						{"chara": "oku","exp": "oku-ura_wait",  serif1: _("んがぁー"), serif2: _("んがぁー"), serif3: _("んがぁー"), serif4: _("んがぁー")},
 						{"chara": "oku","exp": "oku-ura_wait", "serif": _("あ！")},
@@ -104,8 +104,10 @@ module.exports = {
 							],
 						]},
 					],
-					// お燐未表示
+					// このフィールドにお燐未表示
 					[
+
+						{"id": "chapter5-12-show_orin", "save": true},
 						{"chara": "koishi", "exp": "look_front",  serif1: _("まあ！"), serif2: _("まあ！"), serif3: _("まあ！"), serif4: _("まあ！")},
 						{"chara": "koishi", "exp": null,  serif1: _("あなたどうしたの！"), serif2: _("あなたどうしたの！"), serif3: _("あなたどうしたの！"), serif4: _("あなたどうしたの！")},
 						{"chara": "oku", "exp": "oku-ura_reaction_01",  serif1: _("つかまっちゃったのよう！"), serif2: _("つかまっちゃったのよう！"), serif3: _("つかまっちゃったのよう！"), serif4: _("つかまっちゃったのよう！")},

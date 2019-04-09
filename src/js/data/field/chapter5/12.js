@@ -25,15 +25,23 @@ module.exports = {
 			[],
 			// まだ未アクセス
 			[
-				{"type": "process", "value": "playTalk", "arguments": [
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter5-12-show_orin"], "process": [
+					// お燐がいるなら
 					[
-						{"chara": "orin","exp": "orin-wait",  serif1: _("うにゃーっ"), serif2: _("うにゃーっ"), serif3: _("うにゃーっ"), serif4: _("うにゃーっ")},
-						{"chara": "koishi","exp": "look_front",  serif1: _("ねこちゃん！"), serif2: _("ねこちゃん！"), serif3: _("猫だ！"), serif4: _("猫だ！")},
-						{"chara": "koishi","exp": null,  serif1: _("にゃんにゃ"), serif2: _("にゃんにゃ"), serif3: _("にゃんにゃ"), serif4: _("にゃんにゃ")},
-						{"chara": "orin","exp": "orin-wait",  serif1: _("んみゃ"), serif2: _("んみゃ"), serif3: _("んみゃ"), serif4: _("んみゃ"), "option": {"getJournal": "journal029"}},
-					]
+
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "orin","exp": "orin-wait",  serif1: _("うにゃーっ"), serif2: _("うにゃーっ"), serif3: _("うにゃーっ"), serif4: _("うにゃーっ")},
+								{"chara": "koishi","exp": "look_front",  serif1: _("ねこちゃん！"), serif2: _("ねこちゃん！"), serif3: _("猫だ！"), serif4: _("猫だ！")},
+								{"chara": "koishi","exp": null,  serif1: _("にゃんにゃ"), serif2: _("にゃんにゃ"), serif3: _("にゃんにゃ"), serif4: _("にゃんにゃ")},
+								{"chara": "orin","exp": "orin-wait",  serif1: _("んみゃ"), serif2: _("んみゃ"), serif3: _("んみゃ"), serif4: _("んみゃ"), "option": {"getJournal": "journal029"}},
+							]
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_12_10185"]}
+					],
+					// お燐がいない
+					[],
 				]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter5_12_10185"]}
 			],
 		]},
 
@@ -84,7 +92,9 @@ module.exports = {
 			height: 350,
 			action_name: null,
 			sound_name: null,
-			not_show_if_event_true: "chapter5-myroom-araiguma_talk1", // アライグマとの会話後に 5-9 へ移動する
+			// お空との会話後に出現
+			// その後、アライグマとの会話後に 5-9 へ移動する
+			show_if_event_true: "chapter5-12-show_orin",
 		},
 		{
 			no: ++I,

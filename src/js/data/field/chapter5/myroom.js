@@ -176,8 +176,9 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			loop: true,
 			serif_back: [
+				// 5-9のお燐表示＆お空とのイベント発生
 				{"id": "chapter5-myroom-araiguma_talk1", "save": true},
-				{"chara": "koishi","exp": "look_front",  serif1: _("ちょっと！"), serif2: _("ちょっと！"), serif3: _("ちょっと！"), serif4: _("ちょっと！")},
+				{"chara": "koishi","exp": "look_front",  serif1: _("ちょっと！"), serif2: _("ちょっと！"), serif3: _("ちょっと！"), serif4: _("ちょっと！"), "option": {"resetFlag": "chapter5-12-show_orin"}}, // 5-12のお燐非表示
 				{"chara": "koishi","exp": null,  serif1: _("目玉を転がしたのあなた？"), serif2: _("目玉を転がしたのあなた？"), serif3: _("目玉を転がしたのあなた？"), serif4: _("目玉を転がしたのあなた？")},
 				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("目玉？"), serif2: _("目玉？"), serif3: _("目玉？"), serif4: _("目玉？")},
 				{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("知らないよおそんなの"), serif2: _("知らないよおそんなの"), serif3: _("知らないよおそんなの"), serif4: _("知らないよおそんなの")},

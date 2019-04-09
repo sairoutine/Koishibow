@@ -71,9 +71,7 @@ module.exports = {
 			image: "chapter0-hospital_corridor1-obj-01-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ストレッチャー",
-			serif: [
-				{"chara": "koishi", serif1: _("へんなベッド"), serif2: _("へんなベッド"), serif3: _("へんなベッド"), serif4: _("へんなベッド")},
-			],
+			serif: null,
 			x: 814,
 			y: 608,
 			scale: 0.7,
@@ -88,9 +86,7 @@ module.exports = {
 			image: "chapter0-hospital_corridor1-obj-02-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
-			serif: [
-				{"chara": "koishi", serif1: _("くすりはいらない……"), serif2: _("くすりはいらない……"), serif3: _("くすりはいらない……"), serif4: _("くすりはいらない……")},
-			],
+			serif: null,
 			x: 279,
 			y: 378,
 			scale: 0.7
@@ -100,10 +96,7 @@ module.exports = {
 			image: "chapter0-hospital_corridor1-obj-03-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "救急箱",
-			serif: [
-				{"chara": "koishi","serif": _("くーくーばこ！")},
-				{"chara": "koishi","serif": _("けがしてないよ！")},
-			],
+			serif: null,
 			x: 281,
 			y: 280,
 			scale: 0.7,
@@ -116,9 +109,7 @@ module.exports = {
 			image: "chapter0-hospital_corridor1-obj-04-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "メス",
-			serif: [
-				{"chara": "koishi","serif": _("ナイフ")},
-			],
+			serif: null,
 			x: 853,
 			y: 534,
 			scale: 0.7,
