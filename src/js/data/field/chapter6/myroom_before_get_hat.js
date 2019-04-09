@@ -88,13 +88,13 @@ module.exports = {
 			serif: null,
 			x: 5, y: 180,
 			scale: 0.7,
-			anime1: "chapter0-myroom-obj-04-01-obj01",
+			anime1: "chapter6-01-obj-01",
 			anime2: null,
 			anime3: null,
 			action_name: null,
 			sound_name: null,
 			height: 700,
-			target_x: 177, target_y: 531
+			target_x: 177, target_y: 531,
 		},
 		{
 			no: ++I,
