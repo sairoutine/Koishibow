@@ -65,6 +65,7 @@ SceneEventEncounterSatori.prototype.init = function(){
 	// イベントイン
 	this.core.audio_loader.playSound("event_in");
 
+	this.removeAllObject();
 	this.initSatori();
 	this.initEye();
 	this.initKoishi();
