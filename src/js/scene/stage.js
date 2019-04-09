@@ -280,9 +280,9 @@ SceneStage.prototype.playBGM = function(main_bgm, sub_bgms) {
 		// メイン／サブ BGM 再生
 		var _this = this;
 		this.core.time_manager.setTimeout(function () {
-			// 60秒経過後にフィールドを移動していた場合、
+			// 60秒経過後にフィールドを移動していた／別のシーンに遷移していた場合、
 			// 移動先フィールドのBGM再生処理に任せる
-			if (_this.getFieldData() !== field_data) return;
+			if (_this.getFieldData() !== field_data || _this !== _this.core.currentScene()) return;
 
 			// メインBGM 再生
 			if (main_bgm) {

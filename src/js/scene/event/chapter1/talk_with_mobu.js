@@ -68,11 +68,8 @@ SceneEventTalkWithMobu.prototype.init = function(){
 	// イベント再生後はフェードアウトする
 	this.core.scene_manager.setFadeOut(120, "black");
 
-	// BGM 止める
-	//this.core.audio_loader.stopBGM();
-
-	this.core.audio_loader.changeBGM("chapter1-event-talk_with_mobu");
-
+	// BGM
+	this.core.audio_loader.playBGM("chapter1-event-talk_with_mobu");
 
 	this.core.audio_loader.playSound("event_in");
 

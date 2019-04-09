@@ -87,7 +87,7 @@ module.exports = {
 			x: 190,
 			y: 135,
 			width: 300,
-			height: 450,
+			height: 500,
 			scale: 0.7,
 			anime1: "chapter0-mansion_corridor1-obj-03-01-obj01",
 			anime2: "chapter0-mansion_corridor1-obj-03-01-obj02",
