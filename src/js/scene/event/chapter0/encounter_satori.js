@@ -62,6 +62,8 @@ SceneEventEncounterSatori.prototype.init = function(){
 	// BGM 止める
 	this.core.audio_loader.stopBGM();
 
+	// イベントイン
+	this.core.audio_loader.playSound("event_in");
 
 	this.initSatori();
 	this.initEye();

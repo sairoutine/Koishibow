@@ -14,7 +14,6 @@ var SceneSubStageLock                              = require('./substage/lock');
 var SceneSubStagePictureUseEyedrops                = require('./substage/picture_use_eyedrops'); // 目薬使用1枚絵
 var SceneSubStageEventChapter0PictureGetHat        = require('./substage/event/chapter0/picture_get_hat');
 var SceneSubStageEventChapter0KokoroEncounter      = require('./substage/event/chapter0/kokoro_encounter');
-var SceneSubStageEventChapter0SatoriEncounterBegin = require('./substage/event/chapter0/satori_encounter_begin');
 var SceneSubStageEventChapter1TouchHashigo         = require('./substage/event/chapter1/touch_hashigo');
 
 // event_talk scene と共通の sub scene
@@ -107,7 +106,6 @@ var SceneStage = function(core) {
 	this.addSubScene("picture_get_hat", new SceneSubStageEventChapter0PictureGetHat(core));
 
 	this.addSubScene("event_chapter0_kokoro_encounter", new SceneSubStageEventChapter0KokoroEncounter(core));
-	this.addSubScene("event_chapter0_satori_encounter_begin", new SceneSubStageEventChapter0SatoriEncounterBegin(core));
 	this.addSubScene("touch_hashigo", new SceneSubStageEventChapter1TouchHashigo(core));
 };
 Util.inherit(SceneStage, base_scene);

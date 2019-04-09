@@ -24,7 +24,12 @@ module.exports = {
 			[],
 			// まだ未アクセス
 			[
-				{"type": "process", "value": "playSubEvent", "arguments": ["event_chapter0_satori_encounter_begin"]},
+
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "koishi","exp": "look_front", "serif":_("あっ"), "option": {"changeScene": "event_for_chapter0_encounter_satori"}},
+					],
+				]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter0_mansion_corridor2_firstaccess"]}
 			],
 		]},
