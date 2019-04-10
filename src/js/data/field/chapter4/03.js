@@ -15,7 +15,7 @@ module.exports = {
 	upStartPosition:      {x: 400, y: 720 - CONSTANT.WALK_DEPTH_LIMIT - 140},
 	downStartPosition:    {x: 480, y: 530},
 	rightField: null,
-	leftField: "chapter4_02",
+	leftField: "chapter4_02_after_merry",
 	upField:    null,
 	downField:  "chapter4_06",
 	background: "chapter4-03-bg-001",

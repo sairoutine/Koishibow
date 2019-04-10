@@ -10,7 +10,7 @@ module.exports = [
 		key: "chapter4-00-event-02",
 		path: "./movie/production/chapter4-00-event-02.mp4",
 		isStopBGM: true,
-		nextField: null,
+		nextField: "chapter4_01",
 	},
 	{
 		key: "chapter4-chikurin-event-01",

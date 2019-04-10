@@ -38,7 +38,8 @@ module.exports = [
 
 	// chapter4
 	require("../../data/field/chapter4/01"),
-	require("../../data/field/chapter4/02"),
+	require("../../data/field/chapter4/02_before_merry"),
+	require("../../data/field/chapter4/02_after_merry"),
 	require("../../data/field/chapter4/03"),
 	require("../../data/field/chapter4/04"),
 	require("../../data/field/chapter4/05"),

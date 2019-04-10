@@ -1,35 +1,25 @@
 'use strict';
 var _ = require('i18n4v')
 
-// メリーと出会う。
+// メリーと最初に出会うフィールド(メリーと会話前)
 
 var CONSTANT = require("../../../constant");
 module.exports = {
-	key: "chapter4_02",
+	key: "chapter4_02_before_merry",
 	chapter: 4,
-	bgm: null,
+	bgm: "field9",
 	rightStartPosition:   {x: 790, y: 480},
 	leftStartPosition:    {x: 140, y: 480},
 	defaultStartPosition: {x: 140, y: 480, isTowardLeft: false},
 	upStartPosition:      {x: 400, y: 720 - CONSTANT.WALK_DEPTH_LIMIT - 140},
 	downStartPosition:    {x: 480, y: 530},
-	rightField: "chapter4_03",
+	rightField: null,
 	leftField: "chapter4_01",
 	upField:    null,
 	downField:  null,
 	background: "chapter4-02-bg-001",
 	walkSound: "walking_bare_sand",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4-02-merry_talk1"], "process": [
-			// メリーと喋る前のBGM
-			[
-				{"type": "process", "value": "playBGM", "arguments": ["field9"]},
-			],
-			// メリーと喋った後のBGM
-			[
-				{"type": "process", "value": "playBGM", "arguments": ["field10"]},
-			],
-		]},
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_02_40070"], "process": [
 			// すでにアクセス済み
 			[],
@@ -86,7 +76,7 @@ module.exports = {
 				{"chara": "merry1", "exp": "merry-reaction_03",  serif1: _("私友達とはぐれたの"), serif2: _("私友達とはぐれたの"), serif3: _("私友達とはぐれたの"), serif4: _("私友達とはぐれたの")},
 				{"chara": "merry1", "exp": "merry-reaction_05",  serif1: _("一緒に探してくれる？"), serif2: _("一緒に探してくれる？"), serif3: _("一緒に探してくれる？"), serif4: _("一緒に探してくれる？")},
 				{"chara": "koishi", "exp": "yes", "serif": _("わかった")},
-				{"chara": "koishi", "exp": null,  serif1: _("もう友達だもんね"), serif2: _("もう友達だもんね"), serif3: _("もう友達だもんね"), serif4: _("もう友達だもんね"), "id": "chapter4-02-merry_talk1", "save": true},
+				{"chara": "koishi", "exp": null,  serif1: _("もう友達だもんね"), serif2: _("もう友達だもんね"), serif3: _("もう友達だもんね"), serif4: _("もう友達だもんね"), "option": {"changeField": "chapter4_02_after_merry"}},
 			],
 			x: 1060*2/3, y: 505*2/3,
 			anime1: "merry-reaction_01",
@@ -97,35 +87,7 @@ module.exports = {
 			anime6: null,
 			action_name: null,
 			sound_name: null,
-			not_show_if_event_true: "chapter4-02-merry_talk1",
 		},
-		{
-			no: "merry2",
-			type: CONSTANT.ANIME_IMAGE_TYPE,
-			name: "メリー(立ち)",
-			loop: true,
-			turn_not_toward_me: true, // こいしの方を向く
-			serif_back: [],
-			serif: [
-				{"chara": "koishi","exp": null,  serif1: _("ねえねえ、友達っていい子？"), serif2: _("ねえねえ、友達っていい子？"), serif3: _("ねえねえ、友達っていい子？"), serif4: _("ねえねえ、友達っていい子？")},
-				{"chara": "merry2","exp": null,  serif1: _("え？"), serif2: _("え？"), serif3: _("え？"), serif4: _("え？")},
-				{"chara": "merry2","exp": "merry-reaction_06",  serif1: _("そうね、おおむね"), serif2: _("そうね、おおむね"), serif3: _("そうね、おおむね"), serif4: _("そうね、おおむね")},
-				{"chara": "koishi","exp": null,  serif1: _("おおむねかー"), serif2: _("おおむねかー"), serif3: _("おおむねかー"), serif4: _("おおむねかー")},
-				{"chara": "koishi","exp": null,  serif1: _("いいね"), serif2: _("いいね"), serif3: _("いいね"), serif4: _("いいね")},
-			],
-			x: 1060*2/3, y: 505*2/3,
-			anime1: "merry-wait",
-			anime2: null,
-			anime3: null,
-			anime4: null,
-			anime5: null,
-			anime6: null,
-			action_name: null,
-			sound_name: null,
-			show_if_event_true: "chapter4-02-merry_talk1",
-		},
-
-
 	],
 };
 
