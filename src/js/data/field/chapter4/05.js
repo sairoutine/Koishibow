@@ -54,7 +54,7 @@ module.exports = {
 				{"chara": "koishi", "exp": "yes", "serif": _("へんなの")},
 				{"chara": "koishi", "exp": "look_top",  serif1: _("誰かが落としたのかな"), serif2: _("誰かが落としたのかな"), serif3: _("誰かが落としたのかな"), serif4: _("誰かが落としたのかな")},
 				{"chara": "merry", "exp": "merry-reaction_08",  serif1: _("うーんどうかな"), serif2: _("うーんどうかな"), serif3: _("うーんどうかな"), serif4: _("うーんどうかな")},
-				{"chara": "merry", "exp": null,  serif1: _("蓮子のじゃあないと思うんだけど"), serif2: _("蓮子のじゃあないと思うんだけど"), serif3: _("蓮子のじゃあないと思うんだけど"), serif4: _("蓮子のじゃあないと思うんだけど")},
+				{"chara": "merry", "exp": null,  serif1: _("これ蓮子が好きなのよね"), serif2: _("これ蓮子が好きなのよね"), serif3: _("これ蓮子が好きなのよね"), serif4: _("これ蓮子が好きなのよね")},
 				{"chara": "koishi", "exp": "look_top",  serif1: _("蓮子って？"), serif2: _("蓮子って？"), serif3: _("蓮子って？"), serif4: _("蓮子って？")},
 				{"chara": "koishi", "exp": null,  serif1: _("さがしてるお友達のこと？"), serif2: _("さがしてるお友達のこと？"), serif3: _("さがしてるお友達のこと？"), serif4: _("さがしてるお友達のこと？")},
 				{"chara": "merry", "exp": "merry-reaction_06", "serif": _("そうよ")},

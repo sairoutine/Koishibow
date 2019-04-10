@@ -81,7 +81,7 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
 				{"chara": I, "exp": "murasa-ura_reaction_01",  serif1: _("う............"), serif2: _("う............"), serif3: _("う............"), serif4: _("う............")},
-				{"chara": I, "exp": "murasa-ura_reaction_01",  serif1: _("みんなわたしのこときらいだって"), serif2: _("みんなわたしのこときらいだって"), serif3: _("みんなわたしのこときらいだって"), serif4: _("みんなわたしのこときらいだって")},
+				{"chara": I, "exp": "murasa-ura_reaction_01",  serif1: _("みんなわたしのこと\nきらいだって"), serif2: _("みんなわたしのこと\nきらいだって"), serif3: _("みんなわたしのこと\nきらいだって"), serif4: _("みんなわたしのこと\nきらいだって")},
 				{"chara": I, "exp": "murasa-ura_reaction_01", "serif": _("わたしもみんなみたいになりたい......")},
 				{"chara": I, "exp": "murasa-ura_reaction_01", "serif": _("すきでこうなったわけじゃないのに.....")},
 				{"chara": I, "exp": "murasa-ura_reaction_02",  serif1: _("もういや……"), serif2: _("もういや……"), serif3: _("もういや……"), serif4: _("もういや……")},
