@@ -154,6 +154,7 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter3_12-Event-_30310"], "serifs": [
 					// good root
 					[
+						{"id": "chapter3_12-play_fran_bgm", "save": true},
 						{"id": "chapter3_12-fran-serif-30320", "save": true},
 						{"chara": "koishi", serif1: _("また作ってる"), serif2: _("また作ってる"), serif3: _("また作ってる"), serif4: _("また作ってる")},
 						{"chara": "fran", "exp": "fran-reaction_03", "serif": _("うん")},
@@ -184,7 +185,6 @@ module.exports = {
 						{"chara": "koishi", serif1: _("じゃあ丘の上でね"), serif2: _("じゃあ丘の上でね"), serif3: _("じゃあ丘の上でね"), serif4: _("じゃあ丘の上でね")},
 						{"chara": "fran", "exp": "fran-reaction_06",  serif1: _("ん"), serif2: _("ん"), serif3: _("ん"), serif4: _("ん")},
 						{"chara": "fran", "exp": "fran-reaction_03", "serif": _("わかった")},
-						{"id": "chapter3_12-play_fran_bgm", "save": true},
 					],
 					[
 						{"chara": "fran", "exp": "fran-reaction_01",  serif1: _("はやく作りましょ！"), serif2: _("はやく作りましょ！"), serif3: _("はやく作りましょ！"), serif4: _("はやく作りましょ！")},
