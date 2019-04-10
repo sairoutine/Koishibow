@@ -47,6 +47,7 @@ module.exports = {
 				]},
 			],
 			x: 1160*2/3, y: 505*2/3,
+			width: 150,
 			anime1: "merry-wait",
 			anime2: null,
 			anime3: null,
@@ -69,6 +70,7 @@ module.exports = {
 
 			],
 			x: 960*2/3, y: 505*2/3,
+			width: 150,
 			anime1: "renko-wait",
 			anime2: null,
 			anime3: null,

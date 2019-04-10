@@ -44,6 +44,7 @@ module.exports = {
 			serif_back: [],
 			serif: null,
 			x: 960*2/3, y: 505*2/3,
+			width: 150,
 			anime1: "renko-wait",
 			anime2: null,
 			anime3: null,
