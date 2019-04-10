@@ -100,7 +100,7 @@ module.exports = {
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: null,
-			x: 1060*2/3, y: 505*2/3,
+			x: 1160*2/3, y: 505*2/3,
 			anime1: "merry-wait",
 			anime2: null,
 			anime3: null,
@@ -109,6 +109,25 @@ module.exports = {
 			anime6: null,
 			action_name: null,
 			sound_name: null,
+		},
+		{
+			no: "renko",
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "蓮子",
+			loop: true,
+			turn_not_toward_me: true, // こいしの方を向く
+			serif_back: [],
+			serif: null,
+			x: 960*2/3, y: 505*2/3,
+			anime1: "renko-wait",
+			anime2: null,
+			anime3: null,
+			anime4: null,
+			anime5: null,
+			anime6: null,
+			action_name: null,
+			sound_name: null,
+			show_if_event_true: CONSTANT.ITEM_ID_24_EVENT_NAME,
 		},
 
 
