@@ -83,51 +83,95 @@ module.exports = {
 			loop: true,
 			turn_toward_me: false, // こいしの方を向かない(檻ごと向いてしまうため)
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-myroom-araiguma_talk1"], "serifs": [
-					// このフィールドにお燐表示済
+				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["33"], "serifs": [
 					[
-						{"chara": "oku","exp": "oku-ura_wait",  serif1: _("んがぁー"), serif2: _("んがぁー"), serif3: _("んがぁー"), serif4: _("んがぁー")},
-						{"chara": "oku","exp": "oku-ura_wait", "serif": _("あ！")},
-						{"chara": "oku","exp": "oku-ura_wait",  serif1: _("かぎ取ってきてくれたの！"), serif2: _("かぎ取ってきてくれたの！"), serif3: _("かぎ取ってきてくれたの！"), serif4: _("かぎ取ってきてくれたの！")},
-						{"chara": "oku","exp": "oku-ura_reaction_01",  serif1: _("やったー！"), serif2: _("やったー！"), serif3: _("やったー！"), serif4: _("やったー！")},
-						{"chara": "koishi","exp": "yes", "serif": _("......")},
-						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("にゃー"), serif2: _("にゃー"), serif3: _("にゃー"), serif4: _("にゃー"), "junction": ["友達を助ける", "鍵を返す"]},
-						{"type": "junction_serif", "serifs": [
+						{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["37"], "serifs": [
+							// 鍵もキレイな目玉も持っている
 							[
-								// イベント再生 10710
-								{"chara": "koishi","exp": "yes",  serif1: _("決めたわ"), serif2: _("決めたわ"), serif3: _("決めたわ"), serif4: _("決めたわ"), "option": {"playEvent": "chapter5-09-event-01"}},
+								{"chara": "oku","exp": "oku-ura_wait",  serif1: _("んがぁー"), serif2: _("んがぁー"), serif3: _("んがぁー"), serif4: _("んがぁー")},
+								{"chara": "oku","exp": "oku-ura_wait", "serif": _("あ！")},
+								{"chara": "oku","exp": "oku-ura_wait",  serif1: _("かぎ取ってきてくれたの！"), serif2: _("かぎ取ってきてくれたの！"), serif3: _("かぎ取ってきてくれたの！"), serif4: _("かぎ取ってきてくれたの！")},
+								{"chara": "oku","exp": "oku-ura_reaction_01",  serif1: _("めだまも！やったー！"), serif2: _("めだまも！やったー！"), serif3: _("めだまも！やったー！"), serif4: _("めだまも！やったー！")},
+								{"chara": "koishi","exp": "yes", "serif": _("......")},
+								{"chara": "orin","exp": "orin-ura_wait",  serif1: _("にゃー"), serif2: _("にゃー"), serif3: _("にゃー"), serif4: _("にゃー"), "junction": ["友達を助ける", "鍵を返す"]},
+								{"type": "junction_serif", "serifs": [
+									[
+										// イベント再生 10710
+										{"chara": "koishi","exp": "yes",  serif1: _("決めたわ"), serif2: _("決めたわ"), serif3: _("決めたわ"), serif4: _("決めたわ"), "option": {"playEvent": "chapter5-09-event-01"}},
 
+									],
+									[
+										// イベント再生 10720
+										{"chara": "koishi","exp": "yes",  serif1: _("決めたわ"), serif2: _("決めたわ"), serif3: _("決めたわ"), serif4: _("決めたわ"), "option": {"playEvent": "chapter5-09-event-02"}},
+									],
+								]},
 							],
+							// 鍵は持っているが、キレイな目玉を持っていない
 							[
-								// イベント再生 10720
-								{"chara": "koishi","exp": "yes",  serif1: _("決めたわ"), serif2: _("決めたわ"), serif3: _("決めたわ"), serif4: _("決めたわ"), "option": {"playEvent": "chapter5-09-event-02"}},
+								{"chara": "koishi", "exp": null,  serif1: _("ほら鍵！"), serif2: _("ほら鍵！"), serif3: _("ほら鍵！"), serif4: _("ほら鍵！")},
+								{"chara": "oku", "exp": "oku-ura_reaction_01",  serif1: _("やったー！"), serif2: _("やったー！"), serif3: _("やったー！"), serif4: _("やったー！")},
+								{"chara": "oku", "exp": "oku-ura_reaction_01",  serif1: _("あとはキラキラおめめがほしいな！"), serif2: _("あとはキラキラおめめがほしいな！"), serif3: _("あとはキラキラおめめがほしいな！"), serif4: _("あとはキラキラおめめがほしいな！")},
+
+								{"chara": "koishi", "exp": "yes",  serif1: _("わかった！"), serif2: _("わかった！"), serif3: _("わかった！"), serif4: _("わかった！")},
+								{"chara": "koishi", "exp": null,  serif1: _("まっててね！"), serif2: _("まっててね！"), serif3: _("まっててね！"), serif4: _("まっててね！")},
 							],
 						]},
 					],
-					// このフィールドにお燐未表示
 					[
-						// {"id": "chapter5-09-oku_talk1", "save": true}, // 5-10 で動物の騒ぎ声表示
-						{"id": "chapter5-12-show_orin", "save": true},
-						{"chara": "koishi", "exp": "look_front",  serif1: _("まあ！"), serif2: _("まあ！"), serif3: _("まあ！"), serif4: _("まあ！")},
-						{"chara": "koishi", "exp": null,  serif1: _("あなたどうしたの！"), serif2: _("あなたどうしたの！"), serif3: _("あなたどうしたの！"), serif4: _("あなたどうしたの！")},
-						{"chara": "oku", "exp": "oku-ura_reaction_01",  serif1: _("つかまっちゃったのよう！"), serif2: _("つかまっちゃったのよう！"), serif3: _("つかまっちゃったのよう！"), serif4: _("つかまっちゃったのよう！")},
-						{"chara": "koishi", "exp": "look_top",  serif1: _("だれに？"), serif2: _("だれに？"), serif3: _("どうして？"), serif4: _("どうして？")},
-						{"chara": "oku", "exp": "oku-ura_wait",  serif1: _("ご主人様に......"), serif2: _("ご主人様に......"), serif3: _("ご主人様に......"), serif4: _("ご主人様に......")},
-						{"chara": "oku", "exp": null,  serif1: _("危ないからって"), serif2: _("危ないからって"), serif3: _("危ないからって"), serif4: _("危ないからって")},
-						{"chara": "oku", "exp": null,  serif1: _("みんなは遊んでるのにずるい！"), serif2: _("みんなは遊んでるのにずるい！"), serif3: _("みんなは遊んでるのにずるい！"), serif4: _("みんなは遊んでるのにずるい！")},
-						{"chara": "oku", "exp": null,  serif1: _("なんでわたしだけお留守番なの？"), serif2: _("なんでわたしだけお留守番なの？"), serif3: _("なんでわたしだけお留守番なの？"), serif4: _("なんでわたしだけお留守番なの？")},
-						{"chara": "koishi", "exp": "look_bottom",  serif1: _("....."), serif2: _("....."), serif3: _("....."), serif4: _(".....")},
-						{"chara": "koishi", "exp": null,  serif1: _("かわいそう"), serif2: _("かわいそう"), serif3: _("かわいそう"), serif4: _("かわいそう")},
-						{"chara": "koishi", "exp": "yes",  serif1: _("助けてあげるわ！"), serif2: _("助けてあげるわ！"), serif3: _("助けてあげるわ！"), serif4: _("助けてあげるわ！")},
-						{"chara": "oku", "exp": "oku-ura_reaction_01",  serif1: _("ほんとう！？"), serif2: _("ほんとう！？"), serif3: _("ほんとう！？"), serif4: _("ほんとう！？")},
-						{"chara": "oku", "exp": null,  serif1: _("うれしいなあ！"), serif2: _("うれしいなあ！"), serif3: _("うれしいなあ！"), serif4: _("うれしいなあ！")},
-						{"chara": "oku", "exp": null,  serif1: _("檻の鍵はご主人様が持ってるの"), serif2: _("檻の鍵はご主人様が持ってるの"), serif3: _("檻の鍵はご主人様が持ってるの"), serif4: _("檻の鍵はご主人様が持ってるの")},
-						{"chara": "oku", "exp": null,  serif1: _("ぬすんできてちょうだい！"), serif2: _("ぬすんできてちょうだい！"), serif3: _("ぬすんできてちょうだい！"), serif4: _("ぬすんできてちょうだい！")},
-						{"chara": "koishi", "exp": "yes",  serif1: _("わかったわ"), serif2: _("わかったわ"), serif3: _("わかったわ"), serif4: _("わかったわ")},
-						{"chara": "koishi", "exp": null,  serif1: _("でもどこにいるかしら"), serif2: _("でもどこにいるかしら"), serif3: _("でもどこにいるかしら"), serif4: _("でもどこにいるかしら")},
-						{"chara": "oku", "exp": "oku-ura_wait",  serif1: _("ご主人様の部屋は奥のほう"), serif2: _("ご主人様の部屋は奥のほう"), serif3: _("ご主人様の部屋は奥のほう"), serif4: _("ご主人様の部屋は奥のほう")},
-						{"chara": "koishi", "exp": "yes", "serif": _("そっか")},
-						{"chara": "koishi", "exp": null,  serif1: _("じゃあ行ってくるね！"), serif2: _("じゃあ行ってくるね！"), serif3: _("じゃあ行ってくるね！"), serif4: _("じゃあ行ってくるね！")},
+						{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["37"], "serifs": [
+							// 鍵を持っていないが、キレイな目玉を持っている
+							[
+								{"chara": "koishi", "exp": null,  serif1: _("キラキラなおめめ！"), serif2: _("キラキラなおめめ！"), serif3: _("キラキラなおめめ！"), serif4: _("キラキラなおめめ！")},
+								{"chara": "koishi", "exp": null,  serif1: _("あなたにとってきたよ"), serif2: _("あなたにとってきたよ"), serif3: _("あなたにとってきたよ"), serif4: _("あなたにとってきたよ")},
+
+								{"chara": "oku", "exp": "oku-ura_reaction_01",  serif1: _("やったー！"), serif2: _("やったー！"), serif3: _("やったー！"), serif4: _("やったー！")},
+
+								{"chara": "koishi", "exp": "yes",  serif1: _("あとは鍵ね"), serif2: _("あとは鍵ね"), serif3: _("あとは鍵ね"), serif4: _("あとは鍵ね")},
+								{"chara": "koishi", "exp": null,  serif1: _("まっててね！"), serif2: _("まっててね！"), serif3: _("まっててね！"), serif4: _("まっててね！")},
+							],
+							// 鍵も、キレイな目玉も持っていない
+							[
+								{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_09-oku-limit", 1], "serifs": [
+									// 1度目の会話
+									[
+										// {"id": "chapter5-09-oku_talk1", "save": true}, // 5-10 で動物の騒ぎ声表示
+										{"id": "chapter5-12-show_orin", "save": true},
+										{"chara": "koishi", "exp": "look_front",  serif1: _("まあ！"), serif2: _("まあ！"), serif3: _("まあ！"), serif4: _("まあ！")},
+										{"chara": "koishi", "exp": null,  serif1: _("あなたどうしたの！"), serif2: _("あなたどうしたの！"), serif3: _("あなたどうしたの！"), serif4: _("あなたどうしたの！")},
+										{"chara": "oku", "exp": "oku-ura_reaction_01",  serif1: _("つかまっちゃったのよう！"), serif2: _("つかまっちゃったのよう！"), serif3: _("つかまっちゃったのよう！"), serif4: _("つかまっちゃったのよう！")},
+										{"chara": "koishi", "exp": "look_top",  serif1: _("だれに？"), serif2: _("だれに？"), serif3: _("どうして？"), serif4: _("どうして？")},
+										{"chara": "oku", "exp": "oku-ura_wait",  serif1: _("ご主人様に......"), serif2: _("ご主人様に......"), serif3: _("ご主人様に......"), serif4: _("ご主人様に......")},
+										{"chara": "oku", "exp": null,  serif1: _("危ないからって"), serif2: _("危ないからって"), serif3: _("危ないからって"), serif4: _("危ないからって")},
+										{"chara": "oku", "exp": null,  serif1: _("みんなは遊んでるのにずるい！"), serif2: _("みんなは遊んでるのにずるい！"), serif3: _("みんなは遊んでるのにずるい！"), serif4: _("みんなは遊んでるのにずるい！")},
+										{"chara": "oku", "exp": null,  serif1: _("なんでわたしだけお留守番なの？"), serif2: _("なんでわたしだけお留守番なの？"), serif3: _("なんでわたしだけお留守番なの？"), serif4: _("なんでわたしだけお留守番なの？")},
+										{"chara": "koishi", "exp": "look_bottom",  serif1: _("....."), serif2: _("....."), serif3: _("....."), serif4: _(".....")},
+										{"chara": "koishi", "exp": null,  serif1: _("かわいそう"), serif2: _("かわいそう"), serif3: _("かわいそう"), serif4: _("かわいそう")},
+										{"chara": "koishi", "exp": "yes",  serif1: _("助けてあげるわ！"), serif2: _("助けてあげるわ！"), serif3: _("助けてあげるわ！"), serif4: _("助けてあげるわ！")},
+										{"chara": "oku", "exp": "oku-ura_reaction_01",  serif1: _("ほんとう！？"), serif2: _("ほんとう！？"), serif3: _("ほんとう！？"), serif4: _("ほんとう！？")},
+										{"chara": "oku", "exp": null,  serif1: _("うれしいなあ！"), serif2: _("うれしいなあ！"), serif3: _("うれしいなあ！"), serif4: _("うれしいなあ！")},
+										{"chara": "oku", "exp": null,  serif1: _("檻の鍵はご主人様が持ってるの"), serif2: _("檻の鍵はご主人様が持ってるの"), serif3: _("檻の鍵はご主人様が持ってるの"), serif4: _("檻の鍵はご主人様が持ってるの")},
+										{"chara": "oku", "exp": null,  serif1: _("ぬすんできてちょうだい！"), serif2: _("ぬすんできてちょうだい！"), serif3: _("ぬすんできてちょうだい！"), serif4: _("ぬすんできてちょうだい！")},
+										{"chara": "koishi", "exp": "yes",  serif1: _("わかったわ"), serif2: _("わかったわ"), serif3: _("わかったわ"), serif4: _("わかったわ")},
+										{"chara": "koishi", "exp": null,  serif1: _("でもどこにいるかしら"), serif2: _("でもどこにいるかしら"), serif3: _("でもどこにいるかしら"), serif4: _("でもどこにいるかしら")},
+										{"chara": "oku", "exp": "oku-ura_wait",  serif1: _("ご主人様の部屋は奥のほう"), serif2: _("ご主人様の部屋は奥のほう"), serif3: _("ご主人様の部屋は奥のほう"), serif4: _("ご主人様の部屋は奥のほう")},
+										{"chara": "koishi", "exp": "yes", "serif": _("そっか")},
+										{"chara": "koishi", "exp": null,  serif1: _("じゃあ行ってくるね！"), serif2: _("じゃあ行ってくるね！"), serif3: _("じゃあ行ってくるね！"), serif4: _("じゃあ行ってくるね！")},
+									],
+									// 2度目以降の会話
+									[
+										{"chara": "koishi", "exp": "look_front", "serif": _("何があればいいのかな")},
+										{"chara": "oku", "exp": null,  serif1: _("かぎ！"), serif2: _("かぎ！"), serif3: _("かぎ！"), serif4: _("かぎ！")},
+										{"chara": "oku", "exp": null,  serif1: _("あとわたしねー"), serif2: _("あとわたしねー"), serif3: _("あとわたしねー"), serif4: _("あとわたしねー")},
+										{"chara": "oku", "exp": "oku-ura_reaction_01",  serif1: _("キラキラしたのがすき！"), serif2: _("キラキラしたのがすき！"), serif3: _("キラキラしたのがすき！"), serif4: _("キラキラしたのがすき！")},
+										{"chara": "oku", "exp": null,  serif1: _("キラキラちょうだい！"), serif2: _("キラキラちょうだい！"), serif3: _("キラキラちょうだい！"), serif4: _("キラキラちょうだい！")},
+										{"chara": "koishi", "exp": "look_front", "serif": _("キラキラって？")},
+										{"chara": "oku", "exp": null,  serif1: _("めだまとか！"), serif2: _("めだまとか！"), serif3: _("めだまとか！"), serif4: _("めだまとか！")},
+										{"chara": "oku", "exp": null,  serif1: _("鍵と目玉！"), serif2: _("鍵と目玉！"), serif3: _("鍵と目玉！"), serif4: _("鍵と目玉！")},
+										{"chara": "koishi", "exp": "yes", "serif": _("わかったわ")},
+									],
+								]},
+							],
+						]},
 					],
 				]},
 			],
