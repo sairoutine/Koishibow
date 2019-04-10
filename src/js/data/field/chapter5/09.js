@@ -106,7 +106,7 @@ module.exports = {
 					],
 					// このフィールドにお燐未表示
 					[
-
+						// {"id": "chapter5-09-oku_talk1", "save": true}, // 5-10 で動物の騒ぎ声表示
 						{"id": "chapter5-12-show_orin", "save": true},
 						{"chara": "koishi", "exp": "look_front",  serif1: _("まあ！"), serif2: _("まあ！"), serif3: _("まあ！"), serif4: _("まあ！")},
 						{"chara": "koishi", "exp": null,  serif1: _("あなたどうしたの！"), serif2: _("あなたどうしたの！"), serif3: _("あなたどうしたの！"), serif4: _("あなたどうしたの！")},

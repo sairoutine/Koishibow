@@ -454,9 +454,12 @@ SceneSubStageMenu.prototype._setupMenuItems = function() {
 	var item_list = [];
 	for (var j = 0, leng = _item_list.length; j < leng; j++) {
 		var item_master = ItemMasterRepository.find(_item_list[j].item_id);
-		// chapter4 で表示しないマスタ設定のアイテムは表示しない
+		// chapter4 のみ表示されるアイテム／表示されないアイテムが存在する
 		// そのため絞る
 		if (this._isInChapter4() && !item_master.isShowChapter4()) {
+			continue;
+		}
+		else if (!this._isInChapter4() && item_master.isShowChapter4()) {
 			continue;
 		}
 

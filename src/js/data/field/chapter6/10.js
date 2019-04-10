@@ -45,7 +45,7 @@ module.exports = {
 								{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj05",  serif1: _("私は悪くないのに！"), serif2: _("私は悪くないのに！"), serif3: _("私は悪くないのに！"), serif4: _("私は悪くないのに！")},
 								{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj03",  serif1: _("う"), serif2: _("う"), serif3: _("う"), serif4: _("う")},
 								{"chara": "chapter6-10-obj01","exp": null,  serif1: _("あ゛あ゛"), serif2: _("あ゛あ゛"), serif3: _("あ゛あ゛"), serif4: _("あ゛あ゛")},
-								{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj03",  serif1: _("あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛"), serif2: _("あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛"), serif3: _("あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛"), serif4: _("あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛あ゛")},
+								{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj03",  serif1: _("あ゛あ゛あ゛あ゛あ゛あ゛\nあ゛あ゛あ゛あ゛あ゛あ゛"), serif2: _("あ゛あ゛あ゛あ゛あ゛あ゛\nあ゛あ゛あ゛あ゛あ゛あ゛"), serif3: _("あ゛あ゛あ゛あ゛あ゛あ゛\nあ゛あ゛あ゛あ゛あ゛あ゛"), serif4: _("あ゛あ゛あ゛あ゛あ゛あ゛\nあ゛あ゛あ゛あ゛あ゛あ゛")},
 								{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj05",  serif1: _("ううう"), serif2: _("ううう"), serif3: _("ううう"), serif4: _("ううう")},
 								{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj04",  serif1: _("誰が悪いのかしら"), serif2: _("誰が悪いのかしら"), serif3: _("誰が悪いのかしら"), serif4: _("誰が悪いのかしら"), "option": {"changeField": "chapter6_13"}},
 							]
@@ -68,7 +68,7 @@ module.exports = {
 						{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj02",  serif1: _("育て方が正しいのなら生まれが悪いんだろう"), serif2: _("育て方が正しいのなら生まれが悪いんだろう"), serif3: _("育て方が正しいのなら生まれが悪いんだろう"), serif4: _("育て方が正しいのなら生まれが悪いんだろう")},
 						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("本当に禁酒できていたんだろうな"), serif2: _("本当に禁酒できていたんだろうな"), serif3: _("本当に禁酒できていたんだろうな"), serif4: _("本当に禁酒できていたんだろうな")},
 						{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj03",  serif1: _("何をおっしゃるのです"), serif2: _("何をおっしゃるのです"), serif3: _("何をおっしゃるのです"), serif4: _("何をおっしゃるのです")},
-						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("ずっと留守にして家の様子なんてご存じないでしょう"), serif2: _("ずっと留守にして家の様子なんてご存じないでしょう"), serif3: _("ずっと留守にして家の様子なんてご存じないでしょう"), serif4: _("ずっと留守にして家の様子なんてご存じないでしょう")},
+						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("ずっと留守にして家の様子なんて\nご存じないでしょう"), serif2: _("ずっと留守にして家の様子なんて\nご存じないでしょう"), serif3: _("ずっと留守にして家の様子なんて\nご存じないでしょう"), serif4: _("ずっと留守にして家の様子なんて\nご存じないでしょう")},
 						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("何を根拠に――"), serif2: _("何を根拠に――"), serif3: _("何を根拠に――"), serif4: _("何を根拠に――")},
 						{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj02",  serif1: _("ふん、どうかな"), serif2: _("ふん、どうかな"), serif3: _("ふん、どうかな"), serif4: _("ふん、どうかな")},
 						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("うちの家は全員秀才揃いなんだ"), serif2: _("うちの家は全員秀才揃いなんだ"), serif3: _("うちの家は全員秀才揃いなんだ"), serif4: _("うちの家は全員秀才揃いなんだ")},
@@ -86,8 +86,8 @@ module.exports = {
 						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("それから、田舎臭い言葉も控えなさい"), serif2: _("それから、田舎臭い言葉も控えなさい"), serif3: _("それから、田舎臭い言葉も控えなさい"), serif4: _("それから、田舎臭い言葉も控えなさい")},
 						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("来月、弟が訪ねてくる"), serif2: _("来月、弟が訪ねてくる"), serif3: _("来月、弟が訪ねてくる"), serif4: _("来月、弟が訪ねてくる")},
 						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("息子を連れてな"), serif2: _("息子を連れてな"), serif3: _("息子を連れてな"), serif4: _("息子を連れてな")},
-						{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj02",  serif1: _("男を産めないならせめてまともな娘を育ててくれ"), serif2: _("男を産めないならせめてまともな娘を育ててくれ"), serif3: _("男を産めないならせめてまともな娘を育ててくれ"), serif4: _("男を産めないならせめてまともな娘を育ててくれ")},
-						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("それができないなら話せないやつは顔を出させるな"), serif2: _("それができないなら話せないやつは顔を出させるな"), serif3: _("それができないなら話せないやつは顔を出させるな"), serif4: _("それができないなら話せないやつは顔を出させるな")},
+						{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj02",  serif1: _("男を産めないならせめて\nまともな娘を育ててくれ"), serif2: _("男を産めないならせめて\nまともな娘を育ててくれ"), serif3: _("男を産めないならせめて\nまともな娘を育ててくれ"), serif4: _("男を産めないならせめて\nまともな娘を育ててくれ")},
+						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("それができないなら\n話せないやつは顔を出させるな"), serif2: _("それができないなら\n話せないやつは顔を出させるな"), serif3: _("それができないなら\n話せないやつは顔を出させるな"), serif4: _("それができないなら\n話せないやつは顔を出させるな")},
 						{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj03",  serif1: _("わかりました......"), serif2: _("わかりました......"), serif3: _("わかりました......"), serif4: _("わかりました......")},
 						{"chara": "chapter6-10-obj01","exp": "chapter6-10-obj01-obj02",  serif1: _("ママ？"), serif2: _("ママ？"), serif3: _("ママ？"), serif4: _("ママ？"), "option": {"changeField": "chapter6_04"}},
 					]

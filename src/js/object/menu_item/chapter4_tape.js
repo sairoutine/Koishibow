@@ -16,6 +16,15 @@ Util.inherit(ObjectMenuItemChapter4Tape, base_object);
 ObjectMenuItemChapter4Tape.prototype.use = function() {
 	var item_id = this.itemId();
 
+	var master = Chapter4TapeMasterRepository.find(item_id);
+
+	// このフィールドでのBGM再生を終了
+	this.core.audio_loader.stopAllBGM();
+
+	// サウンド再生
+	this.core.audio_loader.playSound(master.audioName());
+
+
 	var field_data = this.scene.parent.getFieldData();
 
 	// チャルメラを chapter4 のフィールド 07 ではじめて使ったら
@@ -26,12 +35,8 @@ ObjectMenuItemChapter4Tape.prototype.use = function() {
 		// 蓮子登場イベント
 		this.core.scene_manager.changeScene("event_talk", "chapter4-07-event-01");
 	}
-	// 通常の再生
 	else {
-		var master = Chapter4TapeMasterRepository.find(item_id);
-
-		// サウンド再生
-		this.core.audio_loader.playSound(master.audioName());
+		// 通常の再生
 	}
 };
 

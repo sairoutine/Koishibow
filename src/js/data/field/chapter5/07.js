@@ -134,7 +134,7 @@ module.exports = {
 				{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("はフはフ"), serif2: _("はフはフ"), serif3: _("はフはフ"), serif4: _("はフはフ")},
 				{"chara": "koishi","exp": "look_front",  serif1: _("かわいー"), serif2: _("かわいー"), serif3: _("かわいー"), serif4: _("かわいー")},
 			],
-			x: 300, y: 300,
+			x: 400, y: 300,
 			scale: 2/3,
 			anime1: "animal_shiba-wait",
 			anime2: null,

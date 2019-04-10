@@ -132,6 +132,7 @@ module.exports = {
 			anime6: null,
 			action_name: null,
 			sound_name: null,
+			show_if_event_true: "chapter4_25_40440", // 死体のそばの優曇華に一度会っている
 		},
 		{
 			no: ++I,

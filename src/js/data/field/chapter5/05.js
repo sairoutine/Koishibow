@@ -194,6 +194,7 @@ module.exports = {
 			scale: 2/3,
 			action_name: "look_bottom",
 			sound_name: null,
+			position_type: "lying",
 			not_show_if_event_true: "chapter5-05-hashigo_ura_talk",
 		},
 	],

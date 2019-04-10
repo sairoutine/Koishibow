@@ -10,7 +10,7 @@ module.exports = {
 	bgm: "silent",
 	rightStartPosition:   {x: 690, y: 380},
 	leftStartPosition:    {x: 180, y: 380},
-	defaultStartPosition: {x: 180, y: 380, isTowardLeft: false},
+	defaultStartPosition: {x: 480, y: 380, isTowardLeft: false},
 	upStartPosition:    null,
 	downStartPosition:  null,
 	rightField: null,

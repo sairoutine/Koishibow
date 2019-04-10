@@ -4,6 +4,7 @@ var _ = require('i18n4v');
 module.exports = {
 	key: "chapter4-29-event-01",
 	serifWindow: "fukidashi_brown",
+	bgm: "silent",
 	expAnimes: [
 		"chapter4-29-event-01-obj01",
 		"chapter4-29-event-01-obj02",

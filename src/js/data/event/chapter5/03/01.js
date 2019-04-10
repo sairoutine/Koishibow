@@ -16,6 +16,9 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
+		// 汚れた義眼を獲得
+		{"type": "process", "value": "addItem", "arguments": ["32"]},
+
 		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
 	],
 };

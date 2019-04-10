@@ -35,7 +35,7 @@ module.exports = {
 						{"chara": "reisen", "exp": "reisen-reaction_03",  serif1: _("この人たちはもう間に合わない"), serif2: _("この人たちはもう間に合わない"), serif3: _("この人たちはもう間に合わない"), serif4: _("この人たちはもう間に合わない")},
 						{"chara": "reisen", "exp": "reisen-reaction_04",  serif1: _("残念、商機を逸したわ"), serif2: _("残念、商機を逸したわ"), serif3: _("残念、商機を逸したわ"), serif4: _("残念、商機を逸したわ")},
 						{"chara": "reisen", "exp": null,  serif1: _("まいったなー"), serif2: _("まいったなー"), serif3: _("まいったなー"), serif4: _("まいったなー")},
-						{"chara": "reisen", "exp": null, "serif": _("診療所に来る人間を待ち伏せして薬を売る作戦だったのに")},
+						{"chara": "reisen", "exp": null, "serif": _("診療所に来る人間を待ち伏せして\n薬を売る作戦だったのに")},
 						{"chara": "koishi", "exp": "look_top",  serif1: _("この人なんで死んだの？"), serif2: _("なんで死んじゃったんだろう"), serif3: _("なんで死んじゃったんだろう"), serif4: _("なんで死んじゃったんだろう")},
 						{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("さあ？"), serif2: _("さあ？"), serif3: _("さあ？"), serif4: _("さあ？")},
 						{"chara": "reisen", "exp": null,  serif1: _("あなたはどう思う？"), serif2: _("あなたはどう思う？"), serif3: _("あなたはどう思う？"), serif4: _("あなたはどう思う？")},

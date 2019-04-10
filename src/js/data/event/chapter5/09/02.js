@@ -3,6 +3,7 @@ var _ = require('i18n4v')
 module.exports = {
 	key: "chapter5-09-event-02",
 	serifWindow: "fukidashi_brown",
+	bgm: "field11",
 	expAnimes: [
 		"chapter5-09-event-02-obj01",
 		"chapter5-09-event-02-obj02",
@@ -24,7 +25,7 @@ module.exports = {
 		{"exp": null, "serif": _("ごめんね"), "option": {"x": 420, "y": 130, "loop": false, "is_koishi": true}},
 		{"exp": "chapter5-09-event-02-obj03", "serif": _("でもいまのあなたには"), "option": {"x": 420, "y": 130, "loop": false, "is_koishi": true}},
 		{"exp": null, "serif": _("外は危ないの"), "option": {"x": 420, "y": 130, "loop": false, "is_koishi": true}},
-		{"exp": null, "serif": _("”わたしたち”ちゃんと練習してから外に出なきゃ......"), "option": {"x": 420, "y": 130, "loop": false, "is_koishi": true}},
+		{"exp": null, "serif": _("”わたしたち”ちゃんと\n練習してから外に出なきゃ......"), "option": {"x": 420, "y": 130, "loop": false, "is_koishi": true}},
 		{"exp": null, "serif": _("大丈夫だよ"), "option": {"x": 420, "y": 130, "loop": false, "is_koishi": true}},
 		{"exp": null, "serif": _("わたしが遊びに来てあげるから"), "option": {"x": 420, "y": 130, "loop": false, "is_koishi": true}},
 		{"exp": null, "serif": _("ぐわぁ......"), "option": {"x": 479, "y": 50, "loop": false}},

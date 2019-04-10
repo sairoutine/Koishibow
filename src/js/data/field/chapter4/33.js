@@ -26,7 +26,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "蓮子",
 			loop: true,
-			turn_not_toward_me: true, // こいしの方を向く
+			// turn_not_toward_me: true, // 方角を指差すのでこいしの方を向かない
 			serif_back: [],
 			serif: [
 				{"chara": "renko", "exp": "renko-reaction_08",  serif1: _("キャンプ地はあっちよ"), serif2: _("キャンプ地はあっちよ"), serif3: _("キャンプ地はあっちよ"), serif4: _("キャンプ地はあっちよ")},

@@ -87,7 +87,7 @@ module.exports = {
 					[
 						{"chara": "koishi","exp": "look_top", "serif": _("なにこれ")},
 						{"chara": "koishi","exp": "look_top", "serif": _("気持ち悪い")},
-						{"chara": I,"exp": null,  serif1: _("あばぶ"), serif2: _("あばぶ"), serif3: _("あばぶ"), serif4: _("あばぶ"), "id": "chapter6-07-show_last_junction", "save": true},
+						{"chara": "baby","exp": null,  serif1: _("あばぶ"), serif2: _("あばぶ"), serif3: _("あばぶ"), serif4: _("あばぶ"), "id": "chapter6-07-show_last_junction", "save": true},
 					],
 					[
 						{"chara": "koishi","exp": "look_top", "serif": _("なにこれ")},
@@ -115,6 +115,16 @@ module.exports = {
 			serif: null,
 			width: 100, height: 500,
 			x: 430, y: 150,
+		},
+		{
+			no: "baby",
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "赤ちゃん",
+			serif: null,
+			width: 0, height: 0,
+			x: 300, y: 120,
+			position_type: "lying",
 		},
 		{
 			no: ++I,
