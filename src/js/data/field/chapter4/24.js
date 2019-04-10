@@ -49,7 +49,7 @@ var RENKO_MERRY_SERIF = [
 		],
 		// イベント未再生
 		[
-			{"chara": "merry", "exp": null,  serif1: _("TODO: "), serif2: _("時代が止まればいいのに"), serif3: _("時代が止まればいいのに"), serif4: _("時代が止まればいいのに")},
+			{"chara": "merry", "exp": null,  serif1: _("なあに？"), serif2: _("なあに？"), serif3: _("なあに？"), serif4: _("なあに？")},
 		],
 	]},
 ];

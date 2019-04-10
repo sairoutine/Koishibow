@@ -74,6 +74,9 @@ module.exports = {
 		{"exp": null, "serif":_("わたし、ものづくりの達人なのよ！"), "option": {"x": 400, "y": 250, "loop": false}},
 	],
 	endProcess: [
+		// BGMを通常BGMに戻す
+		{"type": "process", "value": "playBGM", "arguments": ["field7"]},
+
 		// 戻る
 		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
 	],

@@ -109,6 +109,8 @@ module.exports = {
 	],
 	endAnime: "chapter3-08-event-01-obj10",
 	endProcess: [
+		// BGMを通常BGMに戻す
+		{"type": "process", "value": "playBGM", "arguments": ["field7"]},
 		// 戻る
 		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
 	],

@@ -220,6 +220,7 @@ module.exports = {
 			width: 150,
 			action_name: null,
 			sound_name: null,
+			show_if_event_true: "event_for_chapter1_playdoll",
 		},
 
 	]

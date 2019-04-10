@@ -521,6 +521,12 @@ SceneEventTalk.prototype._playSounds = function(sounds) {
 SceneEventTalk.prototype.isUsingEye = function(){
 	return false;
 };
+
+// common_process から呼ばれる // TODO: ダックタイピングなのでやめる
+SceneEventTalk.prototype.playBGM = function(main_bgm, sub_bgms) {
+	this.core.audio_loader.playBGM(main_bgm);
+};
+
 // シーン開始時にセリフを開始させるかどうか
 SceneEventTalk.prototype.isSerifAutoStart = function() {
 	return true;

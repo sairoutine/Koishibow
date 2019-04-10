@@ -100,6 +100,7 @@ SceneEventPlayDoll.prototype.init = function(){
 	// BGM 止めない
 	//this.core.audio_loader.stopBGM();
 
+	this.core.save_manager.scenario.incrementPlayedCount("event_for_chapter1_playdoll");
 
 	this.initChr();
 	this.initKoishi();

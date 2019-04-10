@@ -37,7 +37,7 @@ module.exports = {
 			serif: null,
 			x: 625*2/3, y: 768.50*2/3,
 			scale: 2/3,
-			height: 1000,
+			// height: 1000,
 			action_name: "touch",
 			sound_name: "touch",
 			action_event: "event_for_chapter1_playdoll"

@@ -41,6 +41,11 @@ module.exports = {
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3-08-show_fran"]},
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_12_Event_30210"]},
 				{"type": "process", "value": "changeScene", "arguments": ["event_talk_old", "chapter3-12-event-01"]},
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "koishi", "serif": "", "option": {"getItem": "13"}},
+					],
+				]},
 			],
 		]},
 	],
