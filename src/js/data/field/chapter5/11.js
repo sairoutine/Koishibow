@@ -49,7 +49,8 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("これ早く隠して"), serif2: _("これ早く隠して"), serif3: _("これ早く隠して"), serif4: _("これ早く隠して")},
+						{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("これ渡しておくわ"), serif2: _("これ渡しておくわ"), serif3: _("これ渡しておくわ"), serif4: _("これ渡しておくわ")},
+						{"chara": "animal_shiba","exp": null,  serif1: _("なんとか隠して"), serif2: _("なんとか隠して"), serif3: _("なんとか隠して"), serif4: _("なんとか隠して")},
 						{"chara": "animal_uma","exp": "animal_uma-wait",  serif1: _("わかったわ"), serif2: _("わかったわ"), serif3: _("わかったわ"), serif4: _("わかったわ")},
 						{"chara": "animal_shiba","exp": "animal_shiba-wait",  serif1: _("お願いね"), serif2: _("お願いね"), serif3: _("お願いね"), serif4: _("お願いね")},
 					]

@@ -193,7 +193,7 @@ module.exports = {
 						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01",  serif1: _("見せてくれよ"), serif2: _("見せてくれよ"), serif3: _("見せてくれよ"), serif4: _("見せてくれよ")},
 						{"chara": "koishi","exp": "yes", "serif": _("うん"), "option": {"useItem": "32"}},
 						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_02",  serif1: _("グシグシグシ"), serif2: _("グシグシグシ"), serif3: _("グシグシグシ"), serif4: _("グシグシグシ")},
-						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01",  serif1: _("ほら、磨いたぞ！"), serif2: _("ほら、磨いたぞ！"), serif3: _("ほら、磨いたぞ！"), serif4: _("ほら、磨いたぞ！"), "option": {"getItem": "32"}},
+						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_reaction_01",  serif1: _("ほら、磨いたぞ！"), serif2: _("ほら、磨いたぞ！"), serif3: _("ほら、磨いたぞ！"), serif4: _("ほら、磨いたぞ！"), "option": {"getItem": "37"}},
 						{"chara": "koishi","exp": "look_front",  serif1: _("えぇ"), serif2: _("えぇ"), serif3: _("えぇ"), serif4: _("えぇ")},
 						{"chara": "animal_araiguma","exp": "animal_araiguma-ura_wait",  serif1: _("この目玉誰から引っこ抜いたんだろうなあ"), serif2: _("この目玉誰から引っこ抜いたんだろうなあ"), serif3: _("この目玉誰から引っこ抜いたんだろうなあ"), serif4: _("この目玉誰から引っこ抜いたんだろうなあ")},
 						{"chara": "koishi","exp": "look_bottom", "serif": _("......")},

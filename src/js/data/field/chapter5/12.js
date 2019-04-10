@@ -55,25 +55,37 @@ module.exports = {
 			loop: true,
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-orin-limit", 1], "serifs": [
+				{"type": "criteria_serif", "criteria": "existsItem", "arguments": ["33"], "serifs": [
+					// 鍵を持っている
 					[
-						{"id": "chapter5-07-show_shiba", "save": true}, // 柴犬を登場させる
-						{"id": "chapter5-12-orin_talk1", "save": true}, // お燐との1度目の会話
-						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("あら！"), serif2: _("あら！"), serif3: _("あら！"), serif4: _("あら！")},
-						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("こいし様おひさしぶりですね"), serif2: _("こいし様おひさしぶりですね"), serif3: _("こいし様おひさしぶりですね"), serif4: _("こいし様おひさしぶりですね")},
-						{"chara": "koishi","exp": "look_front", "serif": _("えっ")},
-						{"chara": "koishi","exp": null,  serif1: _("私のこと知ってるの"), serif2: _("私のこと知ってるの"), serif3: _("何してるの"), serif4: _("何してるの")},
-						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("あたりまえじゃないですか"), serif2: _("あたりまえじゃないですか"), serif3: _("あたりまえじゃないですか"), serif4: _("あたりまえじゃないですか")},
-						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("おそうじちゅうなんです"), serif2: _("おそうじちゅうなんです"), serif3: _("おそうじちゅうなんです"), serif4: _("おそうじちゅうなんです")},
-						{"chara": "koishi","exp": "yes",  serif1: _("そうなんだ"), serif2: _("そうなんだ"), serif3: _("そうなんだ"), serif4: _("そうなんだ")},
-						{"chara": "orin","exp": "orin-ura_reaction_01",  serif1: _("ご主人様に御用ですか？"), serif2: _("ご主人様に御用ですか？"), serif3: _("ご主人様に御用ですか？"), serif4: _("ご主人様に御用ですか？")},
-						{"chara": "orin","exp": null,  serif1: _("あいにくお出かけされていますが"), serif2: _("あいにくお出かけされていますが"), serif3: _("あいにくお出かけされていますが"), serif4: _("あいにくお出かけされていますが")},
-						{"chara": "koishi","exp": "look_bottom",  serif1: _("べつに"), serif2: _("べつに"), serif3: _("ううんいいの"), serif4: _("ううんいいの")},
+						{"chara": "koishi","exp": "yes",  serif1: _("みてみて！"), serif2: _("みてみて！"), serif3: _("みてみて！"), serif4: _("みてみて！")},
+						{"chara": "koishi","exp": "yes",  serif1: _("鍵見つけたのよ"), serif2: _("鍵見つけたのよ"), serif3: _("鍵見つけたのよ"), serif4: _("鍵見つけたのよ")},
+						{"chara": "koishi","exp": "yes",  serif1: _("これで解決！"), serif2: _("これで解決！"), serif3: _("あの子を助けましょ！"), serif4: _("あの子を助けましょ！")},
+						{"chara": "orin","exp": "orin-ura_wait",  serif1: _("んなー"), serif2: _("んなー"), serif3: _("んなー"), serif4: _("んなー")},
 					],
+					// 鍵を持っていない
 					[
-						{"chara": "koishi","exp": "look_top",  serif1: _("ねえ鍵知ってる？"), serif2: _("ねえ鍵知ってる？"), serif3: _("ねえ鍵知ってる？"), serif4: _("ねえ鍵知ってる？")},
-						{"chara": "orin","exp": "orin-ura_reaction_01",  serif1: _("なんの鍵ですか？"), serif2: _("なんの鍵ですか？"), serif3: _("なんの鍵ですか？"), serif4: _("なんの鍵ですか？")},
-						{"chara": "orin","exp": null,  serif1: _("屋敷の鍵はみんなご主人様が\n持っているはずですケド"), serif2: _("屋敷の鍵はみんなご主人様が\n持っているはずですケド"), serif3: _("屋敷の鍵はみんなご主人様が\n持っているはずですケド"), serif4: _("屋敷の鍵はみんなご主人様が\n持っているはずですケド")},
+						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter5_12-orin-limit", 1], "serifs": [
+							[
+								{"id": "chapter5-07-show_shiba", "save": true}, // 柴犬を登場させる
+								{"id": "chapter5-12-orin_talk1", "save": true}, // お燐との1度目の会話
+								{"chara": "orin","exp": "orin-ura_wait",  serif1: _("あら！"), serif2: _("あら！"), serif3: _("あら！"), serif4: _("あら！")},
+								{"chara": "orin","exp": "orin-ura_wait",  serif1: _("こいし様おひさしぶりですね"), serif2: _("こいし様おひさしぶりですね"), serif3: _("こいし様おひさしぶりですね"), serif4: _("こいし様おひさしぶりですね")},
+								{"chara": "koishi","exp": "look_front", "serif": _("えっ")},
+								{"chara": "koishi","exp": null,  serif1: _("私のこと知ってるの"), serif2: _("私のこと知ってるの"), serif3: _("何してるの"), serif4: _("何してるの")},
+								{"chara": "orin","exp": "orin-ura_wait",  serif1: _("あたりまえじゃないですか"), serif2: _("あたりまえじゃないですか"), serif3: _("あたりまえじゃないですか"), serif4: _("あたりまえじゃないですか")},
+								{"chara": "orin","exp": "orin-ura_wait",  serif1: _("おそうじちゅうなんです"), serif2: _("おそうじちゅうなんです"), serif3: _("おそうじちゅうなんです"), serif4: _("おそうじちゅうなんです")},
+								{"chara": "koishi","exp": "yes",  serif1: _("そうなんだ"), serif2: _("そうなんだ"), serif3: _("そうなんだ"), serif4: _("そうなんだ")},
+								{"chara": "orin","exp": "orin-ura_reaction_01",  serif1: _("ご主人様に御用ですか？"), serif2: _("ご主人様に御用ですか？"), serif3: _("ご主人様に御用ですか？"), serif4: _("ご主人様に御用ですか？")},
+								{"chara": "orin","exp": null,  serif1: _("あいにくお出かけされていますが"), serif2: _("あいにくお出かけされていますが"), serif3: _("あいにくお出かけされていますが"), serif4: _("あいにくお出かけされていますが")},
+								{"chara": "koishi","exp": "look_bottom",  serif1: _("べつに"), serif2: _("べつに"), serif3: _("ううんいいの"), serif4: _("ううんいいの")},
+							],
+							[
+								{"chara": "koishi","exp": "look_top",  serif1: _("ねえ鍵知ってる？"), serif2: _("ねえ鍵知ってる？"), serif3: _("ねえ鍵知ってる？"), serif4: _("ねえ鍵知ってる？")},
+								{"chara": "orin","exp": "orin-ura_reaction_01",  serif1: _("なんの鍵ですか？"), serif2: _("なんの鍵ですか？"), serif3: _("なんの鍵ですか？"), serif4: _("なんの鍵ですか？")},
+								{"chara": "orin","exp": null,  serif1: _("屋敷の鍵はみんなご主人様が\n持っているはずですケド"), serif2: _("屋敷の鍵はみんなご主人様が\n持っているはずですケド"), serif3: _("屋敷の鍵はみんなご主人様が\n持っているはずですケド"), serif4: _("屋敷の鍵はみんなご主人様が\n持っているはずですケド")},
+							],
+						]},
 					],
 				]},
 			],

@@ -241,7 +241,7 @@ module.exports = [
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_("『japanese iconic food』"),
-		examineText:_("へんなおと！これが好きなんてへんなの"),
+		examineText:_("蓮子ちゃんが好きな音！これを聞けば寄ってくるかな？"),
 	},
 	{
 		id: "25",
@@ -362,6 +362,16 @@ module.exports = [
 		soundName: "got_item_common",
 		descriptionText:_("”上手に使いましょう”"),
 		examineText:_("......"),
+	},
+	{
+		id: "37",
+		type: CONSTANT.ITEM.NON_USABLE,
+		name: "目玉",
+		isShowChapter4: false,
+		imageName: "item_32",
+		soundName: "got_item_common",
+		descriptionText:_("曇りなき瞳"),
+		examineText:_("誰なの？"),
 	},
 ];
 
