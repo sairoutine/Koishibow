@@ -125,6 +125,7 @@ module.exports = {
 							// しゃべる持ってる
 							[
 								{"id": "chapter3_07-getItem-14", "save": true},
+								// 上腕骨 獲得
 								{"chara": "koishi","serif": _("あった！"), "option": {"getItem": "14"}},
 								{"chara": "koishi", serif1: _("思ったより重たい"), serif2: _("思ったより重たい"), serif3: _("思ったより重たい"), serif4: _("思ったより重たい")},
 							],

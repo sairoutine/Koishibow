@@ -486,6 +486,9 @@ SceneStage.prototype._draw3rdEyeEmergencyMask = function() {
 	// 充血レベルが最大のときのみ
 	if (this.koishi.get3rdeyeBloodShotLevel() !== 4) return;
 
+	// 目を使えないときは表示しない(chapter4)
+	if(!this.eye_button.isShow()) return;
+
 	// ブリンク開始
 	if (this.frame_count % BLINK_COUNT === 0) {
 		this._3rdeye_red_mask_alpha = 1;

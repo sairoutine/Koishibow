@@ -47,7 +47,7 @@ module.exports = {
 		//イベント再生済みフラグ
 		{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter3_13-Event-_30370"]},
 		// ステージに戻る
-		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
+		{"type": "process", "value": "changeScene", "arguments": ["stage", "chapter3_13"]},
 	],
 
 };

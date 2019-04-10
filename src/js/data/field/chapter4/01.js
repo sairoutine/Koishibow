@@ -19,38 +19,38 @@ module.exports = {
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_01_40010"], "process": [
 			// すでにアクセス済み
-			[],
+			[
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_01_40040"], "process": [
+					// すでにアクセス済み
+					[],
+					// まだ未アクセス
+					[
+						// メリーが目薬を拾うイベント再生
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_01_40040"]},
+						{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter4-02-event-01"]},
+					],
+				]},
+
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_01_40050"], "process": [
+					// すでにアクセス済み
+					[],
+					// まだ未アクセス
+					[
+						{"type": "process", "value": "playTalk", "arguments": [
+							[
+								{"chara": "koishi", "exp": "look_bottom",  serif1: _("疲れた"), serif2: _("疲れたわ"), serif3: _("やっちゃった"), serif4: _("やっちゃった")},
+								{"chara": "koishi", "exp": "look_front",  serif1: _("ここはどこ"), serif2: _("どこかしら"), serif3: _("どこかしら"), serif4: _("どこかしら")},
+							]
+						]},
+						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_01_40050"]}
+					],
+				]},
+			],
 			// まだ未アクセス
 			[
 				// こいしとさとりの最初のイベント 再生
 				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_01_40010"]},
 				{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter4-00-event-01"]},
-			],
-		]},
-
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_01_40040"], "process": [
-			// すでにアクセス済み
-			[],
-			// まだ未アクセス
-			[
-				// メリーが目薬を拾うイベント再生
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_01_40040"]},
-				{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter4-02-event-01"]},
-			],
-		]},
-
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_01_40050"], "process": [
-			// すでにアクセス済み
-			[],
-			// まだ未アクセス
-			[
-				{"type": "process", "value": "playTalk", "arguments": [
-					[
-						{"chara": "koishi", "exp": "look_bottom",  serif1: _("疲れた"), serif2: _("疲れたわ"), serif3: _("やっちゃった"), serif4: _("やっちゃった")},
-						{"chara": "koishi", "exp": "look_front",  serif1: _("ここはどこ"), serif2: _("どこかしら"), serif3: _("どこかしら"), serif4: _("どこかしら")},
-					]
-				]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_01_40050"]}
 			],
 		]},
 	],
