@@ -63,6 +63,18 @@ module.exports = {
 		},
 		{
 			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "ストレッチャーの下",
+			serif: null,
+			width: 400,
+			height: 100,
+			x: 814,
+			y: 708,
+		},
+
+		{
+			no: ++I,
 			image: "chapter0-hospital_corridor1-obj-02-01",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "キャビネット",
@@ -93,10 +105,11 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "メス",
 			serif: null,
+			width: 100,
 			x: 853,
 			y: 534,
 			scale: 0.7,
-			action_name: "look_front",
+			action_name: null,
 			position_type: "front",
 		},
 		{
