@@ -308,7 +308,6 @@ SceneMusic.prototype._playingScrolledSubstr = function(key, name){
 			name = name.substring(start, end);
 		}
 
-		name = name + "...";
 	}
 
 	return name;
@@ -331,7 +330,6 @@ SceneMusic.prototype._focusingScrolledSubstr = function(name, len){
 	if (name.length > len) {
 		// 曲名の文字列をスクロールさせる
 		name = this._scrolledSubstr(name, len, this._focus_frame_count);
-		name = name + "...";
 	}
 
 	return name;
