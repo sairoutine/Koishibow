@@ -171,16 +171,22 @@ PieceContainer.prototype._getObjectDataByFieldData = function() {
 	// NOTE: SceneSubStagePlay._changeFieldByInput にて、no 指定で参照しているので、
 	// オブジェクトの no を変えるときは、そちらも修正する
 	if(field_data.rightField()) {
-		object_data_list.push({
-			no: "rightField",
-			type: CONSTANT.FIELD_CHANGE_TYPE,
-			name: "右へのフィールド移動",
-			x: this.scene.width - 48,
-			y: this.scene.height/2,
-			width: 64,
-			height: this.scene.height,
-			next_field_name: field_data.rightField(),
-		});
+		// TODO: リファクタ
+		if(this.core.save_manager.scenario.getPlayedCount("chapter3-11-show_skred") && field_data.key() === "chapter3_11") {
+			// 雪崩を表示するフィールドなら移動できない
+		}
+		else {
+			object_data_list.push({
+				no: "rightField",
+				type: CONSTANT.FIELD_CHANGE_TYPE,
+				name: "右へのフィールド移動",
+				x: this.scene.width - 48,
+				y: this.scene.height/2,
+				width: 64,
+				height: this.scene.height,
+				next_field_name: field_data.rightField(),
+			});
+		}
 	}
 	if(field_data.leftField()) {
 		object_data_list.push({
