@@ -93,7 +93,14 @@ module.exports = {
 								{"chara": "oku","exp": "oku-ura_wait",  serif1: _("かぎ取ってきてくれたの！"), serif2: _("かぎ取ってきてくれたの！"), serif3: _("かぎ取ってきてくれたの！"), serif4: _("かぎ取ってきてくれたの！")},
 								{"chara": "oku","exp": "oku-ura_reaction_01",  serif1: _("めだまも！やったー！"), serif2: _("めだまも！やったー！"), serif3: _("めだまも！やったー！"), serif4: _("めだまも！やったー！")},
 								{"chara": "koishi","exp": "yes", "serif": _("......")},
+
+								// chapter5 固有アイテムを削除
+								{"chara": "koishi", "serif":"", "option": {"deleteItem": "33"}},
+								{"chara": "koishi", "serif":"", "option": {"deleteItem": "34"}},
+								{"chara": "koishi", "serif":"", "option": {"deleteItem": "37"}},
+
 								{"chara": "orin","exp": "orin-ura_wait",  serif1: _("にゃー"), serif2: _("にゃー"), serif3: _("にゃー"), serif4: _("にゃー"), "junction": ["友達を助ける", "鍵を返す"]},
+
 								{"type": "junction_serif", "serifs": [
 									[
 										// イベント再生 10710

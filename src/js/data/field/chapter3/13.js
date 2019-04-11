@@ -42,6 +42,7 @@ var serifOfFranAndCirno = [
 					{"type": "criteria_serif", "criteria": "existsItemAll", "arguments": ["14", "15", "16", "17"], "serifs": [
 						// 「前腕骨」「上腕骨」「ルビー」「サファイア」を持っている、かつ2回目の会話
 						[
+							{"chara": "koishi", "serif":"", "option": {"deleteItem": "13"}},
 							{"chara": "koishi", "serif":"", "option": {"deleteItem": "14"}},
 							{"chara": "koishi", "serif":"", "option": {"deleteItem": "15"}},
 							{"chara": "koishi", "serif":"", "option": {"deleteItem": "16"}},
