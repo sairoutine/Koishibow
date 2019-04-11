@@ -122,6 +122,11 @@ ObjectChapter6LastJunction.prototype.collisionHeight = function(){
 
 // こいしに触られたときの処理
 ObjectChapter6LastJunction.prototype.onTouchByKoishi = function() {
+	// 新しいチャプターに遷移したことを保存
+	// 7 = ゲームクリア
+	this.core.save_manager.player.setCurrentChapter(7);
+	this.core.save_manager.player.save();
+
 	// 会話するオブジェクトなので、クリックしたら会話する
 	this.scene.root().changeSubScene("talk_with_object", this._serif, this);
 };

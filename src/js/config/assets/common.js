@@ -615,6 +615,17 @@ AssetsConfig.bgms = [
 		chapter: 0,
 	},
 	{
+		key: "maintheme",
+		path: "./bgm/common/maintheme.ogg",
+		//loopStart: 0*60 + 0 + 0.512,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+		isShowMusicRoom: true,
+		name: _('「symphony of 3rd eye」 "short ver"'),
+		description: _("はじめまして、いとしい子･･･"),
+		chapter: 6,
+	},
+	{
 		key: "title",
 		path: "./bgm/common/title1.ogg",
 		loopStart: 0*60 + 0 + 0.000,

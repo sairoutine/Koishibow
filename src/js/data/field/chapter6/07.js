@@ -147,7 +147,6 @@ module.exports = {
 			width: 100, height: 500,
 			x: 0 + 100, y: 360 - 100,
 			scale: 1/3,
-			show_if_event_true: "chapter6-07-show_last_junction",
 		},
 		{
 			no: ++I,

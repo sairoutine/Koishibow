@@ -95,6 +95,7 @@ StoragePlayer.prototype.getCurrentChapter = function() {
 	return chapter_no || 0;
 };
 // 現在のチャプターを設定
+// (0 ~ 7までの値を取る)(7 = ゲームクリア)
 StoragePlayer.prototype.setCurrentChapter = function(chapter_no) {
 	this.set("current_chapter", chapter_no);
 };
