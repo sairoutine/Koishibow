@@ -78,6 +78,16 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
+		// カセットプレイヤーを返してあげる
+		{"type": "criteria", "value": "existsItem", "arguments": ["22"], "process": [
+			// 持ってる(ここにはこないはず)
+			[],
+			// 持ってない
+			[
+				{"type": "process", "value": "addItem", "arguments": ["22"]},
+			],
+		]},
+
 		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
 	],
 };
