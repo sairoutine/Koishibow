@@ -37,6 +37,16 @@ SceneEventMovie.prototype.init = function(event_name){
 			scene_manager.returnScene("stage");
 		};
 
+	// エンディング用の特別処理
+	// TODO: リファクタ
+	if (event_name === "chapter6-event-ending01-1") {
+		callback = function () {
+			scene_manager.changeScene("movie", "./movie/production/chapter6_staffroll.mp4", function (core) {
+				core.scene_manager.changeScene("event_talk", "chapter6-event-ending01-2");
+			});
+		};
+	}
+
 	if(chapter_data.isStopBGM() === false) {
 		this._is_stop_bgm = false;
 	}

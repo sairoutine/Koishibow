@@ -34,9 +34,6 @@ var LAST_JUNCTION_SERIF = [
 					{"chara": "koishi", "exp": "look_top",  serif1: _("待ってってば"), serif2: _("待ってってば"), serif3: _("待ってってば"), serif4: _("待ってってば")},
 					{"chara": "koishi", "exp": "look_top",  serif1: _("私決めたの！"), serif2: _("私決めたの！"), serif3: _("私決めたの！"), serif4: _("私決めたの！")},
 					{"chara": "koishi", "exp": null, "serif": "わたしのことは自分で決めるわ", "option": {"playEventMovie": "chapter6-event-ending01-1"}},
-					{"chara": "koishi", "exp": null, "serif": "", "option": {"changeScene": ["movie", "./movie/production/chapter6_staffroll.mp4", function (core) {
-						core.scene_manager.changeScene("event_talk", "chapter6-event-ending01-2");
-					}]}},
 				],
 			]},
 		],
