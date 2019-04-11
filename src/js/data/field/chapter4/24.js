@@ -80,6 +80,8 @@ module.exports = {
 						// 新品のテープを持っている
 						{"type": "process", "value": "playTalk", "arguments": [
 							[
+
+								{"id": "chapter4-24-event-01", "save": true},
 								{"chara": "koishi", "exp": "look_bottom",  serif1: _("メリー！"), serif2: _("メリー！"), serif3: _("メリー！"), serif4: _("メリー！")},
 								{"chara": "koishi", "exp": null,  serif1: _("見つけたよ！"), serif2: _("見つけたよ！"), serif3: _("見つけたよ！"), serif4: _("見つけたよ！"), "option": {"useItem": "26"}},
 								{"chara": "merry", "exp": "merry-reaction_07",  serif1: _("まあ！"), serif2: _("まあ！"), serif3: _("まあ！"), serif4: _("まあ！")},

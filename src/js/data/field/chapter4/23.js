@@ -28,13 +28,14 @@ module.exports = {
 			name: "新品のテープ",
 			serif: [
 				{"chara": "koishi", "exp": "touch",  serif1: _("これね！"), serif2: _("これね！"), serif3: _("これね！"), serif4: _("これね！"), "option": {"getItem": "26"}},
-				{"chara": "koishi", "exp": "yes",  serif1: _("メリーがまってるわ！"), serif2: _("メリーがまってるわ！"), serif3: _("メリーがまってるわ！"), serif4: _("メリーがまってるわ！"), "option": {"resetFlag": "chapter4-23-show_tape4"}},
+				{"id": "chapter6-23-got_newtape", "save": true},
+				{"chara": "koishi", "exp": "yes",  serif1: _("メリーがまってるわ！"), serif2: _("メリーがまってるわ！"), serif3: _("メリーがまってるわ！"), serif4: _("メリーがまってるわ！"), "option": {"resetFlag": "chapter4-20-renmeri"}},
 			],
 			x:359.50*2/3, y:762.*2/3,
 			scale: 2/3,
 			sound_name: null,
 			position_type: "lying",
-			show_if_event_true: "chapter4-23-show_tape4",
+			not_show_if_event_true: "chapter6-23-got_newtape",
 		},
 	],
 };

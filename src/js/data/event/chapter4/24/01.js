@@ -88,6 +88,9 @@ module.exports = {
 			],
 		]},
 
+		// 4-20 に蓮メリを表示
+		{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4-20-renmeri"]},
+
 		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
 	],
 };

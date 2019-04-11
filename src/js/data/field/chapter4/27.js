@@ -53,6 +53,7 @@ module.exports = {
 			anime6: null,
 			action_name: null,
 			sound_name: null,
+			not_show_if_event_true: "chapter6-23-got_newtape",
 		},
 		{
 			no: "tewireal",
