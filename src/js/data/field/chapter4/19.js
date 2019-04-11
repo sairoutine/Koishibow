@@ -30,44 +30,8 @@ module.exports = {
 			turn_toward_me: true, // こいしの方を向く
 			serif_back: [],
 			serif: [
-				// 新品のカセットテープが出現していたら
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter4-23-show_tape4"], "serifs": [
-					[
-						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_19-reisen-limit1", 1], "serifs": [
-							[
-
-								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("あら"), serif2: _("あら"), serif3: _("あら"), serif4: _("あら")},
-								{"chara": "reisen", "exp": null,  serif1: _("見ない顔ね"), serif2: _("見ない顔ね"), serif3: _("見ない顔ね"), serif4: _("見ない顔ね")},
-								{"chara": "reisen", "exp": "reisen-reaction_02",  serif1: _("迷子なの？"), serif2: _("迷子なの？"), serif3: _("迷子なの？"), serif4: _("迷子なの？")},
-								{"chara": "koishi", "exp": "look_bottom", "serif": _("違うよ")},
-								{"chara": "reisen", "exp": "reisen-wait", "serif": _("ふーん")},
-								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("あなたお名前は？"), serif2: _("あなたお名前は？"), serif3: _("あなたお名前は？"), serif4: _("あなたお名前は？")},
-								{"chara": "koishi", "exp": "yes", "serif": _("こいし")},
-								{"chara": "reisen", "exp": "reisen-reaction_02",  serif1: _("やっぱり聞かない名前ね"), serif2: _("やっぱり聞かない名前ね"), serif3: _("やっぱり聞かない名前ね"), serif4: _("やっぱり聞かない名前ね")},
-								{"chara": "reisen", "exp": null,  serif1: _("ここから出たいの？"), serif2: _("ここから出たいの？"), serif3: _("ここから出たいの？"), serif4: _("ここから出たいの？")},
-								{"chara": "koishi", "exp": "look_bottom",  serif1: _("私じゃなくて"), serif2: _("私じゃなくて"), serif3: _("私じゃなくて"), serif4: _("私じゃなくて")},
-								{"chara": "koishi", "exp": null,  serif1: _("友達がね"), serif2: _("友達がね"), serif3: _("友達がね"), serif4: _("友達がね")},
-								{"chara": "reisen", "exp": "reisen-reaction_03", "serif": _("ふーん")},
-								{"chara": "reisen", "exp": null,  serif1: _("友達は人間なの？"), serif2: _("友達は人間なの？"), serif3: _("友達は人間なの？"), serif4: _("友達は人間なの？")},
-								{"chara": "koishi", "exp": "look_front",  serif1: _("どういうこと？"), serif2: _("どういうこと？"), serif3: _("どういうこと？"), serif4: _("どういうこと？")},
-								{"chara": "reisen", "exp": "reisen-reaction_02",  serif1: _("......人間が友達なの？"), serif2: _("......人間が友達なの？"), serif3: _("......人間が友達なの？"), serif4: _("......人間が友達なの？")},
-								{"chara": "koishi", "exp": "yes", "serif": _("そう！")},
-								{"chara": "reisen", "exp": null,  serif1: _("あんた妖怪なんでしょ？"), serif2: _("あんた妖怪なんでしょ？"), serif3: _("あんた妖怪なんでしょ？"), serif4: _("あんた妖怪なんでしょ？")},
-								{"chara": "koishi", "exp": "look_bottom", "serif": _("違うよ")},
-								{"chara": "reisen", "exp": null,  serif1: _("そう？"), serif2: _("そう？"), serif3: _("そう？"), serif4: _("そう？")},
-								{"chara": "reisen", "exp": null,  serif1: _("あなた私より余程妖怪らしいわよ"), serif2: _("あなた私より余程妖怪らしいわよ"), serif3: _("あなた私より余程妖怪らしいわよ"), serif4: _("あなた私より余程妖怪らしいわよ")},
-								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("私は鈴仙よ"), serif2: _("私は鈴仙よ"), serif3: _("私は鈴仙よ"), serif4: _("私は鈴仙よ")},
-								{"chara": "reisen", "exp": null,  serif1: _("もし薬が必要だったらよろしく"), serif2: _("もし薬が必要だったらよろしく"), serif3: _("もし薬が必要だったらよろしく"), serif4: _("もし薬が必要だったらよろしく")},
-							],
-							[
-								{"chara": "koishi", "exp": "look_front",  serif1: _("薬屋さんなの？"), serif2: _("薬屋さんなの？"), serif3: _("薬屋さんなの？"), serif4: _("薬屋さんなの？")},
-								{"chara": "reisen", "exp": null,  serif1: _("いや、私は薬売り"), serif2: _("いや、私は薬売り"), serif3: _("いや、私は薬売り"), serif4: _("いや、私は薬売り")},
-								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("薬を作っているお医者先生はまた別"), serif2: _("薬を作っているお医者先生はまた別"), serif3: _("薬を作っているお医者先生はまた別"), serif4: _("薬を作っているお医者先生はまた別")},
-								{"chara": "koishi", "exp": "wait", "serif": _("ふーん")},
-								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("人間用の薬がほとんどだけどね"), serif2: _("人間用の薬がほとんどだけどね"), serif3: _("人間用の薬がほとんどだけどね"), serif4: _("人間用の薬がほとんどだけどね")},
-							],
-						]},
-					],
+					// 新品のカセットテープが出現していたら
 					[
 						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_19-reisen-limit2", 2], "serifs": [
 							[
@@ -121,6 +85,44 @@ module.exports = {
 							],
 						]}
 					],
+					// 新品のカセットテープが出現していない
+					[
+						{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter4_19-reisen-limit1", 1], "serifs": [
+							[
+
+								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("あら"), serif2: _("あら"), serif3: _("あら"), serif4: _("あら")},
+								{"chara": "reisen", "exp": null,  serif1: _("見ない顔ね"), serif2: _("見ない顔ね"), serif3: _("見ない顔ね"), serif4: _("見ない顔ね")},
+								{"chara": "reisen", "exp": "reisen-reaction_02",  serif1: _("迷子なの？"), serif2: _("迷子なの？"), serif3: _("迷子なの？"), serif4: _("迷子なの？")},
+								{"chara": "koishi", "exp": "look_bottom", "serif": _("違うよ")},
+								{"chara": "reisen", "exp": "reisen-wait", "serif": _("ふーん")},
+								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("あなたお名前は？"), serif2: _("あなたお名前は？"), serif3: _("あなたお名前は？"), serif4: _("あなたお名前は？")},
+								{"chara": "koishi", "exp": "yes", "serif": _("こいし")},
+								{"chara": "reisen", "exp": "reisen-reaction_02",  serif1: _("やっぱり聞かない名前ね"), serif2: _("やっぱり聞かない名前ね"), serif3: _("やっぱり聞かない名前ね"), serif4: _("やっぱり聞かない名前ね")},
+								{"chara": "reisen", "exp": null,  serif1: _("ここから出たいの？"), serif2: _("ここから出たいの？"), serif3: _("ここから出たいの？"), serif4: _("ここから出たいの？")},
+								{"chara": "koishi", "exp": "look_bottom",  serif1: _("私じゃなくて"), serif2: _("私じゃなくて"), serif3: _("私じゃなくて"), serif4: _("私じゃなくて")},
+								{"chara": "koishi", "exp": null,  serif1: _("友達がね"), serif2: _("友達がね"), serif3: _("友達がね"), serif4: _("友達がね")},
+								{"chara": "reisen", "exp": "reisen-reaction_03", "serif": _("ふーん")},
+								{"chara": "reisen", "exp": null,  serif1: _("友達は人間なの？"), serif2: _("友達は人間なの？"), serif3: _("友達は人間なの？"), serif4: _("友達は人間なの？")},
+								{"chara": "koishi", "exp": "look_front",  serif1: _("どういうこと？"), serif2: _("どういうこと？"), serif3: _("どういうこと？"), serif4: _("どういうこと？")},
+								{"chara": "reisen", "exp": "reisen-reaction_02",  serif1: _("......人間が友達なの？"), serif2: _("......人間が友達なの？"), serif3: _("......人間が友達なの？"), serif4: _("......人間が友達なの？")},
+								{"chara": "koishi", "exp": "yes", "serif": _("そう！")},
+								{"chara": "reisen", "exp": null,  serif1: _("あんた妖怪なんでしょ？"), serif2: _("あんた妖怪なんでしょ？"), serif3: _("あんた妖怪なんでしょ？"), serif4: _("あんた妖怪なんでしょ？")},
+								{"chara": "koishi", "exp": "look_bottom", "serif": _("違うよ")},
+								{"chara": "reisen", "exp": null,  serif1: _("そう？"), serif2: _("そう？"), serif3: _("そう？"), serif4: _("そう？")},
+								{"chara": "reisen", "exp": null,  serif1: _("あなた私より余程妖怪らしいわよ"), serif2: _("あなた私より余程妖怪らしいわよ"), serif3: _("あなた私より余程妖怪らしいわよ"), serif4: _("あなた私より余程妖怪らしいわよ")},
+								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("私は鈴仙よ"), serif2: _("私は鈴仙よ"), serif3: _("私は鈴仙よ"), serif4: _("私は鈴仙よ")},
+								{"chara": "reisen", "exp": null,  serif1: _("もし薬が必要だったらよろしく"), serif2: _("もし薬が必要だったらよろしく"), serif3: _("もし薬が必要だったらよろしく"), serif4: _("もし薬が必要だったらよろしく")},
+							],
+							[
+								{"chara": "koishi", "exp": "look_front",  serif1: _("薬屋さんなの？"), serif2: _("薬屋さんなの？"), serif3: _("薬屋さんなの？"), serif4: _("薬屋さんなの？")},
+								{"chara": "reisen", "exp": null,  serif1: _("いや、私は薬売り"), serif2: _("いや、私は薬売り"), serif3: _("いや、私は薬売り"), serif4: _("いや、私は薬売り")},
+								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("薬を作っているお医者先生はまた別"), serif2: _("薬を作っているお医者先生はまた別"), serif3: _("薬を作っているお医者先生はまた別"), serif4: _("薬を作っているお医者先生はまた別")},
+								{"chara": "koishi", "exp": "wait", "serif": _("ふーん")},
+								{"chara": "reisen", "exp": "reisen-reaction_01",  serif1: _("人間用の薬がほとんどだけどね"), serif2: _("人間用の薬がほとんどだけどね"), serif3: _("人間用の薬がほとんどだけどね"), serif4: _("人間用の薬がほとんどだけどね")},
+							],
+						]},
+					],
+
 				]},
 			],
 			x: 420*2/3, y: 565*2/3,
@@ -132,7 +134,6 @@ module.exports = {
 			anime6: null,
 			action_name: null,
 			sound_name: null,
-			show_if_event_true: "chapter4_25_40440", // 死体のそばの優曇華に一度会っている
 		},
 		{
 			no: ++I,

@@ -21,35 +21,41 @@ module.exports = {
 	background: "chapter4-20-bg-001",
 	walkSound: "walking_bare_sand",
 	initialProcess: [
-		{"type": "criteria", "value": "existsItem", "arguments": ["27"], "process": [
-			// テープ「お父さんお母さんへ」を持っている
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4-20-renmeri"], "process": [
+			// 蓮子とメリーが存在する
 			[
-				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_20_40800"], "process": [
-					// すでにアクセス済み
-					[],
-					// まだ未アクセス
+				{"type": "criteria", "value": "existsItem", "arguments": ["27"], "process": [
+					// テープ「お父さんお母さんへ」を持っている
 					[
-						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4-20-renmeri"]},
-						{"type": "process", "value": "playTalk", "arguments": [
+						{"type": "criteria", "value": "isPlayed", "arguments": ["chapter4_20_40800"], "process": [
+							// すでにアクセス済み
+							[],
+							// まだ未アクセス
 							[
-								{"chara": "renko", "exp": "renko-reaction_01",  serif1: _("もう東洋哲学はいいわ"), serif2: _("もう東洋哲学はいいわ"), serif3: _("もう東洋哲学はいいわ"), serif4: _("もう東洋哲学はいいわ")},
-								{"chara": "renko", "exp": null,  serif1: _("認知の外側について考えるのは人に任せるわ"), serif2: _("認知の外側について考えるのは人に任せるわ"), serif3: _("認知の外側について考えるのは人に任せるわ"), serif4: _("認知の外側について考えるのは人に任せるわ")},
-								{"chara": "renko", "exp": "renko-reaction_04",  serif1: _("私プラグマティストなの"), serif2: _("私プラグマティストなの"), serif3: _("私プラグマティストなの"), serif4: _("私プラグマティストなの")},
-								{"chara": "renko", "exp": "renko-reaction_03",  serif1: _("確認しようのない秘封を\nもとめるなんてナンセンスよ"), serif2: _("確認しようのない秘封を\nもとめるなんてナンセンスよ"), serif3: _("確認しようのない秘封を\nもとめるなんてナンセンスよ"), serif4: _("確認しようのない秘封を\nもとめるなんてナンセンスよ")},
-								{"chara": "merry", "exp": "merry-reaction_12",  serif1: _("蓮子、もうやめて"), serif2: _("蓮子、もうやめて"), serif3: _("蓮子、もうやめて"), serif4: _("蓮子、もうやめて")},
-								{"chara": "renko", "exp": "renko-reaction_01",  serif1: _("理解に苦しむわ、哲学を語るくせに\nこいつカントを読んでないのよ"), serif2: _("理解に苦しむわ、哲学を語るくせに\nこいつカントを読んでないのよ"), serif3: _("理解に苦しむわ、哲学を語るくせに\nこいつカントを読んでないのよ"), serif4: _("理解に苦しむわ、哲学を語るくせに\nこいつカントを読んでないのよ")},
-								{"chara": "merry", "exp": "merry-reaction_05",  serif1: _("地蔵がしゃべっているのよ"), serif2: _("地蔵がしゃべっているのよ"), serif3: _("地蔵がしゃべっているのよ"), serif4: _("地蔵がしゃべっているのよ")},
-								{"chara": "merry", "exp": "merry-reaction_03",  serif1: _("あなたカントにはあったことないでしょ"), serif2: _("あなたカントにはあったことないでしょ"), serif3: _("あなたカントにはあったことないでしょ"), serif4: _("あなたカントにはあったことないでしょ")},
-								{"chara": "merry", "exp": "merry-reaction_05",  serif1: _("でも地蔵はほら、いるのよ"), serif2: _("でも地蔵はほら、いるのよ"), serif3: _("でも地蔵はほら、いるのよ"), serif4: _("でも地蔵はほら、いるのよ")},
-							]
+								{"type": "process", "value": "playTalk", "arguments": [
+									[
+										{"chara": "renko", "exp": "renko-reaction_01",  serif1: _("もう東洋哲学はいいわ"), serif2: _("もう東洋哲学はいいわ"), serif3: _("もう東洋哲学はいいわ"), serif4: _("もう東洋哲学はいいわ")},
+										{"chara": "renko", "exp": null,  serif1: _("認知の外側について考えるのは人に任せるわ"), serif2: _("認知の外側について考えるのは人に任せるわ"), serif3: _("認知の外側について考えるのは人に任せるわ"), serif4: _("認知の外側について考えるのは人に任せるわ")},
+										{"chara": "renko", "exp": "renko-reaction_04",  serif1: _("私プラグマティストなの"), serif2: _("私プラグマティストなの"), serif3: _("私プラグマティストなの"), serif4: _("私プラグマティストなの")},
+										{"chara": "renko", "exp": "renko-reaction_03",  serif1: _("確認しようのない秘封を\nもとめるなんてナンセンスよ"), serif2: _("確認しようのない秘封を\nもとめるなんてナンセンスよ"), serif3: _("確認しようのない秘封を\nもとめるなんてナンセンスよ"), serif4: _("確認しようのない秘封を\nもとめるなんてナンセンスよ")},
+										{"chara": "merry", "exp": "merry-reaction_12",  serif1: _("蓮子、もうやめて"), serif2: _("蓮子、もうやめて"), serif3: _("蓮子、もうやめて"), serif4: _("蓮子、もうやめて")},
+										{"chara": "renko", "exp": "renko-reaction_01",  serif1: _("理解に苦しむわ、哲学を語るくせに\nこいつカントを読んでないのよ"), serif2: _("理解に苦しむわ、哲学を語るくせに\nこいつカントを読んでないのよ"), serif3: _("理解に苦しむわ、哲学を語るくせに\nこいつカントを読んでないのよ"), serif4: _("理解に苦しむわ、哲学を語るくせに\nこいつカントを読んでないのよ")},
+										{"chara": "merry", "exp": "merry-reaction_05",  serif1: _("地蔵がしゃべっているのよ"), serif2: _("地蔵がしゃべっているのよ"), serif3: _("地蔵がしゃべっているのよ"), serif4: _("地蔵がしゃべっているのよ")},
+										{"chara": "merry", "exp": "merry-reaction_03",  serif1: _("あなたカントにはあったことないでしょ"), serif2: _("あなたカントにはあったことないでしょ"), serif3: _("あなたカントにはあったことないでしょ"), serif4: _("あなたカントにはあったことないでしょ")},
+										{"chara": "merry", "exp": "merry-reaction_05",  serif1: _("でも地蔵はほら、いるのよ"), serif2: _("でも地蔵はほら、いるのよ"), serif3: _("でも地蔵はほら、いるのよ"), serif4: _("でも地蔵はほら、いるのよ")},
+									]
+								]},
+								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_20_40800"]}
+							],
 						]},
-						{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter4_20_40800"]}
 					],
+					// テープ「お父さんお母さんへ」を持っていない
+					[
+					]
 				]},
 			],
-			// テープ「お父さんお母さんへ」を持っていない
-			[
-			]
+			// 蓮子とメリーが存在しない
+			[],
 		]},
 	],
 	objects: [
