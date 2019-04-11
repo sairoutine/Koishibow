@@ -180,7 +180,7 @@ module.exports = {
 		{
 			no: ++I,
 			type: CONSTANT.JOURNAL_BACK_TYPE,
-			x: 150, y: 450,
+			x: 81, y: 650,
 			journal_id: "journal007",
 		},
 
