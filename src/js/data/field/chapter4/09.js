@@ -48,7 +48,7 @@ module.exports = {
 								{"chara": "merry", "exp": "merry-reaction_05",  serif1: _("ちょっと待って"), serif2: _("ちょっと待って"), serif3: _("ちょっと待って"), serif4: _("ちょっと待って")},
 								{"chara": "koishi", "exp": "look_front", "serif": _("なに？")},
 								{"chara": "merry", "exp": "merry-reaction_09",  serif1: _("蓮子を見つけないと"), serif2: _("蓮子を見つけないと"), serif3: _("蓮子を見つけないと"), serif4: _("蓮子を見つけないと")},
-								{"chara": "merry", "exp": "merry-reaction_03",  serif1: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif2: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif3: _("これ以上進むとはぐれたところからどんどん離れちゃう"), serif4: _("これ以上進むとはぐれたところからどんどん離れちゃう")},
+								{"chara": "merry", "exp": "merry-reaction_03",  serif1: _("このまま進んじゃうと\nもっとはぐれちゃいそう"), serif2: _("このまま進んじゃうと\nもっとはぐれちゃいそう"), serif3: _("このまま進んじゃうと\nもっとはぐれちゃいそう"), serif4: _("このまま進んじゃうと\nもっとはぐれちゃいそう")},
 								{"chara": "koishi", "exp": "yes", "serif": _("わかった")},
 							],
 						]},

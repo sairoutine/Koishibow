@@ -63,7 +63,7 @@ module.exports = {
 					[
 						{"id": "chapter6-04-show_eyedrops", "save": true},
 						{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj02",  serif1: _("一体どうなってるんだ！"), serif2: _("一体どうなってるんだ！"), serif3: _("一体どうなってるんだ！"), serif4: _("一体どうなってるんだ！")},
-						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("あんなに大きいのに可阿呆はまだ喋らないぞ"), serif2: _("あんなに大きいのに可阿呆はまだ喋らないぞ"), serif3: _("あんなに大きいのに可阿呆はまだ喋らないぞ"), serif4: _("あんなに大きいのに可阿呆はまだ喋らないぞ")},
+						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("あんなに大きいのに片方はまだ喋らないぞ"), serif2: _("あんなに大きいのに片方はまだ喋らないぞ"), serif3: _("あんなに大きいのに片方はまだ喋らないぞ"), serif4: _("あんなに大きいのに片方はまだ喋らないぞ")},
 						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("ちゃんと面倒みてるのか"), serif2: _("ちゃんと面倒みてるのか"), serif3: _("ちゃんと面倒みてるのか"), serif4: _("ちゃんと面倒みてるのか")},
 						{"chara": "chapter6-10-obj03","exp": "chapter6-10-obj03-obj03",  serif1: _("そんな"), serif2: _("そんな"), serif3: _("そんな"), serif4: _("そんな")},
 						{"chara": "chapter6-10-obj03","exp": null,  serif1: _("私は精一杯――"), serif2: _("私は精一杯――"), serif3: _("私は精一杯――"), serif4: _("私は精一杯――")},

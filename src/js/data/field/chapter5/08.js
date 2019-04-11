@@ -90,7 +90,7 @@ module.exports = {
 				{"chara": "koishi","exp": null,  serif1: _("だから気にしなくてもいいんだよ"), serif2: _("だから気にしなくてもいいんだよ"), serif3: _("だから気にしなくてもいいんだよ"), serif4: _("だから気にしなくてもいいんだよ")},
 				{"chara": "animal_uma","exp": "animal_uma-ura_reaction_01", "serif": _("......")},
 				{"chara": "koishi","exp": null,  serif1: _("いい子だから教えて？"), serif2: _("いい子だから教えて？"), serif3: _("いい子だから教えて？"), serif4: _("いい子だから教えて？")},
-				{"chara": "animal_uma","exp": "animal_uma-ura_reaction_01", "serif": _("......")},
+				{"chara": "animal_uma","exp": "animal_uma-ura_reaction_01", "serif": _("......犬からもらって、")},
 				{"chara": "animal_uma","exp": null,  serif1: _("地下に埋めました"), serif2: _("地下に埋めました"), serif3: _("地下に埋めました"), serif4: _("地下に埋めました")},
 				{"chara": "koishi","exp": null,  serif1: _("いいこね"), serif2: _("いいこね"), serif3: _("いいこね"), serif4: _("いいこね")},
 				{"chara": "animal_uma","exp": "animal_uma-ura_reaction_01", "serif": _("......")},

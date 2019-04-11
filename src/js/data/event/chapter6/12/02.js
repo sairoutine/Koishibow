@@ -15,11 +15,11 @@ module.exports = {
 		{"exp": null, "serif": _("賢い"), "option": {"x": 480, "y": 360, "loop": false}},
 		{"exp": null, "serif": _("かわいい"), "option": {"x": 480, "y": 360, "loop": false}},
 		{"exp": null, "serif": _("満点だってお前には不満だろう"), "option": {"x": 480, "y": 360, "loop": false}},
-		{"exp": null, "serif": _("それにひきかえお前は母親に似てしまったな"), "option": {"x": 480, "y": 360, "loop": false}},
+		{"exp": null, "serif": _("それにひきかえ\nこいつは母親に似てしまったな"), "option": {"x": 480, "y": 360, "loop": false}},
 		{"exp": null, "serif": _("こいつは閉じ込めておくんだ"), "option": {"x": 480, "y": 360, "loop": false}},
 		{"exp": null, "serif": _("入院中だと言えばいい"), "option": {"x": 480, "y": 360, "loop": false}},
 		{"exp": null, "serif": _("どうせ口はきけん！"), "option": {"x": 480, "y": 360, "loop": false}},
-		{"exp": null, "serif": _("さとりにはおめかしさせてから広間へ来るんだ"), "option": {"x": 480, "y": 360, "loop": false}},
+		{"exp": null, "serif": _("さとりにはおめかしさせてから連れて来るんだ"), "option": {"x": 480, "y": 360, "loop": false}},
 	],
 	endAnime: null,
 	endSounds: [

@@ -116,7 +116,7 @@ module.exports = {
 								{"chara": "koishi", "exp": null, "serif": "", "option": {"playEvent": "chapter4-19-event-01"}},
 							],
 							[
-								{"chara": "reisen", "exp": "reisen-reaction_01", "serif": _("死ぬってすごくこわいのよ")},
+								{"chara": "reisen", "exp": "reisen-reaction_01", "serif": _("死、つまり虚無を体験した気分は？")},
 								{"chara": "reisen", "exp": null, "serif": _("死は残酷な旅の始まりなの")},
 							],
 						]}
