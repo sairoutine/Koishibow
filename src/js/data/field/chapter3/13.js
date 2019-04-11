@@ -268,7 +268,7 @@ module.exports = {
 			anime6: "fran-reverse_omote",
 			action_name: null,
 			sound_name: null,
-			width: 120, height: 350,
+			width: 120, height: 400,
 			show_if_event_true: "chapter3-13-show_fran",
 		},
 
