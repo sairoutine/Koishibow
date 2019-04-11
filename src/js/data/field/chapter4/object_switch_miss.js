@@ -33,7 +33,7 @@ module.exports = {
 				{"chara": "merry","exp": null,  serif1: _("頑張ったわね"), serif2: _("頑張ったわね"), serif3: _("頑張ったわね"), serif4: _("頑張ったわね")},
 				{"chara": "renko","exp": "renko-reaction_01",  serif1: _("ちょっと"), serif2: _("ちょっと"), serif3: _("ちょっと"), serif4: _("ちょっと")},
 				{"chara": "merry","exp": "merry-reaction_06",  serif1: _("いいのよ"), serif2: _("いいのよ"), serif3: _("いいのよ"), serif4: _("いいのよ")},
-				{"chara": "merry","exp": "merry-reaction_09",  serif1: _("でもこれはちっちゃすぎて通れないから私は私のを探すわ"), serif2: _("でもこれはちっちゃすぎて通れないから私は私のを探すわ"), serif3: _("でもこれはちっちゃすぎて通れないから私は私のを探すわ"), serif4: _("でもこれはちっちゃすぎて通れないから私は私のを探すわ")},
+				{"chara": "merry","exp": "merry-reaction_09",  serif1: _("でもこれはちっちゃすぎて通れないから\n私は私のを探すわ"), serif2: _("でもこれはちっちゃすぎて通れないから\n私は私のを探すわ"), serif3: _("でもこれはちっちゃすぎて通れないから\n私は私のを探すわ"), serif4: _("でもこれはちっちゃすぎて通れないから\n私は私のを探すわ")},
 				{"chara": "koishi","exp": "look_front",  serif1: _("手伝おうか？"), serif2: _("手伝おうか？"), serif3: _("手伝おうか？"), serif4: _("手伝おうか？")},
 				{"chara": "renko","exp": "renko-reaction_04",  serif1: _("ううん大丈夫よ"), serif2: _("ううん大丈夫よ"), serif3: _("ううん大丈夫よ"), serif4: _("ううん大丈夫よ")},
 				{"chara": "merry","exp": "merry-reaction_06",  serif1: _("行きましょ"), serif2: _("行きましょ"), serif3: _("行きましょ"), serif4: _("行きましょ"), "option": {"playEvent": "chapter4-29-event-01"}}, // 40850 イベントを再生
