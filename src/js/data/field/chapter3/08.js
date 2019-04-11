@@ -73,6 +73,20 @@ module.exports = {
 		},
 		{
 			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "チルノが埋まってる雪山(当たり判定)",
+			serif: null,
+			x: 711.50*2/3, y: 693.50*2/3,
+			scale: 2/3,
+			action_name: null,
+			sound_name: null,
+			width: 150, height: 100,
+			show_if_event_true: "chapter3-08-show_cirnosnow",
+		},
+
+		{
+			no: ++I,
 			image: "chapter3-08-obj-02",
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "チルノが埋まってる雪山",
