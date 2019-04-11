@@ -72,7 +72,7 @@ var SceneEventPlayDoll = function(core) {
 	this.serif_position_of_kyoko = new ObjectPoint(this);
 	this.serif_position_of_kyoko.setPosition(this.width - 300, 200);
 	this.serif_position_of_koishi = new ObjectPoint(this);
-	this.serif_position_of_koishi.setPosition(300, 200);
+	this.serif_position_of_koishi.setPosition(400, 200);
 	this.serif_position_of_koishi_junction = new ObjectPoint(this);
 	this.serif_position_of_koishi_junction.setPosition(450, 550);
 
