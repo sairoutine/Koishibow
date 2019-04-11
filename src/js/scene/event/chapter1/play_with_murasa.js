@@ -14,15 +14,23 @@ var DrawSerif = require('../../../logic/draw_serif');
 
 var FieldMasterRepository = require('../../../repository/field');
 var CONSTANT = require('../../../constant');
-var ObjectStaticImage      = require('../../../object/pieces/static_image');
-var ObjectAnimeImage       = require('../../../object/pieces/anime_image');
-var ObjectJournal          = require('../../../object/pieces/journal_front');
-var ObjectAnimeEventImage  = require('../../../object/pieces/anime_event_image');
-var ObjectItem             = require('../../../object/pieces/item');
-var ObjectFieldChange      = require('../../../object/pieces/field_change');
-var ObjectAnimeDeadKoishi  = require('../../../object/pieces/anime_dead_koishi');
-var ObjectStaticEventImage = require('../../../object/pieces/static_event_image');
-var ObjectFaucet           = require('../../../object/pieces/faucet');
+
+var ObjectStaticImage          = require('../../../object/pieces/static_image');
+var ObjectAnimeImage           = require('../../../object/pieces/anime_image');
+var ObjectJournalFront         = require('../../../object/pieces/journal_front');
+var ObjectJournalBack          = require('../../../object/pieces/journal_back');
+var ObjectArrowBack            = require('../../../object/pieces/arrow_back');
+var ObjectAnimeEventImage      = require('../../../object/pieces/anime_event_image');
+var ObjectItem                 = require('../../../object/pieces/item');
+var ObjectFieldChange          = require('../../../object/pieces/field_change');
+var ObjectAnimeDeadKoishi      = require('../../../object/pieces/anime_dead_koishi');
+var ObjectStaticEventImage     = require('../../../object/pieces/static_event_image');
+var ObjectFaucet               = require('../../../object/pieces/faucet');
+var ObjectSuspendedTree        = require('../../../object/pieces/suspended_tree');
+var ObjectChapter0Hat          = require('../../../object/pieces/chapter0_hat');
+var ObjectChapter1Hashigo      = require('../../../object/pieces/chapter1_hashigo');
+var ObjectChapter6LastJunction = require('../../../object/pieces/chapter6_last_junction');
+var FieldMasterRepository      = require('../../../repository/field');
 
 
 
@@ -536,8 +544,14 @@ SceneEventPlayDoll.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.ANIME_IMAGE_TYPE) { // サードアイを当てると動くオブジェクト
 			object = new ObjectAnimeImage(this);
 		}
-		else if (data.type === CONSTANT.JOURNAL_FRONT_TYPE) { // ジャーナル
-			object = new ObjectJournal(this);
+		else if (data.type === CONSTANT.JOURNAL_FRONT_TYPE) { // ジャーナル(表)
+			object = new ObjectJournalFront(this);
+		}
+		else if (data.type === CONSTANT.JOURNAL_BACK_TYPE) { // ジャーナル(裏)
+			object = new ObjectJournalBack(this);
+		}
+		else if (data.type === CONSTANT.ARROW_BACK_TYPE) { // サードアイを当てると見える矢印
+			object = new ObjectArrowBack(this);
 		}
 		else if (data.type === CONSTANT.ANIME_EVENT_IMAGE_TYPE) { // イベント発生オブジェクト
 			object = new ObjectAnimeEventImage(this);
@@ -551,13 +565,24 @@ SceneEventPlayDoll.prototype._setupPieces = function() {
 		else if (data.type === CONSTANT.BUTTON_KOISHI_TYPE) {
 			object = new ObjectAnimeDeadKoishi(this);
 		}
+		else if (data.type === CONSTANT.KOISHI_HAT_TYPE) {
+			object = new ObjectChapter0Hat(this);
+		}
 		else if (data.type === CONSTANT.STATIC_EVENT_IMAGE_TYPE) {
 			object = new ObjectStaticEventImage(this);
 		}
 		else if (data.type === CONSTANT.FAUCET_TYPE) {
 			object = new ObjectFaucet(this);
 		}
-
+		else if (data.type === CONSTANT.SUSPENDED_TREE_TYPE) {
+			object = new ObjectSuspendedTree(this);
+		}
+		else if (data.type === CONSTANT.HASHIGO_TYPE) {
+			object = new ObjectChapter1Hashigo(this);
+		}
+		else if (data.type === CONSTANT.CHAPTER6_LAST_JUNCTION) {
+			object = new ObjectChapter6LastJunction(this);
+		}
 		else {
 			throw new Error ("Unknown object type error: " + data.type);
 		}
