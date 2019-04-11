@@ -25,15 +25,15 @@ module.exports = {
 		{"exp": "chapter4-24-event-01-obj02", "serif": _("それに聞いてちょうだい"), "option": {"x": 600, "y": 20, "loop": false, "sounds": [
 			{"name": "chapter4-24-event-01-02", "frame": 0},
 		]}},
-		{"exp": null, "serif": _("「あなたお名前は？」"), "option": {"x": 600, "y": 20, "loop": false, "sounds": [
+		{"exp": null, "serif": _("「あなたお名前は？」"), "option": {"x": 580, "y": 220, "loop": false, "sounds": [
 			{"name": "chapter4-24-event-01-01", "frame": 0},
 		]}},
-		{"exp": null, "serif": _("「こいし」"), "option": {"x": 500, "y": 250, "loop": false, "is_koishi": true}},
-		{"exp": null, "serif": _("「あなたは妖怪？」"), "option": {"x": 600, "y": 20, "loop": false}},
-		{"exp": null, "serif": _("「えっ」"), "option": {"x": 500, "y": 250, "loop": false, "is_koishi": true}},
-		{"exp": null, "serif": _("「よくわからない」"), "option": {"x": 500, "y": 250, "loop": false, "is_koishi": true}},
-		{"exp": null, "serif": _("「そう」"), "option": {"x": 600, "y": 20, "loop": false}},
-		{"exp": null, "serif": _("「ありがとう」"), "option": {"x": 600, "y": 20, "loop": false}},
+		{"exp": null, "serif": _("「こいし」"), "option": {"x": 580, "y": 220, "loop": false, "is_koishi": true}},
+		{"exp": null, "serif": _("「あなたは妖怪？」"), "option": {"x": 580, "y": 220, "loop": false}},
+		{"exp": null, "serif": _("「えっ」"), "option": {"x": 580, "y": 220, "loop": false, "is_koishi": true}},
+		{"exp": null, "serif": _("「よくわからない」"), "option": {"x": 580, "y": 220, "loop": false, "is_koishi": true}},
+		{"exp": null, "serif": _("「そう」"), "option": {"x": 580, "y": 220, "loop": false}},
+		{"exp": null, "serif": _("「ありがとう」"), "option": {"x": 580, "y": 220, "loop": false}},
 		{"exp": null, "serif": _("......"), "option": {"x": 350, "y": 20, "loop": false}},
 		{"exp": "chapter4-24-event-01-obj03", "serif": _("メリー、あなた疲れているのよ"), "option": {"x": 350, "y": 20, "loop": false, "sounds": [
 			{"name": "chapter4-24-event-01-03", "frame": 0},
