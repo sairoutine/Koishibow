@@ -301,7 +301,7 @@ module.exports = [
 		imageName: "item_23",
 		soundName: "got_item_common",
 		descriptionText:_("『unwelcome to the jungle』"),
-		examineText:_("私帰ったほうがいいの？"),
+		examineText:_("私もうかえったほうがいいの？"),
 	},
 	{
 		id: "31",
