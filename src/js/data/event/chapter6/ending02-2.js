@@ -24,8 +24,11 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
-		// タイトルへ
-		{"type": "process", "value": "changeScene", "arguments": ["title"]},
+		// スタッフロール
+		{"type": "process", "value": "changeScene", "arguments": ["movie", "./movie/production/chapter6_staffroll.mp4", function (core) {
+			// タイトルへ
+			core.scene_manager.changeScene("title");
+		}]},
 	],
 };
 

@@ -19,7 +19,7 @@ module.exports = {
 	endSounds: [
 	],
 	endProcess: [
-		// ゲームエンド タイトルへ
+		// 混沌フィールドへ
 		{"type": "process", "value": "changeField", "arguments": ["chapter6_14"]},
 	],
 };
