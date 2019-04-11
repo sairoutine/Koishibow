@@ -193,7 +193,10 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 		}
 	}
 
-	this.playBGM(field_data.bgm(), field_data.sub_bgms());
+	// BGM が設定されていればBGM再生
+	if (field_data.bgm()) {
+		this.playBGM(field_data.bgm(), field_data.sub_bgms());
+	}
 
 	// フィールド移動時にフェードイン／アウトする
 	this.core.scene_manager.setFadeIn(30,  "black");
