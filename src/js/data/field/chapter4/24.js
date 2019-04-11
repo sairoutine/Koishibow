@@ -102,7 +102,7 @@ module.exports = {
 								{"chara": "koishi", "exp": "yes", "serif": _("こいし")},
 								{"chara": "merry", "exp": "merry-reaction_10",  serif1: _("あなたは妖怪？"), serif2: _("あなたは妖怪？"), serif3: _("あなたは妖怪？"), serif4: _("あなたは妖怪？")},
 								{"chara": "koishi", "exp": "wait", "serif": _("えっ")},
-								{"chara": "koishi", "exp": "look_bottom",  serif1: _("よくわからない"), serif2: _("わかりません"), serif3: _("よくわかりません"), serif4: _("よくわかりません")},
+								{"chara": "koishi", "exp": "look_bottom",  serif1: _("よくわからない"), serif2: _("よくわからない"), serif3: _("よくわからない"), serif4: _("よくわからない")},
 								{"chara": "merry", "exp": "merry-reaction_06",  serif1: _("そう"), serif2: _("そう"), serif3: _("そう"), serif4: _("そう")},
 								{"chara": "merry", "exp": "merry-reaction_11", "serif": _("ありがとう"), "option": {"playEvent": "chapter4-24-event-01"}},
 							],
