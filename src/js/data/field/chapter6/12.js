@@ -50,9 +50,9 @@ module.exports = {
 			],
 			x: 320*2/3, y: 705*2/3,
 			scale: 2/3,
+			width: 200, height: 720,
 			action_name: null,
 			sound_name: null,
-			position_type: "lying",
 		},
 		{
 			no: ++I,
@@ -70,7 +70,6 @@ module.exports = {
 			scale: 2/3,
 			action_name: null,
 			sound_name: null,
-			position_type: "lying",
 		},
 		{
 			no: ++I,
@@ -93,7 +92,6 @@ module.exports = {
 			scale: 2/3,
 			action_name: null,
 			sound_name: null,
-			position_type: "lying",
 		},
 		{
 			no: "bm",
