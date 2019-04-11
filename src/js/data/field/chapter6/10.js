@@ -26,6 +26,8 @@ module.exports = {
 				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter6_10_secondaccess"], "process": [
 					// 2度目アクセス済み
 					[
+						// ここにはこないはず
+						{"type": "process", "value": "changeScene", "arguments": ["stage", "chapter6_13"]},
 					],
 					// 2度目まだ未アクセス
 					[
