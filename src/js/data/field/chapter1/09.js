@@ -162,5 +162,13 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 		},
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 820, y: 450,
+			journal_id: "journal009",
+		},
+
+
 	]
 };

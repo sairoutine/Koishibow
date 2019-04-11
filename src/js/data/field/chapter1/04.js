@@ -208,6 +208,14 @@ module.exports = {
 			scale: 2/3,
 			item_id: "07"
 		},
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 500, y: 515,
+			journal_id: "journal008",
+		},
+
+
 	],
 };
 

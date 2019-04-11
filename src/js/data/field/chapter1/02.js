@@ -45,7 +45,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "ベンチ",
 			serif: [
-				{"chara": "koishi", "serif": "", "option": {"getJournal": "journal015"}},
+				{"chara": "koishi", "serif": "", "option": {"getJournal": "journal006"}},
 				{"chara": "koishi", "serif": "", "option": {"changeScene": "event_for_chapter1_sit_at_busstop"}},
 			],
 			x: 693.50*2/3, y:619.50*2/3,
@@ -87,7 +87,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "バス停",
 			serif: [
-				{"chara": "koishi", serif1: _("わかんない"), serif2: _("わかんない"), serif3: _("わかんない"), serif4: _("わかんない")},
+				{"chara": "koishi", serif1: _("わかんない"), serif2: _("わかんない"), serif3: _("わかんない"), serif4: _("わかんない"),	"option": {"getJournal": "journal011"}},
 			],
 			x:1188.50*2/3, y:419.50*2/3,
 			scale: 2/3,

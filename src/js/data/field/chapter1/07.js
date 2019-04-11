@@ -42,6 +42,14 @@ module.exports = {
 			sound_name: "touch",
 			action_event: "event_for_chapter1_playdoll"
 		},
+
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_FRONT_TYPE,
+			x: 643, y:425,
+			journal_id: "journal013",
+		},
+
 	]
 };
 

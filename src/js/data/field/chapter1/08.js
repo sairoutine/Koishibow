@@ -222,6 +222,13 @@ module.exports = {
 			sound_name: null,
 			show_if_event_true: "event_for_chapter1_playdoll",
 		},
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 480, y: 450,
+			journal_id: "journal014",
+		},
+
 
 	]
 };

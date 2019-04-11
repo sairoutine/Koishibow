@@ -91,7 +91,17 @@ ObjectAnimeDeadKoishi.prototype._getSerif = function() {
 	var serif = SERIF_LIST[Math.floor(Math.random() * SERIF_LIST.length)];
 
 	return [
-		{"chara": "button_koishi", "exp": "reaction_01","serif": serif},
+
+		{"type": "criteria_serif", "criteria": "limit", "arguments": ["dead_koishi-limit", 1], "serifs": [
+			[
+				// 初回 ジャーナル獲得
+				{"chara": "koishi", "serif": "", "option": {"getJournal": "journal010"}},
+			],
+			[
+				// 2回目以降、ランダムセリフ
+				{"chara": "button_koishi", "exp": "reaction_01","serif": serif},
+			],
+		]},
 	];
 };
 

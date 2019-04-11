@@ -143,6 +143,28 @@ module.exports = {
 			sound_name: null,
 			show_if_event_true: "event_for_chapter1_playdoll",
 		},
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 349, y: 363,
+			journal_id: "journal009",
+		},
+		{
+			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "砂場の小山",
+			serif: [
+				{"chara": "koishi", "exp": "look_bottom",  serif1: _("あは！"), serif2: _("あは！"), serif3: _("あは！"), serif4: _("あは！")},
+				{"chara": "koishi", "exp": "look_bottom",  serif1: _("あしがくすぐったい"), serif2: _("あしがくすぐったい"), serif3: _("あしがくすぐったい"), serif4: _("あしがくすぐったい"), "option": {"getJournal":"journal015"}},
+			],
+			width: 0, height: 0,
+			x: 349, y: 363,
+			position_type: "lying",
+		},
+
+
+
 
 	]
 };
