@@ -295,7 +295,6 @@ AssetsConfig.images = {
 
 	// chapter3
 
-	"snow_mist": "./image/production/snow_mist.png",
 	"chapter3-myroom-obj-05-01": "./image/production/chapter3/myroom/chapter3-myroom-obj-05-01.png",
 	"chapter3-06-bg-001": "./image/production/chapter3/chapter3-06/chapter3-06-bg-001.jpg",
 	"chapter3-mspassage-obj-01": "./image/production/chapter3/chapter3-06/chapter3-mspassage-obj-01.png",
@@ -348,7 +347,6 @@ AssetsConfig.images = {
 	"chapter3-13-obj-05": "./image/production/chapter3/chapter3-13/chapter3-13-obj-05.png",
     
 	// chapter4
-	"dark-mist": "./image/production/dark-mist.png",
 	"chapter4-01-bg-001": "./image/production/chapter4/chapter4-01/chapter4-01-bg-001.png",
 	"chapter4-02-bg-001": "./image/production/chapter4/chapter4-02/chapter4-02-bg-001.png",
 	"chapter4-03-bg-001": "./image/production/chapter4/chapter4-03/chapter4-03-bg-001.png",

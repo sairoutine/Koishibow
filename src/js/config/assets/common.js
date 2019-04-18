@@ -31,6 +31,10 @@ AssetsConfig.images = {
 	"light":  "./image/common/light.png",
 
 	"white_mist":            "./image/common/white-mist.png",
+	// chapter4 のもや
+	"dark-mist": "./image/common/dark-mist.png",
+	// chapter3 の雪
+	"snow_mist": "./image/common/snow_mist.png",
 
 	// 帽子獲得イベント
 	"get_hat_bg":  "./image/common/chapter0/event/get_hat/bg.png",
