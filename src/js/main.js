@@ -9,6 +9,7 @@ var i18n = require('i18n4v');
 i18n.translator.add({
 	'en'   : require('./data/translation/en.json'),
 	'ja'   : require('./data/translation/ja.json'),
+	'ch'   : require('./data/translation/ch.json'),
 }[CONSTANT.LANGUAGE]);
 
 
