@@ -30,6 +30,10 @@ SceneSubStageJournal.prototype.init = function(journal_id, return_subscene){
 	if (CONSTANT.LANGUAGE === 'en') {
 		this._picture_name = JournalMasterRepository.find(journal_id).imageEn();
 	}
+	// 簡体字版
+	else if (CONSTANT.LANGUAGE === 'ch') {
+		this._picture_name = JournalMasterRepository.find(journal_id).imageCh();
+	}
 	// 日本語版
 	else {
 		this._picture_name = JournalMasterRepository.find(journal_id).imageJa();

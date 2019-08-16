@@ -10,6 +10,7 @@ module.exports = [
 		title: _("愛着とは"),
 		imageJa: "journal001_ja",
 		imageEn: "journal001_en",
+		imageCh: "journal001_ch",
 	},
 	{
 		id: "journal002",
@@ -18,6 +19,7 @@ module.exports = [
 		title: _("イカれるとは"),
 		imageJa: "journal002_ja",
 		imageEn: "journal002_en",
+		imageCh: "journal002_ch",
 	},
 	{
 		id: "journal003",
@@ -26,6 +28,7 @@ module.exports = [
 		title: _("今見ている夢について"),
 		imageJa: "journal003_ja",
 		imageEn: "journal003_en",
+		imageCh: "journal003_ch",
 	},
 	{
 		id: "journal004",
@@ -34,6 +37,7 @@ module.exports = [
 		title: _("アクスライン"),
 		imageJa: "journal004_ja",
 		imageEn: "journal004_en",
+		imageCh: "journal004_ch",
 	},
 	{
 		id: "journal005",
@@ -42,6 +46,7 @@ module.exports = [
 		title: _("笑う赤ちゃん"),
 		imageJa: "journal005_ja",
 		imageEn: "journal005_en",
+		imageCh: "journal005_ch",
 	},
 
 	{
@@ -51,6 +56,7 @@ module.exports = [
 		title: _("子どもと大人"),
 		imageJa: "journal006_ja",
 		imageEn: "journal006_en",
+		imageCh: "journal006_ch",
 	},
 	{
 		id: "journal007",
@@ -59,6 +65,7 @@ module.exports = [
 		title: _("ハーロウの実験"),
 		imageJa: "journal007_ja",
 		imageEn: "journal007_en",
+		imageCh: "journal007_ch",
 	},
 	{
 		id: "journal008",
@@ -67,6 +74,7 @@ module.exports = [
 		title: _("ハーロウの実験Ⅱ"),
 		imageJa: "journal008_ja",
 		imageEn: "journal008_en",
+		imageCh: "journal008_ch",
 	},
 	{
 		id: "journal009",
@@ -75,6 +83,7 @@ module.exports = [
 		title: _("唯名論"),
 		imageJa: "journal009_ja",
 		imageEn: "journal009_en",
+		imageCh: "journal009_ch",
 	},
 	{
 		id: "journal010",
@@ -83,6 +92,7 @@ module.exports = [
 		title: _("わたしとあなた"),
 		imageJa: "journal010_ja",
 		imageEn: "journal010_en",
+		imageCh: "journal010_ch",
 	},
 	{
 		id: "journal011",
@@ -91,6 +101,7 @@ module.exports = [
 		title: _("バス時刻表"),
 		imageJa: "journal011_ja",
 		imageEn: "journal011_en",
+		imageCh: "journal011_ch",
 	},
 	{
 		id: "journal012",
@@ -99,6 +110,7 @@ module.exports = [
 		title: _("私の目標"),
 		imageJa: "journal012_ja",
 		imageEn: "journal012_en",
+		imageCh: "journal012_ch",
 	},
 	{
 		id: "journal013",
@@ -107,6 +119,7 @@ module.exports = [
 		title: _("みんなのやくそく"),
 		imageJa: "journal013_ja",
 		imageEn: "journal013_en",
+		imageCh: "journal013_ch",
 	},
 	{
 		id: "journal014",
@@ -115,6 +128,7 @@ module.exports = [
 		title: _("てがみ"),
 		imageJa: "journal014_ja",
 		imageEn: "journal014_en",
+		imageCh: "journal014_ch",
 	},
 	{
 		id: "journal015",
@@ -123,6 +137,7 @@ module.exports = [
 		title: _("親についての意見"),
 		imageJa: "journal015_ja",
 		imageEn: "journal015_en",
+		imageCh: "journal015_ch",
 	},
 	{
 		id: "journal016",

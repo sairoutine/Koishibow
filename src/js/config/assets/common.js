@@ -1,5 +1,6 @@
 'use strict';
-var _ = require('i18n4v')
+var _ = require('i18n4v');
+var CONSTANT = require('../../constant');
 
 var AssetsConfig = {};
 
@@ -95,6 +96,13 @@ AssetsConfig.images = {
 	"journal003_en":  "./image/common/journal/en/003.png",
 	"journal004_en":  "./image/common/journal/en/004.png",
 	"journal005_en":  "./image/common/journal/en/005.png",
+
+	// ジャーナル画像(簡体字)
+	"journal001_ch":  "./image/common/journal/ch/journal001.png",
+	"journal002_ch":  "./image/common/journal/ch/journal002.png",
+	"journal003_ch":  "./image/common/journal/ch/journal003.png",
+	"journal004_ch":  "./image/common/journal/ch/journal004.png",
+	"journal005_ch":  "./image/common/journal/ch/journal005.png",
 
 
 
@@ -836,11 +844,11 @@ AssetsConfig.bgms = [
 
 AssetsConfig.fonts = {
 	"OradanoGSRR": {
-		path: "OradanoGSRR.ttf",
+		path: CONSTANT.LANGUAGE === "ch" ? "MaShanZheng-Regular.ttf" : "OradanoGSRR.ttf",
 		format: "truetype",
 	},
 	"SerifFont": {
-		path: "cinecaption226.ttf",
+		path: CONSTANT.LANGUAGE === "ch" ? "ZCOOLQingKeHuangYou-Regular.ttf" : "cinecaption226.ttf",
 		format: "truetype",
 	},
 };

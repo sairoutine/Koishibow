@@ -8,18 +8,18 @@ var CONSTANT = {
 	VERSION: "1.0.0",
 
 	// 体験版モードかどうか
-	TRIAL: false,
+	TRIAL: true,
 
 	// 言語
-	LANGUAGE: "ja",
+	// LANGUAGE: "ja",
 	// LANGUAGE: "en",
-	// LANGUAGE: "ch",
+	LANGUAGE: "ch",
 
 	// ゲームを最初から始めた場合の最初のフィールド
 	INITIAL_CHAPTER: "opening_movie_chapter0",
 
 	// 新規ゲーム開始時に操作説明を表示するか否か
-	IS_SHOW_HOWTO: true,
+	IS_SHOW_HOWTO: false,
 
 	// 会話のタイプ速度
 	TYPOGRAPHY_SPEED: 5,
