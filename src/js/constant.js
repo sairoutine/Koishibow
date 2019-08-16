@@ -18,6 +18,9 @@ var CONSTANT = {
 	// ゲームを最初から始めた場合の最初のフィールド
 	INITIAL_CHAPTER: "opening_movie_chapter0",
 
+	// 新規ゲーム開始時に操作説明を表示するか否か
+	IS_SHOW_HOWTO: true,
+
 	// 会話のタイプ速度
 	TYPOGRAPHY_SPEED: 5,
 

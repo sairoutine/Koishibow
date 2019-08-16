@@ -17,7 +17,12 @@ var MENU = [
 		// セーブを消去
 		core.save_manager.del();
 
-		core.scene_manager.changeScene("howto");
+		if(CONSTANT.IS_SHOW_HOWTO) {
+			core.scene_manager.changeScene("howto");
+		}
+		else {
+			core.scene_manager.changeScene(CONSTANT.INITIAL_CHAPTER);
+		}
 	}],
 	// continue
 	["ui-titlepg-btn-con", function (core) {
