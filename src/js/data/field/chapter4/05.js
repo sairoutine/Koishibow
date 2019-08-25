@@ -70,7 +70,7 @@ module.exports = {
 			name: "カセットテープ「チャルメラ」",
 			serif: [
 				//カセットテープ「チャルメラ」獲得
-				{"chara": "koishi", "exp": "touch", "serif": _("またみっけた！	またあった！"), "option": {"getItem": "24"}},
+				{"chara": "koishi", "exp": "touch", "serif": _("またみっけた！またあった！"), "option": {"getItem": "24"}},
 				//カセットテープ「チャルメラ」を非表示
 				{"id": "chapter4-03-show_tape2", "save": true},
 				{"chara": "merry", "exp": "merry-reaction_05",  serif1: _("竹林の中にテープ？"), serif2: _("竹林の中にテープ？"), serif3: _("竹林の中にテープ？"), serif4: _("竹林の中にテープ？")},
