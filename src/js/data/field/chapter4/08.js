@@ -68,7 +68,7 @@ module.exports = {
 			image: "item_22",
 			name: "カセットプレイヤー",
 			serif: [
-				{"chara": "koishi", "exp": "look_front", "serif": _("あれ？")},
+				{"chara": "koishi", "exp": "look_front", "serif": _("CHAPTER4_FIELD_08_SERIF0001")},
 				{"chara": "koishi", "exp": null,  serif1: _("これひょっとして"), serif2: _("これひょっとして"), serif3: _("これひょっとして"), serif4: _("これひょっとして")},
 				{"chara": "merry", "exp": "merry-reaction_05", "serif": _("あ！")},
 				{"chara": "merry", "exp": "merry-reaction_07",  serif1: _("それがさっき言ってたものよ"), serif2: _("それがさっき言ってたものよ"), serif3: _("それがさっき言ってたものよ"), serif4: _("それがさっき言ってたものよ")},

@@ -21,7 +21,7 @@ module.exports = {
 			{"name": "chapter4-00-event-01-01", "frame": 10},
 		]}},
 		{"exp": null, "serif": _("おはよう"), "option": {"x": 325, "y": 125, "loop": false, "is_koishi": true}},
-		{"exp": null, "serif": _("あれ？"), "option": {"x": 325, "y": 125, "loop": false, "is_koishi": true}},
+		{"exp": null, "serif": _("CHAPTER4_FIELD_00_SERIF0001"), "option": {"x": 325, "y": 125, "loop": false, "is_koishi": true}},
 		{"exp": "chapter4-00-event-01-obj02", "serif": _("うーん"), "option": {"x": 376, "y": 176, "loop": false, "is_koishi": true, "sounds": [
 			{"name": "chapter4-00-event-01-02", "frame": 30},
 		]}},

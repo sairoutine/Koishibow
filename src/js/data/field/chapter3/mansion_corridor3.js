@@ -26,7 +26,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "振子時計",
 			serif: [
-				{"chara": "koishi","serif": _("あれ？")},
+				{"chara": "koishi","serif": _("CHAPTER3_FIELD_MANSION_CORRIDOR3_SERIF0001")},
 				{"chara": "koishi", serif1: _("動いてないな"), serif2: _("なんで動いてないんだろう？"), serif3: _("なんで動いてないんだろう？"), serif4: _("なんで動いてないんだろう？")},
 				{"chara": "koishi", serif1: _("寝ちゃったの？"), serif2: _("お姉ちゃんがネジ巻き忘れたのかな"), serif3: _("お姉ちゃんがネジ巻き忘れたのかな"), serif4: _("お姉ちゃんがネジ巻き忘れたのかな")},
 			],

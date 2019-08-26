@@ -18,7 +18,7 @@ module.exports = {
 		{"exp": "chapter4-07-event-01-obj02", "serif": _("わからない"), "option": {"x": 600, "y": 20, "loop": false}},
 		{"exp": null, "serif": _("ラッパみたいなものよ"), "option": {"x": 600, "y": 20, "loop": false}},
 		{"exp": null, "serif": _("ふーん"), "option": {"x": 500, "y": 250, "loop": false, "is_koishi": true}},
-		{"exp": "chapter4-07-event-01-obj03", "serif": _("あれ？"), "option": {"x": 200, "y": 0, "loop": false}},
+		{"exp": "chapter4-07-event-01-obj03", "serif": _("CHAPTER4_FIELD_07_SERIF0001"), "option": {"x": 200, "y": 0, "loop": false}},
 		{"exp": "chapter4-07-event-01-obj04", "serif": _("メリーみっけ"), "option": {"x": 350, "y": 20, "loop": false}},
 		{"exp": null, "serif": _("あっ蓮子！"), "option": {"x": 600, "y": 20, "loop": false}},
 		{"exp": null, "serif": _("よかった"), "option": {"x": 600, "y": 20, "loop": false}},

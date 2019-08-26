@@ -73,7 +73,7 @@ module.exports = {
 						{"chara": "koishi", "exp": "look_front", "serif": _("あ！")},
 						{"chara": "koishi", "exp": "touch", "serif": _("あった！"), "option": {"getItem": "25"}},
 						{"id": "chapter4-23-show_tape4", "save": true},
-						{"chara": "koishi", "exp": "look_top", "serif": _("あれ？")},
+						{"chara": "koishi", "exp": "look_top", "serif": _("CHAPTER4_FIELD_25_SERIF0001")},
 						{"chara": "koishi", "exp": null,  serif1: _("これちがう？"), serif2: _("メリーのじゃないかも"), serif3: _("メリーのじゃないかも"), serif4: _("メリーのじゃないかも")},
 					],
 					[

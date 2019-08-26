@@ -136,7 +136,7 @@ module.exports = {
 			type: CONSTANT.FAUCET_TYPE,
 			name: "蛇口",
 			serif: [
-				{"chara": "koishi", "exp": "back", "serif": _("あれ？")},
+				{"chara": "koishi", "exp": "back", "serif": _("CHAPTER1_FIELD_09_SERIF0001")},
 				{"chara": "koishi", "exp": "back",  serif1: _("水でないなー"), serif2: _("水でないなー"), serif3: _("水でないなー"), serif4: _("水でないなー")},
 			],
 			serif_back: [
