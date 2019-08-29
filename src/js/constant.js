@@ -8,12 +8,12 @@ var CONSTANT = {
 	VERSION: "1.0.0",
 
 	// 体験版モードかどうか
-	TRIAL: true,
+	TRIAL: false,
 
 	// 言語
 	// LANGUAGE: "ja",
-	// LANGUAGE: "en",
-	LANGUAGE: "ch",
+	LANGUAGE: "en",
+	// LANGUAGE: "ch",
 
 	// ゲームを最初から始めた場合の最初のフィールド
 	INITIAL_CHAPTER: "opening_movie_chapter0",
