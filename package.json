@@ -11,7 +11,7 @@
     "start": "electron ./public/electron.js",
     "clean": "rm -rf ./releases/*",
     "update-translation": "./update_translation.sh",
-    "build:win": "cd public && electron-packager ./ 3rdeye --overwrite --platform=win32  --arch=x64 --electron-version=1.6.0 --icon=icon.ico --out ../releases --ignore '(.m4a)' --asar",
+    "build:win": "cd public && electron-packager ./ 3rdeye --overwrite --platform=win32  --arch=x64 --electron-version=1.6.0 --icon=icon.ico --out ../releases --ignore '(.m4a)'",
     "build:mac": "cd public && electron-packager ./ 3rdeye --overwrite --platform=darwin --arch=x64 --electron-version=1.6.0 --icon=icon.icns --out ../releases --ignore '(.m4a)'",
     "build:trial:win": "cd public && electron-packager ./ 3rdeyeTrial --overwrite --platform=win32  --arch=x64 --electron-version=1.6.0 --icon=icon.ico --out ../releases --ignore '(production/|.m4a)' --asar",
     "build:trial:mac": "cd public && electron-packager ./ 3rdeyeTrial --overwrite --platform=darwin --arch=x64 --electron-version=1.6.0 --icon=icon.icns --out ../releases --ignore '(production/|.m4a)' --asar"
