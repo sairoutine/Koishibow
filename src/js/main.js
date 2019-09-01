@@ -30,6 +30,10 @@ window.onload = function() {
 	if (CONSTANT.DEBUG.ON) {
 		var debugDOM = document.getElementById('debug');
 		game.setupDebug(debugDOM);
+
+		// 背景色をデバッグ時は白へ
+		var body = document.getElementsByTagName('body')[0];
+		body.setAttribute("bgcolor", 'white');
 	}
 
 	// ゲーム起動
