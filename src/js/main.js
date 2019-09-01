@@ -46,7 +46,4 @@ window.changeFullScreen = function () {
 	game.fullscreen();
 };
 
-// Electron のレンダラプロセスならば
-if(window.require) {
-	window.require('electron').webFrame.setVisualZoomLevelLimits(1,1); //zoomさせない
-}
+
