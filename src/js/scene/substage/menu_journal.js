@@ -142,9 +142,13 @@ SceneSubStageJournalMenu.prototype._drawJournalImage = function(){
 		if (CONSTANT.LANGUAGE === 'en') {
 			journal_image_name = JournalMasterRepository.find(journal_id).imageEn();
 		}
-		// 英語版
+		// 簡体字版
 		else if (CONSTANT.LANGUAGE === 'ch') {
 			journal_image_name = JournalMasterRepository.find(journal_id).imageCh();
+		}
+		// 繁体字版
+		else if (CONSTANT.LANGUAGE === 'tw') {
+			journal_image_name = JournalMasterRepository.find(journal_id).imageTw();
 		}
 		// 日本語版
 		else {

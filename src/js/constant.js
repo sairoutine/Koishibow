@@ -14,6 +14,7 @@ var CONSTANT = {
 	// LANGUAGE: "ja",
 	LANGUAGE: "en",
 	// LANGUAGE: "ch",
+	// LANGUAGE: "tw",
 
 	// ゲームを最初から始めた場合の最初のフィールド
 	INITIAL_CHAPTER: "opening_movie_chapter0",

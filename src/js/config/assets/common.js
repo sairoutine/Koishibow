@@ -880,11 +880,11 @@ AssetsConfig.bgms = [
 
 AssetsConfig.fonts = {
 	"OradanoGSRR": {
-		path: CONSTANT.LANGUAGE === "ch" ? "MaShanZheng-Regular.ttf" : "OradanoGSRR.ttf",
+		path: (CONSTANT.LANGUAGE === "ch" || CONSTANT.LANGUAGE === "tw") ? "MaShanZheng-Regular.ttf" : "OradanoGSRR.ttf",
 		format: "truetype",
 	},
 	"SerifFont": {
-		path: CONSTANT.LANGUAGE === "ch" ? "ZCOOLQingKeHuangYou-Regular.ttf" : "cinecaption226.ttf",
+		path: (CONSTANT.LANGUAGE === "ch" || CONSTANT.LANGUAGE === "tw") ? "ZCOOLQingKeHuangYou-Regular.ttf" : "cinecaption226.ttf",
 		format: "truetype",
 	},
 };
