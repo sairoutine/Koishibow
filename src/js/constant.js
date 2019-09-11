@@ -11,8 +11,8 @@ var CONSTANT = {
 	TRIAL: false,
 
 	// 言語
-	// LANGUAGE: "ja",
-	LANGUAGE: "en",
+	LANGUAGE: "ja",
+	// LANGUAGE: "en",
 	// LANGUAGE: "ch",
 	// LANGUAGE: "tw",
 
