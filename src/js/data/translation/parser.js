@@ -1,6 +1,6 @@
 'use strict';
 const fs = require('fs');
-const rs = fs.createReadStream('./en.json');
+const rs = fs.createReadStream('./tw.json');
 const rl = require('readline');
 const rli = rl.createInterface(rs, {});
 
@@ -32,7 +32,7 @@ rli.on('close', () => {
 		value = val[1];
 		if (resultObj.hasOwnProperty(key)) {
 			if (value) {
-				resultObj[key] += '[DUPLICATED]' + value;
+				resultObj[key] = value;
 			}
 		} else {
 			// keyが存在しない場合は、新規でvalueをセット
@@ -40,6 +40,6 @@ rli.on('close', () => {
 		}
 	});
 	// JSONファイルとして、書き出し
-	fs.writeFile('parsed_data.json', JSON.stringify(resultObj, null, "\t\t"));
+	fs.writeFile('tw.json', JSON.stringify(resultObj, null, "\t\t"));
 });
 
