@@ -7,7 +7,7 @@
 	url = https://github.com/sairoutine/SsaPlayer.git
 [submodule "public/js/lib"]
 	path = public/js/lib
-	url = git@github.com:sairoutine/Koishibow-lib.git
+	url = https://github.com/sairoutine/Koishibow-lib.git
 [submodule "script/ContentBuilder"]
 	path = script/ContentBuilder
-	url = git@github.com:sairoutine/Koishibow-ContentBuilder.git
+	url = https://github.com/sairoutine/Koishibow-ContentBuilder.git
