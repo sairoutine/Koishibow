@@ -6,7 +6,6 @@ var base_scene = require('./base');
 var Util = require('../../hakurei').util;
 var JournalMasterRepository = require('../../repository/journal');
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
-var CONSTANT = require('../../constant');
 
 // 画面上に表示するジャーナルタイトルの数
 var SHOW_JOURNAL_NUM = 12;
@@ -138,22 +137,7 @@ SceneSubStageJournalMenu.prototype._drawJournalImage = function(){
 	var journal_image_name;
 	// ジャーナルを持っていれば
 	if (this._isPossess(journal_id)) {
-		// 英語版
-		if (CONSTANT.LANGUAGE === 'en') {
-			journal_image_name = JournalMasterRepository.find(journal_id).imageEn();
-		}
-		// 簡体字版
-		else if (CONSTANT.LANGUAGE === 'ch') {
-			journal_image_name = JournalMasterRepository.find(journal_id).imageCh();
-		}
-		// 繁体字版
-		else if (CONSTANT.LANGUAGE === 'tw') {
-			journal_image_name = JournalMasterRepository.find(journal_id).imageTw();
-		}
-		// 日本語版
-		else {
-			journal_image_name = JournalMasterRepository.find(journal_id).imageJa();
-		}
+		journal_image_name = JournalMasterRepository.find(journal_id).image();
 	}
 	// ジャーナルを持っていなければ
 	else {

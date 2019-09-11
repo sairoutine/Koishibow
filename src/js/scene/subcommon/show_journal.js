@@ -7,7 +7,6 @@ var base_scene = require('./base');
 var Util = require('../../hakurei').util;
 var JournalMasterRepository = require('../../repository/journal');
 var CONSTANT_BUTTON = require('../../hakurei').constant.button;
-var CONSTANT = require('../../constant');
 
 var SceneSubStageJournal = function(core) {
 	base_scene.apply(this, arguments);
@@ -26,22 +25,7 @@ SceneSubStageJournal.prototype.init = function(journal_id, return_subscene){
 	// 再生後の戻り先サブシーン
 	this._return_subscene = return_subscene || "play";
 
-	// 英語版
-	if (CONSTANT.LANGUAGE === 'en') {
-		this._picture_name = JournalMasterRepository.find(journal_id).imageEn();
-	}
-	// 簡体字版
-	else if (CONSTANT.LANGUAGE === 'ch') {
-		this._picture_name = JournalMasterRepository.find(journal_id).imageCh();
-	}
-	// 繁体字版
-	else if (CONSTANT.LANGUAGE === 'tw') {
-		this._picture_name = JournalMasterRepository.find(journal_id).imageTw();
-	}
-	// 日本語版
-	else {
-		this._picture_name = JournalMasterRepository.find(journal_id).imageJa();
-	}
+	this._picture_name = JournalMasterRepository.find(journal_id).image();
 
 	// 音を再生
 	this.core.audio_loader.playSound("show_journal");

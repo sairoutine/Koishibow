@@ -46,15 +46,7 @@ SceneHowto.prototype.draw = function(){
 
 	ctx.save();
 
-	var image_name;
-	// 英語版
-	if (CONSTANT.LANGUAGE === 'en') {
-		image_name = "howto_en";
-	}
-	// 日本語版
-	else {
-		image_name = "howto_ja";
-	}
+	var image_name = "howto";
 	var howto = this.core.image_loader.getImage(image_name);
 
 	ctx.translate(this.width/2, this.height/2);
