@@ -18,7 +18,7 @@ var Game = require('./game');
 
 var game;
 
-window.onload = function() {
+window.addEventListener('DOMContentLoaded', function() {
 	// Canvas
 	var mainCanvas = document.getElementById('mainCanvas');
 	// Game オブジェクト
@@ -41,8 +41,10 @@ window.onload = function() {
 	game.startRun();
 
 	// for phantomjs headless test
+	// and renderer.js
 	window.game = game;
-};
+});
+
 window.changeFullScreen = function () {
 	game.fullscreen();
 };
