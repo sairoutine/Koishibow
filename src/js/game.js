@@ -98,6 +98,9 @@ Game.prototype.init = function () {
 };
 
 
+Game.prototype.isSteam = function () {
+	return CONSTANT.STEAM;
+};
 
 Game.prototype.setupDebug = function (dom) {
 	if (!CONSTANT.DEBUG.ON) return;
