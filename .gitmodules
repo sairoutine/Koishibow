@@ -8,3 +8,6 @@
 [submodule "public/js/lib"]
 	path = public/js/lib
 	url = git@github.com:sairoutine/Koishibow-lib.git
+[submodule "script/ContentBuilder"]
+	path = script/ContentBuilder
+	url = git@github.com:sairoutine/Koishibow-ContentBuilder.git
