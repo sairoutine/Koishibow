@@ -94,7 +94,7 @@ module.exports = {
 			],
 			x:858.50*2/3, y:592*2/3,
 			scale: 2/3,
-			height: 200,
+			height: 250,
 			action_name: "touch",
 			sound_name: "chapter6-13-touch_chocolatebox",
 		},
