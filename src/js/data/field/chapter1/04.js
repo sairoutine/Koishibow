@@ -201,12 +201,28 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			type: CONSTANT.ITEM_TYPE,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "マイク",
 			image: "chapter1-04-obj-04",
+			serif: [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1-08-kyoko-_uraFirst"], "serifs": [
+					[
+						// 非表示
+						{"id": "chapter1-04-not_show_item07", "save": true},
+						// 獲得
+						{"chara": "koishi","serif":"", "option": {"getItem": "07"}},
+					],
+					[
+						{"chara": "koishi", "exp": "touch", "serif": _("？")},
+					],
+				]},
+			],
 			x: 970.50*2/3, y: 767.50*2/3,
+			height: 200,
 			scale: 2/3,
-			item_id: "07"
+			sound_name: null,
+			position_type: "lying",
+			not_show_if_event_true: "chapter1-04-not_show_item07",
 		},
 		{
 			no: ++I,

@@ -60,6 +60,7 @@ module.exports = {
 						{"chara": I,        "exp": "nitori-ura_reaction_03", "serif": _("きゅうりさんきゅうりさん\nうふふ")},
 					],
 					[
+						{"id": "chapter1-05-nitori-_uraFirst", "save": true},
 
 						{"chara": I,        "exp": "nitori-ura_reaction_01", "serif": _("なんでしらないひとと\nなかよくしなきゃいけないの？")},
 						{"chara": I,        "exp": "nitori-ura_reaction_01", "serif": _("ほんとうはしらないひと\nこわいのに......")},

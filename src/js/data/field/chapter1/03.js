@@ -40,17 +40,29 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			type: CONSTANT.ITEM_TYPE,
-			name: "ヘビ",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
 			image: "chapter1-03-obj-04",
+			name: "ヘビ",
+			serif: [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter1-05-nitori-_uraFirst"], "serifs": [
+					[
+						// 非表示
+						{"id": "chapter1-03-not_show_item06", "save": true},
+						// 獲得
+						{"chara": "koishi","serif":"", "option": {"getItem": "06"}},
+					],
+					[
+						{"chara": "koishi", "exp": "touch", "serif": _("？")},
+					],
+				]},
+			],
 			x:1157*2/3, y:687.50*2/3,
-			scale: 2/3,
-			item_id: "06",
 			height: 200,
+			scale: 2/3,
+			sound_name: null,
 			position_type: "lying",
+			not_show_if_event_true: "chapter1-03-not_show_item06",
 		},
-
-
 		{
 			no: ++I,
 			image: "chapter1-03-obj-02",

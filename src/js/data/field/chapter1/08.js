@@ -191,6 +191,7 @@ module.exports = {
 											],
 											// マイクを使用するまえ
 											[
+												{"id": "chapter1-08-kyoko-_uraFirst", "save": true},
 												// 1-16
 												{"chara": I, "exp": "kyoko-reaction_01",  serif1: _("............"), serif2: _("............"), serif3: _("............"), serif4: _("............")},
 												{"chara": "koishi",        "exp": "back",  serif1: _("あなた、どうしておくちがあかないの？"), serif2: _("あなた、どうしておくちがあかないの？"), serif3: _("あなた、どうしておくちがあかないの？"), serif4: _("あなた、どうしておくちがあかないの？")},
