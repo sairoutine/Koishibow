@@ -25,6 +25,7 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.fonts = {
+	// https://github.com/ButTaiwan/genyo-font
 	"OradanoGSRR": {
 		path: "GenYoMinTW-Regular.ttf",
 		format: "truetype",
