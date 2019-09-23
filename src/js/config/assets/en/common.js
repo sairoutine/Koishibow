@@ -24,4 +24,15 @@ AssetsConfig.images = {
 	"journal015":  "./image/common/journal/en/015.png",
 };
 
+AssetsConfig.fonts = {
+	"OradanoGSRR": {
+		path: "OradanoGSRR.ttf",
+		format: "truetype",
+	},
+	"SerifFont": {
+		path: "cinecaption226.ttf",
+		format: "truetype",
+	},
+};
+
 module.exports = AssetsConfig;

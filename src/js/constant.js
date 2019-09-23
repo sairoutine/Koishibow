@@ -8,7 +8,7 @@ var CONSTANT = {
 	TRIAL: false,
 
 	// Steamモードかどうか
-	STEAM: false,
+	STEAM: true,
 
 	// 言語
 	LANGUAGE: "ja",

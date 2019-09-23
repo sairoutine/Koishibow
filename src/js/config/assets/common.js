@@ -1,7 +1,5 @@
 'use strict';
 var _ = require('i18n4v');
-var CONSTANT = require('../../constant');
-
 var AssetsConfig = {};
 
 AssetsConfig.images = {
@@ -805,14 +803,6 @@ AssetsConfig.bgms = [
 	},
 ];
 
-AssetsConfig.fonts = {
-	"OradanoGSRR": {
-		path: (CONSTANT.LANGUAGE === "ch" || CONSTANT.LANGUAGE === "tw") ? "MaShanZheng-Regular.ttf" : "OradanoGSRR.ttf",
-		format: "truetype",
-	},
-	"SerifFont": {
-		path: (CONSTANT.LANGUAGE === "ch" || CONSTANT.LANGUAGE === "tw") ? "ZCOOLQingKeHuangYou-Regular.ttf" : "cinecaption226.ttf",
-		format: "truetype",
-	},
-};
+AssetsConfig.fonts = {};
+
 module.exports = AssetsConfig;

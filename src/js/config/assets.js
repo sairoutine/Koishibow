@@ -24,18 +24,30 @@ AssetsConfig.fonts  = Util.assign(Common.fonts,  CONSTANT.TRIAL ? {} : Productio
 if (CONSTANT.LANGUAGE === "ja") {
 	AssetsConfig.images = Util.assign(AssetsConfig.images, CommonJA.images);
 	AssetsConfig.images = Util.assign(AssetsConfig.images, CONSTANT.TRIAL ? {} : ProductionJA.images);
+
+	AssetsConfig.fonts = Util.assign(AssetsConfig.fonts, CommonJA.fonts);
+	AssetsConfig.fonts = Util.assign(AssetsConfig.fonts, CONSTANT.TRIAL ? {} : ProductionJA.fonts);
 }
 else if (CONSTANT.LANGUAGE === "en") {
 	AssetsConfig.images = Util.assign(AssetsConfig.images, CommonEN.images);
 	AssetsConfig.images = Util.assign(AssetsConfig.images, CONSTANT.TRIAL ? {} : ProductionEN.images);
+
+	AssetsConfig.fonts = Util.assign(AssetsConfig.fonts, CommonEN.fonts);
+	AssetsConfig.fonts = Util.assign(AssetsConfig.fonts, CONSTANT.TRIAL ? {} : ProductionEN.fonts);
 }
 else if (CONSTANT.LANGUAGE === "ch") {
 	AssetsConfig.images = Util.assign(AssetsConfig.images, CommonCH.images);
 	AssetsConfig.images = Util.assign(AssetsConfig.images, CONSTANT.TRIAL ? {} : ProductionCH.images);
+
+	AssetsConfig.fonts = Util.assign(AssetsConfig.fonts, CommonCH.fonts);
+	AssetsConfig.fonts = Util.assign(AssetsConfig.fonts, CONSTANT.TRIAL ? {} : ProductionCH.fonts);
 }
 else if (CONSTANT.LANGUAGE === "tw") {
 	AssetsConfig.images = Util.assign(AssetsConfig.images, CommonTW.images);
 	AssetsConfig.images = Util.assign(AssetsConfig.images, CONSTANT.TRIAL ? {} : ProductionTW.images);
+
+	AssetsConfig.fonts = Util.assign(AssetsConfig.fonts, CommonTW.fonts);
+	AssetsConfig.fonts = Util.assign(AssetsConfig.fonts, CONSTANT.TRIAL ? {} : ProductionTW.fonts);
 }
 else {
 	throw new Error("Invaid language.");
