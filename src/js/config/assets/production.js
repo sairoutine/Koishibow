@@ -266,8 +266,11 @@ AssetsConfig.images = {
 	// フィールドの画像とオブジェクト
 	//
 
-	// chapter3
+	// chapter2
+	"chapter2-07-bg-001": "./image/production/chapter2/chapter2-07/chapter2-07-bg-001.jpg",
+	"chapter2-07-obj-01": "./image/production/chapter2/chapter2-07/chapter2-07-obj-01.png",
 
+	// chapter3
 	"chapter3-myroom-obj-05-01": "./image/production/chapter3/myroom/chapter3-myroom-obj-05-01.png",
 	"chapter3-06-bg-001": "./image/production/chapter3/chapter3-06/chapter3-06-bg-001.jpg",
 	"chapter3-mspassage-obj-01": "./image/production/chapter3/chapter3-06/chapter3-mspassage-obj-01.png",
