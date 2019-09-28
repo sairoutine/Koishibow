@@ -3,27 +3,56 @@
 // ローディングシーン
 
 var base_scene = require('../hakurei').scene.base;
-var Util = require('../hakurei').util;
-var AssetsConfig = require('../config/assets');
 var CONSTANT = require('../constant');
+var Util = require('../hakurei').util;
+
+var Assets = {
+	"initial": require('../config/assets'),
+	"chapter0": require('../config/assets_chapter0'),
+	"chapter1": require('../config/assets_chapter1'),
+	"chapter2": require('../config/assets_chapter2'),
+	"chapter3": require('../config/assets_chapter3'),
+	"chapter4": require('../config/assets_chapter4'),
+	"chapter5": require('../config/assets_chapter5'),
+	"chapter6": require('../config/assets_chapter6'),
+};
 
 var SceneLoading = function(core) {
 	base_scene.apply(this, arguments);
 };
 Util.inherit(SceneLoading, base_scene);
 
-SceneLoading.prototype.init = function() {
+SceneLoading.prototype.init = function(group) {
 	base_scene.prototype.init.apply(this, arguments);
 
+	this._unloadAll();
+	this._load("initial");
+
+	if (group) {
+		this._load(group);
+	}
+};
+
+SceneLoading.prototype._unloadAll = function() {
+	for (var group in Assets) {
+		this._unload(group);
+	}
+};
+
+SceneLoading.prototype._load = function(group) {
+	var assets = Assets[group];
+
+	if (!assets) return;
+
 	// ゲームで使用する画像一覧
-	for (var key in AssetsConfig.images) {
-		var image_conf = AssetsConfig.images[key];
+	for (var key in assets.images) {
+		var image_conf = assets.images[key];
 		this.core.image_loader.loadImage(key, image_conf);
 	}
 
 	// ゲームで使用するSE一覧
-	for (var key2 in AssetsConfig.sounds) {
-		var conf2 = AssetsConfig.sounds[key2];
+	for (var key2 in assets.sounds) {
+		var conf2 = assets.sounds[key2];
 
 		// デバッグ用ミュート
 		var volume2 = CONSTANT.DEBUG.SOUND_OFF ? 0 : conf2.volume;
@@ -32,8 +61,8 @@ SceneLoading.prototype.init = function() {
 	}
 
 	// ゲームで使用するBGM一覧
-	for (var i = 0, len = AssetsConfig.bgms.length; i < len; i++) {
-		var conf3 = AssetsConfig.bgms[i];
+	for (var i = 0, len = assets.bgms.length; i < len; i++) {
+		var conf3 = assets.bgms[i];
 		// デバッグ用ミュート
 		var volume3 = CONSTANT.DEBUG.SOUND_OFF ? 0 : conf3.volume;
 
@@ -41,11 +70,42 @@ SceneLoading.prototype.init = function() {
 	}
 
 	// ゲームで使用するフォント
-	for (var key4 in AssetsConfig.fonts) {
-		var conf4 = AssetsConfig.fonts[key4];
+	for (var key4 in assets.fonts) {
+		var conf4 = assets.fonts[key4];
 		this.core.font_loader.loadFont(key4, conf4.path, conf4.format);
 	}
 };
+
+SceneLoading.prototype._unload = function(group) {
+	var assets = Assets[group];
+
+	if (!assets) return;
+
+	// ゲームで使用する画像一覧
+	for (var key in assets.images) {
+		this.core.image_loader.unloadImage(key);
+	}
+
+	// ゲームで使用するSE一覧
+	for (var key2 in assets.sounds) {
+		this.core.audio_loader.unloadSound(key2);
+	}
+
+	// ゲームで使用するBGM一覧
+	for (var i = 0, len = assets.bgms.length; i < len; i++) {
+		var conf3 = assets.bgms[i];
+		this.core.audio_loader.unloadBGM(conf3.key);
+	}
+
+	/* unloadFont が未実装のためコメントにする
+	// ゲームで使用するフォント
+	for (var key4 in assets.fonts) {
+		this.core.font_loader.unloadFont(key4);
+	}
+	*/
+};
+
+
 
 SceneLoading.prototype.update = function() {
 	base_scene.prototype.update.apply(this, arguments);
