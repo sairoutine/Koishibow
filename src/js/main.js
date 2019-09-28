@@ -5,8 +5,8 @@ var CONSTANT = require('./constant');
 // 多言語変換
 // NOTE: game class を require する前に実行すること
 //       data 配下の json が require される前に実行する必要があるため
-var i18n = require('i18n4v');
-i18n.translator.add({
+var _ = require('i18n4v');
+_.translator.add({
 	'en'   : require('./data/translation/en.json'),
 	'ja'   : require('./data/translation/ja.json'),
 	'ch'   : require('./data/translation/ch.json'),
@@ -48,5 +48,11 @@ window.addEventListener('DOMContentLoaded', function() {
 window.changeFullScreen = function () {
 	game.fullscreen();
 };
+window.confirmFullScreen = function () {
+	return window.confirm(_("SYSTEM_FULLSCREEN_DIALOG_MESSAGE"));
+};
 
+window.confirmClose = function () {
+	return window.confirm(_("SYSTEM_EXIT_DIALOG_MESSAGE"));
+};
 

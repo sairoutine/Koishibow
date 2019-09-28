@@ -1,5 +1,7 @@
 {
     "values": {
+		"SYSTEM_EXIT_DIALOG_MESSAGE": "請問要結束遊戲嗎？",
+		"SYSTEM_FULLSCREEN_DIALOG_MESSAGE": "要以全螢幕啟動嗎？",
         "へたくそ": "好弱啊",
         "何のつもりなの？": "你要幹嘛？",
         "あなたが悪いのよ": "是你不好啊",

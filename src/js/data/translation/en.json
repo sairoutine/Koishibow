@@ -1,5 +1,7 @@
 {
     "values": {
+		"SYSTEM_EXIT_DIALOG_MESSAGE": "Do you wish to exit the game?",
+		"SYSTEM_FULLSCREEN_DIALOG_MESSAGE": "Do you wish to make the window full screen?",
         "CHAPTER3_FIELD_08_SERIF0001": "Sure.",
         "CHAPTER3_FIELD_08_SERIF0002": "Hmm...",
         "CHAPTER3_FIELD_08_SERIF0003": "Fine!",

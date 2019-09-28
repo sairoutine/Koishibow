@@ -1,5 +1,7 @@
 {
     "values": {
+		"SYSTEM_EXIT_DIALOG_MESSAGE": "ゲームを終了しますがよろしいですか？",
+		"SYSTEM_FULLSCREEN_DIALOG_MESSAGE": "フルスクリーンで起動しますか？",
         "CHAPTER3_FIELD_08_SERIF0001": "うん",
         "CHAPTER3_FIELD_08_SERIF0002": "ふーん",
         "CHAPTER3_FIELD_08_SERIF0003": "いいよ",
