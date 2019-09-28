@@ -12,11 +12,21 @@ let mainWindow;
 const IS_JA = true;
 
 const FULLSCREEN_DIALOG_TITLE = IS_JA ? "フルスクリーン起動" : "Full Screen"
-const FULLSCREEN_DIALOG_MESSAGE = IS_JA ? 'フルスクリーンで起動しますか？' : "Do you make the window full screen?"
+const FULLSCREEN_DIALOG_MESSAGE = IS_JA ? 'フルスクリーンで起動しますか？' : "Do you wish to make the window full screen?"
 const EXIT_DIALOG_TITLE = IS_JA ? "終了" : "Exit"
-const EXIT_DIALOG_MESSAGE = IS_JA ? 'ゲームを終了しますがよろしいですか？' : "Do you exit the game?"
-
-
+const EXIT_DIALOG_MESSAGE = IS_JA ? 'ゲームを終了しますがよろしいですか？' : "Do you wish to exit the game?"
+/* tw
+フルスクリーン起動	啟動全螢幕模式
+フルスクリーンで起動しますか？	要以全螢幕啟動嗎？
+終了	結束
+ゲームを終了しますがよろしいですか？	請問要結束遊戲嗎？
+*/
+/* ch
+フルスクリーン起動	启动全屏模式
+フルスクリーンで起動しますか？	想要启动全屏模式吗？
+終了	结束
+ゲームを終了しますがよろしいですか？	您确定要结束游戏吗？
+*/
 function createWindow () {
 	// dialog 表示
 	var fullscreen_answer = dialog.showMessageBox({
