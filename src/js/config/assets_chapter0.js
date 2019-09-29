@@ -142,6 +142,26 @@ AssetsConfig.sounds = {
 		path: "./sound/common/chapter0/mansion_corridor3/open_and_falldown.ogg",
 		volume: 1.0,
 	},
+	chapter0_noise1:    {
+		path: "./sound/common/noise/chapter0/noise1.ogg",
+		volume: 1.0,
+	},
+	chapter0_noise2:    {
+		path: "./sound/common/noise/chapter0/noise2.ogg",
+		volume: 1.0,
+	},
+	chapter0_noise3:    {
+		path: "./sound/common/noise/chapter0/noise3.ogg",
+		volume: 1.0,
+	},
+	chapter0_noise4:    {
+		path: "./sound/common/noise/chapter0/noise4.ogg",
+		volume: 1.0,
+	},
+	chapter0_noise5:    {
+		path: "./sound/common/noise/chapter0/noise5.ogg",
+		volume: 1.0,
+	},
 };
 
 AssetsConfig.bgms = [

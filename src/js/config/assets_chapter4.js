@@ -240,7 +240,22 @@ AssetsConfig.sounds = {
 		path: "./sound/production/chapter4/20/fall_jizo.ogg",
 		volume: 1.0,
 	},
-
+	chapter4_noise1:    {
+		path: "./sound/common/noise/chapter4/noise1.ogg",
+		volume: 1.0,
+	},
+	chapter4_noise2:    {
+		path: "./sound/common/noise/chapter4/noise2.ogg",
+		volume: 1.0,
+	},
+	chapter4_noise3:    {
+		path: "./sound/common/noise/chapter4/noise3.ogg",
+		volume: 1.0,
+	},
+	chapter4_noise4:    {
+		path: "./sound/common/noise/chapter4/noise4.ogg",
+		volume: 1.0,
+	},
 	// カセットテープ
 	"chapter4-tape_23":    {
 		path: "./sound/production/chapter4/tape/23.ogg",

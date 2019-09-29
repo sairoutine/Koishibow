@@ -11,7 +11,7 @@ AssetsConfig.images = {
 	// 3rdeye 使用時の光
 	"light":  "./image/common/light.png",
 
-	"white_mist":            "./image/common/white-mist.png",
+	"white-mist":            "./image/common/white-mist.png",
 	// chapter4 のもや
 	"dark-mist": "./image/common/dark-mist.png",
 	// chapter3 の雪
