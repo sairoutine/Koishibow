@@ -56,8 +56,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "看板",
 			serif: [
-				{"chara": "koishi", serif1: _("こーえん？"), serif2: _("こーえん？"), serif3: _("こーえん？"), serif4: _("こーえん？")},
-				{"chara": "koishi", serif1: _("いってもいいかな"), serif2: _("いってもいいかな"), serif3: _("いってもいいかな"), serif4: _("いってもいいかな")},
+				{"chara": "koishi", serif1: _("公園だ！"), serif2: _("公園だ！"), serif3: _("公園だ！"), serif4: _("公園だ！")},
+				{"chara": "koishi", serif1: _("おねえちゃんは行っちゃだめって言ってたけど......"), serif2: _("おねえちゃんは行っちゃだめって言ってたけど......"), serif3: _("おねえちゃんは行っちゃだめって言ってたけど......"), serif4: _("おねえちゃんは行っちゃだめって言ってたけど......")},
 			],
 			x: 1189.50*2/3, y: 576*2/3,
 			scale: 2/3,
