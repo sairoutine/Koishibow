@@ -22,21 +22,42 @@ var SceneLoading = function(core) {
 };
 Util.inherit(SceneLoading, base_scene);
 
-SceneLoading.prototype.init = function(group) {
+SceneLoading.prototype.init = function(group, next_scene_name, varArgs) {
 	base_scene.prototype.init.apply(this, arguments);
 
-	this._unloadAll();
-	this._load("initial");
+	var args = Array.prototype.slice.call(arguments);
 
-	if (group) {
-		this._load(group);
+	if (args.length > 0) {
+		group = args.shift();
 	}
-};
+	else {
+		group = "initial";
+	}
 
-SceneLoading.prototype._unloadAll = function() {
-	for (var group in Assets) {
-		this._unload(group);
+	if (args.length > 0) {
+		this._next_scene_name_and_arguments = args;
 	}
+	else {
+		if (CONSTANT.DEBUG.START_SCENE) {
+			// デバッグ用
+			this._next_scene_name_and_arguments = CONSTANT.DEBUG.START_SCENE;
+		}
+		else {
+			// 本番
+			this._next_scene_name_and_arguments = ["title"];
+		}
+	}
+
+	if(this.core.load_assets_group) {
+		this._unload(this.core.load_assets_group);
+	}
+
+	this._load(group);
+
+	if(group !== "initial") {
+		this.core.load_assets_group = group
+	}
+
 };
 
 SceneLoading.prototype._load = function(group) {
@@ -109,16 +130,9 @@ SceneLoading.prototype._unload = function(group) {
 
 SceneLoading.prototype.update = function() {
 	base_scene.prototype.update.apply(this, arguments);
-
 	if (this.core.isAllLoaded()) {
-		if (CONSTANT.DEBUG.START_SCENE) {
-			// デバッグ用
-			this.core.scene_manager.changeScene.apply(this.core.scene_manager, CONSTANT.DEBUG.START_SCENE);
-		}
-		else {
-			// 本番
-			this.core.scene_manager.changeScene("title");
-		}
+		// ロード後のシーンへ遷移
+		this.core.scene_manager.changeScene.apply(this.core.scene_manager, this._next_scene_name_and_arguments);
 	}
 };
 SceneLoading.prototype.draw = function(){

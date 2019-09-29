@@ -117,6 +117,8 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 	// そのif 分岐が true になってしまう。そのため undefined
 	from_field_name = from_field_name || undefined;
 
+	this._is_success_initialized = false;
+
 	// 現在のフィールド
 	this.core.save_manager.player.setCurrentField(field_name);
 	this.core.save_manager.save(); // シーン遷移時に全てのセーブデータを保存する
@@ -126,6 +128,12 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	if (!field_data) {
 		throw new Error("Can't find field data. field key: " + this.core.save_manager.player.getCurrentField());
+	}
+
+
+	if(this.core.load_assets_group !== "chapter" + String(field_data.chapter())) {
+		this.core.scene_manager.changeScene("loading", "chapter" + String(field_data.chapter()), "stage", field_name, from_field_name);
+		return;
 	}
 
 	// 自機
@@ -204,6 +212,8 @@ SceneStage.prototype.init = function(field_name, from_field_name){
 
 	// フィールド固有の初期処理
 	this._executeInitialProcess();
+
+	this._is_success_initialized = true;
 };
 
 // フィールド固有の初期処理
@@ -365,6 +375,8 @@ SceneStage.prototype._playNoise = function() {
 
 
 SceneStage.prototype.update = function() {
+	if(!this._is_success_initialized) return;
+
 	// chapter に応じたノイズ再生
 	this._playNoise();
 
@@ -408,6 +420,8 @@ SceneStage.prototype.update = function() {
 
 // 画面更新
 SceneStage.prototype.draw = function(){
+	if(!this._is_success_initialized) return;
+
 	var field_data = this.getFieldData();
 	var ctx = this.core.ctx;
 
