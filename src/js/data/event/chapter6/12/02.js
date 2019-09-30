@@ -2,6 +2,7 @@
 var _ = require('i18n4v')
 module.exports = {
 	key: "chapter6-12-event-02",
+	chapter: 6,
 	serifWindow: "fukidashi_brown",
 	startSounds: [
 		{"name": "chapter6-04-event-common-noise", "frame": 0},

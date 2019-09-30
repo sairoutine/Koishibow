@@ -73,13 +73,21 @@ var SceneEventTalk = function(core) {
 Util.inherit(SceneEventTalk, BaseScene);
 
 SceneEventTalk.prototype.init = function(event_name){
+	this.removeAllObject();
 	BaseScene.prototype.init.apply(this, arguments);
 
 	// event_talk 固有 start
+	this._is_success_initialized = false;
+
 	this._master = EventTalkMasterRepository.find(event_name);
 
 	if (!this._master) {
 		throw new Error("Can't find event master: " + event_name);
+	}
+
+	if(this.core.load_assets_group !== "chapter" + String(this._master.chapter())) {
+		this.core.scene_manager.changeScene("loading", "chapter" + String(this._master.chapter()), "event_talk", event_name);
+		return;
 	}
 
 	// フェードインする
@@ -103,7 +111,6 @@ SceneEventTalk.prototype.init = function(event_name){
 	// ss の init
 	this._initSS();
 
-	this.removeAllObject();
 	this._serif_position.init();
 	this.addObjects([this.ss, this._serif_position]);
 
@@ -124,6 +131,8 @@ SceneEventTalk.prototype.init = function(event_name){
 	this._startSerif();
 
 	this.changeSubScene("talk_with_object");
+
+	this._is_success_initialized = true;
 	// event_talk 固有 end
 };
 
@@ -184,6 +193,7 @@ SceneEventTalk.prototype._startSerif = function(){
 
 SceneEventTalk.prototype.update = function(){
 	BaseScene.prototype.update.apply(this, arguments);
+	if(!this._is_success_initialized) return;
 
 	this._time.update();
 
@@ -347,6 +357,7 @@ SceneEventTalk.prototype._updateInJunction = function(){
 
 SceneEventTalk.prototype.draw = function(){
 	BaseScene.prototype.draw.apply(this, arguments);
+	if(!this._is_success_initialized) return;
 
 	// セリフ送り待機中は表示しない
 	if(this._state === STATE_TALKING) {

@@ -9,6 +9,7 @@ var _ = require('i18n4v')
 
 module.exports = {
 	key: "chapter3-13-event-01",
+	chapter: 3,
 	bgm: "field7",
 	serifWindow: "fukidashi_brown",
 	startAnime: "chapter3-13-event-01-obj01",

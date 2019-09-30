@@ -6,159 +6,16 @@ AssetsConfig.images = {
 	// こいし画像
 	"koishi": "./image/common/koishi.png",
 	"koishi_button": "./image/common/koishi_button.png",
-	// こころ画像
-	"kokoro": "./image/common/kokoro.png",
-	// てゐ
-	"tewi":   "./image/common/tewi.png",
-	// にとり
-	"nitori":   "./image/common/nitori.png",
-	// 響子
-	"kyoko":   "./image/common/kyoko.png",
-	"kyoko_taketonbo":   "./image/common/kyoko_taketonbo.png",
-	// 小傘
-	"kogasa":   "./image/common/kogasa.png",
-	// 村紗
-	"murasa":   "./image/common/murasa.png",
-
 	// 3rdeye 使用時のもや
 	"black_mist":            "./image/common/black_mist.png",
 	// 3rdeye 使用時の光
 	"light":  "./image/common/light.png",
 
-	"white_mist":            "./image/common/white-mist.png",
+	"white-mist":            "./image/common/white-mist.png",
 	// chapter4 のもや
 	"dark-mist": "./image/common/dark-mist.png",
 	// chapter3 の雪
 	"snow_mist": "./image/common/snow_mist.png",
-
-	// 帽子獲得イベント
-	"get_hat_bg":  "./image/common/chapter0/event/get_hat/bg.png",
-
-	// こいしが落ちるイベント
-	"chapter0-mspassage-event-02-obj-10-01":  "./image/common/chapter0/event/falldown_koishi/chapter0-mspassage-event-02-obj-10-01.png",
-	"chapter0-mspassage-event-02_bg01":  "./image/common/chapter0/event/falldown_koishi/chapter0-mspassage-event-02_bg01.jpg",
-	"chapter0-mspassage-event-02_black_mist":  "./image/common/chapter0/event/falldown_koishi/chapter0-mspassage-event-02_black_mist.png",
-	"chapter0-mspassage-event-02_door":  "./image/common/chapter0/event/falldown_koishi/chapter0-mspassage-event-02_door.png",
-	"chapter0-mspassage-event-02_koishi":  "./image/common/chapter0/event/falldown_koishi/chapter0-mspassage-event-02_koishi.png",
-	"chapter0-mspassage-event-02_shadow":  "./image/common/chapter0/event/falldown_koishi/chapter0-mspassage-event-02_shadow.png",
-
-	// さとり邂逅イベント
-	"chapter0-mspassage-bg-002_event":  "./image/common/chapter0/event/encounter_satori/chapter0-mspassage-bg-002_event.jpg",
-	"eye":  "./image/common/chapter0/event/encounter_satori/eye.png",
-	"str":  "./image/common/chapter0/event/encounter_satori/str.png",
-
-	// 1-7 フラッシュバック(モブとの会話)
-	"chapter1-07-event-bg-001":  "./image/common/chapter1/event/talk_with_mobu/chapter1-07-event-bg-001.jpg",
-	"chapter1_07_event_mobu1":  "./image/common/chapter1/event/talk_with_mobu/chapter1_07_event_mobu1.png",
-	"chapter1_07_event_mobu2":  "./image/common/chapter1/event/talk_with_mobu/chapter1_07_event_mobu2.png",
-	"chapter1_07_event_mobu3":  "./image/common/chapter1/event/talk_with_mobu/chapter1_07_event_mobu3.png",
-	"chapter1_07_event_koishi": "./image/common/chapter1/event/talk_with_mobu/chapter1_07_event_koishi.png",
-
-	// 1-7 遊びを提案する
-	"chapter1-07-event-02-chr_obj_01":  "./image/common/chapter1/event/playdoll/chapter1-07-event-02-chr_obj_01.png",
-	"chapter1_07_event2_obj_01":  "./image/common/chapter1/event/playdoll/chapter1_07_event2_obj_01.png",
-	"chapter1_07_event_02_kogasa":  "./image/common/chapter1/event/playdoll/chapter1_07_event_02_kogasa.png",
-	"chapter1_07_event_02_koishi":  "./image/common/chapter1/event/playdoll/chapter1_07_event_02_koishi.png",
-	"chapter1_07_event_02_kyoko":  "./image/common/chapter1/event/playdoll/chapter1_07_event_02_kyoko.png",
-	"chapter1_07_event_02_murasa":  "./image/common/chapter1/event/playdoll/chapter1_07_event_02_murasa.png",
-
-	// 1-9 村紗と遊ぶ
-	"chapter1-09-event-01-chr-murasa":  "./image/common/chapter1/event/play_with_murasa/chapter1-09-event-01-chr-murasa.png",
-	"chapter1-09-event-01-obj01":  "./image/common/chapter1/event/play_with_murasa/chapter1-09-event-01-obj01.png",
-	"chapter1-09-event-01-koishi":  "./image/common/chapter1/event/play_with_murasa/chapter1-09-event-01-koishi.png",
-
-	//
-	// フィールドの画像とオブジェクト
-	//
-
-	// chapter0
-	"chapter0-myroom-bg-001":    "./image/common/chapter0/myroom/chapter0-myroom-bg-001.jpg",
-	"chapter0-myroom-obj-01-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-01-01.png",
-	"chapter0-myroom-obj-02-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-02-01.png",
-	"chapter0-myroom-obj-03-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-03-01.png",
-	"chapter0-myroom-obj-04-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-04-01.png",
-	"chapter0-myroom-obj-05-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-05-01.png",
-	"chapter0-myroom-obj-07-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-07-01.png",
-
-	"chapter0-hospital_corridor1-bg-001":    "./image/common/chapter0/hospital_corridor1/chapter0-hospital-bg-001.jpg",
-	"chapter0-hospital_corridor1-obj-01-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-01-01.png",
-	"chapter0-hospital_corridor1-obj-02-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-02-01.png",
-	"chapter0-hospital_corridor1-obj-03-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-03-01.png",
-	"chapter0-hospital_corridor1-obj-04-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-04-01.png",
-
-	"chapter0-hospital2-bg-001":    "./image/common/chapter0/hospital_corridor2/chapter0-hospital2-bg-001.jpg",
-	"chapter0-hospital2-obj-01-01": "./image/common/chapter0/hospital_corridor2/chapter0-hospital2-obj-01-01.png",
-	"chapter0-hospital2-obj-02-01": "./image/common/chapter0/hospital_corridor2/chapter0-hospital2-obj-02-01.png",
-	"chapter0-hospital2-obj-03-01": "./image/common/chapter0/hospital_corridor2/chapter0-hospital2-obj-03-01.png",
-
-	"chapter0-mansionpas-001":      "./image/common/chapter0/mansion_corridor1/chapter0-mansionpas-001.jpg",
-	"chapter0-mspassage-obj-01-01": "./image/common/chapter0/mansion_corridor1/chapter0-mspassage-obj-01-01.png",
-	"chapter0-mspassage-obj-02-01": "./image/common/chapter0/mansion_corridor1/chapter0-mspassage-obj-02-01.png",
-	"chapter0-mspassage-obj-03-01": "./image/common/chapter0/mansion_corridor1/chapter0-mspassage-obj-03-01.png",
-
-	"chapter0-mansionpas-002":      "./image/common/chapter0/mansion_corridor2/chapter0-mspassage-bg-002.jpg",
-	"chapter0-mspassage-obj-04-01": "./image/common/chapter0/mansion_corridor2/chapter0-mspassage-obj-04-01.png",
-	"chapter0-mspassage-obj-05-01": "./image/common/chapter0/mansion_corridor2/chapter0-mspassage-obj-05-01.png",
-	"chapter0-mspassage-obj-06-01": "./image/common/chapter0/mansion_corridor2/chapter0-mspassage-obj-06-01.png",
-
-	"chapter0-mansionpas-003":      "./image/common/chapter0/mansion_corridor3/chapter0-mspassage-bg-003.jpg",
-	"chapter0-mspassage-obj-07-01": "./image/common/chapter0/mansion_corridor3/chapter0-mspassage-obj-07-01.png",
-	"chapter0-mspassage-obj-08-01": "./image/common/chapter0/mansion_corridor3/chapter0-mspassage-obj-08-01.png",
-	"chapter0-mspassage-obj-09-01": "./image/common/chapter0/mansion_corridor3/chapter0-mspassage-obj-09-01.png",
-	"chapter0-mspassage-obj-10-01": "./image/common/chapter0/mansion_corridor3/chapter0-mspassage-obj-10-01.png",
-	"chapter0-mspassage-obj-11-01": "./image/common/chapter0/mansion_corridor3/chapter0-mspassage-obj-11-01.png",
-
-	// chapter1
-	"chapter1-01-bg-001": "./image/common/chapter1/chapter1-01/chapter1-01-bg-001.jpg",
-	"chapter1-01-obj-01": "./image/common/chapter1/chapter1-01/chapter1-01-obj-01.png",
-	"chapter1-01-obj-02": "./image/common/chapter1/chapter1-01/chapter1-01-obj-02.png",
-	"chapter1-01-obj-03": "./image/common/chapter1/chapter1-01/chapter1-01-obj-03.png",
-	"white-mist":         "./image/common/chapter1/chapter1-01/white-mist.png",
-
-	"chapter1-02-bg-001": "./image/common/chapter1/chapter1-02/chapter1-02-bg-001.jpg",
-	"chapter1-02-obj-01": "./image/common/chapter1/chapter1-02/chapter1-02-obj-01.png",
-	"chapter1-02-obj-02": "./image/common/chapter1/chapter1-02/chapter1-02-obj-02.png",
-	"chapter1-02-obj-03": "./image/common/chapter1/chapter1-02/chapter1-02-obj-03.png",
-	"chapter1-02-obj-04": "./image/common/chapter1/chapter1-02/chapter1-02-obj-04.png",
-	"chapter1-02-obj-05": "./image/common/chapter1/chapter1-02/chapter1-02-obj-05.png",
-	"chapter1-02-obj-06": "./image/common/chapter1/chapter1-02/chapter1-02-obj-06.png",
-
-	"chapter1-03-bg-001": "./image/common/chapter1/chapter1-03/chapter1-03-bg-001.jpg",
-	"chapter1-03-obj-01": "./image/common/chapter1/chapter1-03/chapter1-03-obj-01.png",
-	"chapter1-03-obj-02": "./image/common/chapter1/chapter1-03/chapter1-03-obj-02.png",
-	"chapter1-03-obj-03": "./image/common/chapter1/chapter1-03/chapter1-03-obj-03.png",
-	"chapter1-03-obj-04": "./image/common/chapter1/chapter1-03/chapter1-03-obj-04.png",
-	"chapter1-03-obj-05": "./image/common/chapter1/chapter1-03/chapter1-03-obj-05.png",
-
-	"chapter1-04-bg-001": "./image/common/chapter1/chapter1-04/chapter1-04-bg-001.jpg",
-	"chapter1-04-obj-01": "./image/common/chapter1/chapter1-04/chapter1-04-obj-01.png",
-	"chapter1-04-obj-02": "./image/common/chapter1/chapter1-04/chapter1-04-obj-02.png",
-	"chapter1-04-obj-03": "./image/common/chapter1/chapter1-04/chapter1-04-obj-03.png",
-	"chapter1-04-obj-04": "./image/common/chapter1/chapter1-04/chapter1-04-obj-04.png",
-	"chapter1-04-obj-05": "./image/common/chapter1/chapter1-04/chapter1-04-obj-05.png",
-
-	"chapter1-05-bg-001": "./image/common/chapter1/chapter1-05/chapter1-05-bg-001.jpg",
-	"chapter1-05-obj-01": "./image/common/chapter1/chapter1-05/chapter1-05-obj-01.png",
-	"chapter1-05-obj-02": "./image/common/chapter1/chapter1-05/chapter1-05-obj-02.png",
-
-	"chapter1-06-bg-001": "./image/common/chapter1/chapter1-06/chapter1-06-bg-001.jpg",
-	"chapter1-06-obj-01": "./image/common/chapter1/chapter1-06/chapter1-06-obj-01.png",
-	"chapter1-06-obj-02": "./image/common/chapter1/chapter1-06/chapter1-06-obj-02.png",
-	"chapter1-06-obj-03": "./image/common/chapter1/chapter1-06/chapter1-06-obj-03.png",
-	"chapter1-06-obj-04": "./image/common/chapter1/chapter1-06/chapter1-06-obj-04.png",
-
-	"chapter1-07-bg-001": "./image/common/chapter1/chapter1-07/chapter1-07-bg-001.jpg",
-	"chapter1-07-obj-01": "./image/common/chapter1/chapter1-07/chapter1-07-obj-01.png",
-	
-	"chapter1-08-bg-001": "./image/common/chapter1/chapter1-08/chapter1-08-bg-001.jpg",
-	"chapter1-08-obj-01": "./image/common/chapter1/chapter1-08/chapter1-08-obj-01.png",
-	
-	"chapter1-09-bg-001": "./image/common/chapter1/chapter1-09/chapter1-09-bg-001.jpg",
-	"chapter1-09-obj-01": "./image/common/chapter1/chapter1-09/chapter1-09-obj-01.png",
-	"chapter1-09-obj-02": "./image/common/chapter1/chapter1-09/chapter1-09-obj-02.png",
-	
-	"chapter1-10-bg-001": "./image/common/chapter1/chapter1-10/chapter1-10-bg-001.jpg",
-	"chapter1-10-obj-01": "./image/common/chapter1/chapter1-10/chapter1-10-obj-01.png",
 
 	// 選択中のアイテム背景
 	"item_selected":      "./image/common/item/icon_item_common_light01.png",
@@ -273,6 +130,9 @@ AssetsConfig.images = {
 	//paper_clip:  "./image/common/ui-common-frame-paper_clip.png",
 	//paper_close_button: "./image/common/ui-common-btn-close.png",
 	"paper_frame":         "./image/common/ui-common-frame-paper.png",
+
+
+	"chapter5-02-obj-02": "./image/production/chapter5/chapter5-02/chapter5-02-obj-02.png",
 };
 
 AssetsConfig.sounds = {
@@ -353,137 +213,6 @@ AssetsConfig.sounds = {
 		volume: 1.0,
 	},
 
-	"chapter0-myroom-door_open":    {
-		path: "./sound/common/chapter0/myroom/door_open.ogg",
-		volume: 1.0,
-	},
-
-	"chapter0-myroom-open_book":    {
-		path: "./sound/common/chapter0/myroom/open_book.ogg",
-		volume: 1.0,
-	},
-	"chapter0-myroom-move_crayon":    {
-		path: "./sound/common/chapter0/myroom/move_crayon.ogg",
-		volume: 0.7,
-	},
-	"chapter0-myroom-sound_window_for_kokoro":    {
-		path: "./sound/common/chapter0/myroom/sound_window_for_kokoro.ogg",
-		volume: 1.0,
-	},
-	"chapter0-hospital_corridor1-sound_aidkit":    {
-		path: "./sound/common/chapter0/hospital_corridor1/sound_aidkit.ogg",
-		volume: 1.0,
-	},
-	"chapter0-hospital_corridor1-sound_strecher":    {
-		path: "./sound/common/chapter0/hospital_corridor1/sound_strecher.ogg",
-		volume: 1.0,
-	},
-	"chapter0-hospital_corridor2-move_wheelchair":    {
-		path: "./sound/common/chapter0/hospital_corridor2/move_wheelchair.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor1-lamp_back":    {
-		path: "./sound/common/chapter0/mansion_corridor1/lamp_back.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor1-lamp_front":    {
-		path: "./sound/common/chapter0/mansion_corridor1/lamp_front.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor1-move_tricycle":    {
-		path: "./sound/common/chapter0/mansion_corridor1/move_tricycle.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor1-open_curtain":    {
-		path: "./sound/common/chapter0/mansion_corridor1/open_curtain.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor2-flower_back":    {
-		path: "./sound/common/chapter0/mansion_corridor2/flower_back.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor2-flower_front":    {
-		path: "./sound/common/chapter0/mansion_corridor2/flower_front.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor2-open_door":    {
-		path: "./sound/common/chapter0/mansion_corridor2/open_door.ogg",
-		volume: 1.0,
-	},
-
-	"chapter0-mansion_corridor3-ring_clock_back":    {
-		path: "./sound/common/chapter0/mansion_corridor3/ring_clock_back.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor3-ring_clock_front":    {
-		path: "./sound/common/chapter0/mansion_corridor3/ring_clock_front.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor3-sound_vase_back":    {
-		path: "./sound/common/chapter0/mansion_corridor3/sound_vase_back.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor3-smile_kokoro_back":    {
-		path: "./sound/common/chapter0/mansion_corridor3/smile_kokoro_back.ogg",
-		volume: 1.0,
-	},
-	"chapter0-mansion_corridor3-open_and_falldown":    {
-		path: "./sound/common/chapter0/mansion_corridor3/open_and_falldown.ogg",
-		volume: 1.0,
-	},
-	"chapter1-event-play_wipe_out_common":    {
-		path: "./sound/common/chapter1/event/play_wipe_out_common.ogg",
-		volume: 1.0,
-	},
-	"chapter1-event-play_wipe_in_kyoko":    {
-		path: "./sound/common/chapter1/event/play_wipe_in_kyoko.ogg",
-		volume: 1.0,
-	},
-	"chapter1-event-play_wipe_in_kogasa":    {
-		path: "./sound/common/chapter1/event/play_wipe_in_kogasa.ogg",
-		volume: 1.0,
-	},
-	"chapter1-event-play_wipe_in_murasa":    {
-		path: "./sound/common/chapter1/event/play_wipe_in_murasa.ogg",
-		volume: 1.0,
-	},
-	"chapter1-01-change":    {
-		path: "./sound/common/chapter1/01/change.ogg",
-		volume: 1.0,
-	},
-	"chapter1-01-smile_kokoro":    {
-		path: "./sound/common/chapter1/01/smile_kokoro.ogg",
-		volume: 1.0,
-	},
-
-	"chapter1-04-standup_kosuzu":    {
-		path: "./sound/common/chapter1/04/standup_kosuzu.ogg",
-		volume: 1.0,
-	},
-	"chapter1-04-receive_phone":    {
-		path: "./sound/common/chapter1/04/receive_phone.ogg",
-		volume: 1.0,
-	},
-	"chapter1-03-sound_bucket":    {
-		path: "./sound/common/chapter1/03/sound_bucket.ogg",
-		volume: 1.0,
-	},
-	"chapter1-08-suspended":    {
-		path: "./sound/common/chapter1/08/suspended.ogg",
-		volume: 1.0,
-	},
-	"chapter1-09-twist_faucet":    {
-		path: "./sound/common/chapter1/09/twist_faucet.ogg",
-		volume: 1.0,
-	},
-	"chapter1-09-growl":    {
-		path: "./sound/common/chapter1/09/growl.ogg",
-		volume: 1.0,
-	},
-	"chapter1-10-flow_sand":    {
-		path: "./sound/common/chapter1/10/flow_sand.ogg",
-		volume: 1.0,
-	},
 	touch:    {
 		path: "./sound/common/touch.ogg",
 		volume: 1.0,
@@ -535,42 +264,6 @@ AssetsConfig.sounds = {
 	},
 	walking_bare_flesh_left:    {
 		path: "./sound/common/walking/bare_flesh_left.ogg",
-		volume: 1.0,
-	},
-	chapter0_noise1:    {
-		path: "./sound/common/noise/chapter0/noise1.ogg",
-		volume: 1.0,
-	},
-	chapter0_noise2:    {
-		path: "./sound/common/noise/chapter0/noise2.ogg",
-		volume: 1.0,
-	},
-	chapter0_noise3:    {
-		path: "./sound/common/noise/chapter0/noise3.ogg",
-		volume: 1.0,
-	},
-	chapter0_noise4:    {
-		path: "./sound/common/noise/chapter0/noise4.ogg",
-		volume: 1.0,
-	},
-	chapter0_noise5:    {
-		path: "./sound/common/noise/chapter0/noise5.ogg",
-		volume: 1.0,
-	},
-	chapter4_noise1:    {
-		path: "./sound/common/noise/chapter4/noise1.ogg",
-		volume: 1.0,
-	},
-	chapter4_noise2:    {
-		path: "./sound/common/noise/chapter4/noise2.ogg",
-		volume: 1.0,
-	},
-	chapter4_noise3:    {
-		path: "./sound/common/noise/chapter4/noise3.ogg",
-		volume: 1.0,
-	},
-	chapter4_noise4:    {
-		path: "./sound/common/noise/chapter4/noise4.ogg",
 		volume: 1.0,
 	},
 };

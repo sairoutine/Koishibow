@@ -6,6 +6,7 @@ var data_list = require("../data/master/event_talk_old");
 var EventTalkOldMasterRepository = MasterRepositoryGenerator.exec(
 	{
 		key:        "string",
+		chapter:    "number",
 		serifWindow:"string",
 		serifs:     "array",
 		animeNum:   "number",
