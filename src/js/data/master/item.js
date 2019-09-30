@@ -80,7 +80,7 @@ module.exports = [
 		isShowChapter4: false,
 		imageName: "item_08",
 		soundName: "got_item_common",
-		descriptionText:_("落ち葉を集めるのに便利な"),
+		descriptionText:_("落ち葉を集めるのに便利"),
 		examineText:_("これ掃除に使うやつだ！"),
 	},
 	{
