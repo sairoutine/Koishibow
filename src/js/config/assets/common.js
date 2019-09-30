@@ -130,6 +130,9 @@ AssetsConfig.images = {
 	//paper_clip:  "./image/common/ui-common-frame-paper_clip.png",
 	//paper_close_button: "./image/common/ui-common-btn-close.png",
 	"paper_frame":         "./image/common/ui-common-frame-paper.png",
+
+
+	"chapter5-02-obj-02": "./image/production/chapter5/chapter5-02/chapter5-02-obj-02.png",
 };
 
 AssetsConfig.sounds = {

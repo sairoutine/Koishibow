@@ -43,7 +43,6 @@ AssetsConfig.images = {
 	"chapter1-01-obj-01": "./image/common/chapter1/chapter1-01/chapter1-01-obj-01.png",
 	"chapter1-01-obj-02": "./image/common/chapter1/chapter1-01/chapter1-01-obj-02.png",
 	"chapter1-01-obj-03": "./image/common/chapter1/chapter1-01/chapter1-01-obj-03.png",
-	"white-mist":         "./image/common/chapter1/chapter1-01/white-mist.png",
 
 	"chapter1-02-bg-001": "./image/common/chapter1/chapter1-02/chapter1-02-bg-001.jpg",
 	"chapter1-02-obj-01": "./image/common/chapter1/chapter1-02/chapter1-02-obj-01.png",
