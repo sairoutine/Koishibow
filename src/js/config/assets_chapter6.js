@@ -115,6 +115,10 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
+	"chapter0-myroom-door_open":    {
+		path: "./sound/common/chapter0/myroom/door_open.ogg",
+		volume: 1.0,
+	},
 	"chapter0-myroom-open_book":    {
 		path: "./sound/common/chapter0/myroom/open_book.ogg",
 		volume: 1.0,
