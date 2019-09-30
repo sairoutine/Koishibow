@@ -3,6 +3,7 @@ var _ = require('i18n4v')
 /* フランがチルノの首を落とす */
 module.exports = {
 	key: "chapter3-13-event-03",
+	chapter: 3,
 	serifWindow: "fukidashi_brown",
 	expAnimes: [
 		"chapter3-13-event-03-obj01",

@@ -3,6 +3,7 @@ var _ = require('i18n4v')
 /* フラン爆発イベント */
 module.exports = {
 	key: "chapter3-09-event-01",
+	chapter: 3,
 	serifWindow: "fukidashi_brown",
 	bgm: "field7",
 	expAnimes: [

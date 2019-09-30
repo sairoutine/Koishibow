@@ -82,6 +82,11 @@ SceneEventTalk.prototype.init = function(event_name){
 		throw new Error("Can't find event master: " + event_name);
 	}
 
+	if(this.core.load_assets_group !== "chapter" + String(this._master.chapter())) {
+		this.core.scene_manager.changeScene("loading", "chapter" + String(this._master.chapter()), "event_talk", event_name);
+		return;
+	}
+
 	// フェードインする
 	this.core.scene_manager.setFadeIn(120, "black");
 

@@ -1,6 +1,7 @@
 'use strict';
 module.exports = {
 	key: "chapter4-19-event-01",
+	chapter: 4,
 	bgm: "silent",
 	serifWindow: "fukidashi_brown",
 	expAnimes: [

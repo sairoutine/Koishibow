@@ -3,6 +3,7 @@ var _ = require('i18n4v');
 // GOOD ルート
 module.exports = {
 	key: "chapter4-29-event-02",
+	chapter: 4,
 	serifWindow: "fukidashi_brown",
 	bgm: "silent",
 	expAnimes: [

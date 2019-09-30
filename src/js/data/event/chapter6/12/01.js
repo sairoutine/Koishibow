@@ -2,6 +2,7 @@
 var _ = require('i18n4v')
 module.exports = {
 	key: "chapter6-12-event-01",
+	chapter: 6,
 	bgm: "silent",
 	serifWindow: "fukidashi_brown",
 	expAnimes: [
