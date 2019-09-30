@@ -181,6 +181,85 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
+	"chapter0-myroom-door_open":    {
+		path: "./sound/common/chapter0/myroom/door_open.ogg",
+		volume: 1.0,
+	},
+
+	"chapter0-myroom-open_book":    {
+		path: "./sound/common/chapter0/myroom/open_book.ogg",
+		volume: 1.0,
+	},
+	"chapter0-myroom-move_crayon":    {
+		path: "./sound/common/chapter0/myroom/move_crayon.ogg",
+		volume: 0.7,
+	},
+	"chapter0-myroom-sound_window_for_kokoro":    {
+		path: "./sound/common/chapter0/myroom/sound_window_for_kokoro.ogg",
+		volume: 1.0,
+	},
+	"chapter0-hospital_corridor1-sound_aidkit":    {
+		path: "./sound/common/chapter0/hospital_corridor1/sound_aidkit.ogg",
+		volume: 1.0,
+	},
+	"chapter0-hospital_corridor1-sound_strecher":    {
+		path: "./sound/common/chapter0/hospital_corridor1/sound_strecher.ogg",
+		volume: 1.0,
+	},
+	"chapter0-hospital_corridor2-move_wheelchair":    {
+		path: "./sound/common/chapter0/hospital_corridor2/move_wheelchair.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-lamp_back":    {
+		path: "./sound/common/chapter0/mansion_corridor1/lamp_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-lamp_front":    {
+		path: "./sound/common/chapter0/mansion_corridor1/lamp_front.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-move_tricycle":    {
+		path: "./sound/common/chapter0/mansion_corridor1/move_tricycle.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor1-open_curtain":    {
+		path: "./sound/common/chapter0/mansion_corridor1/open_curtain.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-flower_back":    {
+		path: "./sound/common/chapter0/mansion_corridor2/flower_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-flower_front":    {
+		path: "./sound/common/chapter0/mansion_corridor2/flower_front.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor2-open_door":    {
+		path: "./sound/common/chapter0/mansion_corridor2/open_door.ogg",
+		volume: 1.0,
+	},
+
+	"chapter0-mansion_corridor3-ring_clock_back":    {
+		path: "./sound/common/chapter0/mansion_corridor3/ring_clock_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-ring_clock_front":    {
+		path: "./sound/common/chapter0/mansion_corridor3/ring_clock_front.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-sound_vase_back":    {
+		path: "./sound/common/chapter0/mansion_corridor3/sound_vase_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-smile_kokoro_back":    {
+		path: "./sound/common/chapter0/mansion_corridor3/smile_kokoro_back.ogg",
+		volume: 1.0,
+	},
+	"chapter0-mansion_corridor3-open_and_falldown":    {
+		path: "./sound/common/chapter0/mansion_corridor3/open_and_falldown.ogg",
+		volume: 1.0,
+	},
+
 	"chapter3-myroom-getup_koishi01":    {
 		path: "./sound/production/chapter3/event/getup_koishi/01.ogg",
 		volume: 1.0,

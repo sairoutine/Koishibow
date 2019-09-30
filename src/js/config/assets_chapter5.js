@@ -104,6 +104,28 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
+	"chapter0-myroom-open_book":    {
+		path: "./sound/common/chapter0/myroom/open_book.ogg",
+		volume: 1.0,
+	},
+	"chapter0-myroom-move_crayon":    {
+		path: "./sound/common/chapter0/myroom/move_crayon.ogg",
+		volume: 0.7,
+	},
+	"chapter0-myroom-sound_window_for_kokoro":    {
+		path: "./sound/common/chapter0/myroom/sound_window_for_kokoro.ogg",
+		volume: 1.0,
+	},
+
+	"chapter0-hospital_corridor1-sound_aidkit":    {
+		path: "./sound/common/chapter0/hospital_corridor1/sound_aidkit.ogg",
+		volume: 1.0,
+	},
+	"chapter0-hospital_corridor1-sound_strecher":    {
+		path: "./sound/common/chapter0/hospital_corridor1/sound_strecher.ogg",
+		volume: 1.0,
+	},
+
 	"chapter4-20-fall_jizo":    {
 		path: "./sound/production/chapter4/20/fall_jizo.ogg",
 		volume: 1.0,
