@@ -91,10 +91,6 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
-	"chapter1-event-play_wipe_out_common":    {
-		path: "./sound/common/chapter1/event/play_wipe_out_common.ogg",
-		volume: 1.0,
-	},
 	"chapter1-event-play_wipe_in_kyoko":    {
 		path: "./sound/common/chapter1/event/play_wipe_in_kyoko.ogg",
 		volume: 1.0,
