@@ -1,7 +1,7 @@
 {
     "values": {
-		"SYSTEM_EXIT_DIALOG_MESSAGE": "Do you wish to exit the game?",
-		"SYSTEM_FULLSCREEN_DIALOG_MESSAGE": "Do you wish to make the window full screen?",
+        "SYSTEM_EXIT_DIALOG_MESSAGE": "Do you wish to exit the game?",
+        "SYSTEM_FULLSCREEN_DIALOG_MESSAGE": "Do you wish to make the window full screen?",
         "CHAPTER3_FIELD_08_SERIF0001": "Sure.",
         "CHAPTER3_FIELD_08_SERIF0002": "Hmm...",
         "CHAPTER3_FIELD_08_SERIF0003": "Fine!",
@@ -1646,8 +1646,6 @@
         "ここジョンのばしょ！": "This is John's spot!",
         "いいこいいこ！": "You're such a good boy!",
         "ばいばい": "Bye bye!",
-        "こーえん？": "A park?",
-        "いってもいいかな": "I could visit, maybe.",
         "からっぽ！": "Empty!",
         "これさわるといろがかわるんだよ！": "It's a different color when I touch it!",
         "おつきさまとれるかな": "Can I reach the moon with this?",
@@ -2158,6 +2156,8 @@
         "たけとんぼ！": "Bamboo copter!",
         "あれで遊びたいなー": "I wanna play with that!",
         "": "",
-        "? ? ?": ""
+        "? ? ?": "???",
+        "公園だ！": "A park!",
+        "おねえちゃんは行っちゃだめって言ってたけど......": "But sis told me not to go."
     }
 }

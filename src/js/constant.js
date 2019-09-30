@@ -23,7 +23,7 @@ var CONSTANT = {
 	IS_SHOW_HOWTO: true,
 
 	// バージョン
-	VERSION: "1.0.0",
+	VERSION: "1.1.0",
 
 	// 会話のタイプ速度
 	TYPOGRAPHY_SPEED: 5,
