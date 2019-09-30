@@ -7,7 +7,7 @@ var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
 	key: "chapter6_myroom_before_get_hat",
-	chapter: 0,
+	chapter: 6,
 	bgm: "field1",
 	rightStartPosition:   {x: 690, y: 380},
 	leftStartPosition:    {x: 180, y: 380},

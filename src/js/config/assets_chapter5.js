@@ -61,6 +61,25 @@ AssetsConfig.images = {
 	// フィールドの画像とオブジェクト
 	//
 
+	// chapter0
+	"chapter0-myroom-bg-001":    "./image/common/chapter0/myroom/chapter0-myroom-bg-001.jpg",
+	"chapter0-myroom-obj-01-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-01-01.png",
+	"chapter0-myroom-obj-02-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-02-01.png",
+	"chapter0-myroom-obj-03-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-03-01.png",
+	"chapter0-myroom-obj-04-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-04-01.png",
+	"chapter0-myroom-obj-05-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-05-01.png",
+	"chapter0-myroom-obj-07-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-07-01.png",
+
+	"chapter0-hospital_corridor1-bg-001":    "./image/common/chapter0/hospital_corridor1/chapter0-hospital-bg-001.jpg",
+	"chapter0-hospital_corridor1-obj-01-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-01-01.png",
+	"chapter0-hospital_corridor1-obj-02-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-02-01.png",
+	"chapter0-hospital_corridor1-obj-03-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-03-01.png",
+	"chapter0-hospital_corridor1-obj-04-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-04-01.png",
+
+	// chapter1
+	"chapter1-03-obj-03": "./image/common/chapter1/chapter1-03/chapter1-03-obj-03.png",
+	"chapter1-03-obj-05": "./image/common/chapter1/chapter1-03/chapter1-03-obj-05.png",
+
 	// chapter5
 	"chapter5-02-bg-001": "./image/production/chapter5/chapter5-02/chapter5-02-bg-001.jpg",
 	"chapter5-03-bg-001": "./image/production/chapter5/chapter5-03/chapter5-03-bg-001.png",
@@ -85,6 +104,10 @@ AssetsConfig.images = {
 };
 
 AssetsConfig.sounds = {
+	"chapter4-20-fall_jizo":    {
+		path: "./sound/production/chapter4/20/fall_jizo.ogg",
+		volume: 1.0,
+	},
 	"chapter5-03-event-01-01":    {
 		path: "./sound/production/chapter5/event/chapter5-03-event-01/01.ogg",
 		volume: 1.0,

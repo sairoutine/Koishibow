@@ -48,6 +48,53 @@ AssetsConfig.images = {
 	// フィールドの画像とオブジェクト
 	//
 
+	// chapter0
+	"chapter0-myroom-bg-001":    "./image/common/chapter0/myroom/chapter0-myroom-bg-001.jpg",
+	"chapter0-myroom-obj-01-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-01-01.png",
+	"chapter0-myroom-obj-02-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-02-01.png",
+	"chapter0-myroom-obj-03-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-03-01.png",
+	"chapter0-myroom-obj-04-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-04-01.png",
+	"chapter0-myroom-obj-05-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-05-01.png",
+	"chapter0-myroom-obj-07-01": "./image/common/chapter0/myroom/chapter0-myroom-obj-07-01.png",
+
+	"chapter0-hospital_corridor1-bg-001":    "./image/common/chapter0/hospital_corridor1/chapter0-hospital-bg-001.jpg",
+	"chapter0-hospital_corridor1-obj-01-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-01-01.png",
+	"chapter0-hospital_corridor1-obj-02-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-02-01.png",
+	"chapter0-hospital_corridor1-obj-03-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-03-01.png",
+	"chapter0-hospital_corridor1-obj-04-01": "./image/common/chapter0/hospital_corridor1/chapter0-hospital-obj-04-01.png",
+
+	"chapter0-hospital2-bg-001":    "./image/common/chapter0/hospital_corridor2/chapter0-hospital2-bg-001.jpg",
+	"chapter0-hospital2-obj-01-01": "./image/common/chapter0/hospital_corridor2/chapter0-hospital2-obj-01-01.png",
+	"chapter0-hospital2-obj-02-01": "./image/common/chapter0/hospital_corridor2/chapter0-hospital2-obj-02-01.png",
+	"chapter0-hospital2-obj-03-01": "./image/common/chapter0/hospital_corridor2/chapter0-hospital2-obj-03-01.png",
+
+	"chapter0-mspassage-obj-02-01": "./image/common/chapter0/mansion_corridor1/chapter0-mspassage-obj-02-01.png",
+	"chapter0-mspassage-obj-04-01": "./image/common/chapter0/mansion_corridor2/chapter0-mspassage-obj-04-01.png",
+	"chapter0-mspassage-obj-10-01": "./image/common/chapter0/mansion_corridor3/chapter0-mspassage-obj-10-01.png",
+
+	// chapter1
+	"chapter1-02-bg-001": "./image/common/chapter1/chapter1-02/chapter1-02-bg-001.jpg",
+	"chapter1-02-obj-01": "./image/common/chapter1/chapter1-02/chapter1-02-obj-01.png",
+	"chapter1-02-obj-02": "./image/common/chapter1/chapter1-02/chapter1-02-obj-02.png",
+	"chapter1-02-obj-03": "./image/common/chapter1/chapter1-02/chapter1-02-obj-03.png",
+	"chapter1-02-obj-04": "./image/common/chapter1/chapter1-02/chapter1-02-obj-04.png",
+	"chapter1-02-obj-05": "./image/common/chapter1/chapter1-02/chapter1-02-obj-05.png",
+	"chapter1-02-obj-06": "./image/common/chapter1/chapter1-02/chapter1-02-obj-06.png",
+	"chapter1-03-obj-05": "./image/common/chapter1/chapter1-03/chapter1-03-obj-05.png",
+	"chapter1-09-obj-01": "./image/common/chapter1/chapter1-09/chapter1-09-obj-01.png",
+
+	// chapter3
+	"chapter3-11-obj-02": "./image/production/chapter3/chapter3-11/chapter3-11-obj-02.png",
+	"chapter3-11-obj-03": "./image/production/chapter3/chapter3-11/chapter3-11-obj-03.png",
+	"chapter3-11-obj-04": "./image/production/chapter3/chapter3-11/chapter3-11-obj-04.png",
+	"chapter3-12-obj-02": "./image/production/chapter3/chapter3-12/chapter3-12-obj-02.png",
+	"chapter3-13-bg-001": "./image/production/chapter3/chapter3-13/chapter3-13-bg-001.jpg",
+	"chapter3-13-obj-04": "./image/production/chapter3/chapter3-13/chapter3-13-obj-04.png",
+
+	// chapter5
+	"chapter5-04-bg-001": "./image/production/chapter5/chapter5-04/chapter5-04-bg-001.png",
+	"chapter5-09-bg-001": "./image/production/chapter5/chapter5-09/chapter5-09-bg-001.jpg",
+
 	// chapter6
 	"chapter6-01-obj-01": "./image/production/chapter6/chapter6-01/chapter6-01-obj-01.png",
 	"chapter6-01-obj-bm": "./image/production/chapter6/chapter6-01/chapter6-01-obj-bm.png",
