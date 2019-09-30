@@ -53,9 +53,12 @@ var SceneEventTalk = function(core) {
 Util.inherit(SceneEventTalk, BaseScene);
 
 SceneEventTalk.prototype.init = function(event_name){
+	this.removeAllObject();
 	BaseScene.prototype.init.apply(this, arguments);
 
 	// event_talk 固有 start
+	this._is_success_initialized = false;
+
 	this._master = EventTalkOldMasterRepository.find(event_name);
 
 	if (!this._master) {
@@ -88,7 +91,6 @@ SceneEventTalk.prototype.init = function(event_name){
 	// ss の init
 	this._initSS();
 
-	this.removeAllObject();
 	this._serif_position.init();
 
 	this.addObjects(this.ss_list);
@@ -109,6 +111,8 @@ SceneEventTalk.prototype.init = function(event_name){
 
 	// event_talk 固有 start
 	this._startSerif();
+
+	this._is_success_initialized = true;
 	// event_talk 固有 end
 };
 
@@ -187,6 +191,7 @@ SceneEventTalk.prototype._startSerif = function(){
 
 SceneEventTalk.prototype.update = function(){
 	BaseScene.prototype.update.apply(this, arguments);
+	if(!this._is_success_initialized) return;
 
 	this._time.update();
 
@@ -353,6 +358,7 @@ SceneEventTalk.prototype._updateInJunction = function(){
 };
 
 SceneEventTalk.prototype.draw = function(){
+	if(!this._is_success_initialized) return;
 	var ctx = this.core.ctx;
 	// 背景表示
 	if (this._master.bg()) {
