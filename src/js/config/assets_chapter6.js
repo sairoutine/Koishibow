@@ -159,7 +159,10 @@ AssetsConfig.sounds = {
 		path: "./sound/common/chapter0/mansion_corridor3/ring_clock_front.ogg",
 		volume: 1.0,
 	},
-
+	"chapter3-12-touch_toybox":    {
+		path: "./sound/production/chapter3/12/touch_toybox.ogg",
+		volume: 1.0,
+	},
 	"chapter6-04-event-01-01":    {
 		path: "./sound/production/chapter6/event/chapter6-04-event-01/01.ogg",
 		volume: 1.0,
