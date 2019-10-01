@@ -16,7 +16,7 @@ AssetsConfig.images = {
 	"chapter3-08-event-01-satori":  "./image/production/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-satori.png",
 	"chapter3-08-event-01-obj-01":  "./image/production/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-obj-01.png",
 	"chapter3-08-event-01-obj-02":  "./image/production/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-obj-02.png",
-	"chapter3-08-event-01-bg-001":  "./image/production/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-bg-001.jpg",
+	"chapter3-08-event-01-bg":  "./image/production/chapter3/event/chapter3-08-event-01/chapter3-08-event-01-bg.png",
 	
 	// 3-8-2 チルノを引っ張り出す
 	"chapter3-08-event-02-koishi":  "./image/production/chapter3/event/chapter3-08-event-02/chapter3-08-event-02-koishi.png",
