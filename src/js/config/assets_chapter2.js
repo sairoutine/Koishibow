@@ -14,6 +14,7 @@ AssetsConfig.images = {
 	"chapter2-07-bg-001": "./image/production/chapter2/chapter2-07/chapter2-07-bg-001.png",
 	"chapter2-07-obj-01": "./image/production/chapter2/chapter2-07/chapter2-07-obj-01.png",
 	"chapter2-08-bg-001": "./image/production/chapter2/chapter2-08/chapter2-08-bg-001.png",
+	"chapter2-08-obj-01": "./image/production/chapter2/chapter2-08/chapter2-08-obj-01.png",
 	"chapter2-09-bg-001": "./image/production/chapter2/chapter2-09/chapter2-09-bg-001.png",
 	"chapter2-10-bg-001": "./image/production/chapter2/chapter2-10/chapter2-10-bg-001.jpg",
 	"chapter2-10-obj-01": "./image/production/chapter2/chapter2-10/chapter2-10-obj-01.png",
