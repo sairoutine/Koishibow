@@ -7,7 +7,7 @@ module.exports = {
 	type: CONSTANT.STATIC_IMAGE_TYPE,
 	name: "スイッチ(ハズレ)",
 	serif: [
-		{"chara": "koishi", "exp": null,  serif1: _("ここかな？"), serif2: _("ここなのかしら"), serif3: _("きっとここだわ！"), serif4: _("きっとここだわ！"), "junction": ["もっと探す", "二人を呼びに行く"]},
+		{"chara": "koishi", "exp": null,  serif1: _("ここかな？"), serif2: _("ここなのかしら"), serif3: _("きっとここだわ！"), serif4: _("きっとここだわ！"), "junction": [_("もっと探す"), _("二人を呼びに行く")]},
 		{"type": "junction_serif", "serifs": [
 			[
 				{"chara": "koishi", "exp": null,  serif1: _("ここじゃないみたいね"), serif2: _("ここじゃないみたいね"), serif3: _("でももっとさーがそ"), serif4: _("でももっとさーがそ")},

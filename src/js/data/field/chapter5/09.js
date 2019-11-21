@@ -99,7 +99,7 @@ module.exports = {
 								{"chara": "koishi", "serif":"", "option": {"deleteItem": "34"}},
 								{"chara": "koishi", "serif":"", "option": {"deleteItem": "37"}},
 
-								{"chara": "orin","exp": "orin-ura_wait",  serif1: _("にゃー"), serif2: _("にゃー"), serif3: _("にゃー"), serif4: _("にゃー"), "junction": ["友達を助ける", "鍵を返す"]},
+								{"chara": "orin","exp": "orin-ura_wait",  serif1: _("にゃー"), serif2: _("にゃー"), serif3: _("にゃー"), serif4: _("にゃー"), "junction": [_("友達を助ける"), _("鍵を返す")]},
 
 								{"type": "junction_serif", "serifs": [
 									[

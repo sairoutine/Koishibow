@@ -107,7 +107,7 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter5-myroom-araiguma_talk1"], "serifs": [
 							// お燐表示済
 							[
-								{"chara": "koishi","serif":"", "junction": ["斧をとる", "とらない"]},
+								{"chara": "koishi","serif":"", "junction": [_("斧をとる"), _("とらない")]},
 								{"type": "junction_serif", "serifs": [
 									[
 										{"chara": "koishi","exp": "touch",  serif1: _("一応ね"), serif2: _("一応ね"), serif3: _("一応ね"), serif4: _("一応ね")},
