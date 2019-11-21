@@ -1017,7 +1017,8 @@
         "どこかで見たんだけどなあ": "I've seen it somewhere...",
         "その目の持ち主さあ": "The owner of this eye...",
         "目が三つ以上あればいいけど": "If you had over three eyes...",
-        "斧をとる/とらない": "Take the ax/Leave the ax",
+        "斧をとる": "Take the ax",
+        "とらない": "Leave the ax",
         "一応ね": "For now...",
         "ねんのため......": "Just in case.",
         "わたしわるいひとかも......": "I feel bad for this.",
@@ -1040,7 +1041,8 @@
         "んがぁー": "Errgh",
         "かぎ取ってきてくれたの！": "You got the key!",
         "めだまも！やったー！": "The eye also!\nSo great!",
-        "友達を助ける/鍵を返す": "Help your friend/Return the key",
+        "友達を助ける": "Help your friend",
+        "鍵を返す": "Return the key",
         "決めたわ": "I've decided.",
         "いま出してあげるわ！": "I'll let you out.",
         "これでいいわ！": "This will be fun.",
@@ -2158,6 +2160,8 @@
         "": "",
         "? ? ?": "???",
         "公園だ！": "A park!",
-        "おねえちゃんは行っちゃだめ\nって言ってたけど......": "But sis told me not to go."
+        "おねえちゃんは行っちゃだめ\nって言ってたけど......": "But sis told me not to go.",
+        "もっと探す": "Find more",
+        "二人を呼びに行く": "Go get them"
     }
 }
