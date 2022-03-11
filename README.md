@@ -1,7 +1,6 @@
 # Koishibow
-[![Build Status](https://travis-ci.org/sairoutine/Koishibow.svg?branch=gh-pages)](https://travis-ci.org/sairoutine/Koishibow)
 
-# 各種ドキュメント
+## 各種ドキュメント
 **ビルドモードについて**  
 `Web体験版モード` と `完成版モード` の2種類のモードでゲームデータをビルドすることがあります。
 Web体験版と完成版のどちらで使用する素材かによって素材を入れるディレクトリが異なります。
