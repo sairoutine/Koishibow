@@ -565,7 +565,7 @@ var anime_map = {
 	"cp2_pars-reaction_02":   require('../data/anime/cp2_pars/reaction_02_anime_1'),
 	"cp2_pars-reaction_03":   require('../data/anime/cp2_pars/reaction_02_anime_1'),
     
-	/* cp2パルスィ裏　緑犬 */
+	/* cp2パルスィ裏 緑犬 */
 	"cp2_pars_greendog-wait":              require('../data/anime/cp2_pars_greendog/wait_anime_1'),
 	"cp2_pars_greendog-ura_wait":          require('../data/anime/cp2_pars_greendog/ura_wait_anime_1'),
 	"cp2_pars_greendog-reverse_omote":     require('../data/anime/cp2_pars_greendog/reverse_omote_anime_1'),
@@ -573,7 +573,7 @@ var anime_map = {
 	"cp2_pars_greendog-ura_reaction_01":   require('../data/anime/cp2_pars_greendog/ura_reaction_01_anime_1'),
 	"cp2_pars_greendog-ura_reaction_02":   require('../data/anime/cp2_pars_greendog/ura_reaction_02_anime_1'),
 	"cp2_pars_greendog-ura_reaction_03":   require('../data/anime/cp2_pars_greendog/ura_reaction_03_anime_1'),
-	"cp2_pars_greendog-ura_reaction_04":   require('../data/anime/cp2_pars_greendog/ura_reaction_041_anime_1'),
+	"cp2_pars_greendog-ura_reaction_04":   require('../data/anime/cp2_pars_greendog/ura_reaction_04_anime_1'),
 	"cp2_pars_greendog-ura_reaction_05":   require('../data/anime/cp2_pars_greendog/ura_reaction_05_anime_1'),
     
 	/* BM */

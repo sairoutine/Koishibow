@@ -11,7 +11,7 @@ module.exports = {
 	serifWindow: "fukidashi_black",
 	animeNum: 4,
 	bgm: "chapter0-event-encounter_satori",
-	bg: "chapter3-08-event-01-bg-001",
+	bg: "chapter3-08-event-01-bg",
 	startSounds: [
 		{"name": "event_in", "frame": 0},
 	],
