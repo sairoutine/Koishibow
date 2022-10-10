@@ -5,6 +5,7 @@ var CONSTANT = require("../../../constant");
 var I = 0;
 
 var LAST_JUNCTION_SERIF = [
+	// 発達度に応じてエンディング分岐
 	{"type": "criteria_serif", "criteria": "growth", "arguments": [], "serifs": [
 		// 発達度1
 		[
@@ -133,7 +134,7 @@ module.exports = {
 			x: 480, y: 420,
 		},
 
-
+		// 選択肢に意味はなく、どちらも同じセリフへ
 		{
 			no: ++I,
 			type: CONSTANT.CHAPTER6_LAST_JUNCTION,
