@@ -32,6 +32,7 @@ var SceneEventForChapter3GetupKoishi     = require('./scene/event/chapter3/getup
 
 var FieldMasterRepository = require('./repository/field');
 var ItemMasterRepository = require('./repository/item');
+var JournalMasterRepository = require('./repository/journal');
 var EventMasterRepository = require('./repository/event_talk');
 var OldEventMasterRepository = require('./repository/event_talk_old');
 
@@ -229,7 +230,7 @@ Game.prototype.setupDebug = function (dom) {
 
 
 	// アイテム一覧生成
-	var item_list = ItemMasterRepository.all()
+	var item_list = ItemMasterRepository.all();
 	var item_name_list = [];
 	for (var j = 0; j < item_list.length; j++) {
 		item_name_list.push({name: item_list[j].name(), value: item_list[j].id()});
@@ -238,6 +239,13 @@ Game.prototype.setupDebug = function (dom) {
 		function (game, value) {
 			game.save_manager.item.addItem(value);
 		});
+
+	var journals = JournalMasterRepository.all();
+	this.debug_manager.addMenuButton("ジャーナル全て獲得", function (game) {
+		for (var i = 0; i < journals.length; i++) {
+			game.save_manager.journal.addJournal(journals[i].id());
+		}
+	});
 
 	this.debug_manager.addNewLine();
 
