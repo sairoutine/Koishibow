@@ -24,6 +24,7 @@ var SceneEventMovie = require('./scene/event_movie');
 var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
 var SceneEventForChapter0Last            = require('./scene/event/chapter0/last');
 var SceneEventForTrialLast               = require('./scene/event/trial_last');
+var SceneTrueEnding                      = require('./scene/event/true_ending');
 var SceneEventForChapter1SitAtBusstop    = require('./scene/event/chapter1/sit_at_busstop');
 var SceneEventForChapter1TalkWithMobu    = require('./scene/event/chapter1/talk_with_mobu');
 var SceneEventForChapter1PlayDoll        = require('./scene/event/chapter1/playdoll');
@@ -78,6 +79,8 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("event_for_chapter1_playdoll", new SceneEventForChapter1PlayDoll(this));
 	this.scene_manager.addScene("event_for_chapter1_play_with_murasa", new SceneEventForChapter1PlayWithMurasa(this));
 	this.scene_manager.addScene("event_for_chapter3_getup_koishi", new SceneEventForChapter3GetupKoishi(this));
+	// 真エンディング
+	this.scene_manager.addScene("true_ending", new SceneTrueEnding(this));
 	// 体験版 終了
 	this.scene_manager.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
 
