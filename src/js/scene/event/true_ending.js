@@ -175,7 +175,6 @@ SceneTrueEnding.prototype._showMessage = function() {
 SceneTrueEnding.prototype._playCurrentAnime = function(){
 	var exp = this._serif.getCurrentCharaExpressionByPosition();
 	if (exp) {
-		console.log(exp);
 		this._ss.playAnimationOnce(exp);
 	}
 };
