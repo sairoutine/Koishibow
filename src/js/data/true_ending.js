@@ -121,7 +121,6 @@ module.exports = [
 	{"chara": "koishi", "exp": "chapter6-event-ending04-obj03", "serif": _("たまたま"), "option": {"font_color": "#6fc0d5", "sounds": []}},
 	{"chara": "koishi", "exp": "chapter6-event-ending04-obj03", "serif": _("うちの両親だっただけよ"), "option": {"font_color": "#6fc0d5", "sounds": []}},
 	{"chara": "koishi", "exp": "chapter6-event-ending04-obj07", "serif": _("この世界で人が死ぬには"), "option": {"font_color": "#6fc0d5", "sounds": []}},
-
 	{"chara": "koishi", "exp": "chapter6-event-ending04-obj08", "serif": _("全員が少しずつ悪人だからよ"), "option": {"font_color": "#6fc0d5", "sounds": []}},
 	{"chara": "koishi", "exp": "", "serif": _("アハハハハハ！"), "option": {"font_color": "#6fc0d5", "sounds": []}},
 	{"chara": "inquisitor", "exp": "chapter6-event-ending04-obj09", "serif": _("      "), "option": {"font_color": "#FFFFFF", "sounds": []}},
