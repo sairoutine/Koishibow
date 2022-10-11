@@ -2,7 +2,7 @@
 var _ = require('i18n4v')
 // 地下1階
 // 病院の廊下1
-// chapter0, chapter5, chapter6 それぞれに存在するので
+// chapter0, chapter2, chapter5, chapter6 それぞれに存在するので
 // コレを修正する際はほかも修正する
 /*
  真っ暗闇

@@ -2,7 +2,7 @@
 var _ = require('i18n4v')
 // 地下1階
 // こいしの自室
-// chapter0(帽子あり・なし), chapter3, chapter5, chapter6(帽子あり・なし) にも自室が存在するので
+// chapter0(帽子あり・なし), chapter2, chapter3, chapter5, chapter6(帽子あり・なし) にも自室が存在するので
 // 当たり判定修正時はそちらも修正する
 var CONSTANT = require("../../../constant");
 var I = 0;

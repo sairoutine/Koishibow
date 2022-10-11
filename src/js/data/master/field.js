@@ -21,6 +21,22 @@ module.exports = [
 	require("../../data/field/chapter1/09"),
 	require("../../data/field/chapter1/10"),
 
+	// chapter2
+	require("../../data/field/chapter2/myroom"),
+	require("../../data/field/chapter2/hospital_corridor1"),
+	require("../../data/field/chapter2/hospital_corridor2"),
+	require("../../data/field/chapter2/mansion_corridor1"),
+	require("../../data/field/chapter2/mansion_corridor2"),
+	require("../../data/field/chapter2/mansion_corridor3"),
+	require("../../data/field/chapter2/07"),
+	require("../../data/field/chapter2/08"),
+	require("../../data/field/chapter2/09"),
+	require("../../data/field/chapter2/10"),
+	require("../../data/field/chapter2/11"),
+	require("../../data/field/chapter2/12"),
+	require("../../data/field/chapter2/13"),
+	require("../../data/field/chapter2/14"),
+
 	// chapter3
 	require("../../data/field/chapter3/myroom"),
 	require("../../data/field/chapter3/hospital_corridor1"),

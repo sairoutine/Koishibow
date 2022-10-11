@@ -1,7 +1,7 @@
 'use strict';
 var _ = require('i18n4v')
 // 病院の廊下1(コンクリ、廃れてる感じ) 車椅子とかあったほうがいいかも
-// chapter0, chapter5, chapter6 それぞれに存在するので
+// chapter0, chapter2, chapter5, chapter6 それぞれに存在するので
 // コレを修正する際はほかも修正する
 var CONSTANT = require("../../../constant");
 var I = 0;
