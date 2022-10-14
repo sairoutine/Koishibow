@@ -44,7 +44,7 @@ SceneEventMovie.prototype.init = function(event_name){
 		callback = function () {
 			scene_manager.changeScene("movie", "./movie/production/chapter6_staffroll.mp4", function (core) {
 				// ジャーナルをすべて持っていれば
-				if(core.save_manager.journal.getJournalList().length === JournalMasterRepository.all().length) {
+				if(core.save_manager.journal.getJournalList().length >= JournalMasterRepository.all().length) {
 					// 真エンディングへ
 					core.scene_manager.changeScene("true_ending");
 				}
