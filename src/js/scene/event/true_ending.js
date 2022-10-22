@@ -1,6 +1,6 @@
 'use strict';
 
-var SERIF_WAITNG_COUNT = 60;
+var SERIF_WAITNG_COUNT = 95;
 
 var Util = require('../../hakurei').Util;
 var TimeManager = require('../../hakurei').Manager.Time;
