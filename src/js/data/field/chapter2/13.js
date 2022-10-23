@@ -2,12 +2,11 @@
 // 1-8と同様
 var CONSTANT = require("../../../constant");
 var I = 0;
-var _ = require('i18n4v')
 module.exports = {
 	key: "chapter2_13",
 	chapter: 2,
-	bgm: "silent",
-	rightStartPosition:   {x: 690, y: 380},
+	bgm: "field4",
+	rightStartPosition:   {x: 830, y: 380},
 	leftStartPosition:    {x: 180, y: 380},
 	defaultStartPosition: {x: 180, y: 380, isTowardLeft: false},
 	upStartPosition:    null,
@@ -16,23 +15,29 @@ module.exports = {
 	leftField: "chapter2_14",
 	upField: null,
 	downField: null,
-	background: "chapter2-07-bg-001",
-	walkSound: "walking_bare_default",
+	background: "chapter1-08-bg-001",
+	walkSound: "walking_bare_outside",
 	initialProcess: [
 	],
 	objects: [
 		{
 			no: ++I,
-			image: "eyedrops",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "目薬",
-			serif: [
-				{"chara": "koishi","exp": null, "serif": _(""), "option": {"playEvent": "chapter6-04-event-01"}},
-			],
-			x: 589*2/3, y: 281.50*2/3,
-			height: 400,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "ぶら下がった二人",
+			serif: null,
+			x: 735*2/3, y: 392*2/3,
 			scale: 2/3,
-			show_if_event_true: "chapter6-04-show_eyedrops",
+			anime1: "chapter1-08-obj-01-obj00",
+			anime2: null,
+			anime3: null,
+			anime4: "chapter1-08-obj-01-obj01",
+			anime5: "chapter1-08-obj-01-obj02",
+			anime6: "chapter1-08-obj-01-obj03",
+
+			action_name: null,
+			sound_name: null,
+			sound_back: "chapter1-08-suspended",
+			position_type: "lying",
 		},
 	],
 };

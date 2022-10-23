@@ -76,6 +76,18 @@ AssetsConfig.images = {
 	"chapter0-mspassage-obj-10-01": "./image/common/chapter0/mansion_corridor3/chapter0-mspassage-obj-10-01.png",
 	"chapter0-mspassage-obj-11-01": "./image/common/chapter0/mansion_corridor3/chapter0-mspassage-obj-11-01.png",
 
+	// chapter1
+	"chapter1-07-bg-001": "./image/common/chapter1/chapter1-07/chapter1-07-bg-001.jpg",
+
+	"chapter1-08-bg-001": "./image/common/chapter1/chapter1-08/chapter1-08-bg-001.jpg",
+	"chapter1-08-obj-01": "./image/common/chapter1/chapter1-08/chapter1-08-obj-01.png",
+
+	"chapter1-09-bg-001": "./image/common/chapter1/chapter1-09/chapter1-09-bg-001.jpg",
+	"chapter1-09-obj-01": "./image/common/chapter1/chapter1-09/chapter1-09-obj-01.png",
+	"chapter1-09-obj-02": "./image/common/chapter1/chapter1-09/chapter1-09-obj-02.png",
+
+	"chapter1-10-obj-01": "./image/common/chapter1/chapter1-10/chapter1-10-obj-01.png",
+
 	// chapter2
 	"chapter2-mspassage-obj-11-01": "./image/production/chapter2/chapter2-mspassage/chapter2-mspassage-obj-11-01.png",
 	"chapter2-mspassage-obj-11-02": "./image/production/chapter2/chapter2-mspassage/chapter2-mspassage-obj-11-02.png",
@@ -86,6 +98,7 @@ AssetsConfig.images = {
 	"chapter2-09-bg-001": "./image/production/chapter2/chapter2-09/chapter2-09-bg-001.png",
 	"chapter2-10-bg-001": "./image/production/chapter2/chapter2-10/chapter2-10-bg-001.jpg",
 	"chapter2-10-obj-01": "./image/production/chapter2/chapter2-10/chapter2-10-obj-01.png", 
+	"chapter2-11-bg-001": "./image/production/chapter2/chapter2-11/chapter2-11-bg-001.jpg",
        
 };
 
@@ -168,8 +181,18 @@ AssetsConfig.sounds = {
 		path: "./sound/common/chapter0/mansion_corridor3/open_and_falldown.ogg",
 		volume: 1.0,
 	},
-
-
+	"chapter1-08-suspended":    {
+		path: "./sound/common/chapter1/08/suspended.ogg",
+		volume: 1.0,
+	},
+	"chapter1-09-twist_faucet":    {
+		path: "./sound/common/chapter1/09/twist_faucet.ogg",
+		volume: 1.0,
+	},
+	"chapter1-09-growl":    {
+		path: "./sound/common/chapter1/09/growl.ogg",
+		volume: 1.0,
+	},
 };
 
 AssetsConfig.bgms = [

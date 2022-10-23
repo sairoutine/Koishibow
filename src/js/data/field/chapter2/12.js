@@ -2,12 +2,11 @@
 // 1-9と同様。
 var CONSTANT = require("../../../constant");
 var I = 0;
-var _ = require('i18n4v')
 module.exports = {
 	key: "chapter2_12",
 	chapter: 2,
-	bgm: "silent",
-	rightStartPosition:   {x: 690, y: 380},
+	bgm: "field4",
+	rightStartPosition:   {x: 670, y: 380},
 	leftStartPosition:    {x: 180, y: 380},
 	defaultStartPosition: {x: 180, y: 380, isTowardLeft: false},
 	upStartPosition:    null,
@@ -16,23 +15,47 @@ module.exports = {
 	leftField: "chapter2_13",
 	upField: null,
 	downField: null,
-	background: "chapter2-07-bg-001",
+	background: "chapter1-09-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
 	],
 	objects: [
 		{
 			no: ++I,
-			image: "eyedrops",
-			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "目薬",
-			serif: [
-				{"chara": "koishi","exp": null, "serif": _(""), "option": {"playEvent": "chapter6-04-event-01"}},
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "生垣(秘密基地)",
+			loop: true,
+			serif: null,
+			serif_back: [
 			],
-			x: 589*2/3, y: 281.50*2/3,
-			height: 400,
+			x: 720*2/3, y: 428*2/3,
 			scale: 2/3,
-			show_if_event_true: "chapter6-04-show_eyedrops",
+			width: 100,
+			anime1: "chapter1-09-obj-02-obj01",
+			anime2: "chapter1-09-obj-02-obj02",
+			anime3: "chapter1-09-obj-02-obj01",
+
+			action_name: "look_front",
+			sound_name: "chapter1-09-growl",
+		},
+		{
+			no: ++I,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
+			name: "蛇口",
+			serif: null,
+			x:384*2/3, y:572*2/3,
+			scale: 2/3,
+			anime1: "chapter1-09-obj-01-obj01",
+			anime2: null,
+			anime3: null,
+			anime4: "chapter1-09-obj-01-obj02",
+			anime5: "chapter1-09-obj-01-obj03",
+			anime6: "chapter1-09-obj-01-obj04",
+			width: 240,
+			height: 240,
+
+			action_name: "look_front",
+			sound_name: "chapter1-09-twist_faucet",
 		},
 	],
 };
