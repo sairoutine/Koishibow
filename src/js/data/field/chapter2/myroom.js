@@ -119,12 +119,6 @@ module.exports = {
 			scale: 2/3,
 			target_x: 532, target_y: 418
 		},
-		{
-			no: ++I,
-			type: CONSTANT.JOURNAL_FRONT_TYPE,
-			x: 258, y: 689,
-			journal_id: "journal001",
-		},
 	],
 };
 

@@ -23,15 +23,6 @@ module.exports = {
 	background: "chapter0-hospital2-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter0_hospital_corridor2_firstaccess"], "process": [
-			// すでにアクセス済み
-			[],
-			// まだ未アクセス
-			[
-				{"type": "process", "value": "playSubEvent", "arguments": ["event_chapter0_kokoro_encounter"]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter0_hospital_corridor2_firstaccess"]}
-			],
-		]},
 	],
 	objects: [
 		{
@@ -65,12 +56,6 @@ module.exports = {
 			sound_name: "chapter0-hospital_corridor2-move_wheelchair",
 			width: 258,
 			height: 280
-		},
-		{
-			no: ++I,
-			type: CONSTANT.JOURNAL_FRONT_TYPE,
-			x: 627, y: 689,
-			journal_id: "journal003",
 		},
 	],
 

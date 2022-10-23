@@ -14,27 +14,13 @@ module.exports = {
 	defaultStartPosition: {x: 180, y: 380, isTowardLeft: false},
 	upStartPosition:    null,
 	downStartPosition:  null,
-	rightField: "chapter2_03",
-	leftField: "chapter2_06",
+	rightField: "chapter2_06",
+	leftField: "chapter2_04",
 	upField: null,
 	downField: null,
 	background: "chapter0-mansionpas-002",
 	walkSound: "walking_bare_wood",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter0_mansion_corridor2_firstaccess"], "process": [
-			// すでにアクセス済み
-			[],
-			// まだ未アクセス
-			[
-
-				{"type": "process", "value": "playTalk", "arguments": [
-					[
-						{"chara": "koishi","exp": "look_front", "serif":_("あっ"), "option": {"changeScene": "event_for_chapter0_encounter_satori"}},
-					],
-				]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter0_mansion_corridor2_firstaccess"]}
-			],
-		]},
 	],
 	objects: [
 		{
@@ -85,24 +71,20 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ドア",
 			serif: [
-				{"chara": "koishi", serif1: _("だれかじゅんびちゅう？"), serif2: _("だれかじゅんびちゅう？"), serif3: _("だれかじゅんびちゅう？"), serif4: _("だれかじゅんびちゅう？")},
+				{"chara": "koishi", "exp": "wait",  "serif": "", "option": {"changeField": "chapter2_07"}},
+
 			],
 			x: 610,
 			y: 245,
 			width: 210,
 			height: 350,
 			scale: 0.7,
+
 			anime1: "chapter0-mansion_corridor2-obj-06-01-obj01",
 			anime2: "chapter0-mansion_corridor2-obj-06-01-obj02",
 			anime3: "chapter0-mansion_corridor2-obj-06-01-obj03",
 			action_name: null,
 			sound_name:      "chapter0-mansion_corridor2-open_door",
-		},
-		{
-			no: ++I,
-			type: CONSTANT.JOURNAL_FRONT_TYPE,
-			x: 177, y: 400,
-			journal_id: "journal005",
 		},
 	],
 

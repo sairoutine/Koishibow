@@ -102,12 +102,6 @@ module.exports = {
 		},
 
 
-		{
-			no: ++I,
-			type: CONSTANT.JOURNAL_FRONT_TYPE,
-			x: 600, y: 530,
-			journal_id: "journal004",
-		},
 	],
 
 };

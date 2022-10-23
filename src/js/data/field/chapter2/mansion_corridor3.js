@@ -112,22 +112,24 @@ module.exports = {
 			sound_name:      "chapter0-mansion_corridor3-ring_clock_front",
 			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
 		},
+		// chapter2 ではサードアイを当てても変化しない
 		{
 			no: ++I,
-			type: CONSTANT.ANIME_EVENT_IMAGE_TYPE,
+			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "カーペット",
 			serif: null,
 			x: 490,
 			y: 570,
+			position_type: "lying",
 			scale: 2/3,
-			anime1: "chapter0-mansion_corridor3-obj-11-01-obj01",
-			anime2: "chapter0-mansion_corridor3-obj-11-01-obj02",
-			anime3: "chapter0-mansion_corridor3-obj-11-01-obj03",
-			anime4: "chapter0-mansion_corridor3-obj-11-01-obj04",
-			anime5: "chapter0-mansion_corridor3-obj-11-01-obj05",
-			anime6: "chapter0-mansion_corridor3-obj-11-01-obj06",
+			anime1: "chapter2-mspassage-obj-11-01-obj01",
+			anime2: null,
+			anime3: null,
+			anime4: "chapter2-mspassage-obj-11-01-obj02",
+			anime5: "chapter2-mspassage-obj-11-01-obj03",
+			anime6: "chapter2-mspassage-obj-11-01-obj04",
 			action_name: null,
-			action_back_event: "event_for_chapter0_last", // こいし飛び降り
+			sound_name: null,
 		},
 		{
 			no: ++I,
