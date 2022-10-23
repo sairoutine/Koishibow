@@ -11,7 +11,7 @@ module.exports = {
 	bgm: "field2",
 	rightStartPosition:   {x: 690, y: 380},
 	leftStartPosition:    {x: 180, y: 380},
-	defaultStartPosition: {x: 180, y: 380, isTowardLeft: false},
+	defaultStartPosition: {x: 600, y: 300, isTowardLeft: false},
 	upStartPosition:    null,
 	downStartPosition:  null,
 	rightField: "chapter2_06",

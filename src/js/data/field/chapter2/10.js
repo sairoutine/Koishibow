@@ -5,6 +5,8 @@
 //・パルスィ（と緑犬）
 //（パルスイの「……」はリアクションとして描画表現する）
 //・積まれた石
+var CONSTANT = require("../../../constant");
+var I = 0;
 module.exports = {
 	key: "chapter2_10",
 	chapter: 2,
@@ -23,6 +25,19 @@ module.exports = {
 	initialProcess: [
 	],
 	objects: [
+		{
+			no: ++I,
+			image: "chapter2-10-obj-01",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "柵",
+			serif: null,
+			x:720*2/3, y:997*2/3,
+			scale: 2/3,
+			action_name: null,
+			height: 0,
+			position_type: "front",
+		},
+
 	],
 };
 
