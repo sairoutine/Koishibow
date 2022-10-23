@@ -67,8 +67,8 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "救急箱",
 			serif: [
-				{"chara": "koishi","serif": _("くーくーばこ！")},
-				{"chara": "koishi","serif": _("けがしてないよ！")},
+				{"chara": "koishi", serif1: _("あまいくすりないかな！"), serif2: _("お医者ごっこしたい！"), serif3: _("お医者ごっこしたい！"), serif4: _("お医者ごっこしたい！")},
+				{"chara": "koishi", serif1: _("白いやつ！"), serif2: _("ともだち呼ばなきゃ"), serif3: _("ともだち呼ばなきゃ"), serif4: _("ともだち呼ばなきゃ")},
 			],
 			x: 281,
 			y: 280,

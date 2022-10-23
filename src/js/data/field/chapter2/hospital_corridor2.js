@@ -6,7 +6,6 @@ var _ = require('i18n4v')
 var CONSTANT = require("../../../constant");
 var I = 0;
 
-// TODO: 車椅子がなくなっている
 module.exports = {
 	key: "chapter2_03",
 	chapter: 2,
@@ -23,6 +22,22 @@ module.exports = {
 	background: "chapter0-hospital2-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_03_20050"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "koishi", "exp": "look_front", serif1: _("あ！"), serif2: _("あ！"), serif3: _("あ！"), serif4: _("あ！")},
+						{"chara": "koishi", "exp": null, serif1: _("車椅子ない！"), serif2: _("車椅子ない！"), serif3: _("車椅子ない！"), serif4: _("車椅子ない！")},
+						{"chara": "koishi", "exp": null, serif1: _("どこいったんだろー"), serif2: _("どこいったんだろー"), serif3: _("どこいったんだろー"), serif4: _("どこいったんだろー")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_03_20050"]}
+			],
+		]},
+
 	],
 	objects: [
 		{
@@ -38,24 +53,6 @@ module.exports = {
 			scale: 0.7,
 			action_name: "look_bottom",
 			position_type: "lying",
-		},
-		{
-			no: ++I,
-			type: CONSTANT.ANIME_IMAGE_TYPE,
-			name: "車イス",
-			serif: [
-				{"chara": "koishi", serif1: _("あしおれたらのってもいい？"), serif2: _("あしおれたらのってもいい？"), serif3: _("あしおれたらのってもいい？"), serif4: _("あしおれたらのってもいい？")},
-			],
-			x: 130,
-			y: 360,
-			scale: 0.7,
-			anime1: "chapter0-hospital_corridor2-obj-01-01-obj01",
-			anime2: "chapter0-hospital_corridor2-obj-01-01-obj02",
-			anime3:"chapter0-hospital_corridor2-obj-01-01-obj03",
-			action_name: "touch",
-			sound_name: "chapter0-hospital_corridor2-move_wheelchair",
-			width: 258,
-			height: 280
 		},
 	],
 

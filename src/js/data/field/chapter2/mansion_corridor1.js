@@ -21,6 +21,22 @@ module.exports = {
 	downField: null,
 	background: "chapter0-mansionpas-001",
 	walkSound: "walking_bare_wood",
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_04_20060"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "koishi", "exp": "look_front", serif1: _("三輪車もない！"), serif2: _("三輪車もない！"), serif3: _("三輪車もない！"), serif4: _("三輪車もない！")},
+						{"chara": "koishi", "exp": null, serif1: _("乗ろうと思ったのに！"), serif2: _("だれか乗って行っちゃった？"), serif3: _("だれか乗って行っちゃった？"), serif4: _("だれか乗って行っちゃった？")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_04_20060"]}
+			],
+		]},
+	],
 	objects: [
 		{
 			no: ++I,
@@ -43,42 +59,6 @@ module.exports = {
 			sound_name:      "chapter0-mansion_corridor1-lamp_front",
 			sound_back: "chapter0-mansion_corridor1-lamp_back"
 		},
-		{
-			no: ++I,
-			type: CONSTANT.ANIME_IMAGE_TYPE,
-			name: "三輪車",
-			serif: [
-				{"chara": "koishi", serif1: _("あとでのろっと"), serif2: _("あとでのろっと"), serif3: _("あとでのろっと"), serif4: _("あとでのろっと")},
-			],
-			x: 815,
-			y: 515,
-			width: 200,
-			height: 100,
-			scale: 0.7,
-			anime1: "chapter0-mansion_corridor1-obj-02-01-obj01",
-			anime2: "chapter0-mansion_corridor1-obj-02-01-obj02",
-			anime3: "chapter0-mansion_corridor1-obj-02-01-obj03",
-			anime4: "chapter0-mansion_corridor1-obj-02-01-obj04",
-			anime5: "chapter0-mansion_corridor1-obj-02-01-obj05",
-			anime6: "chapter0-mansion_corridor1-obj-02-01-obj06",
-			action_name: "touch",
-			sound_name: "chapter0-mansion_corridor1-move_tricycle",
-			bgm_back: "chapter0-mansion_corridor1-tricycle",
-			position_type: "front",
-		},
-		{
-			no: ++I,
-			image: null,
-			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "三輪車の下",
-			serif: null,
-			width: 200, height: 300,
-			x: 815,
-			y: 715,
-
-		},
-
-
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,

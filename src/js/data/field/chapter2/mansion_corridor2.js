@@ -71,8 +71,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "ドア",
 			serif: [
-				{"chara": "koishi", "exp": "wait",  "serif": "", "option": {"changeField": "chapter2_07"}},
-
+				{"chara": "koishi", "exp": "touch", "serif": _("あ！")},
+				{"chara": "koishi", "exp": null, "serif": _("じゅんびできたんだ！"), "option": {"changeField": "chapter2_07"}}
 			],
 			x: 610,
 			y: 245,
@@ -85,9 +85,7 @@ module.exports = {
 			anime3: "chapter0-mansion_corridor2-obj-06-01-obj03",
 			action_name: null,
 			sound_name:      "chapter0-mansion_corridor2-open_door",
-		},
-	],
-
-
+		}
+	]
 };
 
