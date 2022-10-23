@@ -1,5 +1,7 @@
 'use strict';
 module.exports = [
+	// chapter2
+	require("../../data/event/chapter2/01/01"),
 	// chapter3
 	require("../../data/event/chapter3/08/04"),
 	require("../../data/event/chapter3/09/01"),

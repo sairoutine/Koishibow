@@ -1,6 +1,11 @@
 'use strict';
 var anime_map = {
 	// 新イベント
+	"chapter2-01-event-01-obj01": require('../data/anime/chapter2/event/chapter2-01-event-01/obj01_anime_1'),
+	"chapter2-01-event-01-obj02": require('../data/anime/chapter2/event/chapter2-01-event-01/obj02_anime_1'),
+
+
+
 	"chapter3-08-event-04-obj01": require('../data/anime/chapter3/event/chapter3-08-event-04/chapter3-08-event-04/obj01_anime_1'),
 	"chapter3-08-event-04-obj02": require('../data/anime/chapter3/event/chapter3-08-event-04/chapter3-08-event-04/obj02_anime_1'),
 	"chapter3-08-event-04-obj03": require('../data/anime/chapter3/event/chapter3-08-event-04/chapter3-08-event-04/obj03_anime_1'),
