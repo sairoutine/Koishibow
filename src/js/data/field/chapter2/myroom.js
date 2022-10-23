@@ -22,7 +22,19 @@ module.exports = {
 	downField: null,
 	background: "chapter0-myroom-bg-001",
 	walkSound: "walking_bare_default",
-	initialProcess: [],
+	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_01_20010"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				// こいし起床イベント
+				{"type": "process", "value": "changeScene", "arguments": ["event_talk", "chapter2-01-event-01"]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_01_20010"]}
+			],
+		]},
+
+	],
 	objects: [
 		{
 			no: ++I,
@@ -56,8 +68,8 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "本",
 			serif: [
-				{"chara": "koishi","serif": _("にっきさんひさしぶり！")},
-				{"chara": "koishi","serif": _("またね！")},
+				{"chara": "koishi", serif1: _("かかなきゃなー"), serif2: _("あとでさっきのこと書く！"), serif3: _("あとでさっきのこと書く！"), serif4: _("あとでさっきのこと書く！")},
+
 			],
 			x: 340, y: 530,
 			scale: 0.7,
@@ -65,7 +77,7 @@ module.exports = {
 			anime2: "chapter0-myroom-obj-02-01-obj02",
 			anime3: "chapter0-myroom-obj-02-01-obj03",
 			width: 80, height: 80,
-			action_name: "look_bottom",
+			action_name: "touch",
 			sound_name: "chapter0-myroom-open_book",
 			position_type: "lying",
 		},
