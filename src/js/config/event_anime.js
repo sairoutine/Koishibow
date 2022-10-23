@@ -3,6 +3,23 @@ var anime_map = {
 	// 新イベント
 	"chapter2-01-event-01-obj01": require('../data/anime/chapter2/event/chapter2-01-event-01/obj01_anime_1'),
 	"chapter2-01-event-01-obj02": require('../data/anime/chapter2/event/chapter2-01-event-01/obj02_anime_1'),
+	"chapter2-04-event-01-obj01": require('../data/anime/chapter2/event/chapter2-04-event-01/obj01_anime_1'),
+	"chapter2-04-event-01-obj02": require('../data/anime/chapter2/event/chapter2-04-event-01/obj02_anime_1'),
+	"chapter2-04-event-01-obj03": require('../data/anime/chapter2/event/chapter2-04-event-01/obj03_anime_1'),
+	"chapter2-04-event-01-obj04": require('../data/anime/chapter2/event/chapter2-04-event-01/obj04_anime_1'),
+	"chapter2-04-event-01-obj05": require('../data/anime/chapter2/event/chapter2-04-event-01/obj05_anime_1'),
+	"chapter2-09-event-03-obj01": require('../data/anime/chapter2/event/chapter2-09-event-03/obj01_anime_1'),
+	"chapter2-09-event-03-obj02": require('../data/anime/chapter2/event/chapter2-09-event-03/obj02_anime_1'),
+	"chapter2-09-event-03-obj03": require('../data/anime/chapter2/event/chapter2-09-event-03/obj03_anime_1'),
+	"chapter2-10-event-01-obj01": require('../data/anime/chapter2/event/chapter2-10-event-01/obj01_anime_1'),
+	"chapter2-10-event-01-obj02": require('../data/anime/chapter2/event/chapter2-10-event-01/obj02_anime_1'),
+	"chapter2-10-event-01-obj03": require('../data/anime/chapter2/event/chapter2-10-event-01/obj03_anime_1'),
+	"chapter2-10-event-02-obj01": require('../data/anime/chapter2/event/chapter2-10-event-02/obj01_anime_1'),
+	"chapter2-10-event-02-obj02": require('../data/anime/chapter2/event/chapter2-10-event-02/obj02_anime_1'),
+	"chapter2-10-event-02-obj03": require('../data/anime/chapter2/event/chapter2-10-event-02/obj03_anime_1'),
+	"chapter2-10-event-02-obj04": require('../data/anime/chapter2/event/chapter2-10-event-02/obj04_anime_1'),
+	"chapter2-10-event-02-obj05": require('../data/anime/chapter2/event/chapter2-10-event-02/obj05_anime_1'),
+	"chapter2-10-event-02-obj06": require('../data/anime/chapter2/event/chapter2-10-event-02/obj06_anime_1'),
 
 
 
