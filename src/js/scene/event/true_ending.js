@@ -19,6 +19,8 @@ var SceneTrueEnding = function(game) {
 
 	this._ss = new SS(this);
 
+	this._show_3rdeye = true;
+
 	this._serif = new ScenarioManager(this.core, {
 		typography_speed: CONSTANT.TYPOGRAPHY_SPEED,
 	});
@@ -49,6 +51,9 @@ Util.inherit(SceneTrueEnding, BaseScene);
 
 SceneTrueEnding.prototype.init = function(){
 	BaseScene.prototype.init.apply(this, arguments);
+
+	this._show_3rdeye = true;
+
 	this.removeAllObject();
 
 	// セリフ初期化
@@ -103,7 +108,10 @@ SceneTrueEnding.prototype.draw = function(){
 	this._showMessageWindow();
 
 	// 3rd eye アイコンUI表示
-	this._show3rdeye();
+	//
+	if(this._show_3rdeye) {
+		this._show3rdeye();
+	}
 
 	// メッセージ表示
 	this._showMessage();
@@ -180,6 +188,15 @@ SceneTrueEnding.prototype._playCurrentAnime = function(){
 };
 
 SceneTrueEnding.prototype._executeCurrentOption = function(){
+	// 3rd eye を表示するか否か
+	var show_3rdeye = this._serif.getCurrentOption().show_3rdeye;
+	if (show_3rdeye) {
+		this._show_3rdeye = true;
+	}
+	else {
+		this._show_3rdeye = false;
+	}
+
 	// BGM 再生
 	var bgm = this._serif.getCurrentOption().bgm;
 	if (bgm) {

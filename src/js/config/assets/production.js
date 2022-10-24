@@ -179,7 +179,7 @@ AssetsConfig.bgms = [
 	{
 		key: "true_ending_rain",
 		path: "./bgm/production/true_ending/rain.ogg",
-		loopStart: 0*60 + 0 + 0.000,
+		//loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
 		isShowMusicRoom: false,
@@ -190,7 +190,7 @@ AssetsConfig.bgms = [
 	{
 		key: "true_ending_colorless",
 		path: "./bgm/production/true_ending/colorless.ogg",
-		loopStart: 0*60 + 0 + 0.000,
+		//loopStart: 0*60 + 0 + 0.000,
 		//loopEnd: 1*60 + 47 + 0.027,
 		volume: 1.0,
 		isShowMusicRoom: false,
