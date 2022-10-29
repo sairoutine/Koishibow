@@ -1,10 +1,8 @@
 'use strict';
+// 0-5と同様だが準備中の扉から屋敷の外へ出られるようになっている
 var _ = require('i18n4v')
-// 屋敷の廊下2(ドアがある) 最初のフラッシュバックが入る
 var CONSTANT = require("../../../constant");
 var I = 0;
-
-// TODO: 0-5と同様だが準備中の扉から屋敷の外へ出られるようになっている
 module.exports = {
 	key: "chapter2_05",
 	chapter: 2,
