@@ -1,8 +1,8 @@
 'use strict';
 //水につかった屋敷
-//・くるまいす（0-4にあったもの。ひっくり返っているとか沈んでいるとか）目を使ったときに車輪が空転するとベター
 var CONSTANT = require("../../../constant");
 var I = 0;
+var _ = require('i18n4v')
 module.exports = {
 	key: "chapter2_07",
 	chapter: 2,
@@ -19,6 +19,21 @@ module.exports = {
 	background: null,
 	walkSound: "walking_bare_default",
 	initialProcess: [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_07_20110"], "process": [
+			// すでにアクセス済み
+			[],
+			// まだ未アクセス
+			[
+				{"type": "process", "value": "playTalk", "arguments": [
+					[
+						{"chara": "koishi", "exp": "look_front", serif1: _("うわ！"), serif2: _("うわ！"), serif3: _("うわ！"), serif4: _("うわ！")},
+						{"chara": "koishi", "exp": null, serif1: _("みずびだし"), serif2: _("びちょびちょなんですけど！"), serif3: _("びちょびちょなんですけど！"), serif4: _("びちょびちょなんですけど！")},
+						{"chara": "koishi", "exp": null, serif1: _("これうみ？"), serif2: _("これうみ？"), serif3: _("これうみ？"), serif4: _("これうみ？")},
+					]
+				]},
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_07_20110"]}
+			],
+		]},
 	],
 	objects: [
 		{
@@ -42,7 +57,14 @@ module.exports = {
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "車いす",
-			serif: null,
+			serif: [
+				{"chara": "koishi", serif1: _("あ！"), serif2: _("あ！"), serif3: _("あ！"), serif4: _("あ！")},
+				{"chara": "koishi", serif1: _("あった"), serif2: _("あった"), serif3: _("あった"), serif4: _("あった")},
+				{"chara": "koishi", serif1: _("だれか逃げようとしたの？"), serif2: _("だれか逃げようとしたの？"), serif3: _("だれか逃げようとしたの？"), serif4: _("だれか逃げようとしたの？")},
+			],
+			serif_back: [
+				{"chara": "koishi", serif1: _("あはは、へんなの"), serif2: _("あはは、へんなの"), serif3: _("あはは、へんなの"), serif4: _("あはは、へんなの")},
+			],
 			x: 1102*2/3, y: 736*2/3,
 			scale: 2/3,
 			anime1: "chapter2-07-obj-01-obj01",
@@ -54,7 +76,7 @@ module.exports = {
 			width: 160,
 			height: 160,
 
-			action_name: null,
+			action_name: "look_front",
 			sound_name: null,
 		},
 		{
