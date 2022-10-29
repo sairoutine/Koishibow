@@ -18,7 +18,7 @@ AssetsConfig.images = {
 	"item_32":            "./image/production/item/icon_item_cp5_eye.png",
 	"item_33":            "./image/production/item/icon_item_cp5_key.png",
 	"item_36":            "./image/production/item/icon_item_cp6_scissors.png",
-	"item_37":            "./image/production/item/icon_item_cp4_rikadoll.png",
+	"item_37":            "./image/production/item/icon_item_cp2_ophelia.png",
 	"item_38":            "./image/production/item/icon_item_cp4_nail.png",
 
 	// 1枚絵

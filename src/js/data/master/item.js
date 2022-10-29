@@ -376,12 +376,12 @@ module.exports = [
 	{
 		id: "38",
 		type: CONSTANT.ITEM.NON_USABLE,
-		name: "リカちゃん人形",
+		name: "オフィーリア",
 		isShowChapter4: false,
 		imageName: "item_37",
 		soundName: "got_item_common",
-		descriptionText:_(""),
-		examineText:_("かおがこわい"),
+		descriptionText:_("「あなたにも薬が必要……」"),
+		examineText:_("びちゃびちゃだけど楽しそう"),
 	},
 	{
 		id: "39",
