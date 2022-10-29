@@ -3,7 +3,7 @@ var AssetsConfig = {};
 
 AssetsConfig.images = {
 	// 一輪
-	"orin":   "./image/production/cp2_itirin.png",
+	"cp2_itirin":   "./image/production/cp2_itirin.png",
 	// 小傘
 	"cp2_kogasa":   "./image/production/cp2_kogasa.png",
 	// ムラサ
