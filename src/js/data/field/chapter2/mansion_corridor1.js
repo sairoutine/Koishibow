@@ -1,8 +1,6 @@
 'use strict';
 var _ = require('i18n4v')
 // 屋敷の廊下1
-// TODO: journal043 が フィールドに落ちてる(サードアイ)
-// TODO: 0-4と同様だが三輪車がなくなっている
 var CONSTANT = require("../../../constant");
 var I = 0;
 module.exports = {
@@ -80,8 +78,11 @@ module.exports = {
 			action_name: "look_top",
 			sound_back: "chapter0-mansion_corridor1-open_curtain"
 		},
-
-
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 600, y: 530,
+			journal_id: "journal043",
+		},
 	],
-
 };
