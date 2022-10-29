@@ -1,11 +1,9 @@
 'use strict';
 var _ = require('i18n4v')
-// 屋敷の廊下3(家具) 行き止まり (サードアイを使用すると、家具が豹変／床に扉が出現)
+// 屋敷の廊下3(家具) 行き止まり
+// 猫のぬいぐるみがある（おりん風）
 var CONSTANT = require("../../../constant");
 var I = 0;
-// TODO: journal045	chapter2	2-6	フィールドに落ちてる(サードアイ)	2-6	日誌
-// TODO: カーペットは目を使っても変化しない
-// TODO: 猫のぬいぐるみがある（おりん風）
 module.exports = {
 	key: "chapter2_06",
 	chapter: 2,
@@ -74,7 +72,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "窓",
 			serif: [
-				{"chara": "koishi", serif1: _("さっきのこいないなー"), serif2: _("さっきのこいないなー"), serif3: _("さっきのこいないなー"), serif4: _("さっきのこいないなー")},
+				{"chara": "koishi", serif1: _("あめじゃない"), serif2: _("雨はふってないみたい"), serif3: _("雨はふってないみたい"), serif4: _("雨はふってないみたい")},
 			],
 			x: 900,
 			y: 190,
@@ -87,15 +85,16 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-09-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-09-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-09-01-obj06",
-			action_name: "look_front",
-			sound_back: "chapter0-mansion_corridor3-smile_kokoro_back",
+			action_name: "look_top",
+			sound_back: null,
 		},
 		{
 			no: ++I,
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "振子時計",
 			serif: [
-				{"chara": "koishi", serif1: _("これうるさいからきらい"), serif2: _("これうるさいからきらい"), serif3: _("これうるさいからきらい"), serif4: _("これうるさいからきらい")},
+				{"chara": "koishi", serif1: _("はりがいっぱい"), serif2: _("いまなんじ？"), serif3: _("いまなんじ？"), serif4: _("いまなんじ？")},
+				{"chara": "koishi", serif1: _("ちんぷんかん"), serif2: _("わからないわ"), serif3: _("わからないわ"), serif4: _("わからないわ")},
 			],
 			x: 145,
 			y: 230,
@@ -108,7 +107,7 @@ module.exports = {
 			anime4: "chapter0-mansion_corridor3-obj-10-01-obj04",
 			anime5: "chapter0-mansion_corridor3-obj-10-01-obj05",
 			anime6: "chapter0-mansion_corridor3-obj-10-01-obj06",
-			action_name: "look_top",
+			action_name: "touch",
 			sound_name:      "chapter0-mansion_corridor3-ring_clock_front",
 			sound_back: "chapter0-mansion_corridor3-ring_clock_back"
 		},
@@ -118,6 +117,11 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "カーペット",
 			serif: null,
+			serif_back: [
+				{"chara": "koishi", "exp": "look_bottom", "serif": _("あちゃあ")},
+				{"chara": "koishi", "exp": null, "serif": _("穴なくなってる")},
+				{"chara": "koishi", "exp": "look_top", "serif": _("どうしよー")},
+			],
 			x: 490,
 			y: 570,
 			position_type: "lying",
@@ -133,16 +137,26 @@ module.exports = {
 		},
 		{
 			no: ++I,
-			type: CONSTANT.ITEM_TYPE,
-			name: "目薬",
-			image: "eyedrops",
-			x: 590,
-			y: 290,
-			height: 330,
+			image: "chapter2-mspassage-obj-11-02",
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "ねこのぬいぐるみ",
+			serif: [
+				{"chara": "koishi", "exp": "yes", serif1: _("かわいー"), serif2: _("かわいい！"), serif3: _("かわいい！"), serif4: _("かわいい！")},
+				{"chara": "koishi", "exp": "look_bottom", serif1: _("でも怒られるから"), serif2: _("でもこれ私のじゃない"), serif3: _("でもこれ私のじゃない"), serif4: _("でもこれ私のじゃない")},
+				{"chara": "koishi", "exp": null, serif1: _("わたしもほしいな……"), serif2: _("わたしもほしいな……"), serif3: _("わたしもほしいな……"), serif4: _("わたしもほしいな……")},
+			],
+			x: 540, y: 400,
 			scale: 2/3,
-			item_id: "01"
+			//width: 150, height: 200,
+			action_name: null,
+			sound_name: null,
 		},
-
+		{
+			no: ++I,
+			type: CONSTANT.JOURNAL_BACK_TYPE,
+			x: 150, y: 650,
+			journal_id: "journal045",
+		},
 	],
 };
 
