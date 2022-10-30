@@ -548,6 +548,11 @@ SceneStage.prototype.isNoHat = function(){
 	return field.key() === "chapter0_myroom_before_get_hat" || field.key() === "chapter6_myroom_before_get_hat";
 };
 
+SceneStage.prototype.isInWave = function(){
+	var field = this.getFieldData();
+	return field.key() === "chapter2_07" || field.key() === "chapter2_08" || field.key() === "chapter2_09";
+};
+
 SceneStage.prototype.getFieldData = function(){
 	return FieldMasterRepository.find(this.core.save_manager.player.getCurrentField());
 };
