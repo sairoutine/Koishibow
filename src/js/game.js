@@ -24,6 +24,7 @@ var SceneEventMovie = require('./scene/event_movie');
 var SceneEventForChapter0EncounterSatori = require('./scene/event/chapter0/encounter_satori');
 var SceneEventForChapter0Last            = require('./scene/event/chapter0/last');
 var SceneEventForTrialLast               = require('./scene/event/trial_last');
+var SceneTrueEnding                      = require('./scene/event/true_ending');
 var SceneEventForChapter1SitAtBusstop    = require('./scene/event/chapter1/sit_at_busstop');
 var SceneEventForChapter1TalkWithMobu    = require('./scene/event/chapter1/talk_with_mobu');
 var SceneEventForChapter1PlayDoll        = require('./scene/event/chapter1/playdoll');
@@ -32,6 +33,7 @@ var SceneEventForChapter3GetupKoishi     = require('./scene/event/chapter3/getup
 
 var FieldMasterRepository = require('./repository/field');
 var ItemMasterRepository = require('./repository/item');
+var JournalMasterRepository = require('./repository/journal');
 var EventMasterRepository = require('./repository/event_talk');
 var OldEventMasterRepository = require('./repository/event_talk_old');
 
@@ -77,6 +79,8 @@ var Game = function(canvas) {
 	this.scene_manager.addScene("event_for_chapter1_playdoll", new SceneEventForChapter1PlayDoll(this));
 	this.scene_manager.addScene("event_for_chapter1_play_with_murasa", new SceneEventForChapter1PlayWithMurasa(this));
 	this.scene_manager.addScene("event_for_chapter3_getup_koishi", new SceneEventForChapter3GetupKoishi(this));
+	// 真エンディング
+	this.scene_manager.addScene("true_ending", new SceneTrueEnding(this));
 	// 体験版 終了
 	this.scene_manager.addScene("event_for_trial_last",       new SceneEventForTrialLast(this));
 
@@ -229,7 +233,7 @@ Game.prototype.setupDebug = function (dom) {
 
 
 	// アイテム一覧生成
-	var item_list = ItemMasterRepository.all()
+	var item_list = ItemMasterRepository.all();
 	var item_name_list = [];
 	for (var j = 0; j < item_list.length; j++) {
 		item_name_list.push({name: item_list[j].name(), value: item_list[j].id()});
@@ -238,6 +242,13 @@ Game.prototype.setupDebug = function (dom) {
 		function (game, value) {
 			game.save_manager.item.addItem(value);
 		});
+
+	var journals = JournalMasterRepository.all();
+	this.debug_manager.addMenuButton("ジャーナル全て獲得", function (game) {
+		for (var i = 0; i < journals.length; i++) {
+			game.save_manager.journal.addJournal(journals[i].id());
+		}
+	});
 
 	this.debug_manager.addNewLine();
 

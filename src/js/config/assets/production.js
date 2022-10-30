@@ -23,9 +23,23 @@ AssetsConfig.images = {
 
 	// 1枚絵
 	"picture_chapter3-08-illust-01":   "./image/production/picture/chapter3-08-illust-01.png",
+
+	// 真エンディング
+	"chapter6-event-ending04-01-bg":      "./image/production/true_ending/chapter6-event-ending04-01-bg.jpg",
+	"chapter6-event-ending04-02-bg":      "./image/production/true_ending/chapter6-event-ending04-02-bg.jpg",
+	"chapter6-event-ending04-frame-talk": "./image/production/true_ending/chapter6-event-ending04-frame-talk.png",
+	"chapter6-event-ending04":            "./image/production/true_ending/chapter6-event-ending04.png",
 };
 
 AssetsConfig.sounds = {
+	"true_ending_light1":    {
+		path: "./sound/production/true_ending/light1.ogg",
+		volume: 1.0,
+	},
+	"true_ending_light2":    {
+		path: "./sound/production/true_ending/light2.ogg",
+		volume: 1.0,
+	},
 };
 
 AssetsConfig.bgms = [
@@ -161,6 +175,28 @@ AssetsConfig.bgms = [
 		name: _('「flashback3」 東方地霊殿"業火マントル"'),
 		description: _("回想シーン"),
 		chapter: 5,
+	},
+	{
+		key: "true_ending_rain",
+		path: "./bgm/production/true_ending/rain.ogg",
+		//loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
+		chapter: 6,
+	},
+	{
+		key: "true_ending_colorless",
+		path: "./bgm/production/true_ending/colorless.ogg",
+		//loopStart: 0*60 + 0 + 0.000,
+		//loopEnd: 1*60 + 47 + 0.027,
+		volume: 1.0,
+		isShowMusicRoom: false,
+		name: _(""),
+		description: _(""),
+		chapter: 6,
 	},
 ];
 

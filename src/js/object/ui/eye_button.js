@@ -1,6 +1,7 @@
 'use strict';
 var base_object = require('../../hakurei').object.sprite;
 var Util = require('../../hakurei').util;
+var CONSTANT = require('../../constant');
 
 var ObjectEye = function(core) {
 	base_object.apply(this, arguments);
@@ -61,17 +62,17 @@ ObjectEye.prototype.isCollision = function() {
 
 
 ObjectEye.prototype.setPosition = function(){
-	this.x(1320 * 2/3);
-	this.y(980 * 2/3);
+	this.x(CONSTANT.UI_3RDEYE_X * 2/3);
+	this.y(CONSTANT.UI_3RDEYE_Y * 2/3);
 
 };
 
 ObjectEye.prototype.collisionWidth = function(){
-	return 96;
+	return CONSTANT.UI_3RDEYE_WIDTH;
 };
 
 ObjectEye.prototype.collisionHeight = function(){
-	return 96;
+	return CONSTANT.UI_3RDEYE_HEIGHT;
 };
 
 ObjectEye.prototype.spriteName = function(){

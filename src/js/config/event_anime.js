@@ -160,6 +160,17 @@ var anime_map = {
 	"chapter6-event-ending03-2-obj03": require("../data/anime/chapter6/event/chapter6-event-ending03-2/obj03_anime_1"),
 	"chapter6-event-ending03-2-obj04": require("../data/anime/chapter6/event/chapter6-event-ending03-2/obj04_anime_1"),
 
+	// 真エンディング
+	"chapter6-event-ending04-obj01": require("../data/anime/chapter6-event-ending04/obj01_obj01"),
+	"chapter6-event-ending04-obj02": require("../data/anime/chapter6-event-ending04/obj02_obj01"),
+	"chapter6-event-ending04-obj03": require("../data/anime/chapter6-event-ending04/obj03_obj01"),
+	"chapter6-event-ending04-obj04": require("../data/anime/chapter6-event-ending04/obj04_obj01"),
+	"chapter6-event-ending04-obj05": require("../data/anime/chapter6-event-ending04/obj05_obj01"),
+	"chapter6-event-ending04-obj06": require("../data/anime/chapter6-event-ending04/obj06_obj01"),
+	"chapter6-event-ending04-obj07": require("../data/anime/chapter6-event-ending04/obj07_obj01"),
+	"chapter6-event-ending04-obj08": require("../data/anime/chapter6-event-ending04/obj08_obj01"),
+	"chapter6-event-ending04-obj09": require("../data/anime/chapter6-event-ending04/obj09_obj01"),
+
 	// 旧イベント
 	"chapter3-08-event-01-obj-01": require('../data/anime/chapter3/event/chapter3-08-event-01/obj01_anime_1'),
 	"chapter3-08-event-01-obj-02": require('../data/anime/chapter3/event/chapter3-08-event-01/obj01_anime_1'),
