@@ -26,7 +26,7 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "koishi", "exp": "look_front", serif1: _("うわ！"), serif2: _("うわ！"), serif3: _("うわ！"), serif4: _("うわ！")},
+						{"chara": "koishi", "exp": "wave_look_front", serif1: _("うわ！"), serif2: _("うわ！"), serif3: _("うわ！"), serif4: _("うわ！")},
 						{"chara": "koishi", "exp": null, serif1: _("みずびだし"), serif2: _("びちょびちょなんですけど！"), serif3: _("びちょびちょなんですけど！"), serif4: _("びちょびちょなんですけど！")},
 						{"chara": "koishi", "exp": null, serif1: _("これうみ？"), serif2: _("これうみ？"), serif3: _("これうみ？"), serif4: _("これうみ？")},
 					]
@@ -76,7 +76,7 @@ module.exports = {
 			width: 160,
 			height: 160,
 
-			action_name: "look_front",
+			action_name: "wave_look_front",
 			sound_name: null,
 		},
 		{

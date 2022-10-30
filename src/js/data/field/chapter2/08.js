@@ -49,21 +49,21 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_08-20440"], "serifs": [
 							// 人形入手済
 							[
-								{"chara": "koishi", "exp": "look_bottom", serif1: _("わたしもこうなるの？"), serif2: _("わたしもこうなるの？"), serif3: _("わたしもこうなるの？"), serif4: _("わたしもこうなるの？")},
+								{"chara": "koishi", "exp": "wave_look_bottom", serif1: _("わたしもこうなるの？"), serif2: _("わたしもこうなるの？"), serif3: _("わたしもこうなるの？"), serif4: _("わたしもこうなるの？")},
 							],
 							// 人形未所持
 							[
 
-								{"chara": "koishi", "exp": "touch", serif1: _("びちゃびちゃだあ"), serif2: _("びちゃびちゃだあ"), serif3: _("びちゃびちゃだあ"), serif4: _("びちゃびちゃだあ")},
+								{"chara": "koishi", "exp": "wave_touch", serif1: _("びちゃびちゃだあ"), serif2: _("びちゃびちゃだあ"), serif3: _("びちゃびちゃだあ"), serif4: _("びちゃびちゃだあ")},
 								{"chara": "koishi", "exp": null, serif1: _("うーんこれでいいかなあ"), serif2: _("うーんこれでいいかなあ"), serif3: _("うーんこれでいいかなあ"), serif4: _("うーんこれでいいかなあ")},
 								{"id": "chapter2_08-20440", "save": true},
-								{"chara": "koishi", "exp": "yes", serif1: _("かわいいもんね"), serif2: _("かわいいもんね"), serif3: _("かわいいもんね"), serif4: _("かわいいもんね"), "option": {"getItem": "38"}},
+								{"chara": "koishi", "exp": "wave_yes", serif1: _("かわいいもんね"), serif2: _("かわいいもんね"), serif3: _("かわいいもんね"), serif4: _("かわいいもんね"), "option": {"getItem": "38"}},
 							],
 						]},
 					],
 					// 犬が釘を食べていないなら
 					[
-						{"chara": "koishi", "exp": "look_bottom", serif1: _("びっちゃびちゃ"), serif2: _("びっちゃびちゃ"), serif3: _("びっちゃびちゃ"), serif4: _("びっちゃびちゃ")},
+						{"chara": "koishi", "exp": "wave_look_bottom", serif1: _("びっちゃびちゃ"), serif2: _("びっちゃびちゃ"), serif3: _("びっちゃびちゃ"), serif4: _("びっちゃびちゃ")},
 					],
 				]},
 			],
@@ -87,7 +87,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "木と人形(人形なし)",
 			serif: [
-				{"chara": "koishi", "exp": "look_bottom", serif1: _("わたしもこうなるの？"), serif2: _("わたしもこうなるの？"), serif3: _("わたしもこうなるの？"), serif4: _("わたしもこうなるの？")},
+				{"chara": "koishi", "exp": "wave_look_bottom", serif1: _("わたしもこうなるの？"), serif2: _("わたしもこうなるの？"), serif3: _("わたしもこうなるの？"), serif4: _("わたしもこうなるの？")},
 			],
 			x: 686*2/3, y: 550*2/3,
 			scale: 2/3,
@@ -115,7 +115,7 @@ module.exports = {
 			],
 			width: 180, height: 250,
 			x: 180, y: 440,
-			action_name: "touch",
+			action_name: "wave_touch",
 			sound_name: null,
 		},
 		{
@@ -129,7 +129,7 @@ module.exports = {
 
 			width: 300, height: 250,
 			x: 750, y: 400,
-			action_name: "touch",
+			action_name: "wave_touch",
 			sound_name: null,
 		},
 

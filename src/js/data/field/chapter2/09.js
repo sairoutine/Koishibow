@@ -5,25 +5,25 @@ var I = 0;
 var _ = require('i18n4v')
 var CHARAS_SERIF_1 = [
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_01", "serif": _("こんにちは！")},
-	{"chara": "koishi", "exp": "yes", serif1: _("うん"), serif2: _("こんにちは"), serif3: _("こんにちは"), serif4: _("こんにちは")},
-	{"chara": "koishi", "exp": "look_front", serif1: _("あそんでるの？"), serif2: _("なにしてあそんでるの？"), serif3: _("なにしてあそんでるの？"), serif4: _("なにしてあそんでるの？")},
+	{"chara": "koishi", "exp": "wave_yes", serif1: _("うん"), serif2: _("こんにちは"), serif3: _("こんにちは"), serif4: _("こんにちは")},
+	{"chara": "koishi", "exp": "wave_look_front", serif1: _("あそんでるの？"), serif2: _("なにしてあそんでるの？"), serif3: _("なにしてあそんでるの？"), serif4: _("なにしてあそんでるの？")},
 	{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("水遊びよ")},
 	{"chara": "kogasa", "exp": "cp2_kogasa-reaction_01", "serif": _("水遊び！")},
 	{"chara": "kogasa", "exp": "cp2_kogasa-reaction_01", "serif": _("うふふ")},
-	{"chara": "koishi", "exp": "look_front", serif1: _("わーい"), serif2: _("たのしそう!"), serif3: _("たのしそう!"), serif4: _("たのしそう!")},
+	{"chara": "koishi", "exp": "wave_look_front", serif1: _("わーい"), serif2: _("たのしそう!"), serif3: _("たのしそう!"), serif4: _("たのしそう!")},
 	{"chara": "koishi", "exp": null, serif1: _("わたしもはいる！"), serif2: _("私も入っていい？"), serif3: _("私も入っていい？"), serif4: _("私も入っていい？")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_02", "serif": _("そのこだあれ？")},
 	{"chara": "koishi", "exp": null, serif1: _("ふつうのこ！"), serif2: _("ふつうのこ！"), serif3: _("ふつうのこ！"), serif4: _("ふつうのこ！")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_03", "serif": _("へんなこだー")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_04", "serif": _("あのこほどじゃないけど")},
-	{"chara": "koishi", "exp": "look_top", serif1: _("あのこって？"), serif2: _("あのこって？"), serif3: _("あのこって？"), serif4: _("あのこって？"), "option": {"playEventMovie": "chapter2_09-event-01"}},
+	{"chara": "koishi", "exp": "wave_look_top", serif1: _("あのこって？"), serif2: _("あのこって？"), serif3: _("あのこって？"), serif4: _("あのこって？"), "option": {"playEventMovie": "chapter2_09-event-01"}},
 ];
 
 var CHARAS_SERIF_2 = [
 	{"id": "chapter2_09-20200", "save": true},
-	{"chara": "koishi", "exp": "look_top", serif1: _("さっきの石なに？"), serif2: _("さっきの石なに？"), serif3: _("さっきの石なに？"), serif4: _("さっきの石なに？")},
+	{"chara": "koishi", "exp": "wave_look_top", serif1: _("さっきの石なに？"), serif2: _("さっきの石なに？"), serif3: _("さっきの石なに？"), serif4: _("さっきの石なに？")},
 	{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("へんなこが石を投げてくるの")},
-	{"chara": "koishi", "exp": "look_top", serif1: _("やだな"), serif2: _("あぶないじゃない"), serif3: _("あぶないじゃない"), serif4: _("あぶないじゃない")},
+	{"chara": "koishi", "exp": "wave_look_top", serif1: _("やだな"), serif2: _("あぶないじゃない"), serif3: _("あぶないじゃない"), serif4: _("あぶないじゃない")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_01-reaction_01", "serif": _("そう危ないの")},
 	{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("あのこは本当にヘン")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_01", "serif": _("あの子はヘンじゃなくてェ")},
@@ -64,12 +64,12 @@ module.exports = {
 									[
 										{"type": "process", "value": "playTalk", "arguments": [
 											[
-												{"chara": "koishi", "exp": "look_top", serif1: _("わたし"), serif2: _("わたし"), serif3: _("わたし"), serif4: _("わたし")},
+												{"chara": "koishi", "exp": "wave_look_top", serif1: _("わたし"), serif2: _("わたし"), serif3: _("わたし"), serif4: _("わたし")},
 												{"chara": "koishi", "exp": null, serif1: _("わたしもほしいな……"), serif2: _("わたしもほしいな……"), serif3: _("わたしもほしいな……"), serif4: _("わたしもほしいな……")},
-												{"chara": "koishi", "exp": "yes", serif1: _("ともだち"), serif2: _("ともだち"), serif3: _("ともだち"), serif4: _("ともだち")},
+												{"chara": "koishi", "exp": "wave_yes", serif1: _("ともだち"), serif2: _("ともだち"), serif3: _("ともだち"), serif4: _("ともだち")},
 												{"chara": "koishi", "exp": null, serif1: _("ともだちができたら"), serif2: _("ともだちができたら"), serif3: _("ともだちができたら"), serif4: _("ともだちができたら")},
-												{"chara": "koishi", "exp": "look_top", serif1: _("いろんなことができる"), serif2: _("いろんなことができる"), serif3: _("いろんなことができる"), serif4: _("いろんなことができる")},
-												{"chara": "koishi", "exp": "yes", serif1: _("いっしょに"), serif2: _("いっしょに"), serif3: _("いっしょに"), serif4: _("いっしょに")},
+												{"chara": "koishi", "exp": "wave_look_top", serif1: _("いろんなことができる"), serif2: _("いろんなことができる"), serif3: _("いろんなことができる"), serif4: _("いろんなことができる")},
+												{"chara": "koishi", "exp": "wave_yes", serif1: _("いっしょに"), serif2: _("いっしょに"), serif3: _("いっしょに"), serif4: _("いっしょに")},
 											]
 										]},
 										{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09_20581"]}
@@ -83,10 +83,10 @@ module.exports = {
 							[
 								{"type": "process", "value": "playTalk", "arguments": [
 									[
-										{"chara": "koishi", "exp": "look_top", serif1: _("うーんと"), serif2: _("うーんと"), serif3: _("うーんと"), serif4: _("うーんと")},
+										{"chara": "koishi", "exp": "wave_look_top", serif1: _("うーんと"), serif2: _("うーんと"), serif3: _("うーんと"), serif4: _("うーんと")},
 										{"chara": "koishi", "exp": null, serif1: _("わたしがほしいものか"), serif2: _("わたしがほしいものか"), serif3: _("わたしがほしいものか"), serif4: _("わたしがほしいものか")},
 										{"chara": "koishi", "exp": null, serif1: _("なんでもほしいけどな"), serif2: _("なんでもほしいけどな"), serif3: _("なんでもほしいけどな"), serif4: _("なんでもほしいけどな")},
-										{"chara": "koishi", "exp": "look_top", serif1: _("みんなはどうかな"), serif2: _("みんなはどうかな"), serif3: _("みんなはどうかな"), serif4: _("みんなはどうかな")},
+										{"chara": "koishi", "exp": "wave_look_top", serif1: _("みんなはどうかな"), serif2: _("みんなはどうかな"), serif3: _("みんなはどうかな"), serif4: _("みんなはどうかな")},
 									]
 								]},
 								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09_20500"]}
@@ -102,7 +102,7 @@ module.exports = {
 			[
 				{"type": "process", "value": "playTalk", "arguments": [
 					[
-						{"chara": "koishi", "exp": "look_front", serif1: _("あー！"), serif2: _("あー！"), serif3: _("あー！"), serif4: _("あー！")},
+						{"chara": "koishi", "exp": "wave_look_front", serif1: _("あー！"), serif2: _("あー！"), serif3: _("あー！"), serif4: _("あー！")},
 						{"chara": "koishi", "exp": null, serif1: _("こどもだ！"), serif2: _("こどもだ！"), serif3: _("こどもだ！"), serif4: _("こどもだ！")},
 						{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("あ！へんなこ！")},
 					]
@@ -142,11 +142,11 @@ module.exports = {
 					],
 					// 1回目にはしごを使うとき
 					[
-						{"chara": "koishi", "exp": "look_top", serif1: _("うえにいける"), serif2: _("うえにいける"), serif3: _("うえにいける"), serif4: _("うえにいける")},
+						{"chara": "koishi", "exp": "wave_look_top", serif1: _("うえにいける"), serif2: _("うえにいける"), serif3: _("うえにいける"), serif4: _("うえにいける")},
 						{"chara": "kogasa", "exp": null, "serif": _("上へ行くの？")},
 						{"chara": "itirin", "exp": "cp2_itirin-reaction_02", "serif": _("アブないよお")},
 						{"chara": "koishi", "exp": null, serif1: _("んー"), serif2: _("んー"), serif3: _("んー"), serif4: _("んー")},
-						{"chara": "koishi", "exp": "yes", serif1: _("でもいく"), serif2: _("でもいく"), serif3: _("でもいく"), serif4: _("でもいく")},
+						{"chara": "koishi", "exp": "wave_yes", serif1: _("でもいく"), serif2: _("でもいく"), serif3: _("でもいく"), serif4: _("でもいく")},
 						{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("やっぱり変な子")},
 					],
 				]}
@@ -189,20 +189,20 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_12_20480"], "serifs": [
 							// 緑の犬にオフィーリアを使用後の場合
 							[
-								{"chara": "koishi", "exp": "look_front", serif1: _("ねえ欲しいものある？"), serif2: _("ねえ欲しいものある？"), serif3: _("ねえ欲しいものある？"), serif4: _("ねえ欲しいものある？")},
+								{"chara": "koishi", "exp": "wave_look_front", serif1: _("ねえ欲しいものある？"), serif2: _("ねえ欲しいものある？"), serif3: _("ねえ欲しいものある？"), serif4: _("ねえ欲しいものある？")},
 								{"chara": "murasa", "exp": "cp2_murasa-reaction_02", "serif": _("くれるの！")},
 								{"chara": "koishi", "exp": null, serif1: _("あげないけど"), serif2: _("あげないけど"), serif3: _("あげないけど"), serif4: _("あげないけど")},
 								{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("あっそ！")},
-								{"chara": "koishi", "exp": "look_front", serif1: _("言ってみてよう"), serif2: _("言ってみてよう"), serif3: _("言ってみてよう"), serif4: _("言ってみてよう")},
+								{"chara": "koishi", "exp": "wave_look_front", serif1: _("言ってみてよう"), serif2: _("言ってみてよう"), serif3: _("言ってみてよう"), serif4: _("言ってみてよう")},
 								{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("んー")},
 								{"chara": "murasa", "exp": "cp2_murasa-reaction_02", "serif": _("ボートかな")},
-								{"chara": "koishi", "exp": "yes", serif1: _("ボートかー"), serif2: _("ボートかー"), serif3: _("ボートかー"), serif4: _("ボートかー")},
+								{"chara": "koishi", "exp": "wave_yes", serif1: _("ボートかー"), serif2: _("ボートかー"), serif3: _("ボートかー"), serif4: _("ボートかー")},
 							],
 							// 緑の犬にオフィーリアを使用前の場合
 							[
 								{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("わたし水は好きよ！")},
 								{"chara": "murasa", "exp": null, "serif": _("冷たくて気持ちいいあたまのてっぺんまで浸かりたいわ")},
-								{"chara": "koishi", "exp": "yes", serif1: _("ねー"), serif2: _("ねー"), serif3: _("ねー"), serif4: _("ねー")},
+								{"chara": "koishi", "exp": "wave_yes", serif1: _("ねー"), serif2: _("ねー"), serif3: _("ねー"), serif4: _("ねー")},
 							],
 						]},
 					],
@@ -238,7 +238,7 @@ module.exports = {
 						{"chara": "kogasa", "exp": "cp2_kogasa-reaction_01", "serif": _("代わりに川で遊ぶの")},
 						{"chara": "kogasa", "exp": null, "serif": _("ウフフ")},
 						{"chara": "kogasa", "exp": "cp2_kogasa-reaction_01", "serif": _("ちゃっぷちゃっぷ")},
-						{"chara": "koishi", "exp": "yes", serif1: _("いーなー"), serif2: _("いーなー"), serif3: _("いーなー"), serif4: _("いーなー")},
+						{"chara": "koishi", "exp": "wave_yes", serif1: _("いーなー"), serif2: _("いーなー"), serif3: _("いーなー"), serif4: _("いーなー")},
 						{"chara": "koishi", "exp": "look_bottom", serif1: _("たのしそう!"), serif2: _("たのしそう!"), serif3: _("たのしそう!"), serif4: _("たのしそう!")},
 						{"chara": "koishi", "exp": null, serif1: _("チャプチャプ!"), serif2: _("チャプチャプ!"), serif3: _("チャプチャプ!"), serif4: _("チャプチャプ!")},
 					],
@@ -296,20 +296,20 @@ module.exports = {
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_12_20480"], "serifs": [
 							// 緑の犬にオフィーリアを使用後の場合
 							[
-								{"chara": "koishi", "exp": "look_front", serif1: _("ねえ欲しいものある？"), serif2: _("あなたは何がほしいの？"), serif3: _("あなたは何がほしいの？"), serif4: _("あなたは何がほしいの？")},
+								{"chara": "koishi", "exp": "wave_look_front", serif1: _("ねえ欲しいものある？"), serif2: _("あなたは何がほしいの？"), serif3: _("あなたは何がほしいの？"), serif4: _("あなたは何がほしいの？")},
 								{"chara": "itirin", "exp": "cp2_itirin-reaction_03", "serif": _("ほしいものか！")},
 								{"chara": "itirin", "exp": "cp2_itirin-reaction_02", "serif": _("そうだなあ")},
 								{"chara": "itirin", "exp": "cp2_itirin-reaction_03", "serif": _("筆かな！")},
-								{"chara": "koishi", "exp": "look_front", serif1: _("なんで？"), serif2: _("なんで？"), serif3: _("なんで？"), serif4: _("なんで？")},
+								{"chara": "koishi", "exp": "wave_look_front", serif1: _("なんで？"), serif2: _("なんで？"), serif3: _("なんで？"), serif4: _("なんで？")},
 								{"chara": "itirin", "exp": "cp2_itirin-reaction_01", "serif": _("文字が書けるからね！")},
-								{"chara": "koishi", "exp": "look_top", serif1: _("へんなのー"), serif2: _("へんなのー"), serif3: _("へんなのー"), serif4: _("へんなのー")},
+								{"chara": "koishi", "exp": "wave_look_top", serif1: _("へんなのー"), serif2: _("へんなのー"), serif3: _("へんなのー"), serif4: _("へんなのー")},
 								{"chara": "itirin", "exp": "cp2_itirin-reaction_02", "serif": _("へんなんかじゃないもん")},
 							],
 							// 緑の犬にオフィーリアを使用前の場合
 							[
 								{"chara": "itirin", "exp": "cp2_itirin-reaction_02", "serif": _("あなたなにがすきなのー")},
-								{"chara": "koishi", "exp": "look_top", serif1: _("わたしはねー"), serif2: _("わたしはねー"), serif3: _("わたしはねー"), serif4: _("わたしはねー")},
-								{"chara": "koishi", "exp": "yes", serif1: _("わかんない"), serif2: _("こどもがすき！"), serif3: _("こどもがすき！"), serif4: _("こどもがすき！")},
+								{"chara": "koishi", "exp": "wave_look_top", serif1: _("わたしはねー"), serif2: _("わたしはねー"), serif3: _("わたしはねー"), serif4: _("わたしはねー")},
+								{"chara": "koishi", "exp": "wave_yes", serif1: _("わかんない"), serif2: _("こどもがすき！"), serif3: _("こどもがすき！"), serif4: _("こどもがすき！")},
 								{"chara": "itirin", "exp": "cp2_itirin-reaction_03", "serif": _("へんなのー")},
 							]
 						]},
