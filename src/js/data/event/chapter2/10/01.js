@@ -1,5 +1,5 @@
 'use strict';
-//var _ = require('i18n4v')
+var _ = require('i18n4v')
 module.exports = {
 	key: "chapter2-10-event-01",
 	chapter: 2,
@@ -10,11 +10,20 @@ module.exports = {
 		"chapter2-10-event-01-obj03",
 	],
 	serifs: [
+		//20320イベント（システム）
+		{"exp": "chapter2-10-event-01-obj01", "serif": _("……"), "option": {"x": 470, "y": 0, "loop": false, "is_koishi": true} },
+		{"exp": null, "serif": _("しらないっ"), "option": {"x": 470, "y": 0, "loop": false, "is_koishi": true} },
+		{"exp": "chapter2-10-event-01-obj02", "serif": _("…………"), "option": {"x": 470, "y": 0, "loop": false, "is_koishi": false} },
 	],
-	endAnime: null,
+	endAnime: "chapter2-10-event-01-obj03",
 	endSounds: [
 	],
 	endProcess: [
+		// BAD END
+		{"type": "process", "value": "changeScene", "arguments": ["event_movie", "chapter2-09-event-02"]},
+
+		// chapter3へ
+		{"type": "process", "value": "changeSceneWithFadeout", "arguments": ["opening_movie_chapter3"]},
 	],
 
 };
