@@ -26,6 +26,25 @@ var jsonDataOfReaction3rdeyeLookTop = require('../../data/anime/koishi/reaction_
 //	YES、うなずく(3rdeye使用中)
 var jsonDataOfReaction3rdeyeYes = require('../../data/anime/koishi/reaction_3rdeye_yes_anime_1');
 
+// 	下を見る(水辺)
+var jsonDataOfWaveReactionLookBottom = require('../../data/anime/koishi/wave_reaction_look_bottom_anime_1');
+// 	前を見る(水辺)
+var jsonDataOfWaveReactionLookFront = require('../../data/anime/koishi/wave_reaction_look_front_anime_1');
+//	上を見る(水辺)
+var jsonDataOfWaveReactionLookTop = require('../../data/anime/koishi/wave_reaction_look_top_anime_1');
+//	触る、物を取る(水辺)
+var jsonDataOfWaveReactionTouch = require('../../data/anime/koishi/wave_reaction_touch_anime_1');
+//	YES、うなずく(水辺)
+var jsonDataOfWaveReactionYes = require('../../data/anime/koishi/wave_reaction_yes_anime_1');
+// 	下を見る(水辺, 3rdeye使用中)
+var jsonDataOfWaveReaction3rdeyeLookBottom = require('../../data/anime/koishi/wave_reaction_3rdeye_look_bottom_anime_1');
+// 	前を見る(水辺, 3rdeye使用中)
+var jsonDataOfWaveReaction3rdeyeLookFront = require('../../data/anime/koishi/wave_reaction_3rdeye_look_front_anime_1');
+//	上を見る(水辺, 3rdeye使用中)
+var jsonDataOfWaveReaction3rdeyeLookTop = require('../../data/anime/koishi/wave_reaction_3rdeye_look_top_anime_1');
+//	YES、うなずく(水辺, 3rdeye使用中)
+var jsonDataOfWaveReaction3rdeyeYes = require('../../data/anime/koishi/wave_reaction_3rdeye_yes_anime_1');
+
 module.exports = [
 	// 触る
 	{
@@ -106,5 +125,59 @@ module.exports = [
 		sound: "",
 	},
 
+	// 触る
+	{
+		name: "wave_touch",
+		anime: jsonDataOfWaveReactionTouch,
+		sound: "touch",
+	},
+	// 	下を見る(水辺)
+	{
+		name: "wave_look_bottom",
+		anime: jsonDataOfWaveReactionLookBottom,
+		sound: "",
+	},
+	// 前を見る(水辺)
+	{
+		name: "wave_look_front",
+		anime: jsonDataOfWaveReactionLookFront,
+		sound: "",
+	},
+	// 上を見る(水辺)
+	{
+		name: "wave_look_top",
+		anime: jsonDataOfWaveReactionLookTop,
+		sound: "",
+	},
+	// うなづく(水辺)
+	{
+		name: "wave_yes",
+		anime: jsonDataOfWaveReactionYes,
+		sound: "",
+	},
+	// 	下を見る(水辺, 3rdeye)
+	{
+		name: "wave_3rdeye_look_bottom",
+		anime: jsonDataOfWaveReaction3rdeyeLookBottom,
+		sound: "",
+	},
+	// 前を見る(水辺, 3rdeye)
+	{
+		name: "wave_3rdeye_look_front",
+		anime: jsonDataOfWaveReaction3rdeyeLookFront,
+		sound: "",
+	},
+	// 上を見る(水辺, 3rdeye)
+	{
+		name: "wave_3rdeye_look_top",
+		anime: jsonDataOfWaveReaction3rdeyeLookTop,
+		sound: "",
+	},
+	// うなづく(水辺, 3rdeye)
+	{
+		name: "wave_3rdeye_yes",
+		anime: jsonDataOfWaveReaction3rdeyeYes,
+		sound: "",
+	},
 ];
 
