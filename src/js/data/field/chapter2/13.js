@@ -19,13 +19,13 @@ module.exports = {
 	background: "chapter1-08-bg-001",
 	walkSound: "walking_bare_outside",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2-11-20400"], "process": [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_11-20400"], "process": [
 			// 1.小傘が存在する
 			[
-				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2-09-20540"], "process": [
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_09-20540"], "process": [
 					// 2. 20540を再生済
 					[
-						{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2-13-20570"], "process": [
+						{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_13-20570"], "process": [
 							// 3.セリフ再生済
 							[
 							],
@@ -41,7 +41,7 @@ module.exports = {
 										{"chara": "koishi", "exp": "yes", serif1: _("いっしょに"), serif2: _("いっしょに"), serif3: _("いっしょに"), serif4: _("いっしょに")},
 									]
 								]},
-								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2-13-20570"]},
+								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_13-20570"]},
 								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09_20581"]},
 							],
 						]},
@@ -140,7 +140,7 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 
-			show_if_event_true: "chapter2-11-20400",
+			show_if_event_true: "chapter2_11_20400",
 		},
 
 	],

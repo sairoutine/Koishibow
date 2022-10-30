@@ -46,7 +46,7 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_11_20400"], "serifs": [
 					// 犬が釘を食べていたなら
 					[
-						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2-08-20440"], "serifs": [
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_08-20440"], "serifs": [
 							// 人形入手済
 							[
 								{"chara": "koishi", "exp": "look_bottom", serif1: _("わたしもこうなるの？"), serif2: _("わたしもこうなるの？"), serif3: _("わたしもこうなるの？"), serif4: _("わたしもこうなるの？")},
@@ -56,7 +56,7 @@ module.exports = {
 
 								{"chara": "koishi", "exp": "touch", serif1: _("びちゃびちゃだあ"), serif2: _("びちゃびちゃだあ"), serif3: _("びちゃびちゃだあ"), serif4: _("びちゃびちゃだあ")},
 								{"chara": "koishi", "exp": null, serif1: _("うーんこれでいいかなあ"), serif2: _("うーんこれでいいかなあ"), serif3: _("うーんこれでいいかなあ"), serif4: _("うーんこれでいいかなあ")},
-								{"id": "chapter2-08-20440", "save": true},
+								{"id": "chapter2_08-20440", "save": true},
 								{"chara": "koishi", "exp": "yes", serif1: _("かわいいもんね"), serif2: _("かわいいもんね"), serif3: _("かわいいもんね"), serif4: _("かわいいもんね"), "option": {"getItem": "38"}},
 							],
 						]},
@@ -80,7 +80,7 @@ module.exports = {
 
 			action_name: null,
 			sound_name: null,
-			not_show_if_event_true: "chapter2-08-20440",
+			not_show_if_event_true: "chapter2_08-20440",
 		},
 		{
 			no: ++I,
@@ -102,7 +102,7 @@ module.exports = {
 
 			action_name: null,
 			sound_name: null,
-			not_if_event_true: "chapter2-08-20440",
+			not_if_event_true: "chapter2_08-20440",
 		},
 		{
 			no: ++I,

@@ -16,11 +16,11 @@ var CHARAS_SERIF_1 = [
 	{"chara": "koishi", "exp": null, serif1: _("ふつうのこ！"), serif2: _("ふつうのこ！"), serif3: _("ふつうのこ！"), serif4: _("ふつうのこ！")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_03", "serif": _("へんなこだー")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_04", "serif": _("あのこほどじゃないけど")},
-	{"chara": "koishi", "exp": "look_top", serif1: _("あのこって？"), serif2: _("あのこって？"), serif3: _("あのこって？"), serif4: _("あのこって？"), "option": {"playEventMovie": "chapter2-09-event-01"}},
+	{"chara": "koishi", "exp": "look_top", serif1: _("あのこって？"), serif2: _("あのこって？"), serif3: _("あのこって？"), serif4: _("あのこって？"), "option": {"playEventMovie": "chapter2_09-event-01"}},
 ];
 
 var CHARAS_SERIF_2 = [
-	{"id": "chapter2-09-20200", "save": true},
+	{"id": "chapter2_09-20200", "save": true},
 	{"chara": "koishi", "exp": "look_top", serif1: _("さっきの石なに？"), serif2: _("さっきの石なに？"), serif3: _("さっきの石なに？"), serif4: _("さっきの石なに？")},
 	{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("へんなこが石を投げてくるの")},
 	{"chara": "koishi", "exp": "look_top", serif1: _("やだな"), serif2: _("あぶないじゃない"), serif3: _("あぶないじゃない"), serif4: _("あぶないじゃない")},
@@ -159,7 +159,7 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 
-			show_if_event_true: "chapter2-09-20200",
+			show_if_event_true: "chapter2_09-20200",
 		},
 		{
 			no: "murasa",
@@ -257,6 +257,8 @@ module.exports = {
 
 			action_name: null,
 			sound_name: null,
+
+			not_show_if_event_true: "chapter2_11-20400",
 		},
 		{
 			no: "itirin",
@@ -268,6 +270,7 @@ module.exports = {
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_12_20480"], "serifs": [
 					// 緑の犬にオフィーリアを使用後の場合
 					[
+						{"id": "chapter2_09-20540", "save": true},
 						{"chara": "itirin", "exp": "cp2_itirin-ura_reaction_02", "serif": _("もし筆があったら")},
 						{"chara": "itirin", "exp": "cp2_itirin-ura_reaction_01", "serif": _("みんなで写経して……")},
 						{"chara": "itirin", "exp": "cp2_itirin-ura_reaction_03", "serif": _("いいこちゃんになる！")},

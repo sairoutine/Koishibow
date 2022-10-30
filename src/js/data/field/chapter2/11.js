@@ -16,7 +16,7 @@ module.exports = {
 	leftField: "chapter2_12",
 	upField: null,
 	downField: null,
-	background: "chapter2-11-bg-001",
+	background: "chapter2_11-bg-001",
 	walkSound: "walking_bare_default",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_11_20350"], "process": [
@@ -61,7 +61,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "釘",
 			serif: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2-11-20360"], "serifs": [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_11-20360"], "serifs": [
 					// 2回目以降
 					[
 						{"chara": "koishi", "exp": "look_bottom", serif1: _("いたい！"), serif2: _("いたい！"), serif3: _("いたい！"), serif4: _("いたい！")},
@@ -69,14 +69,14 @@ module.exports = {
 					],
 					// 1回目
 					[
-						{"id": "chapter2-11-20360", "save": true},
+						{"id": "chapter2_11-20360", "save": true},
 						{"chara": "koishi", "exp": "look_bottom", serif1: _("いたい！"), serif2: _("いたい！"), serif3: _("いたい！"), serif4: _("いたい！")},
 						{"chara": "koishi", "exp": null, serif1: _("何か埋まってる！"), serif2: _("何か埋まってる！"), serif3: _("何か埋まってる！"), serif4: _("何か埋まってる！"), "option": {"getJournal": "journal042"}},
 					],
 				]},
 			],
 			serif_back: [
-				{"id": "chapter2-11-20370", "save": true},
+				{"id": "chapter2_11-20370", "save": true},
 				{"chara": "koishi", "exp": "look_bottom", serif1: _("釘だ！"), serif2: _("釘だ！"), serif3: _("釘だ！"), serif4: _("釘だ！"), "option": {"getItem": "39"}},
 				{"chara": "koishi", "exp": null, serif1: _("これこれ"), serif2: _("これこれ"), serif3: _("これこれ"), serif4: _("これこれ")},
 			],
@@ -94,7 +94,7 @@ module.exports = {
 			sound_name: null,
 			position_type: "lying",
 
-			not_show_if_event_true: "chapter2-11-20370",
+			not_show_if_event_true: "chapter2_11-20370",
 		},
 		{
 			no: ++I,
@@ -109,7 +109,7 @@ module.exports = {
 			width: 0, height: 0,
 			x: 349, y: 363,
 			position_type: "lying",
-			show_if_event_true: "chapter2-11-20370",
+			show_if_event_true: "chapter2_11-20370",
 		},
 	],
 };
