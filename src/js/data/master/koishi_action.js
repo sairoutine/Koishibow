@@ -17,6 +17,14 @@ var jsonDataOfAxe = require('../../data/anime/koishi/reaction_ax_anime_1');
 var jsonDataOfNo3rdeye = require('../../data/anime/koishi/reaction_no3rdeye_anime_1');
 // 怖がる
 var jsonDataOfAfraid = require('../../data/anime/koishi/reaction_afraid_anime_1');
+// 	下を見る(3rdeye使用中)
+var jsonDataOfReaction3rdeyeLookBottom = require('../../data/anime/koishi/reaction_3rdeye_look_bottom_anime_1');
+// 	前を見る(3rdeye使用中)
+var jsonDataOfReaction3rdeyeLookFront = require('../../data/anime/koishi/reaction_3rdeye_look_front_anime_1');
+//	上を見る(3rdeye使用中)
+var jsonDataOfReaction3rdeyeLookTop = require('../../data/anime/koishi/reaction_3rdeye_look_top_anime_1');
+//	YES、うなずく(3rdeye使用中)
+var jsonDataOfReaction3rdeyeYes = require('../../data/anime/koishi/reaction_3rdeye_yes_anime_1');
 
 module.exports = [
 	// 触る
@@ -73,5 +81,30 @@ module.exports = [
 		anime: jsonDataOfAfraid,
 		sound: "",
 	},
+	// 下を見る(3rdeye)
+	{
+		name: "3rdeye_look_bottom",
+		anime: jsonDataOfReaction3rdeyeLookBottom,
+		sound: "",
+	},
+	// 前を見る(3rdeye)
+	{
+		name: "3rdeye_look_front",
+		anime: jsonDataOfReaction3rdeyeLookFront,
+		sound: "",
+	},
+	// 上を見る(3rdeye)
+	{
+		name: "3rdeye_look_top",
+		anime: jsonDataOfReaction3rdeyeLookTop,
+		sound: "",
+	},
+	// うなづく(3rdeye)
+	{
+		name: "3rdeye_yes",
+		anime: jsonDataOfReaction3rdeyeYes,
+		sound: "",
+	},
+
 ];
 
