@@ -37,7 +37,7 @@ var CHARAS_SERIF_2 = [
 module.exports = {
 	key: "chapter2_09",
 	chapter: 2,
-	bgm: "silent",
+	bgm: "field15",
 	rightStartPosition:   null,
 	leftStartPosition:    {x: 140, y: 480},
 	defaultStartPosition: {x: 750, y: 480, isTowardLeft: true},
@@ -157,7 +157,7 @@ module.exports = {
 			height: 550,
 
 			action_name: null,
-			sound_name: null,
+			sound_name: "chapter2-09-climb_ladder",
 
 			show_if_event_true: "chapter2_09-20200",
 		},

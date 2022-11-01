@@ -340,7 +340,7 @@ SceneStage.prototype._muteMainAndSubBGM = function(main_bgm, sub_bgms) {
 
 // chapter に応じたノイズ再生
 SceneStage.prototype._playNoise = function() {
-	// chapter 0 or 4 で3rd eye を使用していないときのみ
+	// chapter 0 or 2 or 4 で3rd eye を使用していないときのみ
 	// ランダムノイズ再生
 	// N秒ごとにN%の確率で再生
 
@@ -355,13 +355,18 @@ SceneStage.prototype._playNoise = function() {
 		prob     = CONSTANT.CHAPTER0.NOISE_SOUND_PROB
 		list     = CONSTANT.CHAPTER0.NOISE_SOUND_LIST
 	}
+	else if (field_data.chapter() === 2) {
+		interval = CONSTANT.CHAPTER2.NOISE_SOUND_INTERVAL_COUNT
+		prob     = CONSTANT.CHAPTER2.NOISE_SOUND_PROB
+		list     = CONSTANT.CHAPTER2.NOISE_SOUND_LIST
+	}
 	else if (field_data.chapter() === 4) {
 		interval = CONSTANT.CHAPTER4.NOISE_SOUND_INTERVAL_COUNT
 		prob     = CONSTANT.CHAPTER4.NOISE_SOUND_PROB
 		list     = CONSTANT.CHAPTER4.NOISE_SOUND_LIST
 	}
 	else {
-		// chapter0, 4 以外では再生しない
+		// chapter0, 2, 4 以外では再生しない
 		return;
 	}
 

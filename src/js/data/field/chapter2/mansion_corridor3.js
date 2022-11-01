@@ -149,7 +149,7 @@ module.exports = {
 			scale: 2/3,
 			//width: 150, height: 200,
 			action_name: null,
-			sound_name: null,
+			sound_name: "touch",
 		},
 		{
 			no: ++I,

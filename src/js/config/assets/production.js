@@ -30,6 +30,25 @@ AssetsConfig.sounds = {
 
 AssetsConfig.bgms = [
 	{
+		key: "field15",
+		path: "./bgm/production/field15.ogg",
+		volume: 0.8,
+		isShowMusicRoom: true,
+		name: _('「submerge」"水没世界"'),
+		description: _("水辺の遊びには気をつけて"),
+		chapter: 2,
+	},
+	{
+		key: "chapter2-event-pars",
+		path: "./bgm/production/chapter2/event/pars.ogg",
+		volume: 1.0,
+		isShowMusicRoom: true,
+		name: _('「flashback4」 東方地霊殿"渡る者の途絶えた橋"'),
+		description: _("回想シーン"),
+		chapter: 2,
+	},
+
+	{
 		key: "field5",
 		path: "./bgm/production/field5.ogg",
 		//loopStart: 0*60 + 0 + 0.512,

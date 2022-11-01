@@ -379,7 +379,7 @@ module.exports = [
 		name: "オフィーリア",
 		isShowChapter4: false,
 		imageName: "item_37",
-		soundName: "got_item_common",
+		soundName: "got_item_ophelia",
 		descriptionText:_("「あなたにも薬が必要……」"),
 		examineText:_("びちゃびちゃだけど楽しそう"),
 	},

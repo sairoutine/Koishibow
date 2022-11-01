@@ -6,7 +6,7 @@ var _ = require('i18n4v')
 module.exports = {
 	key: "chapter2_08",
 	chapter: 2,
-	bgm: "silent",
+	bgm: "field15",
 	rightStartPosition:   {x: 690, y: 380},
 	leftStartPosition:    {x: 180, y: 450},
 	defaultStartPosition: {x: 180, y: 450, isTowardLeft: false},
@@ -116,7 +116,7 @@ module.exports = {
 			width: 180, height: 250,
 			x: 180, y: 440,
 			action_name: "wave_touch",
-			sound_name: null,
+			sound_name: "chapter2-08-touch_in_water",
 		},
 		{
 			no: ++I,
@@ -130,7 +130,7 @@ module.exports = {
 			width: 300, height: 250,
 			x: 750, y: 400,
 			action_name: "wave_touch",
-			sound_name: null,
+			sound_name: "chapter2-08-touch_in_water",
 		},
 
 

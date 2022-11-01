@@ -12,7 +12,7 @@ var _ = require('i18n4v')
 module.exports = {
 	key: "chapter2_10",
 	chapter: 2,
-	bgm: "silent",
+	bgm: "field15",
 	rightStartPosition:   null,
 	leftStartPosition:    {x: 180, y: 380},
 	defaultStartPosition: {x: 690, y: 380, isTowardLeft: true},
@@ -268,6 +268,7 @@ module.exports = {
 
 			action_name: null,
 			sound_name: null,
+			sound_back: "chapter2-10-bark"
 		},
 
 

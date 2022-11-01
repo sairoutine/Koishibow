@@ -194,6 +194,43 @@ AssetsConfig.sounds = {
 		path: "./sound/common/chapter1/09/growl.ogg",
 		volume: 1.0,
 	},
+	"chapter1-10-flow_sand":    {
+		path: "./sound/common/chapter1/10/flow_sand.ogg",
+		volume: 1.0,
+	},
+	"chapter2-07-touch_wheelchair_in_water":    {
+		path: "./sound/production/chapter2/07/touch_wheelchair_in_water.ogg",
+		volume: 1.0,
+	},
+	"chapter2-08-touch_in_water":    {
+		path: "./sound/production/chapter2/08/touch_in_water.ogg",
+		volume: 1.0,
+	},
+	"chapter2-09-climb_ladder":    {
+		path: "./sound/production/chapter2/09/climb_ladder.ogg",
+		volume: 1.0,
+	},
+	"chapter2-10-bark":    {
+		path: "./sound/production/chapter2/10/bark.ogg",
+		volume: 1.0,
+	},
+	"chapter2_noise1":    {
+		path: "./sound/production/noise/chapter2/noise1.ogg",
+		volume: 1.0,
+	},
+	"chapter2_noise2":    {
+		path: "./sound/production/noise/chapter2/noise2.ogg",
+		volume: 1.0,
+	},
+	"chapter2_noise3":    {
+		path: "./sound/production/noise/chapter2/noise3.ogg",
+		volume: 1.0,
+	},
+	"chapter2_noise4":    {
+		path: "./sound/production/noise/chapter2/noise4.ogg",
+		volume: 1.0,
+	},
+
 };
 
 AssetsConfig.bgms = [

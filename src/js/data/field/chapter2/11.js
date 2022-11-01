@@ -109,6 +109,7 @@ module.exports = {
 			width: 0, height: 0,
 			x: 349, y: 363,
 			position_type: "lying",
+			sound_back: "chapter1-10-flow_sand",
 			show_if_event_true: "chapter2_11-20370",
 		},
 	],
