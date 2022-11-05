@@ -274,6 +274,15 @@ AssetsConfig.sounds = {
 		path: "./sound/common/walking/bare_flesh_left.ogg",
 		volume: 1.0,
 	},
+	walking_bare_wave_right:    {
+		path: "./sound/common/walking/bare_wave_right.ogg",
+		volume: 1.0,
+	},
+	walking_bare_wave_left:    {
+		path: "./sound/common/walking/bare_wave_left.ogg",
+		volume: 1.0,
+	},
+
 };
 
 AssetsConfig.bgms = [
