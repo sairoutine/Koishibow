@@ -132,7 +132,12 @@ ObjectStaticImage.prototype.onTouchByKoishi = function() {
 	}
 	else {
 		// こいしのアクション
-		this.scene.root().koishi.actionByObject(this._action_name || "wait");
+		if (this._action_name) {
+			this.scene.root().koishi.actionByObject(this._action_name);
+		}
+		else {
+			this.scene.root().koishi.setWaitAnime();
+		}
 
 		// 音を再生
 		if (this._sound_name) {

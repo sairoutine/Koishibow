@@ -360,7 +360,12 @@ ObjectAnimeImage.prototype.onTouchByKoishi = function() {
 };
 ObjectAnimeImage.prototype._onTouchByKoishiInFront = function() {
 	// こいしのアクション
-	this.scene.root().koishi.actionByObject(this._front.action_name || "wait");
+	if (this._front.action_name) {
+		this.scene.root().koishi.actionByObject(this._front.action_name);
+	}
+	else {
+		this.scene.root().koishi.setWaitAnime();
+	}
 
 	// 音を再生
 	if (this._front.sound_name) {
