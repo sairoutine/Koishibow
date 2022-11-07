@@ -16,7 +16,7 @@ module.exports = {
 	upField: null,
 	downField: null,
 	background: "chapter1-09-bg-001",
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_outside",
 	initialProcess: [
 	],
 	objects: [
@@ -26,16 +26,16 @@ module.exports = {
 			name: "生垣(秘密基地)",
 			loop: true,
 			serif: null,
-			serif_back: [
-			],
+			serif_back: null,
 			x: 720*2/3, y: 428*2/3,
 			scale: 2/3,
+			height: 250,
 			width: 100,
 			anime1: "chapter1-09-obj-02-obj01",
 			anime2: "chapter1-09-obj-02-obj02",
 			anime3: "chapter1-09-obj-02-obj01",
 
-			action_name: "look_front",
+			action_name: null,
 			sound_name: "chapter1-09-growl",
 		},
 		{
@@ -54,8 +54,19 @@ module.exports = {
 			width: 240,
 			height: 240,
 
-			action_name: "look_front",
-			sound_name: "chapter1-09-twist_faucet",
+			action_name: null,
+			sound_name: null,
+		},
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "目薬",
+			image: "eyedrops",
+			x: 362,
+			y: 290,
+			height: 400,
+			scale: 2/3,
+			item_id: "01"
 		},
 	],
 };

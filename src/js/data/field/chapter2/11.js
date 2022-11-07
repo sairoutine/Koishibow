@@ -16,10 +16,10 @@ module.exports = {
 	leftField: "chapter2_12",
 	upField: null,
 	downField: null,
-	background: "chapter2_11-bg-001",
-	walkSound: "walking_bare_default",
+	background: "chapter2-11-bg-001",
+	walkSound: "walking_bare_outside",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_11_20350"], "process": [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_11-20350"], "process": [
 			// すでにアクセス済み
 			[],
 			// まだ未アクセス
@@ -30,7 +30,7 @@ module.exports = {
 						{"chara": "koishi", "exp": null, serif1: _("まえとおなじだ！"), serif2: _("懐かしいなー"), serif3: _("懐かしいなー"), serif4: _("懐かしいなー")},
 					]
 				]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_11_20350"]}
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_11-20350"]}
 			],
 		]},
 	],
@@ -104,8 +104,7 @@ module.exports = {
 			serif: [
 				{"chara": "koishi", "exp": "look_bottom", serif1: _("砂場って変な物ばっかりね！"), serif2: _("砂場って変な物ばっかりね！"), serif3: _("砂場って変な物ばっかりね！"), serif4: _("砂場って変な物ばっかりね！")},
 			],
-			serif_back: [
-			],
+			serif_back: null,
 			width: 0, height: 0,
 			x: 349, y: 363,
 			position_type: "lying",

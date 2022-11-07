@@ -160,7 +160,7 @@ AssetsConfig.sounds = {
 		path: "./sound/common/got_item/tapeplayer.ogg",
 		volume: 1.0,
 	},
-	ophelia:    {
+	got_item_ophelia:    {
 		path: "./sound/common/got_item/ophelia.ogg",
 		volume: 1.0,
 	},

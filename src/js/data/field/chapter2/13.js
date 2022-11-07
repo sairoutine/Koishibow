@@ -19,7 +19,7 @@ module.exports = {
 	background: "chapter1-08-bg-001",
 	walkSound: "walking_bare_outside",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_11-20400"], "process": [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_10-20400"], "process": [
 			// 1.小傘が存在する
 			[
 				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_09-20540"], "process": [
@@ -42,7 +42,7 @@ module.exports = {
 									]
 								]},
 								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_13-20570"]},
-								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09_20581"]},
+								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09-20581"]},
 							],
 						]},
 					],
@@ -84,9 +84,10 @@ module.exports = {
 			loop: true,
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_12_20480"], "serifs": [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_10-20480"], "serifs": [
 					// 緑の犬にオフィーリアを使用後の場合
 					[
+						{"id": "chapter2_13-20560", "save": true},
 						{"chara": "kogasa", "exp": "cp2_kogasa-reaction_01", "serif": _("わたしはファンがほしい！")},
 						{"chara": "kogasa", "exp": "cp2_kogasa-reaction_02", "serif": _("わたしはわたしがすきなひとがほしい")},
 						{"chara": "kogasa", "exp": "cp2_kogasa-reaction_01", "serif": _("そういうの、きっと友達って言うんだわ")},
@@ -100,7 +101,7 @@ module.exports = {
 				]},
 			],
 			serif: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_12_20480"], "serifs": [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_10-20480"], "serifs": [
 					// 緑の犬にオフィーリアを使用後の場合
 					[
 						{"chara": "koishi", "exp": "look_front", serif1: _("ねえ欲しいものある？"), serif2: _("あなたは何がほしいの？"), serif3: _("あなたは何がほしいの？"), serif4: _("あなたは何がほしいの？")},
@@ -140,7 +141,7 @@ module.exports = {
 			action_name: null,
 			sound_name: null,
 
-			show_if_event_true: "chapter2_11_20400",
+			show_if_event_true: "chapter2_10-20400",
 		},
 
 	],

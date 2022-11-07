@@ -16,7 +16,7 @@ var CHARAS_SERIF_1 = [
 	{"chara": "koishi", "exp": null, serif1: _("ふつうのこ！"), serif2: _("ふつうのこ！"), serif3: _("ふつうのこ！"), serif4: _("ふつうのこ！")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_03", "serif": _("へんなこだー")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_04", "serif": _("あのこほどじゃないけど")},
-	{"chara": "koishi", "exp": "wave_look_top", serif1: _("あのこって？"), serif2: _("あのこって？"), serif3: _("あのこって？"), serif4: _("あのこって？"), "option": {"playEventMovie": "chapter2_09-event-01"}},
+	{"chara": "koishi", "exp": "wave_look_top", serif1: _("あのこって？"), serif2: _("あのこって？"), serif3: _("あのこって？"), serif4: _("あのこって？"), "option": {"playEventMovie": "chapter2-09-event-01"}},
 ];
 
 var CHARAS_SERIF_2 = [
@@ -24,7 +24,7 @@ var CHARAS_SERIF_2 = [
 	{"chara": "koishi", "exp": "wave_look_top", serif1: _("さっきの石なに？"), serif2: _("さっきの石なに？"), serif3: _("さっきの石なに？"), serif4: _("さっきの石なに？")},
 	{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("へんなこが石を投げてくるの")},
 	{"chara": "koishi", "exp": "wave_look_top", serif1: _("やだな"), serif2: _("あぶないじゃない"), serif3: _("あぶないじゃない"), serif4: _("あぶないじゃない")},
-	{"chara": "itirin", "exp": "cp2_itirin-reaction_01-reaction_01", "serif": _("そう危ないの")},
+	{"chara": "itirin", "exp": "cp2_itirin-reaction_01", "serif": _("そう危ないの")},
 	{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("あのこは本当にヘン")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_01", "serif": _("あの子はヘンじゃなくてェ")},
 	{"chara": "itirin", "exp": "cp2_itirin-reaction_03", "serif": _("アブないって言うんだよ")},
@@ -48,18 +48,18 @@ module.exports = {
 	upField: null,
 	downField: null,
 	background: null,
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wave",
 	initialProcess: [
-		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_09_20170"], "process": [
+		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_09-20170"], "process": [
 			// 1.すでにアクセス済み
 			[
-				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_12_20480"], "process": [
+				{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_10-20480"], "process": [
 					// 2.緑の犬にオフィーリアを使用後の場合
 					[
-						{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_09_20500"], "process": [
+						{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_09-20500"], "process": [
 							// 3.ほしいもののセリフ再生後
 							[
-								{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_13_20560"], "process": [
+								{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_13-20560"], "process": [
 									// 4.裏の小傘と2-13で会話後
 									[
 										{"type": "process", "value": "playTalk", "arguments": [
@@ -72,7 +72,7 @@ module.exports = {
 												{"chara": "koishi", "exp": "wave_yes", serif1: _("いっしょに"), serif2: _("いっしょに"), serif3: _("いっしょに"), serif4: _("いっしょに")},
 											]
 										]},
-										{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09_20581"]}
+										{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09-20581"]}
 									],
 									// 4.裏の小傘と2-13で会話前
 									[
@@ -89,7 +89,7 @@ module.exports = {
 										{"chara": "koishi", "exp": "wave_look_top", serif1: _("みんなはどうかな"), serif2: _("みんなはどうかな"), serif3: _("みんなはどうかな"), serif4: _("みんなはどうかな")},
 									]
 								]},
-								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09_20500"]}
+								{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09-20500"]}
 							],
 						]},
 					],
@@ -107,7 +107,7 @@ module.exports = {
 						{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("あ！へんなこ！")},
 					]
 				]},
-				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09_20170"]}
+				{"type": "process", "value": "incrementPlayedFlag", "arguments": ["chapter2_09-20170"]}
 			],
 		]},
 	],
@@ -133,7 +133,22 @@ module.exports = {
 			no: ++I,
 			image: null,
 			type: CONSTANT.STATIC_IMAGE_TYPE,
-			name: "はしご",
+			name: "茂み",
+			serif: null,
+			x: 100,
+			y: 230,
+			width: 200,
+			height: 600,
+
+			action_name: null,
+			sound_name: null,
+		},
+
+		{
+			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "はしご(登れる)",
 			serif: [
 				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_09-20250"], "serifs": [
 					// 2回目以降にはしごを使うとき
@@ -142,12 +157,13 @@ module.exports = {
 					],
 					// 1回目にはしごを使うとき
 					[
+						{"id": "chapter2_09-20250", "save": true},
 						{"chara": "koishi", "exp": "wave_look_top", serif1: _("うえにいける"), serif2: _("うえにいける"), serif3: _("うえにいける"), serif4: _("うえにいける")},
 						{"chara": "kogasa", "exp": null, "serif": _("上へ行くの？")},
 						{"chara": "itirin", "exp": "cp2_itirin-reaction_02", "serif": _("アブないよお")},
 						{"chara": "koishi", "exp": null, serif1: _("んー"), serif2: _("んー"), serif3: _("んー"), serif4: _("んー")},
 						{"chara": "koishi", "exp": "wave_yes", serif1: _("でもいく"), serif2: _("でもいく"), serif3: _("でもいく"), serif4: _("でもいく")},
-						{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("やっぱり変な子")},
+						{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("やっぱり変な子"), "option": {"changeField": "chapter2_10"}},
 					],
 				]}
 			],
@@ -162,13 +178,29 @@ module.exports = {
 			show_if_event_true: "chapter2_09-20200",
 		},
 		{
+			no: ++I,
+			image: null,
+			type: CONSTANT.STATIC_IMAGE_TYPE,
+			name: "はしご(登れない)",
+			serif: null,
+			x: 900,
+			y: 300,
+			width: 200,
+			height: 550,
+
+			action_name: null,
+			sound_name: null,
+
+			not_show_if_event_true: "chapter2_09-20200",
+		},
+		{
 			no: "murasa",
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "村紗",
 			loop: true,
-			turn_not_toward_me: true,
+			turn_toward_me: true,
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_12_20480"], "serifs": [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_10-20480"], "serifs": [
 					// 緑の犬にオフィーリアを使用後の場合
 					[
 						{"chara": "murasa", "exp": "cp2_murasa-ura_wait", "serif": _("もしもボートがあったら……")},
@@ -178,15 +210,18 @@ module.exports = {
 					],
 					// 緑の犬にオフィーリアを使用前の場合
 					[
+						{"chara": "murasa", "exp": "cp2_murasa-ura_wait", "serif": _("こんどの夏は海に行きたいな")},
+						{"chara": "murasa", "exp": null, "serif": _("いっぱい泳いで")},
+						{"chara": "murasa", "exp": "cp2_murasa-ura_reaction_01", "serif": _("ねる！")},
 					],
 				]},
 			],
 			serif: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter2_09-charas-limit", 3], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter2_09-charas-limit", 2], "serifs": [
 					CHARAS_SERIF_1,
 					CHARAS_SERIF_2,
 					[
-						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_12_20480"], "serifs": [
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_10-20480"], "serifs": [
 							// 緑の犬にオフィーリアを使用後の場合
 							[
 								{"chara": "koishi", "exp": "wave_look_front", serif1: _("ねえ欲しいものある？"), serif2: _("ねえ欲しいものある？"), serif3: _("ねえ欲しいものある？"), serif4: _("ねえ欲しいものある？")},
@@ -201,7 +236,7 @@ module.exports = {
 							// 緑の犬にオフィーリアを使用前の場合
 							[
 								{"chara": "murasa", "exp": "cp2_murasa-reaction_01", "serif": _("わたし水は好きよ！")},
-								{"chara": "murasa", "exp": null, "serif": _("冷たくて気持ちいいあたまのてっぺんまで浸かりたいわ")},
+								{"chara": "murasa", "exp": null, "serif": _("冷たくて気持ちいい\nあたまのてっぺんまで浸かりたいわ")},
 								{"chara": "koishi", "exp": "wave_yes", serif1: _("ねー"), serif2: _("ねー"), serif3: _("ねー"), serif4: _("ねー")},
 							],
 						]},
@@ -227,9 +262,9 @@ module.exports = {
 			name: "小傘",
 			loop: true,
 			turn_not_toward_me: true, // こいしの方を向く
-			serif_back: [],
+			serif_back: null,
 			serif: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter2_09-charas-limit", 3], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter2_09-charas-limit", 2], "serifs": [
 					CHARAS_SERIF_1,
 					CHARAS_SERIF_2,
 					[
@@ -239,7 +274,7 @@ module.exports = {
 						{"chara": "kogasa", "exp": null, "serif": _("ウフフ")},
 						{"chara": "kogasa", "exp": "cp2_kogasa-reaction_01", "serif": _("ちゃっぷちゃっぷ")},
 						{"chara": "koishi", "exp": "wave_yes", serif1: _("いーなー"), serif2: _("いーなー"), serif3: _("いーなー"), serif4: _("いーなー")},
-						{"chara": "koishi", "exp": "look_bottom", serif1: _("たのしそう!"), serif2: _("たのしそう!"), serif3: _("たのしそう!"), serif4: _("たのしそう!")},
+						{"chara": "koishi", "exp": "wave_look_bottom", serif1: _("たのしそう!"), serif2: _("たのしそう!"), serif3: _("たのしそう!"), serif4: _("たのしそう!")},
 						{"chara": "koishi", "exp": null, serif1: _("チャプチャプ!"), serif2: _("チャプチャプ!"), serif3: _("チャプチャプ!"), serif4: _("チャプチャプ!")},
 					],
 				]}
@@ -253,12 +288,12 @@ module.exports = {
 			anime5: "cp2_kogasa-ura_wait",
 			anime6: "cp2_kogasa-reverse_omote",
 			width: 150,
-			height: 295,
+			height: 296,
 
 			action_name: null,
 			sound_name: null,
 
-			not_show_if_event_true: "chapter2_11-20400",
+			not_show_if_event_true: "chapter2_10-20400",
 		},
 		{
 			no: "itirin",
@@ -267,13 +302,13 @@ module.exports = {
 			loop: true,
 			turn_not_toward_me: true, // こいしの方を向く
 			serif_back: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_12_20480"], "serifs": [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_10-20480"], "serifs": [
 					// 緑の犬にオフィーリアを使用後の場合
 					[
 						{"id": "chapter2_09-20540", "save": true},
 						{"chara": "itirin", "exp": "cp2_itirin-ura_reaction_02", "serif": _("もし筆があったら")},
 						{"chara": "itirin", "exp": "cp2_itirin-ura_reaction_01", "serif": _("みんなで写経して……")},
-						{"chara": "itirin", "exp": "cp2_itirin-ura_reaction_03", "serif": _("いいこちゃんになる！")},
+						{"chara": "itirin", "exp": null, "serif": _("いいこちゃんになる！")},
 					],
 					// 緑の犬にオフィーリアを使用前の場合
 					[
@@ -289,11 +324,11 @@ module.exports = {
 
 			],
 			serif: [
-				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter2_09-charas-limit", 3], "serifs": [
+				{"type": "criteria_serif", "criteria": "limit", "arguments": ["chapter2_09-charas-limit", 2], "serifs": [
 					CHARAS_SERIF_1,
 					CHARAS_SERIF_2,
 					[
-						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_12_20480"], "serifs": [
+						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_10-20480"], "serifs": [
 							// 緑の犬にオフィーリアを使用後の場合
 							[
 								{"chara": "koishi", "exp": "wave_look_front", serif1: _("ねえ欲しいものある？"), serif2: _("あなたは何がほしいの？"), serif3: _("あなたは何がほしいの？"), serif4: _("あなたは何がほしいの？")},

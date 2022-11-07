@@ -7,7 +7,7 @@ module.exports = {
 	key: "chapter2_08",
 	chapter: 2,
 	bgm: "field15",
-	rightStartPosition:   {x: 690, y: 380},
+	rightStartPosition:   {x: 740, y: 480},
 	leftStartPosition:    {x: 180, y: 450},
 	defaultStartPosition: {x: 180, y: 450, isTowardLeft: false},
 	upStartPosition:    null,
@@ -17,7 +17,7 @@ module.exports = {
 	upField: null,
 	downField: null,
 	background: null,
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wave",
 	initialProcess: [
 	],
 	objects: [
@@ -43,7 +43,7 @@ module.exports = {
 			type: CONSTANT.ANIME_IMAGE_TYPE,
 			name: "木と人形",
 			serif: [
-				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_11_20400"], "serifs": [
+				{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_10-20400"], "serifs": [
 					// 犬が釘を食べていたなら
 					[
 						{"type": "criteria_serif", "criteria": "isPlayed", "arguments": ["chapter2_08-20440"], "serifs": [
@@ -76,7 +76,7 @@ module.exports = {
 			anime5: null,
 			anime6: null,
 			width: 280,
-			height: 320,
+			height: 365,
 
 			action_name: null,
 			sound_name: null,
@@ -98,11 +98,11 @@ module.exports = {
 			anime5: null,
 			anime6: null,
 			width: 280,
-			height: 320,
+			height: 365,
 
 			action_name: null,
 			sound_name: null,
-			not_if_event_true: "chapter2_08-20440",
+			show_if_event_true: "chapter2_08-20440",
 		},
 		{
 			no: ++I,
@@ -127,7 +127,7 @@ module.exports = {
 				{"chara": "koishi", serif1: _("きたなーい"), serif2: _("きたなーい"), serif3: _("きたなーい"), serif4: _("きたなーい")},
 			],
 
-			width: 300, height: 250,
+			width: 300, height: 300,
 			x: 750, y: 400,
 			action_name: "wave_touch",
 			sound_name: "chapter2-08-touch_in_water",

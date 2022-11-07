@@ -7,12 +7,6 @@ module.exports = [
 		nextField: null,
 	},
 	{
-		key: "chapter2-09-event-02",
-		path: "./movie/production/chapter2-09-event-02.mp4",
-		isStopBGM: false,
-		nextField: null,
-	},
-	{
 		key: "chapter3-13-event-02",
 		path: "./movie/production/chapter3-13-event-02.mp4",
 		isStopBGM: false,

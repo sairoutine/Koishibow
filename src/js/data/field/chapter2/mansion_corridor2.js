@@ -83,7 +83,19 @@ module.exports = {
 			anime3: "chapter0-mansion_corridor2-obj-06-01-obj03",
 			action_name: null,
 			sound_name:      "chapter0-mansion_corridor2-open_door",
-		}
+		},
+		{
+			no: ++I,
+			type: CONSTANT.ITEM_TYPE,
+			name: "目薬",
+			image: "eyedrops",
+			x: 362,
+			y: 290,
+			height: 200,
+			scale: 2/3,
+			item_id: "01"
+		},
+
 	]
 };
 

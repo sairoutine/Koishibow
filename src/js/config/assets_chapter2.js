@@ -186,10 +186,6 @@ AssetsConfig.sounds = {
 		path: "./sound/common/chapter1/08/suspended.ogg",
 		volume: 1.0,
 	},
-	"chapter1-09-twist_faucet":    {
-		path: "./sound/common/chapter1/09/twist_faucet.ogg",
-		volume: 1.0,
-	},
 	"chapter1-09-growl":    {
 		path: "./sound/common/chapter1/09/growl.ogg",
 		volume: 1.0,

@@ -17,7 +17,7 @@ module.exports = {
 	upField: null,
 	downField: null,
 	background: null,
-	walkSound: "walking_bare_default",
+	walkSound: "walking_bare_wave",
 	initialProcess: [
 		{"type": "criteria", "value": "isPlayed", "arguments": ["chapter2_07_20110"], "process": [
 			// すでにアクセス済み
@@ -77,7 +77,7 @@ module.exports = {
 			height: 160,
 
 			action_name: "wave_look_front",
-			sound_name: "touch_wheelchair_in_water",
+			sound_name: "chapter2-07-touch_wheelchair_in_water",
 		},
 		{
 			no: ++I,
@@ -85,7 +85,7 @@ module.exports = {
 			type: CONSTANT.STATIC_IMAGE_TYPE,
 			name: "家の壁",
 			serif: null,
-			width: 660, height: 480,
+			width: 660, height: 500,
 			x: 325, y: 240,
 		},
 		{
@@ -95,7 +95,7 @@ module.exports = {
 			x: 355,
 			y: 355,
 			width: 150,
-			height: 260,
+			height: 280,
 			next_field_name: "chapter2_05",
 		},
 
