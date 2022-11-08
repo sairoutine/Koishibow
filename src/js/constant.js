@@ -85,7 +85,11 @@ var CONSTANT = {
 	// 3rd eye の自然消耗値(1フレームごと)
 	ABRASION_3RDEYE_GAUGE: 1,
 
-
+	// 3rd eye UI の座標やサイズ
+	UI_3RDEYE_WIDTH: 227,
+	UI_3RDEYE_HEIGHT: 180,
+	UI_3RDEYE_X: 1320,
+	UI_3RDEYE_Y: 980,
 
 	// フィールドでランダムに流れるノイズ
 	CHAPTER0: {

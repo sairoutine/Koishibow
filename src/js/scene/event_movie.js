@@ -3,6 +3,7 @@
 var Util = require('../hakurei').util;
 var BaseScene = require('../hakurei').scene.movie;
 var EventMovieMasterRepository = require('../repository/event_movie');
+var JournalMasterRepository = require('../repository/journal');
 
 var SceneEventMovie = function(core) {
 	BaseScene.apply(this, arguments);
@@ -42,7 +43,15 @@ SceneEventMovie.prototype.init = function(event_name){
 	if (event_name === "chapter6-event-ending01-1") {
 		callback = function () {
 			scene_manager.changeScene("movie", "./movie/production/chapter6_staffroll.mp4", function (core) {
-				core.scene_manager.changeScene("event_talk", "chapter6-event-ending01-2");
+				// ジャーナルをすべて持っていれば
+				if(core.save_manager.journal.getJournalList().length >= JournalMasterRepository.all().length) {
+					// 真エンディングへ
+					core.scene_manager.changeScene("true_ending");
+				}
+				else {
+					// 後日談へ
+					core.scene_manager.changeScene("event_talk", "chapter6-event-ending01-2");
+				}
 			});
 		};
 	}

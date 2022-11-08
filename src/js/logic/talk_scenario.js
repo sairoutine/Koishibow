@@ -3,7 +3,6 @@
 
 var ScenarioManager = require('../logic/scenario_manager');
 var CONSTANT = require('../constant');
-
 // 静的クラス
 var TalkScenario = function() {};
 
@@ -52,11 +51,10 @@ TalkScenario.generateScenario = function (core) {
 
 				return index;
 			},
-			// アイテムを持っていれば
+			// 発達度
 			growth: function (core) {
 				return core.save_manager.player.getGrowth() - 1;
 			},
-
 		}
 	});
 };
