@@ -28,6 +28,9 @@ module.exports = {
 		{"name": "event_out", "frame": 180},
 	],
 	endProcess: [
+		// BGMを変更してしまったので、ステージのBGMに戻す
+		{"type": "process", "value": "playBGM", "arguments": ["field15"]},
+
 		// ステージに戻る
 		{"type": "process", "value": "returnScene", "arguments": ["stage"]},
 	],

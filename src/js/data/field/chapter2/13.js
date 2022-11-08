@@ -122,7 +122,7 @@ module.exports = {
 						{"chara": "koishi", "exp": "look_front", serif1: _("知ってるの？"), serif2: _("知ってるの？"), serif3: _("知ってるの？"), serif4: _("知ってるの？")},
 						{"chara": "kogasa", "exp": "cp2_kogasa-wait", "serif": _("わ・た・し")},
 						{"chara": "koishi", "exp": "look_top", serif1: _("ふーん"), serif2: _("そうかあ"), serif3: _("そうかあ"), serif4: _("そうかあ")},
-						{"chara": "koishi", "exp": "look_yes", serif1: _("それ以外で"), serif2: _("でも危なそうだからだめ"), serif3: _("でも危なそうだからだめ"), serif4: _("でも危なそうだからだめ")},
+						{"chara": "koishi", "exp": "yes", serif1: _("それ以外で"), serif2: _("でも危なそうだからだめ"), serif3: _("でも危なそうだからだめ"), serif4: _("でも危なそうだからだめ")},
 						{"chara": "kogasa", "exp": "cp2_kogasa-reaction_02", "serif": _("それ以外はないよ")},
 					],
 				]}
