@@ -16,7 +16,7 @@ module.exports = [
 		key: "chapter2",
 		no: 2,
 		openingMovie: "./movie/production/chapter2.mp4",
-		firstField: null,
+		firstField: "chapter2_01",
 	},
 	{
 		key: "chapter3",

@@ -29,6 +29,12 @@ AssetsConfig.images = {
 	"journal039":  "./image/production/journal/ch/039.png",
 	"journal040":  "./image/production/journal/ch/040.png",
 	"journal041":  "./image/production/journal/ch/041.png",
+	"journal042":  "./image/production/journal/ch/042.png",
+	"journal043":  "./image/production/journal/ch/043.png",
+	"journal044":  "./image/production/journal/ch/044.png",
+	"journal045":  "./image/production/journal/ch/045.png",
+
+
 };
 
 module.exports = AssetsConfig;

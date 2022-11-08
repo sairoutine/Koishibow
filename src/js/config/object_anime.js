@@ -124,6 +124,10 @@ var anime_map = {
 	"chapter2-08-obj-01-obj01":  require('../data/anime/chapter2/08/obj-01/obj01_anime_1.json'),
 	"chapter2-08-obj-01-obj02":  require('../data/anime/chapter2/08/obj-01/obj02_anime_1.json'),
 	"chapter2-09-bg-01_anime_1":  require('../data/anime/chapter2/09/bg-01/bg01_anime_1.json'),
+	"chapter2-11-obj-01-obj01":  require('../data/anime/chapter2/11/obj-01/obj01_anime_1.json'),
+	"chapter2-11-obj-01-obj02":  require('../data/anime/chapter2/11/obj-01/obj02_anime_1.json'),
+	"chapter2-11-obj-01-obj03":  require('../data/anime/chapter2/11/obj-01/obj03_anime_1.json'),
+	"chapter2-11-obj-01-obj04":  require('../data/anime/chapter2/11/obj-01/obj04_anime_1.json'),
 
 	"chapter3-07-obj-01-obj01":  require('../data/anime/chapter3/07/obj-01/obj01_anime_1.json'),
 	"chapter3-07-obj-01-obj02":  require('../data/anime/chapter3/07/obj-01/obj02_anime_1.json'),
@@ -525,7 +529,7 @@ var anime_map = {
 	"animal_uma-reverse_ura":          require('../data/anime/animal_uma/reverse_ura_anime_1'),
 	"animal_uma-ura_reaction_01":      require('../data/anime/animal_uma/ura_reaction_01_anime_1'),
     
-	/* cp2一輪 */
+	/* chapter2一輪 */
 	"cp2_itirin-wait":              require('../data/anime/cp2_itirin/wait_anime_1'),
 	"cp2_itirin-ura_wait":          require('../data/anime/cp2_itirin/ura_wait_anime_1'),
 	"cp2_itirin-reverse_omote":     require('../data/anime/cp2_itirin/reverse_omote_anime_1'),
@@ -537,7 +541,7 @@ var anime_map = {
 	"cp2_itirin-ura_reaction_01":   require('../data/anime/cp2_itirin/ura_reaction_01_anime_1'),
 	"cp2_itirin-ura_reaction_02":   require('../data/anime/cp2_itirin/ura_reaction_02_anime_1'),
     
-	/* cp2小傘 */
+	/* chapter2小傘 */
 	"cp2_kogasa-wait":              require('../data/anime/cp2_kogasa/wait_anime_1'),
 	"cp2_kogasa-ura_wait":          require('../data/anime/cp2_kogasa/ura_wait_anime_1'),
 	"cp2_kogasa-reverse_omote":     require('../data/anime/cp2_kogasa/reverse_omote_anime_1'),
@@ -547,7 +551,7 @@ var anime_map = {
 	"cp2_kogasa-ura_reaction_01":   require('../data/anime/cp2_kogasa/ura_reaction_01_anime_1'),
 	"cp2_kogasa-ura_reaction_02":   require('../data/anime/cp2_kogasa/ura_reaction_02_anime_1'),
     
-	/* cp2ムラサ */
+	/* chapter2ムラサ */
 	"cp2_murasa-wait":              require('../data/anime/cp2_murasa/wait_anime_1'),
 	"cp2_murasa-ura_wait":          require('../data/anime/cp2_murasa/ura_wait_anime_1'),
 	"cp2_murasa-reverse_omote":     require('../data/anime/cp2_murasa/reverse_omote_anime_1'),
@@ -556,7 +560,7 @@ var anime_map = {
 	"cp2_murasa-reaction_02":   require('../data/anime/cp2_murasa/reaction_02_anime_1'),
 	"cp2_murasa-ura_reaction_01":   require('../data/anime/cp2_murasa/ura_reaction_01_anime_1'),
     
-	/* cp2パルスィ表 */
+	/* chapter2パルスィ表 */
 	"cp2_pars-wait":              require('../data/anime/cp2_pars/wait_anime_1'),
 	"cp2_pars-ura_wait":          require('../data/anime/cp2_pars/ura_wait_anime_1'),
 	"cp2_pars-reverse_omote":     require('../data/anime/cp2_pars/reverse_omote_anime_1'),
@@ -565,7 +569,7 @@ var anime_map = {
 	"cp2_pars-reaction_02":   require('../data/anime/cp2_pars/reaction_02_anime_1'),
 	"cp2_pars-reaction_03":   require('../data/anime/cp2_pars/reaction_02_anime_1'),
     
-	/* cp2パルスィ裏 緑犬 */
+	/* chapter2パルスィ裏 緑犬 */
 	"cp2_pars_greendog-wait":              require('../data/anime/cp2_pars_greendog/wait_anime_1'),
 	"cp2_pars_greendog-ura_wait":          require('../data/anime/cp2_pars_greendog/ura_wait_anime_1'),
 	"cp2_pars_greendog-reverse_omote":     require('../data/anime/cp2_pars_greendog/reverse_omote_anime_1'),

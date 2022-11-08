@@ -388,7 +388,7 @@ SceneEventPlayDoll.prototype._updateInTalking = function(){
 				}
 				else {
 					// 次のチャプターへ
-					scene_manager.changeScene("opening_movie_chapter3");
+					scene_manager.changeScene("opening_movie_chapter2");
 				}
 			}
 			else {
@@ -404,7 +404,7 @@ SceneEventPlayDoll.prototype._updateInTalking = function(){
 					}
 					else {
 						// 次のチャプターへ
-						scene_manager.changeScene("opening_movie_chapter3");
+						scene_manager.changeScene("opening_movie_chapter2");
 					}
 				});
 			}

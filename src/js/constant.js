@@ -97,6 +97,11 @@ var CONSTANT = {
 		NOISE_SOUND_INTERVAL_COUNT: 1200,
 		NOISE_SOUND_PROB: 50,
 	},
+	CHAPTER2: {
+		NOISE_SOUND_LIST: ["chapter2_noise1", "chapter2_noise2", "chapter2_noise3", "chapter2_noise4"],
+		NOISE_SOUND_INTERVAL_COUNT: 1200,
+		NOISE_SOUND_PROB: 50,
+	},
 	CHAPTER4: {
 		NOISE_SOUND_LIST: ["chapter4_noise1", "chapter4_noise2", "chapter4_noise3", "chapter4_noise4"],
 		NOISE_SOUND_INTERVAL_COUNT: 1200,

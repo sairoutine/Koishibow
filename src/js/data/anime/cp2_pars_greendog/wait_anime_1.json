@@ -8,7 +8,7 @@
 "CanvasHeight": 300,
 "MarginWidth": 158,
 "MarginHeight": 308,
-"parts": ["root","green_all","green_body","green_tail","green_kubi","green_head","green_mouth"],
+"parts": ["root","green_all","green_body","green_tail","green_kubi","green_head","green_mouth","pars_kugi","pars_doll"],
 "ssa": [
 
 ]

@@ -373,5 +373,27 @@ module.exports = [
 		descriptionText:_("曇りなき瞳"),
 		examineText:_("誰なの？"),
 	},
+	{
+		id: "38",
+		type: CONSTANT.ITEM.NON_USABLE,
+		name: "オフィーリア",
+		isShowChapter4: false,
+		imageName: "item_37",
+		soundName: "got_item_ophelia",
+		descriptionText:_("「あなたにも薬が必要……」"),
+		examineText:_("びちゃびちゃだけど楽しそう"),
+	},
+	{
+		id: "39",
+		type: CONSTANT.ITEM.NON_USABLE,
+		name: "釘",
+		isShowChapter4: false,
+		imageName: "item_38",
+		soundName: "got_item_common",
+		descriptionText:_("五寸もの長さの釘"),
+		examineText:_("かたくてかっこいい！"),
+	},
+
+
 ];
 

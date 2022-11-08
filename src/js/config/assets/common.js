@@ -160,6 +160,10 @@ AssetsConfig.sounds = {
 		path: "./sound/common/got_item/tapeplayer.ogg",
 		volume: 1.0,
 	},
+	got_item_ophelia:    {
+		path: "./sound/common/got_item/ophelia.ogg",
+		volume: 1.0,
+	},
 	open_menu:    {
 		path: "./sound/common/open_menu.ogg",
 		volume: 1.0,
@@ -270,6 +274,15 @@ AssetsConfig.sounds = {
 		path: "./sound/common/walking/bare_flesh_left.ogg",
 		volume: 1.0,
 	},
+	walking_bare_wave_right:    {
+		path: "./sound/common/walking/bare_wave_right.ogg",
+		volume: 1.0,
+	},
+	walking_bare_wave_left:    {
+		path: "./sound/common/walking/bare_wave_left.ogg",
+		volume: 1.0,
+	},
+
 };
 
 AssetsConfig.bgms = [

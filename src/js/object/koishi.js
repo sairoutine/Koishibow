@@ -24,6 +24,13 @@ var jsonDataOfWaitInNoHat = require('../data/anime/koishi/nohat_wait_anime_1');
 var jsonDataOfWalkInNoHat = require('../data/anime/koishi/nohat_walk_anime_1');
 // ゲームオーバー(しゃがみ込む) 不	80	2.7秒
 var jsonDataOfGameover = require('../data/anime/koishi/gameover_anime_1');
+// 	待機(水辺)
+var jsonDataOfWaveWait = require('../data/anime/koishi/wave_wait_anime_1');
+//	歩き(水辺)
+var jsonDataOfWaveWalk = require('../data/anime/koishi/wave_walk_anime_1');
+// 	サードアイ使用(水辺)
+var jsonDataOfWaveReaction3rdeye = require('../data/anime/koishi/wave_reaction_3rdeye_anime_1');
+
 var JSON_ANIME_MAP = {
 	// 静止
 	default:     jsonDataOfWait,
@@ -42,6 +49,13 @@ var JSON_ANIME_MAP = {
 	gameover: jsonDataOfGameover,
 	// サードアイ使用
 	use_eye:     jsonDataOfReaction3rdeye,
+
+	// 静止(水辺)
+	wave_wait: jsonDataOfWaveWait,
+	// 歩く(水辺)
+	wave_walk: jsonDataOfWaveWalk,
+	// サードアイ使用(水辺)
+	wave_use_eye: jsonDataOfWaveReaction3rdeye,
 };
 
 var Koishi = function (scene) {
@@ -70,6 +84,9 @@ Koishi.prototype.setWaitAnime = function() {
 	if (this.scene.isNoHat()) {
 		this.playAnimationInfinity("wait_nohat");
 	}
+	else if (this.scene.isInWave()) {
+		this.playAnimationInfinity("wave_wait");
+	}
 	else {
 		this.playAnimationInfinity("wait");
 	}
@@ -79,13 +96,16 @@ Koishi.prototype.setWalkAnime = function() {
 	if (this.scene.isNoHat()) {
 		this.playAnimationInfinity("walk_nohat");
 	}
+	else if (this.scene.isInWave()) {
+		this.playAnimationInfinity("wave_walk");
+	}
 	else {
 		this.playAnimationInfinity("walk");
 	}
 };
 // 歩き中かどうか
 Koishi.prototype.isWalking = function() {
-	if (this.isPlaying("walk_nohat") || this.isPlaying("walk")) return true;
+	if (this.isPlaying("walk_nohat") || this.isPlaying("walk") || this.isPlaying("wave_walk")) return true;
 
 	return false;
 };
@@ -93,12 +113,17 @@ Koishi.prototype.isWalking = function() {
 Koishi.prototype.useEye = function(){
 
 	// サードアイ使用モーションをしたあとに停止
-	this.playAnimationOnce("use_eye");
+	if (this.scene.isInWave()) {
+		this.playAnimationOnce("wave_use_eye");
+	}
+	else {
+		this.playAnimationOnce("use_eye");
+	}
 };
 
 Koishi.prototype.unUseEye = function(){
 	// サードアイ使用モーション中なら静止に戻す
-	if (this.isPlaying("use_eye")) {
+	if (this.isPlaying("use_eye") || this.isPlaying("wave_use_eye")) {
 		this.setWaitAnime();
 	}
 };
