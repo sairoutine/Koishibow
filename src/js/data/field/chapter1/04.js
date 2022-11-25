@@ -43,7 +43,7 @@ module.exports = {
 			name: "電話ボックス赤",
 			loop: true, // 何回でもタッチできる
 			serif: [
-				{"type": "criteria_serif", "criteria": "circulate", "arguments": ["chapter1_04-" + I + "circulate", 19], "serifs": [
+				{"type": "criteria_serif", "criteria": "circulate", "arguments": ["chapter1_04-" + I + "circulate", 22], "serifs": [
 					[
 						{"chara": I, serif1: _("ぷーーーー"), serif2: _("ぷーーーー"), serif3: _("ぷーーーー"), serif4: _("ぷーーーー")},
 					],
@@ -115,10 +115,6 @@ module.exports = {
 					[
 						{"chara": I, serif1: _("火事ですか救急ですか？"), serif2: _("火事ですか救急ですか？"), serif3: _("火事ですか救急ですか？"), serif4: _("火事ですか救急ですか？")},
 						{"chara": "koishi", serif1: _("あのね、何でもないです"), serif2: _("あのね、何でもないです"), serif3: _("あのね、何でもないです"), serif4: _("あのね、何でもないです")},
-					],
-					[
-						{"chara": I, serif1: _("火事ですか救急ですか？"), serif2: _("火事ですか救急ですか？"), serif3: _("火事ですか救急ですか？"), serif4: _("火事ですか救急ですか？")},
-						{"chara": I, serif1: _("あのね、何でもないです"), serif2: _("あのね、何でもないです"), serif3: _("あのね、何でもないです"), serif4: _("あのね、何でもないです")},
 					],
 					[
 						{"chara": I, serif1: _("申します申します、どちらへお繋しますか？"), serif2: _("申します申します、どちらへお繋しますか？"), serif3: _("申します申します、どちらへお繋しますか？"), serif4: _("申します申します、どちらへお繋しますか？")},
